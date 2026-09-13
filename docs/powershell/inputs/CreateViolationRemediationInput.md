@@ -13,6 +13,10 @@ The input for creating remediation.
   - Required. The location where the remediation has been done.
 - resourceType: PolicyResourceType
   - Required. The type of the resource.
+- isJitElevated: System.Boolean
+  - Set by the UI when JIT permission elevation was completed before creating
+the revert remediation. The eligibility checker allows JIT tenants when
+this is true. Ignored for non-revert remediation types.
 - ticketInfo: RemediationTicketInfoInput
   - The ticket information for the remediation.
 - mipLabelInfo: MipLabelInfoInput

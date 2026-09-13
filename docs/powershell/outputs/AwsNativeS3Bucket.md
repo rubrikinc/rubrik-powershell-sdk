@@ -44,8 +44,7 @@ AWS native S3 Bucket.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon S3 bucket.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

@@ -7212,7 +7212,7 @@ namespace RubrikSecurityCloud.Types
         public static string CloudDirectNasBuckets(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasBuckets" + args + "\n{\n" + fs + "}\n";
         }
         public static object CloudDirectNasBucketsFieldSpec(AutofieldContext? ec=null)
@@ -7266,7 +7266,7 @@ namespace RubrikSecurityCloud.Types
         public static string CloudDirectNasNamespaces(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasNamespaces" + args + "\n{\n" + fs + "}\n";
         }
         public static object CloudDirectNasNamespacesFieldSpec(AutofieldContext? ec=null)
@@ -7302,7 +7302,7 @@ namespace RubrikSecurityCloud.Types
         public static string CloudDirectNasShares(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasShares" + args + "\n{\n" + fs + "}\n";
         }
         public static object CloudDirectNasSharesFieldSpec(AutofieldContext? ec=null)
@@ -7338,7 +7338,7 @@ namespace RubrikSecurityCloud.Types
         public static string CloudDirectNasSystems(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cloudDirectNasSystems" + args + "\n{\n" + fs + "}\n";
         }
         public static object CloudDirectNasSystemsFieldSpec(AutofieldContext? ec=null)
@@ -9660,7 +9660,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeClustersFieldSpec(AutofieldContext? ec=null)
@@ -9678,7 +9678,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeClustersAndHosts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ntypeFilter: $typeFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\n)";
             return "fusionComputeClustersAndHosts" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeClustersAndHostsFieldSpec(AutofieldContext? ec=null)
@@ -9714,7 +9714,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeDatastores(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeDatastores" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeDatastoresFieldSpec(AutofieldContext? ec=null)
@@ -9768,7 +9768,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeHosts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeHosts" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeHostsFieldSpec(AutofieldContext? ec=null)
@@ -9840,7 +9840,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeNetworks(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeNetworks" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeNetworksFieldSpec(AutofieldContext? ec=null)
@@ -9858,7 +9858,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeRecoverableClustersAndHosts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeRecoverableClustersAndHosts" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeRecoverableClustersAndHostsFieldSpec(AutofieldContext? ec=null)
@@ -9876,7 +9876,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeRecoverableDatastores(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeRecoverableDatastores" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeRecoverableDatastoresFieldSpec(AutofieldContext? ec=null)
@@ -9894,7 +9894,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeRecoverableNetworks(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeRecoverableNetworks" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeRecoverableNetworksFieldSpec(AutofieldContext? ec=null)
@@ -9930,7 +9930,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeSites(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeSites" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeSitesFieldSpec(AutofieldContext? ec=null)
@@ -10002,7 +10002,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeVirtualMachines(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeVirtualMachines" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeVirtualMachinesFieldSpec(AutofieldContext? ec=null)
@@ -10056,7 +10056,7 @@ namespace RubrikSecurityCloud.Types
         public static string FusionComputeVrms(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "fusionComputeVrms" + args + "\n{\n" + fs + "}\n";
         }
         public static object FusionComputeVrmsFieldSpec(AutofieldContext? ec=null)
@@ -16657,6 +16657,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> RecoveryPlanBasicInfoConnection? RecoveryPlansBasicInfo
+        // GraphQL -> recoveryPlansBasicInfo: RecoveryPlanBasicInfoConnection! (type)
+        public static string RecoveryPlansBasicInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryPlanIds: $recoveryPlanIds\nsortParam: $sortParam\nrecoveryPlanTypes: $recoveryPlanTypes\nworkloadTypes: $workloadTypes\nsourceLocationIds: $sourceLocationIds\nnameSubstring: $nameSubstring\ntargetLocationIds: $targetLocationIds\nsourceAccountIds: $sourceAccountIds\ntargetAccountIds: $targetAccountIds\nsourceSubscriptionIds: $sourceSubscriptionIds\ntargetSubscriptionIds: $targetSubscriptionIds\nawsRegions: $awsRegions\nazureRegions: $azureRegions\nsourceRootDomainSids: $sourceRootDomainSids\nrecoveryPlanStatuses: $recoveryPlanStatuses\nlastRecoveryOutcomes: $lastRecoveryOutcomes\n)";
+            return "recoveryPlansBasicInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoveryPlansBasicInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RecoveryPlanBasicInfoConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RecoveryReport? RecoveryReport
         // GraphQL -> recoveryReport: RecoveryReport! (type)
         public static string RecoveryReport(object fsObj)
@@ -17364,7 +17382,7 @@ namespace RubrikSecurityCloud.Types
         public static string SearchSnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "searchSnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SearchSnappableConnectionFieldSpec(AutofieldContext? ec=null)
@@ -17742,7 +17760,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "snappableConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnappableConnectionFieldSpec(AutofieldContext? ec=null)

@@ -52,8 +52,7 @@ AWS native EBS volume.
 - attachedEc2Instances: list of AwsNativeEc2Instances
   - EC2 Instances to which this volume is attached.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

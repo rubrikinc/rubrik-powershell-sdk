@@ -10027,6 +10027,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadSalesforceArchivedRecordsReply? DownloadSalesforceArchivedRecords
+        // GraphQL -> downloadSalesforceArchivedRecords: DownloadSalesforceArchivedRecordsReply! (type)
+        public static string DownloadSalesforceArchivedRecords(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadSalesforceArchivedRecords" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadSalesforceArchivedRecordsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadSalesforceArchivedRecordsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> DownloadSalesforcePermissionsReply? DownloadSalesforcePermissions
         // GraphQL -> downloadSalesforcePermissions: DownloadSalesforcePermissionsReply! (type)
         public static string DownloadSalesforcePermissions(object fsObj)
@@ -10491,6 +10509,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExpireSnoozedDirectoriesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? ExportExchangeDatabase
+        // GraphQL -> exportExchangeDatabase: AsyncRequestStatus! (type)
+        public static string ExportExchangeDatabase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exportExchangeDatabase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExportExchangeDatabaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12066,7 +12102,7 @@ namespace RubrikSecurityCloud.Types
         public static string O365SaaSsetupKickoff(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\ninput: $input\n)";
             return "o365SaaSSetupKickoff" + args + "\n{\n" + fs + "}\n";
         }
         public static object O365SaaSsetupKickoffFieldSpec(AutofieldContext? ec=null)
@@ -14797,6 +14833,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? StartMssqlLogShippingApplyLogsJob
+        // GraphQL -> startMssqlLogShippingApplyLogsJob: AsyncRequestStatus! (type)
+        public static string StartMssqlLogShippingApplyLogsJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startMssqlLogShippingApplyLogsJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartMssqlLogShippingApplyLogsJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PrechecksJobReply? StartPeriodicUpgradePrechecksOnDemandJob
         // GraphQL -> startPeriodicUpgradePrechecksOnDemandJob: PrechecksJobReply! (type)
         public static string StartPeriodicUpgradePrechecksOnDemandJob(object fsObj)
@@ -14973,6 +15027,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new StartRscpUpgradeReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartSalesforceArchivalJobReply? StartSalesforceArchivalJob
+        // GraphQL -> startSalesforceArchivalJob: StartSalesforceArchivalJobReply! (type)
+        public static string StartSalesforceArchivalJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startSalesforceArchivalJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartSalesforceArchivalJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartSalesforceArchivalJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartSalesforceObjectsUnarchiveReply? StartSalesforceObjectsUnarchive
+        // GraphQL -> startSalesforceObjectsUnarchive: StartSalesforceObjectsUnarchiveReply! (type)
+        public static string StartSalesforceObjectsUnarchive(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startSalesforceObjectsUnarchive" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartSalesforceObjectsUnarchiveFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartSalesforceObjectsUnarchiveReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

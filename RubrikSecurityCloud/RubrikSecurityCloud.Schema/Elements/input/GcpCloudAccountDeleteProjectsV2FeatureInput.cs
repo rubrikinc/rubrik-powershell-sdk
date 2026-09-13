@@ -26,17 +26,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
-        //      C# -> System.Boolean? DeleteSnapshots
-        // GraphQL -> deleteSnapshots: Boolean (scalar)
-        [JsonProperty("deleteSnapshots")]
-        public System.Boolean? DeleteSnapshots { get; set; }
-
         //      C# -> List<System.String>? CloudAccountIds
         // GraphQL -> cloudAccountIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("cloudAccountIds")]
         public List<System.String>? CloudAccountIds { get; set; }
+
+        //      C# -> System.Boolean? DeleteSnapshots
+        // GraphQL -> deleteSnapshots: Boolean (scalar)
+        [JsonProperty("deleteSnapshots")]
+        public System.Boolean? DeleteSnapshots { get; set; }
 
 
         #endregion

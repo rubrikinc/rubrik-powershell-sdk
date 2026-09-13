@@ -1,75 +1,6 @@
 ### AzureNativeVirtualMachine
 An Azure Native Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
 
-- region: AzureNativeRegion
-  - Azure region where the virtual machine (VM) is located.
-- vmName: System.String
-  - Name of the Virtual Machine (VM).
-- sizeType: System.String
-  - Size type of the virtual machine (VM). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general.
-- vnetName: System.String
-  - Name of the Virtual Network (VNet) associated with the virtual machine (VM).
-- subnetName: System.String
-  - Name of the subnet associated with the virtual machine (VM).
-- isRelic: System.Boolean
-  - Specifies whether the virtual machine is a relic or not. A virtual machine is a relic when it is unprotected or deleted, but the previously taken snapshots of the virtual machine continue to exist within the Rubrik ecosystem.
-- tags: list of AzureTags
-  - List of tags associated with the virtual machine (VM).
-- attachmentSpecs: list of AttachmentSpecsForVirtualMachines
-  - Sequence of attachment specs for the virtual machine (VM).
-- isAdeEnabled: System.Boolean
-  - Specifies whether Azure Disk Encryption (ADE) exists on the virtual machine (VM) or not.
-- osType: AzureNativeVmOsType
-  - Type of the Operating System (OS) installed on the virtual machine (VM).
-- availabilityZone: System.String
-  - Availability Zone associated with the virtual machine (VM).
-- virtuaMachineNativeId: System.String
-  - Native ID of the the virtual machine (VM).
-- isPreOrPostScriptEnabled: System.Boolean
-  - Specifies whether pre-script or post-script framework is enabled on the the virtual machine (VM) or not. When true, it facilitates application-consistent backups.
-- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
-  - Application Consistent Specifications of the virtual machine (VM).
-- isAppConsistencyEnabled: System.Boolean
-  - Specifies whether application consistent snapshots are enabled for this virtual machine (VM) or not. When enabled, Rubrik informs the Azure applications before taking snapshots, so apps can prepare. During the preparation phrase, Rubrik waits for the IO to be frozen and then the snapshot is taken. Once snapshot is taken, IO is unfreezed and the apps resume normal operation.
-- availabilitySetNativeId: System.String
-  - Native ID of the availability set associated with the virtual machine (VM).
-- isAcceleratedNetworkingEnabled: System.Boolean
-  - Specifies whether accelerated networking is enabled on the virtual machine (VM) or not. Accelerated Networking improves the network performance on the VM. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking.
-- isExocomputeConfigured: System.Boolean
-  - Specifies whether exocompute is configured for the region in which the virtual machine (VM) exists, or not. When the value is true, exocompute can be used to perform tasks like file indexing.
-- isFileIndexingEnabled: System.Boolean
-  - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
-- isProtectable: System.Boolean
-  - Specifies whether the virtual machine is protectable. When the value is true, the virtual machine can be protected by assigning sla.
-- privateIp: System.String
-  - Private IP address of the virtual machine.
-- cloudNativeId: System.String
-  - Native ID of the the virtual machine (VM).
-- nativeName: System.String
-  - Azure Native name of the object.
-- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
-  - Azure native resource group and subscription details.
-- azureResourceGroupDetails: AzureResourceGroupDetails
-  - Azure native resource group and subscription details.
-- fileIndexingStatus: FileIndexingStatus
-  - Specifies the file indexing status for this virtual machine. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
-- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
-  - The authorized operations on the object.
-- resourceGroup: AzureNativeResourceGroup
-  - Resource Group of the Azure Virtual Machine (VM).
-- azureResourceGroup: AzureNativeResourceGroup
-  - Resource Group of the Azure Virtual Machine (VM).
-- attachedManagedDisks: list of AzureNativeManagedDisks
-  - List of Managed Disks attached to the Azure Virtual Machine (VM).
-- hostInfo: PhysicalHost
-  - Rubrik CDM host information for the Azure Virtual Machine added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
-- recoveryPlansInfo: list of RecoveryPlansInfos
-  - List of Recovery Plans associated with the virtual machine.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -78,42 +9,106 @@ objects.
   - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
   - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
   - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
   - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- cloudNativeId: System.String
+  - Azure Native ID of the object.
+- region: AzureNativeRegion
+  - The Azure region to which the object belongs.
+- tags: list of AzureTags
+  - List of tags that are assigned to the object.
+- isRelic: System.Boolean
+  - Whether the object is a relic.
+- nativeName: System.String
+  - Azure Native name of the object.
+- vmName: System.String
+  - Name of the Virtual Machine (VM).
+- sizeType: System.String
+  - Size type of the virtual machine (VM). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general.
+- vnetName: System.String
+  - Name of the Virtual Network (VNet) associated with the virtual machine (VM).
+- subnetName: System.String
+  - Name of the subnet associated with the virtual machine (VM).
+- privateIp: System.String
+  - Private IP address of the virtual machine.
+- availabilityZone: System.String
+  - Availability Zone associated with the virtual machine (VM).
+- availabilitySetNativeId: System.String
+  - Native ID of the availability set associated with the virtual machine (VM).
+- virtuaMachineNativeId: System.String
+  - Native ID of the the virtual machine (VM).
+- attachmentSpecs: list of AttachmentSpecsForVirtualMachines
+  - Sequence of attachment specs for the virtual machine (VM).
+- isAdeEnabled: System.Boolean
+  - Specifies whether Azure Disk Encryption (ADE) exists on the virtual machine (VM) or not.
+- isAppConsistencyEnabled: System.Boolean
+  - Specifies whether application consistent snapshots are enabled for this virtual machine (VM) or not. When enabled, Rubrik informs the Azure applications before taking snapshots, so apps can prepare. During the preparation phrase, Rubrik waits for the IO to be frozen and then the snapshot is taken. Once snapshot is taken, IO is unfreezed and the apps resume normal operation.
+- isAcceleratedNetworkingEnabled: System.Boolean
+  - Specifies whether accelerated networking is enabled on the virtual machine (VM) or not. Accelerated Networking improves the network performance on the VM. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the region in which the virtual machine (VM) exists, or not. When the value is true, exocompute can be used to perform tasks like file indexing.
+- isFileIndexingEnabled: System.Boolean
+  - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
+- isPreOrPostScriptEnabled: System.Boolean
+  - Specifies whether pre-script or post-script framework is enabled on the the virtual machine (VM) or not. When true, it facilitates application-consistent backups.
+- isProtectable: System.Boolean
+  - Specifies whether the virtual machine is protectable. When the value is true, the virtual machine can be protected by assigning sla.
+- osType: AzureNativeVmOsType
+  - Type of the Operating System (OS) installed on the virtual machine (VM).
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this virtual machine. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
+- azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
+  - Azure native resource group and subscription details.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Azure native resource group and subscription details.
+- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
+  - Application Consistent Specifications of the virtual machine (VM).
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- attachedManagedDisks: list of AzureNativeManagedDisks
+  - List of Managed Disks attached to the Azure Virtual Machine (VM).
+- hostInfo: PhysicalHost
+  - Rubrik CDM host information for the Azure Virtual Machine added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
+- recoveryPlansInfo: list of RecoveryPlansInfos
+  - List of Recovery Plans associated with the virtual machine.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot
@@ -122,3 +117,7 @@ objects.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
+- resourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure object.
+- azureResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure object.

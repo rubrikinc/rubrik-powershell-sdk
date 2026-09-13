@@ -27,13 +27,14 @@ AWS native DynamoDB Table.
   - S3 backup bucket for the DynamoDB table.
 - isProtectable: System.Boolean
   - Indicates whether this DynamoDB table is protectable or not.
+- isInfrastructureAlertsEnabled: System.Boolean
+  - Whether infrastructure deletion alerts are enabled for the DynamoDB table.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon DynamoDB Table.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

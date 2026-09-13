@@ -60,7 +60,7 @@ export status and retrieve the final download link.
 ### failoverhapolicy
 Failover a failover group
 
-Supported in v9.5
+Supported in v9.5+
 Starts an asynchronous request to failover a failover group when issued to a secondary cluster.
 
 - There is a single argument of type FailoverHaPolicyInput.

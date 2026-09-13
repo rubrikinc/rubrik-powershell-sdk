@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotType")]
         public MariadbSnapshotType? SnapshotType { get; set; }
 
+        //      C# -> List<System.String>? DatabaseIds
+        // GraphQL -> databaseIds: [String!] (scalar)
+        [JsonProperty("databaseIds")]
+        public List<System.String>? DatabaseIds { get; set; }
+
         //      C# -> System.String? MetadataVersion
         // GraphQL -> metadataVersion: String (scalar)
         [JsonProperty("metadataVersion")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public MariadbInstanceAppMetadata Set(
         MariadbSnapshotType? SnapshotType = null,
+        List<System.String>? DatabaseIds = null,
         System.String? MetadataVersion = null,
         KosmosDataSnapshotStats? Stats = null
     ) 
     {
         if ( SnapshotType != null ) {
             this.SnapshotType = SnapshotType;
+        }
+        if ( DatabaseIds != null ) {
+            this.DatabaseIds = DatabaseIds;
         }
         if ( MetadataVersion != null ) {
             this.MetadataVersion = MetadataVersion;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotType\n" ;
             } else {
                 s += ind + "snapshotType\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DatabaseIds
+        // GraphQL -> databaseIds: [String!] (scalar)
+        if (this.DatabaseIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "databaseIds\n" ;
+            } else {
+                s += ind + "databaseIds\n" ;
             }
         }
         //      C# -> System.String? MetadataVersion
@@ -126,6 +144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
         {
             this.SnapshotType = null;
+        }
+        //      C# -> List<System.String>? DatabaseIds
+        // GraphQL -> databaseIds: [String!] (scalar)
+        if (ec.Includes("databaseIds",true))
+        {
+            if(this.DatabaseIds == null) {
+
+                this.DatabaseIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatabaseIds != null && ec.Excludes("databaseIds",true))
+        {
+            this.DatabaseIds = null;
         }
         //      C# -> System.String? MetadataVersion
         // GraphQL -> metadataVersion: String (scalar)

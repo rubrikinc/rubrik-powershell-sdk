@@ -68,7 +68,7 @@ Download Microsoft SQL Server Database snapshot from archival location.
 ### fusioncomputesnapshotfromlocation
 Download a snapshot from a remote target
 
-Supported in v9.6
+Supported in v9.6+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location must be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever.
 
 - There is a single argument of type DownloadFusionComputeSnapshotFromLocationInput.
@@ -113,6 +113,11 @@ Download file results in CSV format.
     - crawlId - System.String: Identifier of the crawl whose file results are downloaded.
     - downloadFilter - DownloadResultsCsvFiltersInput: Filters applied to the file results included in the CSV.
 - Returns DownloadResultsCsvReply.
+### salesforcearchivedrecords
+Initiates an asynchronous job to package archived records for download.
+
+- There is a single argument of type DownloadSalesforceArchivedRecordsInput.
+- Returns DownloadSalesforceArchivedRecordsReply.
 ### salesforcepermissions
 Initiates an asynchronous job to export a ZIP report of the specified
 permissions (missing or excluded) for the Salesforce organization.

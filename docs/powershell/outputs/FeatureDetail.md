@@ -29,3 +29,9 @@ Feature specific details for a cloud account.
   - AWS account details which facilitates role chaining.
 - permissionsGroupVersions: list of PermissionsGroupWithVersions
   - Permissions groups with their versions used to generate the feature template.
+- hasExocomputeLambdaRole: System.Boolean
+  - Whether an Exocompute Lambda execution role ARN is registered for the
+cloud account. Meaningful only for the EXOCOMPUTE feature, and false for
+every other feature. Also false for every feature of an organization
+without private Exocompute enabled. An Exocompute configuration can
+request an EKS cluster with a private API endpoint only while this is true.

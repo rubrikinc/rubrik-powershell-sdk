@@ -69,5 +69,7 @@ surfaced in the UI as Infrastructure Alerts.
 customer's CMKs with the exocompute account and creation of the RSC
 gateway KMS key. Applies to any AWS workload backed up through
 exocompute, independently of which protection features are enabled.
+- AZURE_DEVOPS_ARTIFACTS_PROTECTION - AZURE_DEVOPS_ARTIFACTS_PROTECTION refers to the feature enabling
+protection of Azure Artifacts feeds and the packages they hold.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

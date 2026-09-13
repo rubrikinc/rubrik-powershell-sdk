@@ -7,6 +7,8 @@ Additional info about the SAP HANA system.
   - Specifies whether Dynamic Tiering service is enabled for the SAP HANA system.
 - azureCustomerSubscriptionName: System.String
   - Azure customer subscription name for the SAP HANA system.
+- isLssSupported: System.Boolean
+  - Specifies whether the SAP HANA system supports LSS (Local Secure Store) backup encryption.
 - authType: SapHanaSystemAuthType
   - The authentication type for the SAP HANA system.
 - azureFeatureUuid: System.String

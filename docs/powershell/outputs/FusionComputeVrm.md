@@ -45,18 +45,6 @@ cluster. Null when the source cluster is unknown.
   - List of descendants.
 - physicalChildConnection: FusionComputeVrmPhysicalChildTypeConnection
   - List of physical children.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
-- objectPauseStatus: ObjectPauseStatus
-  - Pause status of the hierarchy object.
-- objectBackupWindow: ObjectBackupWindowStatus
-  - Object-level backup window status of the hierarchy object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -85,3 +73,15 @@ cluster. Null when the source cluster is unknown.
   - The authorized operations on the object.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

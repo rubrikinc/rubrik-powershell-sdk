@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotTime")]
         public DateTime? SnapshotTime { get; set; }
 
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        [JsonProperty("legalHoldInfo")]
+        public LegalHoldInfo? LegalHoldInfo { get; set; }
+
         //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
         [JsonProperty("snapshotRetentionInfo")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         DateTime? LegalHoldTime = null,
         DateTime? SnapshotTime = null,
+        LegalHoldInfo? LegalHoldInfo = null,
         CdmSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotTime != null ) {
             this.SnapshotTime = SnapshotTime;
+        }
+        if ( LegalHoldInfo != null ) {
+            this.LegalHoldInfo = LegalHoldInfo;
         }
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
@@ -143,6 +152,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotTime\n" ;
             } else {
                 s += ind + "snapshotTime\n" ;
+            }
+        }
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        if (this.LegalHoldInfo != null) {
+            var fspec = this.LegalHoldInfo.AsFieldSpec(conf.Child("legalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "legalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
@@ -248,6 +269,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
         {
             this.SnapshotTime = null;
+        }
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        if (ec.Includes("legalHoldInfo",false))
+        {
+            if(this.LegalHoldInfo == null) {
+
+                this.LegalHoldInfo = new LegalHoldInfo();
+                this.LegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("legalHoldInfo"));
+
+            } else {
+
+                this.LegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("legalHoldInfo"));
+
+            }
+        }
+        else if (this.LegalHoldInfo != null && ec.Excludes("legalHoldInfo",false))
+        {
+            this.LegalHoldInfo = null;
         }
         //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)

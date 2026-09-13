@@ -45,3 +45,5 @@ Object-specific configurations.
   - SLA Domain configuration for Apache Iceberg table.
 - irisdbSlaConfig: IrisdbSlaConfig
   - SLA Domain configuration for IRIS DB instances.
+- githubSlaConfig: GithubSlaConfig
+  - SLA Domain configuration for GitHub developer collaboration backup.

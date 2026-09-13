@@ -384,7 +384,7 @@ Create remediation for targets.
 ### createvrm
 Add a FusionCompute VRM instance
 
-Supported in v9.6
+Supported in v9.6+
 Create a FusionCompute VRM instance by providing the hostname and account credentials of the FusionCompute VRM. Establishes a connection to the VRM instance and retrieves all associated metadata objects.
 
 - There is a single argument of type CreateVrmInput.
@@ -448,7 +448,7 @@ Delete a mounted FusionCompute virtual machine.
 ### deletefusioncomputevrm
 Delete a FusionCompute VRM instance
 
-Supported in v9.6
+Supported in v9.6+
 Delete a FusionCompute VRM instance object and archive all associated objects.
 
 - There is a single argument of type DeleteFusionComputeVrmInput.
@@ -689,7 +689,7 @@ Manage protection for linked objects, allowing objects to be linked or unlinked 
 ### migratefusioncomputemount
 Migrate a FusionCompute Live Mount to another datastore
 
-Supported in v9.6
+Supported in v9.6+
 Run storage migration to relocate a FusionCompute Live Mount into another datastore.
 
 - There is a single argument of type MigrateFusionComputeMountInput.
@@ -738,7 +738,7 @@ Send notification when the user clicks on the Get License button.
 ### patchfusioncomputevm
 Patch FusionCompute virtual machine
 
-Supported in v9.6
+Supported in v9.6+
 Patch a FusionCompute virtual machine with specified properties.
 
 - There is a single argument of type PatchFusionComputeVmInput.
@@ -799,7 +799,7 @@ Initiates an on-demand refresh job of a specified Active Directory domain.
 ### refreshfusioncomputevrm
 Refresh the FusionCompute VRM metadata
 
-Supported in v9.6
+Supported in v9.6+
 Create a job to refresh the metadata for the specified FusionCompute VRM instance.
 
 - There is a single argument of type RefreshFusionComputeVrmInput.
@@ -1154,6 +1154,13 @@ Starts an upgrade of the RSC-P appliance.
 
 - There is a single argument of type StartRscpUpgradeInput.
 - Returns StartRscpUpgradeReply.
+### startsalesforceobjectsunarchive
+Initiates an asynchronous job to restore selected archived records -- and their
+archived related children for the selected child object types --
+back to a target Salesforce org.
+
+- There is a single argument of type StartSalesforceObjectsUnarchiveInput.
+- Returns StartSalesforceObjectsUnarchiveReply.
 ### startsalesforcepermissionassessment
 Initiates an asynchronous job to run an on-demand permission assessment for
 the specified Salesforce organization.
@@ -1370,7 +1377,7 @@ Modify the list of cluster IPs.
 ### updatefusioncomputemount
 Power a FusionCompute Live Mount on and off
 
-Supported in v9.6
+Supported in v9.6+
 Power a specified FusionCompute Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
 
 - There is a single argument of type UpdateFusionComputeMountInput.
@@ -1383,7 +1390,7 @@ Update the scheduled unmount time of a FusionCompute Live Mount. If no scheduled
 ### updatefusioncomputevrm
 Update FusionCompute VRM instance
 
-Supported in v9.6
+Supported in v9.6+
 Update the metadata and configs of the specified FusionCompute VRM instance object.
 
 - There is a single argument of type UpdateFusionComputeVrmInput.

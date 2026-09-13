@@ -308,3 +308,5 @@ Represents different types of activity objects.
 - AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
 - AGENT_CLOUD_MCP_SERVER - Agent Cloud governed MCP server object.
+- ORACLE_FAILOVER_CLUSTER - Oracle Failover Cluster object.
+- ORACLE_FAILOVER_SERVICE - Oracle Failover Service object.

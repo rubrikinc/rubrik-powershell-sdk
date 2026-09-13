@@ -611,10 +611,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.before = $someString
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
-    /// # OPTIONAL
     /// $query.Var.filter = @{
     /// 	# OPTIONAL
     /// 	protectionStatus = @(
@@ -682,6 +678,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInfrastructureAlertsEnabled = $someBoolean
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -819,10 +819,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.before = $someString
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
-    /// # OPTIONAL
     /// $query.Var.filter = @{
     /// 	# OPTIONAL
     /// 	protectionStatus = @(
@@ -890,6 +886,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInfrastructureAlertsEnabled = $someBoolean
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1972,9 +1972,9 @@ $query.Var.filter = @(
         //     after: String
         //     last: Int
         //     before: String
-        //     sortOrder: SortOrder
-        //     sortBy: SnappableSortByEnum = Name
         //     filter: SnappableFilterInput
+        //     sortBy: SnappableSortByEnum = Name
+        //     sortOrder: SortOrder
         //   ): SnappableConnection!
         internal void InitQuerySnappableConnection()
         {
@@ -1983,15 +1983,15 @@ $query.Var.filter = @(
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "SnappableSortByEnum"),
                 Tuple.Create("filter", "SnappableFilterInput"),
+                Tuple.Create("sortBy", "SnappableSortByEnum"),
+                Tuple.Create("sortOrder", "SortOrder"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SnappableSortByEnum,$filter: SnappableFilterInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: SnappableFilterInput,$sortBy: SnappableSortByEnum,$sortOrder: SortOrder)",
                 "SnappableConnection",
                 Query.SnappableConnection,
                 Query.SnappableConnectionFieldSpec,
@@ -2003,10 +2003,6 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
 # OPTIONAL
 $query.Var.filter = @{
 	# OPTIONAL
@@ -2074,7 +2070,11 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isInfrastructureAlertsEnabled = $someBoolean
-}"
+}
+# OPTIONAL
+$query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -2192,9 +2192,9 @@ $query.Var.onedriveSearchFilter = @{
         //     after: String
         //     last: Int
         //     before: String
-        //     sortOrder: SortOrder
-        //     sortBy: SnappableSortByEnum = Name
         //     filter: SnappableFilterInputWithSearch
+        //     sortBy: SnappableSortByEnum = Name
+        //     sortOrder: SortOrder
         //   ): SnappableConnection!
         internal void InitQuerySearchSnappableConnection()
         {
@@ -2203,15 +2203,15 @@ $query.Var.onedriveSearchFilter = @{
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "SnappableSortByEnum"),
                 Tuple.Create("filter", "SnappableFilterInputWithSearch"),
+                Tuple.Create("sortBy", "SnappableSortByEnum"),
+                Tuple.Create("sortOrder", "SortOrder"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySearchSnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: SnappableSortByEnum,$filter: SnappableFilterInputWithSearch)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: SnappableFilterInputWithSearch,$sortBy: SnappableSortByEnum,$sortOrder: SortOrder)",
                 "SnappableConnection",
                 Query.SearchSnappableConnection,
                 Query.SearchSnappableConnectionFieldSpec,
@@ -2223,10 +2223,6 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
 # OPTIONAL
 $query.Var.filter = @{
 	# OPTIONAL
@@ -2294,7 +2290,11 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isInfrastructureAlertsEnabled = $someBoolean
-}"
+}
+# OPTIONAL
+$query.Var.sortBy = $someSnappableSortByEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableSortByEnum]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

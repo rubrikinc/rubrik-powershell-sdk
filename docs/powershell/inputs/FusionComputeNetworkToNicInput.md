@@ -2,6 +2,8 @@
 Mapping of a FusionCompute network to a virtual NIC.
 
 - nicId: System.String
-  - Required. ID of the NIC.
+  - Required. Supported in v9.6+
+ID of the NIC.
 - networkId: System.String
-  - Required. ID of the network.
+  - Required. Supported in v9.6+
+ID of the network.

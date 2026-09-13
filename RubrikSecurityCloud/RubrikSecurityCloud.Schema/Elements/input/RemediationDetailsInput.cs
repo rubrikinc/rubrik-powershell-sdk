@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsJitElevated
+        // GraphQL -> isJitElevated: Boolean (scalar)
+        [JsonProperty("isJitElevated")]
+        public System.Boolean? IsJitElevated { get; set; }
+
         //      C# -> RemediationTicketInfoInput? TicketInfo
         // GraphQL -> ticketInfo: RemediationTicketInfoInput (input)
         [JsonProperty("ticketInfo")]

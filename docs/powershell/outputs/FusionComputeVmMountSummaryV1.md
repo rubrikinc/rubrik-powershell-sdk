@@ -2,22 +2,32 @@
 Summary information for a FusionCompute Live Mount.
 
 - id: System.String
-  - Required. ID of the Live Mount.
+  - Required. Supported in v9.6+
+ID of the Live Mount.
 - mountRequestId: System.String
-  - ID of the mount job request.
+  - Supported in v9.6+
+ID of the mount job request.
 - datastoreName: System.String
-  - The name of the NFS datastore that contains the mounted virtual machine disks.
+  - Supported in v9.6+
+The name of the NFS datastore that contains the mounted virtual machine disks.
 - mountTimestamp: DateTime
-  - Timestamp at which the mount was created.
+  - Supported in v9.6+
+Timestamp at which the mount was created.
 - mountedVmId: System.String
-  - ID of the mounted virtual machine on FusionCompute.
+  - Supported in v9.6+
+ID of the mounted virtual machine on FusionCompute.
 - vmId: System.String
-  - Required. ID of the original virtual machine.
+  - Required. Supported in v9.6+
+ID of the original virtual machine.
 - snapshotDate: DateTime
-  - Date of the source snapshot.
+  - Supported in v9.6+
+Date of the source snapshot.
 - isReady: System.Boolean
-  - Required. Whether the Live Mount is ready.
+  - Required. Supported in v9.6+
+Whether the Live Mount is ready.
 - unmountRequestId: System.String
-  - ID of the unmount job request.
+  - Supported in v9.6+
+ID of the unmount job request.
 - hostId: System.String
-  - ID of the FusionCompute host.
+  - Supported in v9.6+
+ID of the FusionCompute host.

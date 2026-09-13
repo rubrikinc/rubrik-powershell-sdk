@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> List<CloudAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [CloudAccountEnabledFeature!]! (type)
+        [JsonProperty("enabledFeatures")]
+        public List<CloudAccountEnabledFeature>? EnabledFeatures { get; set; }
+
         //      C# -> GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection
         // GraphQL -> gcpNativeGceInstanceConnection: GcpNativeGceInstanceConnection! (type)
         [JsonProperty("gcpNativeGceInstanceConnection")]
@@ -292,6 +297,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<CloudAccountEnabledFeature>? EnabledFeatures = null,
         GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection = null,
         List<Label>? Labels = null,
         GcpNativeProjectLogicalChildTypeConnection? LogicalChildConnection = null,
@@ -384,6 +390,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( EnabledFeatures != null ) {
+            this.EnabledFeatures = EnabledFeatures;
         }
         if ( GcpNativeGceInstanceConnection != null ) {
             this.GcpNativeGceInstanceConnection = GcpNativeGceInstanceConnection;
@@ -690,6 +699,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CloudAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [CloudAccountEnabledFeature!]! (type)
+        if (this.EnabledFeatures != null) {
+            var fspec = this.EnabledFeatures.AsFieldSpec(conf.Child("enabledFeatures"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "enabledFeatures" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1305,6 +1326,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> List<CloudAccountEnabledFeature>? EnabledFeatures
+        // GraphQL -> enabledFeatures: [CloudAccountEnabledFeature!]! (type)
+        if (ec.Includes("enabledFeatures",false))
+        {
+            if(this.EnabledFeatures == null) {
+
+                this.EnabledFeatures = new List<CloudAccountEnabledFeature>();
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            } else {
+
+                this.EnabledFeatures.ApplyExploratoryFieldSpec(ec.NewChild("enabledFeatures"));
+
+            }
+        }
+        else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
+        {
+            this.EnabledFeatures = null;
         }
         //      C# -> GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection
         // GraphQL -> gcpNativeGceInstanceConnection: GcpNativeGceInstanceConnection! (type)

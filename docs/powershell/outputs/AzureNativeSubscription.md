@@ -1,6 +1,24 @@
 ### AzureNativeSubscription
 An Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - azureSubscriptionNativeId: System.String
   - Native ID of the subscription.
 - tenantId: System.String
@@ -27,10 +45,10 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
 - enabledFeatures: list of AzureNativeSubscriptionEnabledFeatures
   - Details of features enabled for the subscription.
-- snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
-  - A list of mappings between object types and details about the backup setup.
 - accountConnectionId: System.String
   - Cloud account ID associated with the subscription.
+- snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
+  - A list of mappings between object types and details about the backup setup.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - applicationCloudAccountExoConfigs: AzureApplicationCloudAccountToExocomputeConfig
@@ -41,44 +59,25 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Whether the subscription is protectable for the specified protection features.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

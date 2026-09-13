@@ -32,3 +32,11 @@ Request to delete a mount for Microsoft Exchange database snapshot.
 
 - There is a single argument of type DeleteExchangeSnapshotMountInput.
 - Returns AsyncRequestStatus.
+### exportdatabase
+Create a request to export a Microsoft Exchange database
+
+Supported in v9.7
+Create a request to export (restore to an alternate target host and database name) a Microsoft Exchange database from a snapshot.
+
+- There is a single argument of type ExportExchangeDatabaseInput.
+- Returns AsyncRequestStatus.

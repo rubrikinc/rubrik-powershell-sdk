@@ -597,6 +597,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_DB")]
         ORACLE_DB,
 
+        [EnumMember(Value = "ORACLE_FAILOVER_CLUSTER")]
+        ORACLE_FAILOVER_CLUSTER,
+
+        [EnumMember(Value = "ORACLE_FAILOVER_SERVICE")]
+        ORACLE_FAILOVER_SERVICE,
+
         [EnumMember(Value = "ORACLE_HOST")]
         ORACLE_HOST,
 

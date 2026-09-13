@@ -246,9 +246,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -308,6 +308,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -968,24 +972,28 @@ $query.Var.fid = $someString"
         // fusionComputeHosts(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): FusionComputeHostConnection!
         internal void InitQueryFusionComputeHosts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryFusionComputeHosts",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "FusionComputeHostConnection",
                 Query.FusionComputeHosts,
                 Query.FusionComputeHostsFieldSpec,
@@ -994,9 +1002,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -1055,7 +1063,11 @@ $query.Var.filter = @(
 			}
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

@@ -129,6 +129,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("irisdbConfigInput")]
         public IrisdbSlaConfigInput? IrisdbConfigInput { get; set; }
 
+        //      C# -> GithubSlaConfigInput? GithubSlaConfigInput
+        // GraphQL -> githubSlaConfigInput: GithubSlaConfigInput (input)
+        [JsonProperty("githubSlaConfigInput")]
+        public GithubSlaConfigInput? GithubSlaConfigInput { get; set; }
+
 
         #endregion
 

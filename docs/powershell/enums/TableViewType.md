@@ -141,3 +141,4 @@ policies).
 - GPO_CAP_CHANGES_TABLE - Main table for the GPO/CAP changes report.
 - PRIVILEGED_IDENTITY_TABLE - Main table for the privileged identity report.
 - CNP_OBJECT_CAPACITY_BY_CLOUD_ACCOUNT_NAME_TABLE - Table displaying CNP object capacity grouped by cloud account.
+- CDM_USER_ALL_TABLE - Main table for the CDM Users report.

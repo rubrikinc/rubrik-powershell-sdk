@@ -20,11 +20,11 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | [Account (9,14)](#account-domain) | [Cluster (55,32)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (36,33)](#snapshot-domain) |
 | [Active Directory (5,6)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (13,4)](#microsoft-365-domain) | [Policy (20,21)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (7,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (18,22)](#archival-domain) | [Report Download (4,27)](#report-download-domain) | [Miscellaneous (363,264)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (3,6)](#storage-arrays-domain) |
-| [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (11,17)](#mongo-domain) | [RCV (6,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
+| [Archival (18,23)](#archival-domain) | [Report Download (4,28)](#report-download-domain) | [Miscellaneous (364,265)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (3,6)](#storage-arrays-domain) |
+| [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,5)](#microsoft-exchange-domain) | [Mongo (11,17)](#mongo-domain) | [RCV (6,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (0,1)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (73,52)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (0,3)](#mosaic-domain) | [Report (21,9)](#report-domain) | [Threat (8,1)](#threat-domain) |
-| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (21,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [ThreatHunt (10,6)](#threathunt-domain) |
+| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (21,26)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [ThreatHunt (10,6)](#threathunt-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,5)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Cassandra (0,0)](#cassandra-domain) | [Host (11,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware (4,1)](#vmware-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (18,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,12)](#sla-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
@@ -163,6 +163,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationArchival -Operation RefreshReaderTarget` | `New-RscMutation -Gql refreshReaderTarget` | [refreshReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationArchival -Operation RegisterMigration` | `New-RscMutation -Gql registerArchivalMigration` | [registerArchivalMigration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationArchival -Operation ResumeTarget` | `New-RscMutation -Gql resumeTarget` | [resumeTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationArchival -Operation StartSalesforceJob` | `New-RscMutation -Gql startSalesforceArchivalJob` | [startSalesforceArchivalJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationArchival -Operation TerminateMigration` | `New-RscMutation -Gql terminateArchivalMigration` | [terminateArchivalMigration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationArchival -Operation UpdateGlacierTarget` | `New-RscMutation -Gql updateGlacierTarget` | [updateGlacierTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationArchival -Operation UpdateManualTargetMapping` | `New-RscMutation -Gql updateManualTargetMapping` | [updateManualTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -843,6 +844,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationDownload -Operation ReportCsvAsync` | `New-RscMutation -Gql downloadReportCsvAsync` | [downloadReportCsvAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationDownload -Operation ReportPdfAsync` | `New-RscMutation -Gql downloadReportPdfAsync` | [downloadReportPdfAsync](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationDownload -Operation ResultsCsv` | `New-RscMutation -Gql downloadResultsCsv` | [downloadResultsCsv](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationDownload -Operation SalesforceArchivedRecords` | `New-RscMutation -Gql downloadSalesforceArchivedRecords` | [downloadSalesforceArchivedRecords](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationDownload -Operation SalesforcePermissions` | `New-RscMutation -Gql downloadSalesforcePermissions` | [downloadSalesforcePermissions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationDownload -Operation SapHanaSnapshot` | `New-RscMutation -Gql downloadSapHanaSnapshot` | [downloadSapHanaSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationDownload -Operation SapHanaSnapshotFromLocation` | `New-RscMutation -Gql downloadSapHanaSnapshotFromLocation` | [downloadSapHanaSnapshotFromLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -877,6 +879,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationExchange -Operation CreateMount` | `New-RscMutation -Gql createExchangeMount` | [createExchangeMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationExchange -Operation CreateOnDemandBackup` | `New-RscMutation -Gql createOnDemandExchangeBackup` | [createOnDemandExchangeBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationExchange -Operation DeleteSnapshotMount` | `New-RscMutation -Gql deleteExchangeSnapshotMount` | [deleteExchangeSnapshotMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationExchange -Operation ExportDatabase` | `New-RscMutation -Gql exportExchangeDatabase` | [exportExchangeDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Failover Cluster domain
@@ -1536,6 +1539,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryMisc -Operation QuarantinedDetailsForWorkload` | `New-RscQuery -Gql allQuarantinedDetailsForWorkload` | [allQuarantinedDetailsForWorkload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation QueryDatastoreFreespaceThresholds` | `New-RscQuery -Gql queryDatastoreFreespaceThresholds` | [queryDatastoreFreespaceThresholds](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation Recoveries` | `New-RscQuery -Gql recoveries` | [recoveries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryMisc -Operation RecoveryPlansBasicInfo` | `New-RscQuery -Gql recoveryPlansBasicInfo` | [recoveryPlansBasicInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation RecoverySpecs` | `New-RscQuery -Gql recoverySpecs` | [recoverySpecs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation Regions` | `New-RscQuery -Gql regions` | [regions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation RemediationTypes` | `New-RscQuery -Gql allRemediationTypes` | [allRemediationTypes](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1832,6 +1836,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationMisc -Operation StartRecovery` | `New-RscMutation -Gql startRecovery` | [startRecovery](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation StartRscpPackageDownload` | `New-RscMutation -Gql startRscpPackageDownload` | [startRscpPackageDownload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation StartRscpUpgrade` | `New-RscMutation -Gql startRscpUpgrade` | [startRscpUpgrade](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationMisc -Operation StartSalesforceObjectsUnarchive` | `New-RscMutation -Gql startSalesforceObjectsUnarchive` | [startSalesforceObjectsUnarchive](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation StartSalesforcePermissionAssessment` | `New-RscMutation -Gql startSalesforcePermissionAssessment` | [startSalesforcePermissionAssessment](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation StartUpgradeBatchJob` | `New-RscMutation -Gql startUpgradeBatchJob` | [startUpgradeBatchJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation StartVolumeGroupMount` | `New-RscMutation -Gql startVolumeGroupMount` | [startVolumeGroupMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2033,6 +2038,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationMssql -Operation DownloadDatabaseFilesFromArchivalLocation` | `New-RscMutation -Gql downloadMssqlDatabaseFilesFromArchivalLocation` | [downloadMssqlDatabaseFilesFromArchivalLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMssql -Operation ExportDatabase` | `New-RscMutation -Gql exportMssqlDatabase` | [exportMssqlDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMssql -Operation RestoreDatabase` | `New-RscMutation -Gql restoreMssqlDatabase` | [restoreMssqlDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationMssql -Operation StartLogShippingApplyLogsJob` | `New-RscMutation -Gql startMssqlLogShippingApplyLogsJob` | [startMssqlLogShippingApplyLogsJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMssql -Operation TakeLogBackup` | `New-RscMutation -Gql takeMssqlLogBackup` | [takeMssqlLogBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMssql -Operation UpdateDefaultProperties` | `New-RscMutation -Gql updateMssqlDefaultProperties` | [updateMssqlDefaultProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMssql -Operation UpdateLogShippingConfiguration` | `New-RscMutation -Gql updateMssqlLogShippingConfiguration` | [updateMssqlLogShippingConfiguration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

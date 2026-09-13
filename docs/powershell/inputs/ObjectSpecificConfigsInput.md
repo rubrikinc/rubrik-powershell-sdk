@@ -45,3 +45,5 @@ Object-specific configurations.
   - Input to configure the SLA Domain for Apache Iceberg table.
 - irisdbConfigInput: IrisdbSlaConfigInput
   - Input to configure the SLA Domain for IRIS DB instances.
+- githubSlaConfigInput: GithubSlaConfigInput
+  - Input to configure the SLA Domain for GitHub developer collaboration backup.

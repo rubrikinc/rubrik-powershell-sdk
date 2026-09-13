@@ -412,6 +412,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	appType = $someString
     /// 	# REQUIRED
     /// 	orgId = $someString
+    /// 	# OPTIONAL
+    /// 	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2042,7 +2044,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscMutationO365 -Operation SaaSSetupKickoff
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -3042,6 +3048,8 @@ $query.Var.input = @{
 	appType = $someString
 	# REQUIRED
 	orgId = $someString
+	# OPTIONAL
+	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
 }"
             );
         }
@@ -4507,20 +4515,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // o365SaaSSetupKickoff: O365SaasSetupKickoffReply!
+        // o365SaaSSetupKickoff(input: O365SaaSSetupKickoffInput): O365SaasSetupKickoffReply!
         internal void InitMutationO365SaaSsetupKickoff()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "O365SaaSSetupKickoffInput"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationO365SaaSsetupKickoff",
-                "",
+                "($input: O365SaaSSetupKickoffInput)",
                 "O365SaasSetupKickoffReply",
                 Mutation.O365SaaSsetupKickoff,
                 Mutation.O365SaaSsetupKickoffFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.input = @{
+	# OPTIONAL
+	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
+}"
             );
         }
 

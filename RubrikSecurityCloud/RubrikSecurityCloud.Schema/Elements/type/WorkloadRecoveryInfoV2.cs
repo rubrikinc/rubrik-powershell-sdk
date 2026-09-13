@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RecoveryOutcome? WorkloadRecoveryOutcome
+        // GraphQL -> workloadRecoveryOutcome: RecoveryOutcome! (enum)
+        [JsonProperty("workloadRecoveryOutcome")]
+        public RecoveryOutcome? WorkloadRecoveryOutcome { get; set; }
+
         //      C# -> WorkloadRecoveryStatusV2? WorkloadRecoveryStatus
         // GraphQL -> workloadRecoveryStatus: WorkloadRecoveryStatusV2! (enum)
         [JsonProperty("workloadRecoveryStatus")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public WorkloadRecoveryInfoV2 Set(
+        RecoveryOutcome? WorkloadRecoveryOutcome = null,
         WorkloadRecoveryStatusV2? WorkloadRecoveryStatus = null,
         System.String? WorkloadId = null,
         System.String? WorkloadName = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.Int64? WorkloadSizeInKbs = null
     ) 
     {
+        if ( WorkloadRecoveryOutcome != null ) {
+            this.WorkloadRecoveryOutcome = WorkloadRecoveryOutcome;
+        }
         if ( WorkloadRecoveryStatus != null ) {
             this.WorkloadRecoveryStatus = WorkloadRecoveryStatus;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RecoveryOutcome? WorkloadRecoveryOutcome
+        // GraphQL -> workloadRecoveryOutcome: RecoveryOutcome! (enum)
+        if (this.WorkloadRecoveryOutcome != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadRecoveryOutcome\n" ;
+            } else {
+                s += ind + "workloadRecoveryOutcome\n" ;
+            }
+        }
         //      C# -> WorkloadRecoveryStatusV2? WorkloadRecoveryStatus
         // GraphQL -> workloadRecoveryStatus: WorkloadRecoveryStatusV2! (enum)
         if (this.WorkloadRecoveryStatus != null) {
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RecoveryOutcome? WorkloadRecoveryOutcome
+        // GraphQL -> workloadRecoveryOutcome: RecoveryOutcome! (enum)
+        if (ec.Includes("workloadRecoveryOutcome",true))
+        {
+            if(this.WorkloadRecoveryOutcome == null) {
+
+                this.WorkloadRecoveryOutcome = new RecoveryOutcome();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadRecoveryOutcome != null && ec.Excludes("workloadRecoveryOutcome",true))
+        {
+            this.WorkloadRecoveryOutcome = null;
+        }
         //      C# -> WorkloadRecoveryStatusV2? WorkloadRecoveryStatus
         // GraphQL -> workloadRecoveryStatus: WorkloadRecoveryStatusV2! (enum)
         if (ec.Includes("workloadRecoveryStatus",true))

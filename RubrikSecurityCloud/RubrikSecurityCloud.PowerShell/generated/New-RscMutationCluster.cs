@@ -1314,6 +1314,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	newNodeId = $someString
     /// 	# OPTIONAL
     /// 	ipmiPassword = $someString
+    /// 	# OPTIONAL
+    /// 	isIpv4ManualDiscoveryMode = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -3364,6 +3366,8 @@ $query.Var.input = @{
 	newNodeId = $someString
 	# OPTIONAL
 	ipmiPassword = $someString
+	# OPTIONAL
+	isIpv4ManualDiscoveryMode = $someBoolean
 }"
             );
         }

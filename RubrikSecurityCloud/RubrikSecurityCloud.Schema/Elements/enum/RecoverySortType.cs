@@ -15,8 +15,14 @@ namespace RubrikSecurityCloud.Types
 {
     public enum RecoverySortType
     {
+        [EnumMember(Value = "END_TIME")]
+        END_TIME,
+
         [EnumMember(Value = "RECOVERY_NAME")]
         RECOVERY_NAME,
+
+        [EnumMember(Value = "RECOVERY_PLAN")]
+        RECOVERY_PLAN,
 
         [EnumMember(Value = "START_TIME")]
         START_TIME,

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'Microsoft SQL Server' API domain:
-    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
+    /// AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, StartLogShippingApplyLogsJob, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// </summary>
     /// <description>
     /// New-RscMutationMssql creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 26 operations
     /// in the 'Microsoft SQL Server' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
+    /// one of: AddHost, AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkExportDatabases, BulkUpdateAvailabilityGroup, BulkUpdateDbs, BulkUpdateInstance, BulkUpdatePropertiesOnHost, BulkUpdatePropertiesOnWindowsCluster, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DeleteLogShipping, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, StartLogShippingApplyLogsJob, TakeLogBackup, UpdateDefaultProperties, UpdateLogShippingConfiguration, or UpdateLogShippingConfigurationV1.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -91,8 +91,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	hosts = @(
     /// 		@{
@@ -197,6 +195,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1416,6 +1416,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartLogShippingApplyLogsJob operation
+    /// of the 'Microsoft SQL Server' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mssql
+    /// # API Operation: StartLogShippingApplyLogsJob
+    /// 
+    /// $query = New-RscMutationMssql -Operation StartLogShippingApplyLogsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		shouldDisconnectStandbyUsers = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TakeLogBackup operation
     /// of the 'Microsoft SQL Server' API domain.
     /// <code>
@@ -1604,6 +1642,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadDatabaseFilesFromArchivalLocation",
                 "ExportDatabase",
                 "RestoreDatabase",
+                "StartLogShippingApplyLogsJob",
                 "TakeLogBackup",
                 "UpdateDefaultProperties",
                 "UpdateLogShippingConfiguration",
@@ -1685,6 +1724,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreDatabase":
                         this.ProcessRecord_RestoreDatabase();
+                        break;
+                    case "StartLogShippingApplyLogsJob":
+                        this.ProcessRecord_StartLogShippingApplyLogsJob();
                         break;
                     case "TakeLogBackup":
                         this.ProcessRecord_TakeLogBackup();
@@ -1898,6 +1940,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // startMssqlLogShippingApplyLogsJob.
+        internal void ProcessRecord_StartLogShippingApplyLogsJob()
+        {
+            this._logger.name += " -StartLogShippingApplyLogsJob";
+            // Create new graphql operation startMssqlLogShippingApplyLogsJob
+            InitMutationStartMssqlLogShippingApplyLogsJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // takeMssqlLogBackup.
         internal void ProcessRecord_TakeLogBackup()
         {
@@ -1951,8 +2002,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.AddMssqlHostFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
 	# REQUIRED
 	hosts = @(
 		@{
@@ -2057,6 +2106,8 @@ $query.Var.input = @{
 			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -3101,6 +3152,36 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startMssqlLogShippingApplyLogsJob(input: StartMssqlLogShippingApplyLogsJobInput!): AsyncRequestStatus!
+        internal void InitMutationStartMssqlLogShippingApplyLogsJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartMssqlLogShippingApplyLogsJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartMssqlLogShippingApplyLogsJob",
+                "($input: StartMssqlLogShippingApplyLogsJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.StartMssqlLogShippingApplyLogsJob,
+                Mutation.StartMssqlLogShippingApplyLogsJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldDisconnectStandbyUsers = $someBoolean
+	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

@@ -114,6 +114,14 @@ Create a request to restore a Microsoft SQL database.
 
 - There is a single argument of type RestoreMssqlDatabaseInput.
 - Returns AsyncRequestStatus.
+### startlogshippingapplylogsjob
+Apply pending transaction logs to a secondary database
+
+Supported in v9.7
+Starts an asynchronous job that applies all pending transaction logs to the secondary database within the specified log shipping configuration without changing its state.
+
+- There is a single argument of type StartMssqlLogShippingApplyLogsJobInput.
+- Returns AsyncRequestStatus.
 ### takelogbackup
 Take an on-demand log backup for a Microsoft SQL database.
 

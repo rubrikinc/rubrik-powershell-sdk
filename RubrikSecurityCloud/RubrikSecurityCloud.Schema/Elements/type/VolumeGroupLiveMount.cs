@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose! (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -125,6 +130,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VolumeGroupLiveMount Set(
+        RecoveryPurpose? RecoveryPurpose = null,
         System.String? Id = null,
         System.Boolean? IsReady = null,
         System.String? MountPath = null,
@@ -146,6 +152,9 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? SourceSnapshot = null
     ) 
     {
+        if ( RecoveryPurpose != null ) {
+            this.RecoveryPurpose = RecoveryPurpose;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -217,6 +226,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose! (enum)
+        if (this.RecoveryPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryPurpose\n" ;
+            } else {
+                s += ind + "recoveryPurpose\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -410,6 +428,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose! (enum)
+        if (ec.Includes("recoveryPurpose",true))
+        {
+            if(this.RecoveryPurpose == null) {
+
+                this.RecoveryPurpose = new RecoveryPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryPurpose != null && ec.Excludes("recoveryPurpose",true))
+        {
+            this.RecoveryPurpose = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

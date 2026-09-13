@@ -248,6 +248,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -259,6 +261,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] kubernetesDescendantVirtualMachinesArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("filter", "[Filter!]"),

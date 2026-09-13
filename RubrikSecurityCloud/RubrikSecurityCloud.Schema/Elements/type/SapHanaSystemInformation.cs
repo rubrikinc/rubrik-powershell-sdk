@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDtEnabled")]
         public System.Boolean? IsDtEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsLssSupported
+        // GraphQL -> isLssSupported: Boolean! (scalar)
+        [JsonProperty("isLssSupported")]
+        public System.Boolean? IsLssSupported { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureCustomerSubscriptionName = null,
         System.String? AzureFeatureUuid = null,
         System.String? HanaVersion = null,
-        System.Boolean? IsDtEnabled = null
+        System.Boolean? IsDtEnabled = null,
+        System.Boolean? IsLssSupported = null
     ) 
     {
         if ( AuthType != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsDtEnabled != null ) {
             this.IsDtEnabled = IsDtEnabled;
+        }
+        if ( IsLssSupported != null ) {
+            this.IsLssSupported = IsLssSupported;
         }
         return this;
     }
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isDtEnabled\n" ;
             } else {
                 s += ind + "isDtEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsLssSupported
+        // GraphQL -> isLssSupported: Boolean! (scalar)
+        if (this.IsLssSupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isLssSupported\n" ;
+            } else {
+                s += ind + "isLssSupported\n" ;
             }
         }
         return s;
@@ -227,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsDtEnabled != null && ec.Excludes("isDtEnabled",true))
         {
             this.IsDtEnabled = null;
+        }
+        //      C# -> System.Boolean? IsLssSupported
+        // GraphQL -> isLssSupported: Boolean! (scalar)
+        if (ec.Includes("isLssSupported",true))
+        {
+            if(this.IsLssSupported == null) {
+
+                this.IsLssSupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLssSupported != null && ec.Excludes("isLssSupported",true))
+        {
+            this.IsLssSupported = null;
         }
     }
 

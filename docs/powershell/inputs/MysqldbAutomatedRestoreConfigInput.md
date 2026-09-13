@@ -7,7 +7,8 @@ MySQL instance restore configuration.
 v9.5-v9.6: Configuration to customize the MySQL Instance level restore.
 v9.7: Configuration to customize the MySQL Instance level restore. Ignored when multiMysqldbRestoreSettings is set.
 - shouldReplayCapturedSchema: System.Boolean
-  - Applicable only to MySQL database-level restore. When true, requests that captured schema be replayed (created or recreated) on the target database(s) as part of the restore. Only honored if the source snapshot has captured schema available; ignored otherwise.
+  - Supported in v9.6+
+Applicable only to MySQL database-level restore. When true, requests that captured schema be replayed (created or recreated) on the target database(s) as part of the restore. Only honored if the source snapshot has captured schema available; ignored otherwise.
 - targetMysqldbInstanceId: System.String
   - Required. Supported in v9.5+
 MySQL target instance Id for recovery.

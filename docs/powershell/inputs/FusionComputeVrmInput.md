@@ -2,10 +2,14 @@
 The hostname and account credentials of a FusionCompute Virtual Resource Management (VRM) instance.
 
 - caCerts: System.String
-  - Optional CA certificate content for SSL verification.
+  - Supported in v9.6+
+Optional CA certificate content for SSL verification.
 - endpointUri: System.String
-  - Required. The address of the new FusionCompute VRM instance.
+  - Required. Supported in v9.6+
+The address of the new FusionCompute VRM instance.
 - password: System.String
-  - Required. The password for authenticating with the FusionCompute VRM.
+  - Required. Supported in v9.6+
+The password for authenticating with the FusionCompute VRM.
 - username: System.String
-  - Required. The username of the FusionCompute VRM.
+  - Required. Supported in v9.6+
+The username of the FusionCompute VRM.

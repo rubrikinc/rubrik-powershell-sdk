@@ -72,8 +72,7 @@ AWS native EC2 instance.
 - recoveryPlansInfo: list of RecoveryPlansInfos
   - List of Recovery Plans associated with the virtual machine.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

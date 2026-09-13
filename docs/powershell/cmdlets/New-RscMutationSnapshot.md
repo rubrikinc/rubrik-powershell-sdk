@@ -90,7 +90,7 @@ Deletes the snapshots of an unmanaged object using the object IDs.
 ### exportfusioncompute
 Export a FusionCompute virtual machine
 
-Supported in v9.6
+Supported in v9.6+
 Export a FusionCompute virtual machine from a snapshot.
 
 - There is a single argument of type ExportFusionComputeSnapshotInput.
@@ -160,7 +160,7 @@ Initiates a job to restore Active Directory snapshots to their corresponding Dom
 ### restorefilesfromfusioncompute
 Recover files from a snapshot of FusionCompute
 
-Supported in v9.6
+Supported in v9.6+
 Recover files from a snapshot of a FusionCompute virtual machine.
 
 - There is a single argument of type RestoreFilesFromFusionComputeSnapshotInput.
@@ -197,7 +197,8 @@ NAS Cloud Direct on demand snapshot.
 - There is a single argument of type TakeCloudDirectSnapshotInput.
 - Returns BatchAsyncRequestStatus.
 ### takeondemand
-Triggers an on-demand snapshot for cloud-native workloads.
+Triggers on-demand snapshots for the specified workloads.
+Account and subject contexts are derived from req_ctx inside the handler.
 
 - There is a single argument of type TakeOnDemandSnapshotInput.
 - Returns TakeOnDemandSnapshotReply.

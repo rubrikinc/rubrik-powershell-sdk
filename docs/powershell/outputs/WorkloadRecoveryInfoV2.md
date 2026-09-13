@@ -12,3 +12,5 @@ Recovery information for a workload.
 - workloadRecoveryId: System.String
   - Taskchain ID or CDM job ID of the recovery operation for this
 workload.
+- workloadRecoveryOutcome: RecoveryOutcome
+  - Workload recovery outcome.

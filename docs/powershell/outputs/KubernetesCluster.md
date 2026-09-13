@@ -1,12 +1,32 @@
 ### KubernetesCluster
-Kubernetes cluster.
+A Kubernetes cluster onboarded to Rubrik CDM.
 
 - cdmId: System.String
-  - ID of Kubernetes ProtectionSet on Rubrik CDM.
+  - ID of Kubernetes Cluster on Rubrik CDM.
 - clusterUuid: System.String
   - CDM cluster UUID.
 - primaryClusterUuid: System.String
   - CDM cluster UUID.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - k8sName: System.String
   - Name of Kubernetes Cluster.
 - status: System.String
@@ -20,51 +40,59 @@ Kubernetes cluster.
 - namespaceCount: System.Int32
   - Number of namespaces in the cluster.
 - distribution: System.String
-  - Distribution indicates the type of Kubernetes distribution used by the cluster, such as VANILLA, RED_HAT, EKS, AKS, or others.
+  - Distribution indicates the type of Kubernetes distribution used by the
+cluster, such as VANILLA, RED_HAT, EKS, AKS, or others.
 - isPullSecretConfigured: System.Boolean
   - Specifies whether the pull secret is configured.
 - cloudAccountId: System.String
-  - ID of the cloud account used to establish a connection with the EKS Kubernetes cluster.
+  - ID of the cloud account used to establish a connection with the EKS
+Kubernetes cluster.
 - eksClusterArn: System.String
   - Amazon Resource Name (ARN) for the EKS Kubernetes cluster.
 - isAutoPsCreationEnabled: System.Boolean
   - Specifies whether automatic protection set creation is enabled.
+- onboardingType: KubernetesOnboardingType
+  - Onboarding type of Kubernetes cluster.
 - externalIp: System.String
   - The IP for connecting to the Kubernetes cluster on a NodePort.
 - port: System.Int32
   - Port number for connecting to the Kubernetes cluster.
 - nadNamespace: System.String
-  - Specifies the namespace for the Network Attachment Definition (NAD) for multus transport.
+  - Specifies the namespace for the Network Attachment Definition (NAD) for
+multus transport.
 - nadName: System.String
-  - Specifies the name for the Network Attachment Definition (NAD) for multus transport.
+  - Specifies the name for the Network Attachment Definition (NAD) for
+multus transport.
 - helmVersion: System.String
-  - Deployed Helm chart version on the cluster. NULL for non-Helm onboarded clusters.
+  - Deployed Helm chart version on the cluster. NULL for non-Helm onboarded
+clusters.
+- helmStatus: HelmStatus
+  - Compatibility status between the deployed Helm chart and the running
+Rubrik CDM. NULL for non-Helm onboarded clusters.
 - maxPvcsPerAgent: System.Int32
   - Specifies the maximum number of PVCs per backup agent.
 - maxConcurrentAgents: System.Int32
   - Specifies the maximum number of concurrent backup agents.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
-- descendantConnection: KubernetesClusterDescendantConnection
-  - List of descendants.
+- storageClasses: list of KubernetesStorageClasss
+  - Storage classes in the Kubernetes cluster.
 - k8sDescendantProtectionSets: KubernetesProtectionSetConnection
   - Protection Sets belonging to the Kubernetes cluster.
 - k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection
   - Virtual machines belonging to the Kubernetes cluster.
-- storageClasses: list of KubernetesStorageClasss
-  - Storage classes in the Kubernetes cluster.
-- onboardingType: KubernetesOnboardingType
-  - Onboarding type of Kubernetes cluster.
-- helmStatus: HelmStatus
-  - Compatibility status between the deployed Helm chart and the running Rubrik CDM. NULL for non-Helm onboarded clusters.
+- descendantConnection: KubernetesClusterDescendantConnection
+  - List of descendants.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -77,41 +105,19 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

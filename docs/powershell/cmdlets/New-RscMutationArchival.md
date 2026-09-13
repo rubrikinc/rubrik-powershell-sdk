@@ -93,6 +93,12 @@ Resumes an Archival Location.
 
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.
+### startsalesforcejob
+Initiates an asynchronous, on-demand archival job for the given policy.
+Rejects the request when the policy is not enabled.
+
+- There is a single argument of type StartSalesforceArchivalJobInput.
+- Returns StartSalesforceArchivalJobReply.
 ### terminatemigration
 Terminates an in-progress archival migration,
 marking the migration as cancelled.

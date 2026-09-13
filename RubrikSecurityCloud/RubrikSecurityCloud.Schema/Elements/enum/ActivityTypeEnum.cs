@@ -147,6 +147,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PERMISSION_ASSESSMENT")]
         PERMISSION_ASSESSMENT,
 
+        [EnumMember(Value = "PRE_SEEDING")]
+        PRE_SEEDING,
+
         [EnumMember(Value = "PROTECTED_OBJECT_DELETION")]
         PROTECTED_OBJECT_DELETION,
 

@@ -20,8 +20,7 @@ A Microsoft Power Platform environment, the org-level entity for Power Apps and 
 - dataverseOrgUrl: System.String
   - Dataverse instance URL when the environment has Dataverse enabled. The field is empty for environments without Dataverse.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

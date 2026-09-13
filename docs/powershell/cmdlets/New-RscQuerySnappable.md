@@ -57,6 +57,8 @@ previously lived in the GraphQL resolver `snappableEventSearch`.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
 - Returns O365ExchangeObjectConnection.
 ### groupbylist
+Returns a paginated connection of workload group-by nodes.
+
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
@@ -64,8 +66,8 @@ previously lived in the GraphQL resolver `snappableEventSearch`.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - groupBy - SnappableGroupByEnum: Group workloads by field.
     - filter - SnappableGroupByFilterInput: Filter workloads by groups.
-    - timezoneOffset - System.Single: Offset based on the customer timezone.
-    - requestedAggregations - list of SnappableAggregationsEnums: List of workload aggregations to retrieve. You can significantly reduce the runtime of the query by specifying a subset of aggregations to retrieve.
+    - timezoneOffset - System.Single: Browser timezone offset in hours for time-bucket alignment.
+    - requestedAggregations - list of SnappableAggregationsEnums: Aggregation columns to compute.
 - Returns SnappableGroupByConnection.
 ### hierarchy
 - There are 5 arguments.
@@ -76,14 +78,17 @@ previously lived in the GraphQL resolver `snappableEventSearch`.
     - filter - list of Filters: Hierarchy object filter.
 - Returns HierarchySnappableConnection.
 ### list
+Returns a paginated connection of workloads matching the filter.
+Account and subject contexts are derived from req_ctx inside the handler.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - SnappableFilterInput: Filter workloads by input.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
-    - filter - SnappableFilterInput: Filter protected objects by input.
+    - sortOrder - SortOrder: Sort order for workloads.
 - Returns SnappableConnection.
 ### onedrivesearch
 Returns OneDrive folders and files for the given workload across all
@@ -100,14 +105,19 @@ snapshots, merged as a single O365OnedriveObject interface list
     - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
 - Returns O365OnedriveObjectConnection.
 ### search
+Returns a paginated connection of workloads matching the search filter.
+Account and subject contexts are derived from req_ctx inside the handler.
+Unlike the plain workload connection, the SLA time range from the filter
+is never applied to the base table query.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - SnappableFilterInputWithSearch: Filter workloads by input.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
-    - filter - SnappableFilterInputWithSearch: Filter workloads by input (with search by name).
+    - sortOrder - SortOrder: Sort order for workloads.
 - Returns SnappableConnection.
 ### searchversionedfiles
 List of all files in snapshots whose names match the specified search query.

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region PostgreSqlDbCluster
  
-    public class PostgreSqlDbCluster: BaseType, CdmHierarchyObject, HierarchyObject, KosmosDiscoverableEntityType, KosmosHierarchyObjectType, KosmosParentHierarchyObjectType, KosmosSnappableHierarchyObjectType
+    public class PostgreSqlDbCluster: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, KosmosDiscoverableEntityType, KosmosHierarchyObjectType, KosmosParentHierarchyObjectType, KosmosSnappableHierarchyObjectType
     {
         #region members
 

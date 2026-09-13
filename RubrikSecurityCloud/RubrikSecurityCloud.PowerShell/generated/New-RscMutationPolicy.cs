@@ -289,6 +289,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				remediationDetails = @{
     /// 					# OPTIONAL
+    /// 					isJitElevated = $someBoolean
+    /// 					# OPTIONAL
     /// 					ticketInfo = @{
     /// 						# OPTIONAL
     /// 						title = $someString
@@ -1382,6 +1384,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				remediationDetails = @{
     /// 					# OPTIONAL
+    /// 					isJitElevated = $someBoolean
+    /// 					# OPTIONAL
     /// 					ticketInfo = @{
     /// 						# OPTIONAL
     /// 						title = $someString
@@ -2170,6 +2174,8 @@ $query.Var.input = @{
 				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
 				# OPTIONAL
 				remediationDetails = @{
+					# OPTIONAL
+					isJitElevated = $someBoolean
 					# OPTIONAL
 					ticketInfo = @{
 						# OPTIONAL
@@ -3147,6 +3153,8 @@ $query.Var.input = @{
 				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
 				# OPTIONAL
 				remediationDetails = @{
+					# OPTIONAL
+					isJitElevated = $someBoolean
 					# OPTIONAL
 					ticketInfo = @{
 						# OPTIONAL

@@ -241,3 +241,5 @@ Represents all the object types for which we expect to see audits.
 - AZURE_COSMOS_NOSQL_ACCOUNT - Azure Cosmos NoSQL account.
 - AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
+- ORACLE_FAILOVER_CLUSTER - Oracle Failover Cluster object.
+- ORACLE_FAILOVER_SERVICE - Oracle Failover Service object.

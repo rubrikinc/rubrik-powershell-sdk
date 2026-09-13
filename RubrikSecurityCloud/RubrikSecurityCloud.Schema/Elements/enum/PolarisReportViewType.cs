@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKES_REPORT")]
         BACKUP_STRIKES_REPORT,
 
+        [EnumMember(Value = "CDM_USER_REPORT")]
+        CDM_USER_REPORT,
+
         [EnumMember(Value = "CLOUD_COMPLIANCE_REPORT")]
         CLOUD_COMPLIANCE_REPORT,
 

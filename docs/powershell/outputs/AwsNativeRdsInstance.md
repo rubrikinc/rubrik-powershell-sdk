@@ -47,6 +47,8 @@ AWS native RDS instance.
   - Indicates whether this RDS instance is protectable or not.
 - cloudNativeApplications: list of CloudNativeApplicationInfos
   - List of cloud native applications associated with this RDS instance.
+- isInfrastructureAlertsEnabled: System.Boolean
+  - Whether infrastructure deletion alerts are enabled for the RDS instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
@@ -54,8 +56,7 @@ AWS native RDS instance.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon Relational Database Service (RDS) instance.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String

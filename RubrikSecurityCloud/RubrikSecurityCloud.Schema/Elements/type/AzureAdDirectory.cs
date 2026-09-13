@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsRubrikManagedApp
+        // GraphQL -> isRubrikManagedApp: Boolean! (scalar)
+        [JsonProperty("isRubrikManagedApp")]
+        public System.Boolean? IsRubrikManagedApp { get; set; }
+
         //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
         // GraphQL -> latestAccessReviewScheduleDefinitionCount: Int! (scalar)
         [JsonProperty("latestAccessReviewScheduleDefinitionCount")]
@@ -543,6 +548,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsJitEnabled = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsRubrikManagedApp = null,
         System.Int32? LatestAccessReviewScheduleDefinitionCount = null,
         System.Int32? LatestAdministrativeUnitsCount = null,
         System.Int32? LatestApplicationsCount = null,
@@ -675,6 +681,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsRubrikManagedApp != null ) {
+            this.IsRubrikManagedApp = IsRubrikManagedApp;
         }
         if ( LatestAccessReviewScheduleDefinitionCount != null ) {
             this.LatestAccessReviewScheduleDefinitionCount = LatestAccessReviewScheduleDefinitionCount;
@@ -1093,6 +1102,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRubrikManagedApp
+        // GraphQL -> isRubrikManagedApp: Boolean! (scalar)
+        if (this.IsRubrikManagedApp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRubrikManagedApp\n" ;
+            } else {
+                s += ind + "isRubrikManagedApp\n" ;
             }
         }
         //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
@@ -2088,6 +2106,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsRubrikManagedApp
+        // GraphQL -> isRubrikManagedApp: Boolean! (scalar)
+        if (ec.Includes("isRubrikManagedApp",true))
+        {
+            if(this.IsRubrikManagedApp == null) {
+
+                this.IsRubrikManagedApp = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRubrikManagedApp != null && ec.Excludes("isRubrikManagedApp",true))
+        {
+            this.IsRubrikManagedApp = null;
         }
         //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
         // GraphQL -> latestAccessReviewScheduleDefinitionCount: Int! (scalar)

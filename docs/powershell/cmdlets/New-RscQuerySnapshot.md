@@ -146,7 +146,7 @@ Lists all files and directories in a given path.
 ### fusioncomputemisseds
 Retrieve details about missed snapshots for a virtual machine
 
-Supported in v9.6
+Supported in v9.6+
 Retrieve the time of day when the snapshots were missed to a specific FusionCompute virtual machine.
 
 - There is a single argument of type FusionComputeMissedSnapshotsInput.
@@ -180,14 +180,16 @@ List files with their deltas in a given snapshot, with optional search string fi
     - sort - FileResultSortInput: Sorts to apply when listing file results.
 - Returns SnapshotFileDeltaV2Connection.
 ### newestforclouddirectobject
-Returns the newest snapshot for a Cloud Direct object, such as a share or bucket. The results can be optionally filtered by target ID.
+Returns the newest snapshot for a Cloud Direct object, such as a share or bucket.
+The results can be optionally filtered by target ID.
 
 - There are 2 arguments.
     - workloadId - System.String: The ID of the workload.
     - cloudDirectTargetId - System.String: The NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshot.
 ### oldestforclouddirectobject
-Returns the oldest snapshot for a Cloud Direct object, such as a share or bucket. The results can be optionally filtered by target ID.
+Returns the oldest snapshot for a Cloud Direct object, such as a share or bucket.
+The results can be optionally filtered by target ID.
 
 - There are 2 arguments.
     - workloadId - System.String: The ID of the workload.

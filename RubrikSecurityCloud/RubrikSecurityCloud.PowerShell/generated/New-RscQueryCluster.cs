@@ -898,9 +898,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -960,6 +960,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -991,9 +995,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -1053,6 +1057,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// # OPTIONAL
     /// $query.Var.typeFilter = @(
     /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
@@ -1088,9 +1096,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -1150,6 +1158,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -4141,24 +4153,28 @@ $query.Var.fid = $someString"
         // fusionComputeClusters(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): FusionComputeClusterConnection!
         internal void InitQueryFusionComputeClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryFusionComputeClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "FusionComputeClusterConnection",
                 Query.FusionComputeClusters,
                 Query.FusionComputeClustersFieldSpec,
@@ -4167,106 +4183,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			$someString
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = $someBoolean
-		# OPTIONAL
-		isSlowSearchEnabled = $someBoolean
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-		# OPTIONAL
-		gcpNativeProtectionFeatureNames = @(
-			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		timeParam = $someDateTime
-		# OPTIONAL
-		nativeTagFilterParams = @(
-			@{
-				# OPTIONAL
-				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
-				# OPTIONAL
-				nativeTagIds = @(
-					$someString
-				)
-			}
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // fusionComputeClustersAndHosts(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //     typeFilter: [HierarchyObjectTypeEnum!]
-        //   ): CdmHierarchyObjectConnection!
-        internal void InitQueryFusionComputeClustersAndHosts()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryFusionComputeClustersAndHosts",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$typeFilter: [HierarchyObjectTypeEnum!])",
-                "CdmHierarchyObjectConnection",
-                Query.FusionComputeClustersAndHosts,
-                Query.FusionComputeClustersAndHostsFieldSpec,
-                @"# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -4327,45 +4246,51 @@ $query.Var.filter = @(
 }
 )
 # OPTIONAL
-$query.Var.typeFilter = @(
-	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)"
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
         // Create new GraphQL Query:
-        // fusionComputeRecoverableClustersAndHosts(
+        // fusionComputeClustersAndHosts(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
+        //     typeFilter: [HierarchyObjectTypeEnum!]
         //   ): CdmHierarchyObjectConnection!
-        internal void InitQueryFusionComputeRecoverableClustersAndHosts()
+        internal void InitQueryFusionComputeClustersAndHosts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryFusionComputeRecoverableClustersAndHosts",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "QueryFusionComputeClustersAndHosts",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!])",
                 "CdmHierarchyObjectConnection",
-                Query.FusionComputeRecoverableClustersAndHosts,
-                Query.FusionComputeRecoverableClustersAndHostsFieldSpec,
+                Query.FusionComputeClustersAndHosts,
+                Query.FusionComputeClustersAndHostsFieldSpec,
                 @"# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -4424,7 +4349,118 @@ $query.Var.filter = @(
 			}
 		)
 }
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // fusionComputeRecoverableClustersAndHosts(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //   ): CdmHierarchyObjectConnection!
+        internal void InitQueryFusionComputeRecoverableClustersAndHosts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeRecoverableClustersAndHosts",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
+                "CdmHierarchyObjectConnection",
+                Query.FusionComputeRecoverableClustersAndHosts,
+                Query.FusionComputeRecoverableClustersAndHostsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

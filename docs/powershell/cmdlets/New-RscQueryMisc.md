@@ -395,9 +395,11 @@ NAS Cloud Direct bucket.
 ### clouddirectnasbuckets
 Paginated list of NAS Cloud Direct buckets.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -415,9 +417,11 @@ NAS Cloud Direct namespace.
 ### clouddirectnasnamespaces
 Paginated list of NAS namespaces.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -795,12 +799,14 @@ Summary of a FusionCompute datastore.
 ### fusioncomputedatastores
 Summary of all FusionCompute datastores.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeDatastoreConnection.
 ### fusioncomputeecho
 Test endpoint. Remove once we have a real API.
@@ -827,32 +833,38 @@ Summary of a FusionCompute network.
 ### fusioncomputenetworks
 Summary of all FusionCompute networks.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeNetworkConnection.
 ### fusioncomputerecoverabledatastores
 Summary of all FusionCompute datastores that the user can recover to.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeDatastoreConnection.
 ### fusioncomputerecoverablenetworks
 Summary of all FusionCompute networks that the user can recover to.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeNetworkConnection.
 ### fusioncomputesite
 Summary of a FusionCompute site.
@@ -862,12 +874,14 @@ Summary of a FusionCompute site.
 ### fusioncomputesites
 Summary of all FusionCompute sites.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeSiteConnection.
 ### fusioncomputevirtualdisks
 Get FusionCompute virtual disks for a virtual machine.
@@ -890,17 +904,19 @@ Summary of a FusionCompute virtual machine.
 ### fusioncomputevirtualmachines
 Summary of all FusionCompute virtual machines.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeVirtualMachineConnection.
 ### fusioncomputevmrequeststatus
 Get asynchronous request details for FusionCompute requests
 
-Supported in v9.6
+Supported in v9.6+
 Get the details of an asynchronous request that involves FusionCompute operations.
 
 - There is a single argument of type FusionComputeVmRequestStatusInput.
@@ -913,12 +929,14 @@ Summary of a FusionCompute VRM.
 ### fusioncomputevrms
 Summary of all FusionCompute VRMs.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeVrmConnection.
 ### geolocationlist
 - The geolocationlist subcommand takes no arguments.
@@ -1116,6 +1134,11 @@ Retrieve groups from current and descendant organizations based on the specified
     - shouldIncludeGroupsWithoutRole - System.Boolean: Specifies whether to include user groups without any assigned roles either in the current or descendant orgs. If roleIdsFilter is not empty, this field is always considered as false.
 - Returns GroupConnection.
 ### guestcredentials
+Summary of all guest OS credentials
+
+Supported in v5.0+
+Retrieve the ID, domain, username and password for all guest OS credentials.
+
 - There is a single argument of type QueryGuestCredentialInput.
 - Returns GuestCredentialDetailListResponse.
 ### guestcredentialsv2
@@ -2171,6 +2194,33 @@ A maximum of 50 objects per page is supported.
     - recoveryNameSubstring - System.String: Filter by recovery name substring.
     - sortParam - RecoverySortParamInput: Sorting parameters for the recovery list.
 - Returns RecoveryConnection.
+### recoveryplansbasicinfo
+Retrieves basic information for recovery plans with pagination support.
+RSC prioritizes recovery_plan_ids if they are passed in the filter. All
+filters are combined using AND logic.
+
+- There are 20 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - recoveryPlanIds - list of System.Strings: List of recovery plan IDs to filter the results.
+    - sortParam - RecoveryPlanSortParamInput: Sort parameters for the results.
+    - recoveryPlanTypes - list of RecoveryPlanTypes: Optional filter for recovery plan types.
+    - workloadTypes - list of ManagedObjectTypes: Filter for workload types.
+    - sourceLocationIds - list of System.Strings: Optional filter for source location IDs.
+    - nameSubstring - System.String: Optional filter for recovery plan name substring.
+    - targetLocationIds - list of System.Strings: Optional filter for target location IDs.
+    - sourceAccountIds - list of System.Strings: Optional filter for AWS source account IDs.
+    - targetAccountIds - list of System.Strings: Optional filter for AWS target account IDs.
+    - sourceSubscriptionIds - list of System.Strings: Optional filter for Azure source subscription IDs.
+    - targetSubscriptionIds - list of System.Strings: Optional filter for Azure target subscription IDs.
+    - awsRegions - list of System.Strings: Optional filter for AWS regions.
+    - azureRegions - list of System.Strings: Optional filter for Azure regions.
+    - sourceRootDomainSids - list of System.Strings: Optional filter for AD forest root domain SIDs.
+    - recoveryPlanStatuses - list of RecoveryPlanStatuss: Optional filter for recovery plan configuration statuses.
+    - lastRecoveryOutcomes - list of RecoveryOutcomes: Optional filter by the outcome of the most recent completed recovery. Plans with no recovery history are excluded from filtered results.
+- Returns RecoveryPlanBasicInfoConnection.
 ### recoveryspecs
 List the workload recovery specifications associated with the given
 recovery plan.

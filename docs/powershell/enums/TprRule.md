@@ -59,3 +59,7 @@ window).
 - MANAGE_ENCRYPTION_SETTINGS - The TPR rule for managing encryption settings (Rubrik cluster key rotation and
 archival location rekey).
 - DELETE_PHYSICAL_HOST - Quorum authorization is required for deleting a physical host.
+- MANAGE_COPY_SCHEDULE - Quorum authorization is required to update a NAS Cloud Direct copy
+schedule.
+- ASSIGN_COPY_SCHEDULE - Quorum authorization is required to assign or unassign NAS Cloud Direct
+copy-schedule source shares.

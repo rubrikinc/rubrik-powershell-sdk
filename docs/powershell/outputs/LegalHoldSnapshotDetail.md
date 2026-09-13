@@ -12,3 +12,6 @@ LegalHoldSnapshotDetails.
 - customizations: list of SnapshotCustomizations
 - snapshotRetentionInfo: CdmSnapshotRetentionInfo
   - Provides snapshot details for each location.
+- legalHoldInfo: LegalHoldInfo
+  - Legal hold configuration for the snapshot. Populated only for RSC
+native snapshots.

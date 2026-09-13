@@ -59,11 +59,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
-        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
-        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
-        [JsonProperty("rscNativeObjectPendingSla")]
-        CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
-
         //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
         // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
         [JsonProperty("rscPendingObjectPauseAssignment")]
@@ -93,6 +88,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
+
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
 
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

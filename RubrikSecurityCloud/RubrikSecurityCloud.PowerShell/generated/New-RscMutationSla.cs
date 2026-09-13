@@ -949,6 +949,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		githubSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			isDeveloperCollaborationEnabled = $someBoolean
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -2063,6 +2068,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		githubSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			isDeveloperCollaborationEnabled = $someBoolean
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -3426,6 +3436,11 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		githubSlaConfigInput = @{
+			# OPTIONAL
+			isDeveloperCollaborationEnabled = $someBoolean
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -4501,6 +4516,11 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+		}
+		# OPTIONAL
+		githubSlaConfigInput = @{
+			# OPTIONAL
+			isDeveloperCollaborationEnabled = $someBoolean
 		}
 	}
 	# OPTIONAL

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'Microsoft Exchange' API domain:
-    /// BulkUpdateDag, CreateMount, CreateOnDemandBackup, or DeleteSnapshotMount.
+    /// BulkUpdateDag, CreateMount, CreateOnDemandBackup, DeleteSnapshotMount, or ExportDatabase.
     /// </summary>
     /// <description>
     /// New-RscMutationExchange creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 5 operations
     /// in the 'Microsoft Exchange' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkUpdateDag, CreateMount, CreateOnDemandBackup, or DeleteSnapshotMount.
+    /// one of: BulkUpdateDag, CreateMount, CreateOnDemandBackup, DeleteSnapshotMount, or ExportDatabase.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -239,6 +239,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the ExportDatabase operation
+    /// of the 'Microsoft Exchange' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Exchange
+    /// # API Operation: ExportDatabase
+    /// 
+    /// $query = New-RscMutationExchange -Operation ExportDatabase
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		targetHostId = $someString
+    /// 		# OPTIONAL
+    /// 		targetLogFolderPath = $someString
+    /// 		# REQUIRED
+    /// 		snapshotId = $someString
+    /// 		# REQUIRED
+    /// 		targetDatabaseName = $someString
+    /// 		# OPTIONAL
+    /// 		targetEdbFilePath = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -259,6 +305,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateMount",
                 "CreateOnDemandBackup",
                 "DeleteSnapshotMount",
+                "ExportDatabase",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -285,6 +332,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteSnapshotMount":
                         this.ProcessRecord_DeleteSnapshotMount();
+                        break;
+                    case "ExportDatabase":
+                        this.ProcessRecord_ExportDatabase();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -330,6 +380,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteSnapshotMount";
             // Create new graphql operation deleteExchangeSnapshotMount
             InitMutationDeleteExchangeSnapshotMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exportExchangeDatabase.
+        internal void ProcessRecord_ExportDatabase()
+        {
+            this._logger.name += " -ExportDatabase";
+            // Create new graphql operation exportExchangeDatabase
+            InitMutationExportExchangeDatabase();
         }
 
 
@@ -460,6 +519,44 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportExchangeDatabase(input: ExportExchangeDatabaseInput!): AsyncRequestStatus!
+        internal void InitMutationExportExchangeDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportExchangeDatabaseInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportExchangeDatabase",
+                "($input: ExportExchangeDatabaseInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportExchangeDatabase,
+                Mutation.ExportExchangeDatabaseFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		targetHostId = $someString
+		# OPTIONAL
+		targetLogFolderPath = $someString
+		# REQUIRED
+		snapshotId = $someString
+		# REQUIRED
+		targetDatabaseName = $someString
+		# OPTIONAL
+		targetEdbFilePath = $someString
+	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

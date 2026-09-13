@@ -1,4 +1,4 @@
-# v20260831-41
+# v20260907-45
 type Query {
   # Account ID.
   accountId: String!
@@ -3675,7 +3675,8 @@ type Query {
     # The site child ID for SharePoint descendant objects.
     siteChildId: String): O365OnedriveObjectConnection!
 
-  # Returns a list files whose name is prefixed by the query in the given snapshot.
+  # Returns a list files whose name is prefixed by the query in the given
+  # snapshot.
   browseSnapshotFileConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -3683,11 +3684,17 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # The path under which you want your search to run.
-    path: String!,
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Snapshot persistent UUID in RSC.
     snapshotFid: UUID!,
+
+    # The path under which you want your search to run.
+    path: String!,
 
     # Prefix arg for searching for files within a snapshot.
     searchPrefix: String,
@@ -3827,11 +3834,17 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
-    sortBy: MssqlLogShippingTargetSortByInput,
+    # Returns the last n elements from the list.
+    last: Int,
 
-    # Filters for Mssql log shipping targets. No filters by default.
-    filters: [MssqlLogShippingTargetFilterInput!]): MssqlLogShippingTargetConnection!
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filters for MSSQL log shipping targets. No filters by default.
+    filters: [MssqlLogShippingTargetFilterInput!],
+
+    # Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
+    sortBy: MssqlLogShippingTargetSortByInput): MssqlLogShippingTargetConnection!
 
   # Check supported feature for cluster version.
   cdmVersionCheck(
@@ -7548,7 +7561,7 @@ type Query {
     # The input to list Microsoft 365 Backup Storage restore points.
     m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!): M365BackupStorageRestorePointConnection!
 
-  # Returns the statistics of an M365 organization product in day-to-day mode.
+  # Returns the day-to-day mode statistics for a workload type of an M365 organization.
   m365DayToDayModeStats(
     # Org UUID.
     orgId: UUID!,
@@ -7717,6 +7730,12 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -7729,7 +7748,7 @@ type Query {
     # The FID for the O365 organization.
     o365OrgId: UUID!,
 
-    # When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
+    # When true, excludes nested child sites.
     excludeChildSites: Boolean,
 
     # Protection type for Microsoft 365 protection.
@@ -7834,13 +7853,21 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
     # The Rubrik UUIDs for the objects.
     fids: [UUID!]!,
 
-    # Filters for MSSQL availability group database virtual groups. The default is no filters, and all objects are returned.
+    # Filters for MSSQL availability group database virtual groups. The default is no filters, and all
+    # objects are returned.
     filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!],
 
-    # Sort by argument is for MSSQL availability group database virtual groups. By default, sort according to ID in ascending order.
+    # Sort by argument is for MSSQL availability group database virtual groups. By default, sort
+    # according to ID in ascending order.
     sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput,
 
     # Sort order argument for MSSQL availability group database virtual groups.
@@ -7854,10 +7881,18 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # Filters for MSSQL availability group virtual groups. Default to no filters and all objects are returned.
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filters for MSSQL availability group virtual groups. Default to no filters and all objects are
+    # returned.
     filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!],
 
-    # Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending order.
+    # Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending
+    # order.
     sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput,
 
     # Sort order argument for MSSQL availability group virtual groups.
@@ -7893,11 +7928,17 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # Sort by argument for Mssql database live mounts.
-    sortBy: MssqlDatabaseLiveMountSortByInput,
+    # Returns the last n elements from the list.
+    last: Int,
 
-    # Filters for Mssql database live mounts.
-    filters: [MssqlDatabaseLiveMountFilterInput!]): MssqlDatabaseLiveMountConnection!
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filters for MSSQL database live mounts.
+    filters: [MssqlDatabaseLiveMountFilterInput!],
+
+    # Sort by argument for MSSQL database live mounts.
+    sortBy: MssqlDatabaseLiveMountSortByInput): MssqlDatabaseLiveMountConnection!
 
   # Get missed recoverable ranges of a Microsoft SQL database
   # 
@@ -7927,6 +7968,12 @@ type Query {
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -7981,13 +8028,21 @@ type Query {
     # Input for V1GetMssqlDbRecoverableRanges.
     input: GetMssqlDbRecoverableRangesInput!): MssqlRecoverableRangeListResponse!
 
-  # Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
+  # Paginated list of top-level Microsoft SQL hierarchy descendants: the
+  # direct children of the Microsoft SQL hierarchy root, spanning every
+  # top-level Microsoft SQL managed object type.
   mssqlTopLevelDescendants(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -11879,12 +11934,15 @@ type Query {
     # Input to retrieve workloads with legal hold snapshots.
     input: SnappablesWithLegalHoldSnapshotsInput!): LegalHoldSnappableDetailConnection!
 
-  # Returns a single snapshot by snapshot forever UUID and cluster UUID. In case cluster UUID is not provided, the snapshot forever UUID is used to resolve it. Cluster UUID is beneficial for fetching the same snapshot in a different replication target Rubrik cluster.
+  # Returns a single snapshot by snapshot forever UUID and cluster UUID.
+  # In case cluster UUID is not provided, the snapshot forever UUID is used to
+  # resolve it. Cluster UUID is beneficial for fetching the same snapshot in
+  # a different replication target Rubrik cluster.
   snapshot(
     # Snapshot persistent UUID in RSC.
     snapshotFid: UUID!,
 
-    # The Rubrik cluster ID.
+    # The Rubrik cluster ID to resolve the snapshot in.
     clusterUuid: UUID): CdmSnapshot!
 
   # SearchSnapshotEmails returns a paginated, GraphQL-shaped list of
@@ -12896,7 +12954,12 @@ type Query {
     email: String!): TprRoleEligibilityType!
 
   # Map of TPR policy types to TPR rules.
-  tprRulesMap: TprRulesMap!
+  tprRulesMap(
+    # The policy rules for which to preview protected actions.
+    policyRules: [TprPolicyRuleInput!],
+
+    # The policy scope for which to preview protected actions.
+    policyScope: TprPolicyScope): TprRulesMap!
 
   # Check and update TPR request for node removal or replacement.
   tprStatusForNodeRemoval(
@@ -14162,14 +14225,6 @@ type Mutation {
   addMongoSource(
     # Input for V1AddMongoSource.
     input: AddMongoSourceInput!): AddMongoSourceReply!
-
-  # Add a New Store
-  # 
-  # Supported in m3.2.0-m4.2.0
-  # Add a new store to Mosaic cluster.
-  addMosaicStore(
-    # Input for V2AddMosaicStore.
-    input: AddMosaicStoreInput!): MosaicAsyncResponse!
 
   # Register hosts
   # 
@@ -16031,14 +16086,6 @@ type Mutation {
     # Input for V1DeleteMongoSource.
     input: DeleteMongoSourceInput!): AsyncRequestStatus!
 
-  # Remove the store by store_name
-  # 
-  # Supported in m3.2.0-m4.2.0
-  # Remove a store from Mosaic cluster.
-  deleteMosaicStore(
-    # Input for V2DeleteMosaicStore.
-    input: DeleteMosaicStoreInput!): MosaicAsyncResponse!
-
   # Delete snapshots of a Microsoft SQL Database.
   deleteMssqlDbSnapshots(
     # Input for V1DeleteMssqlDbSnapshots.
@@ -16236,6 +16283,12 @@ type Mutation {
   deleteSmbDomain(
     # Input for InternalDeleteSmbDomain.
     input: DeleteSmbDomainInput!): Void
+
+  # DeleteSnapshotsOfObjects deletes all the snapshots of the specified
+  # objects from the provided location IDs.
+  deleteSnapshotsOfObjects(
+    # A list of object IDs and location IDs for the deletion.
+    input: DeleteSnapshotsOfObjectsInput!): Void
 
   # Deletes all the snapshots of the unmanaged objects in the request.
   deleteSnapshotsOfUnmanagedObjects(
@@ -18288,9 +18341,9 @@ type Mutation {
   # Restores an Exchange mailbox.
   restoreO365Mailbox(restoreConfig: RestoreO365MailboxInput!): CreateOnDemandJobReply! @deprecated(reason: "Use restoreO365MailboxV2 instead.")
 
-  # Restores an Exchange mailbox data.
+  # Schedules on-demand restore job(s) for an Exchange mailbox.
   restoreO365MailboxV2(
-    # The input for RestoreO365MailboxV2.
+    # Input for restoring an Exchange mailbox.
     input: RestoreO365MailboxInput!): [CreateOnDemandJobReply!]!
 
   # Restores an O365 workload (OneDrive, SharePoint, Exchange, Calendar,
@@ -19699,13 +19752,6 @@ type Mutation {
   updateManualTargetMapping(
     # Update manual target mapping.
     input: UpdateManualTargetMappingInput!): TargetMapping!
-
-  # Modify a store
-  # 
-  # Supported in m3.2.0-m4.2.0.
-  updateMosaicStore(
-    # Input for V2ModifyMosaicStore.
-    input: ModifyMosaicStoreInput!): MosaicAsyncResponse!
 
   # Update the default properties for Microsoft SQL databases.
   updateMssqlDefaultProperties(
@@ -22745,6 +22791,9 @@ enum ActivityObjectTypeEnum {
   # Azure DevOps Project.
   AZURE_DEVOPS_PROJECT
 
+  # Azure DevOps project artifacts (feeds, packages) per project.
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -22871,10 +22920,10 @@ enum ActivityObjectTypeEnum {
   # Compute instance object.
   ComputeInstance
 
-  # Dynamics 365 dataverse table.
+  # Dataverse table.
   D365_DATAVERSE_TABLE
 
-  # Dynamics 365 metadata.
+  # Dataverse metadata.
   D365_METADATA
 
   # Dynamics 365 organization.
@@ -25048,7 +25097,7 @@ type AddClusterCertificateReply {
   # A list of components using the certificate.
   usedBy: String!
 }
-# Input for AddClusterNodes.
+# Input for add-nodes-to-cluster operations.
 input AddClusterNodesInput {
   # Required. ID of the Rubrik cluster.
   clusterUuid: UUID!
@@ -25345,14 +25394,6 @@ type AddMongoSourceReply {
   # ID of the new MongoDB source.
   id: String!
 }
-# Input for adding a NoSQL protection store.
-input AddMosaicStoreInput {
-  # Required. Add store request object with details of store to be added.
-  addStoreData: MosaicAddStoreRequestInput!
-
-  # Required. UUID used to identify the cluster the request goes to.
-  clusterUuid: String!
-}
 input AddMysqldbInstanceInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
@@ -25369,6 +25410,9 @@ type AddMysqldbInstanceResponse {
   # Required. Supported in v9.3+
   # ID of the new MySQL Database instance created.
   id: String!
+
+  # Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.
+  kosmosTopologyStateId: String
 }
 # Input for node configuration.
 input AddNodesConfigInput {
@@ -29524,6 +29568,9 @@ enum AuditObjectType {
   # Azure DevOps Project.
   AZURE_DEVOPS_PROJECT
 
+  # Azure DevOps project artifacts (feeds, packages) per project.
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -29599,10 +29646,10 @@ enum AuditObjectType {
   # Cross-account pair event type.
   CROSS_ACCOUNT_PAIR
 
-  # Dynamics 365 dataverse table.
+  # Dataverse table.
   D365_DATAVERSE_TABLE
 
-  # Dynamics 365 metadata.
+  # Dataverse metadata.
   D365_METADATA
 
   # Dynamics 365 organization.
@@ -33141,6 +33188,8 @@ type AwsNativeAccountConnection {
   # General information about this result page.
   pageInfo: PageInfo!
 }
+# Marker interface for the descendants of an AWS native account. A pure clone
+# of PolarisHierarchyObject (no additional fields).
 interface AwsNativeAccountDescendantType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
@@ -33279,6 +33328,8 @@ input AwsNativeAccountInput {
   # Native ID of the cloud account.
   id: String! = ""
 }
+# Marker interface for the logical children of an AWS native account. A pure
+# clone of PolarisHierarchyObject (no additional fields).
 interface AwsNativeAccountLogicalChildType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
@@ -33374,7 +33425,7 @@ input AwsNativeAttachedInstanceFilter {
   ec2InstanceIds: [String!]!
 }
 # AWS native configuration for application protection.
-type AwsNativeConfig implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType {
+type AwsNativeConfig implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -33502,7 +33553,7 @@ type AwsNativeConfig implements PolarisHierarchyObject , PolarisHierarchySnappab
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -33528,7 +33579,7 @@ type AwsNativeConfig implements PolarisHierarchyObject , PolarisHierarchySnappab
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -33606,7 +33657,7 @@ input AwsNativeDynamoDbSlaConfigInput {
   continuousBackupsEnabled: Boolean = false
 }
 # AWS native DynamoDB Table.
-type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeDynamoDbTable implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -33625,7 +33676,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # AWS native account details.
   awsNativeAccountDetails: AwsNativeAccountDetails
 
-  # AWS native ID of DynamoDB Table.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -33655,7 +33706,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # Indicates whether this DynamoDB table is protectable or not.
   isProtectable: Boolean!
 
-  # Whether the table is relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -33664,7 +33715,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the object.
+  # AWS Native name of the object.
   nativeName: String!
 
   # The latest snapshot that is indexed and unexpired, and therefore restorable.
@@ -33717,7 +33768,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # Name of the region from where backup will be taken. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty, and will be mapped directly to regions available for the DynamoDB table in the AWS cloud.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -33764,7 +33815,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -33790,7 +33841,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -33816,7 +33867,7 @@ type AwsNativeDynamoDbTable implements PolarisHierarchyObject , PolarisHierarchy
   # Size of the DynamoDB table in bytes.
   tableSizeBytes: Long!
 
-  # List of tags associated with the table.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # The list of snapshots taken for this workload.
@@ -33860,7 +33911,7 @@ type AwsNativeDynamoDbTablePointInTimeRestoreWindow {
   latestTime: DateTime
 }
 # AWS native EBS volume.
-type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeEbsVolume implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -33894,7 +33945,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   # Name for the AWS account.
   awsNativeAccountName: String!
 
-  # AWS Native ID of EBS volume.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -33921,7 +33972,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   # Whether exocompute is configured for the region where the volume is.
   isExocomputeConfigured: Boolean!
 
-  # Specifies whether file indexing is enabled for this EBS volume or not. When enabled, Rubrik scans the file structure within the EBS volume in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. 
+  # Specifies whether file indexing is enabled for this EBS volume or not. When enabled, Rubrik scans the file structure within the EBS volume in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
   isIndexingEnabled: Boolean! @deprecated(reason: "Deprecated, use fileIndexingStatus instead.")
 
   # Whether the volume image is marketplace image.
@@ -33930,7 +33981,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   # Indicates whether this EBS volume is protectable or not.
   isProtectable: Boolean!
 
-  # Whether the volume is relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -33992,7 +34043,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # Name of the region. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty string and will be mapped directly to available regions for EBS volume on cloud(AWS). For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -34039,7 +34090,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -34065,7 +34116,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -34088,7 +34139,7 @@ type AwsNativeEbsVolume implements PolarisHierarchyObject , PolarisHierarchySnap
     # Group Rubrik Security Cloud snapshots by field.
     snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
 
-  # List of tags associated with volume.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # Name of volume on AWS. Name is not necessarily unique for different volumes.
@@ -34281,7 +34332,7 @@ input AwsNativeEbsVolumeTypeFilter {
   ebsVolumeTypes: [AwsNativeEbsVolumeType!]!
 }
 # AWS native EC2 instance.
-type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeEc2Instance implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -34318,7 +34369,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   # List of cloud native applications associated with this EC2 instance.
   cloudNativeApplications: [CloudNativeApplicationInfo!]!
 
-  # AWS Native ID of Instance.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -34369,7 +34420,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   # Indicates whether this EC2 instance is protectable or not.
   isProtectable: Boolean!
 
-  # Whether the instance is relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -34443,7 +34494,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   # List of Recovery Plans associated with the virtual machine.
   recoveryPlansInfo: [RecoveryPlansInfo!]!
 
-  # Name of the region. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty string and will be mapped directly to available regions for EC2 instance on cloud(AWS). For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -34487,7 +34538,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -34513,7 +34564,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -34539,7 +34590,7 @@ type AwsNativeEc2Instance implements PolarisHierarchyObject , PolarisHierarchySn
   # Name of SSH key-pair for the Instance.
   sshKeyPairName: String!
 
-  # List of tags associated with Instance.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # Specifications for ensuring application consistency on the EC2 instance.
@@ -37104,6 +37155,12 @@ interface AwsNativeHierarchyObject {
   # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
+
+  # Object pause pending assignment details for RSC objects.
+  rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
   # Security posture metadata.
   securityMetadata: SecurityMetadata
 
@@ -37755,7 +37812,7 @@ input AwsNativeRdsDbInstanceClassFilter {
   dbInstanceClasses: [AwsNativeRdsDbInstanceClass!]!
 }
 # AWS native RDS instance.
-type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeRdsInstance implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -37786,7 +37843,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # List of cloud native applications associated with this RDS instance.
   cloudNativeApplications: [CloudNativeApplicationInfo!]!
 
-  # Native ID of the RDS instance.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -37828,7 +37885,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # Indicates whether this RDS instance is protectable or not.
   isProtectable: Boolean!
 
-  # Specifies whether the RDS Instance is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -37840,7 +37897,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the object.
+  # AWS Native name of the object.
   nativeName: String!
 
   # The latest snapshot that is indexed and unexpired, and therefore restorable.
@@ -37899,7 +37956,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # Name of the source RDS instance if this instance is a read replica. This field is not applicable for primary RDS instances.
   readReplicaSourceName: String!
 
-  # AWS region of RDS Instance.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -37943,7 +38000,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -37969,7 +38026,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -37992,7 +38049,7 @@ type AwsNativeRdsInstance implements PolarisHierarchyObject , PolarisHierarchySn
     # Group Rubrik Security Cloud snapshots by field.
     snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
 
-  # List of tags associated with RDS Instance.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # Identifier of VPC associated with RDS Instance.
@@ -38658,7 +38715,7 @@ type AwsNativeRoot {
     workloadHierarchy: WorkloadLevelHierarchy): AwsNativeHierarchyObjectConnection!
 }
 # AWS native S3 Bucket.
-type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type AwsNativeS3Bucket implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountLogicalChildType , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -38686,7 +38743,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
   # List of cloud native applications associated with this S3 bucket.
   cloudNativeApplications: [CloudNativeApplicationInfo!]!
 
-  # AWS native ID of S3 bucket.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -38722,7 +38779,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
   # Indicates whether this S3 bucket is protectable or not.
   isProtectable: Boolean!
 
-  # Whether the bucket is relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Whether versioning is enabled on the bucket.
@@ -38790,7 +38847,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # Name of the region. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty, and will be mapped directly to regions available for the S3 bucket in the AWS cloud.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -38834,7 +38891,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -38860,7 +38917,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -38883,7 +38940,7 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
     # Group Rubrik Security Cloud snapshots by field.
     snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
 
-  # List of tags associated with bucket.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # The list of snapshots taken for this workload.
@@ -43388,6 +43445,583 @@ type AzureComputeSettings {
   # Virtual Network ID of the Azure target.
   virtualNetworkId: String!
 }
+# An Azure Cosmos NoSQL account. Refers to the top-level Cosmos NoSQL resource
+# that owns databases and containers. For more info, see
+# https://learn.microsoft.com/en-us/azure/cosmos-nosql/introduction.
+type AzureCosmosNosqlAccount implements PolarisHierarchyObject , HierarchyObject {
+  # Name of the Azure Cosmos NoSQL account.
+  accountName: String!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Azure resource ID of the Azure Cosmos NoSQL account.
+  cloudNativeId: String!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Default consistency level of the account. Examples: Strong,
+  # BoundedStaleness, Session, ConsistentPrefix, Eventual.
+  defaultConsistencyLevel: String!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # Specifies whether the account uses a continuous backup policy rather than a
+  # periodic one.
+  isContinuousBackupEnabled: Boolean!
+
+  # Specifies whether key-based authentication is turned off, leaving Microsoft
+  # Entra ID as the only way to authenticate.
+  isLocalAuthDisabled: Boolean!
+
+  # Specifies whether partition merge is permitted on the account. This is a
+  # capability flag, not a record of past merges.
+  isPartitionMergeEnabled: Boolean!
+
+  # Specifies whether the Azure Cosmos NoSQL account is protectable.
+  isProtectable: Boolean!
+
+  # Specifies whether the account has the serverless capability. Serverless
+  # accounts have no provisioned throughput.
+  isServerless: Boolean!
+
+  # Cosmos NoSQL API kind of the account. Inventory covers the NoSQL API,
+  # reported as GlobalDocumentDB.
+  kind: String!
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Reachability of the account, derived from its public network access, IP
+  # rule, virtual network filter and private endpoint settings.
+  networkAccessMode: AzureCosmosNosqlNetworkAccessMode!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # Raw public network access value reported by Azure. This is the audit anchor
+  # for the derived networkAccessMode.
+  publicNetworkAccess: String!
+
+  # Azure region where the Azure Cosmos NoSQL account is located.
+  region: AzureNativeRegion!
+
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
+
+  # Object pause pending assignment details for RSC objects.
+  rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # List of tags associated with the Azure Cosmos NoSQL account.
+  tags: [AzureTag!]!
+}
+# An Azure Cosmos NoSQL container. Refers to the unit of scalability and the
+# item namespace within a Cosmos NoSQL database. For more info, see
+# https://learn.microsoft.com/en-us/azure/cosmos-nosql/resource-model.
+type AzureCosmosNosqlContainer implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable {
+  # Name of the Azure Cosmos NoSQL account that owns the container.
+  accountName: String!
+
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Ceiling for autoscale throughput, in request units per second. Zero when
+  # throughputMode is not autoscale.
+  autoscaleMaxRuPerSec: Int!
+
+  # The object from where the setup for performing backups of the Azure Cosmos
+  # NoSQL container is inherited.
+  backupSetupSourceObject: PathNode
+
+  # Azure resource ID of the Azure Cosmos NoSQL container.
+  cloudNativeId: String!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Conflict resolution mode of the container. Examples: LastWriterWins,
+  # Custom. Empty when the container reports no conflict resolution policy.
+  conflictResolutionMode: String!
+
+  # Item path compared to resolve conflicts when conflictResolutionMode is
+  # LastWriterWins. Example: /_ts.
+  conflictResolutionPath: String!
+
+  # Stored procedure that resolves conflicts when conflictResolutionMode is
+  # Custom.
+  conflictResolutionProcedure: String!
+
+  # Name of the Azure Cosmos NoSQL container.
+  containerName: String!
+
+  # Rubrik ID of the Azure Cosmos NoSQL database that owns the container.
+  cosmosDbDatabaseId: String!
+
+  # Name of the Azure Cosmos NoSQL database that owns the container.
+  databaseName: String!
+
+  # Time-to-live in seconds applied to items that do not set their own.
+  defaultTtlSeconds: Int!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # Number of excluded paths in the indexing policy of the container.
+  excludedPathCount: Int!
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # Number of included paths in the indexing policy of the container.
+  indexedPathCount: Int!
+
+  # Indexing mode of the container. Examples: consistent, lazy, none.
+  indexingMode: String!
+
+  # Specifies whether the container indexes items automatically.
+  isIndexingAutomatic: Boolean!
+
+  # Specifies whether the Azure Cosmos NoSQL container is a relic or not. A
+  # container is a relic when it is unprotected or deleted, but the previously
+  # taken snapshots of the container continue to exist within the Rubrik
+  # ecosystem.
+  isRelic: Boolean!
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # The latest snapshot that is indexed and unexpired, and therefore restorable.
+  newestIndexedSnapshot: PolarisSnapshot
+
+  # The most recent snapshot of this workload.
+  newestSnapshot(
+    # Filter snapshots by backup location id.
+    backupLocationId: String): PolarisSnapshot
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot(
+    # Filter snapshots by backup location id.
+    backupLocationId: String): PolarisSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount(
+    # Filter snapshots by backup location id.
+    backupLocationId: String): Int!
+
+  # Path of the partition key of the container. Example: /customerId.
+  partitionKeyPath: String!
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # Azure region where the Azure Cosmos NoSQL container is located.
+  region: AzureNativeRegion!
+
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
+
+  # Object pause pending assignment details for RSC objects.
+  rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filter the Rubrik Security Cloud snapshot connection.
+    filter: PolarisSnapshotFilterInput,
+
+    # Sort Rubrik Security Cloud snapshots by field.
+    sortBy: PolarisSnapshotSortByEnum = Date,
+
+    # Sorts the order of results.
+    sortOrder: SortOrder): PolarisSnapshotConnection
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Group-by connection for the snapshots of this workload.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Offset based on the customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter the Rubrik Security Cloud snapshot connection.
+    filter: PolarisSnapshotFilterInput,
+
+    # Group Rubrik Security Cloud snapshots by field.
+    groupBy: PolarisSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): PolarisSnapshotGroupByConnection
+
+  # Group-by connection for the snapshots of this workload.
+  snapshotGroupByNewConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Offset based on the customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter the Rubrik Security Cloud snapshot connection.
+    snapshotFilter: [PolarisSnapshotFilterNewInput!]!,
+
+    # Group Rubrik Security Cloud snapshots by field.
+    snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
+
+  # How throughput is provisioned for the container.
+  throughputMode: AzureCosmosNosqlThroughputMode!
+
+  # Provisioned request units per second, at the level named by
+  # throughputScope.
+  throughputRuPerSec: Int!
+
+  # Level of the Cosmos NoSQL hierarchy that provisions the reported
+  # throughput. A container under a shared-throughput database reports the
+  # database as the scope.
+  throughputScope: AzureCosmosNosqlThroughputScope!
+
+  # Number of unique keys in the unique key policy of the container. Zero when
+  # the container enforces no uniqueness constraint.
+  uniqueKeyCount: Int!
+
+  # Unique key policy of the container, encoded as a single value. A unique key
+  # is itself a list of paths, so the paths within one unique key are joined
+  # with a comma and the unique keys are joined with a semicolon. Example:
+  # /name/first,/name/last;/email.
+  uniqueKeyPaths: String!
+
+  # The list of snapshots taken for this workload.
+  workloadSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # The FID of the workload.
+    workloadId: String!,
+
+    # Filters for snapshot connection.
+    snapshotFilter: [SnapshotQueryFilterInput!],
+
+    # Sorts the order of results.
+    sortOrder: SortOrder,
+
+    # Sorts snapshots by field.
+    sortBy: SnapshotQuerySortByField,
+
+    # Time range input.
+    timeRange: TimeRangeInput,
+
+    # Specifies whether to ignore the active workload check.
+    ignoreActiveWorkloadCheck: Boolean): GenericSnapshotConnection
+}
+# An Azure Cosmos NoSQL database. Refers to the container namespace within a
+# Cosmos NoSQL account. For more info, see
+# https://learn.microsoft.com/en-us/azure/cosmos-nosql/resource-model.
+type AzureCosmosNosqlDatabase implements PolarisHierarchyObject , HierarchyObject {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Ceiling for autoscale throughput, in request units per second. Zero when
+  # throughputMode is not autoscale.
+  autoscaleMaxRuPerSec: Int!
+
+  # Azure resource ID of the Azure Cosmos NoSQL database.
+  cloudNativeId: String!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Rubrik ID of the Azure Cosmos NoSQL account that owns the database.
+  cosmosDbAccountId: String!
+
+  # Name of the Azure Cosmos NoSQL database.
+  databaseName: String!
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # Specifies whether the Azure Cosmos NoSQL database is protectable.
+  isProtectable: Boolean!
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # Azure region where the Azure Cosmos NoSQL database is located.
+  region: AzureNativeRegion!
+
+  # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  rscNativeObjectPendingSla: CompactSlaDomain
+
+  # Object pause pending assignment details for RSC objects.
+  rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # How throughput is provisioned for the database. Populated only when
+  # throughput is provisioned at the database level and shared across its
+  # containers.
+  throughputMode: AzureCosmosNosqlThroughputMode!
+
+  # Provisioned request units per second shared across the containers of the
+  # database.
+  throughputRuPerSec: Int!
+}
+# Reachability of an Azure Cosmos NoSQL account, collapsing the account's
+# public-network-access, IP-rule, VNet-filter and private-endpoint settings
+# into a single mode. The raw public_network_access value is carried
+# alongside it so a derivation can be audited against its input.
+enum AzureCosmosNosqlNetworkAccessMode {
+  # Not reachable over any network path.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_DISABLED
+
+  # Reachable only through private endpoints.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_PRIVATE_ENDPOINT_ONLY
+
+  # Publicly reachable, restricted to an IP allowlist.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_PUBLIC_IP_RESTRICTED
+
+  # Reachable from any public network.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_PUBLIC_OPEN
+
+  # Network access mode has not been determined.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_UNSPECIFIED
+
+  # Reachable only from allowed virtual networks.
+  AZURE_COSMOS_NOSQL_NETWORK_ACCESS_MODE_VNET_RESTRICTED
+}
+# How throughput is provisioned for an Azure Cosmos NoSQL resource.
+enum AzureCosmosNosqlThroughputMode {
+  # Request units per second scale up to a configured ceiling.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_MODE_AUTOSCALE
+
+  # Fixed request units per second.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_MODE_MANUAL
+
+  # Account-level serverless capability; no throughput settings exist.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_MODE_SERVERLESS
+
+  # Throughput mode has not been determined.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_MODE_UNSPECIFIED
+}
+# Which level of the Azure Cosmos NoSQL hierarchy the reported throughput value
+# came from. A container under a shared-throughput database has no throughput
+# of its own, so without this the database's value reads as the container's.
+enum AzureCosmosNosqlThroughputScope {
+  # Serverless account; no throughput value exists at any level.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_SCOPE_ACCOUNT
+
+  # Throughput is provisioned on the container itself.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_SCOPE_CONTAINER
+
+  # Throughput is shared across the containers of the database.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_SCOPE_DATABASE
+
+  # Throughput scope has not been determined.
+  AZURE_COSMOS_NOSQL_THROUGHPUT_SCOPE_UNSPECIFIED
+}
 # AzureDevOpsConnectionStatusSummaryReply represents the reply for the Azure
 # DevOps connection status summary.
 type AzureDevOpsConnectionStatusSummaryReply {
@@ -46139,6 +46773,9 @@ type AzureNativeResourceGroup implements PolarisHierarchyObject , HierarchyObjec
 
   # The authorized operations on the object.
   authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]!
+
+  # Count of Azure Cosmos NoSQL containers in the resource group.
+  azureCosmosNosqlContainerCount: Int!
 
   # Subscription details of the resource group.
   azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails @deprecated(reason: "Deprecated, use azureSubscriptionDetails instead.")
@@ -52632,6 +53269,17 @@ type CdmAgentStatus {
   # The reason the agent disconnected.
   disconnectReason: String
 }
+# A single CDM REST endpoint blocked while a TPR rule is in effect.
+type CdmApiOperation {
+  # The HTTP method the endpoint is served on.
+  method: String!
+
+  # The CDM REST route path, excluding the /api/{version} prefix.
+  path: String!
+
+  # The CDM API version segments the endpoint is served under.
+  versions: [String!]!
+}
 # Different types of usages of a certificate on a Rubrik cluster.
 enum CdmCertificateUsage {
   # Secondary Agent.
@@ -55676,6 +56324,17 @@ type CertificateSummaryListResponse {
   # Supported in v5.1+
   # Total list responses.
   total: Long
+}
+# Specifies how the TLS trust anchor for an S3-compatible archival location was chosen.
+enum CertificateTrustMode {
+  # The endpoint is validated against an administrator-selected certificate.
+  CERTIFICATE_TRUST_MODE_CUSTOM
+
+  # The endpoint is validated against the platform default trust store.
+  CERTIFICATE_TRUST_MODE_DEFAULT
+
+  # The Rubrik cluster trusts the certificate captured on first connection.
+  CERTIFICATE_TRUST_MODE_TOFU
 }
 # Different types of usages of a certificate on RSC.
 enum CertificateUsage {
@@ -60387,6 +61046,10 @@ type Cluster {
   # The licensed products that belong to this cluster.
   licensedProducts: [Product!]!
 
+  # Who operates the Rubrik cluster, either Rubrik on the customer's behalf
+  # or the customer.
+  managementType: ClusterManagementType!
+
   # Metadata pull scheduler.
   metadataPullScheduler: JobsReply
 
@@ -61389,6 +62052,17 @@ enum ClusterLicenseInfoType {
 
   # Represents cluster license information about valid licenses.
   VALID_LICENSE
+}
+# Who operates a Rubrik cluster.
+enum ClusterManagementType {
+  # Rubrik operates the Rubrik cluster on the customer's behalf.
+  MANAGEMENT_TYPE_RUBRIK_MANAGED
+
+  # The customer operates the Rubrik cluster.
+  MANAGEMENT_TYPE_SELF_MANAGED
+
+  # The management type of the Rubrik cluster is not specified.
+  MANAGEMENT_TYPE_UNSPECIFIED
 }
 # Metrics of a Rubrik cluster.
 type ClusterMetric {
@@ -66681,6 +67355,9 @@ input CreateS3CompatibleTargetInput {
   # Bucket prefix of the S3-compatible target.
   bucketPrefix: String!
 
+  # The TLS trust mode for the S3-compatible target.
+  certificateTrustMode: CertificateTrustMode
+
   # Cluster UUID of the S3-compatible target.
   clusterUuid: UUID!
 
@@ -66713,6 +67390,9 @@ input CreateS3CompatibleTargetInput {
 
   # Subtype of an S3-compatible target.
   subType: S3CompatibleSubType
+
+  # Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3-compatible target.
+  tlsCertificateId: String
 
   # Specifies whether system proxy will be used or not.
   useSystemProxy: Boolean!
@@ -67744,6 +68424,11 @@ type CustomReportInfo {
 
   # Email address of the user who created the report.
   createdBy: String!
+
+  # Description persisted with the report. Populated only for script
+  # reports, whose description is authored per report; template-backed
+  # reports take their description from the report template instead.
+  description: String!
 
   # Unique identifier of the report.
   id: Long!
@@ -71544,14 +72229,6 @@ input DeleteMongoSourceInput {
   # User note to associate with audits.
   userNote: String
 }
-# Input for deleting a NoSQL protection store.
-input DeleteMosaicStoreInput {
-  # Required. UUID used to identify the cluster the request goes to.
-  clusterUuid: String!
-
-  # Required. Name of the Mosaic store to be deleted.
-  storeName: String!
-}
 # Input for deleting SQL Server snapshots.
 input DeleteMssqlDbSnapshotsInput {
   # Required. ID of the Microsoft SQL database.
@@ -71726,6 +72403,15 @@ input DeleteServiceAccountsFromAccountInput {
 input DeleteSmbDomainInput {
   # Required. ID of the SMB Domain to delete.
   domainName: String!
+}
+# Specifies the input object IDs and location IDs for
+# the DeleteSnapshotsOfObjects mutation.
+input DeleteSnapshotsOfObjectsInput {
+  # Locations to delete the snapshots from.
+  locationIds: [String!]!
+
+  # IDs of the objects whose snapshots are to be deleted.
+  objectIds: [String!]!
 }
 # Input to delete snapshots of unmanaged objects.
 input DeleteSnapshotsOfUnmanagedObjectsInput {
@@ -74227,7 +74913,7 @@ type Dynamics365Organization implements SaasAppsOrganization , HierarchyObject ,
   # Sequential list of the logical ancestors of this object.
   logicalPath: [PathNode!]!
 
-  # Rubrik ID of the Dynamics 365 metadata workload.
+  # Rubrik ID of the Dataverse metadata workload.
   metadataWorkloadID: UUID
 
   # Name of the hierarchy object.
@@ -75572,6 +76258,9 @@ enum EventObjectType {
   # Azure DevOps Project.
   AZURE_DEVOPS_PROJECT
 
+  # Azure DevOps project artifacts (feeds, packages) per project.
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -75665,10 +76354,10 @@ enum EventObjectType {
   # CrowdStrike integration object.
   CROWDSTRIKE_INTEGRATION
 
-  # Dynamics 365 dataverse table.
+  # Dataverse table.
   D365_DATAVERSE_TABLE
 
-  # Dynamics 365 metadata.
+  # Dataverse metadata.
   D365_METADATA
 
   # Dynamics 365 organization.
@@ -80857,9 +81546,9 @@ input FeatureFlagAttributeInput {
   # Value of the attribute.
   value: String!
 }
-# Input to minimum CDM version supporting all given features.
+# Input to get minimum CDM version supporting all given features.
 input FeatureListMinimumCdmVersionInputType {
-  # Required. Feature type to check.
+  # Required. Feature types to check.
   featureTypes: [CdmFeatureFlagType!]!
 }
 # Minimum cluster version required for feature set details.
@@ -80871,6 +81560,13 @@ type FeatureListMinimumCdmVersionReply {
 type FeaturePermission {
   # Represents the feature for which the permissions are returned.
   feature: CloudAccountFeature!
+
+  # Whether an Exocompute Lambda execution role ARN is registered for the
+  # cloud account. Meaningful only for the EXOCOMPUTE feature, and false for
+  # every other feature. Also false for every feature of an organization
+  # without private Exocompute enabled. An Exocompute configuration can
+  # request an EKS cluster with a private API endpoint only while this is true.
+  hasExocomputeLambdaRole: Boolean!
 
   # Represents the json string of the permissions.
   permissionJson: String!
@@ -93326,6 +94022,16 @@ type GithubRepositoryEdge {
   # The actual GithubRepository object wrapped by this edge.
   node: GithubRepository!
 }
+# SLA Domain configuration for GitHub developer collaboration backup.
+type GithubSlaConfig {
+  # Indicates whether GitHub developer collaboration backup is enabled.
+  isDeveloperCollaborationEnabled: Boolean!
+}
+# Input to configure the SLA Domain for GitHub developer collaboration backup.
+input GithubSlaConfigInput {
+  # Indicates whether GitHub developer collaboration backup is enabled.
+  isDeveloperCollaborationEnabled: Boolean
+}
 # Information about a certificate on Rubrik Security Cloud.
 type GlobalCertificate {
   # The usages for the certificate on Rubrik clusters.
@@ -93913,7 +94619,7 @@ type GlueIcebergCatalog implements PolarisHierarchyObject , HierarchyObject , Aw
   # RSC tags to which this hierarchy object is assigned.
   allTags: [AssignedRscTag!]!
 
-  # AWS native ID of the Glue catalog.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -93931,7 +94637,7 @@ type GlueIcebergCatalog implements PolarisHierarchyObject , HierarchyObject , Aw
   # ID of the hierarchy object.
   id: UUID!
 
-  # Whether the catalog is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -93940,7 +94646,7 @@ type GlueIcebergCatalog implements PolarisHierarchyObject , HierarchyObject , Aw
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the catalog.
+  # AWS Native name of the object.
   nativeName: String!
 
   # Number of descendant workloads of this object.
@@ -93972,7 +94678,7 @@ type GlueIcebergCatalog implements PolarisHierarchyObject , HierarchyObject , Aw
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the catalog.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -93993,7 +94699,7 @@ type GlueIcebergCatalog implements PolarisHierarchyObject , HierarchyObject , Aw
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # Tags associated with the catalog.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 }
 # AWS Glue Iceberg Database.
@@ -94007,7 +94713,7 @@ type GlueIcebergDatabase implements PolarisHierarchyObject , HierarchyObject , A
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
-  # AWS native ID of the Glue database.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -94025,7 +94731,7 @@ type GlueIcebergDatabase implements PolarisHierarchyObject , HierarchyObject , A
   # ID of the hierarchy object.
   id: UUID!
 
-  # Whether the database is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -94034,7 +94740,7 @@ type GlueIcebergDatabase implements PolarisHierarchyObject , HierarchyObject , A
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the database.
+  # AWS Native name of the object.
   nativeName: String!
 
   # Number of descendant workloads of this object.
@@ -94066,7 +94772,7 @@ type GlueIcebergDatabase implements PolarisHierarchyObject , HierarchyObject , A
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the database.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -94087,7 +94793,7 @@ type GlueIcebergDatabase implements PolarisHierarchyObject , HierarchyObject , A
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # Tags associated with the database.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 }
 # Write the snapshot into a different, already-existing Iceberg table.
@@ -94139,7 +94845,7 @@ type GlueIcebergInventoryStatsReply {
   tablesTotalCount: Int!
 }
 # AWS Glue Iceberg Table.
-type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type GlueIcebergTable implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -94149,7 +94855,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
-  # AWS native ID of the Glue table.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -94173,7 +94879,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
   # Whether exocompute is configured for the region where the table's data is located.
   isExocomputeConfigured: Boolean!
 
-  # Whether the table is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # S3 data location for this table.
@@ -94185,7 +94891,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the table.
+  # AWS Native name of the object.
   nativeName: String!
 
   # The latest snapshot that is indexed and unexpired, and therefore restorable.
@@ -94235,7 +94941,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the table.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -94282,7 +94988,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -94308,7 +95014,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -94331,7 +95037,7 @@ type GlueIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappa
     # Group Rubrik Security Cloud snapshots by field.
     snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
 
-  # Tags associated with the table.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # The list of snapshots taken for this workload.
@@ -95231,6 +95937,9 @@ type HarmfulLifecyclePolicy {
   # The bucket holding the archived data.
   bucketName: String!
 
+  # The name of the cloud account associated with the archival location.
+  cloudAccountName: String!
+
   # The storage class the location's objects are written to.
   defaultStorageClass: String!
 
@@ -95958,6 +96667,15 @@ enum HierarchyFilterField {
 
   # Filter Rubrik CDM objects by cluster ID.
   CLUSTER_ID
+
+  # Filter objects by who operates the Rubrik cluster they belong to. Use
+  # the texts parameter with ClusterManagementType names stripped of their
+  # MANAGEMENT_TYPE_ prefix: "RUBRIK_MANAGED" keeps objects on Rubrik
+  # clusters that Rubrik operates on the customer's behalf, and
+  # "SELF_MANAGED" keeps objects on Rubrik clusters that the customer
+  # operates. Passing both places no restriction. An object whose Rubrik
+  # cluster has no management type is treated as self-managed.
+  CLUSTER_MANAGEMENT_TYPE
 
   # Filter clusters by the ClusterTypeEnum.
   CLUSTER_TYPE
@@ -97152,6 +97870,9 @@ enum HierarchyObjectTypeEnum {
   # Azure DevOps Project.
   AZURE_DEVOPS_PROJECT
 
+  # Azure DevOps project artifacts (feeds and packages).
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps project-scoped fixed object to represent non repo entity.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -97248,10 +97969,10 @@ enum HierarchyObjectTypeEnum {
   # Cloud Native Tag Rule.
   CloudNativeTagRule
 
-  # D365 Dataverse Table.
+  # Dataverse Table.
   D365_DATAVERSE_TABLE
 
-  # D365 Metadata.
+  # Dataverse Metadata.
   D365_FIXED_OBJECT
 
   # D365 Organization.
@@ -108303,25 +109024,64 @@ enum K8sClusterStatus {
 # Supported in v9.0+
 # Key properties of a Kubernetes cluster.
 type K8sClusterSummary {
+  # Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Populated only when dataPathTransport is pernodeproxy.
+  backupSubnetCidr: String
+
   # Supported in v9.2+
   # The details of the RSC service account used for CRD operations.
   crdServiceAccountInfo: ServiceAccountInfo
+
+  # Transport type used for RBA data movers. Set to pernodeproxy when the per-node backup proxy DaemonSet routes data traffic. Null for clusters without per-node-proxy configured.
+  dataPathTransport: String
+
+  # The details of the internal RSC service account used for database operations.
+  dbServiceAccountInfo: ServiceAccountInfo
 
   # Supported in v9.1+
   # Distribution of the Kubernetes cluster.
   distribution: String
 
+  # Effective SLA domain ID inherited or directly assigned.
+  effectiveSlaId: String
+
+  # Source of the effective SLA (direct assignment or inherited hierarchy).
+  effectiveSlaSource: String
+
+  # Type of the effective SLA domain.
+  effectiveSlaType: String
+
+  # Helm chart status for manifest-onboarded clusters (e.g. synced, stale).
+  helmStatus: String
+
+  # Helm chart version deployed on the cluster.
+  helmVersion: String
+
   # Required. Supported in v9.0+
   # ID of the Kubernetes cluster.
   id: String!
+
+  # Specifies whether containerized database protection is enabled on the Rubrik cluster.
+  isDbProtectionEnabled: Boolean
+
+  # Kubernetes server version reported by the cluster API.
+  k8SVersion: String
+
+  # KubeVirt version installed on the cluster, or null if KubeVirt is not present. Populated by the cluster refresh task.
+  kubevirtVersion: String
 
   # Supported in v9.2+
   # The configuration for the kupr server proxy being used.
   kuprServerProxyConfig: KuprServerProxyConfig
 
+  # IP address of the kupr proxy pod on the Multus secondary network. Populated only for Multus transport clusters.
+  kuprServerProxyPodMultusIp: String
+
   # Supported in v9.0+
   # Last refresh time of the Kubernetes cluster.
   lastRefreshTime: DateTime
+
+  # LoadBalancer IP or DNS name for the kupr proxy service. Populated only for LoadBalancer transport clusters.
+  loadbalancerIpDns: String
 
   # Maximum number of kupr backup agents allowed to run concurrently. Omitted when FF is off.
   maxConcurrentAgents: Int
@@ -108329,9 +109089,27 @@ type K8sClusterSummary {
   # Maximum number of PVCs assigned to a single kupr backup agent. Omitted when FF is off.
   maxPvcsPerAgent: Int
 
+  # Network Attachment Definition name for Multus transport clusters.
+  nadName: String
+
+  # Namespace of the Network Attachment Definition for Multus transport clusters.
+  nadNamespace: String
+
   # Required. Supported in v9.0+
   # Name of the Kubernetes cluster.
   name: String!
+
+  # Number of Kubernetes namespaces discovered in this cluster.
+  namespaceCount: Int
+
+  # Number of K8s labels tracked by CDM for this cluster. Null on list responses.
+  numLabels: Int
+
+  # Number of CDM protection sets defined for this cluster. Null on list responses.
+  numProtectionSets: Int
+
+  # Number of KubeVirt VMs discovered in this cluster. Null on list responses.
+  numVms: Int
 
   # Supported in v9.2+
   # The details of the RSC service account used for onboarding using manifest.
@@ -108340,6 +109118,9 @@ type K8sClusterSummary {
   # Supported in v9.2+
   # The type of onboarding. It can be kubeconfig or manifest.
   onboardingType: String
+
+  # NodePort or LoadBalancer port used to reach the kupr proxy service.
+  port: Int
 
   # PVC grouping strategy (node_affinity | count | none). Omitted when FF is off.
   pvcGroupingStrategy: String
@@ -108359,6 +109140,9 @@ type K8sClusterSummary {
   # Supported in v9.1+
   # The transport type used for communication with the Kubernetes cluster.
   transport: String
+
+  # In-cluster Rubrik workload components (persistent and on-demand). Null on list responses; populated only by the single-cluster GET.
+  workloads: [K8sWorkloadComponentSummary!]!
 }
 # Type of the Kubernetes cluster.
 enum K8sClusterType {
@@ -108489,6 +109273,9 @@ input K8sExportParametersInput {
 
   # Supported in v9.1+
   pvcNames: [String!] = []
+
+  # Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
+  restoreOrderTimeoutPolicy: String
 
   # Supported in v9.1+
   # Specifies whether to delete exported namespace if the export failed. By default, this value is false.
@@ -109058,6 +109845,9 @@ input K8sRestoreParametersInput {
   # Supported in v9.1+
   pvcNames: [String!] = []
 
+  # Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
+  restoreOrderTimeoutPolicy: String
+
   # Supported in v9.5+
   # The storage mapping to be used for the restore operation.
   storageMapping: StorageMappingInput
@@ -109258,6 +110048,41 @@ type K8sVmSnapshotSummary {
   # Required. Supported in v9.3+
   # Name of the Kubernetes Virtual Machine.
   name: String!
+}
+# Summary of a Rubrik workload component running (or deployable on-demand) in a Kubernetes cluster.
+type K8sWorkloadComponentSummary {
+  # Names of cluster nodes hosting a ready pod for this workload. Null when no pods are ready or for on-demand workloads.
+  activeNodes: [String!]!
+
+  # CPU limit as a Kubernetes quantity string (e.g. "500m").
+  cpuLimit: String
+
+  # CPU request as a Kubernetes quantity string (e.g. "250m").
+  cpuRequest: String
+
+  # Container image reference, or null when not yet determined.
+  image: String
+
+  # Memory limit as a Kubernetes quantity string (e.g. "1024Mi").
+  memoryLimit: String
+
+  # Memory request as a Kubernetes quantity string (e.g. "512Mi").
+  memoryRequest: String
+
+  # Required. Name of the workload (e.g. appscontroller, kupr-proxy, backup-agent).
+  name: String!
+
+  # Required. Desired replica count. -1 indicates an on-demand workload that is not permanently deployed.
+  replicas: Int!
+
+  # Required. Deployment scope: Deployment (permanent single workload), Cluster-wide (DaemonSet across all nodes), or On-Demand (workload not permanently deployed).
+  scope: String!
+
+  # Machine-readable health status: ok, degraded, crash_loop_back_off, image_pull_back_off, pending, or unknown. Null for on-demand workloads.
+  status: String
+
+  # Raw Kubernetes waiting reason or condition message associated with the current status. Null when status is ok or for on-demand workloads.
+  statusMessage: String
 }
 # KDC configuration for Kerberos authentication.
 type KdcConfig {
@@ -112956,6 +113781,8 @@ input LegalHoldQueryFilter {
 
   # Workload types.
   snappableTypes: [ManagedObjectType!] = []
+
+  # Snapshot customizations to filter by.
   snapshotCustomizations: [SnapshotCustomization!] = []
 
   # Snapshot types.
@@ -113037,9 +113864,10 @@ type LegalHoldSnappableDetailEdge {
 }
 # LegalHoldSnapshotDetails.
 type LegalHoldSnapshotDetail {
+  # The customizations applied to the snapshot.
   customizations: [SnapshotCustomization!]!
 
-  # ID.
+  # ID. The identifier is the for-ever snapshot id.
   id: String!
 
   # Legal hold configuration for the snapshot. Populated only for RSC
@@ -115939,6 +116767,18 @@ type M365ProductOperationMode {
   # Workload type of an M365 organization.
   workloadType: M365DashboardWorkloadType!
 }
+# Options for automated M365 Access Recovery during a granular restore.
+# Absent means no M365 recovery; a standard Entra ID restore runs instead.
+input M365RecoveryOptionsInput {
+  # When true, recover the principal's Exchange Online mailbox alongside the
+  # Entra ID object.
+  shouldIncludeExchange: Boolean!
+
+  # When true, recover the principal's OneDrive access alongside the Entra ID
+  # object. Recovering content from a permanently removed OneDrive site is not
+  # supported.
+  shouldIncludeOneDrive: Boolean!
+}
 # A per-workload boolean condition expression filter set for an M365 recovery
 # plan.
 type M365RecoveryPlanConditionTree {
@@ -116514,6 +117354,9 @@ enum ManagedObjectType {
   # Azure DevOps project.
   AZURE_DEVOPS_PROJECT
 
+  # Azure DevOps project artifacts (feeds and packages).
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps project-scoped fixed object to represent non repo entity.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -116595,10 +117438,10 @@ enum ManagedObjectType {
   # Confluence Space.
   CONFLUENCE_SPACE
 
-  # D365 Dataverse Table.
+  # Dataverse Table.
   D365_DATAVERSE_TABLE
 
-  # D365 metadata.
+  # Dataverse Metadata.
   D365_FIXED_OBJECT
 
   # D365 Organization.
@@ -120898,14 +121741,6 @@ type ModifyIpmiReply {
   # Required. Supported in v5.0+
   isAvailable: Boolean!
 }
-# Input to modify Mosaic Store.
-input ModifyMosaicStoreInput {
-  # Required. UUID used to identify the cluster the request goes to.
-  clusterUuid: String!
-
-  # Required. Modify store request object with modified details of a store.
-  modifyStoreData: MosaicModifyStoreRequestInput!
-}
 # Supported in v9.0+
 # v9.0-v9.2: Type of user authentication used when adding the MongoDB cluster.
 # 
@@ -122455,7 +123290,8 @@ input MongoRecoveryRequestConfigInput {
 
   # Supported in v9.0+
   # v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-  # v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  # v9.1-v9.6: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  # v9.7: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used while adding the target source is used.
   targetAuthenticationType: MongoAuthenticationType
 
   # Supported in v9.0+
@@ -123443,85 +124279,6 @@ input MonthlySnapshotScheduleInput {
 
   # List the days in a month on which you want a snapshot with monthly frequency to be taken.
   daysOfMonth: [MonthlyDaySpecInput!]
-}
-# Supported in m3.2.0-m4.2.0
-# Object for stores added on mosaic.
-input MosaicAddStoreRequestInput {
-  # Supported in m3.2.0-m4.2.0
-  # Access key id.
-  accessKeyId: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Nfs server.
-  nfsServer: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Nfs server mount path.
-  nfsServerMountPath: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Secret key.
-  secretKey: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Whether to skip key file config.
-  skipKeyFileConfig: Boolean
-
-  # Required. Supported in m3.2.0-m4.2.0
-  # Name of the store.
-  storeName: String!
-
-  # Required. Supported in m3.2.0-m4.2.0
-  # Type of the store on mosaic.
-  storeType: MosaicAddStoreRequestStoreType!
-
-  # Required. Supported in m3.2.0-m4.2.0
-  # Store path/url.
-  storeUrl: String!
-}
-enum MosaicAddStoreRequestStoreType {
-  MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_AZURE_STORE
-  MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_GS_STORE
-  MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_NFS_STORE
-  MOSAIC_ADD_STORE_REQUEST_STORE_TYPE_S3_STORE
-}
-# Supported in m3.2.0-m4.2.0
-# Response object from an async request to mosaic.
-type MosaicAsyncResponse {
-  # Supported in m3.2.0-m4.2.0
-  # Mosaic Job ID of submitted job in case of successful job submission. This job id can be used to track progress of the request.
-  data: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Error message in case of failure.
-  message: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Return Code from Mosaic.
-  returnCode: Long
-
-  # Supported in m3.2.0-m4.2.0
-  # Status of the request.
-  status: Boolean
-}
-# Supported in m3.2.0-m4.2.0
-# Object for stores added on mosaic.
-input MosaicModifyStoreRequestInput {
-  # Supported in m3.2.0-m4.2.0
-  # Access key id.
-  accessKeyId: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Secret key.
-  secretKey: String
-
-  # Supported in m3.2.0-m4.2.0
-  # Whether to skip key file config.
-  skipKeyFileConfig: Boolean
-
-  # Required. Supported in m3.2.0-m4.2.0
-  # Name of the store.
-  storeName: String!
 }
 # Additional info for `MOSAIC_SOURCE` and `DELETE_MOSAIC_SOURCE` jobs.
 input MosaicSourceInfo {
@@ -124764,7 +125521,9 @@ type MssqlDatabase implements CdmHierarchyObject , HierarchyObject , HierarchySn
   # Specifies if the SQL Server database is a relic.
   isRelic: Boolean!
 
-  # True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
   isReplica: Boolean
 
   # Latest user note information.
@@ -130733,6 +131492,9 @@ input NasSystemRegisterInput {
   # Required. Supported in v7.0+
   nasVendorType: NasVendorType!
 
+  # Default NFS authentication mode for all namespaces on this NAS system. Applies to NetApp NAS systems only. STANDARD uses sec=sys (default). KERBEROS_PREFERRED tries sec=krb5 first and falls back to sec=sys on auth failure. KERBEROS_ONLY enforces sec=krb5 and fails the job with no fallback. Per-namespace overrides set via bulkUpdateNasNamespaces take precedence over this system-level default.
+  nfsAuthMode: String
+
   # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 
@@ -130747,6 +131509,9 @@ input NasSystemRegisterInput {
   # Supported in v8.1+
   # Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
   shouldGrantSmbShareRootAccess: Boolean
+
+  # SMB authentication mode for all namespaces on this NAS system. STANDARD uses NTLM only (default for existing sources). KERBEROS_PREFERRED tries Kerberos first and falls back to NTLM. KERBEROS_ONLY enforces Kerberos and fails closed with no NTLM fallback.
+  smbAuthMode: String
 
   # Supported in v8.1+
   # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
@@ -130788,6 +131553,9 @@ input NasSystemUpdateInput {
   # Supported in v8.1+
   nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
+  # Default NFS authentication mode for all namespaces on this NAS system. Applies to NetApp NAS systems only. Updating this propagates to all namespaces on next discovery unless overridden at the namespace level.
+  nfsAuthMode: String
+
   # Supported in v8.1+
   nutanixFileServerParameters: NutanixFileServerParametersInput
 
@@ -130806,6 +131574,9 @@ input NasSystemUpdateInput {
   # Supported in v8.1+
   # Optional parameter that specifies whether to remove the system-generated (not user-supplied) SMB credentials in namespaces and recreate them. If this parameter is true, the system-generated SMB credentials in all namespaces are removed. In addition, when the NAS system does not have user-supplied (system level) SMB credentials, new SMB credentials are generated in each namespace that does not have user-supplied (namespace level) SMB credentials. The API credentials must be provided when this parameter is true.
   shouldResetGeneratedNamespaceSmbCredentials: Boolean
+
+  # SMB authentication mode for all namespaces on this NAS system. Updating this propagates to all namespaces on next discovery unless overridden at the namespace level.
+  smbAuthMode: String
 
   # Supported in v8.1+
   # Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
@@ -132533,12 +133304,12 @@ type NodeTunnelStatusConnection {
   # Total number of nodes.
   total: Long
 }
-# Mapping of Node name to IP configurations for the node.
+# Mapping of node name to IP configurations for add-nodes operations.
 input NodesMapInput {
-  # Required. The name for the new node.
+  # The name for the new node.
   key: String = ""
 
-  # Node map value.
+  # The IP configuration for the new node.
   value: NodeConfigInput!
 }
 # All information regarding the notification.
@@ -139929,10 +140700,11 @@ type O365SnapshotItemInfo {
   # The parent folder ID of the object (ROOT indicates root folder).
   parentFolderId: String
 
-  # The ID of the snapshot.
+  # The ID of the snapshot, used to identify the snapshot in search scenarios.
   snapshotId: String
 
-  # The sequence number of the snapshot.
+  # The sequence number of the snapshot, used to identify the snapshot in
+  # search scenarios.
   snapshotNum: Int
 }
 # Represents the number of service types for a subscription.
@@ -141007,6 +141779,9 @@ type ObjectSpecificConfigs {
   # SLA Domain configuration for GCP Cloud SQL object.
   gcpCloudSqlConfig: GcpCloudSqlConfig
 
+  # SLA Domain configuration for GitHub developer collaboration backup.
+  githubSlaConfig: GithubSlaConfig
+
   # SLA Domain configuration for Apache Iceberg table.
   icebergSlaConfig: IcebergSlaConfig
 
@@ -141074,6 +141849,9 @@ input ObjectSpecificConfigsInput {
 
   # Input to configure the SLA Domain for GCP Cloud SQL.
   gcpCloudSqlConfigInput: GcpCloudSqlConfigInput
+
+  # Input to configure the SLA Domain for GitHub developer collaboration backup.
+  githubSlaConfigInput: GithubSlaConfigInput
 
   # Input to configure the SLA Domain for Apache Iceberg table.
   icebergSlaConfigInput: IcebergSlaConfigInput
@@ -141316,6 +142094,9 @@ enum ObjectTypeEnum {
   # Azure Cosmos NoSQL container.
   AZURE_COSMOS_NOSQL_CONTAINER
 
+  # Azure DevOps project artifacts (feeds and packages).
+  AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT
+
   # Azure DevOps Developer Collaboration.
   AZURE_DEVOPS_PROJECT_FIXED_OBJECT
 
@@ -141376,10 +142157,10 @@ enum ObjectTypeEnum {
   # Confluence Space.
   CONFLUENCE_SPACE
 
-  # D365 Dataverse Table.
+  # Dataverse Table.
   D365_DATAVERSE_TABLE
 
-  # D365 metadata.
+  # Dataverse Metadata.
   D365_FIXED_OBJECT
 
   # DB2 database.
@@ -142006,7 +142787,7 @@ type OlvmComputeClusterPhysicalChildTypeEdge {
   node: OlvmComputeClusterPhysicalChildType!
 }
 # OLVM compute cluster.
-type OlvmComputeClusterV1 implements HierarchyObject , CdmHierarchyObject , OlvmManagerDescendant , OlvmDatacenterDescendant , OlvmManagerPhysicalChildType , OlvmDatacenterPhysicalChildType {
+type OlvmComputeClusterV1 implements CdmHierarchyObject , HierarchyObject , OlvmManagerDescendant , OlvmDatacenterDescendant , OlvmManagerPhysicalChildType , OlvmDatacenterPhysicalChildType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -142444,7 +143225,7 @@ type OlvmDatacenterPhysicalChildTypeEdge {
   node: OlvmDatacenterPhysicalChildType!
 }
 # OLVM datacenter.
-type OlvmDatacenterV1 implements HierarchyObject , CdmHierarchyObject , OlvmManagerDescendant , OlvmManagerPhysicalChildType {
+type OlvmDatacenterV1 implements CdmHierarchyObject , HierarchyObject , OlvmManagerDescendant , OlvmManagerPhysicalChildType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -142879,7 +143660,7 @@ type OlvmManagerPhysicalChildTypeEdge {
   node: OlvmManagerPhysicalChildType!
 }
 # OLVM manager.
-type OlvmManagerV1 implements HierarchyObject , CdmHierarchyObject {
+type OlvmManagerV1 implements CdmHierarchyObject , HierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -143351,7 +144132,7 @@ type OlvmTagLogicalChildEdge {
   node: OlvmTagLogicalChild!
 }
 # OLVM tag.
-type OlvmTagV1 implements HierarchyObject , CdmHierarchyObject , OlvmManagerDescendant , OlvmTagDescendant , OlvmTagLogicalChild {
+type OlvmTagV1 implements CdmHierarchyObject , HierarchyObject , OlvmManagerDescendant , OlvmTagDescendant , OlvmTagLogicalChild {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -143538,7 +144319,7 @@ type OlvmTagV1 implements HierarchyObject , CdmHierarchyObject , OlvmManagerDesc
   tagName: String!
 }
 # OLVM virtual machine.
-type OlvmVirtualMachineV1 implements HierarchyObject , CdmHierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , OlvmManagerDescendant , OlvmDatacenterDescendant , OlvmComputeClusterDescendant , OlvmTagDescendant , OlvmTagLogicalChild , OlvmManagerPhysicalChildType , OlvmDatacenterPhysicalChildType , OlvmComputeClusterPhysicalChildType {
+type OlvmVirtualMachineV1 implements CdmHierarchyObject , HierarchyObject , HierarchySnappable , CdmHierarchySnappableNew , OlvmManagerDescendant , OlvmDatacenterDescendant , OlvmComputeClusterDescendant , OlvmTagDescendant , OlvmTagLogicalChild , OlvmManagerPhysicalChildType , OlvmDatacenterPhysicalChildType , OlvmComputeClusterPhysicalChildType {
   # OLVM virtual machine agent status.
   agentStatus: String!
 
@@ -144065,6 +144846,112 @@ enum OpenAccessType {
   # and in root results in the DB.
   UNKNOWN_ACCESS @deprecated(reason: "enum value is deprecated.")
 }
+# An OpenStack availability zone: a logical partition of a region's compute
+# hosts.
+type OpenstackAvailabilityZone implements CdmHierarchyObject , HierarchyObject , OpenstackEnvironmentDescendantType , OpenstackEnvironmentPhysicalChildType , OpenstackRegionDescendantType , OpenstackRegionPhysicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+}
 # OpenStack Availability Zone descendant.
 interface OpenstackAvailabilityZoneDescendantType {
   # Organizations to which this hierarchy object belongs.
@@ -144341,6 +145228,112 @@ input OpenstackCephSettingsInput {
   # The list of Ceph settings for an OpenStack Availability Zone.
   data: [OpenstackCephSettingInput!]!
 }
+# An OpenStack domain: an identity-service tenancy boundary that owns projects
+# within an environment.
+type OpenstackDomain implements CdmHierarchyObject , HierarchyObject , OpenstackEnvironmentDescendantType , OpenstackEnvironmentLogicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+}
 # OpenStack Domain descendant.
 interface OpenstackDomainDescendantType {
   # Organizations to which this hierarchy object belongs.
@@ -144448,6 +145441,112 @@ interface OpenstackDomainDescendantType {
 }
 # OpenStack Domain logical child.
 interface OpenstackDomainLogicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+}
+# An OpenStack environment: the top-level object for an onboarded OpenStack
+# deployment.
+type OpenstackEnvironment implements CdmHierarchyObject , HierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -144866,6 +145965,112 @@ interface OpenstackEnvironmentPhysicalChildType {
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 }
+# An OpenStack host: a compute node within an availability zone that runs
+# virtual machines.
+type OpenstackHost implements CdmHierarchyObject , HierarchyObject , OpenstackEnvironmentDescendantType , OpenstackEnvironmentPhysicalChildType , OpenstackRegionDescendantType , OpenstackRegionPhysicalChildType , OpenstackAvailabilityZoneDescendantType , OpenstackAvailabilityZonePhysicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+}
 # OpenStack Host descendant.
 interface OpenstackHostDescendantType {
   # Organizations to which this hierarchy object belongs.
@@ -145076,6 +146281,284 @@ interface OpenstackHostPhysicalChildType {
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 }
+# An OpenStack image: a bootable Glance image within a project.
+type OpenstackImage implements CdmHierarchyObject , HierarchyObject , CdmHierarchySnappableNew , HierarchySnappable , OpenstackEnvironmentDescendantType , OpenstackEnvironmentLogicalChildType , OpenstackEnvironmentPhysicalChildType , OpenstackRegionDescendantType , OpenstackRegionPhysicalChildType , OpenstackDomainDescendantType , OpenstackDomainLogicalChildType , OpenstackProjectDescendantType , OpenstackProjectLogicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The ID of the workload on the Rubrik cluster.
+  cdmId: String!
+
+  # A link to view the workload on the Rubrik cluster. For dev use only.
+  cdmLink: String!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # Whether the OpenStack image is a relic.
+  isRelic: Boolean!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput): MissedSnapshotCommonConnection
+
+  # The list of missed snapshots for this workload.
+  missedSnapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filter missed snapshots by date.
+    filter: MissedSnapshotFilterInput,
+
+    # Group snapshots by field.
+    groupBy: MissedSnapshotGroupByTime!,
+
+    # Offset based on the customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): MissedSnapshotGroupByConnection
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # The newest snapshot archived to AWS.
+  newestArchivedSnapshot: CdmSnapshot
+
+  # The most recent indexed snapshot of this workload.
+  newestIndexedSnapshot: CdmSnapshot
+
+  # The newest snapshot replicated to a Rubrik cluster.
+  newestReplicatedSnapshot: CdmSnapshot
+
+  # The most recent snapshot of this workload.
+  newestSnapshot(
+    # Specifies the time at which or before the snapshot was taken.
+    beforeTime: DateTime): CdmSnapshot
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot: CdmSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount: Int!
+
+  # OS distribution of the OpenStack image.
+  osDistro: String
+
+  # OS type of the OpenStack image.
+  osType: String
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Sorts snapshots by field.
+    sortBy: CdmSnapshotSortByEnum = Date,
+
+    # Sorts the order of results.
+    sortOrder: SortOrder): CdmSnapshotConnection
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # Group-by connection for the snapshots of this workload.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Offset based on the customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone): CdmSnapshotGroupByConnection
+
+  # Group-by connection for the snapshots of this workload.
+  snapshotGroupBySummary(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Offset based on the customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
+    timezone: Timezone,
+
+    # Filter snapshot connection.
+    filter: CdmSnapshotFilterInput,
+
+    # Groups snapshots by field.
+    groupBy: CdmSnapshotGroupByEnum!): CdmSnapshotGroupBySummaryConnection
+
+  # Visibility type of the OpenStack image.
+  visibilityType: OpenstackImageVisibilityType!
+}
+# Visibility type of an OpenStack image.
+enum OpenstackImageVisibilityType {
+  # The image is visible to all projects but is not listed by default.
+  COMMUNITY
+
+  # The image is visible only to its owning project.
+  PRIVATE
+
+  # The image is visible to all projects.
+  PUBLIC
+
+  # The image is shared with specific projects.
+  SHARED
+
+  # The visibility type was not recognized by the API.
+  UNKNOWN
+}
 # Ceph monitor host configuration for OpenStack.
 type OpenstackMonHost {
   # Required. Supported in v9.5+
@@ -145103,6 +146586,115 @@ type OpenstackNetworkTags {
 
   # Tag associated with the network.
   networkTag: String!
+}
+# An OpenStack project: a tenancy and quota boundary within a domain that owns
+# virtual machines, images and tags.
+type OpenstackProject implements CdmHierarchyObject , HierarchyObject , OpenstackEnvironmentDescendantType , OpenstackEnvironmentLogicalChildType , OpenstackDomainDescendantType , OpenstackDomainLogicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Native OpenStack project ID.
+  openstackId: String!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
 }
 # OpenStack Project descendant.
 interface OpenstackProjectDescendantType {
@@ -145211,6 +146803,112 @@ interface OpenstackProjectDescendantType {
 }
 # OpenStack Project logical child.
 interface OpenstackProjectLogicalChildType {
+  # Organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # RSC tags to which this hierarchy object is assigned.
+  allTags: [AssignedRscTag!]!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object pause pending assignment details for CDM objects.
+  cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # Cross-account objects either replicated by this object or related to this object by replication.
+  crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # Effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # Path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # ID of the hierarchy object.
+  id: UUID!
+
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
+  isReplica: Boolean
+
+  # Latest user note information.
+  latestUserNote: LatestUserNote
+
+  # Sequential list of the logical ancestors of this object.
+  logicalPath: [PathNode!]!
+
+  # Name of the hierarchy object.
+  name: String!
+
+  # Number of descendant workloads of this object.
+  numWorkloadDescendants(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that occur after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Types of objects to limit the results. If absent, all object types are returned.
+    objectTypes: [ManagedObjectType!]): Int!
+
+  # Object-level backup window status of the hierarchy object.
+  objectBackupWindow: ObjectBackupWindowStatus
+
+  # Pause status of the hierarchy object.
+  objectPauseStatus: ObjectPauseStatus
+
+  # Type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # Mapping from object ID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Sequential list of the physical ancestors of this object.
+  physicalPath: [PathNode!]!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Security posture metadata.
+  securityMetadata: SecurityMetadata
+
+  # SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # Pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # Distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+}
+# An OpenStack region: a geographical grouping of an environment's compute
+# resources.
+type OpenstackRegion implements CdmHierarchyObject , HierarchyObject , OpenstackEnvironmentDescendantType , OpenstackEnvironmentPhysicalChildType {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -151022,6 +152720,9 @@ type PatchMysqldbInstanceResponse {
   # Required. Supported in v9.3+
   # Status of the asynchronous job triggered when MySQL instance is updated.
   asyncRequestStatus: AsyncRequestStatus
+
+  # Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.
+  kosmosTopologyStateId: String
 }
 # Input for patching a Nutanix live Mount.
 input PatchNutanixMountV1Input {
@@ -151248,8 +152949,24 @@ input PcrAzureImagePullDetailsInput {
   # The app ID of the user's Azure app that will retrieve images from Rubrik's Azure Container Registry. This app will be granted azurePull permissions to the repository.
   customerAppId: String = ""
 }
+# GCP-specific details on how users can retrieve images from Rubrik's Google Artifact Registry.
+type PcrGcpImagePullDetails {
+  # The email of the customer service account that is permitted to pull images from Rubrik's Google Artifact Registry.
+  serviceAccountEmail: String!
+}
+# GCP-specific details on how users can retrieve images from Rubrik's Google Artifact Registry.
+input PcrGcpImagePullDetailsInput {
+  # The email of the customer service account that is permitted to pull images from Rubrik's Google Artifact Registry.
+  serviceAccountEmail: String!
+
+  # A Google-issued OIDC identity token, minted by the customer as
+  # serviceAccountEmail, proving they control that service account.
+  # Write-only: verified and discarded on registration. Excluded from
+  # the GraphQL response type -- never returned to callers.
+  serviceAccountOwnershipToken: String!
+}
 # Details related to how user will retrieve images from our registry.
-union PcrImagePullDetails = PcrAwsImagePullDetails | PcrAzureImagePullDetails
+union PcrImagePullDetails = PcrAwsImagePullDetails | PcrAzureImagePullDetails | PcrGcpImagePullDetails
 # The group type for the pending action.
 enum PendingActionGroupTypeEnum {
   # Group type for application blueprint operations.
@@ -151435,6 +153152,9 @@ enum PendingActionSubGroupTypeEnum {
 
   # Creates a reader for object store archival location.
   OBJECT_STORE_LOCATION_READER_POST
+
+  # Subgroup used to put the personal-access-token policy to CDM.
+  PERSONAL_ACCESS_TOKEN_CONFIG_SYNC
 
   # Subgroup used to delete personal access token from CDM.
   PERSONAL_ACCESS_TOKEN_DELETE
@@ -151776,6 +153496,12 @@ enum PermissionsGroup {
   # Represents the set of permissions required for AlloyDb operations.
   # These permissions are applicable to the GCP AlloyDB Protection feature.
   ALLOYDB
+
+  # Represents the set of permissions required to export a Hyper-V virtual
+  # machine into an Azure Local (Azure Stack HCI) cluster as an Arc virtual
+  # machine. These permissions are applicable to the Azure Local cloud
+  # account feature.
+  ARC_VM_EXPORT
 
   # Represents the permissions required to setup networking for exocompute.
   AUTOMATED_NETWORKING_SETUP
@@ -155435,6 +157161,15 @@ input PostgresLoginInfoInput {
 # Supported in v9.4+
 # PostgreSQL database cluster automated restore configuration.
 input PostgresRestoreSettingsInput {
+  # Absolute path on the host to the custom script to restart the PostgreSQL instance during standby restore. Required when shouldUseCustomRestartScript is true and shouldRestoreAsReplica or shouldRestoreAsReadOnly is true.
+  customRestartScriptFile: String
+
+  # Absolute path on the host to the custom script to start the PostgreSQL instance during restore. Required when shouldUseCustomRestartScript is true.
+  customStartScriptFile: String
+
+  # Absolute path on the host to the custom script to stop the PostgreSQL instance during restore. Required when shouldUseCustomRestartScript is true.
+  customStopScriptFile: String
+
   # Supported in v9.5+
   # PostgreSQL database role name for psql connections during restore. Use when peer authentication with ident maps requires a different DB role than the OS username.
   dbUsername: String
@@ -155450,6 +157185,9 @@ input PostgresRestoreSettingsInput {
   # Supported in v9.4+
   # Specifies whether the database should be restored as a replica or the primary database cluster.
   shouldRestoreAsReplica: Boolean
+
+  # Whether to use custom scripts for start/stop during restore. When true, customStartScriptFile and customStopScriptFile are required. customRestartScriptFile is additionally required when shouldRestoreAsReplica or shouldRestoreAsReadOnly is true. Requires the enableApiCustomRestartScripts cluster configuration to be enabled.
+  shouldUseCustomRestartScript: Boolean
 
   # Supported in v9.4+
   # Username for accessing the host machine.
@@ -157335,6 +159073,17 @@ type PropertyExtension {
   # The name of the property.
   name: String!
 }
+# A TPR rule and the CDM REST endpoints it protects.
+type ProtectedAction {
+  # The customer-facing name of the TPR rule (e.g. "Delete Snapshot").
+  actionName: String!
+
+  # The CDM REST endpoints blocked while this rule is in effect.
+  apiOperations: [CdmApiOperation!]!
+
+  # The TPR rule this protected action corresponds to.
+  rule: TprRule!
+}
 # Protected Object Summary.
 interface ProtectedObjectSummary {
   # The effective SLA Domain of the workload, if defined.
@@ -158977,11 +160726,27 @@ type ProxmoxStorageDomain {
   # Available storage capacity.
   availableStorage: String!
 
+  # Comma-separated Proxmox content types the storage accepts, for example
+  # "images,rootdir". A storage domain must accept "images" to hold virtual disks.
+  content: String!
+
   # File system type.
   fileSystem: String!
 
+  # Whether the storage is currently online on the node.
+  isActive: Boolean
+
+  # Whether the storage is enabled in the Proxmox configuration.
+  isEnabled: Boolean
+
+  # Whether the storage is shared across nodes in the cluster.
+  isShared: Boolean
+
   # Storage domain name.
   name: String!
+
+  # Raw Proxmox storage plugin type, for example "lvmthin", "nfs", or "rbd".
+  storageType: String!
 
   # Total storage capacity.
   totalStorage: String!
@@ -159313,6 +161078,35 @@ input ProxmoxVmExportSnapshotJobConfigInput {
   # Supported in v9.5+
   # The name of the target Proxmox virtual machine.
   vmName: String
+}
+# A virtual disk captured in a Proxmox virtual machine snapshot.
+type ProxmoxVmSubObject {
+  # Actual space consumed by the disk in bytes.
+  actualSize: Long!
+
+  # Human-readable alias of the disk.
+  diskAlias: String!
+
+  # Disk format, for example "qcow2" or "raw".
+  diskFormat: String!
+
+  # Proxmox device key identifying the disk, for example "scsi0" or "virtio0".
+  diskId: String!
+
+  # Bus/interface of the disk, for example "scsi" or "virtio".
+  diskInterface: String!
+
+  # Size of the disk file in bytes.
+  fileSizeInBytes: Long!
+
+  # Whether the disk is marked bootable.
+  isBootable: Boolean!
+
+  # Provisioned size of the disk in bytes.
+  provisionedSize: Long!
+
+  # Name of the Proxmox storage holding the disk at backup time.
+  storageDomainId: String!
 }
 # Supported in v5.0+
 input ProxyConfigInput {
@@ -163558,7 +165352,10 @@ type RecoveryPlanRecoverySpecMap {
   # Recovery specifications for all the children in the recovery plan.
   childRecoverySpecs: [ChildRecoverySpecMapV2!]!
 
-  # Configuration settings as key-value pairs.
+  # Configuration settings as key-value pairs. For a production recovery, the
+  # rollbackSourcePowerState key selects whether a rollback powers the source
+  # back on (POWER_ON_BY_PRIORITY) or leaves it off (STAY_POWERED_OFF). When
+  # the key is omitted, a rollback defaults to POWER_ON_BY_PRIORITY.
   config: RecoverySpecConfig!
 
   # Pause between priority groups is a list of numbers representing the
@@ -163598,7 +165395,10 @@ input RecoveryPlanRecoverySpecMapInput {
   # Recovery specifications for all the children in the recovery plan.
   childRecoverySpecs: [ChildRecoverySpecMapV2Input!]
 
-  # Configuration settings as key-value pairs.
+  # Configuration settings as key-value pairs. For a production recovery, the
+  # rollbackSourcePowerState key selects whether a rollback powers the source
+  # back on (POWER_ON_BY_PRIORITY) or leaves it off (STAY_POWERED_OFF). When
+  # the key is omitted, a rollback defaults to POWER_ON_BY_PRIORITY.
   config: RecoverySpecConfigInput
 
   # Pause between priority groups is a list of numbers representing the
@@ -164531,11 +166331,38 @@ enum RegisteredMode {
   # Registered mode unknown.
   REGISTERED_MODE_ENUM_UNSPECIFIED
 }
+# RegistryHiveRoot enumerates the Windows registry root keys supported by
+# registry threat hunting.
+enum RegistryHiveRoot {
+  # HKEY_CLASSES_ROOT ("HKCR").
+  HIVE_ROOT_HKEY_CLASSES_ROOT
+
+  # HKEY_CURRENT_CONFIG ("HKCC").
+  HIVE_ROOT_HKEY_CURRENT_CONFIG
+
+  # HKEY_CURRENT_USER ("HKCU").
+  HIVE_ROOT_HKEY_CURRENT_USER
+
+  # HKEY_LOCAL_MACHINE ("HKLM").
+  HIVE_ROOT_HKEY_LOCAL_MACHINE
+
+  # HKEY_USERS ("HKU").
+  HIVE_ROOT_HKEY_USERS
+}
 # RegistryPatternSpec describes one Windows registry key search pattern and
 # optional value-level predicates. Assigned a stable pattern_id UUID by
 # orion-hunt-service at hunt creation time (see design decision D6).
 type RegistryPatternSpec {
-  # Full HKLM\\...\\* or HKCU\\...\\* key path, validated on intake.
+  # Structured registry root. When set, keyPath holds the root-relative path
+  # and keyPattern is a derived mirror. Takes precedence over keyPattern.
+  hiveRoot: RegistryHiveRoot!
+
+  # Root-relative key path; required when hiveRoot is set.
+  keyPath: String!
+
+  # Output-only: denormalized mirror of hive_root + key_path, populated by OHS
+  # on create/update for downstream consumers that read this field. Not accepted
+  # as an input; set hive_root and key_path instead.
   keyPattern: String!
 
   # Stable UUID assigned by orion-hunt-service at hunt creation.
@@ -164555,20 +166382,35 @@ type RegistryPatternSpec {
   # Value data must not equal this string (case-insensitive).
   valueDataNotEq: String!
 
-  # Exact value name match; or semantics across list entries.
+  # Exact value name match. Callers set exactly one entry; kept as
+  # `repeated` to pass the value name alongside the other predicates for a
+  # single key in the same block.
   valueNames: [String!]!
 
-  # Exact registry type match; or semantics across list entries.
-  # Allowed values: REG_SZ, REG_DWORD, REG_QWORD, REG_BINARY,
-  # REG_EXPAND_SZ, REG_MULTI_SZ, REG_NONE.
+  # Structured value-type filter; may hold multiple value types (OR
+  # semantics), unlike valueNames above. Takes precedence over valueTypes
+  # when non-empty.
+  valueTypeList: [RegistryValueType!]!
+
+  # Deprecated: use valueTypeList for new hunts. Kept as a denormalized
+  # mirror when valueTypeList is populated.
   valueTypes: [String!]!
 }
 # RegistryPatternSpec describes one Windows registry key search pattern and
 # optional value-level predicates. Assigned a stable pattern_id UUID by
 # orion-hunt-service at hunt creation time (see design decision D6).
 input RegistryPatternSpecInputType {
-  # Full HKLM\\...\\* or HKCU\\...\\* key path, validated on intake.
-  keyPattern: String!
+  # Structured registry root. When set, keyPath holds the root-relative path
+  # and keyPattern is a derived mirror. Takes precedence over keyPattern.
+  hiveRoot: RegistryHiveRoot
+
+  # Root-relative key path; required when hiveRoot is set.
+  keyPath: String
+
+  # Output-only: denormalized mirror of hive_root + key_path, populated by OHS
+  # on create/update for downstream consumers that read this field. Not accepted
+  # as an input; set hive_root and key_path instead.
+  keyPattern: String
 
   # Case-insensitive substring match against value data.
   valueDataContains: String
@@ -164582,13 +166424,43 @@ input RegistryPatternSpecInputType {
   # Value data must not equal this string (case-insensitive).
   valueDataNotEq: String
 
-  # Exact value name match; or semantics across list entries.
+  # Exact value name match. Callers set exactly one entry; kept as
+  # `repeated` to pass the value name alongside the other predicates for a
+  # single key in the same block.
   valueNames: [String!]
 
-  # Exact registry type match; or semantics across list entries.
-  # Allowed values: REG_SZ, REG_DWORD, REG_QWORD, REG_BINARY,
-  # REG_EXPAND_SZ, REG_MULTI_SZ, REG_NONE.
+  # Structured value-type filter; may hold multiple value types (OR
+  # semantics), unlike valueNames above. Takes precedence over valueTypes
+  # when non-empty.
+  valueTypeList: [RegistryValueType!]
+
+  # Deprecated: use valueTypeList for new hunts. Kept as a denormalized
+  # mirror when valueTypeList is populated.
   valueTypes: [String!]
+}
+# RegistryValueType enumerates the Windows registry value types exposed as
+# hunt filters.
+enum RegistryValueType {
+  # REG_BINARY: raw binary data.
+  VALUE_TYPE_REG_BINARY
+
+  # REG_DWORD: a 32-bit number.
+  VALUE_TYPE_REG_DWORD
+
+  # REG_EXPAND_SZ: a null-terminated string containing unexpanded environment-variable references.
+  VALUE_TYPE_REG_EXPAND_SZ
+
+  # REG_MULTI_SZ: an array of null-terminated strings.
+  VALUE_TYPE_REG_MULTI_SZ
+
+  # REG_NONE: no defined value type.
+  VALUE_TYPE_REG_NONE
+
+  # REG_QWORD: a 64-bit number.
+  VALUE_TYPE_REG_QWORD
+
+  # REG_SZ: a null-terminated string.
+  VALUE_TYPE_REG_SZ
 }
 # A snippet of the related help topic.
 type RelatedContent {
@@ -166020,6 +167892,9 @@ enum ReportCategory {
   # Reports focused on cloud cost analysis and attribution.
   COST_ANALYSIS
 
+  # Reports created via AI-assisted scripts (custom reports).
+  CUSTOM_REPORTS
+
   # Reports related to system health metrics and performance monitoring.
   HEALTH_AND_PERFORMANCE
 
@@ -166031,9 +167906,6 @@ enum ReportCategory {
 
   # Unspecified report category.
   REPORT_CATEGORY_UNSPECIFIED
-
-  # TBD.
-  SCRIPT_REPORTS
 
   # Reports related to user activity, organization structure, and access
   # management.
@@ -166602,90 +168474,258 @@ enum ReportRoomType {
   # Reports for SaaS workloads.
   REPORT_ROOM_SAAS
 }
+# Column selection for a custom report table, covering all report focus domains.
 enum ReportTableColumnEnum {
+  # Activity status column.
   ActivityStatus
+
+  # Activity type column.
   ActivityType
+
+  # Analyzers breakdown column.
   AnalyzersBreakdown
+
+  # App Recovery Plan name column, used in failover reports.
   AppBlueprintName
+
+  # Archival target column.
   ArchivalTarget
+
+  # Archive snapshots count column.
   ArchiveSnapshots
+
+  # Archive storage usage column.
   ArchiveStorage
+
+  # Bytes created column.
   BytesCreated
+
+  # Bytes deleted column.
   BytesDeleted
+
+  # Bytes modified column.
   BytesModified
+
+  # Net bytes changed column.
   BytesNetChanged
+
+  # Cluster column, used in sensitive data content reports.
   Cluster
+
+  # Cluster location column.
   ClusterLocation
+
+  # Cluster name column.
   ClusterName
+
+  # Cluster type column.
   ClusterType
+
+  # SLA Domain compliance status column.
   ComplianceStatus
+
+  # Data reduction ratio column.
   DataReduction
+
+  # Data transferred column.
   DataTransferred
+
+  # Direct archive flag column.
   DirectArchive
+
+  # Duration column.
   Duration
+
+  # Encryption enabled column.
   EncryptionEnabled
+
+  # End time column.
   EndTime
+
+  # Failover status column.
   FailoverStatus
+
+  # Failover type column.
   FailoverType
+
+  # Failure reason column.
   FailureReason
+
+  # File name column, used in sensitive data content reports.
   FileName
+
+  # Files created count column.
   FilesCreated
+
+  # Files deleted count column.
   FilesDeleted
+
+  # Files modified count column.
   FilesModified
+
+  # Is anomaly flag column.
   IsAnomaly
+
+  # Last snapshot time column.
   LastSnapshot
+
+  # Last test status column.
   LastTestStatus
+
+  # Last test time column.
   LastTestTime
+
+  # Last updated time column.
   LastUpdated
+
+  # Local snapshots count column.
   LocalSnapshots
+
+  # Geographic location column.
   Location
+
+  # Logical bytes (singular) column, used in protection reports.
   LogicalByte
+
+  # Logical bytes (plural) column, used in task detail reports.
   LogicalBytes
+
+  # Missed snapshots count column.
   MissedSnapshots
+
+  # Number of covered objects column.
   NumCoveredObjects
+
+  # Number of high-risk locations column.
   NumHighRiskLocations
+
+  # Number of violated files column.
   NumViolatedFiles
+
+  # Number of violations column.
   NumViolations
+
+  # Object name column.
   ObjectName
+
+  # Object type column.
   ObjectType
+
+  # File path column.
   Path
+
+  # Physical bytes column.
   PhysicalBytes
+
+  # Policies breakdown column.
   PoliciesBreakdown
+
+  # Policy name column, used in sensitive data reports.
   PolicyName
+
+  # Policy status column.
   PolicyStatus
+
+  # Previous snapshot date column.
   PreviousSnapshotDate
+
+  # Previous snapshot ID column.
   PreviousSnapshotId
+
+  # Protected volume column.
   ProtectedVolume
+
+  # Recovery point column.
   RecoveryPoint
+
+  # Recovery point type column.
   RecoveryPointType
+
+  # Replica snapshots count column.
   ReplicaSnapshots
+
+  # Replica storage usage column.
   ReplicaStorage
+
+  # Replication source column.
   ReplicationSource
+
+  # Replication target column.
   ReplicationTarget
+
+  # File size column.
   Size
+
+  # SLA Domain column.
   SlaDomain
+
+  # SLA Domain name column (task detail reports).
   SlaDomainName
+
+  # Workload name column.
   SnappableName
+
+  # Snapshot consistency column.
   SnapshotConsistency
+
+  # Snapshot date column.
   SnapshotDate
+
+  # Snapshot ID column.
   SnapshotId
+
+  # Snapshot time column.
   SnapshotTime
+
+  # Failover source site column.
   Source
+
+  # Start time column.
   StartTime
+
+  # Task status column.
   Status
+
+  # Suspicious files added count column.
   SuspiciousFilesAdded
+
+  # Failover target site column.
   TargetSite
+
+  # Task type column.
   TaskType
+
+  # Total capacity column.
   TotalCapacity
+
+  # Total files transferred column.
   TotalFileTransferred
+
+  # Total hits count column.
   TotalHits
+
+  # Total snapshots count column.
   TotalSnapshots
+
+  # Transferred bytes column.
   TransferredBytes
+
+  # Used capacity column.
   UsedCapacity
+
+  # User audit status column.
   UserAuditStatus
+
+  # User audit type column.
   UserAuditType
+
+  # User name column.
   UserName
+
+  # Workload name column, used in anomaly reports.
   WorkloadName
+
+  # Workload type column, used in anomaly reports.
   WorkloadType
 }
 # Create configs for an activity data table.
@@ -167112,6 +169152,10 @@ input RestoreAzureAdObjectsWithPasswordsInput {
 
   # Specifies whether to enable MFA during the recovery of one or more users.
   forceChangePasswordWithMfa: Boolean!
+
+  # Options for automated M365 Access Recovery. When absent, no M365
+  # recovery runs and the restore proceeds as a standard granular recovery.
+  m365RecoveryOptions: M365RecoveryOptionsInput
 
   # Represents recovery options for every AzureAdObjectType.
   objectRecoveryOptions: ObjectRecoveryOptionsType
@@ -167721,22 +169765,22 @@ input RestoreO365MailboxInput {
   # Specifies the recovery type for the job.
   actionType: O365RestoreActionType!
 
-  # In-place restore configuration for restore job.
+  # In-place restore configuration for the restore job.
   inplaceRestoreConfig: InplaceRestoreConfig
 
   # Polaris ID of the mailbox.
   mailboxUuid: UUID!
 
-  # Polaris ID of O365 subscription.
+  # Polaris ID of the O365 subscription.
   orgUuid: UUID
 
-  # Configuration for restore job.
+  # Configuration for the restore job.
   restoreConfigs: [RestoreObjectConfig!]!
 
   # Specifies whether to skip items in the Recoverable Items folder.
   skipRifItems: Boolean
 
-  # Polaris ID of restoring snapshot.
+  # Polaris ID of the snapshot to restore.
   snapshotUuid: UUID
 }
 # Request for restoring an O365 snappable (OneDrive, SharePoint, Exchange,
@@ -169751,6 +171795,9 @@ type RubrikManagedS3CompatibleTarget implements Target {
   # Prefix of the S3Compatible target bucket.
   bucketPrefix: String!
 
+  # The TLS trust mode.
+  certificateTrustMode: CertificateTrustMode!
+
   # The cluster to which this target belongs.
   cluster: Cluster!
 
@@ -169837,6 +171884,9 @@ type RubrikManagedS3CompatibleTarget implements Target {
 
   # The type of the target.
   targetType: TargetType!
+
+  # The certificate ID bound to this location.
+  tlsCertificateId: String!
 
   # Upgrade status of the target.
   upgradeStatus: UpgradeStatus!
@@ -170191,6 +172241,9 @@ enum S3CompatibleSubType {
   # Scality Artesca subtype.
   SCALITY_ARTESCA
 
+  # Scality RING subtype.
+  SCALITY_RING
+
   # Seagate Lyve subtype.
   SEAGATE_LYVE
 
@@ -170244,7 +172297,7 @@ type S3TablesIcebergCatalog implements PolarisHierarchyObject , HierarchyObject 
   # RSC tags to which this hierarchy object is assigned.
   allTags: [AssignedRscTag!]!
 
-  # AWS native ID of the S3 Tables catalog.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -170262,7 +172315,7 @@ type S3TablesIcebergCatalog implements PolarisHierarchyObject , HierarchyObject 
   # ID of the hierarchy object.
   id: UUID!
 
-  # Whether the catalog is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -170271,7 +172324,7 @@ type S3TablesIcebergCatalog implements PolarisHierarchyObject , HierarchyObject 
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the catalog.
+  # AWS Native name of the object.
   nativeName: String!
 
   # Number of descendant workloads of this object.
@@ -170303,7 +172356,7 @@ type S3TablesIcebergCatalog implements PolarisHierarchyObject , HierarchyObject 
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the catalog.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -170324,7 +172377,7 @@ type S3TablesIcebergCatalog implements PolarisHierarchyObject , HierarchyObject 
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # Tags associated with the catalog.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 }
 # Write the snapshot into a different, already-existing S3 Tables Iceberg
@@ -170385,7 +172438,7 @@ type S3TablesIcebergNamespace implements PolarisHierarchyObject , HierarchyObjec
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
-  # AWS native ID of the S3 Tables namespace.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -170403,7 +172456,7 @@ type S3TablesIcebergNamespace implements PolarisHierarchyObject , HierarchyObjec
   # ID of the hierarchy object.
   id: UUID!
 
-  # Whether the namespace is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # Sequential list of the logical ancestors of this object.
@@ -170412,7 +172465,7 @@ type S3TablesIcebergNamespace implements PolarisHierarchyObject , HierarchyObjec
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the namespace.
+  # AWS Native name of the object.
   nativeName: String!
 
   # Number of descendant workloads of this object.
@@ -170444,7 +172497,7 @@ type S3TablesIcebergNamespace implements PolarisHierarchyObject , HierarchyObjec
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the namespace.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -170465,11 +172518,11 @@ type S3TablesIcebergNamespace implements PolarisHierarchyObject , HierarchyObjec
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # Tags associated with the namespace.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 }
 # AWS S3 Tables Iceberg Table.
-type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchySnappable , HierarchyObject , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
+type S3TablesIcebergTable implements PolarisHierarchyObject , HierarchyObject , PolarisHierarchySnappable , HierarchySnappable , AwsNativeAccountDescendantType , AwsNativeHierarchyObject {
   # Organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 
@@ -170479,7 +172532,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
-  # AWS native ID of the S3 Tables table.
+  # AWS Native ID of the object.
   cloudNativeId: String!
 
   # SLA Domain configured for the hierarchy object.
@@ -170503,7 +172556,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
   # Whether exocompute is configured for the region where the table's data is located.
   isExocomputeConfigured: Boolean!
 
-  # Whether the table is a relic.
+  # Whether the object is a relic.
   isRelic: Boolean!
 
   # S3 data location for this table.
@@ -170515,7 +172568,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
   # Name of the hierarchy object.
   name: String!
 
-  # AWS native name of the table.
+  # AWS Native name of the object.
   nativeName: String!
 
   # The latest snapshot that is indexed and unexpired, and therefore restorable.
@@ -170565,7 +172618,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
   # Sequential list of the physical ancestors of this object.
   physicalPath: [PathNode!]!
 
-  # AWS region of the table.
+  # The AWS region to which the object belongs.
   region: AwsNativeRegion!
 
   # SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
@@ -170612,7 +172665,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
   # Distribution of the snapshots of the hierarchy object.
   snapshotDistribution: SnapshotDistribution!
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -170638,7 +172691,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
     # Time zone identifier string. For example, 'America/Los_Angeles' is used for the U.S. Pacific Time zone.
     timezone: Timezone): PolarisSnapshotGroupByConnection
 
-  # GroupBy connection for the snapshots of this workload.
+  # Group-by connection for the snapshots of this workload.
   snapshotGroupByNewConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -170661,7 +172714,7 @@ type S3TablesIcebergTable implements PolarisHierarchyObject , PolarisHierarchySn
     # Group Rubrik Security Cloud snapshots by field.
     snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
 
-  # Tags associated with the table.
+  # List of tags that are assigned to the object.
   tags: [Tag!]!
 
   # The list of snapshots taken for this workload.
@@ -175140,6 +177193,9 @@ input SetPrivateContainerRegistryInput {
   # Details on how users can retrieve images from Rubrik's Azure container registry into their PCR.
   pcrAzureImagePullDetails: PcrAzureImagePullDetailsInput
 
+  # Details on how users can retrieve images from Rubrik's Google Artifact Registry into their PCR.
+  pcrGcpImagePullDetails: PcrGcpImagePullDetailsInput
+
   # URL of user's Private Container Registry.
   registryUrl: String!
 }
@@ -178386,20 +180442,33 @@ type SnapshotDistribution {
 }
 # File or folder data returned by browse or search delta response.
 type SnapshotFile {
+  # The absolute path of the file or folder.
   absolutePath: String!
+
+  # The path of the file or folder, formatted for display.
   displayPath: String!
+
+  # The type of the file system entry, such as a file or a directory.
   fileMode: FileModeEnum!
+
+  # The name of the file or folder.
   filename: String!
 
   # Last modified timestamp. Null when modification time
   # is not available for the entry like directories in
   # S3/Blob.
   lastModified: DateTime
+
+  # The path of the file or folder, relative to the root of the snapshot.
   path: String!
 
   # Quarantine information corresponding to the path.
   quarantineInfo: QuarantineInfo
+
+  # The size of the file, in bytes.
   size: Long!
+
+  # The status message associated with the file or folder.
   statusMessage: String!
 
   # Browse or search delta response returns workload fields.
@@ -179203,6 +181272,9 @@ type SnapshotSubObj {
   # A virtual disk captured in an Openstack virtual machine snapshot.
   openstackVmSubObj: OpenstackVmSubObject
 
+  # A virtual disk captured in a Proxmox virtual machine snapshot.
+  proxmoxVmSubObj: ProxmoxVmSubObject
+
   # A virtual disk captured in a VMware virtual machine snapshot.
   vmwareVmSubObj: VmwareVmSubObject
 
@@ -179695,7 +181767,9 @@ enum SortBy {
   # Unspecified sort criteria.
   UNSPECIFIED
 }
+# Sorting field for the aggregate custom report sort-by input, covering all report focus domains.
 enum SortByFieldEnum {
+  # Sort by analyzer name.
   ANALYZER_NAME
 
   # Probability of anomaly.
@@ -179739,6 +181813,8 @@ enum SortByFieldEnum {
 
   # Count of changed bytes.
   BYTES_NET_CHANGED_COUNT
+
+  # Sort by cluster (sensitive data content reports).
   CLUSTER
 
   # Location of the Rubrik cluster.
@@ -179773,7 +181849,11 @@ enum SortByFieldEnum {
 
   # Count of modified files.
   FILES_MODIFIED_COUNT
+
+  # Sort by files with hits count.
   FILES_WITH_HITS
+
+  # Sort by file name.
   FILE_NAME
 
   # Version of the installed Rubrik cluster.
@@ -179784,6 +181864,8 @@ enum SortByFieldEnum {
 
   # Specifies whether the result is encrypted.
   IS_ENCRYPTED
+
+  # Sort by location (sensitive data content reports).
   LOCATION
 
   # Sort by the time of the most recent snapshot of the workload.
@@ -179821,19 +181903,29 @@ enum SortByFieldEnum {
 
   # Sort by the number of snapshots that were missed for the workload.
   MissedSnapshots
+
+  # Sort by number of high-risk locations.
   NUM_HIGH_RISK_LOCATIONS
+
+  # Sort by number of covered objects.
   NUM_OBJECTS
+
+  # Sort by number of violated files.
   NUM_VIOLATED_FILES
+
+  # Sort by number of violations.
   NUM_VIOLATION
 
   # Sort by the name of the workload.
   Name
+
+  # Sort by object name (anomaly reports).
   OBJECT_NAME
 
   # Sort by the state of the workload.
   OBJECT_STATE
 
-  # Type of the object.
+  # Type of the object (anomaly reports).
   OBJECT_TYPE
 
   # Sort by object name.
@@ -179841,8 +181933,14 @@ enum SortByFieldEnum {
 
   # Sort by object type.
   ObjectType
+
+  # Sort by file path.
   PATH
+
+  # Sort by policy name.
   POLICY_NAME
+
+  # Sort by policy status.
   POLICY_STATUS
 
   # Date of the previous snapshot.
@@ -179877,7 +181975,11 @@ enum SortByFieldEnum {
 
   # Severity of the anomaly.
   SEVERITY
+
+  # Sort by file size.
   SIZE
+
+  # Sort by SLA Domain.
   SLA_DOMAIN
 
   # Date of the snapshot.
@@ -179885,6 +181987,8 @@ enum SortByFieldEnum {
 
   # Id of the snapshot.
   SNAPSHOT_ID
+
+  # Sort by snapshot time.
   SNAPSHOT_TIME
 
   # Count of suspicious files.
@@ -179901,6 +182005,8 @@ enum SortByFieldEnum {
 
   # Sort by the start time of the failover.
   StartTime
+
+  # Sort by total hits.
   TOTAL_HITS
 
   # Sort by the target site name.
@@ -179950,6 +182056,7 @@ type SourceMetadata {
   # Management nodes for the source.
   managementNodes: [CdmMongoNode!]!
 }
+# SSL certificate requirements.
 enum SourceSslCertReqs {
   SOURCE_SSL_CERT_REQS_NONE
   SOURCE_SSL_CERT_REQS_OPTIONAL
@@ -182872,7 +184979,7 @@ type TakeOnDemandSnapshotTaskchainUuid {
   # The ID of the workload.
   workloadId: UUID!
 }
-# Input for the takeSaasOnDemandSnapshot mutation.
+# GQL-only input for the takeSaasOnDemandSnapshot mutation.
 input TakeSaasOnDemandSnapshotInput {
   # SaaS application type.
   saasAppType: SaasAppType!
@@ -185600,6 +187707,11 @@ type TprPolicyDetail {
   # The scope of the TPR policy.
   policyScope: TprPolicyScope!
 
+  # The CDM REST endpoints that this policy's rules protect. Contains one entry
+  # per distinct rule assigned to the policy that has a CDM REST mapping. The
+  # list is empty when no assigned rule has a CDM REST mapping yet.
+  protectedActions: [ProtectedAction!]!
+
   # Quorum requirement for the TPR policy.
   quorumRequirement: Int!
 }
@@ -185660,6 +187772,9 @@ input TprPolicyRuleInput {
 }
 # TPR policy scope.
 enum TprPolicyScope {
+  # Configuration of a Rubrik application, such as Identity Resilience.
+  APPLICATION_CONFIGURATION
+
   # Data mangement by cluster.
   DATA_MANAGEMENT_BY_CLUSTER
 
@@ -186092,6 +188207,9 @@ enum TprRule {
   # The TPR rule is for excluding disks from snapshots.
   EXCLUDE_DISK
 
+  # Quorum authorization is required for Identity Resilience revert actions (manual activity log reverts and automated alert rule reverts).
+  IDENTITY_RESILIENCE_REVERT
+
   # The TPR rule is for legal holds.
   LEGAL_HOLD
 
@@ -186155,6 +188273,15 @@ enum TprRule {
   # The TPR rule is for resetting MFA for a TPR user.
   RESET_USER_TOTP_CONFIG
 
+  # Quorum authorization is required for restoring an Active Directory domain controller snapshot.
+  RESTORE_AD_DOMAIN_CONTROLLER
+
+  # Quorum authorization is required for restoring an Active Directory forest.
+  RESTORE_AD_FOREST
+
+  # Quorum authorization is required for granular restore of Active Directory objects.
+  RESTORE_AD_OBJECTS
+
   # Quorum authorization is required to restore a service account's
   # quorum authorization exemption.
   RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION
@@ -186201,6 +188328,11 @@ type TprRulesMap {
 
   # Rules applicable when creating a data management TPR policy by SLA Domain.
   dataManagementBySlaDomain: [TprRule!]!
+
+  # The CDM REST endpoints for every TPR rule with at least one known CDM REST
+  # endpoint, one entry per such rule. A rule absent from this list has no
+  # CDM REST surface.
+  protectedActions: [ProtectedAction!]!
 
   # Cluster-level rules applicable when creating a system configuration
   # TPR policy.
@@ -187702,7 +189834,7 @@ input UpdateCloudNativeTagRuleInput {
   # Name of the tag rule.
   tagRuleName: String!
 }
-# Object containing the new address of the Rubrik cluster.
+# Input to update the default address of a Rubrik cluster.
 input UpdateClusterDefaultAddressInput {
   # The new default IP address of the Rubrik cluster.
   address: String
@@ -188758,6 +190890,12 @@ input UpdateNasNamespaceInputInput {
   # ID of the NAS namespace that will be updated.
   id: String!
 
+  # NFS authentication mode for shares under this NAS namespace. UNSPECIFIED clears any namespace-level override and restores inheritance from the NAS system (equivalent to the key being absent). Kerberos modes (KERBEROS_PREFERRED and KERBEROS_ONLY) are accepted only for NetApp NAS namespaces and only while the NFS Kerberos feature (REL_ENABLE_NAS_NFS_KERBEROS) is enabled. STANDARD and UNSPECIFIED are always accepted regardless of discovery state or feature flag status.
+  nfsAuthMode: String
+
+  # SMB authentication mode override for this specific namespace. When set, takes precedence over the NAS system-level setting and is preserved across discovery cycles.
+  smbAuthMode: String
+
   # Supported in v8.1+
   # v8.1-v9.4: Optional credentials that will be used to access all the SMB shares under this NAS namespace unless overridden at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
   # v9.5+: Optional credentials that will be used to access all the SMB shares under this NAS namespace unless overridden at the NAS share level. This is applicable for NetApp, Isilon, and FlashBlade NAS systems.
@@ -189369,6 +191507,9 @@ input UpdateS3CompatibleTargetInput {
   # Access key of the S3 compatible target.
   accessKey: String
 
+  # The TLS trust mode for the S3 compatible target.
+  certificateTrustMode: CertificateTrustMode
+
   # Endpoint of the S3 compatible target.
   endpoint: String
 
@@ -189389,6 +191530,9 @@ input UpdateS3CompatibleTargetInput {
 
   # Secret key of the S3 compatible target.
   secretKey: String
+
+  # Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3 compatible target.
+  tlsCertificateId: String
 
   # Flag to determine if system proxy will be used or not.
   useSystemProxy: Boolean
@@ -191031,6 +193175,9 @@ enum UserAuditObjectTypeEnum {
 
   # Microsoft 365 Backup Storage SharePoint Site.
   M365_BACKUP_STORAGE_SITE
+
+  # MariaDB instance type.
+  MARIADB_INSTANCE
 
   # MongoDB source type.
   MONGODB_SOURCE

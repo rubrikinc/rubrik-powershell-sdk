@@ -33,7 +33,7 @@ Display license entitlement for M365 workloads.
 - There is a single argument of type System.String.
 - Returns M365LicenseEntitlementReply.
 ### mvc
-ListMvcProfiles lists MVC profiles for an org.
+Lists Minimum Viable Company (MVC) profiles for an M365 organization. Each profile defines a set of Critical Operations Groups -- the M365 groups, users, and SharePoint sites required for minimum viable business recovery.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.

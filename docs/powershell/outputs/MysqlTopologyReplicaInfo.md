@@ -1,12 +1,12 @@
 ### MysqlTopologyReplicaInfo
 Per-replica details for a MySQL HA topology.
 
-- hostId: System.String
-  - Unique identifier of the host that runs this replica.
 - replicaId: System.String
   - Stable identifier for the replica.
 - replicaName: System.String
   - Display name for the replica.
+- hostId: System.String
+  - Unique identifier of the host that runs this replica.
 - role: KosmosTopologyReplicaRole
   - Replica role within the HA topology.
 - status: KosmosTopologyReplicaStatus

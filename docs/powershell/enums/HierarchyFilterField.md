@@ -1463,3 +1463,7 @@ uses continuous backup. Use texts param with values "true" or "false".
 +mo:filter:db:table=cloud_native_object_properties
 +mo:filter:db:column=property_value
 +mo:filter:db:index:key=NULL
+- CONFLUENCE_SPACE_TYPE - Filter by the Confluence space type.
++mo:filter:db:table=saasapps_confluence_spaces
++mo:filter:db:column=space_type
++mo:filter:db:index:key=NULL // low-cardinality column, index not selective

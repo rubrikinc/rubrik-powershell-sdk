@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 264
+    /// Create a new RscQuery object for any of the 265
     /// operations in the 'Miscellaneous' API domain:
-    /// ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, AirUpdateMcpGateway, ApproveTprRequest, ArchiveCrawl, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandS3TablesIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetObjectBackupWindows, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartInPlaceDataMasking, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartRscpPackageDownload, StartRscpUpgrade, StartSalesforcePermissionAssessment, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeUnmountTime, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateImageClassificationConfig, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, AirUpdateMcpGateway, ApproveTprRequest, ArchiveCrawl, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandS3TablesIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetObjectBackupWindows, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartInPlaceDataMasking, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartRscpPackageDownload, StartRscpUpgrade, StartSalesforceObjectsUnarchive, StartSalesforcePermissionAssessment, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeUnmountTime, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateImageClassificationConfig, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 264 operations
+    /// There are 265 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, AirUpdateMcpGateway, ApproveTprRequest, ArchiveCrawl, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandS3TablesIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetObjectBackupWindows, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartInPlaceDataMasking, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartRscpPackageDownload, StartRscpUpgrade, StartSalesforcePermissionAssessment, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeUnmountTime, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateImageClassificationConfig, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// one of: ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, AirUpdateMcpGateway, ApproveTprRequest, ArchiveCrawl, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandS3TablesIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetObjectBackupWindows, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartInPlaceDataMasking, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartRscpPackageDownload, StartRscpUpgrade, StartSalesforceObjectsUnarchive, StartSalesforcePermissionAssessment, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeUnmountTime, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateImageClassificationConfig, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -4214,6 +4214,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	location = $someRemediationLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationLocation]) for enum values.
     /// 	# OPTIONAL
     /// 	resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isJitElevated = $someBoolean
     /// 	# OPTIONAL
     /// 	ticketInfo = @{
     /// 		# OPTIONAL
@@ -9885,6 +9887,115 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartSalesforceObjectsUnarchive operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: StartSalesforceObjectsUnarchive
+    /// 
+    /// $query = New-RscMutationMisc -Operation StartSalesforceObjectsUnarchive
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	orgId = $someString
+    /// 	# REQUIRED
+    /// 	destinationOrgId = $someString
+    /// 	# OPTIONAL
+    /// 	unarchiveObjectsInfo = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			objectName = $someString
+    /// 			# REQUIRED
+    /// 			objectId = $someString
+    /// 			# OPTIONAL
+    /// 			recordCriteria = @{
+    /// 				# OPTIONAL
+    /// 				searchTerm = $someString
+    /// 				# OPTIONAL
+    /// 				recordFilters = @{
+    /// 					# REQUIRED
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							column = $someString
+    /// 							# REQUIRED
+    /// 							operator = $someOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operator]) for enum values.
+    /// 							# REQUIRED
+    /// 							values = @(
+    /// 								@{
+    /// 									# OPTIONAL
+    /// 									boolValue = $someBoolean
+    /// 									# OPTIONAL
+    /// 									intValue = $someInt64
+    /// 									# OPTIONAL
+    /// 									doubleValue = $someSingle
+    /// 									# OPTIONAL
+    /// 									stringValue = $someString
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			recordsToUnarchive = @{
+    /// 				# OPTIONAL
+    /// 				recordIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			cascadePolicy = @{
+    /// 				# REQUIRED
+    /// 				objectName = $someString
+    /// 				# REQUIRED
+    /// 				includeAllChildren = $someBoolean
+    /// 				# OPTIONAL
+    /// 				children = @(
+    /// 					@{
+    /// 						# REQUIRED
+    /// 						objectName = $someString
+    /// 						# REQUIRED
+    /// 						includeAllChildren = $someBoolean
+    /// 						# OPTIONAL
+    /// 						children = @(
+    /// 							@{<SalesforceArchivalCascadeNodeInput>}
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						relationshipType = $someSalesforceRelationshipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SalesforceRelationshipType]) for enum values.
+    /// 						# OPTIONAL
+    /// 						relationshipField = $someString
+    /// 					}
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				relationshipType = $someSalesforceRelationshipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SalesforceRelationshipType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				relationshipField = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			areAutomationsDisabled = $someBoolean
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: StartSalesforceObjectsUnarchiveReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StartSalesforcePermissionAssessment operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -13660,6 +13771,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartRecovery",
                 "StartRscpPackageDownload",
                 "StartRscpUpgrade",
+                "StartSalesforceObjectsUnarchive",
                 "StartSalesforcePermissionAssessment",
                 "StartUpgradeBatchJob",
                 "StartVolumeGroupMount",
@@ -14324,6 +14436,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartRscpUpgrade":
                         this.ProcessRecord_StartRscpUpgrade();
+                        break;
+                    case "StartSalesforceObjectsUnarchive":
+                        this.ProcessRecord_StartSalesforceObjectsUnarchive();
                         break;
                     case "StartSalesforcePermissionAssessment":
                         this.ProcessRecord_StartSalesforcePermissionAssessment();
@@ -16283,6 +16398,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartRscpUpgrade";
             // Create new graphql operation startRscpUpgrade
             InitMutationStartRscpUpgrade();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startSalesforceObjectsUnarchive.
+        internal void ProcessRecord_StartSalesforceObjectsUnarchive()
+        {
+            this._logger.name += " -StartSalesforceObjectsUnarchive";
+            // Create new graphql operation startSalesforceObjectsUnarchive
+            InitMutationStartSalesforceObjectsUnarchive();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -20539,6 +20663,8 @@ $query.Var.input = @{
 	location = $someRemediationLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationLocation]) for enum values.
 	# OPTIONAL
 	resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+	# OPTIONAL
+	isJitElevated = $someBoolean
 	# OPTIONAL
 	ticketInfo = @{
 		# OPTIONAL
@@ -25221,6 +25347,107 @@ $query.Var.input = @{
 	mode = $someRscpUpgradeMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RscpUpgradeMode]) for enum values.
 	# REQUIRED
 	version = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startSalesforceObjectsUnarchive(input: StartSalesforceObjectsUnarchiveInput!): StartSalesforceObjectsUnarchiveReply!
+        internal void InitMutationStartSalesforceObjectsUnarchive()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartSalesforceObjectsUnarchiveInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartSalesforceObjectsUnarchive",
+                "($input: StartSalesforceObjectsUnarchiveInput!)",
+                "StartSalesforceObjectsUnarchiveReply",
+                Mutation.StartSalesforceObjectsUnarchive,
+                Mutation.StartSalesforceObjectsUnarchiveFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	orgId = $someString
+	# REQUIRED
+	destinationOrgId = $someString
+	# OPTIONAL
+	unarchiveObjectsInfo = @(
+		@{
+			# REQUIRED
+			objectName = $someString
+			# REQUIRED
+			objectId = $someString
+			# OPTIONAL
+			recordCriteria = @{
+				# OPTIONAL
+				searchTerm = $someString
+				# OPTIONAL
+				recordFilters = @{
+					# REQUIRED
+					conditions = @(
+						@{
+							# OPTIONAL
+							column = $someString
+							# REQUIRED
+							operator = $someOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operator]) for enum values.
+							# REQUIRED
+							values = @(
+								@{
+									# OPTIONAL
+									boolValue = $someBoolean
+									# OPTIONAL
+									intValue = $someInt64
+									# OPTIONAL
+									doubleValue = $someSingle
+									# OPTIONAL
+									stringValue = $someString
+								}
+							)
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			recordsToUnarchive = @{
+				# OPTIONAL
+				recordIds = @(
+					$someString
+				)
+			}
+			# OPTIONAL
+			cascadePolicy = @{
+				# REQUIRED
+				objectName = $someString
+				# REQUIRED
+				includeAllChildren = $someBoolean
+				# OPTIONAL
+				children = @(
+					@{
+						# REQUIRED
+						objectName = $someString
+						# REQUIRED
+						includeAllChildren = $someBoolean
+						# OPTIONAL
+						children = @(
+							@{<SalesforceArchivalCascadeNodeInput>}
+						)
+						# OPTIONAL
+						relationshipType = $someSalesforceRelationshipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SalesforceRelationshipType]) for enum values.
+						# OPTIONAL
+						relationshipField = $someString
+					}
+				)
+				# OPTIONAL
+				relationshipType = $someSalesforceRelationshipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SalesforceRelationshipType]) for enum values.
+				# OPTIONAL
+				relationshipField = $someString
+			}
+			# OPTIONAL
+			areAutomationsDisabled = $someBoolean
+		}
+	)
 }"
             );
         }

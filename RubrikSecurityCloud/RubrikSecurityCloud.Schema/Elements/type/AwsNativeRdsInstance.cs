@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExocomputeConfigured")]
         public System.Boolean? IsExocomputeConfigured { get; set; }
 
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        [JsonProperty("isInfrastructureAlertsEnabled")]
+        public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
+
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)
         [JsonProperty("isMultiAz")]
@@ -420,6 +425,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DbiResourceId = null,
         System.String? Id = null,
         System.Boolean? IsExocomputeConfigured = null,
+        System.Boolean? IsInfrastructureAlertsEnabled = null,
         System.Boolean? IsMultiAz = null,
         System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
@@ -513,6 +519,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
+        }
+        if ( IsInfrastructureAlertsEnabled != null ) {
+            this.IsInfrastructureAlertsEnabled = IsInfrastructureAlertsEnabled;
         }
         if ( IsMultiAz != null ) {
             this.IsMultiAz = IsMultiAz;
@@ -814,6 +823,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isExocomputeConfigured\n" ;
             } else {
                 s += ind + "isExocomputeConfigured\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (this.IsInfrastructureAlertsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInfrastructureAlertsEnabled\n" ;
+            } else {
+                s += ind + "isInfrastructureAlertsEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsMultiAz
@@ -1547,6 +1565,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
         {
             this.IsExocomputeConfigured = null;
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (ec.Includes("isInfrastructureAlertsEnabled",true))
+        {
+            if(this.IsInfrastructureAlertsEnabled == null) {
+
+                this.IsInfrastructureAlertsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInfrastructureAlertsEnabled != null && ec.Excludes("isInfrastructureAlertsEnabled",true))
+        {
+            this.IsInfrastructureAlertsEnabled = null;
         }
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)

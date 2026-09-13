@@ -17,9 +17,6 @@ Details of the Azure AD directory object.
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - directoryId: System.String
@@ -113,6 +110,9 @@ objects.
 - m365AccessRecoveryState: M365AccessRecoveryState
   - Specifies the state of Automated M365 Access Recovery for the directory.
 A directory that has never been configured reports the default state.
+- isRubrikManagedApp: System.Boolean
+  - Specifies whether the Entra ID app used for this directory is owned and
+managed by Rubrik (OAuth path) as opposed to a customer-provided app.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - eventHubConnectionStatus: AzureAdEventHubConnectionStatus
@@ -129,6 +129,8 @@ A directory that has never been configured reports the default state.
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

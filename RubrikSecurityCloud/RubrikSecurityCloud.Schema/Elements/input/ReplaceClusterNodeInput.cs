@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipmiPassword")]
         public System.String? IpmiPassword { get; set; }
 
+        //      C# -> System.Boolean? IsIpv4ManualDiscoveryMode
+        // GraphQL -> isIpv4ManualDiscoveryMode: Boolean (scalar)
+        [JsonProperty("isIpv4ManualDiscoveryMode")]
+        public System.Boolean? IsIpv4ManualDiscoveryMode { get; set; }
+
 
         #endregion
 

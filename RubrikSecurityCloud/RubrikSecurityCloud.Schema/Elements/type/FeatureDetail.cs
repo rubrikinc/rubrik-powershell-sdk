@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsIamPairId")]
         public System.String? AwsIamPairId { get; set; }
 
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        [JsonProperty("hasExocomputeLambdaRole")]
+        public System.Boolean? HasExocomputeLambdaRole { get; set; }
+
         //      C# -> System.String? IamPairName
         // GraphQL -> iamPairName: String (scalar)
         [JsonProperty("iamPairName")]
@@ -106,6 +111,7 @@ namespace RubrikSecurityCloud.Types
         CloudAccountStatus? Status = null,
         System.String? AccessKey = null,
         System.String? AwsIamPairId = null,
+        System.Boolean? HasExocomputeLambdaRole = null,
         System.String? IamPairName = null,
         System.String? RoleArn = null,
         System.String? StackArn = null,
@@ -133,6 +139,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AwsIamPairId != null ) {
             this.AwsIamPairId = AwsIamPairId;
+        }
+        if ( HasExocomputeLambdaRole != null ) {
+            this.HasExocomputeLambdaRole = HasExocomputeLambdaRole;
         }
         if ( IamPairName != null ) {
             this.IamPairName = IamPairName;
@@ -224,6 +233,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "awsIamPairId\n" ;
             } else {
                 s += ind + "awsIamPairId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        if (this.HasExocomputeLambdaRole != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasExocomputeLambdaRole\n" ;
+            } else {
+                s += ind + "hasExocomputeLambdaRole\n" ;
             }
         }
         //      C# -> System.String? IamPairName
@@ -418,6 +436,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsIamPairId != null && ec.Excludes("awsIamPairId",true))
         {
             this.AwsIamPairId = null;
+        }
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        if (ec.Includes("hasExocomputeLambdaRole",true))
+        {
+            if(this.HasExocomputeLambdaRole == null) {
+
+                this.HasExocomputeLambdaRole = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasExocomputeLambdaRole != null && ec.Excludes("hasExocomputeLambdaRole",true))
+        {
+            this.HasExocomputeLambdaRole = null;
         }
         //      C# -> System.String? IamPairName
         // GraphQL -> iamPairName: String (scalar)

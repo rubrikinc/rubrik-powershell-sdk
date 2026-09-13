@@ -73,3 +73,4 @@ Represents different types of activities.
 - VolumeGroup - Volume group type.
 - AGENT_CLOUD_SECURITY_ALERT - Agent Cloud security alert event type.
 - REENCRYPTION - Reencryption (re-encrypt a snapshot with the customer-managed key) event type.
+- PRE_SEEDING - Pre-seed event type.

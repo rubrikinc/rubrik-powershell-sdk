@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region MysqldbInstance
  
-    public class MysqldbInstance: BaseType, CdmHierarchyObject, HierarchyObject, KosmosDiscoverableEntityType, KosmosHierarchyObjectType, KosmosParentHierarchyObjectType, KosmosSnappableHierarchyObjectType
+    public class MysqldbInstance: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, KosmosDiscoverableEntityType, KosmosHierarchyObjectType, KosmosParentHierarchyObjectType, KosmosSnappableHierarchyObjectType
     {
         #region members
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Archival' API domain:
-    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, StartSalesforceJob, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 23 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, StartSalesforceJob, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -806,6 +806,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartSalesforceJob operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: StartSalesforceJob
+    /// 
+    /// $query = New-RscMutationArchival -Operation StartSalesforceJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyId = $someInt64
+    /// 	# REQUIRED
+    /// 	orgId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: StartSalesforceArchivalJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TerminateMigration operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -1104,6 +1137,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RefreshReaderTarget",
                 "RegisterMigration",
                 "ResumeTarget",
+                "StartSalesforceJob",
                 "TerminateMigration",
                 "UpdateGlacierTarget",
                 "UpdateManualTargetMapping",
@@ -1172,6 +1206,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ResumeTarget":
                         this.ProcessRecord_ResumeTarget();
+                        break;
+                    case "StartSalesforceJob":
+                        this.ProcessRecord_StartSalesforceJob();
                         break;
                     case "TerminateMigration":
                         this.ProcessRecord_TerminateMigration();
@@ -1343,6 +1380,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ResumeTarget";
             // Create new graphql operation resumeTarget
             InitMutationResumeTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startSalesforceArchivalJob.
+        internal void ProcessRecord_StartSalesforceJob()
+        {
+            this._logger.name += " -StartSalesforceJob";
+            // Create new graphql operation startSalesforceArchivalJob
+            InitMutationStartSalesforceArchivalJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1997,6 +2043,31 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startSalesforceArchivalJob(input: StartSalesforceArchivalJobInput!): StartSalesforceArchivalJobReply!
+        internal void InitMutationStartSalesforceArchivalJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartSalesforceArchivalJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartSalesforceArchivalJob",
+                "($input: StartSalesforceArchivalJobInput!)",
+                "StartSalesforceArchivalJobReply",
+                Mutation.StartSalesforceArchivalJob,
+                Mutation.StartSalesforceArchivalJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyId = $someInt64
+	# REQUIRED
+	orgId = $someString
 }"
             );
         }

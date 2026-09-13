@@ -80,3 +80,5 @@ conditional access policies).
 - GROUP_CHANGES_REPORT - Group changes report.
 - GPO_CAP_CHANGES_REPORT - GPO/CAP changes report.
 - PRIVILEGED_IDENTITY_REPORT - Privileged identity report.
+- CDM_USER_REPORT - CDM Users report -- one row per (user, cluster) for principals
+configured directly on connected CDM clusters.

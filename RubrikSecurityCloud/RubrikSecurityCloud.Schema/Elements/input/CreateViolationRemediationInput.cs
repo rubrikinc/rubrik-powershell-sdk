@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceType")]
         public PolicyResourceType? ResourceType { get; set; }
 
+        //      C# -> System.Boolean? IsJitElevated
+        // GraphQL -> isJitElevated: Boolean (scalar)
+        [JsonProperty("isJitElevated")]
+        public System.Boolean? IsJitElevated { get; set; }
+
         //      C# -> RemediationTicketInfoInput? TicketInfo
         // GraphQL -> ticketInfo: RemediationTicketInfoInput (input)
         [JsonProperty("ticketInfo")]

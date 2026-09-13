@@ -327,6 +327,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_TYPE")]
         CLUSTER_TYPE,
 
+        [EnumMember(Value = "CONFLUENCE_SPACE_TYPE")]
+        CONFLUENCE_SPACE_TYPE,
+
         [EnumMember(Value = "D365_TABLE_LOGICAL_NAME")]
         D365_TABLE_LOGICAL_NAME,
 

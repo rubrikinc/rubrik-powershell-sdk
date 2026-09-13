@@ -124,33 +124,39 @@ Summary of a FusionCompute cluster.
 ### fusioncomputeclusters
 Summary of all FusionCompute clusters.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeClusterConnection.
 ### fusioncomputeclustersandhosts
 Summary of all FusionCompute clusters and hosts.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
 - Returns CdmHierarchyObjectConnection.
 ### fusioncomputerecoverableclustersandhosts
 Summary of all FusionCompute clusters and hosts that the user can recover to.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns CdmHierarchyObjectConnection.
 ### getcdmreleasedetailsforclusterfromsupportportal
 Get CDM release details from support portal for a given list of clusters.

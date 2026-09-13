@@ -343,12 +343,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 			# OPTIONAL
-    /// 			deleteSnapshots = $someBoolean
     /// 			# REQUIRED
     /// 			cloudAccountIds = @(
     /// 				$someString
     /// 			)
+    /// 			# OPTIONAL
+    /// 			deleteSnapshots = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1317,12 +1317,12 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-			# OPTIONAL
-			deleteSnapshots = $someBoolean
 			# REQUIRED
 			cloudAccountIds = @(
 				$someString
 			)
+			# OPTIONAL
+			deleteSnapshots = $someBoolean
 		}
 	)
 	# OPTIONAL

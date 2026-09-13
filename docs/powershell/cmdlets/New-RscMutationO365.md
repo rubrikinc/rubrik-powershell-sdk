@@ -168,7 +168,7 @@ Completes a Rubrik-Hosted setup flow.
 O365SaaSSetupKickoff starts the first-leg of an O365 OAuth client-secret code
 flow for the fully hosted solution.
 
-- The saassetupkickoff subcommand takes no arguments.
+- There is a single argument of type O365SaaSSetupKickoffInput.
 - Returns O365SaasSetupKickoffReply.
 ### setserviceaccount
 SetO365ServiceAccountV2 sets the Microsoft 365 service account

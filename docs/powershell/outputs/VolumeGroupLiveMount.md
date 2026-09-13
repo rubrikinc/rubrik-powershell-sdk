@@ -31,6 +31,10 @@ Volume group live mount.
   - IP of the node in the live mount.
 - nodeCompositeId: System.String
   - Composite Id of the node in the live mount.
+- recoveryPurpose: RecoveryPurpose
+  - Recovery purpose under which the Live Mount was delivered.
+SURGICAL_RECOVERY means quarantined files were deleted from the
+delivered data.
 - cluster: Cluster
   - Cluster of the live mount.
 - sourceSnapshot: CdmSnapshot

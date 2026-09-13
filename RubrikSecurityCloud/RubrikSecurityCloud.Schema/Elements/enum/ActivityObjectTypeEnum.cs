@@ -573,6 +573,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "ORACLE_FAILOVER_CLUSTER")]
+        ORACLE_FAILOVER_CLUSTER,
+
+        [EnumMember(Value = "ORACLE_FAILOVER_SERVICE")]
+        ORACLE_FAILOVER_SERVICE,
+
         [EnumMember(Value = "ORGANIZATION")]
         ORGANIZATION,
 

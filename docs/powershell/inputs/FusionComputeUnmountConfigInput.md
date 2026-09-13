@@ -1,4 +1,5 @@
 ### FusionComputeUnmountConfigInput
+Supported in v9.6+
 Configuration for a FusionCompute unmount request.
 
 - isForce: System.Boolean

@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainControllerGuid")]
         public System.String? DomainControllerGuid { get; set; }
 
+        //      C# -> System.String? ForestRootDomainSid
+        // GraphQL -> forestRootDomainSid: String (scalar)
+        [JsonProperty("forestRootDomainSid")]
+        public System.String? ForestRootDomainSid { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [JsonProperty("hostname")]
@@ -455,6 +460,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmLink = null,
         System.String? DcLocation = null,
         System.String? DomainControllerGuid = null,
+        System.String? ForestRootDomainSid = null,
         System.String? Hostname = null,
         System.String? Id = null,
         System.Boolean? IsGlobalCatalog = null,
@@ -549,6 +555,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DomainControllerGuid != null ) {
             this.DomainControllerGuid = DomainControllerGuid;
+        }
+        if ( ForestRootDomainSid != null ) {
+            this.ForestRootDomainSid = ForestRootDomainSid;
         }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
@@ -861,6 +870,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "domainControllerGuid\n" ;
             } else {
                 s += ind + "domainControllerGuid\n" ;
+            }
+        }
+        //      C# -> System.String? ForestRootDomainSid
+        // GraphQL -> forestRootDomainSid: String (scalar)
+        if (this.ForestRootDomainSid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "forestRootDomainSid\n" ;
+            } else {
+                s += ind + "forestRootDomainSid\n" ;
             }
         }
         //      C# -> System.String? Hostname
@@ -1672,6 +1690,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DomainControllerGuid != null && ec.Excludes("domainControllerGuid",true))
         {
             this.DomainControllerGuid = null;
+        }
+        //      C# -> System.String? ForestRootDomainSid
+        // GraphQL -> forestRootDomainSid: String (scalar)
+        if (ec.Includes("forestRootDomainSid",true))
+        {
+            if(this.ForestRootDomainSid == null) {
+
+                this.ForestRootDomainSid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ForestRootDomainSid != null && ec.Excludes("forestRootDomainSid",true))
+        {
+            this.ForestRootDomainSid = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)

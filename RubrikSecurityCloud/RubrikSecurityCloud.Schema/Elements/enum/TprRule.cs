@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ASSIGN_COPY_SCHEDULE")]
+        ASSIGN_COPY_SCHEDULE,
+
         [EnumMember(Value = "ASSIGN_TPR_ROLE")]
         ASSIGN_TPR_ROLE,
 
@@ -89,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
+
+        [EnumMember(Value = "MANAGE_COPY_SCHEDULE")]
+        MANAGE_COPY_SCHEDULE,
 
         [EnumMember(Value = "MANAGE_CUSTOM_CERTIFICATES")]
         MANAGE_CUSTOM_CERTIFICATES,

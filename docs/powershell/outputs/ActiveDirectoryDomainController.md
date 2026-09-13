@@ -37,6 +37,8 @@ Active Directory Domain Controller.
   - VMWare virtual machine associated with the domain controller.
 - host: PhysicalHost
   - Host information of this Active Directory Domain Controller.
+- forestRootDomainSid: System.String
+  - The SID of the root domain of the forest this domain controller belongs to. This is the Active Directory scope key, and is null when the forest cannot be resolved.
 - newestCleanSnapshot: CdmSnapshot
   - The most recent snapshot that is not corrupted.
 - newestIndexedSnapshot: CdmSnapshot

@@ -358,6 +358,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] k8sVirtualMachineDisksArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "K8sVirtualMachineDiskFilter"),
                     Tuple.Create("sortBy", "K8sVirtualMachineDiskSortBy"),
                     Tuple.Create("sortOrder", "SortOrder"),
