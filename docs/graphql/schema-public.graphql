@@ -1,4 +1,4 @@
-# v20260907-45
+# v20260907-53
 type Query {
   # Account ID.
   accountId: String!
@@ -1669,7 +1669,7 @@ type Query {
     # Type of snapshot management.
     snapshotManagementType: SnapshotManagementType): [ManagedObjectType!]!
 
-  # All user files.
+  # All files the user has access to.
   allUserFiles(
     # Returns the first n elements from the list.
     first: Int,
@@ -8076,18 +8076,25 @@ type Query {
     # number for each hop.
     shouldIncludeFullVersionName: Boolean): MultiHopUpgradePathReply!
 
-  # Details of a MySQL database for a given FID.
+  # Returns the details of a single MySQL database identified by its
+  # unique identifier.
   mysqlDatabase(
     # Rubrik UUID for the object.
     fid: UUID!): MysqldbDatabase!
 
-  # Connection of filtered MySQL databases based on specific filters.
+  # Returns a paginated connection of MySQL databases visible to the caller.
   mysqlDatabases(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -8098,12 +8105,13 @@ type Query {
     # Hierarchy object filter.
     filter: [Filter!]): MysqldbDatabaseConnection!
 
-  # Details of a MySQL instance for a given FID.
+  # Returns the details of a single MySQL instance identified by its
+  # unique identifier.
   mysqlInstance(
     # Rubrik UUID for the object.
     fid: UUID!): MysqldbInstance!
 
-  # The live mounts associated with the specified workloads.
+  # Returns Live Mounts for MySQL database instances.
   mysqlInstanceLiveMounts(
     # Returns the first n elements from the list.
     first: Int,
@@ -8111,19 +8119,31 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # Filter for Kosmos workload live mounts.
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Optional client-supplied filters.
     filters: [KosmosWorkloadLiveMountFilterInput!],
 
-    # Sort the live mounts of the Kosmos Workload based on the argument.
+    # Optional sort parameters.
     sortBy: KosmosWorkloadLiveMountSortByInput): KosmosWorkloadLiveMountConnection!
 
-  # Connection of filtered MySQL instances based on specific filters.
+  # Returns a paginated list of MySQL instances visible to the caller.
   mysqlInstances(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -9972,13 +9992,20 @@ type Query {
     # Rubrik UUID for the object.
     fid: UUID!): PostgreSQLDatabase!
 
-  # Connection of filtered postgres database based on specific filters.
+  # Returns a connection of filtered PostgreSQL databases based on specific
+  # filters.
   postgreSQLDatabases(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -9994,13 +10021,20 @@ type Query {
     # Rubrik UUID for the object.
     fid: UUID!): PostgreSQLDbCluster!
 
-  # Connection of filtered PostgreSQL database cluster based on specific filters.
+  # Returns a connection of filtered PostgreSQL database clusters based on
+  # specific filters.
   postgreSQLDbClusters(
     # Returns the first n elements from the list.
     first: Int,
 
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -10022,7 +10056,7 @@ type Query {
     # ID of the asynchronous request.
     id: String!): AsyncRequestStatus!
 
-  # The live mounts of the given workloads.
+  # Returns Live Mounts for PostgreSQL database clusters.
   postgresDbClusterLiveMounts(
     # Returns the first n elements from the list.
     first: Int,
@@ -10030,10 +10064,16 @@ type Query {
     # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
-    # Filter for Kosmos workload live mounts.
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that occur before the specified cursor.
+    before: String,
+
+    # Optional client-supplied filters.
     filters: [KosmosWorkloadLiveMountFilterInput!],
 
-    # Sort the live mounts of the Kosmos Workload based on the argument.
+    # Optional sort parameters.
     sortBy: KosmosWorkloadLiveMountSortByInput): KosmosWorkloadLiveMountConnection!
 
   # Gets status of last prechecks job.
@@ -13196,7 +13236,7 @@ type Query {
     # Official IANA timezone name.
     timezone: String!): GetUserDetailReply!
 
-  # User file.
+  # A single file that can be downloaded.
   userFile(
     # The external ID of the file to download.
     externalId: String!): CustomerFacingFile!
@@ -55073,6 +55113,9 @@ type CdmSnapshot implements GenericSnapshot {
   # Number of indexing attempts.
   indexingAttempts: Long!
 
+  # IRIS DB instance-specific metadata carrying the snapshot statistics and backup type. Null if the snapshot is not of an IRIS DB instance.
+  irisdbInstanceAppMetadata: IrisdbInstanceAppMetadata
+
   # Flag if the snapshot is an anomaly.
   isAnomaly: Boolean!
 
@@ -82518,6 +82561,10 @@ enum FileTypeEnumType {
   # CLOUD_DIRECT_TASK_REPORT is a filetype for NAS Cloud Direct task reports.
   CLOUD_DIRECT_TASK_REPORT
 
+  # DYNAMODB_RECOVERY_EXPORT is a filetype for the DynamoDB recovery
+  # export/skipped-records/failed-records NDJSON reports.
+  DYNAMODB_RECOVERY_EXPORT
+
   # ENTRA_ID_DOWNLOAD_SNAPSHOT is a filetype for Entra ID download objects job.
   ENTRA_ID_DOWNLOAD_SNAPSHOT
 
@@ -107876,6 +107923,14 @@ input IpmiUpdateInput {
   # IPMI password, password should be 5-20 characters.
   password: String
 }
+# IRIS DB instance workload related app metadata for a snapshot.
+type IrisdbInstanceAppMetadata {
+  # Type of the IRIS DB data snapshot. Unspecified until CDM resolves it.
+  snapshotType: IrisdbSnapshotType
+
+  # The statistics of the IRIS DB instance snapshot.
+  stats: KosmosDataSnapshotStats!
+}
 # SLA Domain configuration for IRIS DB instances.
 type IrisdbSlaConfig {
   # Frequency value for the log backup of IRIS DB instances.
@@ -107891,6 +107946,14 @@ input IrisdbSlaConfigInput {
 
   # Specifies the duration for which the IRIS DB instance logs will be retained.
   logRetention: SlaDurationInput
+}
+# Type of an IRIS DB data snapshot.
+enum IrisdbSnapshotType {
+  # IRIS DB full backup.
+  IRISDB_SNAPSHOT_TYPE_FULL
+
+  # IRIS DB backup of the data changed since the last full backup.
+  IRISDB_SNAPSHOT_TYPE_INCREMENTAL
 }
 # Disk upgrade request for a cloud cluster.
 input IsCloudClusterDiskUpgradeAvailableInput {
@@ -111393,6 +111456,8 @@ enum KosmosWorkloadLiveMountSortByField {
 
   # Sort by the Live Mount name.
   NAME
+
+  # The sort field is not specified.
   UNSPECIFIED
 }
 # Sort Kosmos Snappable Live Mount results.
@@ -137313,6 +137378,10 @@ type O365AdGroupMemberEdge {
 }
 # Configuration for a Microsoft 365 App.
 type O365App implements O365AppObject {
+  # Baseline permission mode for the app. Every app is on full permissions
+  # today; JIT mode selection is not yet available.
+  accessMode: M365AccessMode!
+
   # The added time of the O365 app.
   addedAt: DateTime!
 
@@ -137367,6 +137436,10 @@ type O365AppEdge {
 }
 # Interface for O365 application objects associated with a subscription.
 interface O365AppObject {
+  # Baseline permission mode for the app. Every app is on full permissions
+  # today; JIT mode selection is not yet available.
+  accessMode: M365AccessMode!
+
   # The added time of the O365 app.
   addedAt: DateTime!
 
