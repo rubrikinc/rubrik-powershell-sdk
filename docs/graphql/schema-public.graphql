@@ -10141,8 +10141,8 @@ type Query {
     # Security identifier.
     sid: String!,
 
-    # Date for which the results will be retrieved.
-    timelineDate: String!,
+    # Date for which the results will be retrieved. Defaults to the current time.
+    timelineDate: String,
 
     # Specifies whether whitelisted results should be included.
     includeWhitelistedResults: Boolean): PrincipalDetails!
@@ -10235,8 +10235,8 @@ type Query {
     # Filter to be applied when retrieving principal summaries.
     filter: PrincipalSummariesFilterInput,
 
-    # Date for which the results will be retrieved.
-    timelineDate: String!,
+    # Date for which the results will be retrieved. Defaults to the current time.
+    timelineDate: String,
 
     # Field on which to perform the sorting operation.
     sort: ListPrincipalsSummarySortInput,
@@ -12270,7 +12270,13 @@ type Query {
     orgId: UUID!,
 
     # Optional SharePoint drive search filter.
-    sharepointDriveSearchFilter: OnedriveSearchFilter): O365OnedriveObjectConnection!
+    sharepointDriveSearchFilter: OnedriveSearchFilter,
+
+    # The site child ID for SharePoint descendant objects.
+    siteChildId: String,
+
+    # The site child type for SharePoint descendant objects.
+    siteChildType: SharePointDescendantType): O365OnedriveObjectConnection!
 
   # List of snapshots for unmanaged objects.
   snapshotsForUnmanagedObject(
@@ -18984,7 +18990,7 @@ type Mutation {
 
   # Apply pending transaction logs to a secondary database
   # 
-  # Supported in v9.7
+  # Supported in v9.6+
   # Starts an asynchronous job that applies all pending transaction logs to the secondary database within the specified log shipping configuration without changing its state.
   startMssqlLogShippingApplyLogsJob(
     # Input for V1ApplyLogs.
@@ -25451,6 +25457,7 @@ type AddMysqldbInstanceResponse {
   # ID of the new MySQL Database instance created.
   id: String!
 
+  # Supported in v9.6+
   # Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.
   kosmosTopologyStateId: String
 }
@@ -43659,7 +43666,7 @@ type AzureCosmosNosqlContainer implements PolarisHierarchyObject , HierarchyObje
   containerName: String!
 
   # Rubrik ID of the Azure Cosmos NoSQL database that owns the container.
-  cosmosDbDatabaseId: String!
+  cosmosDbDatabaseId: UUID!
 
   # Name of the Azure Cosmos NoSQL database that owns the container.
   databaseName: String!
@@ -43924,7 +43931,7 @@ type AzureCosmosNosqlDatabase implements PolarisHierarchyObject , HierarchyObjec
   configuredSlaDomain: SlaDomain!
 
   # Rubrik ID of the Azure Cosmos NoSQL account that owns the database.
-  cosmosDbAccountId: String!
+  cosmosDbAccountId: UUID!
 
   # Name of the Azure Cosmos NoSQL database.
   databaseName: String!
@@ -46641,6 +46648,9 @@ type AzureNativeRegionManagedObject implements PolarisHierarchyObject , Hierarch
   # RSC tags to which this hierarchy object is assigned.
   allTags: [AssignedRscTag!]!
 
+  # The number of Azure Cosmos NoSQL containers in the region.
+  azureCosmosNosqlContainerCount: Int!
+
   # The number of Azure PostgreSQL Flexible Servers in the region.
   azurePostgresFlexibleServerCount: Int!
 
@@ -47211,6 +47221,9 @@ type AzureNativeSubscription implements PolarisHierarchyObject , HierarchyObject
 
   # Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
   azureCloudType: AzureCloudType!
+
+  # The number of Azure Cosmos NoSQL containers in the subscription.
+  azureCosmosNosqlContainerCount: Int!
 
   # Paginated list of all Azure Resource Groups in the subscription.
   azureNativeResourceGroups(
@@ -107181,6 +107194,9 @@ enum InventoryCard {
   # Inventory Card is Azure Blob Storage.
   AZURE_BLOB_STORAGE
 
+  # Inventory card is Azure Cosmos NoSQL.
+  AZURE_COSMOS_NOSQL
+
   # Inventory card is Azure DevOps.
   AZURE_DEVOPS
 
@@ -109087,6 +109103,7 @@ enum K8sClusterStatus {
 # Supported in v9.0+
 # Key properties of a Kubernetes cluster.
 type K8sClusterSummary {
+  # Supported in v9.6+
   # Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Populated only when dataPathTransport is pernodeproxy.
   backupSubnetCidr: String
 
@@ -109094,28 +109111,31 @@ type K8sClusterSummary {
   # The details of the RSC service account used for CRD operations.
   crdServiceAccountInfo: ServiceAccountInfo
 
+  # Supported in v9.6+
   # Transport type used for RBA data movers. Set to pernodeproxy when the per-node backup proxy DaemonSet routes data traffic. Null for clusters without per-node-proxy configured.
   dataPathTransport: String
-
-  # The details of the internal RSC service account used for database operations.
-  dbServiceAccountInfo: ServiceAccountInfo
 
   # Supported in v9.1+
   # Distribution of the Kubernetes cluster.
   distribution: String
 
+  # Supported in v9.6+
   # Effective SLA domain ID inherited or directly assigned.
   effectiveSlaId: String
 
+  # Supported in v9.6+
   # Source of the effective SLA (direct assignment or inherited hierarchy).
   effectiveSlaSource: String
 
+  # Supported in v9.6+
   # Type of the effective SLA domain.
   effectiveSlaType: String
 
+  # Supported in v9.6+
   # Helm chart status for manifest-onboarded clusters (e.g. synced, stale).
   helmStatus: String
 
+  # Supported in v9.6+
   # Helm chart version deployed on the cluster.
   helmVersion: String
 
@@ -109123,12 +109143,11 @@ type K8sClusterSummary {
   # ID of the Kubernetes cluster.
   id: String!
 
-  # Specifies whether containerized database protection is enabled on the Rubrik cluster.
-  isDbProtectionEnabled: Boolean
-
+  # Supported in v9.6+
   # Kubernetes server version reported by the cluster API.
   k8SVersion: String
 
+  # Supported in v9.6+
   # KubeVirt version installed on the cluster, or null if KubeVirt is not present. Populated by the cluster refresh task.
   kubevirtVersion: String
 
@@ -109136,6 +109155,7 @@ type K8sClusterSummary {
   # The configuration for the kupr server proxy being used.
   kuprServerProxyConfig: KuprServerProxyConfig
 
+  # Supported in v9.6+
   # IP address of the kupr proxy pod on the Multus secondary network. Populated only for Multus transport clusters.
   kuprServerProxyPodMultusIp: String
 
@@ -109143,18 +109163,23 @@ type K8sClusterSummary {
   # Last refresh time of the Kubernetes cluster.
   lastRefreshTime: DateTime
 
+  # Supported in v9.6+
   # LoadBalancer IP or DNS name for the kupr proxy service. Populated only for LoadBalancer transport clusters.
   loadbalancerIpDns: String
 
+  # Supported in v9.6+
   # Maximum number of kupr backup agents allowed to run concurrently. Omitted when FF is off.
   maxConcurrentAgents: Int
 
+  # Supported in v9.6+
   # Maximum number of PVCs assigned to a single kupr backup agent. Omitted when FF is off.
   maxPvcsPerAgent: Int
 
+  # Supported in v9.6+
   # Network Attachment Definition name for Multus transport clusters.
   nadName: String
 
+  # Supported in v9.6+
   # Namespace of the Network Attachment Definition for Multus transport clusters.
   nadNamespace: String
 
@@ -109162,15 +109187,19 @@ type K8sClusterSummary {
   # Name of the Kubernetes cluster.
   name: String!
 
+  # Supported in v9.6+
   # Number of Kubernetes namespaces discovered in this cluster.
   namespaceCount: Int
 
+  # Supported in v9.6+
   # Number of K8s labels tracked by CDM for this cluster. Null on list responses.
   numLabels: Int
 
+  # Supported in v9.6+
   # Number of CDM protection sets defined for this cluster. Null on list responses.
   numProtectionSets: Int
 
+  # Supported in v9.6+
   # Number of KubeVirt VMs discovered in this cluster. Null on list responses.
   numVms: Int
 
@@ -109182,9 +109211,11 @@ type K8sClusterSummary {
   # The type of onboarding. It can be kubeconfig or manifest.
   onboardingType: String
 
+  # Supported in v9.6+
   # NodePort or LoadBalancer port used to reach the kupr proxy service.
   port: Int
 
+  # Supported in v9.6+
   # PVC grouping strategy (node_affinity | count | none). Omitted when FF is off.
   pvcGroupingStrategy: String
 
@@ -109204,6 +109235,7 @@ type K8sClusterSummary {
   # The transport type used for communication with the Kubernetes cluster.
   transport: String
 
+  # Supported in v9.6+
   # In-cluster Rubrik workload components (persistent and on-demand). Null on list responses; populated only by the single-cluster GET.
   workloads: [K8sWorkloadComponentSummary!]!
 }
@@ -109337,6 +109369,7 @@ input K8sExportParametersInput {
   # Supported in v9.1+
   pvcNames: [String!] = []
 
+  # Supported in v9.6+
   # Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
   restoreOrderTimeoutPolicy: String
 
@@ -109908,6 +109941,7 @@ input K8sRestoreParametersInput {
   # Supported in v9.1+
   pvcNames: [String!] = []
 
+  # Supported in v9.6+
   # Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
   restoreOrderTimeoutPolicy: String
 
@@ -110112,38 +110146,50 @@ type K8sVmSnapshotSummary {
   # Name of the Kubernetes Virtual Machine.
   name: String!
 }
+# Supported in v9.6+
 # Summary of a Rubrik workload component running (or deployable on-demand) in a Kubernetes cluster.
 type K8sWorkloadComponentSummary {
+  # Supported in v9.6+
   # Names of cluster nodes hosting a ready pod for this workload. Null when no pods are ready or for on-demand workloads.
   activeNodes: [String!]!
 
+  # Supported in v9.6+
   # CPU limit as a Kubernetes quantity string (e.g. "500m").
   cpuLimit: String
 
+  # Supported in v9.6+
   # CPU request as a Kubernetes quantity string (e.g. "250m").
   cpuRequest: String
 
+  # Supported in v9.6+
   # Container image reference, or null when not yet determined.
   image: String
 
+  # Supported in v9.6+
   # Memory limit as a Kubernetes quantity string (e.g. "1024Mi").
   memoryLimit: String
 
+  # Supported in v9.6+
   # Memory request as a Kubernetes quantity string (e.g. "512Mi").
   memoryRequest: String
 
-  # Required. Name of the workload (e.g. appscontroller, kupr-proxy, backup-agent).
+  # Required. Supported in v9.6+
+  # Name of the workload (e.g. appscontroller, kupr-proxy, backup-agent).
   name: String!
 
-  # Required. Desired replica count. -1 indicates an on-demand workload that is not permanently deployed.
+  # Required. Supported in v9.6+
+  # Desired replica count. -1 indicates an on-demand workload that is not permanently deployed.
   replicas: Int!
 
-  # Required. Deployment scope: Deployment (permanent single workload), Cluster-wide (DaemonSet across all nodes), or On-Demand (workload not permanently deployed).
+  # Required. Supported in v9.6+
+  # Deployment scope: Deployment (permanent single workload), Cluster-wide (DaemonSet across all nodes), or On-Demand (workload not permanently deployed).
   scope: String!
 
+  # Supported in v9.6+
   # Machine-readable health status: ok, degraded, crash_loop_back_off, image_pull_back_off, pending, or unknown. Null for on-demand workloads.
   status: String
 
+  # Supported in v9.6+
   # Raw Kubernetes waiting reason or condition message associated with the current status. Null when status is ok or for on-demand workloads.
   statusMessage: String
 }
@@ -123355,8 +123401,8 @@ input MongoRecoveryRequestConfigInput {
 
   # Supported in v9.0+
   # v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-  # v9.1-v9.6: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
-  # v9.7: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used while adding the target source is used.
+  # v9.1-v9.5: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+  # v9.6+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used while adding the target source is used.
   targetAuthenticationType: MongoAuthenticationType
 
   # Supported in v9.0+
@@ -127627,6 +127673,7 @@ input MssqlInstanceUpdateInput {
 }
 # Configuration parameters for applying pending transaction logs to a SQL Server log shipping secondary database.
 input MssqlLogShippingApplyLogsInput {
+  # Supported in v9.6+
   # Whether to automatically disconnect users from a secondary database in Standby mode while pending transaction logs are applied. If this value is false and users remain connected, then the restore operation will fail. If the secondary database is in Restoring mode, this value is ignored.
   shouldDisconnectStandbyUsers: Boolean
 }
@@ -128658,6 +128705,7 @@ enum MysqldbAuthenticationType {
 # Supported in v9.5+
 # MySQL instance restore configuration.
 input MysqldbAutomatedRestoreConfigInput {
+  # Supported in v9.6+
   # Per-replica restore settings for an HA MySQL instance. Omitted (or empty) restores a standalone instance. One entry restores that single replica. Multiple entries restore every listed replica and re-establish replication across the HA cluster.
   multiMysqldbRestoreSettings: [MysqldbPerReplicaRestoreSettingsInput!] = []
 
@@ -128670,8 +128718,8 @@ input MysqldbAutomatedRestoreConfigInput {
   mysqldbAutomatedRestoreDatabaseDetails: MysqldbAutomatedRestoreDatabaseDetailsInput
 
   # Supported in v9.5+
-  # v9.5-v9.6: Configuration to customize the MySQL Instance level restore.
-  # v9.7: Configuration to customize the MySQL Instance level restore. Ignored when multiMysqldbRestoreSettings is set.
+  # v9.5: Configuration to customize the MySQL Instance level restore.
+  # v9.6+: Configuration to customize the MySQL Instance level restore. Ignored when multiMysqldbRestoreSettings is set.
   mysqldbAutomatedRestoreInstanceDetails: MysqldbAutomatedRestoreInstanceDetailsInput
 
   # Required. Supported in v9.5+
@@ -129462,15 +129510,19 @@ enum MysqldbOnDemandSnapshotConfigSnapshotType {
   MYSQLDB_ON_DEMAND_SNAPSHOT_CONFIG_SNAPSHOT_TYPE_INCREMENTAL
   MYSQLDB_ON_DEMAND_SNAPSHOT_CONFIG_SNAPSHOT_TYPE_LOG
 }
+# Supported in v9.6+
 # Restore settings for one target replica of an HA MySQL cluster.
 input MysqldbPerReplicaRestoreSettingsInput {
+  # Supported in v9.6+
   # Credentials to be used during MySQL recovery for this replica.
   mysqldbAutomatedRestoreConnectionInfo: MysqldbAutomatedRestoreConnectionInfoInput
 
+  # Supported in v9.6+
   # Restore details for this replica, such as the MySQL configuration file path.
   mysqldbAutomatedRestoreInstanceDetails: MysqldbAutomatedRestoreInstanceDetailsInput
 
-  # Required. ID of the target replica being restored, as returned in the replicaId field of MysqldbHaReplicaConfig.
+  # Required. Supported in v9.6+
+  # ID of the target replica being restored, as returned in the replicaId field of MysqldbHaReplicaConfig.
   replicaId: String!
 }
 # Supported in v9.6+
@@ -152794,6 +152846,7 @@ type PatchMysqldbInstanceResponse {
   # Status of the asynchronous job triggered when MySQL instance is updated.
   asyncRequestStatus: AsyncRequestStatus
 
+  # Supported in v9.6+
   # Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.
   kosmosTopologyStateId: String
 }
@@ -158942,6 +158995,9 @@ enum ProductName {
 
   # On-premises Active Directory Cyber Recovery.
   ONPREM_AD_CR
+
+  # Microsoft Power Platform protection.
+  POWER_PLATFORM
 
   # Radar.
   RADAR
@@ -172266,6 +172322,9 @@ enum S3CompatibleSubType {
   # Iland Cloud subtype.
   ILAND_CLOUD
 
+  # Infinidat InfiniBox subtype.
+  INFINIDAT_INFINIBOX
+
   # IronCloud subtype.
   IRONCLOUD
 
@@ -173003,6 +173062,9 @@ enum SaasAppType {
 
   # Google Workspace drive application type.
   GOOGLE_DRIVE
+
+  # Google Workspace Groups application type.
+  GOOGLE_GROUPS
 
   # Google Workspace gmail application type.
   GOOGLE_MAIL
@@ -199601,11 +199663,11 @@ input VolumeGroupLiveMountSortByInput {
 }
 # Supported in v5.0+
 input VolumeGroupMountSnapshotJobConfigInput {
-  # Supported in v9.7
+  # Supported in v9.6+
   # Optional field which excludes the paths specified during recovery.
   excludePaths: [String!] = []
 
-  # Supported in v9.7
+  # Supported in v9.6+
   # Optional field that identifies the purpose of the recovery. Set to 'SURGICAL_RECOVERY' for surgical recovery jobs which exclude quarantined files.
   recoveryPurpose: VolumeGroupMountSnapshotJobConfigRecoveryPurpose
 
