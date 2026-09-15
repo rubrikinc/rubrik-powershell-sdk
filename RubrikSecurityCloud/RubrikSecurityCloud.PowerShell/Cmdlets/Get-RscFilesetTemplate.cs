@@ -152,16 +152,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         listQuery.Nodes = new List<FilesetTemplate>();
                         listQuery.Nodes.Add(nodeObj);
 
-                        string listQueryString = $"query FilesetTemplateListQuery(" +
-                            $"$hostRoot: HostRoot!, " +
-                            $"$first: Int, " +
-                            $"$after: String, " +
-                            $"$sortBy: HierarchySortByField, " +
-                            $"$sortOrder: SortOrder, " +
-                            $"$filter: [Filter!]" +
-                            $"){{\n" +
-                            $"{Query.FilesetTemplates(listQuery)}" +
-                            $"\n}}";
+                        string listQueryString = new RscGqlOperation(
+                            "query", "FilesetTemplateListQuery",
+                            "($first: Int, $after: String, $last: Int, $before: String, $hostRoot: HostRoot!, $sortBy: HierarchySortByField, $sortOrder: SortOrder, $filter: [Filter!])",
+                            fieldSpec: Query.FilesetTemplates(listQuery)).Query();
 
                         string hostRoot = $"{OsType.ToUpper()}_HOST_ROOT";
 

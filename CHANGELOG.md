@@ -5,6 +5,10 @@
 New Features:
 
 Fixes:
+- Fix `Get-RscHost` and `Get-RscFilesetTemplate`: resolve GraphQL 400 validation errors caused by
+  undeclared `$last`/`$before` pagination variables. The generated query body always references
+  these variables but the hand-written operation signatures never declared them. Replaced manual
+  query string construction with `RscGqlOperation` to keep signatures in sync with the schema. (#269)
 - Fix `Get-RscSla`: resolve `SetValueInvocationException` / `ConvertToFinalInvalidCastException`
   errors thrown for every SLA with an archival configuration. The `TargetMappingBasic` property
   is a `List<TargetMappingBasic>` in the generated .NET types, but the previous assignment used
