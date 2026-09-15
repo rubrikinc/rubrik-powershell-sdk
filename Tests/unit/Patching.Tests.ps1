@@ -105,7 +105,7 @@ Describe -Name "Test patching" -Fixture {
 
         # The following hard-coded list needs to be updated manually
         # when the schema changes. The repetition is intentional.
-        $defaultWithSnapshotAndEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isAssignedByParentAccount isClusterRemovalTprEnabled isHealthy name snapshotCount systemStatusMessage version"
+        $defaultWithSnapshotAndEstimatedRunway = "pauseStatus status statusFromDb subStatus systemStatus type estimatedRunway id isAirGapped isAssignedByParentAccount isClusterRemovalTprEnabled isHealthy isTunnelEnabled name snapshotCount systemStatusMessage version"
 
         $qc2ExpectedFs = "count nodes { $defaultWithSnapshotAndEstimatedRunway } $pageInfo"
         $qc2Fs | Should -Be $qc2ExpectedFs
