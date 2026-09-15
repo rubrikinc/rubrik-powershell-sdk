@@ -177,17 +177,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         hostListQuery.Nodes = new List<PhysicalHost>();
                         hostListQuery.Nodes.Add(nodeObj);
 
-                        string listQueryString = $"query PhysicalHostListQuery(" +
-                            $"$hostRoot: HostRoot!, " +
-                            $"$first: Int, " +
-                            $"$after: String, " +
-                            $"$sortBy: HierarchySortByField, " +
-                            $"$sortOrder: SortOrder, " +
-                            $"$filter: [Filter!], " +
-                            $"$isBulkPolicyAssignmentFlow: Boolean" +
-                            $"){{\n" +
-                            $"{Query.PhysicalHosts(hostListQuery)}" +
-                            $"\n}}";
+                        string listQueryString = new RscGqlOperation(
+                            "query", "PhysicalHostListQuery",
+                            "($first: Int, $after: String, $last: Int, $before: String, $hostRoot: HostRoot!, $sortBy: HierarchySortByField, $sortOrder: SortOrder, $filter: [Filter!], $isBulkPolicyAssignmentFlow: Boolean)",
+                            fieldSpec: Query.PhysicalHosts(hostListQuery)).Query();
 
                         string hostRoot = $"{OsType.ToUpper()}_HOST_ROOT";
 
