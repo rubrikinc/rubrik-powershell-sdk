@@ -1,7 +1,7 @@
 # v20260907-53
 type Query {
   # Account ID.
-  accountId: String!
+  accountId: String! @deprecated(reason: "This endpoint is deprecated.")
 
   # This endpoint is deprecated.
   accountSettings: AccountSetting! @deprecated(reason: "Use getAccountSettingValue or getAccountSettingValueWithDefault instead.")
@@ -6215,12 +6215,13 @@ type Query {
   # GitHub cloud accounts.
   gitHubConnectionStatusSummary: GitHubConnectionStatusSummaryReply!
 
-  # Query GitHub organization object.
+  # Retrieves a single GitHub organization by its
+  # managed object ID.
   gitHubOrganization(
-    # The ID of the workload.
+    # The FID of the GitHub organization.
     workloadId: UUID!): GithubOrganization!
 
-  # Query GitHub organization objects.
+  # Query GitHub organization hierarchy objects.
   gitHubOrganizations(
     # Returns the first n elements from the list.
     first: Int,
@@ -6234,22 +6235,25 @@ type Query {
     # Returns the elements in the list that occur before the specified cursor.
     before: String,
 
-    # The type of query to perform (CHILDREN or DESCENDANTS).
-    queryType: QueryType!,
-
     # Ancestor object/root ID.
     ancestorId: String!,
+
+    # Type of query to perform (CHILDREN
+    # or DESCENDANTS).
+    queryType: QueryType!,
 
     # The hierarchy object filter.
     filter: [Filter!]! = [],
 
-    # Sort hierarchy objects according to the hierarchy field.
+    # Sort hierarchy objects by field.
     sortBy: HierarchySortByField,
 
     # Sorts the order of results.
     sortOrder: SortOrder,
 
-    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    # Each enumeration value
+    # represents the hierarchy of a specific workload
+    # type for RBAC and SLA Domain assignments.
     workloadHierarchy: WorkloadLevelHierarchy): GithubOrganizationConnection!
 
   # Query GitHub repository objects.
@@ -6266,7 +6270,8 @@ type Query {
     # Returns the elements in the list that occur before the specified cursor.
     before: String,
 
-    # The type of query to perform (CHILDREN or DESCENDANTS).
+    # Type of query to perform (CHILDREN
+    # or DESCENDANTS).
     queryType: QueryType!,
 
     # Ancestor object/root ID.
@@ -6275,18 +6280,21 @@ type Query {
     # The hierarchy object filter.
     filter: [Filter!]! = [],
 
-    # Sort hierarchy objects according to the hierarchy field.
+    # Sort hierarchy objects by field.
     sortBy: HierarchySortByField,
 
     # Sorts the order of results.
     sortOrder: SortOrder,
 
-    # Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    # Each enumeration value
+    # represents the hierarchy of a specific workload
+    # type for RBAC and SLA Domain assignments.
     workloadHierarchy: WorkloadLevelHierarchy): GithubRepositoryConnection!
 
-  # Query GitHub repository object.
+  # Retrieves a single GitHub repository by its
+  # managed object ID.
   gitHubRepository(
-    # The ID of the workload.
+    # The FID of the GitHub repository.
     workloadId: UUID!): GithubRepository!
 
   # Global certificate.
@@ -6886,7 +6894,7 @@ type Query {
     workloadId: String!,
 
     # Corresponds to snapshot ID in Rubrik CDM tables.
-    snapshotId: String!): InvestigationCsvDownloadLinkReply!
+    snapshotId: String!): InvestigationCsvDownloadLinkReply! @deprecated(reason: "This endpoint is deprecated.")
 
   # Lists IOC entries for a threat feed.
   iocFeedEntries(
@@ -15700,7 +15708,7 @@ type Mutation {
     isSynced: Boolean,
 
     # Permissions in the role.
-    permissions: [PermissionInput!]!): UUID!
+    permissions: [PermissionInput!]!): UUID! @deprecated(reason: "This endpoint is deprecated.")
 
   # Creates reader type for S3Compatible archival location on a CDM cluster.
   createS3CompatibleReaderTarget(
@@ -18544,7 +18552,7 @@ type Mutation {
   seedEnabledPolicies: SeedEnabledPoliciesReply!
 
   # DEPRECATED (use seedEnabledPolicies instead) Seed account with initial policies.
-  seedInitialPolicies: SeedInitialPoliciesReply!
+  seedInitialPolicies: SeedInitialPoliciesReply! @deprecated(reason: "Use seedEnabledPolicies instead.")
 
   # DHRC PDF report generation.
   sendPdfReport(
@@ -20009,7 +20017,7 @@ type Mutation {
     isSynced: Boolean,
 
     # Permissions in the role.
-    permissions: [PermissionInput!]!): Boolean!
+    permissions: [PermissionInput!]!): Boolean! @deprecated(reason: "This endpoint is deprecated.")
 
   # Replaces RBAC role assignments for the given users and/or groups.
   # Existing role assignments are overwritten with the provided role IDs.
@@ -32516,7 +32524,8 @@ type AwsExocomputeConfig {
   # AWS Exocompute get configurations response.
   exocomputeConfigs: [AwsExocomputeGetConfigurationResponse!]!
 
-  # List of auth-server based regions (ISO/ISOB) for which Exocompute can be configured.
+  # List of auth-server based regions (ISO/ISOB) for which Exocompute can be
+  # configured.
   exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]!
 
   # List of regions for which Exocompute can be configured.
@@ -40403,6 +40412,9 @@ type AzureAdDirectory implements PolarisHierarchyObject , HierarchyObject , Pola
   # Whether Entra ID Event Hub ingestion is actively connected for this directory. Returns null if the status is currently unavailable.
   eventHubConnectionStatus: AzureAdEventHubConnectionStatus
 
+  # Azure permissions status for Entra ID Event Hub ingestion on this directory. Returns null if the status is currently unavailable or if the directory has no Event Hub subscription.
+  eventHubPermissionsStatus: EntraIdEventHubPermissionsStatus
+
   # Specifies the host type of the exocompute resource for this tenant.
   exoHostType: AzureAdExocomputeHostType!
 
@@ -44258,6 +44270,10 @@ type AzureDevOpsProject implements PolarisHierarchyObject , HierarchyObject {
 
   # RSC tags to which this hierarchy object is assigned.
   allTags: [AssignedRscTag!]!
+
+  # Managed object UUID of this project's artifacts fixed object.
+  # Null when the project artifacts fixed object has not been created yet.
+  artifactsFixedObjectId: UUID
 
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
@@ -75933,6 +75949,14 @@ input EntraIdEventHubOnboardingWithoutOAuth {
   # Azure native ID of the subscription that hosts the customer's Event Hub.
   subscriptionNativeId: String!
 }
+# Enum describing the Azure permissions status for Entra ID Event Hub ingestion.
+enum EntraIdEventHubPermissionsStatus {
+  # All required Azure permissions for Event Hub ingestion are granted.
+  GRANTED
+
+  # Required Azure permissions for Event Hub ingestion are missing.
+  MISSING_PERMISSIONS
+}
 # Represents a home realm discovery policy.
 type EntraIdHomeRealmDiscoveryPolicy {
   # Display name of the home realm discovery policy.
@@ -84210,6 +84234,11 @@ enum FilterType {
 
   # Document-level sensitivity filter.
   SECURITY_DOCUMENT_SENSITIVITY
+
+  # Filter for GPOs that configure the "Store passwords using reversible encryption"
+  # (ClearTextPassword) security option. Selects GPOs where the setting is configured
+  # to store passwords using reversible encryption (ClearTextPassword = 1).
+  SECURITY_GPO_CLEAR_TEXT_PASSWORD
 
   # GPO "LDAP signing not required" filter. Selects GPOs that configure the
   # LDAPServerIntegrity security option and flags those whose decrypted value
@@ -208757,7 +208786,8 @@ type ZrsAvailabilityReply {
 }
 # Stats of the backup jobs in the last 24 hours.
 type backupJobsStats {
-  # Time of a last successful backup. A successful backup denotes that a part of the organization data was backed up successfully.
+  # Time of a last successful backup. A successful backup denotes that a part
+  # of the organization data was backed up successfully.
   lastBackupTime: DateTime
 
   # Number of backup jobs failed in the  last 24 hours.
