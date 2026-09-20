@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? KosmosTopologyStateId
+        // GraphQL -> kosmosTopologyStateId: String (scalar)
+        [JsonProperty("kosmosTopologyStateId")]
+        public System.String? KosmosTopologyStateId { get; set; }
+
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         [JsonProperty("asyncRequestStatus")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PatchMysqldbInstanceResponse Set(
+        System.String? KosmosTopologyStateId = null,
         AsyncRequestStatus? AsyncRequestStatus = null
     ) 
     {
+        if ( KosmosTopologyStateId != null ) {
+            this.KosmosTopologyStateId = KosmosTopologyStateId;
+        }
         if ( AsyncRequestStatus != null ) {
             this.AsyncRequestStatus = AsyncRequestStatus;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? KosmosTopologyStateId
+        // GraphQL -> kosmosTopologyStateId: String (scalar)
+        if (this.KosmosTopologyStateId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "kosmosTopologyStateId\n" ;
+            } else {
+                s += ind + "kosmosTopologyStateId\n" ;
+            }
+        }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? KosmosTopologyStateId
+        // GraphQL -> kosmosTopologyStateId: String (scalar)
+        if (ec.Includes("kosmosTopologyStateId",true))
+        {
+            if(this.KosmosTopologyStateId == null) {
+
+                this.KosmosTopologyStateId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KosmosTopologyStateId != null && ec.Excludes("kosmosTopologyStateId",true))
+        {
+            this.KosmosTopologyStateId = null;
+        }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (ec.Includes("asyncRequestStatus",false))

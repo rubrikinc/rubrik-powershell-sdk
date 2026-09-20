@@ -1891,6 +1891,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DeleteSnapshotsOfObjects
+        // GraphQL -> deleteSnapshotsOfObjects: Void (scalar)
+        public static string DeleteSnapshotsOfObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteSnapshotsOfObjects" + args + "\n";
+        }
+        public static object DeleteSnapshotsOfObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteSyslogExportRule
         // GraphQL -> deleteSyslogExportRule: Void (scalar)
         public static string DeleteSyslogExportRule(object fsObj)
@@ -4731,24 +4749,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AddMongoSourceReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? AddMosaicStore
-        // GraphQL -> addMosaicStore: MosaicAsyncResponse! (type)
-        public static string AddMosaicStore(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "addMosaicStore" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object AddMosaicStoreFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8691,24 +8691,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? DeleteMosaicStore
-        // GraphQL -> deleteMosaicStore: MosaicAsyncResponse! (type)
-        public static string DeleteMosaicStore(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "deleteMosaicStore" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object DeleteMosaicStoreFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -16593,24 +16575,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetMapping() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? UpdateMosaicStore
-        // GraphQL -> updateMosaicStore: MosaicAsyncResponse! (type)
-        public static string UpdateMosaicStore(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "updateMosaicStore" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UpdateMosaicStoreFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

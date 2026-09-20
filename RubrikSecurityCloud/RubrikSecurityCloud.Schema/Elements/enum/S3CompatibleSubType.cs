@@ -141,6 +141,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SCALITY_ARTESCA")]
         SCALITY_ARTESCA,
 
+        [EnumMember(Value = "SCALITY_RING")]
+        SCALITY_RING,
+
         [EnumMember(Value = "SEAGATE_LYVE")]
         SEAGATE_LYVE,
 

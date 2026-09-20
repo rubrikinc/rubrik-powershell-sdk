@@ -1,4 +1,6 @@
 ### SourceSslCertReqs
+SSL certificate requirements.
+
 - SOURCE_SSL_CERT_REQS_NONE
 - SOURCE_SSL_CERT_REQS_OPTIONAL
 - SOURCE_SSL_CERT_REQS_REQUIRED

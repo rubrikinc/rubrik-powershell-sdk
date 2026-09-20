@@ -1,20 +1,38 @@
 ### AwsNativeDynamoDbTable
 AWS native DynamoDB Table.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - cloudNativeId: System.String
-  - AWS native ID of DynamoDB Table.
+  - AWS Native ID of the object.
+- region: AwsNativeRegion
+  - The AWS region to which the object belongs.
+- tags: list of Tags
+  - List of tags that are assigned to the object.
+- isRelic: System.Boolean
+  - Whether the object is a relic.
+- nativeName: System.String
+  - AWS Native name of the object.
 - awsAccountRubrikId: System.String
   - Rubrik ID of the AWS account.
-- region: AwsNativeRegion
-  - Name of the region from where backup will be taken. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty, and will be mapped directly to regions available for the DynamoDB table in the AWS cloud.
 - tableSizeBytes: System.Int64
   - Size of the DynamoDB table in bytes.
-- tags: list of Tags
-  - List of tags associated with the table.
-- isRelic: System.Boolean
-  - Whether the table is relic.
-- nativeName: System.String
-  - AWS native name of the object.
 - isExocomputeConfigured: System.Boolean
   - A boolean specifying whether an exocompute is configured in the region.
 - isAwsContinuousBackupEnabled: System.Boolean
@@ -33,54 +51,36 @@ AWS native DynamoDB Table.
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon DynamoDB Table.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot

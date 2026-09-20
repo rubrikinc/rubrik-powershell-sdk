@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
-        //      C# -> List<NodesMapInput>? NodesMap
-        // GraphQL -> nodesMap: [NodesMapInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("nodesMap")]
-        public List<NodesMapInput>? NodesMap { get; set; }
-
         //      C# -> AddNodesConfigInput? Request
         // GraphQL -> request: AddNodesConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("request")]
         public AddNodesConfigInput? Request { get; set; }
+
+        //      C# -> List<NodesMapInput>? NodesMap
+        // GraphQL -> nodesMap: [NodesMapInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("nodesMap")]
+        public List<NodesMapInput>? NodesMap { get; set; }
 
 
         #endregion

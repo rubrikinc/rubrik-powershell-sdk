@@ -23,3 +23,7 @@ Simplified report information for custom reports.
   - Email address of the user who last updated the report.
 - scheduledReportsCount: System.Int32
   - Number of scheduled reports associated with the report.
+- description: System.String
+  - Description persisted with the report. Populated only for script
+reports, whose description is authored per report; template-backed
+reports take their description from the report template instead.

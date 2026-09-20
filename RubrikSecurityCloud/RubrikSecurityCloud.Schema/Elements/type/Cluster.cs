@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("licensedProducts")]
         public List<Product>? LicensedProducts { get; set; }
 
+        //      C# -> ClusterManagementType? ManagementType
+        // GraphQL -> managementType: ClusterManagementType! (enum)
+        [JsonProperty("managementType")]
+        public ClusterManagementType? ManagementType { get; set; }
+
         //      C# -> ClusterPauseStatus? PauseStatus
         // GraphQL -> pauseStatus: ClusterPauseStatus (enum)
         [JsonProperty("pauseStatus")]
@@ -443,6 +448,7 @@ namespace RubrikSecurityCloud.Types
         ClusterCyberEventLockdownMode? CyberEventLockdownMode = null,
         ClusterEosStatus? EosStatus = null,
         List<Product>? LicensedProducts = null,
+        ClusterManagementType? ManagementType = null,
         ClusterPauseStatus? PauseStatus = null,
         ClusterProductEnum? ProductType = null,
         ClusterRegistrationMode? RegisteredMode = null,
@@ -515,6 +521,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LicensedProducts != null ) {
             this.LicensedProducts = LicensedProducts;
+        }
+        if ( ManagementType != null ) {
+            this.ManagementType = ManagementType;
         }
         if ( PauseStatus != null ) {
             this.PauseStatus = PauseStatus;
@@ -741,6 +750,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "licensedProducts\n" ;
             } else {
                 s += ind + "licensedProducts\n" ;
+            }
+        }
+        //      C# -> ClusterManagementType? ManagementType
+        // GraphQL -> managementType: ClusterManagementType! (enum)
+        if (this.ManagementType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "managementType\n" ;
+            } else {
+                s += ind + "managementType\n" ;
             }
         }
         //      C# -> ClusterPauseStatus? PauseStatus
@@ -1451,6 +1469,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LicensedProducts != null && ec.Excludes("licensedProducts",true))
         {
             this.LicensedProducts = null;
+        }
+        //      C# -> ClusterManagementType? ManagementType
+        // GraphQL -> managementType: ClusterManagementType! (enum)
+        if (ec.Includes("managementType",true))
+        {
+            if(this.ManagementType == null) {
+
+                this.ManagementType = new ClusterManagementType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagementType != null && ec.Excludes("managementType",true))
+        {
+            this.ManagementType = null;
         }
         //      C# -> ClusterPauseStatus? PauseStatus
         // GraphQL -> pauseStatus: ClusterPauseStatus (enum)

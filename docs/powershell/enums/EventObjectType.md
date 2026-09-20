@@ -139,8 +139,8 @@ Enum representing all the possible object types which generate events.
 - K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine object.
 - K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace object.
 - D365_ORGANIZATION - Dynamics 365 organization.
-- D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
-- D365_METADATA - Dynamics 365 metadata.
+- D365_DATAVERSE_TABLE - Dataverse table.
+- D365_METADATA - Dataverse metadata.
 - MYSQLDB_INSTANCE - MySQL instance.
 - ORION_THREAT_HUNT - Orion threat hunt.
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.

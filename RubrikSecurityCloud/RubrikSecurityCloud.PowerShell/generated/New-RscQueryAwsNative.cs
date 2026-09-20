@@ -332,10 +332,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.ebsVolumeFilters = @{
     /// 	# OPTIONAL
+    /// 	nameOrIdSubstringFilter = @{
+    /// 		# REQUIRED
+    /// 		nameOrIdSubstring = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	fileRecoveryStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		statuses = @(
+    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	typeFilter = @{
+    /// 		# REQUIRED
+    /// 		ebsVolumeTypes = @(
+    /// 			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	attachedInstanceFilter = @{
+    /// 		# REQUIRED
+    /// 		ec2InstanceIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	effectiveSlaFilter = @{
     /// 		# REQUIRED
     /// 		effectiveSlaIds = @(
     /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	accountFilter = @{
+    /// 		# REQUIRED
+    /// 		accountIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -363,48 +403,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	orgFilter = @{
-    /// 		# REQUIRED
-    /// 		orgIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	attachedInstanceFilter = @{
-    /// 		# REQUIRED
-    /// 		ec2InstanceIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileRecoveryStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	nameOrIdSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameOrIdSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	tagFilter = @{
     /// 		# REQUIRED
     /// 		tagFilterParams = @(
@@ -419,10 +417,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	typeFilter = @{
+    /// 	orgFilter = @{
     /// 		# REQUIRED
-    /// 		ebsVolumeTypes = @(
-    /// 			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+    /// 		orgIds = @(
+    /// 			$someString
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -435,6 +433,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// 	# OPTIONAL
     /// 	serviceTypeFilter = @{
     /// 		# REQUIRED
@@ -567,10 +567,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.ec2InstanceFilters = @{
     /// 	# OPTIONAL
+    /// 	nameOrIdSubstringFilter = @{
+    /// 		# REQUIRED
+    /// 		nameOrIdSubstring = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	effectiveSlaFilter = @{
     /// 		# REQUIRED
     /// 		effectiveSlaIds = @(
     /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	accountFilter = @{
+    /// 		# REQUIRED
+    /// 		accountIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	fileRecoveryStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		statuses = @(
+    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -593,14 +619,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	typeFilter = @{
+    /// 		# REQUIRED
+    /// 		ec2InstanceTypes = @(
+    /// 			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vpcFilter = @{
+    /// 		# REQUIRED
+    /// 		vpcIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	relicFilter = @{
     /// 		# REQUIRED
     /// 		relic = $someBoolean
     /// 	}
     /// 	# OPTIONAL
+    /// 	tagFilter = @{
+    /// 		# REQUIRED
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	appProtectionStatusFilter = @{
     /// 		# REQUIRED
     /// 		isProtectionSetup = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	rbsStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
     /// 	}
     /// 	# OPTIONAL
     /// 	orgFilter = @{
@@ -610,7 +669,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	awsNativeFeatureStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeIsEligibleForEc2ProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
     /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
     /// 		@{
@@ -675,82 +751,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		discoveryMethods = @(
     /// 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	fileRecoveryStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		statuses = @(
-    /// 			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	nameOrIdSubstringFilter = @{
-    /// 		# REQUIRED
-    /// 		nameOrIdSubstring = $someString
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	typeFilter = @{
-    /// 		# REQUIRED
-    /// 		ec2InstanceTypes = @(
-    /// 			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vpcFilter = @{
-    /// 		# REQUIRED
-    /// 		vpcIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	rbsStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	awsNativeFeatureStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	awsNativeIsEligibleForEc2ProtectionFilter = @{
-    /// 		# REQUIRED
-    /// 		isEligibleForProtection = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	serviceTypeFilter = @{
-    /// 		# REQUIRED
-    /// 		serviceTypes = @(
-    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -996,6 +996,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	accountFilter = @{
+    /// 		# REQUIRED
+    /// 		accountIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vpcFilter = @{
+    /// 		# REQUIRED
+    /// 		vpcIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	relicFilter = @{
     /// 		# REQUIRED
     /// 		relic = $someBoolean
@@ -1020,6 +1034,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	tagFilter = @{
+    /// 		# REQUIRED
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	dbEngineFilter = @{
+    /// 		# REQUIRED
+    /// 		dbEngines = @(
+    /// 			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	dbInstanceClassFilter = @{
+    /// 		# REQUIRED
+    /// 		dbInstanceClasses = @(
+    /// 			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	orgFilter = @{
     /// 		# REQUIRED
     /// 		orgIds = @(
@@ -1027,7 +1076,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	awsNativeFeatureStatusFilter = @{
+    /// 		# REQUIRED
+    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsNativeIsEligibleForRdsProtectionFilter = @{
+    /// 		# REQUIRED
+    /// 		isEligibleForProtection = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
     /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
     /// 		@{
@@ -1092,72 +1158,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		discoveryMethods = @(
     /// 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	accountFilter = @{
-    /// 		# REQUIRED
-    /// 		accountIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	dbEngineFilter = @{
-    /// 		# REQUIRED
-    /// 		dbEngines = @(
-    /// 			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	dbInstanceClassFilter = @{
-    /// 		# REQUIRED
-    /// 		dbInstanceClasses = @(
-    /// 			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	tagFilter = @{
-    /// 		# REQUIRED
-    /// 		tagFilterParams = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				tagKey = $someString
-    /// 				# OPTIONAL
-    /// 				tagValue = $someString
-    /// 			}
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vpcFilter = @{
-    /// 		# REQUIRED
-    /// 		vpcIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	awsNativeFeatureStatusFilter = @{
-    /// 		# REQUIRED
-    /// 		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	awsNativeIsEligibleForRdsProtectionFilter = @{
-    /// 		# REQUIRED
-    /// 		isEligibleForProtection = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	serviceTypeFilter = @{
-    /// 		# REQUIRED
-    /// 		serviceTypes = @(
-    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
     /// 		)
     /// 	}
     /// }
@@ -1940,10 +1940,50 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 # OPTIONAL
 $query.Var.ebsVolumeFilters = @{
 	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = $someString
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+		)
+	}
+	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ebsVolumeTypes = @(
+			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+		)
+	}
+	# OPTIONAL
+	attachedInstanceFilter = @{
+		# REQUIRED
+		ec2InstanceIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	effectiveSlaFilter = @{
 		# REQUIRED
 		effectiveSlaIds = @(
 			$someString
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 		)
 	}
 	# OPTIONAL
@@ -1971,48 +2011,6 @@ $query.Var.ebsVolumeFilters = @{
 		)
 	}
 	# OPTIONAL
-	orgFilter = @{
-		# REQUIRED
-		orgIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	isEligibleForProtection = $someBoolean
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	attachedInstanceFilter = @{
-		# REQUIRED
-		ec2InstanceIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	fileRecoveryStatusFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-		)
-	}
-	# OPTIONAL
-	nameOrIdSubstringFilter = @{
-		# REQUIRED
-		nameOrIdSubstring = $someString
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
 	tagFilter = @{
 		# REQUIRED
 		tagFilterParams = @(
@@ -2027,10 +2025,10 @@ $query.Var.ebsVolumeFilters = @{
 		)
 	}
 	# OPTIONAL
-	typeFilter = @{
+	orgFilter = @{
 		# REQUIRED
-		ebsVolumeTypes = @(
-			$someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+		orgIds = @(
+			$someString
 		)
 	}
 	# OPTIONAL
@@ -2043,6 +2041,8 @@ $query.Var.ebsVolumeFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 	# OPTIONAL
 	serviceTypeFilter = @{
 		# REQUIRED
@@ -2184,10 +2184,36 @@ $query.Var.descendantTypeFilter = @(
 # OPTIONAL
 $query.Var.ec2InstanceFilters = @{
 	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = $someString
+	}
+	# OPTIONAL
 	effectiveSlaFilter = @{
 		# REQUIRED
 		effectiveSlaIds = @(
 			$someString
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 		)
 	}
 	# OPTIONAL
@@ -2210,14 +2236,47 @@ $query.Var.ec2InstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ec2InstanceTypes = @(
+			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	relicFilter = @{
 		# REQUIRED
 		relic = $someBoolean
 	}
 	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+	}
+	# OPTIONAL
 	appProtectionStatusFilter = @{
 		# REQUIRED
 		isProtectionSetup = $someBoolean
+	}
+	# OPTIONAL
+	rbsStatusFilter = @{
+		# REQUIRED
+		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
 	}
 	# OPTIONAL
 	orgFilter = @{
@@ -2227,7 +2286,24 @@ $query.Var.ec2InstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	awsNativeFeatureStatusFilter = @{
+		# REQUIRED
+		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	}
+	# OPTIONAL
+	awsNativeIsEligibleForEc2ProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
+	# OPTIONAL
 	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
 	# OPTIONAL
 	hierarchyFilters = @(
 		@{
@@ -2292,82 +2368,6 @@ $query.Var.ec2InstanceFilters = @{
 		# REQUIRED
 		discoveryMethods = @(
 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
-		)
-	}
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	fileRecoveryStatusFilter = @{
-		# REQUIRED
-		statuses = @(
-			$someAwsNativeFileRecoveryStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
-		)
-	}
-	# OPTIONAL
-	nameOrIdSubstringFilter = @{
-		# REQUIRED
-		nameOrIdSubstring = $someString
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	typeFilter = @{
-		# REQUIRED
-		ec2InstanceTypes = @(
-			$someAwsNativeEc2InstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
-		)
-	}
-	# OPTIONAL
-	vpcFilter = @{
-		# REQUIRED
-		vpcIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	rbsStatusFilter = @{
-		# REQUIRED
-		status = $someCloudInstanceRbsConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
-	}
-	# OPTIONAL
-	awsNativeFeatureStatusFilter = @{
-		# REQUIRED
-		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	}
-	# OPTIONAL
-	awsNativeIsEligibleForEc2ProtectionFilter = @{
-		# REQUIRED
-		isEligibleForProtection = $someBoolean
-	}
-	# OPTIONAL
-	serviceTypeFilter = @{
-		# REQUIRED
-		serviceTypes = @(
-			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
 		)
 	}
 	# OPTIONAL
@@ -2626,6 +2626,20 @@ $query.Var.rdsInstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	relicFilter = @{
 		# REQUIRED
 		relic = $someBoolean
@@ -2650,6 +2664,41 @@ $query.Var.rdsInstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	dbEngineFilter = @{
+		# REQUIRED
+		dbEngines = @(
+			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+		)
+	}
+	# OPTIONAL
+	dbInstanceClassFilter = @{
+		# REQUIRED
+		dbInstanceClasses = @(
+			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
+		)
+	}
+	# OPTIONAL
 	orgFilter = @{
 		# REQUIRED
 		orgIds = @(
@@ -2657,7 +2706,24 @@ $query.Var.rdsInstanceFilters = @{
 		)
 	}
 	# OPTIONAL
+	awsNativeFeatureStatusFilter = @{
+		# REQUIRED
+		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	}
+	# OPTIONAL
+	awsNativeIsEligibleForRdsProtectionFilter = @{
+		# REQUIRED
+		isEligibleForProtection = $someBoolean
+	}
+	# OPTIONAL
 	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
 	# OPTIONAL
 	hierarchyFilters = @(
 		@{
@@ -2722,72 +2788,6 @@ $query.Var.rdsInstanceFilters = @{
 		# REQUIRED
 		discoveryMethods = @(
 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
-		)
-	}
-	# OPTIONAL
-	accountFilter = @{
-		# REQUIRED
-		accountIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	dbEngineFilter = @{
-		# REQUIRED
-		dbEngines = @(
-			$someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
-		)
-	}
-	# OPTIONAL
-	dbInstanceClassFilter = @{
-		# REQUIRED
-		dbInstanceClasses = @(
-			$someAwsNativeRdsDbInstanceClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	tagFilter = @{
-		# REQUIRED
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = $someString
-				# OPTIONAL
-				tagValue = $someString
-			}
-		)
-	}
-	# OPTIONAL
-	vpcFilter = @{
-		# REQUIRED
-		vpcIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	awsNativeFeatureStatusFilter = @{
-		# REQUIRED
-		awsNativeFeatureStatus = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	}
-	# OPTIONAL
-	awsNativeIsEligibleForRdsProtectionFilter = @{
-		# REQUIRED
-		isEligibleForProtection = $someBoolean
-	}
-	# OPTIONAL
-	serviceTypeFilter = @{
-		# REQUIRED
-		serviceTypes = @(
-			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
 		)
 	}
 }

@@ -1,0 +1,9 @@
+### RegistryHiveRoot
+RegistryHiveRoot enumerates the Windows registry root keys supported by
+registry threat hunting.
+
+- HIVE_ROOT_HKEY_LOCAL_MACHINE - HKEY_LOCAL_MACHINE ("HKLM").
+- HIVE_ROOT_HKEY_CURRENT_USER - HKEY_CURRENT_USER ("HKCU").
+- HIVE_ROOT_HKEY_CLASSES_ROOT - HKEY_CLASSES_ROOT ("HKCR").
+- HIVE_ROOT_HKEY_USERS - HKEY_USERS ("HKU").
+- HIVE_ROOT_HKEY_CURRENT_CONFIG - HKEY_CURRENT_CONFIG ("HKCC").

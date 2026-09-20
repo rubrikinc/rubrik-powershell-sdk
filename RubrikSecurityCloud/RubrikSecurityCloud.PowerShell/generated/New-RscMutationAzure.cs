@@ -2142,6 +2142,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	cleanRecoverySessionId = $someString
+    /// 	# OPTIONAL
+    /// 	m365RecoveryOptions = @{
+    /// 		# REQUIRED
+    /// 		shouldIncludeExchange = $someBoolean
+    /// 		# REQUIRED
+    /// 		shouldIncludeOneDrive = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -5979,6 +5986,13 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	cleanRecoverySessionId = $someString
+	# OPTIONAL
+	m365RecoveryOptions = @{
+		# REQUIRED
+		shouldIncludeExchange = $someBoolean
+		# REQUIRED
+		shouldIncludeOneDrive = $someBoolean
+	}
 }"
             );
         }

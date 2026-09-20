@@ -150,8 +150,8 @@ All supported Rubrik managed objects.
 - MSSQL_HOST - MSSQL Host.
 - K8S_NAMESPACE_V2 - Kubernetes Namespace V2.
 - K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine.
-- D365_DATAVERSE_TABLE - D365 Dataverse Table.
-- D365_FIXED_OBJECT - D365 metadata.
+- D365_DATAVERSE_TABLE - Dataverse Table.
+- D365_FIXED_OBJECT - Dataverse Metadata.
 - D365_ORGANIZATION - D365 Organization.
 - AWS_NATIVE_DYNAMODB_TABLE - DynamoDB table.
 - OPENSTACK_ENVIRONMENT - Openstack Environment.

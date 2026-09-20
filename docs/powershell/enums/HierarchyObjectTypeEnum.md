@@ -170,8 +170,8 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - JIRA_FIXED_OBJECT - Jira fixed object.
 - SALESFORCE_OBJECT - Salesforce object.
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
-- D365_DATAVERSE_TABLE - D365 Dataverse Table.
-- D365_FIXED_OBJECT - D365 Metadata.
+- D365_DATAVERSE_TABLE - Dataverse Table.
+- D365_FIXED_OBJECT - Dataverse Metadata.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.

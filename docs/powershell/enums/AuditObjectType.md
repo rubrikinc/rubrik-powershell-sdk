@@ -139,8 +139,8 @@ Represents all the object types for which we expect to see audits.
 - K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine object.
 - K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace object.
 - D365_ORGANIZATION - Dynamics 365 organization.
-- D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
-- D365_METADATA - Dynamics 365 metadata.
+- D365_DATAVERSE_TABLE - Dataverse table.
+- D365_METADATA - Dataverse metadata.
 - INTEGRATION - Integration object.
 - CHATBOT - Chatbot object.
 - MYSQLDB_INSTANCE - MySQL instance.

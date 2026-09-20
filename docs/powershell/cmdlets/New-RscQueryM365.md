@@ -16,7 +16,7 @@ Lists the Microsoft 365 backup storage object restore points.
     - m365BackupStorageObjectRestorePointsInput - M365BackupStorageObjectRestorePointsInput: The input to list Microsoft 365 Backup Storage restore points.
 - Returns M365BackupStorageRestorePointConnection.
 ### daytodaymodestats
-Returns the statistics of an M365 organization product in day-to-day mode.
+Returns the day-to-day mode statistics for a workload type of an M365 organization.
 
 - There are 2 arguments.
     - orgId - System.String: Org UUID.

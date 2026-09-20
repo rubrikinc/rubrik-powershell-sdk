@@ -324,6 +324,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_ID")]
         CLUSTER_ID,
 
+        [EnumMember(Value = "CLUSTER_MANAGEMENT_TYPE")]
+        CLUSTER_MANAGEMENT_TYPE,
+
         [EnumMember(Value = "CLUSTER_TYPE")]
         CLUSTER_TYPE,
 

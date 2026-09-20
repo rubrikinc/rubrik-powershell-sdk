@@ -11,6 +11,9 @@ A Rubrik CDM Cluster.
   - Air-gap status of the Rubrik cluster.
 - isAssignedByParentAccount: System.Boolean
   - Whether this cluster is assigned by a parent account. Tenant accounts with assigned clusters have restricted cluster management options.
+- managementType: ClusterManagementType
+  - Who operates the Rubrik cluster, either Rubrik on the customer's behalf
+or the customer.
 - isTunnelEnabled: System.Boolean
   - True if any node in this Rubrik cluster has a support tunnel open.
 - defaultAddress: System.String

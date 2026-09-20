@@ -1,6 +1,34 @@
 ### AwsNativeEc2Instance
 AWS native EC2 instance.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- cloudNativeId: System.String
+  - AWS Native ID of the object.
+- region: AwsNativeRegion
+  - The AWS region to which the object belongs.
+- tags: list of Tags
+  - List of tags that are assigned to the object.
+- isRelic: System.Boolean
+  - Whether the object is a relic.
+- nativeName: System.String
+  - AWS Native name of the object.
 - instanceNativeId: System.String
   - AWS Native ID of Instance.
 - instanceName: System.String
@@ -11,8 +39,6 @@ AWS native EC2 instance.
   - Private IP address for instance.
 - instanceType: System.String
   - AWS Native EC2 instance type. Some examples are: t2.nano, m5.xlarge. This field cannot be null or empty string and will be mapped directly to available EC2 instance on cloud(AWS). For more information, see https://aws.amazon.com/ec2/instance-types.
-- region: AwsNativeRegion
-  - Name of the region. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty string and will be mapped directly to available regions for EC2 instance on cloud(AWS). For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions.
 - isExocomputeConfigured: System.Boolean
   - Whether exocompute is configured for the region where the instance is.
 - availabilityZone: System.String
@@ -21,12 +47,8 @@ AWS native EC2 instance.
   - ID of Virtual Private Cloud (VPC) associated with instance.
 - vpcName: System.String
   - Name of Virtual Private Cloud (VPC) associated with instance.
-- tags: list of Tags
-  - List of tags associated with Instance.
 - osType: OsType
   - Name of the Operating System (OS) for the Instance. Some examples are: Linux, Windows. This field cannot be null or empty string but can be Undefined in case it is not currently supported.List of supported OS: Linux, Windows.
-- isRelic: System.Boolean
-  - Whether the instance is relic.
 - awsAccountRubrikId: System.String
   - Rubrik ID of Instance.
 - attachmentSpecs: list of AttachmentSpecForEc2Instances
@@ -35,18 +57,14 @@ AWS native EC2 instance.
   - Name for the AWS Account.
 - isIndexingEnabled: System.Boolean
   - Specifies whether file indexing is enabled for this EC2 instance or not. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this EC2 instance. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - isMarketplace: System.Boolean
   - Whether the instance image is marketplace image.
 - sshKeyPairName: System.String
   - Name of SSH key-pair for the Instance.
-- cloudNativeId: System.String
-  - AWS Native ID of Instance.
-- nativeName: System.String
-  - AWS Native name of the object.
 - isPreOrPostScriptEnabled: System.Boolean
   - Specifies whether the pre-script or post-script framework is enabled on the EC2 instance. When enabled, it facilitates application-consistent backups.
-- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
-  - Specifications for ensuring application consistency on the EC2 instance.
 - isAppConsistencyEnabled: System.Boolean
   - Specifies whether application consistent snapshots are enabled for this EC2 instance. When enabled, Rubrik informs the AWS applications before taking snapshots, allowing them to prepare. During the preparation phrase, Rubrik freezes the IO, takes the snapshot, and then unfreezes IO, enabling the apps to resume regular operation.
 - awsNativeAccountDetails: AwsNativeAccountDetails
@@ -57,8 +75,8 @@ AWS native EC2 instance.
   - List of cloud native applications associated with this EC2 instance.
 - outpostArn: System.String
   - ARN of the AWS Outpost this instance resides on, if applicable.
-- fileIndexingStatus: FileIndexingStatus
-  - Specifies the file indexing status for this EC2 instance. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
+- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
+  - Specifications for ensuring application consistency on the EC2 instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
@@ -71,54 +89,36 @@ AWS native EC2 instance.
   - Rubrik CDM host information for the AWS EC2 instance added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
 - recoveryPlansInfo: list of RecoveryPlansInfos
   - List of Recovery Plans associated with the virtual machine.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot

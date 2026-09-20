@@ -25,15 +25,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availableStorage")]
         public System.String? AvailableStorage { get; set; }
 
+        //      C# -> System.String? Content
+        // GraphQL -> content: String! (scalar)
+        [JsonProperty("content")]
+        public System.String? Content { get; set; }
+
         //      C# -> System.String? FileSystem
         // GraphQL -> fileSystem: String! (scalar)
         [JsonProperty("fileSystem")]
         public System.String? FileSystem { get; set; }
 
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean (scalar)
+        [JsonProperty("isActive")]
+        public System.Boolean? IsActive { get; set; }
+
+        //      C# -> System.Boolean? IsEnabled
+        // GraphQL -> isEnabled: Boolean (scalar)
+        [JsonProperty("isEnabled")]
+        public System.Boolean? IsEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsShared
+        // GraphQL -> isShared: Boolean (scalar)
+        [JsonProperty("isShared")]
+        public System.Boolean? IsShared { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> System.String? StorageType
+        // GraphQL -> storageType: String! (scalar)
+        [JsonProperty("storageType")]
+        public System.String? StorageType { get; set; }
 
         //      C# -> System.String? TotalStorage
         // GraphQL -> totalStorage: String! (scalar)
@@ -51,19 +76,39 @@ namespace RubrikSecurityCloud.Types
 
     public ProxmoxStorageDomain Set(
         System.String? AvailableStorage = null,
+        System.String? Content = null,
         System.String? FileSystem = null,
+        System.Boolean? IsActive = null,
+        System.Boolean? IsEnabled = null,
+        System.Boolean? IsShared = null,
         System.String? Name = null,
+        System.String? StorageType = null,
         System.String? TotalStorage = null
     ) 
     {
         if ( AvailableStorage != null ) {
             this.AvailableStorage = AvailableStorage;
         }
+        if ( Content != null ) {
+            this.Content = Content;
+        }
         if ( FileSystem != null ) {
             this.FileSystem = FileSystem;
         }
+        if ( IsActive != null ) {
+            this.IsActive = IsActive;
+        }
+        if ( IsEnabled != null ) {
+            this.IsEnabled = IsEnabled;
+        }
+        if ( IsShared != null ) {
+            this.IsShared = IsShared;
+        }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( StorageType != null ) {
+            this.StorageType = StorageType;
         }
         if ( TotalStorage != null ) {
             this.TotalStorage = TotalStorage;
@@ -91,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "availableStorage\n" ;
             }
         }
+        //      C# -> System.String? Content
+        // GraphQL -> content: String! (scalar)
+        if (this.Content != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "content\n" ;
+            } else {
+                s += ind + "content\n" ;
+            }
+        }
         //      C# -> System.String? FileSystem
         // GraphQL -> fileSystem: String! (scalar)
         if (this.FileSystem != null) {
@@ -100,6 +154,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "fileSystem\n" ;
             }
         }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean (scalar)
+        if (this.IsActive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isActive\n" ;
+            } else {
+                s += ind + "isActive\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsEnabled
+        // GraphQL -> isEnabled: Boolean (scalar)
+        if (this.IsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnabled\n" ;
+            } else {
+                s += ind + "isEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsShared
+        // GraphQL -> isShared: Boolean (scalar)
+        if (this.IsShared != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isShared\n" ;
+            } else {
+                s += ind + "isShared\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -107,6 +188,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? StorageType
+        // GraphQL -> storageType: String! (scalar)
+        if (this.StorageType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageType\n" ;
+            } else {
+                s += ind + "storageType\n" ;
             }
         }
         //      C# -> System.String? TotalStorage
@@ -142,6 +232,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AvailableStorage = null;
         }
+        //      C# -> System.String? Content
+        // GraphQL -> content: String! (scalar)
+        if (ec.Includes("content",true))
+        {
+            if(this.Content == null) {
+
+                this.Content = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Content != null && ec.Excludes("content",true))
+        {
+            this.Content = null;
+        }
         //      C# -> System.String? FileSystem
         // GraphQL -> fileSystem: String! (scalar)
         if (ec.Includes("fileSystem",true))
@@ -159,6 +266,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.FileSystem = null;
         }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean (scalar)
+        if (ec.Includes("isActive",true))
+        {
+            if(this.IsActive == null) {
+
+                this.IsActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsActive != null && ec.Excludes("isActive",true))
+        {
+            this.IsActive = null;
+        }
+        //      C# -> System.Boolean? IsEnabled
+        // GraphQL -> isEnabled: Boolean (scalar)
+        if (ec.Includes("isEnabled",true))
+        {
+            if(this.IsEnabled == null) {
+
+                this.IsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnabled != null && ec.Excludes("isEnabled",true))
+        {
+            this.IsEnabled = null;
+        }
+        //      C# -> System.Boolean? IsShared
+        // GraphQL -> isShared: Boolean (scalar)
+        if (ec.Includes("isShared",true))
+        {
+            if(this.IsShared == null) {
+
+                this.IsShared = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsShared != null && ec.Excludes("isShared",true))
+        {
+            this.IsShared = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -175,6 +333,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? StorageType
+        // GraphQL -> storageType: String! (scalar)
+        if (ec.Includes("storageType",true))
+        {
+            if(this.StorageType == null) {
+
+                this.StorageType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageType != null && ec.Excludes("storageType",true))
+        {
+            this.StorageType = null;
         }
         //      C# -> System.String? TotalStorage
         // GraphQL -> totalStorage: String! (scalar)

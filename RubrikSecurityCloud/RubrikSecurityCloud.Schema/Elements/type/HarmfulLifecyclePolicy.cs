@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bucketName")]
         public System.String? BucketName { get; set; }
 
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        [JsonProperty("cloudAccountName")]
+        public System.String? CloudAccountName { get; set; }
+
         //      C# -> System.String? DefaultStorageClass
         // GraphQL -> defaultStorageClass: String! (scalar)
         [JsonProperty("defaultStorageClass")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public HarmfulLifecyclePolicy Set(
         TargetType? LocationType = null,
         System.String? BucketName = null,
+        System.String? CloudAccountName = null,
         System.String? DefaultStorageClass = null,
         System.String? LocationId = null,
         System.String? LocationName = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BucketName != null ) {
             this.BucketName = BucketName;
+        }
+        if ( CloudAccountName != null ) {
+            this.CloudAccountName = CloudAccountName;
         }
         if ( DefaultStorageClass != null ) {
             this.DefaultStorageClass = DefaultStorageClass;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "bucketName\n" ;
             } else {
                 s += ind + "bucketName\n" ;
+            }
+        }
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        if (this.CloudAccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountName\n" ;
+            } else {
+                s += ind + "cloudAccountName\n" ;
             }
         }
         //      C# -> System.String? DefaultStorageClass
@@ -212,6 +230,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BucketName != null && ec.Excludes("bucketName",true))
         {
             this.BucketName = null;
+        }
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        if (ec.Includes("cloudAccountName",true))
+        {
+            if(this.CloudAccountName == null) {
+
+                this.CloudAccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountName != null && ec.Excludes("cloudAccountName",true))
+        {
+            this.CloudAccountName = null;
         }
         //      C# -> System.String? DefaultStorageClass
         // GraphQL -> defaultStorageClass: String! (scalar)

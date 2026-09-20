@@ -63,3 +63,6 @@ archival location rekey).
 schedule.
 - ASSIGN_COPY_SCHEDULE - Quorum authorization is required to assign or unassign NAS Cloud Direct
 copy-schedule source shares.
+- RESTORE_AD_FOREST - Quorum authorization is required for restoring an Active Directory forest.
+- RESTORE_AD_DOMAIN_CONTROLLER - Quorum authorization is required for restoring an Active Directory domain controller snapshot.
+- RESTORE_AD_OBJECTS - Quorum authorization is required for granular restore of Active Directory objects.

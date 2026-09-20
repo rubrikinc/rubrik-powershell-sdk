@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("createdBy")]
         public System.String? CreatedBy { get; set; }
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         [JsonProperty("id")]
@@ -90,6 +95,7 @@ namespace RubrikSecurityCloud.Types
         ReportRoomType? Room = null,
         DateTime? CreatedAt = null,
         System.String? CreatedBy = null,
+        System.String? Description = null,
         System.Int64? Id = null,
         System.String? Name = null,
         System.Int32? ScheduledReportsCount = null,
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedBy != null ) {
             this.CreatedBy = CreatedBy;
+        }
+        if ( Description != null ) {
+            this.Description = Description;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -188,6 +197,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "createdBy\n" ;
             } else {
                 s += ind + "createdBy\n" ;
+            }
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
             }
         }
         //      C# -> System.Int64? Id
@@ -338,6 +356,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CreatedBy != null && ec.Excludes("createdBy",true))
         {
             this.CreatedBy = null;
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (ec.Includes("description",true))
+        {
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)

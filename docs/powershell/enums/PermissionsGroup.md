@@ -140,3 +140,7 @@ Exocompute feature.
 - EXPORT - Represents the permissions required to export an S3 recovery to a newly
 created target bucket. These permissions are applicable to the
 CLOUD_NATIVE_S3_PROTECTION feature.
+- ARC_VM_EXPORT - Represents the set of permissions required to export a Hyper-V virtual
+machine into an Azure Local (Azure Stack HCI) cluster as an Arc virtual
+machine. These permissions are applicable to the Azure Local cloud
+account feature.

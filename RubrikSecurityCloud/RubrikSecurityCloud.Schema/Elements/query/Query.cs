@@ -6564,7 +6564,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseSnapshotFileConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\nisPrefixSearch: $isPrefixSearch\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnapshotFid: $snapshotFid\npath: $path\nsearchPrefix: $searchPrefix\nisPrefixSearch: $isPrefixSearch\n)";
             return "browseSnapshotFileConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseSnapshotFileConnectionFieldSpec(AutofieldContext? ec=null)
@@ -12846,7 +12846,7 @@ namespace RubrikSecurityCloud.Types
         public static string MicrosoftSites(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\nprotectionType: $protectionType\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\nprotectionType: $protectionType\n)";
             return "microsoftSites" + args + "\n{\n" + fs + "}\n";
         }
         public static object MicrosoftSitesFieldSpec(AutofieldContext? ec=null)
@@ -19092,7 +19092,7 @@ namespace RubrikSecurityCloud.Types
         public static string TprRulesMap(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\npolicyRules: $policyRules\npolicyScope: $policyScope\n)";
             return "tprRulesMap" + args + "\n{\n" + fs + "}\n";
         }
         public static object TprRulesMapFieldSpec(AutofieldContext? ec=null)

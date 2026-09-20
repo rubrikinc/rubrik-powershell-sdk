@@ -59,6 +59,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Whether the subscription is protectable for the specified protection features.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -67,8 +69,6 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

@@ -1467,3 +1467,19 @@ uses continuous backup. Use texts param with values "true" or "false".
 +mo:filter:db:table=saasapps_confluence_spaces
 +mo:filter:db:column=space_type
 +mo:filter:db:index:key=NULL // low-cardinality column, index not selective
+- CLUSTER_MANAGEMENT_TYPE - Filter objects by who operates the Rubrik cluster they belong to. Use
+the texts parameter with ClusterManagementType names stripped of their
+MANAGEMENT_TYPE_ prefix: "RUBRIK_MANAGED" keeps objects on Rubrik
+clusters that Rubrik operates on the customer's behalf, and
+"SELF_MANAGED" keeps objects on Rubrik clusters that the customer
+operates. Passing both places no restriction. An object whose Rubrik
+cluster has no management type is treated as self-managed.
++mo:filter:db:table=clusters
++mo:filter:db:column=uuid
++mo:filter:db:index:key=uuid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=management_type
++mo:filter:db:index:key=NULL
++reason: clusters holds one row per registered cluster per account and the scan is already bounded by the unique-keyed join on clusters.uuid

@@ -127,6 +127,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
+    /// 	request = @{
+    /// 		# REQUIRED
+    /// 		ipmiPassword = $someString
+    /// 		# OPTIONAL
+    /// 		encryptionPassword = $someString
+    /// 		# OPTIONAL
+    /// 		isIpv4ManualDiscoveryMode = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isLinkLocalIpv4Mode = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
     /// 	nodesMap = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -182,17 +193,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	)
-    /// 	# REQUIRED
-    /// 	request = @{
-    /// 		# OPTIONAL
-    /// 		encryptionPassword = $someString
-    /// 		# OPTIONAL
-    /// 		isIpv4ManualDiscoveryMode = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isLinkLocalIpv4Mode = $someBoolean
-    /// 		# REQUIRED
-    /// 		ipmiPassword = $someString
-    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1444,13 +1444,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldRestoreAsReadOnly = $someBoolean
     /// 			# OPTIONAL
+    /// 			shouldUseCustomRestartScript = $someBoolean
+    /// 			# OPTIONAL
     /// 			systemUsername = $someString
     /// 			# OPTIONAL
     /// 			shouldRestoreAsReplica = $someBoolean
     /// 			# OPTIONAL
     /// 			shouldOverrideConfFiles = $someBoolean
     /// 			# OPTIONAL
+    /// 			customStopScriptFile = $someString
+    /// 			# OPTIONAL
     /// 			dbUsername = $someString
+    /// 			# OPTIONAL
+    /// 			customRestartScriptFile = $someString
+    /// 			# OPTIONAL
+    /// 			customStartScriptFile = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		multiPostgresRestoreSettings = @(
@@ -1462,13 +1470,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					shouldRestoreAsReadOnly = $someBoolean
     /// 					# OPTIONAL
+    /// 					shouldUseCustomRestartScript = $someBoolean
+    /// 					# OPTIONAL
     /// 					systemUsername = $someString
     /// 					# OPTIONAL
     /// 					shouldRestoreAsReplica = $someBoolean
     /// 					# OPTIONAL
     /// 					shouldOverrideConfFiles = $someBoolean
     /// 					# OPTIONAL
+    /// 					customStopScriptFile = $someString
+    /// 					# OPTIONAL
     /// 					dbUsername = $someString
+    /// 					# OPTIONAL
+    /// 					customRestartScriptFile = $someString
+    /// 					# OPTIONAL
+    /// 					customStartScriptFile = $someString
     /// 				}
     /// 				# REQUIRED
     /// 				hostId = $someString
@@ -2331,6 +2347,17 @@ $query.Var.AddClusterNodesInput = @{
 	# REQUIRED
 	clusterUuid = $someString
 	# REQUIRED
+	request = @{
+		# REQUIRED
+		ipmiPassword = $someString
+		# OPTIONAL
+		encryptionPassword = $someString
+		# OPTIONAL
+		isIpv4ManualDiscoveryMode = $someBoolean
+		# OPTIONAL
+		isLinkLocalIpv4Mode = $someBoolean
+	}
+	# REQUIRED
 	nodesMap = @(
 		@{
 			# OPTIONAL
@@ -2386,17 +2413,6 @@ $query.Var.AddClusterNodesInput = @{
 			}
 		}
 	)
-	# REQUIRED
-	request = @{
-		# OPTIONAL
-		encryptionPassword = $someString
-		# OPTIONAL
-		isIpv4ManualDiscoveryMode = $someBoolean
-		# OPTIONAL
-		isLinkLocalIpv4Mode = $someBoolean
-		# REQUIRED
-		ipmiPassword = $someString
-	}
 }"
             );
         }
@@ -3480,13 +3496,21 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldRestoreAsReadOnly = $someBoolean
 			# OPTIONAL
+			shouldUseCustomRestartScript = $someBoolean
+			# OPTIONAL
 			systemUsername = $someString
 			# OPTIONAL
 			shouldRestoreAsReplica = $someBoolean
 			# OPTIONAL
 			shouldOverrideConfFiles = $someBoolean
 			# OPTIONAL
+			customStopScriptFile = $someString
+			# OPTIONAL
 			dbUsername = $someString
+			# OPTIONAL
+			customRestartScriptFile = $someString
+			# OPTIONAL
+			customStartScriptFile = $someString
 		}
 		# OPTIONAL
 		multiPostgresRestoreSettings = @(
@@ -3498,13 +3522,21 @@ $query.Var.input = @{
 					# OPTIONAL
 					shouldRestoreAsReadOnly = $someBoolean
 					# OPTIONAL
+					shouldUseCustomRestartScript = $someBoolean
+					# OPTIONAL
 					systemUsername = $someString
 					# OPTIONAL
 					shouldRestoreAsReplica = $someBoolean
 					# OPTIONAL
 					shouldOverrideConfFiles = $someBoolean
 					# OPTIONAL
+					customStopScriptFile = $someString
+					# OPTIONAL
 					dbUsername = $someString
+					# OPTIONAL
+					customRestartScriptFile = $someString
+					# OPTIONAL
+					customStartScriptFile = $someString
 				}
 				# REQUIRED
 				hostId = $someString

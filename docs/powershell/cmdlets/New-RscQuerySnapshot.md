@@ -1,13 +1,16 @@
 # New-RscQuerySnapshot
 ## Subcommands
 ### browsefilelist
-Returns a list files whose name is prefixed by the query in the given snapshot.
+Returns a list files whose name is prefixed by the query in the given
+snapshot.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - path - System.String: The path under which you want your search to run.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
+    - path - System.String: The path under which you want your search to run.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
     - isPrefixSearch - System.Boolean: Determines whether to use a prefix search.
 - Returns SnapshotFileConnection.
@@ -308,11 +311,14 @@ List of workloads with legal hold snapshots.
     - input - SnappablesWithLegalHoldSnapshotsInput: Input to retrieve workloads with legal hold snapshots.
 - Returns LegalHoldSnappableDetailConnection.
 ### snapshot
-Returns a single snapshot by snapshot forever UUID and cluster UUID. In case cluster UUID is not provided, the snapshot forever UUID is used to resolve it. Cluster UUID is beneficial for fetching the same snapshot in a different replication target Rubrik cluster.
+Returns a single snapshot by snapshot forever UUID and cluster UUID.
+In case cluster UUID is not provided, the snapshot forever UUID is used to
+resolve it. Cluster UUID is beneficial for fetching the same snapshot in
+a different replication target Rubrik cluster.
 
 - There are 2 arguments.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
-    - clusterUuid - System.String: The Rubrik cluster ID.
+    - clusterUuid - System.String: The Rubrik cluster ID to resolve the snapshot in.
 - Returns CdmSnapshot.
 ### sofclouddirectbucket
 Returns a list of NAS Cloud Direct snapshots for a bucket.

@@ -15,7 +15,7 @@ Dynamics 365 organization.
 - saasOrgType: SaasOrgType
   - The organization type that categorizes the SaaS provider.
 - metadataWorkloadID: System.String
-  - Rubrik ID of the Dynamics 365 metadata workload.
+  - Rubrik ID of the Dataverse metadata workload.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

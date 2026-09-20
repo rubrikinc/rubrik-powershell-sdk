@@ -8202,6 +8202,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -14860,7 +14864,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryMisc -Operation TprRulesMap
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.policyRules = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		tprPolicyObject = @{
+    /// 			# REQUIRED
+    /// 			objectId = $someString
+    /// 			# REQUIRED
+    /// 			managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 			# REQUIRED
+    /// 			workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 			# REQUIRED
+    /// 			clusterId = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		tprRules = @(
+    /// 			$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.policyScope = $someTprPolicyScope # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicyScope]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -29237,6 +29262,8 @@ $query.Var.protectionType = $someProtectionType # Call [Enum]::GetValues([Rubrik
         // microsoftSites(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -29249,6 +29276,8 @@ $query.Var.protectionType = $someProtectionType # Call [Enum]::GetValues([Rubrik
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -29260,7 +29289,7 @@ $query.Var.protectionType = $someProtectionType # Call [Enum]::GetValues([Rubrik
                 argDefs,
                 "query",
                 "QueryMicrosoftSites",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$excludeChildSites: Boolean,$protectionType: ProtectionType!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$excludeChildSites: Boolean,$protectionType: ProtectionType!)",
                 "MicrosoftSiteConnection",
                 Query.MicrosoftSites,
                 Query.MicrosoftSitesFieldSpec,
@@ -29268,6 +29297,10 @@ $query.Var.protectionType = $someProtectionType # Call [Enum]::GetValues([Rubrik
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -35759,20 +35792,43 @@ $query.Var.email = $someString"
         }
 
         // Create new GraphQL Query:
-        // tprRulesMap: TprRulesMap!
+        // tprRulesMap(policyRules: [TprPolicyRuleInput!], policyScope: TprPolicyScope): TprRulesMap!
         internal void InitQueryTprRulesMap()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyRules", "[TprPolicyRuleInput!]"),
+                Tuple.Create("policyScope", "TprPolicyScope"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryTprRulesMap",
-                "",
+                "($policyRules: [TprPolicyRuleInput!],$policyScope: TprPolicyScope)",
                 "TprRulesMap",
                 Query.TprRulesMap,
                 Query.TprRulesMapFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.policyRules = @(
+	@{
+		# REQUIRED
+		tprPolicyObject = @{
+			# REQUIRED
+			objectId = $someString
+			# REQUIRED
+			managedObjectType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+			# REQUIRED
+			workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+			# REQUIRED
+			clusterId = $someString
+		}
+		# REQUIRED
+		tprRules = @(
+			$someTprRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprRule]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.policyScope = $someTprPolicyScope # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TprPolicyScope]) for enum values."
             );
         }
 

@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldGrantNfsShareRootAccess")]
         public System.Boolean? ShouldGrantNfsShareRootAccess { get; set; }
 
+        //      C# -> System.String? SmbAuthMode
+        // GraphQL -> smbAuthMode: String (scalar)
+        [JsonProperty("smbAuthMode")]
+        public System.String? SmbAuthMode { get; set; }
+
         //      C# -> List<System.String>? UserSelectedNfsInterfaces
         // GraphQL -> userSelectedNfsInterfaces: [String!] (scalar)
         [JsonProperty("userSelectedNfsInterfaces")]
@@ -98,6 +103,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         [JsonProperty("isNutanixCftEnabled")]
         public System.Boolean? IsNutanixCftEnabled { get; set; }
+
+        //      C# -> System.String? NfsAuthMode
+        // GraphQL -> nfsAuthMode: String (scalar)
+        [JsonProperty("nfsAuthMode")]
+        public System.String? NfsAuthMode { get; set; }
 
 
         #endregion

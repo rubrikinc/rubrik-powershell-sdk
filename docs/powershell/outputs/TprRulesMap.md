@@ -17,3 +17,7 @@ TPR policy.
   - Workloads allowed when creating a data management TPR policy by object.
 - tprRulesByObjectType: list of TprRulesByObjectTypes
   - TPR rules for object type.
+- protectedActions: list of ProtectedActions
+  - The CDM REST endpoints for every TPR rule with at least one known CDM REST
+endpoint, one entry per such rule. A rule absent from this list has no
+CDM REST surface.

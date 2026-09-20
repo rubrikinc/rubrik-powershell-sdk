@@ -77,6 +77,12 @@ Requires an unprotected fileset. Remove the fileset from all SLA Domains.
 
 - There is a single argument of type DeleteFilesetSnapshotsInput.
 - Returns ResponseSuccess.
+### deletesofobjects
+DeleteSnapshotsOfObjects deletes all the snapshots of the specified
+objects from the provided location IDs.
+
+- There is a single argument of type DeleteSnapshotsOfObjectsInput.
+- Returns System.String.
 ### deletesofunmanagedobjects
 Deletes all the snapshots of the unmanaged objects in the request.
 

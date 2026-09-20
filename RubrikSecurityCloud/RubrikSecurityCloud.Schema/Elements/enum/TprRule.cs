@@ -147,6 +147,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RESET_USER_TOTP_CONFIG")]
         RESET_USER_TOTP_CONFIG,
 
+        [EnumMember(Value = "RESTORE_AD_DOMAIN_CONTROLLER")]
+        RESTORE_AD_DOMAIN_CONTROLLER,
+
+        [EnumMember(Value = "RESTORE_AD_FOREST")]
+        RESTORE_AD_FOREST,
+
+        [EnumMember(Value = "RESTORE_AD_OBJECTS")]
+        RESTORE_AD_OBJECTS,
+
         [EnumMember(Value = "RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION")]
         RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION,
 

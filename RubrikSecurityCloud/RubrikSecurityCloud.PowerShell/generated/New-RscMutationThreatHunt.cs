@@ -374,7 +374,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		registryPatterns = @(
     /// 			@{
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				keyPattern = $someString
     /// 				# OPTIONAL
     /// 				valueNames = @(
@@ -392,6 +392,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				valueDataContains = $someString
     /// 				# OPTIONAL
     /// 				valueDataNotContains = $someString
+    /// 				# OPTIONAL
+    /// 				hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+    /// 				# OPTIONAL
+    /// 				keyPath = $someString
+    /// 				# OPTIONAL
+    /// 				valueTypeList = @(
+    /// 					$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+    /// 				)
     /// 			}
     /// 		)
     /// 	}
@@ -530,7 +538,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			registryPatterns = @(
     /// 				@{
-    /// 					# REQUIRED
+    /// 					# OPTIONAL
     /// 					keyPattern = $someString
     /// 					# OPTIONAL
     /// 					valueNames = @(
@@ -548,6 +556,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					valueDataContains = $someString
     /// 					# OPTIONAL
     /// 					valueDataNotContains = $someString
+    /// 					# OPTIONAL
+    /// 					hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+    /// 					# OPTIONAL
+    /// 					keyPath = $someString
+    /// 					# OPTIONAL
+    /// 					valueTypeList = @(
+    /// 						$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+    /// 					)
     /// 				}
     /// 			)
     /// 		}
@@ -696,7 +712,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		registryPatterns = @(
     /// 			@{
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				keyPattern = $someString
     /// 				# OPTIONAL
     /// 				valueNames = @(
@@ -714,6 +730,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				valueDataContains = $someString
     /// 				# OPTIONAL
     /// 				valueDataNotContains = $someString
+    /// 				# OPTIONAL
+    /// 				hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+    /// 				# OPTIONAL
+    /// 				keyPath = $someString
+    /// 				# OPTIONAL
+    /// 				valueTypeList = @(
+    /// 					$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+    /// 				)
     /// 			}
     /// 		)
     /// 	}
@@ -1131,7 +1155,7 @@ $query.Var.input = @{
 		# OPTIONAL
 		registryPatterns = @(
 			@{
-				# REQUIRED
+				# OPTIONAL
 				keyPattern = $someString
 				# OPTIONAL
 				valueNames = @(
@@ -1149,6 +1173,14 @@ $query.Var.input = @{
 				valueDataContains = $someString
 				# OPTIONAL
 				valueDataNotContains = $someString
+				# OPTIONAL
+				hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+				# OPTIONAL
+				keyPath = $someString
+				# OPTIONAL
+				valueTypeList = @(
+					$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+				)
 			}
 		)
 	}
@@ -1279,7 +1311,7 @@ $query.Var.input = @{
 			# OPTIONAL
 			registryPatterns = @(
 				@{
-					# REQUIRED
+					# OPTIONAL
 					keyPattern = $someString
 					# OPTIONAL
 					valueNames = @(
@@ -1297,6 +1329,14 @@ $query.Var.input = @{
 					valueDataContains = $someString
 					# OPTIONAL
 					valueDataNotContains = $someString
+					# OPTIONAL
+					hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+					# OPTIONAL
+					keyPath = $someString
+					# OPTIONAL
+					valueTypeList = @(
+						$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+					)
 				}
 			)
 		}
@@ -1437,7 +1477,7 @@ $query.Var.input = @{
 		# OPTIONAL
 		registryPatterns = @(
 			@{
-				# REQUIRED
+				# OPTIONAL
 				keyPattern = $someString
 				# OPTIONAL
 				valueNames = @(
@@ -1455,6 +1495,14 @@ $query.Var.input = @{
 				valueDataContains = $someString
 				# OPTIONAL
 				valueDataNotContains = $someString
+				# OPTIONAL
+				hiveRoot = $someRegistryHiveRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryHiveRoot]) for enum values.
+				# OPTIONAL
+				keyPath = $someString
+				# OPTIONAL
+				valueTypeList = @(
+					$someRegistryValueType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RegistryValueType]) for enum values.
+				)
 			}
 		)
 	}

@@ -721,6 +721,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		filter = $someString
     /// 		# OPTIONAL
+    /// 		restoreOrderTimeoutPolicy = $someString
+    /// 		# OPTIONAL
     /// 		storageMapping = @{
     /// 			# OPTIONAL
     /// 			storageClassMappings = @{
@@ -1207,6 +1209,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		filter = $someString
+    /// 		# OPTIONAL
+    /// 		restoreOrderTimeoutPolicy = $someString
     /// 		# OPTIONAL
     /// 		storageMapping = @{
     /// 			# OPTIONAL
@@ -2454,6 +2458,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		filter = $someString
 		# OPTIONAL
+		restoreOrderTimeoutPolicy = $someString
+		# OPTIONAL
 		storageMapping = @{
 			# OPTIONAL
 			storageClassMappings = @{
@@ -2884,6 +2890,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		filter = $someString
+		# OPTIONAL
+		restoreOrderTimeoutPolicy = $someString
 		# OPTIONAL
 		storageMapping = @{
 			# OPTIONAL

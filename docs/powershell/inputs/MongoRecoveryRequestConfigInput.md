@@ -49,4 +49,5 @@ Boolean flag to restore collections and databases by connecting directly to Mong
 - targetAuthenticationType: MongoAuthenticationType
   - Supported in v9.0+
 v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+v9.1-v9.6: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+v9.7: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used while adding the target source is used.

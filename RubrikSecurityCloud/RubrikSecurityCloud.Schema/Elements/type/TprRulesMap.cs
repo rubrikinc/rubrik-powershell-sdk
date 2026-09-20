@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemConfigurationGlobal")]
         public List<TprRule>? SystemConfigurationGlobal { get; set; }
 
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        [JsonProperty("protectedActions")]
+        public List<ProtectedAction>? ProtectedActions { get; set; }
+
         //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
         // GraphQL -> tprRulesByObjectType: [TprRulesByObjectType!]! (type)
         [JsonProperty("tprRulesByObjectType")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         List<TprRule>? DataManagementBySlaDomain = null,
         List<TprRule>? SystemConfigurationCluster = null,
         List<TprRule>? SystemConfigurationGlobal = null,
+        List<ProtectedAction>? ProtectedActions = null,
         List<TprRulesByObjectType>? TprRulesByObjectType = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SystemConfigurationGlobal != null ) {
             this.SystemConfigurationGlobal = SystemConfigurationGlobal;
+        }
+        if ( ProtectedActions != null ) {
+            this.ProtectedActions = ProtectedActions;
         }
         if ( TprRulesByObjectType != null ) {
             this.TprRulesByObjectType = TprRulesByObjectType;
@@ -161,6 +170,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "systemConfigurationGlobal\n" ;
             } else {
                 s += ind + "systemConfigurationGlobal\n" ;
+            }
+        }
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        if (this.ProtectedActions != null) {
+            var fspec = this.ProtectedActions.AsFieldSpec(conf.Child("protectedActions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "protectedActions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
@@ -283,6 +304,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SystemConfigurationGlobal != null && ec.Excludes("systemConfigurationGlobal",true))
         {
             this.SystemConfigurationGlobal = null;
+        }
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        if (ec.Includes("protectedActions",false))
+        {
+            if(this.ProtectedActions == null) {
+
+                this.ProtectedActions = new List<ProtectedAction>();
+                this.ProtectedActions.ApplyExploratoryFieldSpec(ec.NewChild("protectedActions"));
+
+            } else {
+
+                this.ProtectedActions.ApplyExploratoryFieldSpec(ec.NewChild("protectedActions"));
+
+            }
+        }
+        else if (this.ProtectedActions != null && ec.Excludes("protectedActions",false))
+        {
+            this.ProtectedActions = null;
         }
         //      C# -> List<TprRulesByObjectType>? TprRulesByObjectType
         // GraphQL -> tprRulesByObjectType: [TprRulesByObjectType!]! (type)

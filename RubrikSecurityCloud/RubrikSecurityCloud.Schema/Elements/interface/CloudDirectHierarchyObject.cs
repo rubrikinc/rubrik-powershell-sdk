@@ -74,6 +74,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        [JsonProperty("effectiveRetentionSlaDomain")]
+        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        [JsonProperty("configuredSlaDomain")]
+        SlaDomain? ConfiguredSlaDomain { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -118,16 +128,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
-
-        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        [JsonProperty("effectiveRetentionSlaDomain")]
-        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? ConfiguredSlaDomain
-        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        [JsonProperty("configuredSlaDomain")]
-        SlaDomain? ConfiguredSlaDomain { get; set; }
 
 
         #endregion

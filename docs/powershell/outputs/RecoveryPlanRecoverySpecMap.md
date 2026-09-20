@@ -28,4 +28,7 @@ recovery plan, a value of [5,10,0] implies that there is a 5-minute pause
 between the 1st and 2nd priority groups and a 10-minute pause between the
 2nd and 3rd priority groups. The last value in the list is always 0.
 - config: RecoverySpecConfig
-  - Configuration settings as key-value pairs.
+  - Configuration settings as key-value pairs. For a production recovery, the
+rollbackSourcePowerState key selects whether a rollback powers the source
+back on (POWER_ON_BY_PRIORITY) or leaves it off (STAY_POWERED_OFF). When
+the key is omitted, a rollback defaults to POWER_ON_BY_PRIORITY.

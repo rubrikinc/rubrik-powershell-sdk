@@ -36,10 +36,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("smbCredentials")]
         public NasShareCredentialsInput? SmbCredentials { get; set; }
 
+        //      C# -> System.String? SmbAuthMode
+        // GraphQL -> smbAuthMode: String (scalar)
+        [JsonProperty("smbAuthMode")]
+        public System.String? SmbAuthMode { get; set; }
+
         //      C# -> List<System.String>? UserSelectedNfsInterfaces
         // GraphQL -> userSelectedNfsInterfaces: [String!] (scalar)
         [JsonProperty("userSelectedNfsInterfaces")]
         public List<System.String>? UserSelectedNfsInterfaces { get; set; }
+
+        //      C# -> System.String? NfsAuthMode
+        // GraphQL -> nfsAuthMode: String (scalar)
+        [JsonProperty("nfsAuthMode")]
+        public System.String? NfsAuthMode { get; set; }
 
 
         #endregion

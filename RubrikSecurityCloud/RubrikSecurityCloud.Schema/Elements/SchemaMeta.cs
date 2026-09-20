@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20260907-53" ;
+        public static string GraphqlSchemaVersion = "v20260914-30" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -642,6 +642,9 @@ namespace RubrikSecurityCloud.Types
             AzureClusterStorageAccountRedundancyReply,
             AzureCmk,
             AzureComputeSettings,
+            AzureCosmosNosqlAccount,
+            AzureCosmosNosqlContainer,
+            AzureCosmosNosqlDatabase,
             AzureDevOpsConnectionStatusSummaryReply,
             AzureDevOpsOrganization,
             AzureDevOpsOrganizationConnection,
@@ -851,6 +854,7 @@ namespace RubrikSecurityCloud.Types
             CcProvisionMetadataReply,
             CcWithCloudInfo,
             CdmAgentStatus,
+            CdmApiOperation,
             CdmCertificateUsageInfo,
             CdmClusterStatus,
             CdmClusterStatusInfo,
@@ -2059,6 +2063,7 @@ namespace RubrikSecurityCloud.Types
             K8sSnapshotSummary,
             K8sSnapshotSummaryListResponse,
             K8sVmSnapshotSummary,
+            K8sWorkloadComponentSummary,
             KdcConfig,
             KdcCredential,
             KeyValuePair,
@@ -2318,7 +2323,6 @@ namespace RubrikSecurityCloud.Types
             MonthlyDaySpecDayOfWeek,
             MonthlyDaySpecSpecificDate,
             MonthlySnapshotSchedule,
-            MosaicAsyncResponse,
             MountDiskReply,
             MountedVolume,
             MssqlAppMetadata,
@@ -2716,9 +2720,43 @@ namespace RubrikSecurityCloud.Types
             OnPremAdEventSourceMetadata,
             OnPremAdPrincipalMetadata,
             OnPremAdProtection,
+            OpenstackAvailabilityZone,
+            OpenstackAvailabilityZoneDescendantTypeConnection,
+            OpenstackAvailabilityZoneDescendantTypeEdge,
+            OpenstackAvailabilityZonePhysicalChildTypeConnection,
+            OpenstackAvailabilityZonePhysicalChildTypeEdge,
             OpenstackCephSetting,
+            OpenstackDomain,
+            OpenstackDomainDescendantTypeConnection,
+            OpenstackDomainDescendantTypeEdge,
+            OpenstackDomainLogicalChildTypeConnection,
+            OpenstackDomainLogicalChildTypeEdge,
+            OpenstackEnvironment,
+            OpenstackEnvironmentDescendantTypeConnection,
+            OpenstackEnvironmentDescendantTypeEdge,
+            OpenstackEnvironmentLogicalChildTypeConnection,
+            OpenstackEnvironmentLogicalChildTypeEdge,
+            OpenstackEnvironmentPhysicalChildTypeConnection,
+            OpenstackEnvironmentPhysicalChildTypeEdge,
+            OpenstackHost,
+            OpenstackHostDescendantTypeConnection,
+            OpenstackHostDescendantTypeEdge,
+            OpenstackHostPhysicalChildTypeConnection,
+            OpenstackHostPhysicalChildTypeEdge,
+            OpenstackImage,
+            OpenstackImageMember,
             OpenstackMonHost,
             OpenstackNetworkTags,
+            OpenstackProject,
+            OpenstackProjectDescendantTypeConnection,
+            OpenstackProjectDescendantTypeEdge,
+            OpenstackProjectLogicalChildTypeConnection,
+            OpenstackProjectLogicalChildTypeEdge,
+            OpenstackRegion,
+            OpenstackRegionDescendantTypeConnection,
+            OpenstackRegionDescendantTypeEdge,
+            OpenstackRegionPhysicalChildTypeConnection,
+            OpenstackRegionPhysicalChildTypeEdge,
             OpenstackTag,
             OpenstackTagDescendantTypeConnection,
             OpenstackTagDescendantTypeEdge,
@@ -2954,6 +2992,7 @@ namespace RubrikSecurityCloud.Types
             ProductTypeInfo,
             PropertiesOneof,
             PropertyExtension,
+            ProtectedAction,
             ProtectedObjects,
             ProtectedObjectsConnection,
             ProtectedObjectsEdge,
@@ -2985,6 +3024,7 @@ namespace RubrikSecurityCloud.Types
             ProxmoxStorageDomain,
             ProxmoxVirtualMachineDetails,
             ProxmoxVirtualMachineV1,
+            ProxmoxVmSubObject,
             ProxySettings,
             PureStorageArrayDescendantV1Connection,
             PureStorageArrayDescendantV1Edge,
@@ -4147,7 +4187,6 @@ namespace RubrikSecurityCloud.Types
             AddManagedVolumeInfo,
             AddManagedVolumeInput,
             AddMongoSourceInput,
-            AddMosaicStoreInput,
             AddMysqldbInstanceInput,
             AddNodesConfigInput,
             AddNodesToCloudClusterInput,
@@ -4800,7 +4839,6 @@ namespace RubrikSecurityCloud.Types
             DeleteManagedVolumeInput,
             DeleteManagedVolumeSnapshotExportInput,
             DeleteMongoSourceInput,
-            DeleteMosaicStoreInput,
             DeleteMssqlDbSnapshotsInput,
             DeleteMssqlLiveMountInput,
             DeleteMvcProfilesInput,
@@ -4824,6 +4862,7 @@ namespace RubrikSecurityCloud.Types
             DeleteScheduledReportInput,
             DeleteServiceAccountsFromAccountInput,
             DeleteSmbDomainInput,
+            DeleteSnapshotsOfObjectsInput,
             DeleteSnapshotsOfUnmanagedObjectsInput,
             DeleteStorageArraysInput,
             DeleteSyslogExportRuleInput,
@@ -5442,6 +5481,7 @@ namespace RubrikSecurityCloud.Types
             M365BackupStorageObjectRestorePointsInput,
             M365BackupStorageObjectSearchRestorePointsInput,
             M365MetadataInput,
+            M365RecoveryOptionsInput,
             MailboxRestoreConfig,
             MakePrimaryInput,
             MalwareScanFileCriteriaInput,
@@ -5494,7 +5534,6 @@ namespace RubrikSecurityCloud.Types
             ModifyEventDigestBatchInput,
             ModifyIdentityProviderInput,
             ModifyIpmiInput,
-            ModifyMosaicStoreInput,
             MongoClientHostInput,
             MongoCollectionAssignSlaConfigInput,
             MongoCollectionsInfo,
@@ -5512,8 +5551,6 @@ namespace RubrikSecurityCloud.Types
             MongoSourcePatchRequestConfigInput,
             MonthlyDaySpecInput,
             MonthlySnapshotScheduleInput,
-            MosaicAddStoreRequestInput,
-            MosaicModifyStoreRequestInput,
             MosaicSourceInfo,
             MosaicStorageLocationInfo,
             MountDiskInput,
@@ -7816,7 +7853,6 @@ namespace RubrikSecurityCloud.Types
             addK8sProtectionSet,
             addManagedVolume,
             addMongoSource,
-            addMosaicStore,
             addMssqlHost,
             addMysqlInstance,
             addNodesToCloudCluster,
@@ -8110,7 +8146,6 @@ namespace RubrikSecurityCloud.Types
             deleteManagedVolume,
             deleteManagedVolumeSnapshotExport,
             deleteMongoSource,
-            deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
             deleteMvcProfiles,
@@ -8139,6 +8174,7 @@ namespace RubrikSecurityCloud.Types
             deleteSecurityPolicy,
             deleteServiceAccountsFromAccount,
             deleteSmbDomain,
+            deleteSnapshotsOfObjects,
             deleteSnapshotsOfUnmanagedObjects,
             deleteStorageArrays,
             deleteSyslogExportRule,
@@ -8670,7 +8706,6 @@ namespace RubrikSecurityCloud.Types
             updateManagedIdentitiesAsync,
             updateManagedVolume,
             updateManualTargetMapping,
-            updateMosaicStore,
             updateMssqlDefaultProperties,
             updateMssqlLogShippingConfiguration,
             updateMssqlLogShippingConfigurationV1,
@@ -8949,6 +8984,9 @@ namespace RubrikSecurityCloud.Types
             AzureCloudType,
             AzureClusterStorageRedundancy,
             AzureCommonRegion,
+            AzureCosmosNosqlNetworkAccessMode,
+            AzureCosmosNosqlThroughputMode,
+            AzureCosmosNosqlThroughputScope,
             AzureFeatureForPermissionCheck,
             AzureHostType,
             AzureInstanceType,
@@ -9089,6 +9127,7 @@ namespace RubrikSecurityCloud.Types
             ClusterKeyProtection,
             ClusterKeyRotationState,
             ClusterLicenseInfoType,
+            ClusterManagementType,
             ClusterNodePlatformType,
             ClusterNodePosition,
             ClusterNodeRole,
@@ -9498,7 +9537,6 @@ namespace RubrikSecurityCloud.Types
             MongoSslCertificateRequirement,
             MongoType,
             Month,
-            MosaicAddStoreRequestStoreType,
             MosaicSourceNosqlSourceType,
             MountExportSnapshotJobCommonOptionsV2RecoveryPurpose,
             MountState,
@@ -9592,6 +9630,8 @@ namespace RubrikSecurityCloud.Types
             OnedriveSearchObjectType,
             OnPremAdSupportedEncryptionTypes,
             OpenAccessType,
+            OpenstackImageMemberStatus,
+            OpenstackImageVisibilityType,
             OperatingSystemType,
             Operation,
             Operator,
@@ -9707,6 +9747,8 @@ namespace RubrikSecurityCloud.Types
             RecoveryType,
             RefreshableObjectConnectionStatusType,
             RegisteredMode,
+            RegistryHiveRoot,
+            RegistryValueType,
             Relationship,
             RelationshipConflictResolutionState,
             RelationshipType,
@@ -10221,6 +10263,13 @@ namespace RubrikSecurityCloud.Types
                     "OlvmManagerV1",
                     "OlvmTagV1",
                     "OlvmVirtualMachineV1",
+                    "OpenstackAvailabilityZone",
+                    "OpenstackDomain",
+                    "OpenstackEnvironment",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackProject",
+                    "OpenstackRegion",
                     "OpenstackTag",
                     "OpenstackVirtualMachine",
                     "OracleDatabase",
@@ -10282,6 +10331,7 @@ namespace RubrikSecurityCloud.Types
                     "NasFileset",
                     "NutanixVm",
                     "OlvmVirtualMachineV1",
+                    "OpenstackImage",
                     "OpenstackVirtualMachine",
                     "OracleDatabase",
                     "OracleDataGuardGroup",
@@ -10587,6 +10637,9 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
+                    "AzureCosmosNosqlAccount",
+                    "AzureCosmosNosqlContainer",
+                    "AzureCosmosNosqlDatabase",
                     "AzureDevOpsOrganization",
                     "AzureDevOpsProject",
                     "AzureDevOpsRepository",
@@ -10694,6 +10747,13 @@ namespace RubrikSecurityCloud.Types
                     "OlvmManagerV1",
                     "OlvmTagV1",
                     "OlvmVirtualMachineV1",
+                    "OpenstackAvailabilityZone",
+                    "OpenstackDomain",
+                    "OpenstackEnvironment",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackProject",
+                    "OpenstackRegion",
                     "OpenstackTag",
                     "OpenstackVirtualMachine",
                     "OracleDatabase",
@@ -10752,6 +10812,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeRdsInstance",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
+                    "AzureCosmosNosqlContainer",
                     "AzureDevOpsRepository",
                     "AzureNativeManagedDisk",
                     "AzureNativeVirtualMachine",
@@ -10795,6 +10856,7 @@ namespace RubrikSecurityCloud.Types
                     "O365Site",
                     "O365Teams",
                     "OlvmVirtualMachineV1",
+                    "OpenstackImage",
                     "OpenstackVirtualMachine",
                     "OracleDatabase",
                     "OracleDataGuardGroup",
@@ -11399,60 +11461,90 @@ namespace RubrikSecurityCloud.Types
                 {
                     "OpenstackAvailabilityZoneDescendantType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZoneDescendantType",
+                    "OpenstackHost",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackAvailabilityZonePhysicalChildType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZonePhysicalChildType",
+                    "OpenstackHost",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackDomainDescendantType",
                     new HashSet<string> {
+                    "OpenstackDomainDescendantType",
+                    "OpenstackImage",
+                    "OpenstackProject",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackDomainLogicalChildType",
                     new HashSet<string> {
+                    "OpenstackDomainLogicalChildType",
+                    "OpenstackImage",
+                    "OpenstackProject",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackEnvironmentDescendantType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZone",
+                    "OpenstackDomain",
+                    "OpenstackEnvironmentDescendantType",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackProject",
+                    "OpenstackRegion",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackEnvironmentLogicalChildType",
                     new HashSet<string> {
+                    "OpenstackDomain",
+                    "OpenstackEnvironmentLogicalChildType",
+                    "OpenstackImage",
+                    "OpenstackProject",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackEnvironmentPhysicalChildType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZone",
+                    "OpenstackEnvironmentPhysicalChildType",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackRegion",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackHostDescendantType",
                     new HashSet<string> {
+                    "OpenstackHostDescendantType",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackHostPhysicalChildType",
                     new HashSet<string> {
+                    "OpenstackHostPhysicalChildType",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackProjectDescendantType",
                     new HashSet<string> {
+                    "OpenstackImage",
+                    "OpenstackProjectDescendantType",
                     "OpenstackTag",
                     "OpenstackVirtualMachine",
                     }
@@ -11460,6 +11552,8 @@ namespace RubrikSecurityCloud.Types
                 {
                     "OpenstackProjectLogicalChildType",
                     new HashSet<string> {
+                    "OpenstackImage",
+                    "OpenstackProjectLogicalChildType",
                     "OpenstackTag",
                     "OpenstackVirtualMachine",
                     }
@@ -11467,12 +11561,20 @@ namespace RubrikSecurityCloud.Types
                 {
                     "OpenstackRegionDescendantType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZone",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackRegionDescendantType",
                     "OpenstackVirtualMachine",
                     }
                 },
                 {
                     "OpenstackRegionPhysicalChildType",
                     new HashSet<string> {
+                    "OpenstackAvailabilityZone",
+                    "OpenstackHost",
+                    "OpenstackImage",
+                    "OpenstackRegionPhysicalChildType",
                     "OpenstackVirtualMachine",
                     }
                 },
@@ -11584,6 +11686,9 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeRegionHierarchyObject",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
+                    "AzureCosmosNosqlAccount",
+                    "AzureCosmosNosqlContainer",
+                    "AzureCosmosNosqlDatabase",
                     "AzureDevOpsOrganization",
                     "AzureDevOpsProject",
                     "AzureDevOpsRepository",
@@ -11648,6 +11753,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeRdsInstance",
                     "AwsNativeS3Bucket",
                     "AzureAdDirectory",
+                    "AzureCosmosNosqlContainer",
                     "AzureDevOpsRepository",
                     "AzureNativeManagedDisk",
                     "AzureNativeVirtualMachine",
@@ -12774,7 +12880,6 @@ namespace RubrikSecurityCloud.Types
             addK8sProtectionSet,
             addManagedVolume,
             addMongoSource,
-            addMosaicStore,
             addMssqlHost,
             addMysqlInstance,
             addNodesToCloudCluster,
@@ -13501,7 +13606,6 @@ namespace RubrikSecurityCloud.Types
             deleteManagedVolume,
             deleteManagedVolumeSnapshotExport,
             deleteMongoSource,
-            deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
             deleteMvcProfiles,
@@ -13530,6 +13634,7 @@ namespace RubrikSecurityCloud.Types
             deleteSecurityPolicy,
             deleteServiceAccountsFromAccount,
             deleteSmbDomain,
+            deleteSnapshotsOfObjects,
             deleteSnapshotsOfUnmanagedObjects,
             deleteStorageArrays,
             deleteSyslogExportRule,
@@ -14675,7 +14780,6 @@ namespace RubrikSecurityCloud.Types
             updateManagedIdentitiesAsync,
             updateManagedVolume,
             updateManualTargetMapping,
-            updateMosaicStore,
             updateMssqlDefaultProperties,
             updateMssqlLogShippingConfiguration,
             updateMssqlLogShippingConfigurationV1,
@@ -15274,14 +15378,6 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMongo",
                         cmdletSwitchName: "AddSource",
                         gqlRootFieldName: "addMongoSource"
-                    )
-                },
-                {
-                    GqlRootFieldName.addMosaicStore,
-                    new RscOp(
-                        cmdletName: "New-RscMutationMosaic",
-                        cmdletSwitchName: "AddStore",
-                        gqlRootFieldName: "addMosaicStore"
                     )
                 },
                 {
@@ -21093,14 +21189,6 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.deleteMosaicStore,
-                    new RscOp(
-                        cmdletName: "New-RscMutationMosaic",
-                        cmdletSwitchName: "DeleteStore",
-                        gqlRootFieldName: "deleteMosaicStore"
-                    )
-                },
-                {
                     GqlRootFieldName.deleteMssqlDbSnapshots,
                     new RscOp(
                         cmdletName: "New-RscMutationMssql",
@@ -21322,6 +21410,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationSmb",
                         cmdletSwitchName: "DeleteDomain",
                         gqlRootFieldName: "deleteSmbDomain"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteSnapshotsOfObjects,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "DeletesOfObjects",
+                        gqlRootFieldName: "deleteSnapshotsOfObjects"
                     )
                 },
                 {
@@ -30485,14 +30581,6 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.updateMosaicStore,
-                    new RscOp(
-                        cmdletName: "New-RscMutationMosaic",
-                        cmdletSwitchName: "UpdateStore",
-                        gqlRootFieldName: "updateMosaicStore"
-                    )
-                },
-                {
                     GqlRootFieldName.updateMssqlDefaultProperties,
                     new RscOp(
                         cmdletName: "New-RscMutationMssql",
@@ -32438,10 +32526,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMongo -Op AddSource",
                     GqlRootFieldName.addMongoSource
-                },
-                {
-                    "New-RscMutationMosaic -Op AddStore",
-                    GqlRootFieldName.addMosaicStore
                 },
                 {
                     "New-RscMutationMssql -Op AddHost",
@@ -35348,10 +35432,6 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteMongoSource
                 },
                 {
-                    "New-RscMutationMosaic -Op DeleteStore",
-                    GqlRootFieldName.deleteMosaicStore
-                },
-                {
                     "New-RscMutationMssql -Op DeleteDbSnapshots",
                     GqlRootFieldName.deleteMssqlDbSnapshots
                 },
@@ -35462,6 +35542,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationSmb -Op DeleteDomain",
                     GqlRootFieldName.deleteSmbDomain
+                },
+                {
+                    "New-RscMutationSnapshot -Op DeletesOfObjects",
+                    GqlRootFieldName.deleteSnapshotsOfObjects
                 },
                 {
                     "New-RscMutationSnapshot -Op DeletesOfUnmanagedObjects",
@@ -40044,10 +40128,6 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updateManualTargetMapping
                 },
                 {
-                    "New-RscMutationMosaic -Op UpdateStore",
-                    GqlRootFieldName.updateMosaicStore
-                },
-                {
                     "New-RscMutationMssql -Op UpdateDefaultProperties",
                     GqlRootFieldName.updateMssqlDefaultProperties
                 },
@@ -44090,12 +44170,6 @@ namespace RubrikSecurityCloud.Types
                         "mongoSources",
                     }
                 },
-                {   "MosaicAsyncResponse", new List<string> {
-                        "addMosaicStore",
-                        "deleteMosaicStore",
-                        "updateMosaicStore",
-                    }
-                },
                 {   "MountDiskReply", new List<string> {
                         "mountDisk",
                     }
@@ -46356,6 +46430,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteScheduledReport",
                         "deleteSecurityPolicy",
                         "deleteSmbDomain",
+                        "deleteSnapshotsOfObjects",
                         "deleteSyslogExportRule",
                         "deleteTarget",
                         "deleteTargetMapping",
@@ -47399,10 +47474,6 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "AddMongoSourceInput", new List<string> {
                         "addMongoSource",
-                    }
-                },
-                {   "AddMosaicStoreInput", new List<string> {
-                        "addMosaicStore",
                     }
                 },
                 {   "AddMysqldbInstanceInput", new List<string> {
@@ -49317,10 +49388,6 @@ namespace RubrikSecurityCloud.Types
                         "deleteMongoSource",
                     }
                 },
-                {   "DeleteMosaicStoreInput", new List<string> {
-                        "deleteMosaicStore",
-                    }
-                },
                 {   "DeleteMssqlDbSnapshotsInput", new List<string> {
                         "deleteMssqlDbSnapshots",
                     }
@@ -49411,6 +49478,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "DeleteSmbDomainInput", new List<string> {
                         "deleteSmbDomain",
+                    }
+                },
+                {   "DeleteSnapshotsOfObjectsInput", new List<string> {
+                        "deleteSnapshotsOfObjects",
                     }
                 },
                 {   "DeleteSnapshotsOfUnmanagedObjectsInput", new List<string> {
@@ -51400,10 +51471,6 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "ModifyIpmiInput", new List<string> {
                         "modifyIpmi",
-                    }
-                },
-                {   "ModifyMosaicStoreInput", new List<string> {
-                        "updateMosaicStore",
                     }
                 },
                 {   "MountDiskInput", new List<string> {
@@ -53701,6 +53768,10 @@ namespace RubrikSecurityCloud.Types
                         "customTprPolicies",
                     }
                 },
+                {   "TprPolicyScope", new List<string> {
+                        "tprRulesMap",
+                    }
+                },
                 {   "TprPolicySortByField", new List<string> {
                         "customTprPolicies",
                     }
@@ -55815,6 +55886,10 @@ namespace RubrikSecurityCloud.Types
                         "threatHunts",
                     }
                 },
+                {   "[TprPolicyRuleInput]", new List<string> {
+                        "tprRulesMap",
+                    }
+                },
                 {   "[UUID]", new List<string> {
                         "allAccountsWithExocomputeMappings",
                         "allAgentDeploymentSettings",
@@ -57053,9 +57128,6 @@ namespace RubrikSecurityCloud.Types
                 { "mongoRecoverableRanges", "MongoRecoverableRanges"},
                 { "mongoSource", "MongoSource"},
                 { "mongoSources", "MongoSourceConnection"},
-                { "addMosaicStore", "MosaicAsyncResponse"},
-                { "deleteMosaicStore", "MosaicAsyncResponse"},
-                { "updateMosaicStore", "MosaicAsyncResponse"},
                 { "mountDisk", "MountDiskReply"},
                 { "mssqlAvailabilityGroup", "MssqlAvailabilityGroup"},
                 { "mssqlAvailabilityGroupVirtualGroups", "MssqlAvailabilityGroupVirtualGroupConnection"},
@@ -57767,6 +57839,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteScheduledReport", "Void"},
                 { "deleteSecurityPolicy", "Void"},
                 { "deleteSmbDomain", "Void"},
+                { "deleteSnapshotsOfObjects", "Void"},
                 { "deleteSyslogExportRule", "Void"},
                 { "deleteTarget", "Void"},
                 { "deleteTargetMapping", "Void"},
@@ -60057,9 +60130,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     ApiDomainName.Mosaic,
                     new List<string> {
-                    "AddStore",
-                    "DeleteStore",
-                    "UpdateStore",
                     }
                 },
                 {
@@ -60624,6 +60694,7 @@ namespace RubrikSecurityCloud.Types
                     "DeleteCloudWorkloadSnapshot",
                     "DeleteFilesetSnapshots",
                     "DeleteUnmanageds",
+                    "DeletesOfObjects",
                     "DeletesOfUnmanagedObjects",
                     "EmailSearch",
                     "EventSearch",

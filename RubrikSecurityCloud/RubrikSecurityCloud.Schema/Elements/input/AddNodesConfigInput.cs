@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? IpmiPassword
+        // GraphQL -> ipmiPassword: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("ipmiPassword")]
+        public System.String? IpmiPassword { get; set; }
+
         //      C# -> System.String? EncryptionPassword
         // GraphQL -> encryptionPassword: String (scalar)
         [JsonProperty("encryptionPassword")]
@@ -33,13 +40,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isLinkLocalIpv4Mode: Boolean (scalar)
         [JsonProperty("isLinkLocalIpv4Mode")]
         public System.Boolean? IsLinkLocalIpv4Mode { get; set; }
-
-        //      C# -> System.String? IpmiPassword
-        // GraphQL -> ipmiPassword: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("ipmiPassword")]
-        public System.String? IpmiPassword { get; set; }
 
 
         #endregion

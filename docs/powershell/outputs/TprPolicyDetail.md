@@ -24,3 +24,7 @@ Response for getting the TPR Policy detail.
 - isCdmEnforcementDisabled: System.Boolean
   - Whether enforcement on the corresponding CDM REST APIs is turned off for
 this policy. False (the default) means the policy is enforced on CDM.
+- protectedActions: list of ProtectedActions
+  - The CDM REST endpoints that this policy's rules protect. Contains one entry
+per distinct rule assigned to the policy that has a CDM REST mapping. The
+list is empty when no assigned rule has a CDM REST mapping yet.

@@ -1443,14 +1443,16 @@ List of Microsoft Groups in the organization.
 ### microsoftsites
 List of sites in the Microsoft 365 organization.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - o365OrgId - System.String: The FID for the O365 organization.
-    - excludeChildSites - System.Boolean: When excludeChildSites is set to true, nested child sites are excluded from the results. If not specified, nested child sites are included.
+    - excludeChildSites - System.Boolean: When true, excludes nested child sites.
     - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
 - Returns MicrosoftSiteConnection.
 ### minimumcdmversionforfeatureset
@@ -2601,7 +2603,9 @@ Checks if a user can be assigned a TPR role.
 ### tprrulesmap
 Map of TPR policy types to TPR rules.
 
-- The tprrulesmap subcommand takes no arguments.
+- There are 2 arguments.
+    - policyRules - list of TprPolicyRuleInputs: The policy rules for which to preview protected actions.
+    - policyScope - TprPolicyScope: The policy scope for which to preview protected actions.
 - Returns TprRulesMap.
 ### tprstatusfornoderemoval
 Check and update TPR request for node removal or replacement.

@@ -50,8 +50,8 @@ Represents different types of activity objects.
 - CloudNativeVm - Cloud-native virtual machine.
 - Cluster - Cluster object.
 - ComputeInstance - Compute instance object.
-- D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
-- D365_METADATA - Dynamics 365 metadata.
+- D365_DATAVERSE_TABLE - Dataverse table.
+- D365_METADATA - Dataverse metadata.
 - D365_ORGANIZATION - Dynamics 365 organization.
 - DataLocation - Data location object.
 - Db2Database - Db2 database object.

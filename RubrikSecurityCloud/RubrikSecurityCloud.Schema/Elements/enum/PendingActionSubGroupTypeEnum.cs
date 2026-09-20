@@ -138,6 +138,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_STORE_LOCATION_READER_POST")]
         OBJECT_STORE_LOCATION_READER_POST,
 
+        [EnumMember(Value = "PERSONAL_ACCESS_TOKEN_CONFIG_SYNC")]
+        PERSONAL_ACCESS_TOKEN_CONFIG_SYNC,
+
         [EnumMember(Value = "PERSONAL_ACCESS_TOKEN_DELETE")]
         PERSONAL_ACCESS_TOKEN_DELETE,
 

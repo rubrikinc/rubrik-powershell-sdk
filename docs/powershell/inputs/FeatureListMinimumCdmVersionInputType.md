@@ -1,5 +1,5 @@
 ### FeatureListMinimumCdmVersionInputType
-Input to minimum CDM version supporting all given features.
+Input to get minimum CDM version supporting all given features.
 
 - featureTypes: list of CdmFeatureFlagTypes
-  - Required. Feature type to check.
+  - Required. Feature types to check.

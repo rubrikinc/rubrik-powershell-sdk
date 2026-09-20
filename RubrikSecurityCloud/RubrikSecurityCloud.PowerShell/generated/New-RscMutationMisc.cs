@@ -1518,9 +1518,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					username = $someString
     /// 				}
     /// 				# OPTIONAL
+    /// 				smbAuthMode = $someString
+    /// 				# OPTIONAL
     /// 				userSelectedNfsInterfaces = @(
     /// 					$someString
     /// 				)
+    /// 				# OPTIONAL
+    /// 				nfsAuthMode = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -18263,9 +18267,13 @@ $query.Var.input = @{
 					username = $someString
 				}
 				# OPTIONAL
+				smbAuthMode = $someString
+				# OPTIONAL
 				userSelectedNfsInterfaces = @(
 					$someString
 				)
+				# OPTIONAL
+				nfsAuthMode = $someString
 			}
 		)
 	}

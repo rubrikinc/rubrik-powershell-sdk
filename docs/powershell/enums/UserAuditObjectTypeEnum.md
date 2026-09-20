@@ -169,3 +169,4 @@ User audit object type.
 - AGENT_CLOUD_VIOLATION - Agent Cloud violation object type.
 - AGENT_CLOUD_CONNECTION - Agent Cloud connection object type.
 - PING_FEDERATE_CLUSTER - PingFederate cluster type.
+- MARIADB_INSTANCE - MariaDB instance type.

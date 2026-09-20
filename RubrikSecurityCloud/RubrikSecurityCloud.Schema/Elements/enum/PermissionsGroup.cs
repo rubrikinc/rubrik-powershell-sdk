@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ALLOYDB")]
         ALLOYDB,
 
+        [EnumMember(Value = "ARC_VM_EXPORT")]
+        ARC_VM_EXPORT,
+
         [EnumMember(Value = "AUTOMATED_NETWORKING_SETUP")]
         AUTOMATED_NETWORKING_SETUP,
 

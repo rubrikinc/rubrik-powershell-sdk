@@ -22,8 +22,8 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct Export.
 - CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - CONFLUENCE_SPACE - Confluence Space.
-- D365_DATAVERSE_TABLE - D365 Dataverse Table.
-- D365_FIXED_OBJECT - D365 metadata.
+- D365_DATAVERSE_TABLE - Dataverse Table.
+- D365_FIXED_OBJECT - Dataverse Metadata.
 - Db2Database - DB2 database.
 - Ec2Instance - EC2 instance.
 - ExchangeDatabase - Exchange Database.

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRestoreAsReadOnly")]
         public System.Boolean? ShouldRestoreAsReadOnly { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseCustomRestartScript
+        // GraphQL -> shouldUseCustomRestartScript: Boolean (scalar)
+        [JsonProperty("shouldUseCustomRestartScript")]
+        public System.Boolean? ShouldUseCustomRestartScript { get; set; }
+
         //      C# -> System.String? SystemUsername
         // GraphQL -> systemUsername: String (scalar)
         [JsonProperty("systemUsername")]
@@ -39,10 +44,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldOverrideConfFiles")]
         public System.Boolean? ShouldOverrideConfFiles { get; set; }
 
+        //      C# -> System.String? CustomStopScriptFile
+        // GraphQL -> customStopScriptFile: String (scalar)
+        [JsonProperty("customStopScriptFile")]
+        public System.String? CustomStopScriptFile { get; set; }
+
         //      C# -> System.String? DbUsername
         // GraphQL -> dbUsername: String (scalar)
         [JsonProperty("dbUsername")]
         public System.String? DbUsername { get; set; }
+
+        //      C# -> System.String? CustomRestartScriptFile
+        // GraphQL -> customRestartScriptFile: String (scalar)
+        [JsonProperty("customRestartScriptFile")]
+        public System.String? CustomRestartScriptFile { get; set; }
+
+        //      C# -> System.String? CustomStartScriptFile
+        // GraphQL -> customStartScriptFile: String (scalar)
+        [JsonProperty("customStartScriptFile")]
+        public System.String? CustomStartScriptFile { get; set; }
 
 
         #endregion

@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cleanRecoverySessionId")]
         public System.String? CleanRecoverySessionId { get; set; }
 
+        //      C# -> M365RecoveryOptionsInput? M365RecoveryOptions
+        // GraphQL -> m365RecoveryOptions: M365RecoveryOptionsInput (input)
+        [JsonProperty("m365RecoveryOptions")]
+        public M365RecoveryOptionsInput? M365RecoveryOptions { get; set; }
+
 
         #endregion
 

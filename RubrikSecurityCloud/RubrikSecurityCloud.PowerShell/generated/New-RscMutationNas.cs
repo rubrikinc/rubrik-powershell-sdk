@@ -471,7 +471,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		smbAuthMode = $someString
+    /// 		# OPTIONAL
     /// 		isNutanixCftEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		nfsAuthMode = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -646,11 +650,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		smbAuthMode = $someString
+    /// 		# OPTIONAL
     /// 		userSelectedNfsInterfaces = @(
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
     /// 		isNutanixCftEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		nfsAuthMode = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1181,7 +1189,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
 		# OPTIONAL
+		smbAuthMode = $someString
+		# OPTIONAL
 		isNutanixCftEnabled = $someBoolean
+		# OPTIONAL
+		nfsAuthMode = $someString
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -1340,11 +1352,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
 		# OPTIONAL
+		smbAuthMode = $someString
+		# OPTIONAL
 		userSelectedNfsInterfaces = @(
 			$someString
 		)
 		# OPTIONAL
 		isNutanixCftEnabled = $someBoolean
+		# OPTIONAL
+		nfsAuthMode = $someString
 	}
 	# REQUIRED
 	id = $someString

@@ -65,3 +65,4 @@ The specific subgroup type that defines the exact operation to be performed with
 an object from CDM (granular deletion mutation).
 - DELETE_SNAPSHOTS_OF_OBJECTS - Subgroup used to delete all snapshots of specified objects at specific
 locations from CDM (granular deletion of objects mutation).
+- PERSONAL_ACCESS_TOKEN_CONFIG_SYNC - Subgroup used to put the personal-access-token policy to CDM.

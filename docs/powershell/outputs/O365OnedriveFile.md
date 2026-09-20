@@ -15,6 +15,10 @@ A OneDrive, SharePoint drive, or SharePoint list file.
   - Quarantine information for the file.
 - fileType: System.String
   - The file type or extension of the file.
+- isContentPending: System.Boolean
+  - Whether the file's content is not yet backed up. The file's metadata is
+present and browsable, but its content cannot be restored until backup
+completes for it.
 - id: System.String
   - The ID of the O365 OneDrive object.
 - parentFolderId: System.String

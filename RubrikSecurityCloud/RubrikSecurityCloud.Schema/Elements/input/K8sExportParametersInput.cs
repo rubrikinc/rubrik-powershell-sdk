@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("filter")]
         public System.String? Filter { get; set; }
 
+        //      C# -> System.String? RestoreOrderTimeoutPolicy
+        // GraphQL -> restoreOrderTimeoutPolicy: String (scalar)
+        [JsonProperty("restoreOrderTimeoutPolicy")]
+        public System.String? RestoreOrderTimeoutPolicy { get; set; }
+
         //      C# -> StorageMappingInput? StorageMapping
         // GraphQL -> storageMapping: StorageMappingInput (input)
         [JsonProperty("storageMapping")]

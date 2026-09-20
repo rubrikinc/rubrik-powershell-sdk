@@ -17,3 +17,5 @@ provider. It is unique within a location.
   - The cloud region of the archival location.
 - defaultStorageClass: System.String
   - The storage class the location's objects are written to.
+- cloudAccountName: System.String
+  - The name of the cloud account associated with the archival location.

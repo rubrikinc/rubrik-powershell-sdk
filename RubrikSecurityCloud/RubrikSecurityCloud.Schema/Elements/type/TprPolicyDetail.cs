@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policyRules")]
         public List<TprPolicyRule>? PolicyRules { get; set; }
 
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        [JsonProperty("protectedActions")]
+        public List<ProtectedAction>? ProtectedActions { get; set; }
+
 
         #endregion
 
@@ -95,7 +100,8 @@ namespace RubrikSecurityCloud.Types
         System.Int32? QuorumRequirement = null,
         UserSummary? CreatedBy = null,
         List<ServiceAccountClient>? ExemptServiceAccounts = null,
-        List<TprPolicyRule>? PolicyRules = null
+        List<TprPolicyRule>? PolicyRules = null,
+        List<ProtectedAction>? ProtectedActions = null
     ) 
     {
         if ( PolicyScope != null ) {
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PolicyRules != null ) {
             this.PolicyRules = PolicyRules;
+        }
+        if ( ProtectedActions != null ) {
+            this.ProtectedActions = ProtectedActions;
         }
         return this;
     }
@@ -250,6 +259,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "policyRules" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        if (this.ProtectedActions != null) {
+            var fspec = this.ProtectedActions.AsFieldSpec(conf.Child("protectedActions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "protectedActions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -452,6 +473,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PolicyRules != null && ec.Excludes("policyRules",false))
         {
             this.PolicyRules = null;
+        }
+        //      C# -> List<ProtectedAction>? ProtectedActions
+        // GraphQL -> protectedActions: [ProtectedAction!]! (type)
+        if (ec.Includes("protectedActions",false))
+        {
+            if(this.ProtectedActions == null) {
+
+                this.ProtectedActions = new List<ProtectedAction>();
+                this.ProtectedActions.ApplyExploratoryFieldSpec(ec.NewChild("protectedActions"));
+
+            } else {
+
+                this.ProtectedActions.ApplyExploratoryFieldSpec(ec.NewChild("protectedActions"));
+
+            }
+        }
+        else if (this.ProtectedActions != null && ec.Excludes("protectedActions",false))
+        {
+            this.ProtectedActions = null;
         }
     }
 

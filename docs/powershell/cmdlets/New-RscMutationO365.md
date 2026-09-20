@@ -135,7 +135,7 @@ Restores an Exchange mailbox.
 - There is a single argument of type RestoreO365MailboxInput.
 - Returns CreateOnDemandJobReply.
 ### restoremailboxv2
-Restores an Exchange mailbox data.
+Schedules on-demand restore job(s) for an Exchange mailbox.
 
 - There is a single argument of type RestoreO365MailboxInput.
 - Returns list of CreateOnDemandJobReplys.

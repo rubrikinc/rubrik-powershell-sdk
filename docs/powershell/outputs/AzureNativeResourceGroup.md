@@ -43,6 +43,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - The number of Azure storage accounts in the resource group.
 - azurePostgresFlexibleServerCount: System.Int32
   - The number of Azure PostgreSQL Flexible Servers in the resource group.
+- azureCosmosNosqlContainerCount: System.Int32
+  - Count of Azure Cosmos NoSQL containers in the resource group.
 - azureNativeSubscriptionDetails: AzureNativeSubscriptionDetails
   - Subscription details of the resource group.
 - azureSubscriptionDetails: AzureNativeSubscriptionDetails
@@ -59,6 +61,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Whether the resource group is protectable for the specified protection features.
 - azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -67,8 +71,6 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

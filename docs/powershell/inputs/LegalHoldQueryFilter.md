@@ -14,7 +14,7 @@ Legal Hold query filter.
 - snapshotTypes: list of SnapshotTypeEnums
   - Snapshot types.
 - snapshotCustomizations: list of SnapshotCustomizations
-  - 
+  - Snapshot customizations to filter by.
 - cloudVendor: CloudVendor
   - Cloud vendor to filter by (AWS, Azure, or GCP).
 - cloudRegions: list of System.Strings

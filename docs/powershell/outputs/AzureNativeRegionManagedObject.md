@@ -33,6 +33,8 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - The number of Azure storage accounts in the region.
 - azurePostgresFlexibleServerCount: System.Int32
   - The number of Azure PostgreSQL Flexible Servers in the region.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -41,8 +43,6 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

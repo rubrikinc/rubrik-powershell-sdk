@@ -8,13 +8,15 @@ orion-hunt-service at hunt creation time (see design decision D6).
 Must be non-empty; used as the join key between match rows and their
 predicate context in the hunt config.
 - keyPattern: System.String
-  - Full HKLM\...\* or HKCU\...\* key path, validated on intake.
+  - Deprecated: use hiveRoot + keyPath for new hunts. Combined HKLM\...\*
+or HKCU\...\* key path; kept as a denormalized mirror when hiveRoot is set.
 - valueNames: list of System.Strings
-  - Exact value name match; or semantics across list entries.
+  - Exact value name match. Callers set exactly one entry; kept as
+`repeated` to pass the value name alongside the other predicates for a
+single key in the same block.
 - valueTypes: list of System.Strings
-  - Exact registry type match; or semantics across list entries.
-Allowed values: REG_SZ, REG_DWORD, REG_QWORD, REG_BINARY,
-REG_EXPAND_SZ, REG_MULTI_SZ, REG_NONE.
+  - Deprecated: use valueTypeList for new hunts. Kept as a denormalized
+mirror when valueTypeList is populated.
 - valueDataEq: System.String
   - Case-insensitive exact equality match against value data.
 - valueDataNotEq: System.String
@@ -23,3 +25,12 @@ REG_EXPAND_SZ, REG_MULTI_SZ, REG_NONE.
   - Case-insensitive substring match against value data.
 - valueDataNotContains: System.String
   - Substring must be absent from value data (case-insensitive).
+- hiveRoot: RegistryHiveRoot
+  - Structured registry root. When set, keyPath holds the root-relative path
+and keyPattern is a derived mirror. Takes precedence over keyPattern.
+- keyPath: System.String
+  - Root-relative key path; required when hiveRoot is set.
+- valueTypeList: list of RegistryValueTypes
+  - Structured value-type filter; may hold multiple value types (OR
+semantics), unlike valueNames above. Takes precedence over valueTypes
+when non-empty.

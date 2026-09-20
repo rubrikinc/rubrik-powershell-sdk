@@ -1,85 +1,87 @@
 ### ReportTableColumnEnum
-- ComplianceStatus
-- FailoverStatus
-- AnalyzersBreakdown
-- Location
-- BytesNetChanged
-- BytesCreated
-- UserName
-- FilesDeleted
-- LocalSnapshots
-- PhysicalBytes
-- UsedCapacity
-- SnappableName
-- SnapshotConsistency
-- ArchiveSnapshots
-- Duration
-- IsAnomaly
-- SnapshotTime
-- SnapshotDate
-- Path
-- ClusterName
-- ClusterLocation
-- TotalFileTransferred
-- LogicalByte
-- Size
-- PreviousSnapshotId
-- ArchivalTarget
-- ClusterType
-- SnapshotId
-- LastUpdated
-- DataReduction
-- FilesModified
-- LastSnapshot
-- TransferredBytes
-- DataTransferred
-- PoliciesBreakdown
-- NumViolatedFiles
-- StartTime
-- TaskType
-- ArchiveStorage
-- EndTime
-- WorkloadName
-- SuspiciousFilesAdded
-- MissedSnapshots
-- ReplicaStorage
-- NumHighRiskLocations
-- SlaDomain
-- BytesModified
-- UserAuditStatus
-- AppBlueprintName
-- NumViolations
-- SlaDomainName
-- RecoveryPointType
-- ReplicationSource
-- Source
-- ObjectName
-- WorkloadType
-- FileName
-- FailureReason
-- DirectArchive
-- NumCoveredObjects
-- TotalHits
-- ProtectedVolume
-- EncryptionEnabled
-- PolicyName
-- TotalCapacity
-- ActivityStatus
-- UserAuditType
-- ReplicaSnapshots
-- LogicalBytes
-- RecoveryPoint
-- LastTestStatus
-- FailoverType
-- BytesDeleted
-- Cluster
-- FilesCreated
-- TotalSnapshots
-- ObjectType
-- ReplicationTarget
-- TargetSite
-- PreviousSnapshotDate
-- LastTestTime
-- PolicyStatus
-- ActivityType
-- Status
+Column selection for a custom report table, covering all report focus domains.
+
+- ActivityStatus - Activity status column.
+- Location - Geographic location column.
+- SlaDomain - SLA Domain column.
+- ComplianceStatus - SLA Domain compliance status column.
+- ClusterName - Cluster name column.
+- ClusterType - Cluster type column.
+- ActivityType - Activity type column.
+- ObjectName - Object name column.
+- ObjectType - Object type column.
+- StartTime - Start time column.
+- LastUpdated - Last updated time column.
+- UsedCapacity - Used capacity column.
+- TotalCapacity - Total capacity column.
+- EncryptionEnabled - Encryption enabled column.
+- SnappableName - Workload name column.
+- TotalSnapshots - Total snapshots count column.
+- MissedSnapshots - Missed snapshots count column.
+- LocalSnapshots - Local snapshots count column.
+- ReplicaSnapshots - Replica snapshots count column.
+- ArchiveSnapshots - Archive snapshots count column.
+- LastSnapshot - Last snapshot time column.
+- LogicalByte - Logical bytes (singular) column, used in protection reports.
+- PhysicalBytes - Physical bytes column.
+- TransferredBytes - Transferred bytes column.
+- DataReduction - Data reduction ratio column.
+- ArchiveStorage - Archive storage usage column.
+- ReplicaStorage - Replica storage usage column.
+- WorkloadName - Workload name column, used in anomaly reports.
+- WorkloadType - Workload type column, used in anomaly reports.
+- SnapshotId - Snapshot ID column.
+- SnapshotDate - Snapshot date column.
+- PreviousSnapshotId - Previous snapshot ID column.
+- PreviousSnapshotDate - Previous snapshot date column.
+- IsAnomaly - Is anomaly flag column.
+- FilesCreated - Files created count column.
+- FilesModified - Files modified count column.
+- FilesDeleted - Files deleted count column.
+- SuspiciousFilesAdded - Suspicious files added count column.
+- BytesCreated - Bytes created column.
+- BytesModified - Bytes modified column.
+- BytesDeleted - Bytes deleted column.
+- BytesNetChanged - Net bytes changed column.
+- AppBlueprintName - App Recovery Plan name column, used in failover reports.
+- Source - Failover source site column.
+- TargetSite - Failover target site column.
+- EndTime - End time column.
+- Duration - Duration column.
+- FailoverStatus - Failover status column.
+- FailoverType - Failover type column.
+- LastTestTime - Last test time column.
+- LastTestStatus - Last test status column.
+- UserAuditStatus - User audit status column.
+- UserAuditType - User audit type column.
+- Status - Task status column.
+- TaskType - Task type column.
+- SlaDomainName - SLA Domain name column (task detail reports).
+- ClusterLocation - Cluster location column.
+- ReplicationSource - Replication source column.
+- ReplicationTarget - Replication target column.
+- ArchivalTarget - Archival target column.
+- DirectArchive - Direct archive flag column.
+- RecoveryPoint - Recovery point column.
+- RecoveryPointType - Recovery point type column.
+- UserName - User name column.
+- FailureReason - Failure reason column.
+- SnapshotConsistency - Snapshot consistency column.
+- ProtectedVolume - Protected volume column.
+- LogicalBytes - Logical bytes (plural) column, used in task detail reports.
+- DataTransferred - Data transferred column.
+- TotalFileTransferred - Total files transferred column.
+- PolicyName - Policy name column, used in sensitive data reports.
+- PolicyStatus - Policy status column.
+- NumViolations - Number of violations column.
+- NumHighRiskLocations - Number of high-risk locations column.
+- NumViolatedFiles - Number of violated files column.
+- NumCoveredObjects - Number of covered objects column.
+- FileName - File name column, used in sensitive data content reports.
+- Path - File path column.
+- TotalHits - Total hits count column.
+- PoliciesBreakdown - Policies breakdown column.
+- AnalyzersBreakdown - Analyzers breakdown column.
+- SnapshotTime - Snapshot time column.
+- Cluster - Cluster column, used in sensitive data content reports.
+- Size - File size column.

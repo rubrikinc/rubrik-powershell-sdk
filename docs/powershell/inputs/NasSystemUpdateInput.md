@@ -44,9 +44,13 @@ Specifies the default SnapDiff setting for all shares in the NetApp NAS system.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
+- smbAuthMode: System.String
+  - SMB authentication mode for all namespaces on this NAS system. Updating this propagates to all namespaces on next discovery unless overridden at the namespace level.
 - userSelectedNfsInterfaces: list of System.Strings
   - Supported in v9.3+
 List of hostnames or IP addresses used for Fileset jobs on NFS shares in the NAS system.
 - isNutanixCftEnabled: System.Boolean
   - Supported in v9.6+
 Specifies the default CFT (Changed File Tracking) setting for all shares in the Nutanix Files NAS system.
+- nfsAuthMode: System.String
+  - Default NFS authentication mode for all namespaces on this NAS system. Applies to NetApp NAS systems only. Updating this propagates to all namespaces on next discovery unless overridden at the namespace level.

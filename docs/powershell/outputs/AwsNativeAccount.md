@@ -1,6 +1,24 @@
 ### AwsNativeAccount
 AWS native account.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - status: AwsAccountStatus
   - Specifies the state of account in Rubrik environment like Refreshed, Disconnected, etc. An account can be in a single state at a time.
 - lastRefreshedAt: DateTime
@@ -49,6 +67,10 @@ AWS native account.
   - List of Exocompute configurations for the AWS account.
 - cloudSlabDns: System.String
   - CloudSlab DNS that must be in the allowlist to protect object store workloads.
+- featureDetails: list of FeatureDetails
+  - Cloud account feature details including permissions groups for the AWS account.
+- isProtectable: System.Boolean
+  - Whether the AWS account is protectable for the specified protection features.
 - awsNativeEc2Instances: AwsNativeEc2InstanceConnection
   - List of all EC2 instances under this AWS Native account.
 - awsNativeEbsVolumes: AwsNativeEbsVolumeConnection
@@ -57,47 +79,25 @@ AWS native account.
   - List of all RDS Instances under this AWS Native account.
 - awsRegions: AwsNativeRegionHierarchyObjectConnection
   - Paginated list of AWS native regions in this account.
-- isProtectable: System.Boolean
-  - Whether the AWS account is protectable for the specified protection features.
-- featureDetails: list of FeatureDetails
-  - Cloud account feature details including permissions groups for the AWS account.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

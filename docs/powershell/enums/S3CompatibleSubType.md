@@ -58,3 +58,4 @@ of a S3Compatible location.
 - POINT_ARCHIVAL_GATEWAY - PoINT Archival Gateway.
 - CUBBIT - Cubbit subtype.
 - HITACHI_VSP_ONE_OBJECT - Hitachi VSP One Object subtype.
+- SCALITY_RING - Scality RING subtype.

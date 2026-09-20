@@ -20,6 +20,21 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RegistryHiveRoot? HiveRoot
+        // GraphQL -> hiveRoot: RegistryHiveRoot! (enum)
+        [JsonProperty("hiveRoot")]
+        public RegistryHiveRoot? HiveRoot { get; set; }
+
+        //      C# -> List<RegistryValueType>? ValueTypeList
+        // GraphQL -> valueTypeList: [RegistryValueType!]! (enum)
+        [JsonProperty("valueTypeList")]
+        public List<RegistryValueType>? ValueTypeList { get; set; }
+
+        //      C# -> System.String? KeyPath
+        // GraphQL -> keyPath: String! (scalar)
+        [JsonProperty("keyPath")]
+        public System.String? KeyPath { get; set; }
+
         //      C# -> System.String? KeyPattern
         // GraphQL -> keyPattern: String! (scalar)
         [JsonProperty("keyPattern")]
@@ -70,6 +85,9 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RegistryPatternSpec Set(
+        RegistryHiveRoot? HiveRoot = null,
+        List<RegistryValueType>? ValueTypeList = null,
+        System.String? KeyPath = null,
         System.String? KeyPattern = null,
         System.String? PatternId = null,
         System.String? ValueDataContains = null,
@@ -80,6 +98,15 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? ValueTypes = null
     ) 
     {
+        if ( HiveRoot != null ) {
+            this.HiveRoot = HiveRoot;
+        }
+        if ( ValueTypeList != null ) {
+            this.ValueTypeList = ValueTypeList;
+        }
+        if ( KeyPath != null ) {
+            this.KeyPath = KeyPath;
+        }
         if ( KeyPattern != null ) {
             this.KeyPattern = KeyPattern;
         }
@@ -118,6 +145,33 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RegistryHiveRoot? HiveRoot
+        // GraphQL -> hiveRoot: RegistryHiveRoot! (enum)
+        if (this.HiveRoot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hiveRoot\n" ;
+            } else {
+                s += ind + "hiveRoot\n" ;
+            }
+        }
+        //      C# -> List<RegistryValueType>? ValueTypeList
+        // GraphQL -> valueTypeList: [RegistryValueType!]! (enum)
+        if (this.ValueTypeList != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "valueTypeList\n" ;
+            } else {
+                s += ind + "valueTypeList\n" ;
+            }
+        }
+        //      C# -> System.String? KeyPath
+        // GraphQL -> keyPath: String! (scalar)
+        if (this.KeyPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "keyPath\n" ;
+            } else {
+                s += ind + "keyPath\n" ;
+            }
+        }
         //      C# -> System.String? KeyPattern
         // GraphQL -> keyPattern: String! (scalar)
         if (this.KeyPattern != null) {
@@ -197,6 +251,57 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RegistryHiveRoot? HiveRoot
+        // GraphQL -> hiveRoot: RegistryHiveRoot! (enum)
+        if (ec.Includes("hiveRoot",true))
+        {
+            if(this.HiveRoot == null) {
+
+                this.HiveRoot = new RegistryHiveRoot();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HiveRoot != null && ec.Excludes("hiveRoot",true))
+        {
+            this.HiveRoot = null;
+        }
+        //      C# -> List<RegistryValueType>? ValueTypeList
+        // GraphQL -> valueTypeList: [RegistryValueType!]! (enum)
+        if (ec.Includes("valueTypeList",true))
+        {
+            if(this.ValueTypeList == null) {
+
+                this.ValueTypeList = new List<RegistryValueType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ValueTypeList != null && ec.Excludes("valueTypeList",true))
+        {
+            this.ValueTypeList = null;
+        }
+        //      C# -> System.String? KeyPath
+        // GraphQL -> keyPath: String! (scalar)
+        if (ec.Includes("keyPath",true))
+        {
+            if(this.KeyPath == null) {
+
+                this.KeyPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyPath != null && ec.Excludes("keyPath",true))
+        {
+            this.KeyPath = null;
+        }
         //      C# -> System.String? KeyPattern
         // GraphQL -> keyPattern: String! (scalar)
         if (ec.Includes("keyPattern",true))

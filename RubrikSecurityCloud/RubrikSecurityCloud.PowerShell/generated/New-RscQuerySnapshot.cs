@@ -93,10 +93,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
-    /// # REQUIRED
-    /// $query.Var.path = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.path = $someString
     /// # OPTIONAL
     /// $query.Var.searchPrefix = $someString
     /// # OPTIONAL
@@ -2450,8 +2454,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         // browseSnapshotFileConnection(
         //     first: Int
         //     after: String
-        //     path: String!
+        //     last: Int
+        //     before: String
         //     snapshotFid: UUID!
+        //     path: String!
         //     searchPrefix: String
         //     isPrefixSearch: Boolean
         //   ): SnapshotFileConnection!
@@ -2460,8 +2466,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("path", "String!"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("path", "String!"),
                 Tuple.Create("searchPrefix", "String"),
                 Tuple.Create("isPrefixSearch", "Boolean"),
             };
@@ -2469,7 +2477,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 argDefs,
                 "query",
                 "QueryBrowseSnapshotFileConnection",
-                "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String,$isPrefixSearch: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snapshotFid: UUID!,$path: String!,$searchPrefix: String,$isPrefixSearch: Boolean)",
                 "SnapshotFileConnection",
                 Query.BrowseSnapshotFileConnection,
                 Query.BrowseSnapshotFileConnectionFieldSpec,
@@ -2477,10 +2485,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
-# REQUIRED
-$query.Var.path = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
+# REQUIRED
+$query.Var.path = $someString
 # OPTIONAL
 $query.Var.searchPrefix = $someString
 # OPTIONAL

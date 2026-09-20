@@ -2,7 +2,7 @@
 LegalHoldSnapshotDetails.
 
 - id: System.String
-  - ID.
+  - ID. The identifier is the for-ever snapshot id.
 - type: SnapshotTypeEnum
   - Snapshot type.
 - snapshotTime: DateTime
@@ -10,6 +10,7 @@ LegalHoldSnapshotDetails.
 - legalHoldTime: DateTime
   - Legal hold time.
 - customizations: list of SnapshotCustomizations
+  - The customizations applied to the snapshot.
 - snapshotRetentionInfo: CdmSnapshotRetentionInfo
   - Provides snapshot details for each location.
 - legalHoldInfo: LegalHoldInfo

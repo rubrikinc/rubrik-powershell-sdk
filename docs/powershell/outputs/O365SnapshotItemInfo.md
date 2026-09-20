@@ -6,9 +6,10 @@ Browse or search delta response returns Microsoft Office 365 file or folder data
 - parentFolderId: System.String
   - The parent folder ID of the object (ROOT indicates root folder).
 - snapshotNum: System.Int32
-  - The sequence number of the snapshot.
+  - The sequence number of the snapshot, used to identify the snapshot in
+search scenarios.
 - snapshotId: System.String
-  - The ID of the snapshot.
+  - The ID of the snapshot, used to identify the snapshot in search scenarios.
 - folderIdsTillRoot: list of System.Strings
   - Returns a list of folder IDs that contains the absolute path of the given item, starting with root and ending with the item. The first element in the list is the root, and the last is the item itself.
 - metadata: MetadataFields

@@ -11,4 +11,4 @@ management.
 - OTHERS - Reports that don't fit into the above categories.
 - PROTECTION_PAUSE - Reports related to Paused Protection.
 - COST_ANALYSIS - Reports focused on cloud cost analysis and attribution.
-- SCRIPT_REPORTS - TBD.
+- CUSTOM_REPORTS - Reports created via AI-assisted scripts (custom reports).

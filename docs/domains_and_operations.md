@@ -17,13 +17,13 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (55,32)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (36,33)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (55,32)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (36,34)](#snapshot-domain) |
 | [Active Directory (5,6)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (13,4)](#microsoft-365-domain) | [Policy (20,21)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (7,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
 | [Archival (18,23)](#archival-domain) | [Report Download (4,28)](#report-download-domain) | [Miscellaneous (364,265)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (3,6)](#storage-arrays-domain) |
 | [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,5)](#microsoft-exchange-domain) | [Mongo (11,17)](#mongo-domain) | [RCV (6,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (0,1)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
-| [Azure (73,52)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (0,3)](#mosaic-domain) | [Report (21,9)](#report-domain) | [Threat (8,1)](#threat-domain) |
+| [Azure (73,52)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (0,0)](#mosaic-domain) | [Report (21,9)](#report-domain) | [Threat (8,1)](#threat-domain) |
 | [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (21,26)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [ThreatHunt (10,6)](#threathunt-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,5)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Cassandra (0,0)](#cassandra-domain) | [Host (11,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware (4,1)](#vmware-domain) |
@@ -1979,9 +1979,6 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 
 | Old (deprecated) | New (recommended) | GraphQL Root Field |
 | --- | --- | --- |
-| `New-RscMutationMosaic -Operation AddStore` | `New-RscMutation -Gql addMosaicStore` | [addMosaicStore](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| `New-RscMutationMosaic -Operation DeleteStore` | `New-RscMutation -Gql deleteMosaicStore` | [deleteMosaicStore](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| `New-RscMutationMosaic -Operation UpdateStore` | `New-RscMutation -Gql updateMosaicStore` | [updateMosaicStore](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ## Microsoft SQL Server domain
@@ -2756,6 +2753,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot` | `New-RscMutation -Gql deleteCloudWorkloadSnapshot` | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots` | `New-RscMutation -Gql deleteFilesetSnapshots` | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationSnapshot -Operation DeleteUnmanageds` | `New-RscMutation -Gql deleteUnmanagedSnapshots` | [deleteUnmanagedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationSnapshot -Operation DeletesOfObjects` | `New-RscMutation -Gql deleteSnapshotsOfObjects` | [deleteSnapshotsOfObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationSnapshot -Operation DeletesOfUnmanagedObjects` | `New-RscMutation -Gql deleteSnapshotsOfUnmanagedObjects` | [deleteSnapshotsOfUnmanagedObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationSnapshot -Operation ExportFusionCompute` | `New-RscMutation -Gql exportFusionComputeSnapshot` | [exportFusionComputeSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationSnapshot -Operation ExportProxmoxVm` | `New-RscMutation -Gql exportProxmoxVmSnapshot` | [exportProxmoxVmSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

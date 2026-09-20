@@ -7,8 +7,6 @@ UnmanagedObjectDetails.
   - Any of the snapshots are retained by a SLA.
 - id: System.String
   - Object ID.
-- workloadId: System.String
-  - Workload ID.
 - isRemote: System.Boolean
   - Whether the object is remote or local.
 - localStorage: System.Int64
@@ -29,31 +27,33 @@ UnmanagedObjectDetails.
   - RSC SLA Domain ID.
 - snapshotCount: System.Int64
   - Snapshot count.
-- numSnapshotsWithPolicy: System.Int64
-  - Number of policy snapshots.
-- nonPolicySnapshotsCount: System.Int64
-  - Number of non-policy snapshots (on-demand, customized, and rehydrated).
 - unmanagedStatus: UnmanagedObjectAvailabilityFilter
   - Unmanaged Status of this object.
-- region: WorkloadRegion
-  - Region where the object is present.
+- clusterUuid: System.String
+  - Cluster UUID of the object.
+- workloadId: System.String
+  - Workload ID.
 - cloudAccountId: System.String
   - Cloud account ID of the AWS account associated with the object.
 - cloudAccountName: System.String
   - Cloud account name of the AWS account associated with the object.
 - backupCopyType: BackupCopyType
   - Backup copy type of the object (PRIMARY, REPLICA, RECOVERED, UNSPECIFIED).
-- effectiveSlaDomain: SlaDomain
-  - The effective SLA Domain of the unmanaged object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- clusterUuid: System.String
-  - Cluster UUID of the object.
+- numSnapshotsWithPolicy: System.Int64
+  - Number of policy snapshots.
+- nonPolicySnapshotsCount: System.Int64
+  - Number of non-policy snapshots (on-demand, customized, and rehydrated).
 - downloadedSnapshotsBytes: System.Int64
   - Total size in bytes of downloaded snapshots for this unmanaged object.
 - downloadedSnapshotsCount: System.Int64
   - Total number of downloaded snapshots for this unmanaged object.
 - localSnapshotsCount: System.Int64
   - Total number of snapshots whose location is the local cluster for this unmanaged object.
+- region: WorkloadRegion
+  - Region where the object is present.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the unmanaged object.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.

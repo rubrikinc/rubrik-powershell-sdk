@@ -5,6 +5,10 @@ Filters for list of AWS RDS instances.
   - Filter by name substring.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by effective SLA Domain.
+- accountFilter: AwsNativeAccountFilter
+  - Filter by AWS account.
+- vpcFilter: AwsNativeVpcFilter
+  - Filter by VPC.
 - relicFilter: RelicFilter
   - Filter by relic status.
 - unaccessedFilter: UnaccessedFilter
@@ -13,29 +17,25 @@ Filters for list of AWS RDS instances.
   - Filter by sensitivity status.
 - protectionStatusFilter: ProtectionStatusFilter
   - Filter by protection status.
-- orgFilter: OrgFilter
-  - Filter by organization ID.
-- isEligibleForProtection: System.Boolean
-  - Filter workloads based on their eligibility for protection.
-- hierarchyFilters: list of Filters
-  - Filter by hierarchy.
-- discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter
-  - Filter by cloud native application discovery method.
-- accountFilter: AwsNativeAccountFilter
-  - Filter by AWS account.
+- tagFilter: AwsNativeTagFilter
+  - Filter by tags.
+- regionFilter: AwsNativeRegionFilter
+  - Filter by region.
 - dbEngineFilter: AwsNativeRdsDbEngineFilter
   - Filter by database engine.
 - dbInstanceClassFilter: AwsNativeRdsDbInstanceClassFilter
   - Filter by database instance class.
-- regionFilter: AwsNativeRegionFilter
-  - Filter by region.
-- tagFilter: AwsNativeTagFilter
-  - Filter by tags.
-- vpcFilter: AwsNativeVpcFilter
-  - Filter by VPC.
+- orgFilter: OrgFilter
+  - Filter by organization ID.
 - awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter
   - Filter by connected status for the AWS native feature.
 - awsNativeIsEligibleForRdsProtectionFilter: AwsNativeIsEligibleForRdsProtectionFilter
   - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
+  - Filter workloads based on their eligibility for protection.
 - serviceTypeFilter: AwsServiceTypeFilter
   - Filter by BaaS or non-BaaS service type.
+- hierarchyFilters: list of Filters
+  - Filter by hierarchy.
+- discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter
+  - Filter by cloud native application discovery method.

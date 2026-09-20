@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? KeyPattern
-        // GraphQL -> keyPattern: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> keyPattern: String (scalar)
         [JsonProperty("keyPattern")]
         public System.String? KeyPattern { get; set; }
 
@@ -55,6 +53,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> valueDataNotContains: String (scalar)
         [JsonProperty("valueDataNotContains")]
         public System.String? ValueDataNotContains { get; set; }
+
+        //      C# -> RegistryHiveRoot? HiveRoot
+        // GraphQL -> hiveRoot: RegistryHiveRoot (enum)
+        [JsonProperty("hiveRoot")]
+        public RegistryHiveRoot? HiveRoot { get; set; }
+
+        //      C# -> System.String? KeyPath
+        // GraphQL -> keyPath: String (scalar)
+        [JsonProperty("keyPath")]
+        public System.String? KeyPath { get; set; }
+
+        //      C# -> List<RegistryValueType>? ValueTypeList
+        // GraphQL -> valueTypeList: [RegistryValueType!] (enum)
+        [JsonProperty("valueTypeList")]
+        public List<RegistryValueType>? ValueTypeList { get; set; }
 
 
         #endregion

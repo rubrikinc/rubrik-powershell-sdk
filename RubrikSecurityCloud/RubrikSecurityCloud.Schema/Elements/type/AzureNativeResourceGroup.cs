@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        [JsonProperty("azureCosmosNosqlContainerCount")]
+        public System.Int32? AzureCosmosNosqlContainerCount { get; set; }
+
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
         // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
         [JsonProperty("azurePostgresFlexibleServerCount")]
@@ -282,6 +287,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.Int32? AzureCosmosNosqlContainerCount = null,
         System.Int32? AzurePostgresFlexibleServerCount = null,
         System.Int32? AzureSqlDatabaseCount = null,
         System.Int32? AzureSqlManagedInstanceDbCount = null,
@@ -339,6 +345,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( AzureCosmosNosqlContainerCount != null ) {
+            this.AzureCosmosNosqlContainerCount = AzureCosmosNosqlContainerCount;
         }
         if ( AzurePostgresFlexibleServerCount != null ) {
             this.AzurePostgresFlexibleServerCount = AzurePostgresFlexibleServerCount;
@@ -532,6 +541,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        if (this.AzureCosmosNosqlContainerCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureCosmosNosqlContainerCount\n" ;
+            } else {
+                s += ind + "azureCosmosNosqlContainerCount\n" ;
             }
         }
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
@@ -1045,6 +1063,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        if (ec.Includes("azureCosmosNosqlContainerCount",true))
+        {
+            if(this.AzureCosmosNosqlContainerCount == null) {
+
+                this.AzureCosmosNosqlContainerCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureCosmosNosqlContainerCount != null && ec.Excludes("azureCosmosNosqlContainerCount",true))
+        {
+            this.AzureCosmosNosqlContainerCount = null;
         }
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
         // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)

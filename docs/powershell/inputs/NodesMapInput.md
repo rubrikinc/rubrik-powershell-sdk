@@ -1,7 +1,7 @@
 ### NodesMapInput
-Mapping of Node name to IP configurations for the node.
+Mapping of node name to IP configurations for add-nodes operations.
 
 - key: System.String
-  - Required. The name for the new node.
+  - The name for the new node.
 - value: NodeConfigInput
-  - Node map value.
+  - The IP configuration for the new node.

@@ -32,3 +32,6 @@ restore completes.
 operator-approved set of objects and attributes is read from the
 granular-recovery data written during StartCleanRecovery, and the
 in-request selection is ignored.
+- m365RecoveryOptions: M365RecoveryOptionsInput
+  - Options for automated M365 Access Recovery. When absent, no M365
+recovery runs and the restore proceeds as a standard granular recovery.

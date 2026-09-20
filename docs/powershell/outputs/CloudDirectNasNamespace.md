@@ -58,6 +58,10 @@ Direct site.
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
   - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
 - cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
@@ -76,7 +80,3 @@ Direct site.
   - Object-level backup window status of the hierarchy object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.

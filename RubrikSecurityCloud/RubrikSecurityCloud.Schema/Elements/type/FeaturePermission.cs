@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        [JsonProperty("hasExocomputeLambdaRole")]
+        public System.Boolean? HasExocomputeLambdaRole { get; set; }
+
         //      C# -> System.String? PermissionJson
         // GraphQL -> permissionJson: String! (scalar)
         [JsonProperty("permissionJson")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public FeaturePermission Set(
         CloudAccountFeature? Feature = null,
+        System.Boolean? HasExocomputeLambdaRole = null,
         System.String? PermissionJson = null,
         System.Int32? Version = null,
         List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Feature != null ) {
             this.Feature = Feature;
+        }
+        if ( HasExocomputeLambdaRole != null ) {
+            this.HasExocomputeLambdaRole = HasExocomputeLambdaRole;
         }
         if ( PermissionJson != null ) {
             this.PermissionJson = PermissionJson;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "feature\n" ;
             } else {
                 s += ind + "feature\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        if (this.HasExocomputeLambdaRole != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasExocomputeLambdaRole\n" ;
+            } else {
+                s += ind + "hasExocomputeLambdaRole\n" ;
             }
         }
         //      C# -> System.String? PermissionJson
@@ -144,6 +162,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Feature != null && ec.Excludes("feature",true))
         {
             this.Feature = null;
+        }
+        //      C# -> System.Boolean? HasExocomputeLambdaRole
+        // GraphQL -> hasExocomputeLambdaRole: Boolean! (scalar)
+        if (ec.Includes("hasExocomputeLambdaRole",true))
+        {
+            if(this.HasExocomputeLambdaRole == null) {
+
+                this.HasExocomputeLambdaRole = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasExocomputeLambdaRole != null && ec.Excludes("hasExocomputeLambdaRole",true))
+        {
+            this.HasExocomputeLambdaRole = null;
         }
         //      C# -> System.String? PermissionJson
         // GraphQL -> permissionJson: String! (scalar)
