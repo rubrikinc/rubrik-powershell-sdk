@@ -94,7 +94,7 @@ git checkout $sourceBranch
 RunIfNotDry {
     if ($sourceBranch -eq 'devel') {
         Set-Location $PSScriptRoot\..\..
-        .\Utils\admin\New-RscSdkChangeLogEntry.ps1 -Commit
+        .\Utils\admin\New-RscSdkChangelogEntry.ps1 -Commit
         git push origin devel
     }
 }
