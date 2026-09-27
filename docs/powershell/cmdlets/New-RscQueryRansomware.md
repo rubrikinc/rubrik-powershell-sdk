@@ -56,9 +56,9 @@ Results for Ransomware Investigations.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - RansomwareResultSortBy: Sort ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -68,9 +68,9 @@ Results for the Ransomware Investigations grouped by an argument.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - RansomwareResultGroupBy: Group ransomware results by field.
     - filter - RansomwareResultFilterInput: Filter ransomware results by input.
     - timezoneOffset - System.Single: Offset based on the customer timezone.

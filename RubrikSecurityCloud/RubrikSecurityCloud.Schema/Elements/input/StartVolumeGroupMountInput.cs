@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> VolumeGroupMountSnapshotJobConfigInput? Config
-        // GraphQL -> config: VolumeGroupMountSnapshotJobConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public VolumeGroupMountSnapshotJobConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> VolumeGroupMountSnapshotJobConfigInput? Config
+        // GraphQL -> config: VolumeGroupMountSnapshotJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public VolumeGroupMountSnapshotJobConfigInput? Config { get; set; }
 
 
         #endregion

@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eventHubConnectionStatus")]
         public AzureAdEventHubConnectionStatus? EventHubConnectionStatus { get; set; }
 
+        //      C# -> EntraIdEventHubPermissionsStatus? EventHubPermissionsStatus
+        // GraphQL -> eventHubPermissionsStatus: EntraIdEventHubPermissionsStatus (enum)
+        [JsonProperty("eventHubPermissionsStatus")]
+        public EntraIdEventHubPermissionsStatus? EventHubPermissionsStatus { get; set; }
+
         //      C# -> AzureAdExocomputeHostType? ExoHostType
         // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
         [JsonProperty("exoHostType")]
@@ -286,6 +291,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestUserCount")]
         public System.Int32? LatestUserCount { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.Boolean? MigratedFromColossus
         // GraphQL -> migratedFromColossus: Boolean! (scalar)
         [JsonProperty("migratedFromColossus")]
@@ -330,6 +340,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> List<LatestEntraObjectCount>? LatestEntraObjectCounts
         // GraphQL -> latestEntraObjectCounts: [LatestEntraObjectCount!]! (type)
@@ -523,6 +538,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdDirectory Set(
         List<Operation>? AuthorizedOperations = null,
         AzureAdEventHubConnectionStatus? EventHubConnectionStatus = null,
+        EntraIdEventHubPermissionsStatus? EventHubPermissionsStatus = null,
         AzureAdExocomputeHostType? ExoHostType = null,
         M365AccessRecoveryState? M365AccessRecoveryState = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -574,6 +590,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestSnapshotTime = null,
         System.Int32? LatestTermsOfUseCount = null,
         System.Int32? LatestUserCount = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.Boolean? MigratedFromColossus = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -583,6 +600,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<LatestEntraObjectCount>? LatestEntraObjectCounts = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -606,6 +624,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EventHubConnectionStatus != null ) {
             this.EventHubConnectionStatus = EventHubConnectionStatus;
+        }
+        if ( EventHubPermissionsStatus != null ) {
+            this.EventHubPermissionsStatus = EventHubPermissionsStatus;
         }
         if ( ExoHostType != null ) {
             this.ExoHostType = ExoHostType;
@@ -760,6 +781,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestUserCount != null ) {
             this.LatestUserCount = LatestUserCount;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( MigratedFromColossus != null ) {
             this.MigratedFromColossus = MigratedFromColossus;
         }
@@ -786,6 +810,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( LatestEntraObjectCounts != null ) {
             this.LatestEntraObjectCounts = LatestEntraObjectCounts;
@@ -865,6 +892,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "eventHubConnectionStatus\n" ;
             } else {
                 s += ind + "eventHubConnectionStatus\n" ;
+            }
+        }
+        //      C# -> EntraIdEventHubPermissionsStatus? EventHubPermissionsStatus
+        // GraphQL -> eventHubPermissionsStatus: EntraIdEventHubPermissionsStatus (enum)
+        if (this.EventHubPermissionsStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eventHubPermissionsStatus\n" ;
+            } else {
+                s += ind + "eventHubPermissionsStatus\n" ;
             }
         }
         //      C# -> AzureAdExocomputeHostType? ExoHostType
@@ -1338,6 +1374,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestUserCount\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.Boolean? MigratedFromColossus
         // GraphQL -> migratedFromColossus: Boolean! (scalar)
         if (this.MigratedFromColossus != null) {
@@ -1425,6 +1470,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1660,6 +1717,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EventHubConnectionStatus != null && ec.Excludes("eventHubConnectionStatus",true))
         {
             this.EventHubConnectionStatus = null;
+        }
+        //      C# -> EntraIdEventHubPermissionsStatus? EventHubPermissionsStatus
+        // GraphQL -> eventHubPermissionsStatus: EntraIdEventHubPermissionsStatus (enum)
+        if (ec.Includes("eventHubPermissionsStatus",true))
+        {
+            if(this.EventHubPermissionsStatus == null) {
+
+                this.EventHubPermissionsStatus = new EntraIdEventHubPermissionsStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventHubPermissionsStatus != null && ec.Excludes("eventHubPermissionsStatus",true))
+        {
+            this.EventHubPermissionsStatus = null;
         }
         //      C# -> AzureAdExocomputeHostType? ExoHostType
         // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
@@ -2549,6 +2623,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestUserCount = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.Boolean? MigratedFromColossus
         // GraphQL -> migratedFromColossus: Boolean! (scalar)
         if (ec.Includes("migratedFromColossus",true))
@@ -2707,6 +2798,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> List<LatestEntraObjectCount>? LatestEntraObjectCounts
         // GraphQL -> latestEntraObjectCounts: [LatestEntraObjectCount!]! (type)

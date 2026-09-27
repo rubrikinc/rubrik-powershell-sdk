@@ -12120,7 +12120,7 @@ namespace RubrikSecurityCloud.Types
         public static string O365SetupKickoff(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\ninput: $input\n)";
             return "o365SetupKickoff" + args + "\n{\n" + fs + "}\n";
         }
         public static object O365SetupKickoffFieldSpec(AutofieldContext? ec=null)

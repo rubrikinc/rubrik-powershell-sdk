@@ -66,3 +66,4 @@ copy-schedule source shares.
 - RESTORE_AD_FOREST - Quorum authorization is required for restoring an Active Directory forest.
 - RESTORE_AD_DOMAIN_CONTROLLER - Quorum authorization is required for restoring an Active Directory domain controller snapshot.
 - RESTORE_AD_OBJECTS - Quorum authorization is required for granular restore of Active Directory objects.
+- IDENTITY_RESILIENCE_REVERT - Quorum authorization is required for Identity Resilience revert actions (manual activity log reverts and automated alert rule reverts).

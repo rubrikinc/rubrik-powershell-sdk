@@ -5,9 +5,9 @@ All unarchived custom TPR policies.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - TprPolicySortByField: Fields to sort TPR policies.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - TprPolicyFilterInput: Input for filtering a list of TPR policies.
@@ -17,9 +17,9 @@ Queries high-availability policies for managing failover groups.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - HaPolicyFilter: Filters to apply to the query.
 - Returns HaPolicyConnection.
 ### harmfullifecyclepolicies
@@ -28,9 +28,9 @@ locations that would tier or delete Rubrik-owned objects.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - HarmfulLifecyclePolicyFilter: The filters restricting which lifecycle policies are
 returned.
 - Returns HarmfulLifecyclePolicyConnection.
@@ -54,9 +54,9 @@ Returns active policies for an account.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - policyObjectFilter - PolicyObjectFilter: Filter policies based on whether they have objects attached.
     - excludeHierarchyObjectList - System.Boolean: Excludes hierarchy object IDs for each policy.
 - Returns ClassificationPolicyDetailConnection.
@@ -112,9 +112,9 @@ Returns the policies assigned to each object.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - objectIds - list of System.Strings: Hierarchy object IDs to return policy usages for.
 - Returns PolicyObjectUsageConnection.
 ### policyrisksummaries

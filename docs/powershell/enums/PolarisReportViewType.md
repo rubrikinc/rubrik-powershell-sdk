@@ -69,7 +69,7 @@ types.
 - CLOUD_COST_REPORT - Cloud cost report for cloud-native protection cost analysis.
 Displays cost breakdown by cloud provider, account, and cost dimension
 with tag-level attribution. Supports time series and bar charts.
-- SCRIPT_REPORT - TBD.
+- RUBRIK_AI_REPORT - AI-generated script based reports authored by Rubrik AI.
 - IDENTITY_INVENTORY_REPORT - Displays the identity inventory report — a current-state list of all
 principals (users, groups, service accounts, computers, GPOs,
 conditional access policies).

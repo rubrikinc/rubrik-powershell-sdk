@@ -29,3 +29,7 @@ Input to create S3-compatible target.
   - S3-compatible immutability settings.
 - ibmDetails: IbmCosDetails
   - IBM subtype location specific details.
+- tlsCertificateId: System.String
+  - Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3-compatible target.
+- certificateTrustMode: CertificateTrustMode
+  - The TLS trust mode for the S3-compatible target.

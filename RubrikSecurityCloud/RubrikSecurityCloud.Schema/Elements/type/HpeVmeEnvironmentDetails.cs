@@ -1,4 +1,4 @@
-// HvmEnvironmentDetails.cs
+// HpeVmeEnvironmentDetails.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,20 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region HvmEnvironmentDetails
-    public class HvmEnvironmentDetails: BaseType
+    #region HpeVmeEnvironmentDetails
+    public class HpeVmeEnvironmentDetails: BaseType
     {
         #region members
 
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String (scalar)
-        [JsonProperty("hvmHostId")]
-        public System.String? HvmHostId { get; set; }
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String (scalar)
+        [JsonProperty("hpeVmeHostId")]
+        public System.String? HpeVmeHostId { get; set; }
 
-        //      C# -> System.String? HvmManagerId
-        // GraphQL -> hvmManagerId: String! (scalar)
-        [JsonProperty("hvmManagerId")]
-        public System.String? HvmManagerId { get; set; }
+        //      C# -> System.String? HpeVmeManagerId
+        // GraphQL -> hpeVmeManagerId: String! (scalar)
+        [JsonProperty("hpeVmeManagerId")]
+        public System.String? HpeVmeManagerId { get; set; }
 
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
@@ -46,21 +46,21 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "HvmEnvironmentDetails";
+        return "HpeVmeEnvironmentDetails";
     }
 
-    public HvmEnvironmentDetails Set(
-        System.String? HvmHostId = null,
-        System.String? HvmManagerId = null,
+    public HpeVmeEnvironmentDetails Set(
+        System.String? HpeVmeHostId = null,
+        System.String? HpeVmeManagerId = null,
         List<System.String>? IpAddresses = null,
         List<System.String>? Versions = null
     ) 
     {
-        if ( HvmHostId != null ) {
-            this.HvmHostId = HvmHostId;
+        if ( HpeVmeHostId != null ) {
+            this.HpeVmeHostId = HpeVmeHostId;
         }
-        if ( HvmManagerId != null ) {
-            this.HvmManagerId = HvmManagerId;
+        if ( HpeVmeManagerId != null ) {
+            this.HpeVmeManagerId = HpeVmeManagerId;
         }
         if ( IpAddresses != null ) {
             this.IpAddresses = IpAddresses;
@@ -82,22 +82,22 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String (scalar)
-        if (this.HvmHostId != null) {
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String (scalar)
+        if (this.HpeVmeHostId != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "hvmHostId\n" ;
+                s += conf.Prefix + "hpeVmeHostId\n" ;
             } else {
-                s += ind + "hvmHostId\n" ;
+                s += ind + "hpeVmeHostId\n" ;
             }
         }
-        //      C# -> System.String? HvmManagerId
-        // GraphQL -> hvmManagerId: String! (scalar)
-        if (this.HvmManagerId != null) {
+        //      C# -> System.String? HpeVmeManagerId
+        // GraphQL -> hpeVmeManagerId: String! (scalar)
+        if (this.HpeVmeManagerId != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "hvmManagerId\n" ;
+                s += conf.Prefix + "hpeVmeManagerId\n" ;
             } else {
-                s += ind + "hvmManagerId\n" ;
+                s += ind + "hpeVmeManagerId\n" ;
             }
         }
         //      C# -> List<System.String>? IpAddresses
@@ -125,39 +125,39 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String (scalar)
-        if (ec.Includes("hvmHostId",true))
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String (scalar)
+        if (ec.Includes("hpeVmeHostId",true))
         {
-            if(this.HvmHostId == null) {
+            if(this.HpeVmeHostId == null) {
 
-                this.HvmHostId = "FETCH";
+                this.HpeVmeHostId = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.HvmHostId != null && ec.Excludes("hvmHostId",true))
+        else if (this.HpeVmeHostId != null && ec.Excludes("hpeVmeHostId",true))
         {
-            this.HvmHostId = null;
+            this.HpeVmeHostId = null;
         }
-        //      C# -> System.String? HvmManagerId
-        // GraphQL -> hvmManagerId: String! (scalar)
-        if (ec.Includes("hvmManagerId",true))
+        //      C# -> System.String? HpeVmeManagerId
+        // GraphQL -> hpeVmeManagerId: String! (scalar)
+        if (ec.Includes("hpeVmeManagerId",true))
         {
-            if(this.HvmManagerId == null) {
+            if(this.HpeVmeManagerId == null) {
 
-                this.HvmManagerId = "FETCH";
+                this.HpeVmeManagerId = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.HvmManagerId != null && ec.Excludes("hvmManagerId",true))
+        else if (this.HpeVmeManagerId != null && ec.Excludes("hpeVmeManagerId",true))
         {
-            this.HvmManagerId = null;
+            this.HpeVmeManagerId = null;
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
@@ -198,11 +198,11 @@ namespace RubrikSecurityCloud.Types
 
     #endregion
 
-    } // class HvmEnvironmentDetails
+    } // class HpeVmeEnvironmentDetails
     
     #endregion
 
-    public static class ListHvmEnvironmentDetailsExtensions
+    public static class ListHpeVmeEnvironmentDetailsExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -221,14 +221,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<HvmEnvironmentDetails> list,
+            this List<HpeVmeEnvironmentDetails> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<HvmEnvironmentDetails> list)
+        public static List<string> SelectedFields(this List<HpeVmeEnvironmentDetails> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -237,16 +237,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<HvmEnvironmentDetails> list, 
+            this List<HpeVmeEnvironmentDetails> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new HvmEnvironmentDetails());
+                list.Add(new HpeVmeEnvironmentDetails());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<HvmEnvironmentDetails> list)
+        public static void SelectForRetrieval(this List<HpeVmeEnvironmentDetails> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

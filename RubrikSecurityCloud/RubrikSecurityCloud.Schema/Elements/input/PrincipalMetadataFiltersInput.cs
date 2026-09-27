@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("identityNameSearch")]
         public System.String? IdentityNameSearch { get; set; }
 
+        //      C# -> List<System.String>? SaasOrgIds
+        // GraphQL -> saasOrgIds: [String!] (scalar)
+        [JsonProperty("saasOrgIds")]
+        public List<System.String>? SaasOrgIds { get; set; }
+
 
         #endregion
 

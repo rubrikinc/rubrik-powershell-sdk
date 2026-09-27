@@ -5,8 +5,6 @@ AWS cloud accounts with features.
   - Include only AWS accounts that have this feature enabled.
 - statusFilters: list of CloudAccountStatuss
   - List of status filters for listing cloud accounts.
-- awsAdminAccountFilter: System.String
-  - Admin account ID to filter.
 - columnSearchFilter: System.String
   - Search text to match in native ID, account name, and role ARN.
 - featuresToFilterOut: list of CloudAccountFeatures
@@ -17,3 +15,5 @@ AWS cloud accounts with features.
   - Include internal features in the response.
 - serviceTypeFilter: list of AwsCloudAccountServiceTypes
   - Filter accounts by BaaS or non-BaaS service type.
+- awsAdminAccountFilter: System.String
+  - Admin account ID to filter.

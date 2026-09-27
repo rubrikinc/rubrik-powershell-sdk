@@ -10,3 +10,6 @@ persisted in the devops_object_stat_kv table's stat_key column.
 - NUM_ADO_WIKIS - Count of Azure DevOps wikis under a project.
 - NUM_GITHUB_PULL_REQUESTS - Count of GitHub pull requests under a repository.
 - NUM_GITHUB_ISSUES - Count of GitHub issues under a repository.
+- NUM_ADO_CUSTOM_PACKAGE_VERSIONS - Count of customer-owned Azure DevOps package versions under a project:
+those published directly to a feed, and those cached from an internal
+feed upstream. Versions cached from a public upstream are excluded.

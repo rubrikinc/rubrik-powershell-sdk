@@ -242,20 +242,21 @@ organization and policy assignment (e.g., SLA Domain inheritance via tag).
 - OPENSTACK_TAG - Openstack tag, one entity per (environment, project, Nova tag string).
 - K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
 - K8S_POSTGRES_DATABASE - Kubernetes Postgres database.
-- HVM_MANAGER - HPE Virtual Machine Essentials manager.
-- HVM_GROUP - HPE Virtual Machine Essentials group.
-- HVM_CLOUD - HPE Virtual Machine Essentials cloud.
-- HVM_CLUSTER - HPE Virtual Machine Essentials cluster.
-- HVM_HOST - HPE Virtual Machine Essentials host.
-- HVM_INSTANCE - HPE Virtual Machine Essentials instance. An inventory hierarchy level,
+- HPE_VME_MANAGER - HPE Virtual Machine Essentials manager.
+- HPE_VME_GROUP - HPE Virtual Machine Essentials group.
+- HPE_VME_CLOUD - HPE Virtual Machine Essentials cloud.
+- HPE_VME_CLUSTER - HPE Virtual Machine Essentials cluster.
+- HPE_VME_HOST - HPE Virtual Machine Essentials host.
+- HPE_VME_INSTANCE - HPE Virtual Machine Essentials instance. An inventory hierarchy level,
 not a protectable object.
-- HVM_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine. The protectable object
+- HPE_VME_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine. The protectable object
 in this hierarchy.
-- HVM_DATASTORE - HPE Virtual Machine Essentials datastore.
-- HVM_NETWORK - HPE Virtual Machine Essentials network.
+- HPE_VME_DATASTORE - HPE Virtual Machine Essentials datastore.
+- HPE_VME_NETWORK - HPE Virtual Machine Essentials network.
 - AZURE_COSMOS_NOSQL_ACCOUNT - Azure Cosmos NoSQL account.
 - AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
+- AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

@@ -36,6 +36,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sortParam")]
         public LegalHoldSortParam? SortParam { get; set; }
 
+        //      C# -> List<LegalHoldStateFilterValue>? LegalHoldStateFilter
+        // GraphQL -> legalHoldStateFilter: [LegalHoldStateFilterValue!] (enum)
+        [JsonProperty("legalHoldStateFilter")]
+        public List<LegalHoldStateFilterValue>? LegalHoldStateFilter { get; set; }
+
+        //      C# -> BackupCopyType? BackupCopyType
+        // GraphQL -> backupCopyType: BackupCopyType (enum)
+        [JsonProperty("backupCopyType")]
+        public BackupCopyType? BackupCopyType { get; set; }
+
 
         #endregion
 

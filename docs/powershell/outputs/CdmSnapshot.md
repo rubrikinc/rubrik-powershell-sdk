@@ -90,6 +90,8 @@ its workload type does not report the value.
   - MySQL instance-specific extended metadata with version and database info. Null if the snapshot is not of a MySQL Instance.
 - mariadbInstanceAppMetadata: MariadbInstanceAppMetadata
   - MariaDB instance-specific metadata carrying the snapshot statistics and the full or differential snapshot type. Null if the snapshot is not of a MariaDB instance.
+- irisdbInstanceAppMetadata: IrisdbInstanceAppMetadata
+  - IRIS DB instance-specific metadata carrying the snapshot statistics and backup type. Null if the snapshot is not of an IRIS DB instance.
 - k8sAppMetadata: K8sResourceSnapshotMetadata
   - K8S specific metadata for the snapshot.
 - k8sResourceSummary: K8sSnapshotResourceSummary
@@ -138,3 +140,5 @@ its workload type does not report the value.
   - Whether this snapshot falls within a known identity-compromise window derived from identity threat alerts (Microsoft Defender for Identity or CrowdStrike Falcon Identity). A null or false value does not assert the snapshot is clean, only that no compromise is known.
 - compromisingAlerts: list of TriggeringAlerts
   - The identity-compromise alerts that explain why this snapshot is marked as compromised. Absent or empty when the snapshot is not marked.
+- compromisingAlertCount: System.Int32
+  - How many identity-compromise alerts cover this snapshot. compromisingAlerts is capped and may return fewer than this; a null value means the marking could not be resolved.

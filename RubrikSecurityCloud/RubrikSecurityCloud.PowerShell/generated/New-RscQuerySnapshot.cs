@@ -1738,6 +1738,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	legalHoldStateFilter = @(
+    /// 		$someLegalHoldStateFilterValue # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LegalHoldStateFilterValue]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	backupCopyType = $someBackupCopyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupCopyType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -4195,6 +4201,12 @@ $query.Var.input = @{
 		# OPTIONAL
 		sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 	}
+	# OPTIONAL
+	legalHoldStateFilter = @(
+		$someLegalHoldStateFilterValue # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LegalHoldStateFilterValue]) for enum values.
+	)
+	# OPTIONAL
+	backupCopyType = $someBackupCopyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupCopyType]) for enum values.
 }"
             );
         }

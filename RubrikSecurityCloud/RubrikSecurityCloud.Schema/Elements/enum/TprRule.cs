@@ -90,6 +90,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCLUDE_DISK")]
         EXCLUDE_DISK,
 
+        [EnumMember(Value = "IDENTITY_RESILIENCE_REVERT")]
+        IDENTITY_RESILIENCE_REVERT,
+
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
 

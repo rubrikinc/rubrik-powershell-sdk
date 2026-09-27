@@ -8601,6 +8601,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		customerAppId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	pcrGcpImagePullDetails = @{
+    /// 		# REQUIRED
+    /// 		serviceAccountEmail = $someString
+    /// 		# REQUIRED
+    /// 		serviceAccountOwnershipToken = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -10084,6 +10091,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		smbDomainName = $someString
@@ -10113,8 +10122,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		recoveryPurpose = $someVolumeGroupMountSnapshotJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VolumeGroupMountSnapshotJobConfigRecoveryPurpose]) for enum values.
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -24196,6 +24203,13 @@ $query.Var.input = @{
 		# OPTIONAL
 		customerAppId = $someString
 	}
+	# OPTIONAL
+	pcrGcpImagePullDetails = @{
+		# REQUIRED
+		serviceAccountEmail = $someString
+		# REQUIRED
+		serviceAccountOwnershipToken = $someString
+	}
 }"
             );
         }
@@ -25541,6 +25555,8 @@ $query.Var.context_tag = $someString"
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		smbDomainName = $someString
@@ -25570,8 +25586,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		recoveryPurpose = $someVolumeGroupMountSnapshotJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VolumeGroupMountSnapshotJobConfigRecoveryPurpose]) for enum values.
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

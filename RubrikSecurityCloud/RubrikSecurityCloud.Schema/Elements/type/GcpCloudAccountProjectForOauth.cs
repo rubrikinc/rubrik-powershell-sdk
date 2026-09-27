@@ -26,7 +26,7 @@ namespace RubrikSecurityCloud.Types
         public CredentialsManagedBy? CredentialsManagedBy { get; set; }
 
         //      C# -> List<System.String>? MissingPermissions
-        // GraphQL -> missingPermissions: [String!] (scalar)
+        // GraphQL -> missingPermissions: [String!]! (scalar)
         [JsonProperty("missingPermissions")]
         public List<System.String>? MissingPermissions { get; set; }
 
@@ -92,7 +92,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> List<System.String>? MissingPermissions
-        // GraphQL -> missingPermissions: [String!] (scalar)
+        // GraphQL -> missingPermissions: [String!]! (scalar)
         if (this.MissingPermissions != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "missingPermissions\n" ;
@@ -143,7 +143,7 @@ namespace RubrikSecurityCloud.Types
             this.CredentialsManagedBy = null;
         }
         //      C# -> List<System.String>? MissingPermissions
-        // GraphQL -> missingPermissions: [String!] (scalar)
+        // GraphQL -> missingPermissions: [String!]! (scalar)
         if (ec.Includes("missingPermissions",true))
         {
             if(this.MissingPermissions == null) {

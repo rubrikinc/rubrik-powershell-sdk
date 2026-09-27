@@ -8,8 +8,9 @@ orion-hunt-service at hunt creation time (see design decision D6).
 Must be non-empty; used as the join key between match rows and their
 predicate context in the hunt config.
 - keyPattern: System.String
-  - Deprecated: use hiveRoot + keyPath for new hunts. Combined HKLM\...\*
-or HKCU\...\* key path; kept as a denormalized mirror when hiveRoot is set.
+  - Output-only: denormalized mirror of hive_root + key_path, populated by OHS
+on create/update for downstream consumers that read this field. Not accepted
+as an input; set hive_root and key_path instead.
 - valueNames: list of System.Strings
   - Exact value name match. Callers set exactly one entry; kept as
 `repeated` to pass the value name alongside the other predicates for a

@@ -372,8 +372,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ROLE_TABLE")]
         ROLE_TABLE,
 
-        [EnumMember(Value = "SCRIPT_REPORT_TABLE")]
-        SCRIPT_REPORT_TABLE,
+        [EnumMember(Value = "RUBRIK_AI_REPORT_TABLE")]
+        RUBRIK_AI_REPORT_TABLE,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_TABLE")]
         SERVICE_ACCOUNT_TABLE,

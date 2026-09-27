@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? AccelerateToFederatedDomain
+        // GraphQL -> accelerateToFederatedDomain: Boolean! (scalar)
+        [JsonProperty("accelerateToFederatedDomain")]
+        public System.Boolean? AccelerateToFederatedDomain { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
@@ -35,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOrganizationDefault")]
         public System.Boolean? IsOrganizationDefault { get; set; }
 
+        //      C# -> System.String? PreferredDomain
+        // GraphQL -> preferredDomain: String! (scalar)
+        [JsonProperty("preferredDomain")]
+        public System.String? PreferredDomain { get; set; }
+
 
         #endregion
 
@@ -45,11 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public EntraIdHomeRealmDiscoveryPolicy Set(
+        System.Boolean? AccelerateToFederatedDomain = null,
         System.String? DisplayName = null,
         System.String? Id = null,
-        System.Boolean? IsOrganizationDefault = null
+        System.Boolean? IsOrganizationDefault = null,
+        System.String? PreferredDomain = null
     ) 
     {
+        if ( AccelerateToFederatedDomain != null ) {
+            this.AccelerateToFederatedDomain = AccelerateToFederatedDomain;
+        }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
         }
@@ -58,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOrganizationDefault != null ) {
             this.IsOrganizationDefault = IsOrganizationDefault;
+        }
+        if ( PreferredDomain != null ) {
+            this.PreferredDomain = PreferredDomain;
         }
         return this;
     }
@@ -73,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? AccelerateToFederatedDomain
+        // GraphQL -> accelerateToFederatedDomain: Boolean! (scalar)
+        if (this.AccelerateToFederatedDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accelerateToFederatedDomain\n" ;
+            } else {
+                s += ind + "accelerateToFederatedDomain\n" ;
+            }
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
@@ -100,6 +127,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isOrganizationDefault\n" ;
             }
         }
+        //      C# -> System.String? PreferredDomain
+        // GraphQL -> preferredDomain: String! (scalar)
+        if (this.PreferredDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "preferredDomain\n" ;
+            } else {
+                s += ind + "preferredDomain\n" ;
+            }
+        }
         return s;
     }
 
@@ -107,6 +143,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? AccelerateToFederatedDomain
+        // GraphQL -> accelerateToFederatedDomain: Boolean! (scalar)
+        if (ec.Includes("accelerateToFederatedDomain",true))
+        {
+            if(this.AccelerateToFederatedDomain == null) {
+
+                this.AccelerateToFederatedDomain = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccelerateToFederatedDomain != null && ec.Excludes("accelerateToFederatedDomain",true))
+        {
+            this.AccelerateToFederatedDomain = null;
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (ec.Includes("displayName",true))
@@ -157,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOrganizationDefault != null && ec.Excludes("isOrganizationDefault",true))
         {
             this.IsOrganizationDefault = null;
+        }
+        //      C# -> System.String? PreferredDomain
+        // GraphQL -> preferredDomain: String! (scalar)
+        if (ec.Includes("preferredDomain",true))
+        {
+            if(this.PreferredDomain == null) {
+
+                this.PreferredDomain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreferredDomain != null && ec.Excludes("preferredDomain",true))
+        {
+            this.PreferredDomain = null;
         }
     }
 

@@ -183,7 +183,7 @@ Start an asynchronous job to restore files and folders from a specified OpenStac
 Restore files from the Volume Group snapshot
 
 Supported in v5.0+
-Restore filess to the original Host.
+Restore files to the original host.
 
 - There is a single argument of type RestoreVolumeGroupSnapshotFilesInput.
 - Returns AsyncRequestStatus.

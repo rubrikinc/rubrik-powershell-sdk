@@ -1,4 +1,4 @@
-// HvmVirtualMachineDetails.cs
+// FutureLegalHoldInfo.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,20 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region HvmVirtualMachineDetails
-    public class HvmVirtualMachineDetails: BaseType
+    #region FutureLegalHoldInfo
+    public class FutureLegalHoldInfo: BaseType
     {
         #region members
 
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String! (scalar)
-        [JsonProperty("hvmHostId")]
-        public System.String? HvmHostId { get; set; }
+        //      C# -> DateTime? EndDate
+        // GraphQL -> endDate: DateTime (scalar)
+        [JsonProperty("endDate")]
+        public DateTime? EndDate { get; set; }
 
-        //      C# -> System.String? HvmVmId
-        // GraphQL -> hvmVmId: String! (scalar)
-        [JsonProperty("hvmVmId")]
-        public System.String? HvmVmId { get; set; }
+        //      C# -> LegalHoldInfo? HoldConfig
+        // GraphQL -> holdConfig: LegalHoldInfo (type)
+        [JsonProperty("holdConfig")]
+        public LegalHoldInfo? HoldConfig { get; set; }
 
 
         #endregion
@@ -36,19 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "HvmVirtualMachineDetails";
+        return "FutureLegalHoldInfo";
     }
 
-    public HvmVirtualMachineDetails Set(
-        System.String? HvmHostId = null,
-        System.String? HvmVmId = null
+    public FutureLegalHoldInfo Set(
+        DateTime? EndDate = null,
+        LegalHoldInfo? HoldConfig = null
     ) 
     {
-        if ( HvmHostId != null ) {
-            this.HvmHostId = HvmHostId;
+        if ( EndDate != null ) {
+            this.EndDate = EndDate;
         }
-        if ( HvmVmId != null ) {
-            this.HvmVmId = HvmVmId;
+        if ( HoldConfig != null ) {
+            this.HoldConfig = HoldConfig;
         }
         return this;
     }
@@ -64,22 +64,25 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String! (scalar)
-        if (this.HvmHostId != null) {
+        //      C# -> DateTime? EndDate
+        // GraphQL -> endDate: DateTime (scalar)
+        if (this.EndDate != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "hvmHostId\n" ;
+                s += conf.Prefix + "endDate\n" ;
             } else {
-                s += ind + "hvmHostId\n" ;
+                s += ind + "endDate\n" ;
             }
         }
-        //      C# -> System.String? HvmVmId
-        // GraphQL -> hvmVmId: String! (scalar)
-        if (this.HvmVmId != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "hvmVmId\n" ;
-            } else {
-                s += ind + "hvmVmId\n" ;
+        //      C# -> LegalHoldInfo? HoldConfig
+        // GraphQL -> holdConfig: LegalHoldInfo (type)
+        if (this.HoldConfig != null) {
+            var fspec = this.HoldConfig.AsFieldSpec(conf.Child("holdConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "holdConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -89,50 +92,52 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.String? HvmHostId
-        // GraphQL -> hvmHostId: String! (scalar)
-        if (ec.Includes("hvmHostId",true))
+        //      C# -> DateTime? EndDate
+        // GraphQL -> endDate: DateTime (scalar)
+        if (ec.Includes("endDate",true))
         {
-            if(this.HvmHostId == null) {
+            if(this.EndDate == null) {
 
-                this.HvmHostId = "FETCH";
+                this.EndDate = new DateTime();
 
             } else {
 
 
             }
         }
-        else if (this.HvmHostId != null && ec.Excludes("hvmHostId",true))
+        else if (this.EndDate != null && ec.Excludes("endDate",true))
         {
-            this.HvmHostId = null;
+            this.EndDate = null;
         }
-        //      C# -> System.String? HvmVmId
-        // GraphQL -> hvmVmId: String! (scalar)
-        if (ec.Includes("hvmVmId",true))
+        //      C# -> LegalHoldInfo? HoldConfig
+        // GraphQL -> holdConfig: LegalHoldInfo (type)
+        if (ec.Includes("holdConfig",false))
         {
-            if(this.HvmVmId == null) {
+            if(this.HoldConfig == null) {
 
-                this.HvmVmId = "FETCH";
+                this.HoldConfig = new LegalHoldInfo();
+                this.HoldConfig.ApplyExploratoryFieldSpec(ec.NewChild("holdConfig"));
 
             } else {
 
+                this.HoldConfig.ApplyExploratoryFieldSpec(ec.NewChild("holdConfig"));
 
             }
         }
-        else if (this.HvmVmId != null && ec.Excludes("hvmVmId",true))
+        else if (this.HoldConfig != null && ec.Excludes("holdConfig",false))
         {
-            this.HvmVmId = null;
+            this.HoldConfig = null;
         }
     }
 
 
     #endregion
 
-    } // class HvmVirtualMachineDetails
+    } // class FutureLegalHoldInfo
     
     #endregion
 
-    public static class ListHvmVirtualMachineDetailsExtensions
+    public static class ListFutureLegalHoldInfoExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -151,14 +156,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<HvmVirtualMachineDetails> list,
+            this List<FutureLegalHoldInfo> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<HvmVirtualMachineDetails> list)
+        public static List<string> SelectedFields(this List<FutureLegalHoldInfo> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -167,16 +172,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<HvmVirtualMachineDetails> list, 
+            this List<FutureLegalHoldInfo> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new HvmVirtualMachineDetails());
+                list.Add(new FutureLegalHoldInfo());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<HvmVirtualMachineDetails> list)
+        public static void SelectForRetrieval(this List<FutureLegalHoldInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

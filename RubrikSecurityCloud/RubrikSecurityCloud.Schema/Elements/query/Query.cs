@@ -6402,7 +6402,7 @@ namespace RubrikSecurityCloud.Types
         public static string BackupWindowsForObjects(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nobjectIds: $objectIds\nscope: $scope\n)";
+            string args = "\n(\nobjectIds: $objectIds\nscope: $scope\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "backupWindowsForObjects" + args + "\n{\n" + fs + "}\n";
         }
         public static object BackupWindowsForObjectsFieldSpec(AutofieldContext? ec=null)
@@ -6744,7 +6744,7 @@ namespace RubrikSecurityCloud.Types
         public static string CdmMssqlLogShippingTargets(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "cdmMssqlLogShippingTargets" + args + "\n{\n" + fs + "}\n";
         }
         public static object CdmMssqlLogShippingTargetsFieldSpec(AutofieldContext? ec=null)
@@ -8508,7 +8508,7 @@ namespace RubrikSecurityCloud.Types
         public static string DailyViolationsSummary(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nstartDate: $startDate\nendDate: $endDate\npolicyTypes: $policyTypes\nresourceFilter: $resourceFilter\nidpTypes: $idpTypes\n)";
+            string args = "\n(\nstartDate: $startDate\nendDate: $endDate\npolicyTypes: $policyTypes\nresourceFilter: $resourceFilter\nidpTypes: $idpTypes\nsaasOrgIds: $saasOrgIds\n)";
             return "dailyViolationsSummary" + args + "\n{\n" + fs + "}\n";
         }
         public static object DailyViolationsSummaryFieldSpec(AutofieldContext? ec=null)
@@ -9174,7 +9174,7 @@ namespace RubrikSecurityCloud.Types
         public static string ExchangeDags(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDags" + args + "\n{\n" + fs + "}\n";
         }
         public static object ExchangeDagsFieldSpec(AutofieldContext? ec=null)
@@ -9210,7 +9210,7 @@ namespace RubrikSecurityCloud.Types
         public static string ExchangeDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object ExchangeDatabasesFieldSpec(AutofieldContext? ec=null)
@@ -9228,7 +9228,7 @@ namespace RubrikSecurityCloud.Types
         public static string ExchangeLiveMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "exchangeLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object ExchangeLiveMountsFieldSpec(AutofieldContext? ec=null)
@@ -9264,7 +9264,7 @@ namespace RubrikSecurityCloud.Types
         public static string ExchangeServers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeServers" + args + "\n{\n" + fs + "}\n";
         }
         public static object ExchangeServersFieldSpec(AutofieldContext? ec=null)
@@ -10686,7 +10686,7 @@ namespace RubrikSecurityCloud.Types
         public static string GitHubOrganizations(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nancestorId: $ancestorId\nqueryType: $queryType\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
             return "gitHubOrganizations" + args + "\n{\n" + fs + "}\n";
         }
         public static object GitHubOrganizationsFieldSpec(AutofieldContext? ec=null)
@@ -11977,6 +11977,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> K8sClusterSummary? K8sClusterWithDetails
+        // GraphQL -> k8sClusterWithDetails: K8sClusterSummary! (type)
+        public static string K8sClusterWithDetails(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nid: $id\n)";
+            return "k8sClusterWithDetails" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object K8sClusterWithDetailsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new K8sClusterSummary() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> K8sClusterConnection? K8sClusters
         // GraphQL -> k8sClusters: K8sClusterConnection! (type)
         public static string K8sClusters(object fsObj)
@@ -12108,7 +12126,7 @@ namespace RubrikSecurityCloud.Types
         public static string KubernetesClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "kubernetesClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object KubernetesClustersFieldSpec(AutofieldContext? ec=null)
@@ -12144,7 +12162,7 @@ namespace RubrikSecurityCloud.Types
         public static string KubernetesProtectionSets(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterOptionalId: $k8sClusterOptionalId\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterOptionalId: $k8sClusterOptionalId\n)";
             return "kubernetesProtectionSets" + args + "\n{\n" + fs + "}\n";
         }
         public static object KubernetesProtectionSetsFieldSpec(AutofieldContext? ec=null)
@@ -12162,7 +12180,7 @@ namespace RubrikSecurityCloud.Types
         public static string KubernetesRecoverableClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "kubernetesRecoverableClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object KubernetesRecoverableClustersFieldSpec(AutofieldContext? ec=null)
@@ -13062,7 +13080,7 @@ namespace RubrikSecurityCloud.Types
         public static string MssqlAvailabilityGroupDatabaseVirtualGroups(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfids: $fids\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfids: $fids\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "mssqlAvailabilityGroupDatabaseVirtualGroups" + args + "\n{\n" + fs + "}\n";
         }
         public static object MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec(AutofieldContext? ec=null)
@@ -13080,7 +13098,7 @@ namespace RubrikSecurityCloud.Types
         public static string MssqlAvailabilityGroupVirtualGroups(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "mssqlAvailabilityGroupVirtualGroups" + args + "\n{\n" + fs + "}\n";
         }
         public static object MssqlAvailabilityGroupVirtualGroupsFieldSpec(AutofieldContext? ec=null)
@@ -13134,7 +13152,7 @@ namespace RubrikSecurityCloud.Types
         public static string MssqlDatabaseLiveMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "mssqlDatabaseLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object MssqlDatabaseLiveMountsFieldSpec(AutofieldContext? ec=null)
@@ -13206,7 +13224,7 @@ namespace RubrikSecurityCloud.Types
         public static string MssqlDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mssqlDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object MssqlDatabasesFieldSpec(AutofieldContext? ec=null)
@@ -13350,7 +13368,7 @@ namespace RubrikSecurityCloud.Types
         public static string MssqlTopLevelDescendants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "mssqlTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
         public static object MssqlTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
@@ -13404,7 +13422,7 @@ namespace RubrikSecurityCloud.Types
         public static string MysqlDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mysqlDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object MysqlDatabasesFieldSpec(AutofieldContext? ec=null)
@@ -13440,7 +13458,7 @@ namespace RubrikSecurityCloud.Types
         public static string MysqlInstanceLiveMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "mysqlInstanceLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object MysqlInstanceLiveMountsFieldSpec(AutofieldContext? ec=null)
@@ -13458,7 +13476,7 @@ namespace RubrikSecurityCloud.Types
         public static string MysqlInstances(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mysqlInstances" + args + "\n{\n" + fs + "}\n";
         }
         public static object MysqlInstancesFieldSpec(AutofieldContext? ec=null)
@@ -15780,7 +15798,7 @@ namespace RubrikSecurityCloud.Types
         public static string PostgreSqlDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "postgreSQLDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object PostgreSqlDatabasesFieldSpec(AutofieldContext? ec=null)
@@ -15816,7 +15834,7 @@ namespace RubrikSecurityCloud.Types
         public static string PostgreSqlDbClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "postgreSQLDbClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object PostgreSqlDbClustersFieldSpec(AutofieldContext? ec=null)
@@ -15852,7 +15870,7 @@ namespace RubrikSecurityCloud.Types
         public static string PostgresDbClusterLiveMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "postgresDbClusterLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object PostgresDbClusterLiveMountsFieldSpec(AutofieldContext? ec=null)
@@ -18138,7 +18156,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotSharepointDriveSearch(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "snapshotSharepointDriveSearch" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotSharepointDriveSearchFieldSpec(AutofieldContext? ec=null)
@@ -19411,24 +19429,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> UserNotifications? UserNotifications
-        // GraphQL -> userNotifications: UserNotifications! (type)
-        public static string UserNotifications(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
-            return "userNotifications" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UserNotificationsFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new UserNotifications() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> GetUserSessionManagementConfigReply? UserSessionManagementConfig
         // GraphQL -> userSessionManagementConfig: GetUserSessionManagementConfigReply! (type)
         public static string UserSessionManagementConfig(object fsObj)
@@ -20640,7 +20640,7 @@ namespace RubrikSecurityCloud.Types
         public static string ViolationsCategorySummary(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nhistoricalDays: $historicalDays\npolicyTypes: $policyTypes\nidpTypes: $idpTypes\n)";
+            string args = "\n(\nhistoricalDays: $historicalDays\npolicyTypes: $policyTypes\nidpTypes: $idpTypes\nsaasOrgIds: $saasOrgIds\n)";
             return "violationsCategorySummary" + args + "\n{\n" + fs + "}\n";
         }
         public static object ViolationsCategorySummaryFieldSpec(AutofieldContext? ec=null)
@@ -20712,7 +20712,7 @@ namespace RubrikSecurityCloud.Types
         public static string VolumeGroupMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "volumeGroupMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object VolumeGroupMountsFieldSpec(AutofieldContext? ec=null)
@@ -20901,6 +20901,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new WorkloadAnomalyConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetWorkloadsProtectionDetailsResp? WorkloadsProtectionDetails
+        // GraphQL -> workloadsProtectionDetails: GetWorkloadsProtectionDetailsResp! (type)
+        public static string WorkloadsProtectionDetails(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "workloadsProtectionDetails" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object WorkloadsProtectionDetailsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetWorkloadsProtectionDetailsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

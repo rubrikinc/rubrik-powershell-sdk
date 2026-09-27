@@ -10,9 +10,9 @@ Lists the Microsoft 365 backup storage object restore points.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - m365BackupStorageObjectRestorePointsInput - M365BackupStorageObjectRestorePointsInput: The input to list Microsoft 365 Backup Storage restore points.
 - Returns M365BackupStorageRestorePointConnection.
 ### daytodaymodestats
@@ -37,9 +37,9 @@ Lists Minimum Viable Company (MVC) profiles for an M365 organization. Each profi
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - orgId - System.String: UUID of the O365 organization.
     - sortBy - MvcProfileSortField: Field to sort the results by.
     - sortOrder - SortOrder: Sort order for the results.

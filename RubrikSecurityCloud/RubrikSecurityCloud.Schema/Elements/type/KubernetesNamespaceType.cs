@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sProtectionLabelName")]
         public System.String? K8sProtectionLabelName { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -170,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> KubernetesVirtualMachineConnection? KubernetesDescendantVirtualMachines
         // GraphQL -> kubernetesDescendantVirtualMachines: KubernetesVirtualMachineConnection! (type)
@@ -300,6 +310,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? K8sLabelIds = null,
         System.String? K8sProtectionLabelFid = null,
         System.String? K8sProtectionLabelName = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.String? NamespaceName = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -312,6 +323,7 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         KubernetesNamespaceDescendantConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         KubernetesVirtualMachineConnection? KubernetesDescendantVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -378,6 +390,9 @@ namespace RubrikSecurityCloud.Types
         if ( K8sProtectionLabelName != null ) {
             this.K8sProtectionLabelName = K8sProtectionLabelName;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -413,6 +428,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( KubernetesDescendantVirtualMachines != null ) {
             this.KubernetesDescendantVirtualMachines = KubernetesDescendantVirtualMachines;
@@ -640,6 +658,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "k8sProtectionLabelName\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -763,6 +790,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1229,6 +1268,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.K8sProtectionLabelName = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1444,6 +1500,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> KubernetesVirtualMachineConnection? KubernetesDescendantVirtualMachines
         // GraphQL -> kubernetesDescendantVirtualMachines: KubernetesVirtualMachineConnection! (type)

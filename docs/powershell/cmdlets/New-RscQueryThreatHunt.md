@@ -15,9 +15,9 @@ List of matched files for an object for a specified threat hunt.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - huntId - System.String: ID of the threat hunt.
     - objectFid - System.String: FID of the object.
     - filenameSearchFilter - System.String: Optional filename search.
@@ -49,9 +49,9 @@ List of Threat Hunts.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - beginTime - DateTime: Filters results that started after this time.
     - endTime - DateTime: Filters results that started before this time.
     - clusterUuidFilter - list of System.Strings: Optional list of Rubrik cluster UUIDs to filter by.
@@ -69,9 +69,9 @@ The summary of the threat hunt.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - huntId - System.String: ID of the threat hunt.
     - objectTypeFilter - list of System.Strings: Optional list of object types to filter by. Should be of type ManagedObjectType.
     - matchesFoundFilter - ThreatHuntMatchesFound: Optionally filter by if the hunt had any matches.

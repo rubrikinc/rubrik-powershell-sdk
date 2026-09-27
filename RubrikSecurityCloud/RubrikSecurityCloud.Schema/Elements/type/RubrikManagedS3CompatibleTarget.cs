@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CertificateTrustMode? CertificateTrustMode
+        // GraphQL -> certificateTrustMode: CertificateTrustMode! (enum)
+        [JsonProperty("certificateTrustMode")]
+        public CertificateTrustMode? CertificateTrustMode { get; set; }
+
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("connectionStatus")]
@@ -151,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syncFailureReason")]
         public System.String? SyncFailureReason { get; set; }
 
+        //      C# -> System.String? TlsCertificateId
+        // GraphQL -> tlsCertificateId: String! (scalar)
+        [JsonProperty("tlsCertificateId")]
+        public System.String? TlsCertificateId { get; set; }
+
         //      C# -> System.Boolean? UseSystemProxy
         // GraphQL -> useSystemProxy: Boolean! (scalar)
         [JsonProperty("useSystemProxy")]
@@ -196,6 +206,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedS3CompatibleTarget Set(
+        CertificateTrustMode? CertificateTrustMode = null,
         ConnectionStatusType? ConnectionStatus = null,
         TargetEncryptionTypeEnum? EncryptionType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
@@ -222,6 +233,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumberOfBuckets = null,
         System.Int32? RunningTasks = null,
         System.String? SyncFailureReason = null,
+        System.String? TlsCertificateId = null,
         System.Boolean? UseSystemProxy = null,
         Cluster? Cluster = null,
         IbmCosDetailsType? IbmDetail = null,
@@ -231,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( CertificateTrustMode != null ) {
+            this.CertificateTrustMode = CertificateTrustMode;
+        }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
@@ -309,6 +324,9 @@ namespace RubrikSecurityCloud.Types
         if ( SyncFailureReason != null ) {
             this.SyncFailureReason = SyncFailureReason;
         }
+        if ( TlsCertificateId != null ) {
+            this.TlsCertificateId = TlsCertificateId;
+        }
         if ( UseSystemProxy != null ) {
             this.UseSystemProxy = UseSystemProxy;
         }
@@ -344,6 +362,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CertificateTrustMode? CertificateTrustMode
+        // GraphQL -> certificateTrustMode: CertificateTrustMode! (enum)
+        if (this.CertificateTrustMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "certificateTrustMode\n" ;
+            } else {
+                s += ind + "certificateTrustMode\n" ;
+            }
+        }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         if (this.ConnectionStatus != null) {
@@ -578,6 +605,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "syncFailureReason\n" ;
             }
         }
+        //      C# -> System.String? TlsCertificateId
+        // GraphQL -> tlsCertificateId: String! (scalar)
+        if (this.TlsCertificateId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tlsCertificateId\n" ;
+            } else {
+                s += ind + "tlsCertificateId\n" ;
+            }
+        }
         //      C# -> System.Boolean? UseSystemProxy
         // GraphQL -> useSystemProxy: Boolean! (scalar)
         if (this.UseSystemProxy != null) {
@@ -666,6 +702,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CertificateTrustMode? CertificateTrustMode
+        // GraphQL -> certificateTrustMode: CertificateTrustMode! (enum)
+        if (ec.Includes("certificateTrustMode",true))
+        {
+            if(this.CertificateTrustMode == null) {
+
+                this.CertificateTrustMode = new CertificateTrustMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CertificateTrustMode != null && ec.Excludes("certificateTrustMode",true))
+        {
+            this.CertificateTrustMode = null;
+        }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         if (ec.Includes("connectionStatus",true))
@@ -1107,6 +1160,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SyncFailureReason != null && ec.Excludes("syncFailureReason",true))
         {
             this.SyncFailureReason = null;
+        }
+        //      C# -> System.String? TlsCertificateId
+        // GraphQL -> tlsCertificateId: String! (scalar)
+        if (ec.Includes("tlsCertificateId",true))
+        {
+            if(this.TlsCertificateId == null) {
+
+                this.TlsCertificateId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TlsCertificateId != null && ec.Excludes("tlsCertificateId",true))
+        {
+            this.TlsCertificateId = null;
         }
         //      C# -> System.Boolean? UseSystemProxy
         // GraphQL -> useSystemProxy: Boolean! (scalar)

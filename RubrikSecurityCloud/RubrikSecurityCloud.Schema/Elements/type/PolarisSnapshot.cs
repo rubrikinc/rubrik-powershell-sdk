@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocationName")]
         public System.String? ArchivalLocationName { get; set; }
 
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        [JsonProperty("compromisingAlertCount")]
+        public System.Int32? CompromisingAlertCount { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -269,6 +274,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? SlaDomain = null,
         System.String? ArchivalLocationId = null,
         System.String? ArchivalLocationName = null,
+        System.Int32? CompromisingAlertCount = null,
         DateTime? Date = null,
         DateTime? ExpirationDate = null,
         System.Boolean? ExpiryHint = null,
@@ -332,6 +338,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalLocationName != null ) {
             this.ArchivalLocationName = ArchivalLocationName;
+        }
+        if ( CompromisingAlertCount != null ) {
+            this.CompromisingAlertCount = CompromisingAlertCount;
         }
         if ( Date != null ) {
             this.Date = Date;
@@ -543,6 +552,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "archivalLocationName\n" ;
             } else {
                 s += ind + "archivalLocationName\n" ;
+            }
+        }
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        if (this.CompromisingAlertCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "compromisingAlertCount\n" ;
+            } else {
+                s += ind + "compromisingAlertCount\n" ;
             }
         }
         //      C# -> DateTime? Date
@@ -1068,6 +1086,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalLocationName != null && ec.Excludes("archivalLocationName",true))
         {
             this.ArchivalLocationName = null;
+        }
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        if (ec.Includes("compromisingAlertCount",true))
+        {
+            if(this.CompromisingAlertCount == null) {
+
+                this.CompromisingAlertCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompromisingAlertCount != null && ec.Excludes("compromisingAlertCount",true))
+        {
+            this.CompromisingAlertCount = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)

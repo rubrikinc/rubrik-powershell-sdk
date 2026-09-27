@@ -39,6 +39,8 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - Resource Group of the Azure SQL Database Server.
 - azureResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure object.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -55,9 +57,11 @@ Retrieves an Azure SQL Database Server. Refers to the server the Azure SQL Datab
   - Number of descendant workloads of this object.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- objectPauseStatus: ObjectPauseStatus
-  - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.

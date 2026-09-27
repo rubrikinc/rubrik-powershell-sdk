@@ -37,10 +37,15 @@ Null when the project fixed object has not been created yet.
 - tenantId: System.String
   - Tenant ID of the org this project belongs to (human-readable tenant
 domain).
+- artifactsFixedObjectId: System.String
+  - Managed object UUID of this project's artifacts fixed object.
+Null when the project artifacts fixed object has not been created yet.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts
   - Developer-collaboration object counts for the project's fixed-object child. Returns null when the project has no fixed-object child.
+- objectStats: DevOpsObjectStats
+  - DevOps object stats for this project, aggregated across the objects it contains.
 - isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission
   - True when the org has developer-collaboration protection enabled but this project has not yet been granted the required access.
 - slaPauseStatus: System.Boolean
@@ -63,5 +68,9 @@ domain).
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.

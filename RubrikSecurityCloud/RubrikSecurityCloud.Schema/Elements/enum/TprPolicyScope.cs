@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "APPLICATION_CONFIGURATION")]
+        APPLICATION_CONFIGURATION,
+
         [EnumMember(Value = "DATA_MANAGEMENT_BY_CLUSTER")]
         DATA_MANAGEMENT_BY_CLUSTER,
 

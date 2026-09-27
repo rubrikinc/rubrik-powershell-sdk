@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE")]
         AZURE_BLOB_STORAGE,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL")]
+        AZURE_COSMOS_NOSQL,
+
         [EnumMember(Value = "AZURE_DEVOPS")]
         AZURE_DEVOPS,
 

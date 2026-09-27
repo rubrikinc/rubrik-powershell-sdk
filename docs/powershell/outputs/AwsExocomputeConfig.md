@@ -8,7 +8,8 @@ AWS Exocompute configurations in an AWS account.
 - exocomputeEligibleRegions: list of AwsCloudAccountRegions
   - List of regions for which Exocompute can be configured.
 - exocomputeEligibleAuthServerRegions: list of AwsAuthServerBasedCloudAccountRegions
-  - List of auth-server based regions (ISO/ISOB) for which Exocompute can be configured.
+  - List of auth-server based regions (ISO/ISOB) for which Exocompute can be
+configured.
 - configs: list of AwsExocomputeGetConfigResponses
   - AWS Exocompute get configurations response.
 - exocomputeConfigs: list of AwsExocomputeGetConfigurationResponses

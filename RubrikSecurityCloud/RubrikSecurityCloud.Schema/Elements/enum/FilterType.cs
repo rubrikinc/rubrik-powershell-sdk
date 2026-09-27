@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SECURITY_DOCUMENT_SENSITIVITY")]
         SECURITY_DOCUMENT_SENSITIVITY,
 
+        [EnumMember(Value = "SECURITY_GPO_CLEAR_TEXT_PASSWORD")]
+        SECURITY_GPO_CLEAR_TEXT_PASSWORD,
+
         [EnumMember(Value = "SECURITY_GPO_LDAP_SIGNING")]
         SECURITY_GPO_LDAP_SIGNING,
 

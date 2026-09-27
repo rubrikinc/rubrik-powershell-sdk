@@ -83,6 +83,10 @@ An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.co
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection

@@ -13,7 +13,7 @@ Paginated list of SMB domains.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - filters - list of SmbDomainFilterInputs: Filter for SMB domains.
     - sortBy - SmbDomainSortByInput: Sort by argument for SMB domains.
 - Returns SmbDomainConnection.

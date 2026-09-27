@@ -78,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
         AZURE_DEVOPS_PROJECT,
 
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT")]
+        AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT,
+
         [EnumMember(Value = "AZURE_DEVOPS_PROJECT_FIXED_OBJECT")]
         AZURE_DEVOPS_PROJECT_FIXED_OBJECT,
 
@@ -294,32 +297,32 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HOST_FAILOVER_CLUSTER")]
         HOST_FAILOVER_CLUSTER,
 
-        [EnumMember(Value = "HVM_CLOUD")]
-        HVM_CLOUD,
+        [EnumMember(Value = "HPE_VME_CLOUD")]
+        HPE_VME_CLOUD,
 
-        [EnumMember(Value = "HVM_CLUSTER")]
-        HVM_CLUSTER,
+        [EnumMember(Value = "HPE_VME_CLUSTER")]
+        HPE_VME_CLUSTER,
 
-        [EnumMember(Value = "HVM_DATASTORE")]
-        HVM_DATASTORE,
+        [EnumMember(Value = "HPE_VME_DATASTORE")]
+        HPE_VME_DATASTORE,
 
-        [EnumMember(Value = "HVM_GROUP")]
-        HVM_GROUP,
+        [EnumMember(Value = "HPE_VME_GROUP")]
+        HPE_VME_GROUP,
 
-        [EnumMember(Value = "HVM_HOST")]
-        HVM_HOST,
+        [EnumMember(Value = "HPE_VME_HOST")]
+        HPE_VME_HOST,
 
-        [EnumMember(Value = "HVM_INSTANCE")]
-        HVM_INSTANCE,
+        [EnumMember(Value = "HPE_VME_INSTANCE")]
+        HPE_VME_INSTANCE,
 
-        [EnumMember(Value = "HVM_MANAGER")]
-        HVM_MANAGER,
+        [EnumMember(Value = "HPE_VME_MANAGER")]
+        HPE_VME_MANAGER,
 
-        [EnumMember(Value = "HVM_NETWORK")]
-        HVM_NETWORK,
+        [EnumMember(Value = "HPE_VME_NETWORK")]
+        HPE_VME_NETWORK,
 
-        [EnumMember(Value = "HVM_VIRTUAL_MACHINE")]
-        HVM_VIRTUAL_MACHINE,
+        [EnumMember(Value = "HPE_VME_VIRTUAL_MACHINE")]
+        HPE_VME_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "Hdfs")]
         HDFS,

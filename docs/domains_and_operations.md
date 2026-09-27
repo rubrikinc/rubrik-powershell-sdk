@@ -29,7 +29,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | [Cassandra (0,0)](#cassandra-domain) | [Host (11,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware (4,1)](#vmware-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (18,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,12)](#sla-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Cloud Account (12,7)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,8)](#smb-domain) | [VMware vSphere VM (6,28)](#vmware-vsphere-vm-domain) |
-| [Cloud Native (24,16)](#cloud-native-domain) | [Kubernetes (14,25)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (14,0)](#snappable-domain) | [Webhook (5,12)](#webhook-domain) |
+| [Cloud Native (24,16)](#cloud-native-domain) | [Kubernetes (15,25)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (14,0)](#snappable-domain) | [Webhook (5,12)](#webhook-domain) |
 
 ## Account domain
 
@@ -1140,6 +1140,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | --- | --- | --- |
 | `New-RscQueryK8s -Operation AppManifest` | `New-RscQuery -Gql k8sAppManifest` | [k8sAppManifest](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryK8s -Operation Cluster` | `New-RscQuery -Gql kubernetesCluster` | [kubernetesCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryK8s -Operation ClusterWithDetails` | `New-RscQuery -Gql k8sClusterWithDetails` | [k8sClusterWithDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryK8s -Operation Clusters` | `New-RscQuery -Gql kubernetesClusters` | [kubernetesClusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryK8s -Operation K8sCluster` | `New-RscQuery -Gql k8sCluster` | [k8sCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryK8s -Operation K8sClusters` | `New-RscQuery -Gql k8sClusters` | [k8sClusters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1607,7 +1608,6 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryMisc -Operation UserFile` | `New-RscQuery -Gql userFile` | [userFile](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation UserFiles` | `New-RscQuery -Gql allUserFiles` | [allUserFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation UserGroups` | `New-RscQuery -Gql userGroups` | [userGroups](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| `New-RscQueryMisc -Operation UserNotifications` | `New-RscQuery -Gql userNotifications` | [userNotifications](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation UserSessionManagementConfig` | `New-RscQuery -Gql userSessionManagementConfig` | [userSessionManagementConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation UserSettings` | `New-RscQuery -Gql userSettings` | [userSettings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation UsersInCurrentAndDescendantOrganization` | `New-RscQuery -Gql usersInCurrentAndDescendantOrganization` | [usersInCurrentAndDescendantOrganization](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1636,6 +1636,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryMisc -Operation WorkloadAnomalies` | `New-RscQuery -Gql workloadAnomalies` | [workloadAnomalies](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation WorkloadForeverId` | `New-RscQuery -Gql workloadForeverId` | [workloadForeverId](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation WorkloadResourceSpecs` | `New-RscQuery -Gql allWorkloadResourceSpecs` | [allWorkloadResourceSpecs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryMisc -Operation WorkloadsProtectionDetails` | `New-RscQuery -Gql workloadsProtectionDetails` | [workloadsProtectionDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMisc -Operation WorkloadsRecoveryInfo` | `New-RscQuery -Gql allWorkloadsRecoveryInfo` | [allWorkloadsRecoveryInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)

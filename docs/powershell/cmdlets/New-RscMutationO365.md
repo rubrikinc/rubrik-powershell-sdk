@@ -186,7 +186,7 @@ account is being set.
 O365SetupKickoff starts the first-leg of an O365 OAuth client-secret code
 flow.
 
-- The setupkickoff subcommand takes no arguments.
+- There is a single argument of type O365SetupKickoffInput.
 - Returns O365SetupKickoffResp.
 ### updateappauthstatus
 Updates the Microsoft 365 app authentication status to the applicable app

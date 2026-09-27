@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? ArtifactsFixedObjectId
+        // GraphQL -> artifactsFixedObjectId: UUID (scalar)
+        [JsonProperty("artifactsFixedObjectId")]
+        public System.String? ArtifactsFixedObjectId { get; set; }
+
         //      C# -> System.String? FixedObjectId
         // GraphQL -> fixedObjectId: UUID (scalar)
         [JsonProperty("fixedObjectId")]
@@ -70,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -136,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fixedObjectCounts")]
         public AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts { get; set; }
 
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
+
         //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
         // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
         [JsonProperty("isMissingDeveloperCollaborationAccess")]
@@ -155,6 +170,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
         public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        [JsonProperty("objectStats")]
+        public DevOpsObjectStats? ObjectStats { get; set; }
 
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
@@ -216,9 +236,11 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? ArtifactsFixedObjectId = null,
         System.String? FixedObjectId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.String? NativeId = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -232,10 +254,12 @@ namespace RubrikSecurityCloud.Types
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
         AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess = null,
         List<PathNode>? LogicalPath = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
+        DevOpsObjectStats? ObjectStats = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         SecurityMetadata? SecurityMetadata = null,
@@ -263,6 +287,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
+        if ( ArtifactsFixedObjectId != null ) {
+            this.ArtifactsFixedObjectId = ArtifactsFixedObjectId;
+        }
         if ( FixedObjectId != null ) {
             this.FixedObjectId = FixedObjectId;
         }
@@ -271,6 +298,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -311,6 +341,9 @@ namespace RubrikSecurityCloud.Types
         if ( FixedObjectCounts != null ) {
             this.FixedObjectCounts = FixedObjectCounts;
         }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
+        }
         if ( IsMissingDeveloperCollaborationAccess != null ) {
             this.IsMissingDeveloperCollaborationAccess = IsMissingDeveloperCollaborationAccess;
         }
@@ -322,6 +355,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
+        }
+        if ( ObjectStats != null ) {
+            this.ObjectStats = ObjectStats;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -424,6 +460,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? ArtifactsFixedObjectId
+        // GraphQL -> artifactsFixedObjectId: UUID (scalar)
+        if (this.ArtifactsFixedObjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "artifactsFixedObjectId\n" ;
+            } else {
+                s += ind + "artifactsFixedObjectId\n" ;
+            }
+        }
         //      C# -> System.String? FixedObjectId
         // GraphQL -> fixedObjectId: UUID (scalar)
         if (this.FixedObjectId != null) {
@@ -449,6 +494,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -580,6 +634,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
         // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
         if (this.IsMissingDeveloperCollaborationAccess != null) {
@@ -625,6 +691,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (this.ObjectStats != null) {
+            var fspec = this.ObjectStats.AsFieldSpec(conf.Child("objectStats"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectStats" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -823,6 +901,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> System.String? ArtifactsFixedObjectId
+        // GraphQL -> artifactsFixedObjectId: UUID (scalar)
+        if (ec.Includes("artifactsFixedObjectId",true))
+        {
+            if(this.ArtifactsFixedObjectId == null) {
+
+                this.ArtifactsFixedObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArtifactsFixedObjectId != null && ec.Excludes("artifactsFixedObjectId",true))
+        {
+            this.ArtifactsFixedObjectId = null;
+        }
         //      C# -> System.String? FixedObjectId
         // GraphQL -> fixedObjectId: UUID (scalar)
         if (ec.Includes("fixedObjectId",true))
@@ -873,6 +968,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -1103,6 +1215,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.FixedObjectCounts = null;
         }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
+        }
         //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
         // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
         if (ec.Includes("isMissingDeveloperCollaborationAccess",false))
@@ -1178,6 +1309,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
         {
             this.ObjectPauseStatus = null;
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (ec.Includes("objectStats",false))
+        {
+            if(this.ObjectStats == null) {
+
+                this.ObjectStats = new DevOpsObjectStats();
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            } else {
+
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            }
+        }
+        else if (this.ObjectStats != null && ec.Excludes("objectStats",false))
+        {
+            this.ObjectStats = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)

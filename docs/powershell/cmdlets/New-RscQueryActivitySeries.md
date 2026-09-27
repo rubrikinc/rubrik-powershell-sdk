@@ -21,9 +21,9 @@ Paginated list of event series objects. Each page of the results will include at
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Activity sort order
     - sortBy - ActivitySeriesSortField: Sort activity series by field.
     - filters - ActivitySeriesFilter
@@ -39,9 +39,9 @@ specific file, bucketed by the requested time granularity.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - userId - System.String: Stable identifier of the user.
     - resource - ResourceInput: Snapshot identifier of the workload containing the file. Optional; when absent the latest available snapshot is used.
     - nativePath - System.String: Native (filesystem-relative) path of the file.
@@ -55,9 +55,9 @@ per day over the requested window.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - userId - System.String: Stable identifier of the user.
     - startDay - System.String: Day to anchor the timeline window, in YYYY-MM-DD format.
     - timezone - System.String: Official IANA timezone name.

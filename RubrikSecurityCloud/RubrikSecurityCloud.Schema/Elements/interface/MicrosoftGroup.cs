@@ -174,6 +174,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectBackupWindow")]
         ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        System.Int32? LegallyHeldSnapshotCount { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]

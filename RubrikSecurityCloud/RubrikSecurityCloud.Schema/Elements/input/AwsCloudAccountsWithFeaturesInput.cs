@@ -33,11 +33,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("statusFilters")]
         public List<CloudAccountStatus>? StatusFilters { get; set; }
 
-        //      C# -> System.String? AwsAdminAccountFilter
-        // GraphQL -> awsAdminAccountFilter: UUID (scalar)
-        [JsonProperty("awsAdminAccountFilter")]
-        public System.String? AwsAdminAccountFilter { get; set; }
-
         //      C# -> System.String? ColumnSearchFilter
         // GraphQL -> columnSearchFilter: String (scalar)
         [JsonProperty("columnSearchFilter")]
@@ -62,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> serviceTypeFilter: [AwsCloudAccountServiceType!] (enum)
         [JsonProperty("serviceTypeFilter")]
         public List<AwsCloudAccountServiceType>? ServiceTypeFilter { get; set; }
+
+        //      C# -> System.String? AwsAdminAccountFilter
+        // GraphQL -> awsAdminAccountFilter: UUID (scalar)
+        [JsonProperty("awsAdminAccountFilter")]
+        public System.String? AwsAdminAccountFilter { get; set; }
 
 
         #endregion

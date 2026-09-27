@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20260914-30" ;
+        public static string GraphqlSchemaVersion = "v20260921-52" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -671,6 +671,7 @@ namespace RubrikSecurityCloud.Types
             AzureKeyVault,
             AzureListManagementGroupHierarchyReply,
             AzureListManagementGroupsReply,
+            AzureLocalVmMetadata,
             AzureLocationDetailType,
             AzureManagedDiskMetadata,
             AzureManagedIdentity,
@@ -1614,6 +1615,7 @@ namespace RubrikSecurityCloud.Types
             FusionComputeVrmPhysicalChildTypeConnection,
             FusionComputeVrmPhysicalChildTypeEdge,
             FusionComputeVrmSummary,
+            FutureLegalHoldInfo,
             GatewayInfo,
             GcpAlloyDbCluster,
             GcpBigQueryDataset,
@@ -1766,6 +1768,7 @@ namespace RubrikSecurityCloud.Types
             GetValidRegionsForDynamoDbRecoveryReply,
             GetWhitelistReply,
             GetWorkloadAlertSettingReply,
+            GetWorkloadsProtectionDetailsResp,
             GitHubAppInstallationInfo,
             GitHubAppRegistrationInfo,
             GitHubAppSetupInfo,
@@ -1873,6 +1876,8 @@ namespace RubrikSecurityCloud.Types
             HotAddProxyVmInfoListResponse,
             HotFixDetail,
             HourlySnapshotSchedule,
+            HpeVmeEnvironmentDetails,
+            HpeVmeVirtualMachineDetails,
             HuntConfig,
             HuntResponse,
             HuntScanFileCriteria,
@@ -1880,8 +1885,6 @@ namespace RubrikSecurityCloud.Types
             HuntScanFileTimeLimits,
             HuntScanPathFilters,
             HuntScanSnapshotLimit,
-            HvmEnvironmentDetails,
-            HvmVirtualMachineDetails,
             HypervAppMetadata,
             HypervAsyncRequestFailureSummary,
             HypervAsyncRequestSuccessSummary,
@@ -2026,6 +2029,7 @@ namespace RubrikSecurityCloud.Types
             IpmiInfo,
             IpRule,
             IpWhitelistSettings,
+            IrisdbInstanceAppMetadata,
             IrisdbSlaConfig,
             IsCloudClusterDiskUpgradeAvailableReply,
             IsCloudNativeTagRuleNameUniqueReply,
@@ -2112,6 +2116,7 @@ namespace RubrikSecurityCloud.Types
             LacpPresenceCheckEdge,
             LambdaFeatureHistory,
             LambdaSettings,
+            LastWorkloadRecoveryInfo,
             LatestEntraObjectCount,
             LatestUserNote,
             LdapIntegration,
@@ -2625,8 +2630,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2863,6 +2868,7 @@ namespace RubrikSecurityCloud.Types
             PauseTargetReply,
             PcrAwsImagePullDetails,
             PcrAzureImagePullDetails,
+            PcrGcpImagePullDetails,
             PendingAction,
             PendingActionType,
             PendingSnapshotDeletion,
@@ -3129,6 +3135,7 @@ namespace RubrikSecurityCloud.Types
             RecoveryPlanRecoverySpecMap,
             RecoveryPlanRecoveryStat,
             RecoveryPlansInfo,
+            RecoveryPlanStat,
             RecoveryPlanStats,
             RecoveryPlanTargetConsistencyInfo,
             RecoveryPlanV2,
@@ -3828,7 +3835,6 @@ namespace RubrikSecurityCloud.Types
             UserGroupWithRoles,
             UserLockoutEvent,
             UserLoginContext,
-            UserNotifications,
             UserRecoveryAnalysis,
             UserSessionManagementConfig,
             UserSetting,
@@ -4104,6 +4110,8 @@ namespace RubrikSecurityCloud.Types
             WorkloadLastRecovery,
             WorkloadLocation,
             WorkloadOrganization,
+            WorkloadProtectionDetail,
+            WorkloadRecoveryCount,
             WorkloadRecoveryInfo,
             WorkloadRecoveryInfoV2,
             WorkloadRecoverySpec,
@@ -5269,6 +5277,7 @@ namespace RubrikSecurityCloud.Types
             GetVmAgentDeploymentSettingInput,
             GetVmLevelFilesFromSnapshotInput,
             GetVmwareHostInput,
+            GetWorkloadsProtectionDetailsReq,
             GithubSlaConfigInput,
             GlobalCertificatesQueryInput,
             GlobalFileSearchInput,
@@ -5700,6 +5709,7 @@ namespace RubrikSecurityCloud.Types
             O365PdlGroupsInput,
             O365SaasSetupCompleteInput,
             O365SaaSsetupKickoffInput,
+            O365SetupKickoffInput,
             O365SharePointSite,
             O365SharepointSnapshotFileDeltaInput,
             O365SnapshotFileDeltaInput,
@@ -5778,6 +5788,7 @@ namespace RubrikSecurityCloud.Types
             PauseTargetInput,
             PcrAwsImagePullDetailsInput,
             PcrAzureImagePullDetailsInput,
+            PcrGcpImagePullDetailsInput,
             PendingSlaInfo,
             PendingSlaOperationsRequestInput,
             PermissionInput,
@@ -7299,6 +7310,7 @@ namespace RubrikSecurityCloud.Types
             k8sAppManifest,
             k8sCluster,
             k8sClusters,
+            k8sClusterWithDetails,
             k8sNamespace,
             k8sNamespaces,
             k8sProtectionSetSnapshots,
@@ -7725,7 +7737,6 @@ namespace RubrikSecurityCloud.Types
             userFile,
             userFileActivityTimeline,
             userGroups,
-            userNotifications,
             userSessionManagementConfig,
             userSettings,
             usersInCurrentAndDescendantOrganization,
@@ -7811,6 +7822,7 @@ namespace RubrikSecurityCloud.Types
             workloadAlertSetting,
             workloadAnomalies,
             workloadForeverId,
+            workloadsProtectionDetails,
         }
 
         /// <summary>
@@ -9035,6 +9047,7 @@ namespace RubrikSecurityCloud.Types
             BackupTriggerType,
             BackupType,
             BackupWindowScope,
+            BackupWindowsForObjectsSortByField,
             BackupWindowType,
             BliMigrationStatus,
             BlueprintRecoveryType,
@@ -9068,6 +9081,7 @@ namespace RubrikSecurityCloud.Types
             CdpPerfDashboardSortType,
             CdpReplicationStatus,
             CertificateRotationStatus,
+            CertificateTrustMode,
             CertificateUsage,
             CertificateUsageLocation,
             CertMgmtSortBy,
@@ -9250,6 +9264,7 @@ namespace RubrikSecurityCloud.Types
             EntitlementType,
             EntityStatus,
             EntraIdCountryLookupMethod,
+            EntraIdEventHubPermissionsStatus,
             EntraIdGroupType,
             EntraIdipRangeType,
             EntraIdNamedLocationType,
@@ -9450,6 +9465,7 @@ namespace RubrikSecurityCloud.Types
             IoFilterStatus,
             IpAllocationMethod,
             IpEntrySource,
+            IrisdbSnapshotType,
             IssueEventType,
             IssuerType,
             IssueStatus,
@@ -9484,6 +9500,7 @@ namespace RubrikSecurityCloud.Types
             LdapUnlockReason,
             LegalHoldQueryFilterField,
             LegalHoldSortType,
+            LegalHoldStateFilterValue,
             LinkedEntityLinkType,
             ListAccessUsersSort,
             ListPrincipalsSummarySortBy,
@@ -12710,6 +12727,12 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "PcrGcpImagePullDetails",
+                    new HashSet<string> {
+                    "PcrImagePullDetails",
+                    }
+                },
+                {
                     "ProtectionStatus",
                     new HashSet<string> {
                     "SnappableGroupByInfo",
@@ -14013,6 +14036,7 @@ namespace RubrikSecurityCloud.Types
             joinSmbDomain,
             k8sAppManifest,
             k8sCluster,
+            k8sClusterWithDetails,
             k8sClusters,
             k8sNamespace,
             k8sNamespaces,
@@ -14866,7 +14890,6 @@ namespace RubrikSecurityCloud.Types
             userFile,
             userFileActivityTimeline,
             userGroups,
-            userNotifications,
             userSessionManagementConfig,
             userSettings,
             usersInCurrentAndDescendantOrganization,
@@ -14995,6 +15018,7 @@ namespace RubrikSecurityCloud.Types
             workloadAlertSetting,
             workloadAnomalies,
             workloadForeverId,
+            workloadsProtectionDetails,
         }
 
         /// <summary>
@@ -24445,6 +24469,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.k8sClusterWithDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryK8s",
+                        cmdletSwitchName: "ClusterWithDetails",
+                        gqlRootFieldName: "k8sClusterWithDetails"
+                    )
+                },
+                {
                     GqlRootFieldName.k8sClusters,
                     new RscOp(
                         cmdletName: "New-RscQueryK8s",
@@ -31269,14 +31301,6 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
-                    GqlRootFieldName.userNotifications,
-                    new RscOp(
-                        cmdletName: "New-RscQueryMisc",
-                        cmdletSwitchName: "UserNotifications",
-                        gqlRootFieldName: "userNotifications"
-                    )
-                },
-                {
                     GqlRootFieldName.userSessionManagementConfig,
                     new RscOp(
                         cmdletName: "New-RscQueryMisc",
@@ -32298,6 +32322,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMisc",
                         cmdletSwitchName: "WorkloadForeverId",
                         gqlRootFieldName: "workloadForeverId"
+                    )
+                },
+                {
+                    GqlRootFieldName.workloadsProtectionDetails,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "WorkloadsProtectionDetails",
+                        gqlRootFieldName: "workloadsProtectionDetails"
                     )
                 },
             };
@@ -37060,6 +37092,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.k8sCluster
                 },
                 {
+                    "New-RscQueryK8s -Op ClusterWithDetails",
+                    GqlRootFieldName.k8sClusterWithDetails
+                },
+                {
                     "New-RscQueryK8s -Op K8sClusters",
                     GqlRootFieldName.k8sClusters
                 },
@@ -40472,10 +40508,6 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.userGroups
                 },
                 {
-                    "New-RscQueryMisc -Op UserNotifications",
-                    GqlRootFieldName.userNotifications
-                },
-                {
                     "New-RscQueryMisc -Op UserSessionManagementConfig",
                     GqlRootFieldName.userSessionManagementConfig
                 },
@@ -40986,6 +41018,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryMisc -Op WorkloadForeverId",
                     GqlRootFieldName.workloadForeverId
+                },
+                {
+                    "New-RscQueryMisc -Op WorkloadsProtectionDetails",
+                    GqlRootFieldName.workloadsProtectionDetails
                 },
             };
             string key = rscOp.Syntax();
@@ -43597,6 +43633,10 @@ namespace RubrikSecurityCloud.Types
                         "workloadAlertSetting",
                     }
                 },
+                {   "GetWorkloadsProtectionDetailsResp", new List<string> {
+                        "workloadsProtectionDetails",
+                    }
+                },
                 {   "GitHubConnectionStatusSummaryReply", new List<string> {
                         "gitHubConnectionStatusSummary",
                     }
@@ -43906,6 +43946,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "K8sClusterSummary", new List<string> {
                         "addK8sCluster",
+                        "k8sClusterWithDetails",
                     }
                 },
                 {   "K8sManifestResponse", new List<string> {
@@ -46199,10 +46240,6 @@ namespace RubrikSecurityCloud.Types
                         "currentUserLoginContext",
                     }
                 },
-                {   "UserNotifications", new List<string> {
-                        "userNotifications",
-                    }
-                },
                 {   "UserSettings", new List<string> {
                         "userSettings",
                     }
@@ -48032,6 +48069,10 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "BackupWindowScope", new List<string> {
+                        "backupWindowsForObjects",
+                    }
+                },
+                {   "BackupWindowsForObjectsSortByField", new List<string> {
                         "backupWindowsForObjects",
                     }
                 },
@@ -50585,6 +50626,10 @@ namespace RubrikSecurityCloud.Types
                         "vSphereHostDetails",
                     }
                 },
+                {   "GetWorkloadsProtectionDetailsReq", new List<string> {
+                        "workloadsProtectionDetails",
+                    }
+                },
                 {   "GlobalCertificateSortBy", new List<string> {
                         "assignableGlobalCertificates",
                         "globalCertificates",
@@ -51590,6 +51635,10 @@ namespace RubrikSecurityCloud.Types
                         "o365SaasSetupComplete",
                     }
                 },
+                {   "O365SetupKickoffInput", new List<string> {
+                        "o365SetupKickoff",
+                    }
+                },
                 {   "ObjectTagsFilterInput", new List<string> {
                         "policyObjs",
                     }
@@ -52593,6 +52642,7 @@ namespace RubrikSecurityCloud.Types
                 {   "SharePointDescendantType", new List<string> {
                         "browseSharepointDrive",
                         "snappableSharepointDriveSearch",
+                        "snapshotSharepointDriveSearch",
                     }
                 },
                 {   "SharePointSearchFilter", new List<string> {
@@ -52742,6 +52792,7 @@ namespace RubrikSecurityCloud.Types
                         "azureSqlManagedInstanceServers",
                         "azureStorageAccountContainers",
                         "azureStorageAccountExcludedContainers",
+                        "backupWindowsForObjects",
                         "certificates",
                         "certificateSigningRequests",
                         "cloudDirectClusterLambdaConfig",
@@ -54022,6 +54073,7 @@ namespace RubrikSecurityCloud.Types
                         "isZrsAvailableForLocation",
                         "k8sAppManifest",
                         "k8sCluster",
+                        "k8sClusterWithDetails",
                         "k8sNamespace",
                         "k8sNamespaces",
                         "k8sSnapshotInfo",
@@ -55819,6 +55871,7 @@ namespace RubrikSecurityCloud.Types
                         "configuredGroupMembers",
                         "createUser",
                         "crowdstrikeCaseActivitySummary",
+                        "dailyViolationsSummary",
                         "deleteLdapPrincipals",
                         "deleteUsersFromAccount",
                         "discoveryTimeline",
@@ -55854,6 +55907,7 @@ namespace RubrikSecurityCloud.Types
                         "updateIpWhitelist",
                         "updateRoleAssignments",
                         "updateWhitelistedAnalyzers",
+                        "violationsCategorySummary",
                         "vsphereVmwareCdpLiveInfo",
                         "workloadAnomalies",
                     }
@@ -56969,6 +57023,7 @@ namespace RubrikSecurityCloud.Types
                 { "allValidRegionsForDynamoDbRecovery", "GetValidRegionsForDynamoDbRecoveryReply"},
                 { "ipWhitelist", "GetWhitelistReply"},
                 { "workloadAlertSetting", "GetWorkloadAlertSettingReply"},
+                { "workloadsProtectionDetails", "GetWorkloadsProtectionDetailsResp"},
                 { "gitHubConnectionStatusSummary", "GitHubConnectionStatusSummaryReply"},
                 { "gitHubOrganization", "GithubOrganization"},
                 { "gitHubOrganizations", "GithubOrganizationConnection"},
@@ -57052,6 +57107,7 @@ namespace RubrikSecurityCloud.Types
                 { "k8sCluster", "K8sCluster"},
                 { "k8sClusters", "K8sClusterConnection"},
                 { "addK8sCluster", "K8sClusterSummary"},
+                { "k8sClusterWithDetails", "K8sClusterSummary"},
                 { "generateK8sManifest", "K8sManifestResponse"},
                 { "regenerateK8sManifest", "K8sManifestResponse"},
                 { "k8sNamespace", "K8sNamespace"},
@@ -57741,7 +57797,6 @@ namespace RubrikSecurityCloud.Types
                 { "usersInCurrentAndDescendantOrganization", "UserConnection"},
                 { "getDownloadUrl", "UserDownloadUrl"},
                 { "currentUserLoginContext", "UserLoginContext"},
-                { "userNotifications", "UserNotifications"},
                 { "userSettings", "UserSettings"},
                 { "bulkUpdateExchangeDag", "V1BulkUpdateExchangeDagResponse"},
                 { "allMssqlDatabaseRestoreFiles", "V1MssqlGetRestoreFilesV1Response"},
@@ -59363,6 +59418,7 @@ namespace RubrikSecurityCloud.Types
                     "AppManifest",
                     "ArchiveCluster",
                     "Cluster",
+                    "ClusterWithDetails",
                     "Clusters",
                     "CreateAgentManifest",
                     "CreateCluster",
@@ -60052,7 +60108,6 @@ namespace RubrikSecurityCloud.Types
                     "UserFile",
                     "UserFiles",
                     "UserGroups",
-                    "UserNotifications",
                     "UserSessionManagementConfig",
                     "UserSettings",
                     "UsersInCurrentAndDescendantOrganization",
@@ -60085,6 +60140,7 @@ namespace RubrikSecurityCloud.Types
                     "WorkloadAnomalies",
                     "WorkloadForeverId",
                     "WorkloadResourceSpecs",
+                    "WorkloadsProtectionDetails",
                     "WorkloadsRecoveryInfo",
                     }
                 },

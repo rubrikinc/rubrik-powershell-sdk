@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'Kubernetes' API domain:
-    /// AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, RecoverableClusters, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
+    /// AppManifest, Cluster, ClusterWithDetails, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, RecoverableClusters, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
     /// </summary>
     /// <description>
     /// New-RscQueryK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 15 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AppManifest, Cluster, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, RecoverableClusters, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
+    /// one of: AppManifest, Cluster, ClusterWithDetails, Clusters, K8sCluster, K8sClusters, Namespace, Namespaces, ProtectionSet, ProtectionSetSnapshots, ProtectionSets, RecoverableClusters, ReplicaSnapshotInfos, SnapshotInfo, or VirtualMachineSnapshots.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -141,6 +141,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ClusterWithDetails operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: ClusterWithDetails
+    /// 
+    /// $query = New-RscQueryK8s -Operation ClusterWithDetails
+    /// 
+    /// # REQUIRED
+    /// $query.Var.id = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: K8sClusterSummary
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Clusters operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -157,6 +185,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -554,6 +586,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -648,6 +684,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -839,6 +879,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AppManifest",
                 "Cluster",
+                "ClusterWithDetails",
                 "Clusters",
                 "K8sCluster",
                 "K8sClusters",
@@ -871,6 +912,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
+                        break;
+                    case "ClusterWithDetails":
+                        this.ProcessRecord_ClusterWithDetails();
                         break;
                     case "Clusters":
                         this.ProcessRecord_Clusters();
@@ -934,6 +978,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Cluster";
             // Create new graphql operation kubernetesCluster
             InitQueryKubernetesCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // k8sClusterWithDetails.
+        internal void ProcessRecord_ClusterWithDetails()
+        {
+            this._logger.name += " -ClusterWithDetails";
+            // Create new graphql operation k8sClusterWithDetails
+            InitQueryK8sClusterWithDetails();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1104,9 +1157,31 @@ $query.Var.fid = $someString"
         }
 
         // Create new GraphQL Query:
+        // k8sClusterWithDetails(id: UUID!): K8sClusterSummary!
+        internal void InitQueryK8sClusterWithDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("id", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryK8sClusterWithDetails",
+                "($id: UUID!)",
+                "K8sClusterSummary",
+                Query.K8sClusterWithDetails,
+                Query.K8sClusterWithDetailsFieldSpec,
+                @"# REQUIRED
+$query.Var.id = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // kubernetesClusters(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -1116,6 +1191,8 @@ $query.Var.fid = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -1124,7 +1201,7 @@ $query.Var.fid = $someString"
                 argDefs,
                 "query",
                 "QueryKubernetesClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "KubernetesClusterConnection",
                 Query.KubernetesClusters,
                 Query.KubernetesClustersFieldSpec,
@@ -1132,6 +1209,10 @@ $query.Var.fid = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -1479,6 +1560,8 @@ $query.Var.input = @{
         // kubernetesProtectionSets(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -1489,6 +1572,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -1498,7 +1583,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryKubernetesProtectionSets",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterOptionalId: UUID)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$k8sClusterOptionalId: UUID)",
                 "KubernetesProtectionSetConnection",
                 Query.KubernetesProtectionSets,
                 Query.KubernetesProtectionSetsFieldSpec,
@@ -1506,6 +1591,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -1578,6 +1667,8 @@ $query.Var.k8sClusterOptionalId = $someString"
         // kubernetesRecoverableClusters(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -1587,6 +1678,8 @@ $query.Var.k8sClusterOptionalId = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -1595,7 +1688,7 @@ $query.Var.k8sClusterOptionalId = $someString"
                 argDefs,
                 "query",
                 "QueryKubernetesRecoverableClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "KubernetesClusterConnection",
                 Query.KubernetesRecoverableClusters,
                 Query.KubernetesRecoverableClustersFieldSpec,
@@ -1603,6 +1696,10 @@ $query.Var.k8sClusterOptionalId = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

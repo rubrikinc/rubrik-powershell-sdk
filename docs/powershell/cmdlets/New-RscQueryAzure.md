@@ -5,9 +5,9 @@ Lists all Azure AD directories for the account.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -22,9 +22,9 @@ Details of the Azure AD objects corresponding to the type.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
     - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -54,9 +54,9 @@ List all Azure blob containers by storage account.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - AzureBlobContainersByStorageAccountInput: Azure blob containers request parameters by storage account.
 - Returns AzureBlobContainerCcprovisionConnection.
 ### cdmversions
@@ -168,9 +168,9 @@ Query Azure DevOps organization objects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
     - ancestorId - System.String: Ancestor object/root ID.
     - filter - list of Filters: The hierarchy object filter.
@@ -195,9 +195,9 @@ Query Azure DevOps project objects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
     - ancestorId - System.String: Ancestor object/root ID.
     - filter - list of Filters: The hierarchy object filter.
@@ -210,9 +210,9 @@ Query Azure DevOps repository objects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
     - ancestorId - System.String: Ancestor object/root ID.
     - filter - list of Filters: The hierarchy object filter.
@@ -318,9 +318,9 @@ Retrieves a paginated list of all Azure Postgres Flexible Servers.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzurePostgresFlexibleServerSortFields: Sort fields for list of Azure Postgres Flexible Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azurePostgresFlexibleServerFilters - AzurePostgresFlexibleServerFilters: Filters for listing Azure Postgres Flexible Servers.
@@ -331,9 +331,9 @@ of RCV Azure locations.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - BliMigrationDetailsFilter - RcvBliMigrationFilter: Filters for listing BLI migration details
 for RCV Azure BLI migration details.
     - sortBy - RcvBliMigrationDetailsSortByField: Sort by field for BLI migration details.
@@ -344,9 +344,9 @@ Gets the Azure regions for the given subscription.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
     - subscriptionId - System.String: Azure subscription ID.
 - Returns RegionConnection.
@@ -360,9 +360,9 @@ Gets the Azure resource groups for the given subscription.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
     - subscriptionId - System.String: Azure subscription ID.
 - Returns ResourceGroupConnection.
@@ -379,9 +379,9 @@ Search for azureAdObjects in a snapshot.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - SearchAzureAdSnapshotInput: Input for searching for Azure AD objects in a snapshot.
 - Returns AzureAdObjectConnection.
 ### sqldatabase
@@ -405,9 +405,9 @@ Retrieves a paginated list of all Azure SQL Databases.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureSqlDatabaseSortFields: Sort fields for list of Azure SQL Databases.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseFilters - AzureSqlDatabaseFilters: Filters for listing Azure SQL Databases.
@@ -432,9 +432,9 @@ Retrieves a paginated list of all Azure SQL Database Servers.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseServerFilters - AzureSqlDatabaseServerFilters: Filters for listing Azure SQL Database Servers.
@@ -452,9 +452,9 @@ Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureSqlManagedInstanceDatabaseSortFields: Sort fields for list of Azure SQL Managed Instance Databases.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceDatabaseFilters - AzureSqlManagedInstanceDatabaseFilters: Filters for listing Azure SQL Managed Instance Databases.
@@ -479,9 +479,9 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
@@ -492,9 +492,9 @@ Retrieves the list of containers for the specified storage account.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - StorageAccountContainersSortByField: Sorts the containers by field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of StorageAccountContainersFilterInputs: Filters the containers by field.
@@ -505,9 +505,9 @@ Retrieves the list of containers excluded from protection for the specified stor
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - ExcludedContainersSortByField: Sorts the excluded containers by field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of StorageAccountContainersFilterInputs: Filters the containers by field.
@@ -518,9 +518,9 @@ Gets the storage accounts for the given subscription.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
     - subscriptionId - System.String: Azure subscription ID.
     - regionName - System.String: Azure region name.
@@ -535,9 +535,9 @@ Gets the subnets for the given VNet.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
     - subscriptionId - System.String: Azure subscription ID.
     - vNetId - System.String: Azure VNet ID.
@@ -547,9 +547,9 @@ Gets the subscriptions for the given Azure tenant.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
 - Returns AzureSubscriptionConnection.
 ### subscriptionwithexocomputemappings
@@ -585,9 +585,9 @@ Gets the VNets for the given subscription.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - tenantId - System.String: Azure tenant ID.
     - subscriptionId - System.String: Azure subscription ID.
     - regionName - System.String: Azure region name.

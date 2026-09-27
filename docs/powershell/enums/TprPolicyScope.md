@@ -7,3 +7,4 @@ TPR policy scope.
 - DATA_MANAGEMENT_BY_CLUSTER - Data mangement by cluster.
 - DATA_MANAGEMENT_BY_SLA - Data management by SLA Domain.
 - DATA_MANAGEMENT_BY_OBJECT - Data management by object type.
+- APPLICATION_CONFIGURATION - Configuration of a Rubrik application, such as Identity Resilience.

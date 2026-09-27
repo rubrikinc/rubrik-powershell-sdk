@@ -53,6 +53,10 @@ SQL Server database.
   - Boolean flag indicating if the database derives log backup configurations from SLA.
 - dagId: System.String
   - ID of the associated SQL Server distributed availability group object.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - cdmSnapshots: CdmWorkloadSnapshotConnection
   - The list of snapshots taken for a SQL Server database.
 - cdmGroupedSnapshots: CdmGroupedSnapshotConnection
@@ -105,12 +109,14 @@ SQL Server database.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection

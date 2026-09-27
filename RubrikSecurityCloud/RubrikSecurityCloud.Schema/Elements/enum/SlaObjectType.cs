@@ -102,8 +102,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_WORKSPACE_OBJECT_TYPE")]
         GOOGLE_WORKSPACE_OBJECT_TYPE,
 
-        [EnumMember(Value = "HVM_OBJECT_TYPE")]
-        HVM_OBJECT_TYPE,
+        [EnumMember(Value = "HPE_VME_OBJECT_TYPE")]
+        HPE_VME_OBJECT_TYPE,
 
         [EnumMember(Value = "HYPERV_OBJECT_TYPE")]
         HYPERV_OBJECT_TYPE,

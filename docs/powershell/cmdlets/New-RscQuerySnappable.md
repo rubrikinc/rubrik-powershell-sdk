@@ -16,9 +16,9 @@ previously lived in the GraphQL resolver `snappableContactSearch`.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - contactsSearchFilter - ContactsSearchFilter: Search filter for contacts search.
@@ -32,9 +32,9 @@ GraphQL resolver `snappableEmailSearch`.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - searchFilter - SearchFilter: search filters
@@ -49,9 +49,9 @@ previously lived in the GraphQL resolver `snappableEventSearch`.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
@@ -61,9 +61,9 @@ Returns a paginated connection of workload group-by nodes.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - SnappableGroupByEnum: Group workloads by field.
     - filter - SnappableGroupByFilterInput: Filter workloads by groups.
     - timezoneOffset - System.Single: Browser timezone offset in hours for time-bucket alignment.
@@ -72,7 +72,7 @@ Returns a paginated connection of workload group-by nodes.
 ### hierarchy
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -83,9 +83,9 @@ Account and subject contexts are derived from req_ctx inside the handler.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - SnappableFilterInput: Filter workloads by input.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - sortOrder - SortOrder: Sort order for workloads.
@@ -97,9 +97,9 @@ snapshots, merged as a single O365OnedriveObject interface list
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
@@ -112,9 +112,9 @@ is never applied to the base table query.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - SnappableFilterInputWithSearch: Filter workloads by input.
     - sortBy - SnappableSortByEnum: Sort workloads by field.
     - sortOrder - SortOrder: Sort order for workloads.
@@ -124,7 +124,7 @@ List of all files in snapshots whose names match the specified search query.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - snappableFid - System.String: The ID of the workload.
     - searchQuery - System.String: Specifies the name or path prefix used to search for files within a workload.
     - usePrefixSearch - System.Boolean: Determines whether to use a prefix search.
@@ -139,9 +139,9 @@ authz GetSnapshot lookup. Replaces the legacy GraphQL resolver
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - tasksSearchFilter - TasksSearchFilter: Search filter for tasks search.
@@ -155,9 +155,9 @@ channel.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the Teams workload.
     - orgId - System.String: Organization scope for the search.
     - snapshotFidOpt - System.String: Optional snapshot FID. When set, the search
@@ -174,9 +174,9 @@ all snapshots, merged as a single O365OnedriveObject interface list
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the Teams workload.
     - orgId - System.String: Org UUID.
     - channelId - System.String: Optional Teams channel id; requires channelFolderName.

@@ -19,8 +19,8 @@ v9.2+: Specify only if mounting on a specific host is desired. If not specified,
 v5.0-v9.1: The configuration of the Volumes to be mounted on the Host.
 v9.2+: The configuration of the Volume Group snapshots to be mounted on the host.
 - excludePaths: list of System.Strings
-  - Supported in v9.7
+  - Supported in v9.6+
 Optional field which excludes the paths specified during recovery.
 - recoveryPurpose: VolumeGroupMountSnapshotJobConfigRecoveryPurpose
-  - Supported in v9.7
+  - Supported in v9.6+
 Optional field that identifies the purpose of the recovery. Set to 'SURGICAL_RECOVERY' for surgical recovery jobs which exclude quarantined files.

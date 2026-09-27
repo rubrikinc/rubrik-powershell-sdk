@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LATEST_SNAPSHOT_AT")]
         LATEST_SNAPSHOT_AT,
 
+        [EnumMember(Value = "NUM_ADO_CUSTOM_PACKAGE_VERSIONS")]
+        NUM_ADO_CUSTOM_PACKAGE_VERSIONS,
+
         [EnumMember(Value = "NUM_ADO_WIKIS")]
         NUM_ADO_WIKIS,
 

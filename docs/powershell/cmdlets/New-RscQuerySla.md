@@ -5,9 +5,9 @@ List of audit details for a given SLA Domain.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - SlaId - System.String: SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
     - filter - list of SLAAuditDetailFilterInputs: Filter for SLA Domain Audit details.
     - timezone - System.String: Timezone.
@@ -17,9 +17,9 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns ClusterSlaDomainConnection.
 ### clusterglobals
 Retrieve global SLA Domains associated with the specified Rubrik cluster. By default, only SLA Domains protecting at least one object are returned.
@@ -56,9 +56,9 @@ Retrieves a list of SLA Domains.
 
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
     - sortOrder - SortOrder: Sort order for sorting the SLA Domains returned by the query.
     - filter - list of GlobalSlaFilterInputs: Filter for the SLA Domain query.
@@ -82,9 +82,9 @@ Retrieves a list of SLA Domains.
 
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - SlaQuerySortByField: Field to sort the SLA Domains list.
     - sortOrder - SortOrder: Sort order for sorting the SLA Domains returned by the query.
     - filter - list of GlobalSlaFilterInputs: Filter for the SLA Domain query.
@@ -101,9 +101,9 @@ Status on the clusters where global SLA is synced.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of SlaStatusFilterInputs: Filters for SLAStatus.
     - SlaId - System.String: SLA ID for global SLAs.
 - Returns GlobalSlaStatusConnection.
@@ -117,7 +117,7 @@ Paginated list of SLA Managed Volumes.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

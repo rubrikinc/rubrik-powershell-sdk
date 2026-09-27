@@ -1,9 +1,9 @@
-### HvmEnvironmentDetails
+### HpeVmeEnvironmentDetails
 Details of an HPE Virtual Machine Essentials environment.
 
-- hvmManagerId: System.String
+- hpeVmeManagerId: System.String
   - HPE Virtual Machine Essentials manager ID.
-- hvmHostId: System.String
+- hpeVmeHostId: System.String
   - HPE Virtual Machine Essentials host ID.
 - ipAddresses: list of System.Strings
   - List of IP addresses.

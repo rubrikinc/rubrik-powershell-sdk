@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplica")]
         public System.Boolean? IsReplica { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -165,6 +170,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exchangeHost: ExchangeHost! (type)
         [JsonProperty("exchangeHost")]
         public ExchangeHost? ExchangeHost { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
@@ -277,6 +287,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasVgConflict = null,
         System.String? Id = null,
         System.Boolean? IsReplica = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? PrimaryClusterUuid = null,
@@ -293,6 +304,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         ExchangeDag? ExchangeDag = null,
         ExchangeHost? ExchangeHost = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         PhysicalHost? Host = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -344,6 +356,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsReplica != null ) {
             this.IsReplica = IsReplica;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -391,6 +406,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExchangeHost != null ) {
             this.ExchangeHost = ExchangeHost;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( Host != null ) {
             this.Host = Host;
@@ -573,6 +591,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isReplica\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -738,6 +765,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "exchangeHost" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1119,6 +1158,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsReplica = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1406,6 +1462,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExchangeHost != null && ec.Excludes("exchangeHost",false))
         {
             this.ExchangeHost = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)

@@ -59,3 +59,4 @@ of a S3Compatible location.
 - CUBBIT - Cubbit subtype.
 - HITACHI_VSP_ONE_OBJECT - Hitachi VSP One Object subtype.
 - SCALITY_RING - Scality RING subtype.
+- INFINIDAT_INFINIBOX - Infinidat InfiniBox subtype.

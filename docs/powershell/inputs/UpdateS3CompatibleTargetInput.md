@@ -19,3 +19,7 @@ Input to edit S3 compatible target.
   - Flag to determine if system proxy will be used or not.
 - immutabilitySettings: LocationImmutabilitySettings
   - Immutability information of S3-compatible location.
+- tlsCertificateId: System.String
+  - Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3 compatible target.
+- certificateTrustMode: CertificateTrustMode
+  - The TLS trust mode for the S3 compatible target.

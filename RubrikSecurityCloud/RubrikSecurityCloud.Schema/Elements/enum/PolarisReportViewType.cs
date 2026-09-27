@@ -168,8 +168,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ROLE_REPORT")]
         ROLE_REPORT,
 
-        [EnumMember(Value = "SCRIPT_REPORT")]
-        SCRIPT_REPORT,
+        [EnumMember(Value = "RUBRIK_AI_REPORT")]
+        RUBRIK_AI_REPORT,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_REPORT")]
         SERVICE_ACCOUNT_REPORT,

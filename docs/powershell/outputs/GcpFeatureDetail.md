@@ -4,10 +4,10 @@ Details of the Gcp Cloud Account feature.
 - feature: CloudAccountFeature
   - The cloud account feature.
 - status: CloudAccountStatus
-  - Current operational status of the feature.
+  - Specifies the status of the cloud account.
 - roleId: System.String
-  - ID of the role created for this feature.
+  - Specifies the ID of the feature-specific role, if it exists.
 - enabledPermissionGroups: list of PermissionsGroups
-  - Permission Groups enabled for the feature.
+  - Permission Groups enabled for the feature. Only populated if the feature flag for permission groups is enabled.
 - permissionsGroupVersions: list of PermissionsGroupWithVersions
   - Versioned permission groups for the feature, including each group's current policy version.

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsPreSeedEnabled
+        // GraphQL -> isPreSeedEnabled: Boolean! (scalar)
+        [JsonProperty("isPreSeedEnabled")]
+        public System.Boolean? IsPreSeedEnabled { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -105,6 +110,7 @@ namespace RubrikSecurityCloud.Types
         ManagedObjectType? WorkloadType = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsPreSeedEnabled = null,
         System.String? Name = null,
         System.Int32? NumChildren = null,
         System.Int64? Version = null,
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
+        }
+        if ( IsPreSeedEnabled != null ) {
+            this.IsPreSeedEnabled = IsPreSeedEnabled;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isArchived\n" ;
             } else {
                 s += ind + "isArchived\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPreSeedEnabled
+        // GraphQL -> isPreSeedEnabled: Boolean! (scalar)
+        if (this.IsPreSeedEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPreSeedEnabled\n" ;
+            } else {
+                s += ind + "isPreSeedEnabled\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -407,6 +425,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsArchived != null && ec.Excludes("isArchived",true))
         {
             this.IsArchived = null;
+        }
+        //      C# -> System.Boolean? IsPreSeedEnabled
+        // GraphQL -> isPreSeedEnabled: Boolean! (scalar)
+        if (ec.Includes("isPreSeedEnabled",true))
+        {
+            if(this.IsPreSeedEnabled == null) {
+
+                this.IsPreSeedEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPreSeedEnabled != null && ec.Excludes("isPreSeedEnabled",true))
+        {
+            this.IsPreSeedEnabled = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

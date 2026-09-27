@@ -38,18 +38,18 @@ Retrieve details of the Rubrik clusters' reports migration.
     - clusterUuid - System.String: The Rubrik cluster ID.
     - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns ReportMigrationStatusConnection.
 ### custom
 Retrieves reports created by users with pagination support.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - CustomReportsFilter: Filter criteria for custom reports.
     - sortBy - CustomReportSortByField: Field used to sort custom reports.
     - sortOrder - SortOrder: Sort order (ascending or descending).
@@ -62,9 +62,9 @@ Retrieve reports created by users.
 ### data
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - dataView - DataViewTypeEnum
     - columns - list of System.Strings: A list of columns to include in the result. It can be omitted when
            requesting aggregations, and server will derive columns by
@@ -121,9 +121,9 @@ Get report objects with report-specific filtering and pagination.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of ReportObjectFilterInputs: Generic filters for compatibility with existing queries.
     - sortBy - ReportObjectSortByField: Field to sort by.
     - sortOrder - SortOrder: Sort order (ASC/DESC).
@@ -143,9 +143,9 @@ Retrieve details of scheduled reports. If the reportId is None, return schedules
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ScheduledReportFilterInput: Filter report schedules.
 - Returns ScheduledReportConnection.
 ### skippedteamssite
@@ -159,9 +159,9 @@ Returns groupBy for SonarReport.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sonarReportGroupBy - DiscoveryReportGroupBy: Group-by field for the report.
     - filter - list of System.Strings: Optional list of policy IDs to filter by.
     - timeFilter - TimeFilterInput: Optional time range filter.
@@ -171,9 +171,9 @@ Returns groupBy results for SonarContentReport.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - DiscoveryContentReportGroupBy: 
     - sortBy - DiscoveryContentReportSortBy: 
     - sortOrder - SortOrder: Sorts the order of results.
@@ -188,9 +188,9 @@ Returns rows for SonarReport table.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - DiscoveryReportSortBy: Field to sort the report rows by.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of System.Strings: Optional list of policy IDs to filter by.

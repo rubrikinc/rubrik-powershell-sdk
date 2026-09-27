@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotCount")]
         public System.Int32? SnapshotCount { get; set; }
 
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
+
         //      C# -> List<LocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)
         [JsonProperty("physicalLocation")]
@@ -64,6 +69,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? SnapshotCount = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<LocationPathPoint>? PhysicalLocation = null,
         List<LegalHoldSnapshotDetail>? SnapshotDetails = null
     ) 
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotCount != null ) {
             this.SnapshotCount = SnapshotCount;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( PhysicalLocation != null ) {
             this.PhysicalLocation = PhysicalLocation;
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotCount\n" ;
             } else {
                 s += ind + "snapshotCount\n" ;
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<LocationPathPoint>? PhysicalLocation
@@ -234,6 +255,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotCount != null && ec.Excludes("snapshotCount",true))
         {
             this.SnapshotCount = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> List<LocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)

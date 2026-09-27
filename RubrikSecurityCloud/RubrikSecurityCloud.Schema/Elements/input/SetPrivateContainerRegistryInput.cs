@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pcrAzureImagePullDetails")]
         public PcrAzureImagePullDetailsInput? PcrAzureImagePullDetails { get; set; }
 
+        //      C# -> PcrGcpImagePullDetailsInput? PcrGcpImagePullDetails
+        // GraphQL -> pcrGcpImagePullDetails: PcrGcpImagePullDetailsInput (input)
+        [JsonProperty("pcrGcpImagePullDetails")]
+        public PcrGcpImagePullDetailsInput? PcrGcpImagePullDetails { get; set; }
+
 
         #endregion
 

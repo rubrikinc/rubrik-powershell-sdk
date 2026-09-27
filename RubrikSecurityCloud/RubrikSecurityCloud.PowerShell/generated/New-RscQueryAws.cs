@@ -417,8 +417,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	awsAdminAccountFilter = $someString
-    /// 	# OPTIONAL
     /// 	columnSearchFilter = $someString
     /// 	# OPTIONAL
     /// 	featuresToFilterOut = @(
@@ -432,6 +430,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	serviceTypeFilter = @(
     /// 		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	awsAdminAccountFilter = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2356,8 +2356,6 @@ $query.Var.awsCloudAccountsArg = @{
 		$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
 	)
 	# OPTIONAL
-	awsAdminAccountFilter = $someString
-	# OPTIONAL
 	columnSearchFilter = $someString
 	# OPTIONAL
 	featuresToFilterOut = @(
@@ -2371,6 +2369,8 @@ $query.Var.awsCloudAccountsArg = @{
 	serviceTypeFilter = @(
 		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
 	)
+	# OPTIONAL
+	awsAdminAccountFilter = $someString
 }"
             );
         }

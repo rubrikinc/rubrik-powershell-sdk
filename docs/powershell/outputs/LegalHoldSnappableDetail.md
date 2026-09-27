@@ -13,3 +13,5 @@ Legal hold details of the workload.
   - Number of snapshots on legal hold.
 - physicalLocation: list of LocationPathPoints
   - Physical path to this workload.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this workload, if any.

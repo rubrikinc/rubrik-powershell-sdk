@@ -11,3 +11,5 @@ Input for setting Private Container Registry details.
   - Details on how users can retrieve images from Rubrik's AWS container registry into their PCR.
 - pcrAzureImagePullDetails: PcrAzureImagePullDetailsInput
   - Details on how users can retrieve images from Rubrik's Azure container registry into their PCR.
+- pcrGcpImagePullDetails: PcrGcpImagePullDetailsInput
+  - Details on how users can retrieve images from Rubrik's Google Artifact Registry into their PCR.

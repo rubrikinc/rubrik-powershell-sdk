@@ -55,6 +55,10 @@ An Anthropic organization managed by Rubrik.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - storageRegion: System.String
   - The RSC storage region for the organization.
 - environmentType: SaasEnvironmentType

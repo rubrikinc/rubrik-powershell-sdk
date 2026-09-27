@@ -8,22 +8,30 @@ A Microsoft SQL Availability Group.
 ### availabilitygroupdatabasevirtualgroups
 Paginated list of virtual groups for MSSQL databases.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
-    - filters - list of MssqlAvailabilityGroupDatabaseVirtualGroupFilterInputs: Filters for MSSQL availability group database virtual groups. The default is no filters, and all objects are returned.
-    - sortBy - MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput: Sort by argument is for MSSQL availability group database virtual groups. By default, sort according to ID in ascending order.
+    - filters - list of MssqlAvailabilityGroupDatabaseVirtualGroupFilterInputs: Filters for MSSQL availability group database virtual groups. The default is no filters, and all
+objects are returned.
+    - sortBy - MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput: Sort by argument is for MSSQL availability group database virtual groups. By default, sort
+according to ID in ascending order.
     - sortOrder - MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput: Sort order argument for MSSQL availability group database virtual groups.
 - Returns MssqlDatabaseVirtualGroupConnection.
 ### availabilitygroupvirtualgroups
 Paginated list of virtual groups for MSSQL availability groups.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - filters - list of MssqlAvailabilityGroupVirtualGroupFilterInputs: Filters for MSSQL availability group virtual groups. Default to no filters and all objects are returned.
-    - sortBy - MssqlAvailabilityGroupVirtualGroupSortByInput: Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending order.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - list of MssqlAvailabilityGroupVirtualGroupFilterInputs: Filters for MSSQL availability group virtual groups. Default to no filters and all objects are
+returned.
+    - sortBy - MssqlAvailabilityGroupVirtualGroupSortByInput: Sort by argument for MSSQL availability group virtual groups. Default sort is by ID in ascending
+order.
     - sortOrder - MssqlAvailabilityGroupVirtualGroupSortOrderInput: Sort order argument for MSSQL availability group virtual groups.
 - Returns MssqlAvailabilityGroupVirtualGroupConnection.
 ### cdmlogshippingtarget
@@ -34,11 +42,13 @@ A single Microsoft SQL log shipping target.
 ### cdmlogshippingtargets
 Paginated list of Microsoft SQL log shipping target.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - list of MssqlLogShippingTargetFilterInputs: Filters for MSSQL log shipping targets. No filters by default.
     - sortBy - MssqlLogShippingTargetSortByInput: Sort by argument for MSSQL log shipping targets. Default sort is by ID in ascending order.
-    - filters - list of MssqlLogShippingTargetFilterInputs: Filters for Mssql log shipping targets. No filters by default.
 - Returns MssqlLogShippingTargetConnection.
 ### compatibleinstances
 Returns all compatible instances for export for the specified recovery time.
@@ -58,11 +68,13 @@ A Microsoft SQL Database.
 ### databaselivemounts
 Paginated list of Microsoft SQL Database live mounts.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - sortBy - MssqlDatabaseLiveMountSortByInput: Sort by argument for Mssql database live mounts.
-    - filters - list of MssqlDatabaseLiveMountFilterInputs: Filters for Mssql database live mounts.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - list of MssqlDatabaseLiveMountFilterInputs: Filters for MSSQL database live mounts.
+    - sortBy - MssqlDatabaseLiveMountSortByInput: Sort by argument for MSSQL database live mounts.
 - Returns MssqlDatabaseLiveMountConnection.
 ### databasemissedrecoverableranges
 Get missed recoverable ranges of a Microsoft SQL database
@@ -96,9 +108,11 @@ Provides a list of database files to be restored for the specified restore or ex
 ### databases
 Paginated list of Microsoft SQL Databases.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -148,11 +162,15 @@ Retrieve the recoverable ranges for a specified Microsoft SQL database. A begin 
 - There is a single argument of type GetMssqlDbRecoverableRangesInput.
 - Returns MssqlRecoverableRangeListResponse.
 ### topleveldescendants
-Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
+Paginated list of top-level Microsoft SQL hierarchy descendants: the
+direct children of the Microsoft SQL hierarchy root, spanning every
+top-level Microsoft SQL managed object type.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.

@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sVersion")]
         public System.String? K8sVersion { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.Int32? MaxConcurrentAgents
         // GraphQL -> maxConcurrentAgents: Int (scalar)
         [JsonProperty("maxConcurrentAgents")]
@@ -240,6 +245,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> KubernetesProtectionSetConnection? K8sDescendantProtectionSets
         // GraphQL -> k8sDescendantProtectionSets: KubernetesProtectionSetConnection! (type)
@@ -399,6 +409,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsReplica = null,
         System.String? K8sName = null,
         System.String? K8sVersion = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.Int32? MaxConcurrentAgents = null,
         System.Int32? MaxPvcsPerAgent = null,
         System.String? NadName = null,
@@ -419,6 +430,7 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         KubernetesClusterDescendantConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         KubernetesProtectionSetConnection? K8sDescendantProtectionSets = null,
         KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
@@ -505,6 +517,9 @@ namespace RubrikSecurityCloud.Types
         if ( K8sVersion != null ) {
             this.K8sVersion = K8sVersion;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( MaxConcurrentAgents != null ) {
             this.MaxConcurrentAgents = MaxConcurrentAgents;
         }
@@ -564,6 +579,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( K8sDescendantProtectionSets != null ) {
             this.K8sDescendantProtectionSets = K8sDescendantProtectionSets;
@@ -851,6 +869,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "k8sVersion\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.Int32? MaxConcurrentAgents
         // GraphQL -> maxConcurrentAgents: Int (scalar)
         if (this.MaxConcurrentAgents != null) {
@@ -1046,6 +1073,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1638,6 +1677,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.K8sVersion = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.Int32? MaxConcurrentAgents
         // GraphQL -> maxConcurrentAgents: Int (scalar)
         if (ec.Includes("maxConcurrentAgents",true))
@@ -1989,6 +2045,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> KubernetesProtectionSetConnection? K8sDescendantProtectionSets
         // GraphQL -> k8sDescendantProtectionSets: KubernetesProtectionSetConnection! (type)

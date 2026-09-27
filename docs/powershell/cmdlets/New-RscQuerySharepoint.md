@@ -6,9 +6,9 @@ of a SharePoint Drive folder within a snapshot.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The unique identifier for the SharePoint Drive workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -23,9 +23,9 @@ SharePoint List folder within a snapshot.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The unique identifier for the SharePoint List workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -47,9 +47,9 @@ lookups.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - siteFid - System.String: Workload ID of SharePoint site object.
     - snapshotFid - System.String: Snapshot FID to browse inside.
     - naturalId - System.String: Optional SharePoint natural ID for the
@@ -76,9 +76,9 @@ lived in the GraphQL resolver `sharepointSiteSearch`.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - siteFid - System.String: Workload ID of SharePoint site object.
     - orgId - System.String: Organization scope for the search.
     - sharepointSiteSearchFilter - SharePointSearchFilter: Optional SharePoint search filter.
@@ -90,9 +90,9 @@ interface list (folders then files).
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional SharePoint drive search filter.
@@ -106,9 +106,9 @@ all snapshots, merged as a single O365OnedriveObject interface list
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional SharePoint list search filter.
@@ -119,13 +119,15 @@ Returns SharePoint drive folders and files inside a single snapshot,
 merged as a single O365OnedriveObject interface list (folders then
 files).
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional SharePoint drive search filter.
+    - siteChildId - System.String: The site child ID for SharePoint descendant objects.
+    - siteChildType - SharePointDescendantType: The site child type for SharePoint descendant objects.
 - Returns O365OnedriveObjectConnection.

@@ -71,3 +71,4 @@ Inventory Card options that the user can select as a workload.
 - PING_FEDERATE - Inventory card is PingFederate.
 - ANTHROPIC - Inventory card is Anthropic.
 - IRISDB - Inventory card is IRIS DB.
+- AZURE_COSMOS_NOSQL - Inventory card is Azure Cosmos NoSQL.

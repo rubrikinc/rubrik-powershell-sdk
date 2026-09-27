@@ -47,3 +47,4 @@ workloads. Not intended for direct customer use.
 - ANTHROPIC_CHAT - Anthropic Chat application type (claude.ai conversations, projects, artifacts).
 - ANTHROPIC_CODE - Anthropic Code application type (Claude Code endpoint files).
 - ANTHROPIC_COWORK - Anthropic Cowork application type (Claude Cowork endpoint files).
+- GOOGLE_GROUPS - Google Workspace Groups application type.

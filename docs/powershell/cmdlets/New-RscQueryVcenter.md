@@ -43,14 +43,14 @@ Retrieve HotAdd proxy virtual machines.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - filter - list of VcenterProxyVmsFilterInputs: Filter for vCenter hotadd proxy virtual machine.
     - clusterUuids - list of System.Strings: List of cluster IDs.
 - Returns VsphereProxyVmInfoConnection.
 ### list
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

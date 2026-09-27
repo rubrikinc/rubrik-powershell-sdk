@@ -1,4 +1,4 @@
-// UserNotifications.cs
+// HpeVmeVirtualMachineDetails.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,20 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region UserNotifications
-    public class UserNotifications: BaseType
+    #region HpeVmeVirtualMachineDetails
+    public class HpeVmeVirtualMachineDetails: BaseType
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String! (scalar)
+        [JsonProperty("hpeVmeHostId")]
+        public System.String? HpeVmeHostId { get; set; }
 
-        //      C# -> System.Int64? UnreadCount
-        // GraphQL -> unreadCount: Long! (scalar)
-        [JsonProperty("unreadCount")]
-        public System.Int64? UnreadCount { get; set; }
+        //      C# -> System.String? HpeVmeVmId
+        // GraphQL -> hpeVmeVmId: String! (scalar)
+        [JsonProperty("hpeVmeVmId")]
+        public System.String? HpeVmeVmId { get; set; }
 
 
         #endregion
@@ -36,19 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "UserNotifications";
+        return "HpeVmeVirtualMachineDetails";
     }
 
-    public UserNotifications Set(
-        System.String? Id = null,
-        System.Int64? UnreadCount = null
+    public HpeVmeVirtualMachineDetails Set(
+        System.String? HpeVmeHostId = null,
+        System.String? HpeVmeVmId = null
     ) 
     {
-        if ( Id != null ) {
-            this.Id = Id;
+        if ( HpeVmeHostId != null ) {
+            this.HpeVmeHostId = HpeVmeHostId;
         }
-        if ( UnreadCount != null ) {
-            this.UnreadCount = UnreadCount;
+        if ( HpeVmeVmId != null ) {
+            this.HpeVmeVmId = HpeVmeVmId;
         }
         return this;
     }
@@ -64,22 +64,22 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (this.Id != null) {
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String! (scalar)
+        if (this.HpeVmeHostId != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "id\n" ;
+                s += conf.Prefix + "hpeVmeHostId\n" ;
             } else {
-                s += ind + "id\n" ;
+                s += ind + "hpeVmeHostId\n" ;
             }
         }
-        //      C# -> System.Int64? UnreadCount
-        // GraphQL -> unreadCount: Long! (scalar)
-        if (this.UnreadCount != null) {
+        //      C# -> System.String? HpeVmeVmId
+        // GraphQL -> hpeVmeVmId: String! (scalar)
+        if (this.HpeVmeVmId != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "unreadCount\n" ;
+                s += conf.Prefix + "hpeVmeVmId\n" ;
             } else {
-                s += ind + "unreadCount\n" ;
+                s += ind + "hpeVmeVmId\n" ;
             }
         }
         return s;
@@ -89,50 +89,50 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (ec.Includes("id",true))
+        //      C# -> System.String? HpeVmeHostId
+        // GraphQL -> hpeVmeHostId: String! (scalar)
+        if (ec.Includes("hpeVmeHostId",true))
         {
-            if(this.Id == null) {
+            if(this.HpeVmeHostId == null) {
 
-                this.Id = "FETCH";
+                this.HpeVmeHostId = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.Id != null && ec.Excludes("id",true))
+        else if (this.HpeVmeHostId != null && ec.Excludes("hpeVmeHostId",true))
         {
-            this.Id = null;
+            this.HpeVmeHostId = null;
         }
-        //      C# -> System.Int64? UnreadCount
-        // GraphQL -> unreadCount: Long! (scalar)
-        if (ec.Includes("unreadCount",true))
+        //      C# -> System.String? HpeVmeVmId
+        // GraphQL -> hpeVmeVmId: String! (scalar)
+        if (ec.Includes("hpeVmeVmId",true))
         {
-            if(this.UnreadCount == null) {
+            if(this.HpeVmeVmId == null) {
 
-                this.UnreadCount = new System.Int64();
+                this.HpeVmeVmId = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.UnreadCount != null && ec.Excludes("unreadCount",true))
+        else if (this.HpeVmeVmId != null && ec.Excludes("hpeVmeVmId",true))
         {
-            this.UnreadCount = null;
+            this.HpeVmeVmId = null;
         }
     }
 
 
     #endregion
 
-    } // class UserNotifications
+    } // class HpeVmeVirtualMachineDetails
     
     #endregion
 
-    public static class ListUserNotificationsExtensions
+    public static class ListHpeVmeVirtualMachineDetailsExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -151,14 +151,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<UserNotifications> list,
+            this List<HpeVmeVirtualMachineDetails> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<UserNotifications> list)
+        public static List<string> SelectedFields(this List<HpeVmeVirtualMachineDetails> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -167,16 +167,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<UserNotifications> list, 
+            this List<HpeVmeVirtualMachineDetails> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new UserNotifications());
+                list.Add(new HpeVmeVirtualMachineDetails());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<UserNotifications> list)
+        public static void SelectForRetrieval(this List<HpeVmeVirtualMachineDetails> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

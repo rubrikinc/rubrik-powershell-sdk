@@ -40,9 +40,9 @@ List of GCP Cloud SQL instances.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GcpCloudSqlInstanceSortFields: Sort fields for list of GCP Cloud SQL instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - cloudSqlInstanceFilters - GcpCloudSqlInstanceFilters: Filters for list of GCP Cloud SQL instances.

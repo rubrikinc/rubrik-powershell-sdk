@@ -47,6 +47,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Details of features enabled for the subscription.
 - accountConnectionId: System.String
   - Cloud account ID associated with the subscription.
+- azureCosmosNosqlContainerCount: System.Int32
+  - The number of Azure Cosmos NoSQL containers in the subscription.
 - snappableTypeToBackupSetupSpecs: list of WorkloadTypeToBackupSetupSpecss
   - A list of mappings between object types and details about the backup setup.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
@@ -79,5 +81,9 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.

@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.Int32? MailboxesPendingGraphMigration
         // GraphQL -> mailboxesPendingGraphMigration: Int! (scalar)
         [JsonProperty("mailboxesPendingGraphMigration")]
@@ -195,6 +200,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exchangeGraphMigrationStatus: ExchangeGraphMigrationStatus! (type)
         [JsonProperty("exchangeGraphMigrationStatus")]
         public ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> O365GroupsSummary? GroupsSummary
         // GraphQL -> groupsSummary: O365GroupsSummary! (type)
@@ -431,6 +441,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ExocomputeId = null,
         System.Boolean? HasSharePointLegacySnapshots = null,
         System.String? Id = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.Int32? MailboxesPendingGraphMigration = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -455,6 +466,7 @@ namespace RubrikSecurityCloud.Types
         O365UserConnection? ChildConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         O365GroupsSummary? GroupsSummary = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -506,6 +518,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
         }
         if ( MailboxesPendingGraphMigration != null ) {
             this.MailboxesPendingGraphMigration = MailboxesPendingGraphMigration;
@@ -578,6 +593,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExchangeGraphMigrationStatus != null ) {
             this.ExchangeGraphMigrationStatus = ExchangeGraphMigrationStatus;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( GroupsSummary != null ) {
             this.GroupsSummary = GroupsSummary;
@@ -753,6 +771,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
             }
         }
         //      C# -> System.Int32? MailboxesPendingGraphMigration
@@ -983,6 +1010,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "exchangeGraphMigrationStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1405,6 +1444,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.Int32? MailboxesPendingGraphMigration
         // GraphQL -> mailboxesPendingGraphMigration: Int! (scalar)
         if (ec.Includes("mailboxesPendingGraphMigration",true))
@@ -1822,6 +1878,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExchangeGraphMigrationStatus != null && ec.Excludes("exchangeGraphMigrationStatus",false))
         {
             this.ExchangeGraphMigrationStatus = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> O365GroupsSummary? GroupsSummary
         // GraphQL -> groupsSummary: O365GroupsSummary! (type)

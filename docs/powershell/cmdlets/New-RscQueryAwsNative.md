@@ -12,9 +12,9 @@ Paginated list of all AWS Native accounts.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
     - sortOrder - SortOrder: Sorts the order of results.
     - accountFilters - AwsNativeAccountFilters
@@ -51,9 +51,9 @@ Paginated list of all AWS EBS Volumes.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
     - sortOrder - SortOrder: Sorts the order of results.
     - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
@@ -64,9 +64,9 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
     - sortOrder - SortOrder: Sorts the order of results.
     - ebsVolumeName - System.String: The native name for the AWS EBS Volume object.
@@ -83,9 +83,9 @@ Paginated list of all AWS EC2 Instances.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
@@ -97,9 +97,9 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - ec2InstanceName - System.String: Native name for the AWS EC2 Instance object.
@@ -146,9 +146,9 @@ Paginated list of AWS RDS Instances on AWS Native account.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.

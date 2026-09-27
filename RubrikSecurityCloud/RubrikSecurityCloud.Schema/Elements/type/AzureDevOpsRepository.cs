@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -131,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -155,6 +165,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
         public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        [JsonProperty("objectStats")]
+        public DevOpsObjectStats? ObjectStats { get; set; }
 
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
@@ -320,6 +335,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -333,11 +349,13 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
+        DevOpsObjectStats? ObjectStats = null,
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
@@ -375,6 +393,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -415,6 +436,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
+        }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
         }
@@ -429,6 +453,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
+        }
+        if ( ObjectStats != null ) {
+            this.ObjectStats = ObjectStats;
         }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
@@ -564,6 +591,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isRelic\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -690,6 +726,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -747,6 +795,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (this.ObjectStats != null) {
+            var fspec = this.ObjectStats.AsFieldSpec(conf.Child("objectStats"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectStats" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1039,6 +1099,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsRelic = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1266,6 +1343,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (ec.Includes("logicalPath",false))
@@ -1360,6 +1456,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
         {
             this.ObjectPauseStatus = null;
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (ec.Includes("objectStats",false))
+        {
+            if(this.ObjectStats == null) {
+
+                this.ObjectStats = new DevOpsObjectStats();
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            } else {
+
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            }
+        }
+        else if (this.ObjectStats != null && ec.Excludes("objectStats",false))
+        {
+            this.ObjectStats = null;
         }
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)

@@ -104,6 +104,9 @@ principal.
 (SeRemoteInteractiveLogonRight) user right to a non-default principal.
 - SECURITY_GPO_SE_TCB_PRIVILEGE - Filter for GPOs that grant the "Act as part of the operating system" (SeTcbPrivilege) user
 right to a non-default principal.
+- SECURITY_GPO_CLEAR_TEXT_PASSWORD - Filter for GPOs that configure the "Store passwords using reversible encryption"
+(ClearTextPassword) security option. Selects GPOs where the setting is configured
+to store passwords using reversible encryption (ClearTextPassword = 1).
 - SECURITY_IDP_METADATA_LABEL - Identity Provider domain level metadata label filter.
 - SECURITY_IDP_HAS_GROUP_WITH_LABEL - Identity Provider domain has a group-with-label filter.
 - SECURITY_IDP_HAS_USER_WITH_LABEL - Identity Provider domain has a user-with-label filter.

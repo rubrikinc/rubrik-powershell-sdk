@@ -8,4 +8,5 @@ ID of the new MySQL Database instance created.
   - Required. Supported in v9.3+
 Status of the asynchronous job triggered when MySQL database cluster instance is created.
 - kosmosTopologyStateId: System.String
-  - Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.
+  - Supported in v9.6+
+Topology ID of the MySQL HA cluster backing this instance. Present only when the instance is HA-mode; omitted for standalone instances.

@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ILAND_CLOUD")]
         ILAND_CLOUD,
 
+        [EnumMember(Value = "INFINIDAT_INFINIBOX")]
+        INFINIDAT_INFINIBOX,
+
         [EnumMember(Value = "IRONCLOUD")]
         IRONCLOUD,
 

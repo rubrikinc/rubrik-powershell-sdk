@@ -6,9 +6,9 @@ snapshot.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - path - System.String: The path under which you want your search to run.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
@@ -56,9 +56,9 @@ Returns a list of NAS Cloud Direct snapshots.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of CloudDirectSnapshotsFilterInputs: Filter for NAS Cloud Direct snapshots.
     - sortBy - CloudDirectSnapshotsSortByInput: Sort NAS Cloud Direct snapshots.
 - Returns CloudDirectSnapshotConnection.
@@ -71,9 +71,9 @@ previously performed in the GraphQL resolver
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -88,9 +88,9 @@ response shaping previously performed in the GraphQL resolver
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -101,7 +101,7 @@ Browse or search the given path for files and directories along with their delta
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -114,7 +114,7 @@ Browse or search the given path for files and directories along with their delta
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -164,9 +164,9 @@ List of legal hold snapshots for a workload.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - LegalHoldSnapshotsForSnappableInput: Query legal hold snapshots for a workload.
 - Returns LegalHoldSnapshotDetailConnection.
 ### listdifffilesfor
@@ -174,7 +174,7 @@ List files with their deltas in a given snapshot, with optional search string fi
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - searchString - System.String: Optional search string to filter files by filename.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -204,9 +204,9 @@ as a single O365OnedriveObject interface list (folders then files).
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -254,9 +254,9 @@ Returns snapshot results for a workload.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: FID of the workload to query.
     - startTimeMs - System.Int64: Begin time of the range (in milliseconds since epoch)
     - endTimeMs - System.Int64: End time of the range (in milliseconds since epoch)
@@ -266,9 +266,9 @@ Returns a list of snapshots for a workload.
 
 - There are 15 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -286,9 +286,9 @@ Returns list of snapshots for a list of workloads.
 
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableIds - list of System.Strings: Workload UUIDs.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -305,9 +305,9 @@ List of workloads with legal hold snapshots.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - SnappablesWithLegalHoldSnapshotsInput: Input to retrieve workloads with legal hold snapshots.
 - Returns LegalHoldSnappableDetailConnection.
 ### snapshot
@@ -325,9 +325,9 @@ Returns a list of NAS Cloud Direct snapshots for a bucket.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -340,9 +340,9 @@ Returns a list of NAS Cloud Direct snapshots for a share.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadId - System.String: The FID of the workload.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -356,9 +356,9 @@ the given workloads.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadIds - list of System.Strings: List of workload IDs for which to retrieve snapshot security information.
     - startTime - DateTime: Optional filter to consider only snapshots at or after this time.
     - endTime - DateTime: Optional filter to consider only snapshots at or before this time.
@@ -376,9 +376,9 @@ List of snapshots for unmanaged objects.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - QueryUnmanagedObjectSnapshotsV1Input: Input for V1QueryUnmanagedObjectSnapshotsV1.
 - Returns SnapshotSummaryConnection.
 ### vappinstantrecoveryoptions

@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> M365AccessMode? AccessMode
+        // GraphQL -> accessMode: M365AccessMode! (enum)
+        [JsonProperty("accessMode")]
+        public M365AccessMode? AccessMode { get; set; }
+
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
         [JsonProperty("appAuthStatus")]
@@ -81,6 +86,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public O365App Set(
+        M365AccessMode? AccessMode = null,
         AppAuthStatus? AppAuthStatus = null,
         AppCredsState? CredsState = null,
         DateTime? AddedAt = null,
@@ -93,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         System.String? SubscriptionId = null
     ) 
     {
+        if ( AccessMode != null ) {
+            this.AccessMode = AccessMode;
+        }
         if ( AppAuthStatus != null ) {
             this.AppAuthStatus = AppAuthStatus;
         }
@@ -137,6 +146,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> M365AccessMode? AccessMode
+        // GraphQL -> accessMode: M365AccessMode! (enum)
+        if (this.AccessMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accessMode\n" ;
+            } else {
+                s += ind + "accessMode\n" ;
+            }
+        }
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
         if (this.AppAuthStatus != null) {
@@ -234,6 +252,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> M365AccessMode? AccessMode
+        // GraphQL -> accessMode: M365AccessMode! (enum)
+        if (ec.Includes("accessMode",true))
+        {
+            if(this.AccessMode == null) {
+
+                this.AccessMode = new M365AccessMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessMode != null && ec.Excludes("accessMode",true))
+        {
+            this.AccessMode = null;
+        }
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
         if (ec.Includes("appAuthStatus",true))

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadRecoveryStatus")]
         public WorkloadRecoveryStatusV2? WorkloadRecoveryStatus { get; set; }
 
+        //      C# -> System.Single? JobProgressPercentage
+        // GraphQL -> jobProgressPercentage: Float (scalar)
+        [JsonProperty("jobProgressPercentage")]
+        public System.Single? JobProgressPercentage { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         [JsonProperty("workloadId")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public WorkloadRecoveryInfoV2 Set(
         RecoveryOutcome? WorkloadRecoveryOutcome = null,
         WorkloadRecoveryStatusV2? WorkloadRecoveryStatus = null,
+        System.Single? JobProgressPercentage = null,
         System.String? WorkloadId = null,
         System.String? WorkloadName = null,
         System.String? WorkloadRecoveryId = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( WorkloadRecoveryStatus != null ) {
             this.WorkloadRecoveryStatus = WorkloadRecoveryStatus;
+        }
+        if ( JobProgressPercentage != null ) {
+            this.JobProgressPercentage = JobProgressPercentage;
         }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "workloadRecoveryStatus\n" ;
             } else {
                 s += ind + "workloadRecoveryStatus\n" ;
+            }
+        }
+        //      C# -> System.Single? JobProgressPercentage
+        // GraphQL -> jobProgressPercentage: Float (scalar)
+        if (this.JobProgressPercentage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "jobProgressPercentage\n" ;
+            } else {
+                s += ind + "jobProgressPercentage\n" ;
             }
         }
         //      C# -> System.String? WorkloadId
@@ -194,6 +212,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.WorkloadRecoveryStatus != null && ec.Excludes("workloadRecoveryStatus",true))
         {
             this.WorkloadRecoveryStatus = null;
+        }
+        //      C# -> System.Single? JobProgressPercentage
+        // GraphQL -> jobProgressPercentage: Float (scalar)
+        if (ec.Includes("jobProgressPercentage",true))
+        {
+            if(this.JobProgressPercentage == null) {
+
+                this.JobProgressPercentage = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobProgressPercentage != null && ec.Excludes("jobProgressPercentage",true))
+        {
+            this.JobProgressPercentage = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)

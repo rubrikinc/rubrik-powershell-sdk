@@ -20,10 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> HvmEnvironmentDetails? HpeVme
-        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        //      C# -> HpeVmeEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HpeVmeEnvironmentDetails (type)
         [JsonProperty("hpeVme")]
-        public HvmEnvironmentDetails? HpeVme { get; set; }
+        public HpeVmeEnvironmentDetails? HpeVme { get; set; }
 
         //      C# -> ProxmoxEnvironmentDetails? Proxmox
         // GraphQL -> proxmox: ProxmoxEnvironmentDetails (type)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervisorEnvironmentTypeOneof Set(
-        HvmEnvironmentDetails? HpeVme = null,
+        HpeVmeEnvironmentDetails? HpeVme = null,
         ProxmoxEnvironmentDetails? Proxmox = null
     ) 
     {
@@ -64,8 +64,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> HvmEnvironmentDetails? HpeVme
-        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        //      C# -> HpeVmeEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HpeVmeEnvironmentDetails (type)
         if (this.HpeVme != null) {
             var fspec = this.HpeVme.AsFieldSpec(conf.Child("hpeVme"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -95,13 +95,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> HvmEnvironmentDetails? HpeVme
-        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        //      C# -> HpeVmeEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HpeVmeEnvironmentDetails (type)
         if (ec.Includes("hpeVme",false))
         {
             if(this.HpeVme == null) {
 
-                this.HpeVme = new HvmEnvironmentDetails();
+                this.HpeVme = new HpeVmeEnvironmentDetails();
                 this.HpeVme.ApplyExploratoryFieldSpec(ec.NewChild("hpeVme"));
 
             } else {

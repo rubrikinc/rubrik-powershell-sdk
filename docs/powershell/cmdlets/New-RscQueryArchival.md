@@ -5,9 +5,9 @@ Get archival information for all objects across every archival location the call
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - ArchivalPerObjectInfoSortByField: Specifies the field by which the list of archival object info will be sorted.
     - filter - list of ArchivalPerObjectInfoFilterInputs: Specifies how to filter the list of archival object info.
@@ -19,9 +19,9 @@ Lists all the user-created archival entities. This includes data center archival
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of ArchivalEntityFilterInputs: Specifies how to filter the list of archival entities.
     - sortBy - ArchivalEntityQuerySortByField: Specifies the field by which the list of archival entities will be sorted.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -31,9 +31,9 @@ Get all archival locations for a given failover group.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - failoverGroupId - System.String: Failover Group ID for which archival locations will be retrieved..
     - filter - FailoverGroupArchivalLocationFilter: Filters to apply to the query.
 - Returns FailoverGroupArchivalLocationConnection.
@@ -70,9 +70,9 @@ group.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - primaryClusterId - System.String: Primary cluster ID.
     - secondaryClusterId - System.String: Secondary cluster ID.
     - filter - ArchivalLocationsForFailoverGroupFilter: Filters to apply to the query.
@@ -88,9 +88,9 @@ Get archival information for all objects with data archived to the specified loc
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - ArchivalPerObjectInfoSortByField: Specifies the field by which the list of archival object info will be sorted.
     - filter - list of ArchivalPerObjectInfoFilterInputs: Specifies how to filter the list of archival object info.
@@ -143,9 +143,9 @@ All archival locations.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - ArchivalLocationQuerySortByField: Specifies the field by which the list of targets will be sorted.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of TargetFilterInputs: Specifies how to filter the list of targets.

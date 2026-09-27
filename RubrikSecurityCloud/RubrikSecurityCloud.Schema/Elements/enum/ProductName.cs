@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AAD")]
         AAD,
 
+        [EnumMember(Value = "AAD_B2B_RECOVERY")]
+        AAD_B2B_RECOVERY,
+
         [EnumMember(Value = "AAD_CYBER_POSTURE")]
         AAD_CYBER_POSTURE,
 
@@ -119,6 +122,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ONPREM_AD_CR")]
         ONPREM_AD_CR,
+
+        [EnumMember(Value = "POWER_PLATFORM")]
+        POWER_PLATFORM,
 
         [EnumMember(Value = "RADAR")]
         RADAR,

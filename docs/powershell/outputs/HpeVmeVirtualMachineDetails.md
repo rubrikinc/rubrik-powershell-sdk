@@ -1,7 +1,7 @@
-### HvmVirtualMachineDetails
+### HpeVmeVirtualMachineDetails
 Details of an HPE Virtual Machine Essentials virtual machine.
 
-- hvmVmId: System.String
+- hpeVmeVmId: System.String
   - HPE Virtual Machine Essentials virtual machine ID.
-- hvmHostId: System.String
+- hpeVmeHostId: System.String
   - HPE Virtual Machine Essentials host ID.

@@ -2172,7 +2172,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscMutationO365 -Operation SetupKickoff
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -4621,20 +4625,25 @@ $query.Var.orgId = $someString"
         }
 
         // Create new GraphQL Mutation:
-        // o365SetupKickoff: O365SetupKickoffResp!
+        // o365SetupKickoff(input: O365SetupKickoffInput): O365SetupKickoffResp!
         internal void InitMutationO365SetupKickoff()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "O365SetupKickoffInput"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationO365SetupKickoff",
-                "",
+                "($input: O365SetupKickoffInput)",
                 "O365SetupKickoffResp",
                 Mutation.O365SetupKickoff,
                 Mutation.O365SetupKickoffFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.input = @{
+	# OPTIONAL
+	accessMode = $someM365AccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365AccessMode]) for enum values.
+}"
             );
         }
 

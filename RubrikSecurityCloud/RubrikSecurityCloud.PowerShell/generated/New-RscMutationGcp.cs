@@ -385,9 +385,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	sessionId = $someString
     /// 	# REQUIRED
-    /// 	authorizationCode = $someString
-    /// 	# REQUIRED
     /// 	redirectUrl = $someString
+    /// 	# REQUIRED
+    /// 	authorizationCode = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1351,9 +1351,9 @@ $query.Var.input = @{
 	# REQUIRED
 	sessionId = $someString
 	# REQUIRED
-	authorizationCode = $someString
-	# REQUIRED
 	redirectUrl = $someString
+	# REQUIRED
+	authorizationCode = $someString
 }"
             );
         }

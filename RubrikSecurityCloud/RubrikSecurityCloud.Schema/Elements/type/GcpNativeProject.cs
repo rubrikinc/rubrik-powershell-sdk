@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastRefreshedAt")]
         public DateTime? LastRefreshedAt { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -160,6 +165,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enabledFeatures: [CloudAccountEnabledFeature!]! (type)
         [JsonProperty("enabledFeatures")]
         public List<CloudAccountEnabledFeature>? EnabledFeatures { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection
         // GraphQL -> gcpNativeGceInstanceConnection: GcpNativeGceInstanceConnection! (type)
@@ -285,6 +295,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         DateTime? LastRefreshedAt = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.String? NativeId = null,
         System.String? NativeName = null,
@@ -298,6 +309,7 @@ namespace RubrikSecurityCloud.Types
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<CloudAccountEnabledFeature>? EnabledFeatures = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection = null,
         List<Label>? Labels = null,
         GcpNativeProjectLogicalChildTypeConnection? LogicalChildConnection = null,
@@ -355,6 +367,9 @@ namespace RubrikSecurityCloud.Types
         if ( LastRefreshedAt != null ) {
             this.LastRefreshedAt = LastRefreshedAt;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -393,6 +408,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnabledFeatures != null ) {
             this.EnabledFeatures = EnabledFeatures;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( GcpNativeGceInstanceConnection != null ) {
             this.GcpNativeGceInstanceConnection = GcpNativeGceInstanceConnection;
@@ -585,6 +603,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "lastRefreshedAt\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -711,6 +738,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "enabledFeatures" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1117,6 +1156,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LastRefreshedAt = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1345,6 +1401,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
         {
             this.EnabledFeatures = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection
         // GraphQL -> gcpNativeGceInstanceConnection: GcpNativeGceInstanceConnection! (type)

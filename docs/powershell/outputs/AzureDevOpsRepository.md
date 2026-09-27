@@ -35,6 +35,8 @@ Azure DevOps Repository.
   - Name of the Azure DevOps project associated with the repository.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
+- objectStats: DevOpsObjectStats
+  - DevOps object stats for this repository.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -55,6 +57,10 @@ Azure DevOps Repository.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection

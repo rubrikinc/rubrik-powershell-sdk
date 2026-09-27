@@ -723,6 +723,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_IP_ADDRESS_IN_AUDITS")]
         VIEW_IP_ADDRESS_IN_AUDITS,
 
+        [EnumMember(Value = "VIEW_K8S_DB_CREDENTIALS")]
+        VIEW_K8S_DB_CREDENTIALS,
+
         [EnumMember(Value = "VIEW_KMS_KEY_VAULT")]
         VIEW_KMS_KEY_VAULT,
 

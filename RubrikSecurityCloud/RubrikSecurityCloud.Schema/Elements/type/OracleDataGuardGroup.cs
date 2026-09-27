@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isZeroRpoEnabled")]
         public System.Boolean? IsZeroRpoEnabled { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         [JsonProperty("logBackupFrequency")]
@@ -255,6 +260,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> OracleDatabaseLastValidationStatus? LastValidationResult
         // GraphQL -> lastValidationResult: OracleDatabaseLastValidationStatus (type)
@@ -518,6 +528,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplica = null,
         System.Boolean? IsZeroRpoEnabled = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.Int32? LogBackupFrequency = null,
         System.Int32? LogRatePerRmanChannelInMb = null,
         System.Int32? LogRetentionHours = null,
@@ -545,6 +556,7 @@ namespace RubrikSecurityCloud.Types
         Duration? EffectiveLogBackupFrequency = null,
         Duration? EffectiveLogRetention = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         OracleDatabaseLastValidationStatus? LastValidationResult = null,
         LatestUserNote? LatestUserNote = null,
         OracleDataGuardGroupLogicalChildTypeConnection? LogicalChildConnection = null,
@@ -629,6 +641,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsZeroRpoEnabled != null ) {
             this.IsZeroRpoEnabled = IsZeroRpoEnabled;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( LogBackupFrequency != null ) {
             this.LogBackupFrequency = LogBackupFrequency;
         }
@@ -709,6 +724,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( LastValidationResult != null ) {
             this.LastValidationResult = LastValidationResult;
@@ -990,6 +1008,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isZeroRpoEnabled\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (this.LogBackupFrequency != null) {
@@ -1257,6 +1284,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1901,6 +1940,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsZeroRpoEnabled = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (ec.Includes("logBackupFrequency",true))
@@ -2377,6 +2433,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> OracleDatabaseLastValidationStatus? LastValidationResult
         // GraphQL -> lastValidationResult: OracleDatabaseLastValidationStatus (type)

@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appAuthVersion")]
         System.Int32? AppAuthVersion { get; set; }
 
+        //      C# -> M365AccessMode? AccessMode
+        // GraphQL -> accessMode: M365AccessMode! (enum)
+        [JsonProperty("accessMode")]
+        M365AccessMode? AccessMode { get; set; }
+
 
         #endregion
 

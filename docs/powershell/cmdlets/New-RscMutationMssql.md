@@ -117,7 +117,7 @@ Create a request to restore a Microsoft SQL database.
 ### startlogshippingapplylogsjob
 Apply pending transaction logs to a secondary database
 
-Supported in v9.7
+Supported in v9.6+
 Starts an asynchronous job that applies all pending transaction logs to the secondary database within the specified log shipping configuration without changing its state.
 
 - There is a single argument of type StartMssqlLogShippingApplyLogsJobInput.

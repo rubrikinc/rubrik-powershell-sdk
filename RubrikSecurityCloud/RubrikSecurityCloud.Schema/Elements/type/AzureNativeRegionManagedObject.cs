@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        [JsonProperty("azureCosmosNosqlContainerCount")]
+        public System.Int32? AzureCosmosNosqlContainerCount { get; set; }
+
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
         // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
         [JsonProperty("azurePostgresFlexibleServerCount")]
@@ -86,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -120,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -195,6 +210,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.Int32? AzureCosmosNosqlContainerCount = null,
         System.Int32? AzurePostgresFlexibleServerCount = null,
         System.Int32? AzureSqlDatabaseDbCount = null,
         System.Int32? AzureSqlManagedInstanceDbCount = null,
@@ -202,6 +218,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureSubscriptionId = null,
         System.Int32? DisksCount = null,
         System.String? Id = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Boolean? SlaPauseStatus = null,
@@ -209,6 +226,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<PathNode>? LogicalPath = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -236,6 +254,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
+        if ( AzureCosmosNosqlContainerCount != null ) {
+            this.AzureCosmosNosqlContainerCount = AzureCosmosNosqlContainerCount;
+        }
         if ( AzurePostgresFlexibleServerCount != null ) {
             this.AzurePostgresFlexibleServerCount = AzurePostgresFlexibleServerCount;
         }
@@ -257,6 +278,9 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -277,6 +301,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -379,6 +406,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        if (this.AzureCosmosNosqlContainerCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureCosmosNosqlContainerCount\n" ;
+            } else {
+                s += ind + "azureCosmosNosqlContainerCount\n" ;
+            }
+        }
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
         // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
         if (this.AzurePostgresFlexibleServerCount != null) {
@@ -440,6 +476,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -511,6 +556,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -728,6 +785,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> System.Int32? AzureCosmosNosqlContainerCount
+        // GraphQL -> azureCosmosNosqlContainerCount: Int! (scalar)
+        if (ec.Includes("azureCosmosNosqlContainerCount",true))
+        {
+            if(this.AzureCosmosNosqlContainerCount == null) {
+
+                this.AzureCosmosNosqlContainerCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureCosmosNosqlContainerCount != null && ec.Excludes("azureCosmosNosqlContainerCount",true))
+        {
+            this.AzureCosmosNosqlContainerCount = null;
+        }
         //      C# -> System.Int32? AzurePostgresFlexibleServerCount
         // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
         if (ec.Includes("azurePostgresFlexibleServerCount",true))
@@ -846,6 +920,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -971,6 +1062,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

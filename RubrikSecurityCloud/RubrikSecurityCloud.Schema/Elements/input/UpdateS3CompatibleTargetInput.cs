@@ -66,6 +66,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("immutabilitySettings")]
         public LocationImmutabilitySettings? ImmutabilitySettings { get; set; }
 
+        //      C# -> System.String? TlsCertificateId
+        // GraphQL -> tlsCertificateId: String (scalar)
+        [JsonProperty("tlsCertificateId")]
+        public System.String? TlsCertificateId { get; set; }
+
+        //      C# -> CertificateTrustMode? CertificateTrustMode
+        // GraphQL -> certificateTrustMode: CertificateTrustMode (enum)
+        [JsonProperty("certificateTrustMode")]
+        public CertificateTrustMode? CertificateTrustMode { get; set; }
+
 
         #endregion
 

@@ -25,9 +25,9 @@ List of all replication pair Rubrik clusters.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - ReplicationPairsQuerySortByField: Field to sort by for replication pairs.
     - sortOrder - SortOrder: Sort order.
     - filter - ReplicationPairsQueryFilter: Filter for replication pairs query.
@@ -37,9 +37,9 @@ Lists all valid replication source clusters.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - ListValidReplicationSourcesSortByField: Field to sort by for valid replication sources.
     - sortOrder - SortOrder: Sort order.
     - isCrossAccount - System.Boolean: Specification for Rubrik clusters to be retrieved - local or cross-account.
@@ -49,9 +49,9 @@ Lists all valid replication target clusters.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - ListValidReplicationTargetsSortByField: Field to sort by for valid replication targets.
     - sortOrder - SortOrder: Sort order.
     - isCrossAccount - System.Boolean: Deprecated. Use ListValidReplicationTargetFilter instead.

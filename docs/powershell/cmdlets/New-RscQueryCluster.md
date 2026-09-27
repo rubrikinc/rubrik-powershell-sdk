@@ -35,9 +35,9 @@ Query Cloud Direct NAS clusters for Threat Monitoring.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -50,9 +50,9 @@ A cluster object.
 ### clusterlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -93,9 +93,9 @@ Filter clusters by encryption information.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - clusterName - System.String: The prefix of the name of the Rubrik cluster.
     - encryptionStatusFilter - list of ClusterEncryptionStatusFilters: The encryption status of the Rubrik cluster.
@@ -126,9 +126,9 @@ Summary of all FusionCompute clusters.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -138,9 +138,9 @@ Summary of all FusionCompute clusters and hosts.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -151,9 +151,9 @@ Summary of all FusionCompute clusters and hosts that the user can recover to.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -176,9 +176,9 @@ Get CDM release details from support portal for a given list of clusters.
 ### groupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - ClusterGroupByEnum: Group by field.
     - filter - ClusterFilterInput: Filter by cluster.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -227,9 +227,9 @@ List of the available cluster objects.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -239,9 +239,9 @@ All missing clusters from the account.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - connectionStatus - MissingClusterConnectionStatus: Rubrik cluster connection status.
     - isExcluded - System.Boolean: Rubrik cluster exclusion status.
 - Returns MissingClusterConnection.
@@ -285,13 +285,15 @@ Get details about a PostgreSQL database cluster-related request, which includes 
     - id - System.String: ID of the asynchronous request.
 - Returns AsyncRequestStatus.
 ### postgresdbclusterlivemounts
-The live mounts of the given workloads.
+Returns Live Mounts for PostgreSQL database clusters.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - filters - list of KosmosWorkloadLiveMountFilterInputs: Filter for Kosmos workload live mounts.
-    - sortBy - KosmosWorkloadLiveMountSortByInput: Sort the live mounts of the Kosmos Workload based on the argument.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - list of KosmosWorkloadLiveMountFilterInputs: Optional client-supplied filters.
+    - sortBy - KosmosWorkloadLiveMountSortByInput: Optional sort parameters.
 - Returns KosmosWorkloadLiveMountConnection.
 ### postgresqldb
 Details of a PostgreSQL database cluster for a given FID.
@@ -299,11 +301,14 @@ Details of a PostgreSQL database cluster for a given FID.
 - There is a single argument of type System.String.
 - Returns PostgreSQLDbCluster.
 ### postgresqldbclusters
-Connection of filtered PostgreSQL database cluster based on specific filters.
+Returns a connection of filtered PostgreSQL database clusters based on
+specific filters.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -316,9 +321,9 @@ Rubrik cluster proxy information.
 ### radarclusterlist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
@@ -330,9 +335,9 @@ and cluster stats.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ReclaimableClusterStatsFilterInput: Filter criteria for clusters.
     - sortBy - ReclaimableClusterStatsSortBy: Field to sort results by.
     - sortOrder - SortOrder: Sort order (ascending or descending).
@@ -342,9 +347,9 @@ Returns the list of cluster UUID to name mapping for an org.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns ClusterRefsConnection.
 ### registrationproductinfo
 Info about the cluster product types the user is entitled to.
@@ -392,9 +397,9 @@ A Windows Cluster.
 ### withupgradesinfo
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - upgradeFilter - CdmUpgradeInfoFilterInput
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - UpgradeInfoSortByEnum: sort upgradeInfo by field

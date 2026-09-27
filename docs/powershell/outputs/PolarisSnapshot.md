@@ -94,3 +94,5 @@ additional fields for cloud-managed snapshots.
   - Whether this snapshot falls within a known identity-compromise window derived from identity threat alerts (Microsoft Defender for Identity or CrowdStrike Falcon Identity). A null or false value does not assert the snapshot is clean, only that no compromise is known.
 - compromisingAlerts: list of TriggeringAlerts
   - The identity-compromise alerts that explain why this snapshot is marked as compromised. Absent or empty when the snapshot is not marked.
+- compromisingAlertCount: System.Int32
+  - How many identity-compromise alerts cover this snapshot. compromisingAlerts is capped and may return fewer than this; a null value means the marking could not be resolved.

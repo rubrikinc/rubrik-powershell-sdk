@@ -293,6 +293,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	tlsCertificateId = $someString
+    /// 	# OPTIONAL
+    /// 	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1058,6 +1062,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isObjectLockEnabled = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	tlsCertificateId = $someString
+    /// 	# OPTIONAL
+    /// 	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1641,6 +1649,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
 	}
+	# OPTIONAL
+	tlsCertificateId = $someString
+	# OPTIONAL
+	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
 }"
             );
         }
@@ -2262,6 +2274,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		isObjectLockEnabled = $someBoolean
 	}
+	# OPTIONAL
+	tlsCertificateId = $someString
+	# OPTIONAL
+	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
 }"
             );
         }

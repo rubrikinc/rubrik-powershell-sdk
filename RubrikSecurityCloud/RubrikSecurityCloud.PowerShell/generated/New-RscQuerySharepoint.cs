@@ -803,6 +803,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	itemId = $someString
     /// }
+    /// # OPTIONAL
+    /// $query.Var.siteChildId = $someString
+    /// # OPTIONAL
+    /// $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1661,6 +1665,8 @@ $query.Var.siteChildId = $someString"
         //     snapshotFid: UUID!
         //     orgId: UUID!
         //     sharepointDriveSearchFilter: OnedriveSearchFilter
+        //     siteChildId: String
+        //     siteChildType: SharePointDescendantType
         //   ): O365OnedriveObjectConnection!
         internal void InitQuerySnapshotSharepointDriveSearch()
         {
@@ -1673,12 +1679,14 @@ $query.Var.siteChildId = $someString"
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("sharepointDriveSearchFilter", "OnedriveSearchFilter"),
+                Tuple.Create("siteChildId", "String"),
+                Tuple.Create("siteChildType", "SharePointDescendantType"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotSharepointDriveSearch",
-                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String,$siteChildType: SharePointDescendantType)",
                 "O365OnedriveObjectConnection",
                 Query.SnapshotSharepointDriveSearch,
                 Query.SnapshotSharepointDriveSearchFieldSpec,
@@ -1759,7 +1767,11 @@ $query.Var.sharepointDriveSearchFilter = @{
 	parentWorkloadId = $someString
 	# OPTIONAL
 	itemId = $someString
-}"
+}
+# OPTIONAL
+$query.Var.siteChildId = $someString
+# OPTIONAL
+$query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values."
             );
         }
 

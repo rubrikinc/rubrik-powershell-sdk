@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numVirtualCpus")]
         public System.Int32? NumVirtualCpus { get; set; }
 
+        //      C# -> System.Int32? VmGeneration
+        // GraphQL -> vmGeneration: Int (scalar)
+        [JsonProperty("vmGeneration")]
+        public System.Int32? VmGeneration { get; set; }
+
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
         // GraphQL -> networkAdapters: [HypervNetworkAdapter!] (type)
         [JsonProperty("networkAdapters")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public HypervAppMetadata Set(
         System.Int64? MemoryMb = null,
         System.Int32? NumVirtualCpus = null,
+        System.Int32? VmGeneration = null,
         List<HypervNetworkAdapter>? NetworkAdapters = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumVirtualCpus != null ) {
             this.NumVirtualCpus = NumVirtualCpus;
+        }
+        if ( VmGeneration != null ) {
+            this.VmGeneration = VmGeneration;
         }
         if ( NetworkAdapters != null ) {
             this.NetworkAdapters = NetworkAdapters;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numVirtualCpus\n" ;
             } else {
                 s += ind + "numVirtualCpus\n" ;
+            }
+        }
+        //      C# -> System.Int32? VmGeneration
+        // GraphQL -> vmGeneration: Int (scalar)
+        if (this.VmGeneration != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vmGeneration\n" ;
+            } else {
+                s += ind + "vmGeneration\n" ;
             }
         }
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumVirtualCpus != null && ec.Excludes("numVirtualCpus",true))
         {
             this.NumVirtualCpus = null;
+        }
+        //      C# -> System.Int32? VmGeneration
+        // GraphQL -> vmGeneration: Int (scalar)
+        if (ec.Includes("vmGeneration",true))
+        {
+            if(this.VmGeneration == null) {
+
+                this.VmGeneration = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmGeneration != null && ec.Excludes("vmGeneration",true))
+        {
+            this.VmGeneration = null;
         }
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
         // GraphQL -> networkAdapters: [HypervNetworkAdapter!] (type)

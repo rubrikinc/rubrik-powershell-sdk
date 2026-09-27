@@ -10,9 +10,9 @@ List of GCP disks.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GcpNativeDiskSortFields: Sort fields for list of GCP disks.
     - sortOrder - SortOrder: Sorts the order of results.
     - diskFilters - GcpNativeDiskFilters: Filters for list of GCP disks.
@@ -27,9 +27,9 @@ List of GCE instances.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GcpNativeGceInstanceSortFields: Sort fields for list of GCP GCE instances.
     - sortOrder - SortOrder: Sorts the order of results.
     - gceInstanceFilters - GcpNativeGceInstanceFilters: Filters for list of GCP GCE instances.
@@ -44,9 +44,9 @@ List of GCP projects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GcpNativeProjectSortFields: Sort fields for list of GCP projects.
     - sortOrder - SortOrder: Sorts the order of results.
     - projectFilters - GcpNativeProjectFilters: Filters for list of GCP projects.

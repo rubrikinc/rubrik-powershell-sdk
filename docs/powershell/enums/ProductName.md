@@ -65,3 +65,5 @@ Name of product.
 - RVC_LOCAL_STORAGE - Rubrik Virtual Cluster Local Storage deployment.
 - RVC_SHARED_STORAGE - Rubrik Virtual Cluster Shared Storage deployment.
 - SALESFORCE_ARCHIVAL - Salesforce archiving.
+- POWER_PLATFORM - Microsoft Power Platform protection.
+- AAD_B2B_RECOVERY - Entra ID B2B Recovery.

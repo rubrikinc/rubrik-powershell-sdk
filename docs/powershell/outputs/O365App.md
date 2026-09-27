@@ -19,5 +19,8 @@ Configuration for a Microsoft 365 App.
   - The authentication status of the app against the subscription.
 - appAuthVersion: System.Int32
   - The authentication version of the app against the subscription.
+- accessMode: M365AccessMode
+  - Baseline permission mode for the app. Every app is on full permissions
+today; JIT mode selection is not yet available.
 - credsState: AppCredsState
   - The state of the app credentials.

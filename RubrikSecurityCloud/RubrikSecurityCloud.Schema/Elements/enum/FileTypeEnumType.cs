@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DIRECT_TASK_REPORT")]
         CLOUD_DIRECT_TASK_REPORT,
 
+        [EnumMember(Value = "DYNAMODB_RECOVERY_EXPORT")]
+        DYNAMODB_RECOVERY_EXPORT,
+
         [EnumMember(Value = "ENTRA_ID_DOWNLOAD_SNAPSHOT")]
         ENTRA_ID_DOWNLOAD_SNAPSHOT,
 

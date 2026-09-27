@@ -65,11 +65,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.Boolean? IsDbProtectionEnabled
-        // GraphQL -> isDbProtectionEnabled: Boolean (scalar)
-        [JsonProperty("isDbProtectionEnabled")]
-        public System.Boolean? IsDbProtectionEnabled { get; set; }
-
         //      C# -> System.String? K8Sversion
         // GraphQL -> k8SVersion: String (scalar)
         [JsonProperty("k8SVersion")]
@@ -180,11 +175,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crdServiceAccountInfo")]
         public ServiceAccountInfo? CrdServiceAccountInfo { get; set; }
 
-        //      C# -> ServiceAccountInfo? DbServiceAccountInfo
-        // GraphQL -> dbServiceAccountInfo: ServiceAccountInfo (type)
-        [JsonProperty("dbServiceAccountInfo")]
-        public ServiceAccountInfo? DbServiceAccountInfo { get; set; }
-
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         [JsonProperty("kuprServerProxyConfig")]
@@ -219,7 +209,6 @@ namespace RubrikSecurityCloud.Types
         System.String? HelmStatus = null,
         System.String? HelmVersion = null,
         System.String? Id = null,
-        System.Boolean? IsDbProtectionEnabled = null,
         System.String? K8Sversion = null,
         System.String? KubevirtVersion = null,
         System.String? KuprServerProxyPodMultusIp = null,
@@ -242,7 +231,6 @@ namespace RubrikSecurityCloud.Types
         System.String? Status = null,
         System.String? Transport = null,
         ServiceAccountInfo? CrdServiceAccountInfo = null,
-        ServiceAccountInfo? DbServiceAccountInfo = null,
         KuprServerProxyConfig? KuprServerProxyConfig = null,
         ServiceAccountInfo? OnboardingServiceAccountInfo = null,
         List<K8sWorkloadComponentSummary>? Workloads = null
@@ -274,9 +262,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
-        }
-        if ( IsDbProtectionEnabled != null ) {
-            this.IsDbProtectionEnabled = IsDbProtectionEnabled;
         }
         if ( K8Sversion != null ) {
             this.K8Sversion = K8Sversion;
@@ -343,9 +328,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CrdServiceAccountInfo != null ) {
             this.CrdServiceAccountInfo = CrdServiceAccountInfo;
-        }
-        if ( DbServiceAccountInfo != null ) {
-            this.DbServiceAccountInfo = DbServiceAccountInfo;
         }
         if ( KuprServerProxyConfig != null ) {
             this.KuprServerProxyConfig = KuprServerProxyConfig;
@@ -449,15 +431,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
-            }
-        }
-        //      C# -> System.Boolean? IsDbProtectionEnabled
-        // GraphQL -> isDbProtectionEnabled: Boolean (scalar)
-        if (this.IsDbProtectionEnabled != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "isDbProtectionEnabled\n" ;
-            } else {
-                s += ind + "isDbProtectionEnabled\n" ;
             }
         }
         //      C# -> System.String? K8Sversion
@@ -661,18 +634,6 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> ServiceAccountInfo? DbServiceAccountInfo
-        // GraphQL -> dbServiceAccountInfo: ServiceAccountInfo (type)
-        if (this.DbServiceAccountInfo != null) {
-            var fspec = this.DbServiceAccountInfo.AsFieldSpec(conf.Child("dbServiceAccountInfo"));
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                if (conf.Flat) {
-                    s += conf.Prefix + fspec;
-                } else {
-                    s += ind + "dbServiceAccountInfo" + " " + "{\n" + fspec + ind + "}\n" ;
-                }
-            }
-        }
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         if (this.KuprServerProxyConfig != null) {
@@ -868,23 +829,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
-        }
-        //      C# -> System.Boolean? IsDbProtectionEnabled
-        // GraphQL -> isDbProtectionEnabled: Boolean (scalar)
-        if (ec.Includes("isDbProtectionEnabled",true))
-        {
-            if(this.IsDbProtectionEnabled == null) {
-
-                this.IsDbProtectionEnabled = true;
-
-            } else {
-
-
-            }
-        }
-        else if (this.IsDbProtectionEnabled != null && ec.Excludes("isDbProtectionEnabled",true))
-        {
-            this.IsDbProtectionEnabled = null;
         }
         //      C# -> System.String? K8Sversion
         // GraphQL -> k8SVersion: String (scalar)
@@ -1261,25 +1205,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.CrdServiceAccountInfo != null && ec.Excludes("crdServiceAccountInfo",false))
         {
             this.CrdServiceAccountInfo = null;
-        }
-        //      C# -> ServiceAccountInfo? DbServiceAccountInfo
-        // GraphQL -> dbServiceAccountInfo: ServiceAccountInfo (type)
-        if (ec.Includes("dbServiceAccountInfo",false))
-        {
-            if(this.DbServiceAccountInfo == null) {
-
-                this.DbServiceAccountInfo = new ServiceAccountInfo();
-                this.DbServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("dbServiceAccountInfo"));
-
-            } else {
-
-                this.DbServiceAccountInfo.ApplyExploratoryFieldSpec(ec.NewChild("dbServiceAccountInfo"));
-
-            }
-        }
-        else if (this.DbServiceAccountInfo != null && ec.Excludes("dbServiceAccountInfo",false))
-        {
-            this.DbServiceAccountInfo = null;
         }
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)

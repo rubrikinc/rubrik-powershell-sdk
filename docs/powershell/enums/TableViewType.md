@@ -127,7 +127,7 @@ Used by the CSV export path -- includes a Tags column.
 - CLOUD_COST_BY_PROVIDER_TABLE - Cloud cost rolled up by cloud provider.
 - CLOUD_COST_BY_CLOUD_ACCOUNT_ID_TABLE - Cloud cost rolled up by raw native cloud account id.
 - CLOUD_COST_BY_ACCOUNT_NAME_TABLE - Cloud cost rolled up by cloud account, displayed by resolved account name.
-- SCRIPT_REPORT_TABLE - TBD.
+- RUBRIK_AI_REPORT_TABLE - Table view for AI-generated script based reports authored by Rubrik AI.
 - IDENTITY_INVENTORY_ALL_TABLE - Displays the identity inventory — all principals table view (users,
 groups, service accounts, computers, GPOs, conditional access
 policies).

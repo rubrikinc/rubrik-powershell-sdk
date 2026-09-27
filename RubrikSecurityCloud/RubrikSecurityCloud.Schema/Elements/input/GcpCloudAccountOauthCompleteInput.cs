@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sessionId")]
         public System.String? SessionId { get; set; }
 
-        //      C# -> System.String? AuthorizationCode
-        // GraphQL -> authorizationCode: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("authorizationCode")]
-        public System.String? AuthorizationCode { get; set; }
-
         //      C# -> System.String? RedirectUrl
         // GraphQL -> redirectUrl: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("redirectUrl")]
         public System.String? RedirectUrl { get; set; }
+
+        //      C# -> System.String? AuthorizationCode
+        // GraphQL -> authorizationCode: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("authorizationCode")]
+        public System.String? AuthorizationCode { get; set; }
 
 
         #endregion

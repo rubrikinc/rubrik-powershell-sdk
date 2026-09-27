@@ -21,6 +21,8 @@ Basic information about the recovery plans.
   - Number of non-archived child objects in the recovery plan.
 - isArchived: System.Boolean
   - Whether the recovery plan is archived.
+- isPreSeedEnabled: System.Boolean
+  - Whether Pre-Seed is enabled for the recovery plan.
 - recoveryPlanStats: RecoveryPlanStats
   - Recovery statistics for this recovery plan.
 - targetConsistencyInfo: RecoveryPlanTargetConsistencyInfo

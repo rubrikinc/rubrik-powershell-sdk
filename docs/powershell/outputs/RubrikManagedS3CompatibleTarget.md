@@ -31,6 +31,10 @@ Specific information for Amazon S3 compatible target created on Rubrik.
   - Reason why sync of this target with CDM failed.
 - connectionStatus: ConnectionStatusType
   - Connection status of the S3Compatible target.
+- tlsCertificateId: System.String
+  - The certificate ID bound to this location.
+- certificateTrustMode: CertificateTrustMode
+  - The TLS trust mode.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

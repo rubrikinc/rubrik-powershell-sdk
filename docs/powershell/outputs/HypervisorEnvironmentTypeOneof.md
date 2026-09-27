@@ -3,5 +3,5 @@ Union type for different Hypervisor environment details.
 
 - proxmox: ProxmoxEnvironmentDetails
   - Proxmox environment details.
-- hpeVme: HvmEnvironmentDetails
+- hpeVme: HpeVmeEnvironmentDetails
   - HPE Virtual Machine Essentials environment details.

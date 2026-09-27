@@ -274,6 +274,7 @@ Authorized operations on an object.
 - VIEW_AGENT_CLOUD_SESSIONS - View Agent Cloud session timelines and summaries.
 - VIEW_RSCP_UPGRADE - View RSC-P upgrade status.
 - MANAGE_RSCP_UPGRADE - Trigger and manage RSC-P appliance upgrades.
+- VIEW_K8S_DB_CREDENTIALS - View K8s database credentials.
 - CATEGORY_VIEW_DATA_SOURCE - View data source.
 - CATEGORY_MANAGE_DATA_SOURCE - Manage data source.
 - CATEGORY_PROTECTION - Manage protection.

@@ -121,6 +121,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.fids = @(
     /// 	$someString
@@ -176,6 +180,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
@@ -256,12 +264,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = @{
-    /// 	# OPTIONAL
-    /// 	field = $someMssqlLogShippingTargetSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetSortByField]) for enum values.
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
@@ -273,6 +278,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someMssqlLogShippingTargetSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -389,12 +401,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = @{
-    /// 	# OPTIONAL
-    /// 	field = $someMssqlDatabaseLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountSortByField]) for enum values.
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
@@ -406,6 +415,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someMssqlDatabaseLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -580,6 +596,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -913,6 +933,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -1332,6 +1356,8 @@ $query.Var.fid = $someString"
         // mssqlAvailabilityGroupDatabaseVirtualGroups(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     fids: [UUID!]!
         //     filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!]
         //     sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput
@@ -1342,6 +1368,8 @@ $query.Var.fid = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("fids", "[UUID!]!"),
                 Tuple.Create("filters", "[MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!]"),
                 Tuple.Create("sortBy", "MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput"),
@@ -1351,7 +1379,7 @@ $query.Var.fid = $someString"
                 argDefs,
                 "query",
                 "QueryMssqlAvailabilityGroupDatabaseVirtualGroups",
-                "($first: Int,$after: String,$fids: [UUID!]!,$filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$fids: [UUID!]!,$filters: [MssqlAvailabilityGroupDatabaseVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupDatabaseVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupDatabaseVirtualGroupSortOrderInput)",
                 "MssqlDatabaseVirtualGroupConnection",
                 Query.MssqlAvailabilityGroupDatabaseVirtualGroups,
                 Query.MssqlAvailabilityGroupDatabaseVirtualGroupsFieldSpec,
@@ -1359,6 +1387,10 @@ $query.Var.fid = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.fids = @(
 	$someString
@@ -1391,6 +1423,8 @@ $query.Var.sortOrder = @{
         // mssqlAvailabilityGroupVirtualGroups(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!]
         //     sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput
         //     sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput
@@ -1400,6 +1434,8 @@ $query.Var.sortOrder = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filters", "[MssqlAvailabilityGroupVirtualGroupFilterInput!]"),
                 Tuple.Create("sortBy", "MssqlAvailabilityGroupVirtualGroupSortByInput"),
                 Tuple.Create("sortOrder", "MssqlAvailabilityGroupVirtualGroupSortOrderInput"),
@@ -1408,7 +1444,7 @@ $query.Var.sortOrder = @{
                 argDefs,
                 "query",
                 "QueryMssqlAvailabilityGroupVirtualGroups",
-                "($first: Int,$after: String,$filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filters: [MssqlAvailabilityGroupVirtualGroupFilterInput!],$sortBy: MssqlAvailabilityGroupVirtualGroupSortByInput,$sortOrder: MssqlAvailabilityGroupVirtualGroupSortOrderInput)",
                 "MssqlAvailabilityGroupVirtualGroupConnection",
                 Query.MssqlAvailabilityGroupVirtualGroups,
                 Query.MssqlAvailabilityGroupVirtualGroupsFieldSpec,
@@ -1416,6 +1452,10 @@ $query.Var.sortOrder = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filters = @(
 	@{
@@ -1464,22 +1504,26 @@ $query.Var.fid = $someString"
         // cdmMssqlLogShippingTargets(
         //     first: Int
         //     after: String
-        //     sortBy: MssqlLogShippingTargetSortByInput
+        //     last: Int
+        //     before: String
         //     filters: [MssqlLogShippingTargetFilterInput!]
+        //     sortBy: MssqlLogShippingTargetSortByInput
         //   ): MssqlLogShippingTargetConnection!
         internal void InitQueryCdmMssqlLogShippingTargets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "MssqlLogShippingTargetSortByInput"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filters", "[MssqlLogShippingTargetFilterInput!]"),
+                Tuple.Create("sortBy", "MssqlLogShippingTargetSortByInput"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryCdmMssqlLogShippingTargets",
-                "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filters: [MssqlLogShippingTargetFilterInput!],$sortBy: MssqlLogShippingTargetSortByInput)",
                 "MssqlLogShippingTargetConnection",
                 Query.CdmMssqlLogShippingTargets,
                 Query.CdmMssqlLogShippingTargetsFieldSpec,
@@ -1488,12 +1532,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = @{
-	# OPTIONAL
-	field = $someMssqlLogShippingTargetSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetSortByField]) for enum values.
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filters = @(
 	@{
@@ -1504,7 +1545,14 @@ $query.Var.filters = @(
 			$someString
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someMssqlLogShippingTargetSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 
@@ -1591,22 +1639,26 @@ $query.Var.fid = $someString"
         // mssqlDatabaseLiveMounts(
         //     first: Int
         //     after: String
-        //     sortBy: MssqlDatabaseLiveMountSortByInput
+        //     last: Int
+        //     before: String
         //     filters: [MssqlDatabaseLiveMountFilterInput!]
+        //     sortBy: MssqlDatabaseLiveMountSortByInput
         //   ): MssqlDatabaseLiveMountConnection!
         internal void InitQueryMssqlDatabaseLiveMounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "MssqlDatabaseLiveMountSortByInput"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filters", "[MssqlDatabaseLiveMountFilterInput!]"),
+                Tuple.Create("sortBy", "MssqlDatabaseLiveMountSortByInput"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryMssqlDatabaseLiveMounts",
-                "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filters: [MssqlDatabaseLiveMountFilterInput!],$sortBy: MssqlDatabaseLiveMountSortByInput)",
                 "MssqlDatabaseLiveMountConnection",
                 Query.MssqlDatabaseLiveMounts,
                 Query.MssqlDatabaseLiveMountsFieldSpec,
@@ -1615,12 +1667,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = @{
-	# OPTIONAL
-	field = $someMssqlDatabaseLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountSortByField]) for enum values.
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filters = @(
 	@{
@@ -1631,7 +1680,14 @@ $query.Var.filters = @(
 			$someString
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someMssqlDatabaseLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 
@@ -1751,6 +1807,8 @@ $query.Var.input = @{
         // mssqlDatabases(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -1760,6 +1818,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -1768,7 +1828,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryMssqlDatabases",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "MssqlDatabaseConnection",
                 Query.MssqlDatabases,
                 Query.MssqlDatabasesFieldSpec,
@@ -1776,6 +1836,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -2030,6 +2094,8 @@ $query.Var.input = @{
         // mssqlTopLevelDescendants(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     typeFilter: [HierarchyObjectTypeEnum!]
@@ -2040,6 +2106,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -2049,7 +2117,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryMssqlTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "MssqlTopLevelDescendantTypeConnection",
                 Query.MssqlTopLevelDescendants,
                 Query.MssqlTopLevelDescendantsFieldSpec,
@@ -2057,6 +2125,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

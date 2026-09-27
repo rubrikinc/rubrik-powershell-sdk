@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_DRIVE")]
         GOOGLE_DRIVE,
 
+        [EnumMember(Value = "GOOGLE_GROUPS")]
+        GOOGLE_GROUPS,
+
         [EnumMember(Value = "GOOGLE_MAIL")]
         GOOGLE_MAIL,
 

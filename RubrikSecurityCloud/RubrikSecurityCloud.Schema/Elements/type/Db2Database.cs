@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastSyncTime")]
         public DateTime? LastSyncTime { get; set; }
 
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        [JsonProperty("legallyHeldSnapshotCount")]
+        public System.Int32? LegallyHeldSnapshotCount { get; set; }
+
         //      C# -> System.String? LogBackupThreshold
         // GraphQL -> logBackupThreshold: String! (scalar)
         [JsonProperty("logBackupThreshold")]
@@ -215,6 +220,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        [JsonProperty("futureLegalHoldInfo")]
+        public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
         //      C# -> List<PhysicalHost>? HostsForRecovery
         // GraphQL -> hostsForRecovery: [PhysicalHost!]! (type)
@@ -485,6 +495,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplica = null,
         DateTime? LastSyncTime = null,
+        System.Int32? LegallyHeldSnapshotCount = null,
         System.String? LogBackupThreshold = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -502,6 +513,7 @@ namespace RubrikSecurityCloud.Types
         Db2HadrMetadata? Db2HadrMetadata = null,
         Db2Instance? Db2Instance = null,
         PathNode? EffectiveSlaSourceObject = null,
+        FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<PhysicalHost>? HostsForRecovery = null,
         LatestUserNote? LatestUserNote = null,
         Db2LogSnapshotConnection? LogSnapshots = null,
@@ -593,6 +605,9 @@ namespace RubrikSecurityCloud.Types
         if ( LastSyncTime != null ) {
             this.LastSyncTime = LastSyncTime;
         }
+        if ( LegallyHeldSnapshotCount != null ) {
+            this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
+        }
         if ( LogBackupThreshold != null ) {
             this.LogBackupThreshold = LogBackupThreshold;
         }
@@ -643,6 +658,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FutureLegalHoldInfo != null ) {
+            this.FutureLegalHoldInfo = FutureLegalHoldInfo;
         }
         if ( HostsForRecovery != null ) {
             this.HostsForRecovery = HostsForRecovery;
@@ -945,6 +963,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "lastSyncTime\n" ;
             }
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (this.LegallyHeldSnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "legallyHeldSnapshotCount\n" ;
+            } else {
+                s += ind + "legallyHeldSnapshotCount\n" ;
+            }
+        }
         //      C# -> System.String? LogBackupThreshold
         // GraphQL -> logBackupThreshold: String! (scalar)
         if (this.LogBackupThreshold != null) {
@@ -1119,6 +1146,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (this.FutureLegalHoldInfo != null) {
+            var fspec = this.FutureLegalHoldInfo.AsFieldSpec(conf.Child("futureLegalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1809,6 +1848,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LastSyncTime = null;
         }
+        //      C# -> System.Int32? LegallyHeldSnapshotCount
+        // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
+        if (ec.Includes("legallyHeldSnapshotCount",true))
+        {
+            if(this.LegallyHeldSnapshotCount == null) {
+
+                this.LegallyHeldSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegallyHeldSnapshotCount != null && ec.Excludes("legallyHeldSnapshotCount",true))
+        {
+            this.LegallyHeldSnapshotCount = null;
+        }
         //      C# -> System.String? LogBackupThreshold
         // GraphQL -> logBackupThreshold: String! (scalar)
         if (ec.Includes("logBackupThreshold",true))
@@ -2113,6 +2169,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
+        // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
+        if (ec.Includes("futureLegalHoldInfo",false))
+        {
+            if(this.FutureLegalHoldInfo == null) {
+
+                this.FutureLegalHoldInfo = new FutureLegalHoldInfo();
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            } else {
+
+                this.FutureLegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("futureLegalHoldInfo"));
+
+            }
+        }
+        else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
+        {
+            this.FutureLegalHoldInfo = null;
         }
         //      C# -> List<PhysicalHost>? HostsForRecovery
         // GraphQL -> hostsForRecovery: [PhysicalHost!]! (type)

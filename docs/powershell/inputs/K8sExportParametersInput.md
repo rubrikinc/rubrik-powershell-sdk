@@ -11,7 +11,8 @@ v9.4+: The name of the new Kubernetes namespace that will be created. The resour
   - Supported in v9.0+
 The filter for selecting resources from the snapshot to export.
 - restoreOrderTimeoutPolicy: System.String
-  - Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
+  - Supported in v9.6+
+Specifies what happens when a namespace tier does not become ready within its readiness deadline during an ordered recovery. Specify 'Continue' to record a warning and recover the remaining tiers, or 'Abort' to stop the recovery and preserve the namespaces that were already recovered. By default, this value is 'Continue'. This field is ignored unless ordered recovery is enabled on the cluster.
 - storageMapping: StorageMappingInput
   - Supported in v9.5+
 The storage mapping to be used for the export operation.

@@ -5,18 +5,18 @@ Returns active custom analyzers.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns AnalyzerConnection.
 ### activities
 List of activities.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - orderBy - OrderBy: The field and order to sort the activities.
     - filter - ListActivitiesFilter: Filter for the query.
     - includeRemediationStatus - System.Boolean: Whether to include remediation status for
@@ -29,9 +29,9 @@ Returns members matching an AD group spec, in a given org.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - orgId - System.String: Org UUID.
     - adGroupSpec - AdGroupSpecInput: The Azure Active Directory group spec.
 - Returns O365AdGroupMemberConnection.
@@ -40,7 +40,7 @@ Active Directory volume export connection.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - filters - list of AdVolumeExportFilters: Filter for Active Directory volume exports.
     - sortBy - AdVolumeExportSortByInput: Sort by argument for Active Directory volume exports.
 - Returns AdVolumeExportConnection.
@@ -67,18 +67,18 @@ Returns analyzer groups available for configuring a crawl.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns AnalyzerGroupConnection.
 ### analyzerusages
 Returns which policies are using each analyzer.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - dataCategoryIdsFilter - list of System.Strings: List of data categories used for filtering results.
     - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
     - sortBy - AnalyzerUsagesSortBy: Name of the column to sort result by.
@@ -101,9 +101,9 @@ Results for Anomaly Investigations.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - AnomalyResultSortBy: Sort anomaly results by field.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
@@ -114,9 +114,9 @@ Results for Anomaly Investigations grouped by an argument.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - AnomalyResultGroupBy: Group anomaly results by field.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -140,9 +140,9 @@ participate in app access paths for a given user.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - AppAccessPrincipalsFilterInput: Filter to be applied when retrieving app access principals.
 - Returns AppAccessPrincipalConnection.
 ### aremultigeobackupsenabled
@@ -191,10 +191,17 @@ object-level override if set, else the SLA window. Each entry's `scope`
 discriminator reports the layer that supplied the returned window,
 always OBJECT_LEVEL or SLA_LEVEL.
 
-- There are 2 arguments.
+Entries are returned positionally -- one per input id, in request
+order -- unless `sortBy` asks for a different order.
+
+- There are 4 arguments.
     - objectIds - list of System.Strings: Identifiers of the managed objects to look up.
     - scope - BackupWindowScope: Which backup window layer to return: OBJECT_LEVEL or
 SLA_LEVEL. Defaults to effective behavior when omitted.
+    - sortBy - BackupWindowsForObjectsSortByField: Attribute to order the returned entries by. Omit to keep
+request order. OBJECT_NAME orders by the managed object name, which
+is resolved server-side and is not part of the reply.
+    - sortOrder - SortOrder: Direction to apply to `sortBy`. Defaults to ASC.
 - Returns BackupWindowsForObjectsReply.
 ### browsecalendar
 BrowseCalendarFolderItems returns the contents (calendar folders +
@@ -205,9 +212,9 @@ performed in the GraphQL resolver `browseCalendar`.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String: The folder being browsed.
@@ -223,9 +230,9 @@ response shaping previously performed in the GraphQL resolver
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String: The folder being browsed.
@@ -240,9 +247,9 @@ previously performed in the GraphQL resolver `browseFolder`.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String: The folder being browsed.
@@ -256,9 +263,9 @@ shaping previously performed in the GraphQL resolver `browseOnedrive`.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the OneDrive workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -274,9 +281,9 @@ GraphQL resolver `browseTasks`.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - folderId - System.String: The folder being browsed.
@@ -288,9 +295,9 @@ Browse channels in a Teams files snapshot.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -303,9 +310,9 @@ Teams Drive folder within a snapshot.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The unique identifier for the Teams workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
@@ -351,9 +358,9 @@ Details of all the virtual machines with Continuous Data Protection (CDP) SLA Do
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - allCdpVmInfoSort - CdpPerfDashboardSortParam: Sort Type for getting all CDP VMs for CDP performance dashboard.
     - allCdpVmInfoFilter - list of CdpPerfDashboardFilterParams: Filter Type for getting all CDP VMs for CDP performance dashboard.
 - Returns CdpVmInfoConnection.
@@ -397,9 +404,9 @@ Paginated list of NAS Cloud Direct buckets.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -419,9 +426,9 @@ Paginated list of NAS namespaces.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -457,9 +464,9 @@ Returns objects that match the specifications of a configured group.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - orgId - System.String: Org UUID.
     - wildcard - System.String: A wildcard pattern that group members' names or URLs must match.
     - pdls - list of System.Strings: A list of preferred data locations that group members must match.
@@ -491,18 +498,18 @@ Returns crawls for an account.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns CrawlConnection.
 ### crossaccountpairs
 Lists all cross-account pairs.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GetCrossAccountPairsSortByField: Specifies the field by which the list of cross-account pairs will be sorted.
     - filter - list of GetCrossAccountPairsFilters: Specification on how to filter a list of cross-account pairs.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -540,12 +547,13 @@ Returns the custom analyzer with the given ID.
 ### dailyviolationssummary
 Daily summary of violations.
 
-- There are 5 arguments.
+- There are 6 arguments.
     - startDate - DateTime: Start date for fetching summary.
     - endDate - DateTime: End date for fetching summary.
     - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
     - resourceFilter - ResourceFilterInput: Resource to filter by.
     - idpTypes - list of IdpTypes: Identity provider types to filter by. If empty or null, the results will not be filtered.
+    - saasOrgIds - list of System.Strings: SaaS organization IDs to filter by, matched against the organization recorded on each violation. If empty or null, the results will not be filtered.
 - Returns DailyViolationsSummary.
 ### dashboardsummary
 Returns hits grouped by analyzer and policy.
@@ -704,9 +712,9 @@ List entity insights.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ListEntityInsightsFilterInput: Filter to be applied when retrieving entity insights.
 - Returns NotificationConnection.
 ### eventdigests
@@ -748,9 +756,9 @@ Retrieves workloads within a failover group for high-availability management.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - failoverGroupId - System.String: Failover group ID to get workloads for.
     - filter - FailoverGroupWorkloadFilter: Filters to apply to the query.
 - Returns FailoverGroupWorkloadConnection.
@@ -764,9 +772,9 @@ List user activity for a specific file on a specific snapshot.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - ListFileActivitiesInput - ListFileActivitiesInput: Request for getting user activity for a specific path on a specific snapshot.
     - FileActivitiesSort - FileActivitiesSort: Sorts to apply when listing a file's user activities.
 - Returns UserActivityResultConnection.
@@ -776,9 +784,9 @@ sorted by data type relevance.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - dataTypeIdsFilter - list of System.Strings: Data type IDs to filter.
     - snapshotFid - System.String: FID of the snapshot to analyze.
     - snappableFid - System.String: FID of the object whose file schema results are requested.
@@ -801,9 +809,9 @@ Summary of all FusionCompute datastores.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -818,9 +826,9 @@ Retrieve the list of FusionCompute live mounts.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of QueryFusionComputeMountsFilters: Filter for the query.
     - sortBy - FusionComputeMountsSortByField: Field to sort by.
     - sortOrder - SortOrder: Sort order.
@@ -835,9 +843,9 @@ Summary of all FusionCompute networks.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -847,9 +855,9 @@ Summary of all FusionCompute datastores that the user can recover to.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -859,9 +867,9 @@ Summary of all FusionCompute networks that the user can recover to.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -876,9 +884,9 @@ Summary of all FusionCompute sites.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -888,9 +896,9 @@ Get FusionCompute virtual disks for a virtual machine.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - fusionComputeVirtualMachineFid - System.String: FID of a FusionCompute virtual machine.
     - filter - list of QueryFusionComputeVirtualDisksFilters: Filter for the query.
     - sortBy - FusionComputeVirtualDisksSortByField: Field to sort by.
@@ -906,9 +914,9 @@ Summary of all FusionCompute virtual machines.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -931,9 +939,9 @@ Summary of all FusionCompute VRMs.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -947,9 +955,9 @@ pagination support.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - RoleFieldEnum: Field to sort roles by (e.g., Name or Assignment).
     - nameFilter - System.String: Name to filter the results.
@@ -1041,42 +1049,50 @@ GitHub cloud accounts.
 - The githubconnectionstatussummary subcommand takes no arguments.
 - Returns GitHubConnectionStatusSummaryReply.
 ### githuborganization
-Query GitHub organization object.
+Retrieves a single GitHub organization by its
+managed object ID.
 
 - There is a single argument of type System.String.
 - Returns GithubOrganization.
 ### githuborganizations
-Query GitHub organization objects.
+Query GitHub organization hierarchy objects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - ancestorId - System.String: Ancestor object/root ID.
+    - queryType - QueryType: Type of query to perform (CHILDREN
+or DESCENDANTS).
     - filter - list of Filters: The hierarchy object filter.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value
+represents the hierarchy of a specific workload
+type for RBAC and SLA Domain assignments.
 - Returns GithubOrganizationConnection.
 ### githubrepositories
 Query GitHub repository objects.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - queryType - QueryType: Type of query to perform (CHILDREN
+or DESCENDANTS).
     - ancestorId - System.String: Ancestor object/root ID.
     - filter - list of Filters: The hierarchy object filter.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value
+represents the hierarchy of a specific workload
+type for RBAC and SLA Domain assignments.
 - Returns GithubRepositoryConnection.
 ### githubrepository
-Query GitHub repository object.
+Retrieves a single GitHub repository by its
+managed object ID.
 
 - There is a single argument of type System.String.
 - Returns GithubRepository.
@@ -1098,9 +1114,9 @@ Get global multifactor authentication (MFA) for an account.
 ### globalsearchresults
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -1126,9 +1142,9 @@ Retrieve groups from current and descendant organizations based on the specified
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - GroupFilterInput: Specifies user group filters.
     - sortBy - GroupSortByParam: Specifies sort parameter.
     - shouldIncludeGroupsWithoutRole - System.Boolean: Specifies whether to include user groups without any assigned roles either in the current or descendant orgs. If roleIdsFilter is not empty, this field is always considered as false.
@@ -1146,7 +1162,7 @@ Get Guest OS credentials.
 
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - filter - list of GuestOsCredentialFilterInputs: Filter for Guest OS credentials.
     - sortBy - GuestOsCredentialSortBy: Sort Guest OS credentials.
 - Returns GuestOsCredentialConnection.
@@ -1160,9 +1176,9 @@ Paginated list of help content snippets.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - HelpContentSnippetsFilterInput: Filter for help content snippets.
 - Returns HelpContentSnippetConnection.
 ### hierarchyobject
@@ -1186,9 +1202,9 @@ Retrieve the encryption information for identity data locations.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - IdentityDataLocationSortByField: Sort order for sorting data locations.
     - filter - IdentityDataLocationsFilter: Filter for listing identity data locations.
     - pagination - Pagination: Pagination param.
@@ -1220,9 +1236,9 @@ Lists IOC entries for a threat feed.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - providerId - System.String: ID of threat feed.
     - threatFeedType - list of ThreatFeedTypes: Type of IOCs to return.
     - feedEntryStatusFilter - FeedEntryStatusFilter: Filter feed entries by entry status.
@@ -1238,9 +1254,9 @@ Retrieve entries in the IP allowlist.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - IpWhitelistEntryFilterInput: Specifies IP allowlist entry filters.
 - Returns IpInfoConnection.
 ### ipwhitelistsettings
@@ -1300,9 +1316,9 @@ Returns all issues filtered by status.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - status - IssueStatus: Status of the issues to return.
 - Returns IssueConnection.
 ### issuesjobids
@@ -1347,9 +1363,9 @@ Check if the cluster has at least 1 node with its bond interfaces configured wit
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - clusterUuids - list of System.Strings: List of cluster UUIDs.
 - Returns LacpPresenceCheckConnection.
 ### lambdasettings
@@ -1382,9 +1398,9 @@ based on the provided filter criteria.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - AccessFilter: Filter to be applied when retrieving access granting identities.
 - Returns PrincipalSummaryConnection.
 ### listalluploadrecords
@@ -1398,9 +1414,9 @@ based on the provided filter criteria.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - AccessFilter: Filter to be applied when retrieving access identities.
 - Returns PrincipalSummaryConnection.
 ### listlinkedentitiesforgpo
@@ -1409,9 +1425,9 @@ linked to a specific GPO, along with GPO link details.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ListLinkedEntitiesForGpoFilterInput: Optional filter criteria for linked entities.
     - gpoId - System.String: Identifies the GPO whose linked entities to list.
 - Returns LinkedEntityConnection.
@@ -1430,9 +1446,9 @@ List of Microsoft Groups in the organization.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -1445,9 +1461,9 @@ List of sites in the Microsoft 365 organization.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -1484,40 +1500,48 @@ version name including patch and build
 number for each hop.
 - Returns MultiHopUpgradePathReply.
 ### mysqldatabase
-Details of a MySQL database for a given FID.
+Returns the details of a single MySQL database identified by its
+unique identifier.
 
 - There is a single argument of type System.String.
 - Returns MysqldbDatabase.
 ### mysqldatabases
-Connection of filtered MySQL databases based on specific filters.
+Returns a paginated connection of MySQL databases visible to the caller.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
 - Returns MysqldbDatabaseConnection.
 ### mysqlinstance
-Details of a MySQL instance for a given FID.
+Returns the details of a single MySQL instance identified by its
+unique identifier.
 
 - There is a single argument of type System.String.
 - Returns MysqldbInstance.
 ### mysqlinstancelivemounts
-The live mounts associated with the specified workloads.
+Returns Live Mounts for MySQL database instances.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - filters - list of KosmosWorkloadLiveMountFilterInputs: Filter for Kosmos workload live mounts.
-    - sortBy - KosmosWorkloadLiveMountSortByInput: Sort the live mounts of the Kosmos Workload based on the argument.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - list of KosmosWorkloadLiveMountFilterInputs: Optional client-supplied filters.
+    - sortBy - KosmosWorkloadLiveMountSortByInput: Optional sort parameters.
 - Returns KosmosWorkloadLiveMountConnection.
 ### mysqlinstances
-Connection of filtered MySQL instances based on specific filters.
+Returns a paginated list of MySQL instances visible to the caller.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -1532,9 +1556,9 @@ Results for Non-Filesystem Anomaly Investigations.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - NfAnomalyResultSortBy: Sort non-filesystem anomaly results by field.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
@@ -1545,9 +1569,9 @@ Results for Non-Filesystem Anomaly Investigations grouped by an argument.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - groupBy - NfAnomalyResultGroupBy: Group non-filesystem anomaly results by field.
     - filter - NfAnomalyResultFilterInput: Filter non-filesystem anomaly results by input.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -1564,9 +1588,9 @@ node ratio.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - clusterUuid - System.String: Unique ID of the Rubrik cluster.
     - nodeCount - System.Int32: Number of nodes to remove.
 - Returns NodeToRemoveByCountConnection.
@@ -1594,9 +1618,9 @@ Returns the classified files across objects for a given day.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ListObjectFilesFiltersInput: Filters to apply when listing object files.
     - sort - FileResultSortInput: Sorts to apply when listing file results.
     - day - System.String: Date in the format (YYYY-MM-DD).
@@ -1625,9 +1649,9 @@ Returns total sensitive hits grouped by object type and also gives policy level 
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - timelineDate - System.String: Date for which the results will be retrieved.
     - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
     - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
@@ -1646,9 +1670,9 @@ All orgs.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - OrgField: Field in the org to sort orgs by.
     - nameFilter - System.String: Name to filter the results.
@@ -1687,9 +1711,9 @@ Retrieves a list of directly paused objects based on the provided filters and ar
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - GetObjectPauseListSortByParams: Optional paramater to sort the response based on the provided field and order.
     - filter - GetObjectPauseListFilterParams: Optional paramater to filter the response based on the provided fields.
 - Returns GetPausedObjectResConnection.
@@ -1736,9 +1760,9 @@ Returns data categories for an account.
 
 - There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - dataCategoryIds - list of System.Strings: Filter for data category IDs.
     - dataTypeIds - list of System.Strings: Data type IDs to filter.
     - dataCategoryType - DataCategoryType: Filter for data category type.
@@ -1761,9 +1785,9 @@ Browse the contents of a directory within a data governance policy object snapsh
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadId - System.String: The ID of the workload.
     - snapshotId - System.String: The ID of the snapshot.
     - filter - BrowseDirectoryFiltersInput: Filters for browsing directory contents.
@@ -1784,9 +1808,9 @@ Returns status for all objects at a specified timestamp.
 
 - There are 46 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String: The timezone in which to display timestamps.
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -1843,9 +1867,9 @@ changes and remediation activity, ordered by timestamp descending.
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - violationId - System.String: The ID of the policy violation.
     - policyType - PolicyType: The policy type of the violation. Must match the
 violation's actual policy type.
@@ -1855,9 +1879,9 @@ Get a paginated list of policy violations.
 
 - There are 31 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - policyIds - list of System.Strings: Policy IDs to filter by. If empty or null, the results will not be filtered.
     - resourceIds - list of System.Strings: Resource IDs to filter by. If empty or null, the results will not be filtered.
     - statuses - list of PolicyViolationStatuss: Policy violation statuses to filter by. If empty or null, the results will not be filtered.
@@ -1891,9 +1915,9 @@ Get a paginated list of policy violations grouped by resource.
 
 - There are 27 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - policyIds - list of System.Strings: Policy IDs to filter by. If empty or null, the results will not be filtered.
     - resourceIds - list of System.Strings: Resource IDs to filter by. If empty or null, the results will not be filtered.
     - statuses - list of PolicyViolationStatuss: Policy violation statuses to filter by. If empty or null, the results will not be filtered.
@@ -1924,11 +1948,14 @@ Details of a PostgreSQL database for a given FID.
 - There is a single argument of type System.String.
 - Returns PostgreSQLDatabase.
 ### postgresqldatabases
-Connection of filtered postgres database based on specific filters.
+Returns a connection of filtered PostgreSQL databases based on specific
+filters.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -1965,9 +1992,9 @@ isolation enforced by the per-account customer DB).
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - PrincipalAttributeFilter: Optional filter (IdP types, principal types, domains,
 prefix search on display name / SID).
 - Returns PrincipalAttributesConnection.
@@ -1990,7 +2017,7 @@ Get principal details.
 
 - There are 3 arguments.
     - sid - System.String: Security identifier.
-    - timelineDate - System.String: Date for which the results will be retrieved.
+    - timelineDate - System.String: Date for which the results will be retrieved. Defaults to the current time.
     - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
 - Returns PrincipalDetails.
 ### principalentities
@@ -2003,9 +2030,9 @@ List of principal object summaries.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sids - list of System.Strings: List of security identifiers.
     - filter - PrincipalObjectSummariesFilterInput: Filter to be applied when retrieving principal object summaries.
     - timelineDate - System.String: Date for which the results will be retrieved.
@@ -2048,11 +2075,11 @@ List of principal summaries.
 
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - PrincipalSummariesFilterInput: Filter to be applied when retrieving principal summaries.
-    - timelineDate - System.String: Date for which the results will be retrieved.
+    - timelineDate - System.String: Date for which the results will be retrieved. Defaults to the current time.
     - sort - ListPrincipalsSummarySortInput: Field on which to perform the sorting operation.
     - includeCount - System.Boolean: Include counts in the results.
     - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
@@ -2104,9 +2131,9 @@ List of all objects protected by the SLA Domains.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns ProtectedObjectsConnection.
 ### protectedvolumescount
 Total number of protected volumes across all hosts.
@@ -2132,9 +2159,9 @@ Connection of Pure Storage protection groups.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2149,9 +2176,9 @@ Connection of Pure Storage volumes.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2178,9 +2205,9 @@ A maximum of 50 objects per page is supported.
 
 - There are 18 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - recoveryIds - list of System.Strings: Filter by specific recovery IDs.
     - recoveryType - list of RecoveryTypes: Filter by recovery type.
     - endTime - DateTime: Only consider recoveries that started before this date.
@@ -2203,9 +2230,9 @@ filters are combined using AND logic.
 
 - There are 20 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - recoveryPlanIds - list of System.Strings: List of recovery plan IDs to filter the results.
     - sortParam - RecoveryPlanSortParamInput: Sort parameters for the results.
     - recoveryPlanTypes - list of RecoveryPlanTypes: Optional filter for recovery plan types.
@@ -2275,9 +2302,9 @@ The list of available role templates.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - nameFilter - System.String: Name to filter the results.
 - Returns RoleTemplateConnection.
 ### rscpermstocdminfo
@@ -2333,9 +2360,9 @@ A paginated list of SaaS app organizations.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
@@ -2353,9 +2380,9 @@ The objects in the Salesforce organization.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - orgId - System.String: Rubrik ID of the Salesforce organization.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - filter - list of Filters: The hierarchy object filter.
@@ -2373,9 +2400,9 @@ NAS Cloud Direct workload (share or bucket).
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - workloadFid - System.String: ID of the NAS Cloud Direct workload to search.
     - searchQuery - System.String: Search query string to match against file names.
     - versionLimit - System.Int32: Maximum number of file versions to return per file.
@@ -2439,9 +2466,9 @@ other criteria.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - timeRange - TimeRangeInput: The time range to query (required).
     - filters - SigninLogsFilters: Optional filters for the query.
     - sortBy - SigninLogSortBy: Optional sort order for the results.
@@ -2451,9 +2478,9 @@ Lists the snoozed directories for the account.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snoozeStatusFilter - list of SnoozeStatuss: Filter by snooze status.
     - directorySearchFilter - System.String: Optional directory search.
     - falsePositiveTypeFilter - list of AnomalyFalsePositiveTypes: Filter by false positive type.
@@ -2509,9 +2536,9 @@ All support user access objects that satisfy the query criteria.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - SupportUserAccessSortByField: Sorting field for support access.
     - sortOrder - SortOrder: Sorting order for support access.
     - filters - list of SupportUserAccessFilterInputs: Specifies how to filter the list of targets.
@@ -2527,9 +2554,9 @@ Details of a taskchain.
 ### taskdetailgroupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - TaskDetailFilterInput: Filter task summary by input.
     - groupBy - TaskDetailGroupByEnum: Group task detail by a field.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -2539,9 +2566,9 @@ Get task details.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - TaskDetailFilterInput: Filter task detail by input.
     - sortBy - TaskDetailSortByEnum: Sort task detail by field.
     - sortOrder - SortOrder: Task detail sort order.
@@ -2588,9 +2615,9 @@ Details of TPR requests.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - TprRequestFilterInput: Specifies the TPR request filters.
 - Returns TprRequestSummaryConnection.
 ### tprroleeligibility
@@ -2626,9 +2653,9 @@ across all Rubrik clusters in the account.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - UnregisteredDcSortByField: Field to sort the results by.
     - sortOrder - SortOrder: Sort order (ASC / DESC).
     - filter - list of UnregisteredDcFilters: Filters to apply to the result set.
@@ -2643,9 +2670,9 @@ List of unmanaged objects.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - input - UnmanagedObjectsInput: Query unmanaged objects.
 - Returns UnmanagedObjectDetailConnection.
 ### unmanagedobjectssupportedtypes
@@ -2677,9 +2704,9 @@ Return the user access insights for the given time range.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
     - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
     - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
@@ -2694,9 +2721,9 @@ Returns the file activities attributed to a user.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - ListObjectFilesFiltersInput: Filters to apply when listing user activities.
     - sort - FileResultSortInput: Sorts to apply when listing file results.
     - timeRange - UserTimeRangeInput: Time range specified in the user's local timezone.
@@ -2716,9 +2743,9 @@ usage for the anchored day.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - userId - System.String: Stable identifier of the user.
     - startDay - System.String: Day to anchor the summary, in YYYY-MM-DD format.
     - timezone - System.String: Official IANA timezone name.
@@ -2729,9 +2756,9 @@ Paginated list of user audit data. Each page of the results will include at most
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: User audit sort order.
     - sortBy - UserAuditSortField: Sort user audit by field.
     - filters - UserAuditFilter: Filters to apply to the returned user audits.
@@ -2746,12 +2773,12 @@ and an overview of their data access for the anchored day.
     - timezone - System.String: Official IANA timezone name.
 - Returns GetUserDetailReply.
 ### userfile
-User file.
+A single file that can be downloaded.
 
 - There is a single argument of type System.String.
 - Returns CustomerFacingFile.
 ### userfiles
-All user files.
+All files the user has access to.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2763,16 +2790,11 @@ All user files.
 ### usergroups
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - roleIdsFilter - list of System.Strings
 - Returns list of Groups.
-### usernotifications
-An object containing production notifications information for the current user.
-
-- The usernotifications subcommand takes no arguments.
-- Returns UserNotifications.
 ### usersessionmanagementconfig
 Get the session management configurations for the user account.
 
@@ -2788,9 +2810,9 @@ Retrieve users from current and descendant organizations based on the specified 
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - UserSortByParam: Specifies sort parameter.
     - filter - UserFilterInput: Specifies user filters.
     - shouldIncludeUserWithoutRole - System.Boolean: Specifies whether we should include users without any roles assigned either in current or descendant orgs. If roleIdsFilter is not empty and this field is set to true, users without any roles will be included as well.
@@ -2798,9 +2820,9 @@ Retrieve users from current and descendant organizations based on the specified 
 ### usersonaccountlist
 - There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - UserFieldEnum
     - emailFilter - System.String
@@ -2866,7 +2888,7 @@ Paginated list of vCloud Director orgs.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2876,7 +2898,7 @@ Paginated list of the highest-level vCloud Director objects accessible by the cu
 
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
@@ -2887,7 +2909,7 @@ Paginated list of vCloud Director vApps.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2897,7 +2919,7 @@ Paginated list of virtual machines under vCloud Director hiearchy.
 
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.
@@ -2910,10 +2932,11 @@ Verify TOTP for current user.
 ### violationscategorysummary
 Summary of violations in each of the category.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - historicalDays - System.Int32: Number of days to lookback from the current day.
     - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
     - idpTypes - list of IdpTypes: Identity provider types to filter by. If empty or null, the results will not be filtered.
+    - saasOrgIds - list of System.Strings: SaaS organization IDs to filter by, matched against the organization recorded on each violation. If empty or null, the results will not be filtered.
 - Returns ViolationsCategorySummary.
 ### violationsenvironmentsummary
 Summary of violations in each of the environment.
@@ -2940,9 +2963,11 @@ All Vm recovery jobs info.
 ### volumegroupmounts
 Volume Group Live Mount Connection.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filters - list of VolumeGroupLiveMountFilterInputs: Filter for volume group live mounts.
     - sortBy - VolumeGroupLiveMountSortByInput: Sort by argument for volume group live mounts.
 - Returns VolumeGroupLiveMountConnection.
@@ -2963,9 +2988,9 @@ Specifies workloads that have an anomalous snapshot.
 
 - There are 21 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - beginTime - DateTime: Filters results that started after this time.
     - endTime - DateTime: Filters results that started before this time.
     - workloadNameSearch - System.String: Optional object name search filter with partial match.
@@ -2997,6 +3022,12 @@ type.
 
 - There is a single argument of type ListWorkloadResourceSpecsInput.
 - Returns list of WorkloadResourceSpecs.
+### workloadsprotectiondetails
+GetWorkloadsProtectionDetails returns list of recoveries and recovery plans
+information around each workload provided.
+
+- There is a single argument of type GetWorkloadsProtectionDetailsReq.
+- Returns GetWorkloadsProtectionDetailsResp.
 ### workloadsrecoveryinfo
 GetAllWorkloadsRecoveryInfo returns information regarding all
 workloads that are part of a specific recovery.

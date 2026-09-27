@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmVersion")]
         public System.String? CdmVersion { get; set; }
 
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        [JsonProperty("compromisingAlertCount")]
+        public System.Int32? CompromisingAlertCount { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -246,6 +251,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hypervVirtualMachineAppMetadata")]
         public HypervAppMetadata? HypervVirtualMachineAppMetadata { get; set; }
 
+        //      C# -> IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata
+        // GraphQL -> irisdbInstanceAppMetadata: IrisdbInstanceAppMetadata (type)
+        [JsonProperty("irisdbInstanceAppMetadata")]
+        public IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata { get; set; }
+
         //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
         // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)
         [JsonProperty("k8sAppMetadata")]
@@ -369,6 +379,7 @@ namespace RubrikSecurityCloud.Types
         CdmHierarchySnappableNew? SnappableNew = null,
         System.String? CdmId = null,
         System.String? CdmVersion = null,
+        System.Int32? CompromisingAlertCount = null,
         DateTime? Date = null,
         DateTime? ExpirationDate = null,
         System.Boolean? ExpiryHint = null,
@@ -406,6 +417,7 @@ namespace RubrikSecurityCloud.Types
         List<TriggeringAlert>? CompromisingAlerts = null,
         Db2AppMetadata? Db2AppMetadata = null,
         HypervAppMetadata? HypervVirtualMachineAppMetadata = null,
+        IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata = null,
         K8sResourceSnapshotMetadata? K8sAppMetadata = null,
         K8sSnapshotResourceSummary? K8sResourceSummary = null,
         LatestUserNote? LatestUserNote = null,
@@ -452,6 +464,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmVersion != null ) {
             this.CdmVersion = CdmVersion;
+        }
+        if ( CompromisingAlertCount != null ) {
+            this.CompromisingAlertCount = CompromisingAlertCount;
         }
         if ( Date != null ) {
             this.Date = Date;
@@ -563,6 +578,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HypervVirtualMachineAppMetadata != null ) {
             this.HypervVirtualMachineAppMetadata = HypervVirtualMachineAppMetadata;
+        }
+        if ( IrisdbInstanceAppMetadata != null ) {
+            this.IrisdbInstanceAppMetadata = IrisdbInstanceAppMetadata;
         }
         if ( K8sAppMetadata != null ) {
             this.K8sAppMetadata = K8sAppMetadata;
@@ -723,6 +741,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmVersion\n" ;
             } else {
                 s += ind + "cdmVersion\n" ;
+            }
+        }
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        if (this.CompromisingAlertCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "compromisingAlertCount\n" ;
+            } else {
+                s += ind + "compromisingAlertCount\n" ;
             }
         }
         //      C# -> DateTime? Date
@@ -1085,6 +1112,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "hypervVirtualMachineAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata
+        // GraphQL -> irisdbInstanceAppMetadata: IrisdbInstanceAppMetadata (type)
+        if (this.IrisdbInstanceAppMetadata != null) {
+            var fspec = this.IrisdbInstanceAppMetadata.AsFieldSpec(conf.Child("irisdbInstanceAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "irisdbInstanceAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1503,6 +1542,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdmVersion != null && ec.Excludes("cdmVersion",true))
         {
             this.CdmVersion = null;
+        }
+        //      C# -> System.Int32? CompromisingAlertCount
+        // GraphQL -> compromisingAlertCount: Int (scalar)
+        if (ec.Includes("compromisingAlertCount",true))
+        {
+            if(this.CompromisingAlertCount == null) {
+
+                this.CompromisingAlertCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompromisingAlertCount != null && ec.Excludes("compromisingAlertCount",true))
+        {
+            this.CompromisingAlertCount = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -2152,6 +2208,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HypervVirtualMachineAppMetadata != null && ec.Excludes("hypervVirtualMachineAppMetadata",false))
         {
             this.HypervVirtualMachineAppMetadata = null;
+        }
+        //      C# -> IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata
+        // GraphQL -> irisdbInstanceAppMetadata: IrisdbInstanceAppMetadata (type)
+        if (ec.Includes("irisdbInstanceAppMetadata",false))
+        {
+            if(this.IrisdbInstanceAppMetadata == null) {
+
+                this.IrisdbInstanceAppMetadata = new IrisdbInstanceAppMetadata();
+                this.IrisdbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("irisdbInstanceAppMetadata"));
+
+            } else {
+
+                this.IrisdbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("irisdbInstanceAppMetadata"));
+
+            }
+        }
+        else if (this.IrisdbInstanceAppMetadata != null && ec.Excludes("irisdbInstanceAppMetadata",false))
+        {
+            this.IrisdbInstanceAppMetadata = null;
         }
         //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
         // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)

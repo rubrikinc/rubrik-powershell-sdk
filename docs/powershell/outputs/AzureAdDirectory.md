@@ -121,6 +121,8 @@ managed by Rubrik (OAuth path) as opposed to a customer-provided app.
   - Specifies whether Event Hub ingestion is active for this Entra ID directory.
 - doesEventHubIngestionRequireAzureSignIn: System.Boolean
   - Specifies whether removing Event Hub ingestion for this Entra ID directory requires an interactive Azure sign-in.
+- eventHubPermissionsStatus: EntraIdEventHubPermissionsStatus
+  - Azure permissions status for Entra ID Event Hub ingestion on this directory. Returns null if the status is currently unavailable or if the directory has no Event Hub subscription.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -141,6 +143,10 @@ managed by Rubrik (OAuth path) as opposed to a customer-provided app.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection

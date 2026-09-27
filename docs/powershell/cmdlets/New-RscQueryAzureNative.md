@@ -63,9 +63,9 @@ Retrieves a paginated list of all Azure Native Managed Disks.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeDiskSortFields: Sort fields for list of Azure disks.
     - sortOrder - SortOrder: Sorts the order of results.
     - diskFilters - AzureNativeDiskFilters
@@ -76,9 +76,9 @@ Retrieves a paginated list of all Azure Native Regions.
 
 - There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeRegionSortFields: Sort fields for list of Azure regions.
     - sortOrder - SortOrder: Sorts the order of results.
     - regionFilters - AzureNativeRegionFilters: Filters for list of Azure regions.
@@ -103,9 +103,9 @@ Retrieves a paginated list of all Azure Native Resource Groups.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeCommonResourceGroupSortFields: Sort fields for listing Azure resource groups.
     - sortOrder - SortOrder: Sorts the order of results.
     - commonResourceGroupFilters - AzureNativeCommonResourceGroupFilters: Filters for listing Azure resource groups.
@@ -153,9 +153,9 @@ Retrieves a paginated list of all Azure Native Subscriptions.
 
 - There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
     - sortOrder - SortOrder: Sorts the order of results.
     - subscriptionFilters - AzureNativeSubscriptionFilters
@@ -190,9 +190,9 @@ Retrieves a paginated list of all Azure Virtual Machines (VMs).
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeVirtualMachineSortFields: Sort fields for list of Azure virtual machines.
     - sortOrder - SortOrder: Sorts the order of results.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
