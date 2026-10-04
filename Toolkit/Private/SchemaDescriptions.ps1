@@ -21418,7 +21418,6 @@ $Script:SchemaFieldDescriptions = @{
     'ExportO365MailboxInput.exportConfigs' = 'Configuration for restore job.'
     'ExportO365MailboxInput.fromMailboxUuid' = 'Polaris ID of the source mailbox.'
     'ExportO365MailboxInput.inplaceRestoreConfig' = 'In-place restore configuration for the restore job.'
-    'ExportO365MailboxInput.leaseId' = 'ID of the just-in-time permission elevation lease covering this export''s write permissions, if elevation was required.'
     'ExportO365MailboxInput.orgUuid' = 'Polaris ID of O365 subscription.'
     'ExportO365MailboxInput.skipRifItems' = 'Specifies whether to skip items in the Recoverable Items folder.'
     'ExportO365MailboxInput.snapshotUuid' = 'Polaris ID of restoring snapshot.'
