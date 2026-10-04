@@ -1,6 +1,8 @@
 ### SapHanaSslInformation
 Information required to connect to SAP HANA database over SSL.
 
+- encryptionProvider: SapHanaEncryptionProvider
+  - The encryption provider for the SAPA HANA system.
 - keyStorePath: System.String
   - The path where the encryption key for the SAP HANA system is stored.
 - cryptoLibPath: System.String
@@ -13,5 +15,3 @@ Information required to connect to SAP HANA database over SSL.
   - Specifies whether to validate the SSL certificate of the SAP HANA DB server.
 - trustStorePath: System.String
   - Path to a trust store file that contains the public certificates of the SAP HANA DB server.
-- encryptionProvider: SapHanaEncryptionProvider
-  - The encryption provider for the SAPA HANA system.

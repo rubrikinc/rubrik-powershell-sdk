@@ -15,3 +15,7 @@ Configuration for O365 mailbox restore.
   - In-place restore configuration for the restore job.
 - skipRifItems: System.Boolean
   - Specifies whether to skip items in the Recoverable Items folder.
+- leaseId: System.String
+  - ID of the just-in-time permission elevation lease covering this
+restore's write permissions, if elevation was required. Empty for
+full-access-mode apps.

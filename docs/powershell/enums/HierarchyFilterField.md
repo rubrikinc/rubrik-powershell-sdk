@@ -1414,6 +1414,36 @@ migration m0278 enables an index-only scan for this subquery.
 +mo:filter:db:column=outcome
 +mo:filter:db:index:key=NULL
 +reason: correlated scalar subquery on failover_summary; no single index covers the full predicate
+- M365_OBJECT_STATUS - Filter M365 objects by their derived object status. Texts accepts one
+or more of "PROTECTED", "UNPROTECTED", "RELIC", "UNLICENSED"; an object
+matches when its status is any of them.
+
+Status is a single value per object, resolved in precedence order
+RELIC > UNPROTECTED > UNLICENSED > PROTECTED, so the statuses partition
+the result set rather than overlapping. Only Mailbox and OneDrive carry
+licensing, so Sites and Teams are never UNLICENSED.
++mo:filter:db:table=managed_object
++mo:filter:db:column=is_archived
++mo:filter:db:index:key=NULL
++mo:filter:db:table=o365_mailboxes
++mo:filter:db:column=is_licensed
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:table=o365_onedrives
++mo:filter:db:column=is_licensed
++mo:filter:db:index:key=PRIMARY
++reason: joined on snappable_id, the primary key of both o365 tables
+- SNAPSHOT_TYPE - Filter M365 objects having at least one unexpired snapshot of the given
+type. Texts accepts one or more of "ON_DEMAND", "POLICY_BASED".
++mo:filter:db:table=snapshots
++mo:filter:db:column=is_on_demand_snapshot
++mo:filter:db:index:key=snappable_expiry_index
++reason: EXISTS subquery seeks by snappable_id and expiration_time, both leading columns of snappable_expiry_index
+- SNAPSHOT_TIME_RANGE - Filter M365 objects having at least one unexpired snapshot taken within
+a time window. Texts[0] is the RFC3339 start and Texts[1] the RFC3339
+end, both inclusive.
++mo:filter:db:table=snapshots
++mo:filter:db:column=snapshot_time
++mo:filter:db:index:key=snappable_id_snapshot_time_idx
 - IRISDB_CONNECTION_STATUS - Filter IRIS DB instances by the Rubrik Backup Service (RBS)
 connection status of their host.
 +mo:filter:db:table=cdm_irisdb_instance

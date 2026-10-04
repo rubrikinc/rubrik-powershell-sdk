@@ -17,8 +17,6 @@ A GCP native persistent disk.
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - cloudNativeId: System.String
   - GCP Native ID of the object.
 - isRelic: System.Boolean
@@ -80,6 +78,8 @@ value is true, exocompute can be used to perform tasks like file indexing.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

@@ -547,12 +547,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+    /// 	# REQUIRED
+    /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
     /// 	archivalDataSourceIds = @(
     /// 		$someString
     /// 	)
-    /// 	# REQUIRED
-    /// 	bypassProxy = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1489,12 +1489,12 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# REQUIRED
+	bypassProxy = $someBoolean
 	# OPTIONAL
 	archivalDataSourceIds = @(
 		$someString
 	)
-	# REQUIRED
-	bypassProxy = $someBoolean
 }"
             );
         }

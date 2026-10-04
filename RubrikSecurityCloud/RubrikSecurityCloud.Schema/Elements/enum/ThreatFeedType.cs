@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HASH")]
         HASH,
 
+        [EnumMember(Value = "REGISTRY")]
+        REGISTRY,
+
         [EnumMember(Value = "YARA")]
         YARA
 

@@ -42,7 +42,10 @@ List of matched objects for Threat Monitoring.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - beginTime - DateTime: Filters results that started after this time.
+    - beginTime - DateTime: Filters results that started after this time. Unset
+means no lower bound, except for accounts with DTA dashboard
+enhancements enabled, where it is required and its absence returns
+an error.
     - endTime - DateTime: Filters results that started before this time.
     - clusterUuidFilter - list of System.Strings: Optional list of Rubrik cluster UUIDs to filter by.
     - objectTypeFilter - list of System.Strings: Optional list of object types to filter by. Should be of type ManagedObjectType.

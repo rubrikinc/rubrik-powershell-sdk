@@ -23,8 +23,6 @@ O365 SharePoint Site.
   - The URL of the SharePoint Site.
 - preferredDataLocation: System.String
   - The preferred data location of the SharePoint Site.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - objectId: System.String
   - The SharePoint object ID.
 - parentId: System.String
@@ -65,6 +63,8 @@ O365 SharePoint Site.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

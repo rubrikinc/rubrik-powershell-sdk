@@ -18,3 +18,7 @@ RestoreO365FullTeamsInput to achieve zero GraphQL schema diff.
   - Encrypted refresh token for O365 App authorization.
 - o365AppId: System.String
   - UUID of the O365 App used for authorization.
+- leaseId: System.String
+  - ID of the just-in-time permission elevation lease covering this
+restore's write permissions, if elevation was required. Empty for
+full-access-mode apps.

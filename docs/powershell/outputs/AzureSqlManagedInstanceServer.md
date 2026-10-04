@@ -17,8 +17,6 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - serverName: System.String
   - Name of the Azure SQL Managed Instance Server.
 - tags: list of AzureTags
@@ -59,6 +57,8 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Resource Group of the Azure object.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

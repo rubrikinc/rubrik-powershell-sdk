@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 52
+    /// Create a new RscQuery object for any of the 53
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 52 operations
+    /// There are 53 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -943,17 +943,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	rcvRegion = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
     /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
     /// 	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# OPTIONAL
     /// 	rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
     /// 	# OPTIONAL
-    /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
-    /// 	# OPTIONAL
-    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
-    /// 	# OPTIONAL
     /// 	rsaKey = $someString
+    /// 	# OPTIONAL
+    /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
     /// 	# OPTIONAL
     /// 	azureKeyVaultKey = @{
     /// 		# REQUIRED
@@ -1034,11 +1034,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
+    /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+    /// 	# OPTIONAL
     /// 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
     /// 	# OPTIONAL
     /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
-    /// 	# OPTIONAL
-    /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	azureKeyVaultKey = @{
     /// 		# REQUIRED
@@ -1379,10 +1379,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
     /// 	# OPTIONAL
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
-    /// 	# OPTIONAL
-    /// 	archivalDataSourceIds = @(
-    /// 		$someString
-    /// 	)
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
@@ -1392,6 +1388,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		keyName = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1537,8 +1537,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
-    /// 	# OPTIONAL
-    /// 	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
     /// 	# OPTIONAL
@@ -1550,6 +1548,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		keyVersion = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2395,6 +2395,64 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartExportLocalVirtualMachineJob operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StartExportLocalVirtualMachineJob
+    /// 
+    /// $query = New-RscMutationAzure -Operation StartExportLocalVirtualMachineJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	hypervClusterId = $someString
+    /// 	# REQUIRED
+    /// 	resourceGroup = $someString
+    /// 	# REQUIRED
+    /// 	vmName = $someString
+    /// 	# REQUIRED
+    /// 	processors = $someInt
+    /// 	# REQUIRED
+    /// 	memoryMb = $someInt64
+    /// 	# OPTIONAL
+    /// 	shouldRemoveAllNetworkDevices = $someBoolean
+    /// 	# OPTIONAL
+    /// 	nicConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			sourceNicIndex = $someInt
+    /// 			# REQUIRED
+    /// 			logicalNetworkId = $someString
+    /// 			# REQUIRED
+    /// 			ipv4Type = $someAzureLocalIpv4Type # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureLocalIpv4Type]) for enum values.
+    /// 			# OPTIONAL
+    /// 			ipAllocationMethod = $someAzureLocalIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureLocalIpAllocationMethod]) for enum values.
+    /// 			# OPTIONAL
+    /// 			staticIpAddress = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StartExportSqlDatabaseDbJob operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2677,6 +2735,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	storageAccountName = $someString
     /// 	# OPTIONAL
+    /// 	clusterUuidList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	accessKey = $someString
     /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
@@ -2731,10 +2793,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		protocol = $someString
     /// 	}
-    /// 	# OPTIONAL
-    /// 	clusterUuidList = @(
-    /// 		$someString
-    /// 	)
     /// 	# OPTIONAL
     /// 	isConsolidationEnabled = $someBoolean
     /// }
@@ -3486,6 +3544,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartAdAppUpdate",
                 "StartCloudAccountOauth",
                 "StartDisableCloudAccountJob",
+                "StartExportLocalVirtualMachineJob",
                 "StartExportSqlDatabaseDbJob",
                 "StartExportSqlManagedInstanceDbJob",
                 "UnmapCloudAccountExocomputeSubscription",
@@ -3622,6 +3681,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartDisableCloudAccountJob":
                         this.ProcessRecord_StartDisableCloudAccountJob();
+                        break;
+                    case "StartExportLocalVirtualMachineJob":
+                        this.ProcessRecord_StartExportLocalVirtualMachineJob();
                         break;
                     case "StartExportSqlDatabaseDbJob":
                         this.ProcessRecord_StartExportSqlDatabaseDbJob();
@@ -3997,6 +4059,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartDisableCloudAccountJob";
             // Create new graphql operation startDisableAzureCloudAccountJob
             InitMutationStartDisableAzureCloudAccountJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startExportAzureLocalVirtualMachineJob.
+        internal void ProcessRecord_StartExportLocalVirtualMachineJob()
+        {
+            this._logger.name += " -StartExportLocalVirtualMachineJob";
+            // Create new graphql operation startExportAzureLocalVirtualMachineJob
+            InitMutationStartExportAzureLocalVirtualMachineJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4926,17 +4997,17 @@ $query.Var.input = @{
 	# OPTIONAL
 	rcvRegion = $someRcsRegionEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsRegionEnumType]) for enum values.
 	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
 	tier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# OPTIONAL
 	rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL
-	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
-	# OPTIONAL
-	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
-	# OPTIONAL
 	rsaKey = $someString
+	# OPTIONAL
+	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
 	# OPTIONAL
 	azureKeyVaultKey = @{
 		# REQUIRED
@@ -5009,11 +5080,11 @@ $query.Var.input = @{
 		}
 	)
 	# OPTIONAL
+	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# OPTIONAL
 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
 	# OPTIONAL
 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
-	# OPTIONAL
-	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 	# OPTIONAL
 	azureKeyVaultKey = @{
 		# REQUIRED
@@ -5338,10 +5409,6 @@ $query.Var.input = @{
 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
 	# OPTIONAL
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
-	# OPTIONAL
-	archivalDataSourceIds = @(
-		$someString
-	)
 	# REQUIRED
 	bypassProxy = $someBoolean
 	# OPTIONAL
@@ -5351,6 +5418,10 @@ $query.Var.input = @{
 		# REQUIRED
 		keyName = $someString
 	}
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -5479,8 +5550,6 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	retrievalTier = $someAzureRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
-	# OPTIONAL
-	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 	# REQUIRED
 	bypassProxy = $someBoolean
 	# OPTIONAL
@@ -5492,6 +5561,8 @@ $query.Var.input = @{
 		# REQUIRED
 		keyVersion = $someString
 	}
+	# OPTIONAL
+	accessTier = $someAzureStorageTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageTier]) for enum values.
 }"
             );
         }
@@ -6189,6 +6260,56 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // startExportAzureLocalVirtualMachineJob(input: StartExportAzureLocalVirtualMachineJobInput!): AsyncRequestStatus!
+        internal void InitMutationStartExportAzureLocalVirtualMachineJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartExportAzureLocalVirtualMachineJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartExportAzureLocalVirtualMachineJob",
+                "($input: StartExportAzureLocalVirtualMachineJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.StartExportAzureLocalVirtualMachineJob,
+                Mutation.StartExportAzureLocalVirtualMachineJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+	# REQUIRED
+	hypervClusterId = $someString
+	# REQUIRED
+	resourceGroup = $someString
+	# REQUIRED
+	vmName = $someString
+	# REQUIRED
+	processors = $someInt
+	# REQUIRED
+	memoryMb = $someInt64
+	# OPTIONAL
+	shouldRemoveAllNetworkDevices = $someBoolean
+	# OPTIONAL
+	nicConfigs = @(
+		@{
+			# REQUIRED
+			sourceNicIndex = $someInt
+			# REQUIRED
+			logicalNetworkId = $someString
+			# REQUIRED
+			ipv4Type = $someAzureLocalIpv4Type # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureLocalIpv4Type]) for enum values.
+			# OPTIONAL
+			ipAllocationMethod = $someAzureLocalIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureLocalIpAllocationMethod]) for enum values.
+			# OPTIONAL
+			staticIpAddress = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // startExportAzureSqlDatabaseDbJob(input: StartExportAzureSqlDatabaseDbJobInput!): AsyncJobStatus!
         internal void InitMutationStartExportAzureSqlDatabaseDbJob()
         {
@@ -6433,6 +6554,10 @@ $query.Var.input = @{
 	# OPTIONAL
 	storageAccountName = $someString
 	# OPTIONAL
+	clusterUuidList = @(
+		$someString
+	)
+	# OPTIONAL
 	accessKey = $someString
 	# OPTIONAL
 	cloudAccountId = $someString
@@ -6487,10 +6612,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		protocol = $someString
 	}
-	# OPTIONAL
-	clusterUuidList = @(
-		$someString
-	)
 	# OPTIONAL
 	isConsolidationEnabled = $someBoolean
 }"

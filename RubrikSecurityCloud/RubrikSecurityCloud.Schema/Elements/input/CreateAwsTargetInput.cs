@@ -123,17 +123,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsEndpoint")]
         public System.String? KmsEndpoint { get; set; }
 
-        //      C# -> System.String? AwsIamPairId
-        // GraphQL -> awsIamPairId: String (scalar)
-        [JsonProperty("awsIamPairId")]
-        public System.String? AwsIamPairId { get; set; }
-
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
+
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
 
         //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
         // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)

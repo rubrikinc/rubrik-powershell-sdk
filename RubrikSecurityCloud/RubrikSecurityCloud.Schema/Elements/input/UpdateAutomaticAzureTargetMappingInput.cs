@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storageAccountName")]
         public System.String? StorageAccountName { get; set; }
 
+        //      C# -> List<System.String>? ClusterUuidList
+        // GraphQL -> clusterUuidList: [String!] (scalar)
+        [JsonProperty("clusterUuidList")]
+        public List<System.String>? ClusterUuidList { get; set; }
+
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String (scalar)
         [JsonProperty("accessKey")]
@@ -55,11 +60,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> proxySettings: ProxySettingsInput (input)
         [JsonProperty("proxySettings")]
         public ProxySettingsInput? ProxySettings { get; set; }
-
-        //      C# -> List<System.String>? ClusterUuidList
-        // GraphQL -> clusterUuidList: [String!] (scalar)
-        [JsonProperty("clusterUuidList")]
-        public List<System.String>? ClusterUuidList { get; set; }
 
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean (scalar)

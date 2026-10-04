@@ -19,8 +19,6 @@ Microsoft 365 Backup Storage Organization.
   - Security posture metadata.
 - status: OrgStatus
   - Status of the Microsoft organization.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - controllerStatus: ServiceAppStatus
   - Status of the Microsoft 365 Backup Storage Organization controller.
 - activationTime: DateTime
@@ -73,3 +71,5 @@ Microsoft 365 Backup Storage Organization.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.

@@ -17,8 +17,6 @@ An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.co
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - nativeName: System.String
   - Name of the Azure Postgres Flexible Server.
 - tags: list of AzureTags
@@ -73,6 +71,8 @@ An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.co
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

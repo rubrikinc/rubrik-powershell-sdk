@@ -1,10 +1,10 @@
 ### SapHanaRecoverableRangeFilterInput
 Input for filtering SAP HANA recoverable ranges.
 
-- clusterUuid: list of System.Strings
-  - Filter by cluster UUID.
 - databaseId: list of System.Strings
   - Filter by SAP HANA database ID.
+- clusterUuid: list of System.Strings
+  - Filter by cluster UUID.
 - fromTime: DateTime
   - Filter the SAP HANA recoverable range starting after the specified time.
 - toTime: DateTime

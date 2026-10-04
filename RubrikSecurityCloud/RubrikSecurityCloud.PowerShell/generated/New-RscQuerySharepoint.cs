@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Sharepoint' API domain:
-    /// BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, or SnapshotDriveSearch.
+    /// BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, SnapshotDriveSearch, or SnapshotListSearch.
     /// </summary>
     /// <description>
     /// New-RscQuerySharepoint creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Sharepoint' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, or SnapshotDriveSearch.
+    /// one of: BrowseDrive, BrowseList, SiteDescendants, SiteExclusions, SiteSearch, SnappableDriveSearch, SnappableListSearch, SnapshotDriveSearch, or SnapshotListSearch.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -820,6 +820,112 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the SnapshotListSearch operation
+    /// of the 'Sharepoint' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sharepoint
+    /// # API Operation: SnapshotListSearch
+    /// 
+    /// $query = New-RscQuerySharepoint -Operation SnapshotListSearch
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.snappableFid = $someString
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
+    /// # OPTIONAL
+    /// $query.Var.sharepointDriveSearchFilter = @{
+    /// 	# OPTIONAL
+    /// 	searchKeywordFilter = @{
+    /// 		# OPTIONAL
+    /// 		searchKeyword = $someString
+    /// 		# OPTIONAL
+    /// 		keywordType = $someOnedriveSearchKeywordType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OnedriveSearchKeywordType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	modifiedTime = @{
+    /// 		# OPTIONAL
+    /// 		fromTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		untilTime = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	createTime = @{
+    /// 		# OPTIONAL
+    /// 		fromTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		untilTime = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	searchObjectFilter = @{
+    /// 		# OPTIONAL
+    /// 		searchObjectType = $someOnedriveSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OnedriveSearchObjectType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	channelId = $someString
+    /// 	# OPTIONAL
+    /// 	channelFolderName = $someString
+    /// 	# OPTIONAL
+    /// 	channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	excludeItemsUnderRoot = $someBoolean
+    /// 	# OPTIONAL
+    /// 	channelNameKeyword = $someString
+    /// 	# OPTIONAL
+    /// 	useExactVersionMatch = $someBoolean
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	filePath = $someString
+    /// 	# OPTIONAL
+    /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.siteChildId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: O365OnedriveObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -844,6 +950,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SnappableDriveSearch",
                 "SnappableListSearch",
                 "SnapshotDriveSearch",
+                "SnapshotListSearch",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -882,6 +989,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SnapshotDriveSearch":
                         this.ProcessRecord_SnapshotDriveSearch();
+                        break;
+                    case "SnapshotListSearch":
+                        this.ProcessRecord_SnapshotListSearch();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -963,6 +1073,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SnapshotDriveSearch";
             // Create new graphql operation snapshotSharepointDriveSearch
             InitQuerySnapshotSharepointDriveSearch();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snapshotSharepointListSearch.
+        internal void ProcessRecord_SnapshotListSearch()
+        {
+            this._logger.name += " -SnapshotListSearch";
+            // Create new graphql operation snapshotSharepointListSearch
+            InitQuerySnapshotSharepointListSearch();
         }
 
 
@@ -1772,6 +1891,122 @@ $query.Var.sharepointDriveSearchFilter = @{
 $query.Var.siteChildId = $someString
 # OPTIONAL
 $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // snapshotSharepointListSearch(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     snappableFid: UUID!
+        //     snapshotFid: UUID!
+        //     orgId: UUID!
+        //     sharepointDriveSearchFilter: OnedriveSearchFilter
+        //     siteChildId: String
+        //   ): O365OnedriveObjectConnection!
+        internal void InitQuerySnapshotSharepointListSearch()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("snappableFid", "UUID!"),
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("orgId", "UUID!"),
+                Tuple.Create("sharepointDriveSearchFilter", "OnedriveSearchFilter"),
+                Tuple.Create("siteChildId", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapshotSharepointListSearch",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String)",
+                "O365OnedriveObjectConnection",
+                Query.SnapshotSharepointListSearch,
+                Query.SnapshotSharepointListSearchFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.snappableFid = $someString
+# REQUIRED
+$query.Var.snapshotFid = $someString
+# REQUIRED
+$query.Var.orgId = $someString
+# OPTIONAL
+$query.Var.sharepointDriveSearchFilter = @{
+	# OPTIONAL
+	searchKeywordFilter = @{
+		# OPTIONAL
+		searchKeyword = $someString
+		# OPTIONAL
+		keywordType = $someOnedriveSearchKeywordType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OnedriveSearchKeywordType]) for enum values.
+	}
+	# OPTIONAL
+	modifiedTime = @{
+		# OPTIONAL
+		fromTime = $someDateTime
+		# OPTIONAL
+		untilTime = $someDateTime
+	}
+	# OPTIONAL
+	createTime = @{
+		# OPTIONAL
+		fromTime = $someDateTime
+		# OPTIONAL
+		untilTime = $someDateTime
+	}
+	# OPTIONAL
+	searchObjectFilter = @{
+		# OPTIONAL
+		searchObjectType = $someOnedriveSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OnedriveSearchObjectType]) for enum values.
+	}
+	# OPTIONAL
+	channelId = $someString
+	# OPTIONAL
+	channelFolderName = $someString
+	# OPTIONAL
+	channelMembershipType = $someChannelMembershipType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	# OPTIONAL
+	excludeItemsUnderRoot = $someBoolean
+	# OPTIONAL
+	channelNameKeyword = $someString
+	# OPTIONAL
+	useExactVersionMatch = $someBoolean
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
+	}
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	filePath = $someString
+	# OPTIONAL
+	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
+}
+# OPTIONAL
+$query.Var.siteChildId = $someString"
             );
         }
 

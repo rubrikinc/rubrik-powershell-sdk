@@ -19,6 +19,9 @@ Resolvable hostname or IPv4 address of the storage array.
 - isVolumeProtectionEnabled: System.Boolean
   - Supported in v9.6+
 Whether Volume Protection features are enabled for this storage array. Optional for backward compatibility - older clusters omit this field.
+- isIrisdbProtectionEnabled: System.Boolean
+  - Supported in v9.7
+Whether IrisDB Protection features are enabled for this storage array.
 - isSnapshotOffloadingEnabled: System.Boolean
   - Supported in v9.6+
 Whether Array Integration (Snapshot Offloading) features are enabled for this storage array. Optional for backward compatibility - older clusters omit this field.

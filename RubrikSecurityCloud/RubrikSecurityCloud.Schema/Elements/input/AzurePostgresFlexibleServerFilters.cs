@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regionFilter")]
         public AzureNativeRegionFilter? RegionFilter { get; set; }
 
+        //      C# -> RelicFilter? RelicFilter
+        // GraphQL -> relicFilter: RelicFilter (input)
+        [JsonProperty("relicFilter")]
+        public RelicFilter? RelicFilter { get; set; }
+
         //      C# -> AzurePostgresFlexibleServerResourceGroupFilter? ResourceGroupFilter
         // GraphQL -> resourceGroupFilter: AzurePostgresFlexibleServerResourceGroupFilter (input)
         [JsonProperty("resourceGroupFilter")]

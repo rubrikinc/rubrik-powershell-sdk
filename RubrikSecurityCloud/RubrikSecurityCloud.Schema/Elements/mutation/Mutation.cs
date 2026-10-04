@@ -4915,6 +4915,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddSupportCaseCommentReply? AddSupportCaseComment
+        // GraphQL -> addSupportCaseComment: AddSupportCaseCommentReply! (type)
+        public static string AddSupportCaseComment(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addSupportCaseComment" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddSupportCaseCommentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddSupportCaseCommentReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AddSyslogExportRuleReply? AddSyslogExportRule
         // GraphQL -> addSyslogExportRule: AddSyslogExportRuleReply! (type)
         public static string AddSyslogExportRule(object fsObj)
@@ -6481,6 +6499,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloseSupportCaseReply? CloseSupportCase
+        // GraphQL -> closeSupportCase: CloseSupportCaseReply! (type)
+        public static string CloseSupportCase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "closeSupportCase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloseSupportCaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloseSupportCaseReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectAddSubdirBackupReply? CloudDirectAddSubdirBackup
         // GraphQL -> cloudDirectAddSubdirBackup: CloudDirectAddSubdirBackupReply! (type)
         public static string CloudDirectAddSubdirBackup(object fsObj)
@@ -8043,6 +8079,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CreateSsoUsersReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CreateSupportCaseReply? CreateSupportCase
+        // GraphQL -> createSupportCase: CreateSupportCaseReply! (type)
+        public static string CreateSupportCase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createSupportCase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateSupportCaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateSupportCaseReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10365,6 +10419,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new EndManagedVolumeSnapshotReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> EscalateSupportCaseWithCommentReply? EscalateSupportCaseWithComment
+        // GraphQL -> escalateSupportCaseWithComment: EscalateSupportCaseWithCommentReply! (type)
+        public static string EscalateSupportCaseWithComment(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "escalateSupportCaseWithComment" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object EscalateSupportCaseWithCommentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new EscalateSupportCaseWithCommentReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13231,6 +13303,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ReopenSupportCaseReply? ReopenSupportCase
+        // GraphQL -> reopenSupportCase: ReopenSupportCaseReply! (type)
+        public static string ReopenSupportCase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "reopenSupportCase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ReopenSupportCaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ReopenSupportCaseReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ReplaceClusterNodeReply? ReplaceClusterNode
         // GraphQL -> replaceClusterNode: ReplaceClusterNodeReply! (type)
         public static string ReplaceClusterNode(object fsObj)
@@ -14649,6 +14739,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? StartExportAzureLocalVirtualMachineJob
+        // GraphQL -> startExportAzureLocalVirtualMachineJob: AsyncRequestStatus! (type)
+        public static string StartExportAzureLocalVirtualMachineJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startExportAzureLocalVirtualMachineJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartExportAzureLocalVirtualMachineJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17133,6 +17241,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateStorageArraysReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateSupportCaseReply? UpdateSupportCase
+        // GraphQL -> updateSupportCase: UpdateSupportCaseReply! (type)
+        public static string UpdateSupportCase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateSupportCase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateSupportCaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateSupportCaseReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

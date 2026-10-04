@@ -293,6 +293,21 @@ has read access to.
 
 - There is a single argument of type AzureListManagementGroupsReq.
 - Returns AzureListManagementGroupsReply.
+### localexporttargetclusters
+List Azure Local clusters eligible as export destinations for a snapshot.
+
+- There is a single argument of type System.String.
+- Returns AzureLocalExportTargetClustersResponse.
+### locallogicalnetworks
+List logical networks attached to the destination cluster.
+
+- There is a single argument of type System.String.
+- Returns AzureLocalLogicalNetworksResponse.
+### localresourcegroups
+List resource groups in the destination subscription.
+
+- There is a single argument of type System.String.
+- Returns AzureLocalResourceGroupsResponse.
 ### managedidentities
 List all managed identities for Azure resources.
 

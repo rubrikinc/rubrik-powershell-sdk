@@ -2,7 +2,7 @@
 Input for editing an AWS account.
 
 - id: System.String
-  - Name of the AWS account.
+  - ID of the AWS account to update.
 - name: System.String
   - Name of the AWS account.
 - description: System.String

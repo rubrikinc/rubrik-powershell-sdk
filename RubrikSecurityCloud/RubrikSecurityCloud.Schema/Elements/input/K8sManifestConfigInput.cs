@@ -102,6 +102,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccount")]
         public ServiceAccountInputInput? ServiceAccount { get; set; }
 
+        //      C# -> LoadBalancerAnnotationInput? LoadBalancerAnnotations
+        // GraphQL -> loadBalancerAnnotations: LoadBalancerAnnotationInput (input)
+        [JsonProperty("loadBalancerAnnotations")]
+        public LoadBalancerAnnotationInput? LoadBalancerAnnotations { get; set; }
+
 
         #endregion
 

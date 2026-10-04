@@ -1,31 +1,6 @@
 ### SalesforceOrganization
-Salesforce organization.
+Salesforce organization managed by Rubrik.
 
-- environmentType: SaasEnvironmentType
-- naturalId: System.String
-  - ID of the Salesforce organization at the source.
-- archivalEnabled: System.Boolean
-  - Whether archival has been enabled (opted in) for this Salesforce organization.
-- orgUrl: System.String
-  - The URL of the Salesforce organization.
-- status: SaasOrganizationStatus
-  - The status of the Salesforce organization.
-- apiLimits: SalesforceOrganizationApiLimits
-  - The API limits configured for the Salesforce organization.
-- lastRefreshTime: DateTime
-  - The time at which the Salesforce organization was last synced to Rubrik.
-- exocomputeId: System.String
-  - Denotes the ID of the exocompute cluster associated with the org.
-- archivalExocomputeId: System.String
-  - Denotes the ID of the exocompute cluster used for archival. Non-null indicates archival setup is complete.
-- saasOrgType: SaasOrgType
-  - The organization type that categorizes the SaaS provider.
-- metadataWorkloadID: System.String
-  - Rubrik ID of the Salesforce metadata workload.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -34,30 +9,66 @@ Salesforce organization.
   - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
   - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
   - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
   - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- environmentType: SaasEnvironmentType
+  - Environment type of the organiztion.
+- status: SaasOrganizationStatus
+  - The state of the SaaS organization.
+- lastRefreshTime: DateTime
+  - The time at which the SaaS organization was last synced to Rubrik.
+- onboardedAppTypes: list of SaasAppTypes
+  - The list of SaaS application types that are onboarded for the organization.
+- naturalId: System.String
+  - ID of the Salesforce organization at the source.
+- exocomputeId: System.String
+  - Denotes the ID of the exocompute cluster associated with the org.
+- archivalExocomputeId: System.String
+  - Denotes the ID of the exocompute cluster used for archival. Non-null indicates archival setup is complete.
+- archivalEnabled: System.Boolean
+  - Whether archival has been enabled (opted in) for this Salesforce organization.
+- orgUrl: System.String
+  - The URL of the Salesforce organization.
+- apiLimits: SalesforceOrganizationApiLimits
+  - The API limits configured for the Salesforce organization.
+- saasOrgType: SaasOrgType
+  - The organization type that categorizes the SaaS provider.
+- metadataWorkloadID: System.String
+  - Rubrik ID of the Salesforce metadata workload.
+- storageRegion: System.String
+  - Exocompute cluster for an org's storage region.
+- connectionStatus: ConnectionStatus
+  - Connection status for an org by ID.
+- apiUsage: ApiUsageInfo
+  - API usage data for an org by ID.
+- saasAppsOrgInfo: SaasAppsOrgInfo
+  - Org size info by org ID.
+- backupJobsStats: backupJobsStats
+  - Backup job stats by org ID.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -66,17 +77,7 @@ Salesforce organization.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
-- storageRegion: System.String
-  - The RSC storage region for the organization.
-- backupJobsStats: backupJobsStats
-  - Stats of the backup jobs in the last 24 hours.
-- connectionStatus: ConnectionStatus
-  - The connection status to the organization.
-- apiUsage: ApiUsageInfo
-  - The API usage of the organization during the last 24 hours.
-- saasAppsOrgInfo: SaasAppsOrgInfo
-  - The information of the Saas Apps organization.
-- onboardedAppTypes: list of SaasAppTypes
-  - The list of SaaS application types that are onboarded for the organization.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

@@ -35,8 +35,6 @@ O365 Groups from O365 hierarchy.
   - Metadata of the Microsoft Group.
 - configuredGroupSpecification: O365ConfiguredGroupSpec
   - Configured Group Specs.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - orgId: System.String
   - UUID of the O365 organization.
 - configuredGroupSpec: System.String
@@ -87,3 +85,5 @@ O365 Groups from O365 hierarchy.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.

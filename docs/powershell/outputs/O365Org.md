@@ -19,8 +19,6 @@ O365 Organization.
   - Security posture metadata.
 - status: OrgStatus
   - Status of the Microsoft organization.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - tenantId: System.String
   - The tenant ID of the Microsoft organization.
 - exocomputeId: System.String
@@ -109,3 +107,5 @@ O365 Organization.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.

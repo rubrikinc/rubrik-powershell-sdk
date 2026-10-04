@@ -21,8 +21,6 @@ Microsoft 365 Backup Storage OneDrive.
   - The user principal name of the object.
 - preferredDataLocation: System.String
   - The preferred data location of the workload.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - isRelic: System.Boolean
   - Specifies whether the OneDrive is a relic.
 - backupStorageProtectionStatus: BackupStorageProtectionStatus
@@ -73,3 +71,5 @@ Microsoft 365 Backup Storage OneDrive.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.

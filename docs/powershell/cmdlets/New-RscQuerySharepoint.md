@@ -131,3 +131,19 @@ files).
     - siteChildId - System.String: The site child ID for SharePoint descendant objects.
     - siteChildType - SharePointDescendantType: The site child type for SharePoint descendant objects.
 - Returns O365OnedriveObjectConnection.
+### snapshotlistsearch
+Returns SharePoint list objects for the given site workload inside a
+single snapshot, merged as a single O365OnedriveObject interface list
+(folders then files).
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - snappableFid - System.String: The FID for the workload.
+    - snapshotFid - System.String: The ID of the snapshot.
+    - orgId - System.String: Org UUID.
+    - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional SharePoint list search filter.
+    - siteChildId - System.String: The site child ID for SharePoint descendant objects.
+- Returns O365OnedriveObjectConnection.

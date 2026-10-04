@@ -72,3 +72,4 @@ Inventory Card options that the user can select as a workload.
 - ANTHROPIC - Inventory card is Anthropic.
 - IRISDB - Inventory card is IRIS DB.
 - AZURE_COSMOS_NOSQL - Inventory card is Azure Cosmos NoSQL.
+- HPE_VME - Inventory card is HPE Virtual Machine Essentials.

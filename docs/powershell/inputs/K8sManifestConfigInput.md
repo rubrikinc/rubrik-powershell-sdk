@@ -47,3 +47,5 @@ The transport type used for the RBA data movers. Set to pernodeproxy to include 
 - serviceAccount: ServiceAccountInputInput
   - Required. Supported in v9.2+
 The RSC service account used for onboarding.
+- loadBalancerAnnotations: LoadBalancerAnnotationInput
+  - Annotations to set on the generated load balancer Service. Only used when transport is loadbalancer. When non-empty, this map replaces the built-in per-distribution annotations entirely.

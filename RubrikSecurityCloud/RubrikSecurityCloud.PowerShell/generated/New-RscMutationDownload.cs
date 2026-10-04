@@ -201,18 +201,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		timeRange = @{
     /// 			# OPTIONAL
-    /// 			relativeTimeRange = @{
-    /// 				# REQUIRED
-    /// 				magnitude = $someInt
-    /// 				# REQUIRED
-    /// 				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-    /// 			}
-    /// 			# OPTIONAL
     /// 			absoluteTimeRange = @{
     /// 				# REQUIRED
     /// 				start = $someDateTime
     /// 				# REQUIRED
     /// 				end = $someDateTime
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			relativeTimeRange = @{
+    /// 				# REQUIRED
+    /// 				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+    /// 				# REQUIRED
+    /// 				magnitude = $someInt
     /// 			}
     /// 		}
     /// 		# OPTIONAL
@@ -837,6 +837,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
     /// 		# OPTIONAL
+    /// 		isHidden = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isReadOnly = $someBoolean
+    /// 		# OPTIONAL
     /// 		charts = @(
     /// 			@{
     /// 				# REQUIRED
@@ -907,18 +911,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			timeRange = @{
     /// 				# OPTIONAL
-    /// 				relativeTimeRange = @{
-    /// 					# REQUIRED
-    /// 					magnitude = $someInt
-    /// 					# REQUIRED
-    /// 					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-    /// 				}
-    /// 				# OPTIONAL
     /// 				absoluteTimeRange = @{
     /// 					# REQUIRED
     /// 					start = $someDateTime
     /// 					# REQUIRED
     /// 					end = $someDateTime
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				relativeTimeRange = @{
+    /// 					# REQUIRED
+    /// 					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+    /// 					# REQUIRED
+    /// 					magnitude = $someInt
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -1002,10 +1006,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			date = $someDateTime
     /// 		}
-    /// 		# OPTIONAL
-    /// 		isHidden = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isReadOnly = $someBoolean
     /// 	}
     /// }
     /// 
@@ -1045,6 +1045,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
     /// 		# OPTIONAL
+    /// 		isHidden = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isReadOnly = $someBoolean
+    /// 		# OPTIONAL
     /// 		charts = @(
     /// 			@{
     /// 				# REQUIRED
@@ -1115,18 +1119,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			timeRange = @{
     /// 				# OPTIONAL
-    /// 				relativeTimeRange = @{
-    /// 					# REQUIRED
-    /// 					magnitude = $someInt
-    /// 					# REQUIRED
-    /// 					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-    /// 				}
-    /// 				# OPTIONAL
     /// 				absoluteTimeRange = @{
     /// 					# REQUIRED
     /// 					start = $someDateTime
     /// 					# REQUIRED
     /// 					end = $someDateTime
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				relativeTimeRange = @{
+    /// 					# REQUIRED
+    /// 					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+    /// 					# REQUIRED
+    /// 					magnitude = $someInt
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -1210,10 +1214,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			date = $someDateTime
     /// 		}
-    /// 		# OPTIONAL
-    /// 		isHidden = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isReadOnly = $someBoolean
     /// 	}
     /// }
     /// 
@@ -2271,18 +2271,18 @@ $query.Var.input = @{
 		# OPTIONAL
 		timeRange = @{
 			# OPTIONAL
-			relativeTimeRange = @{
-				# REQUIRED
-				magnitude = $someInt
-				# REQUIRED
-				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-			}
-			# OPTIONAL
 			absoluteTimeRange = @{
 				# REQUIRED
 				start = $someDateTime
 				# REQUIRED
 				end = $someDateTime
+			}
+			# OPTIONAL
+			relativeTimeRange = @{
+				# REQUIRED
+				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+				# REQUIRED
+				magnitude = $someInt
 			}
 		}
 		# OPTIONAL
@@ -2802,6 +2802,10 @@ $query.Var.input = @{
 		# REQUIRED
 		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
 		# OPTIONAL
+		isHidden = $someBoolean
+		# OPTIONAL
+		isReadOnly = $someBoolean
+		# OPTIONAL
 		charts = @(
 			@{
 				# REQUIRED
@@ -2872,18 +2876,18 @@ $query.Var.input = @{
 			# OPTIONAL
 			timeRange = @{
 				# OPTIONAL
-				relativeTimeRange = @{
-					# REQUIRED
-					magnitude = $someInt
-					# REQUIRED
-					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-				}
-				# OPTIONAL
 				absoluteTimeRange = @{
 					# REQUIRED
 					start = $someDateTime
 					# REQUIRED
 					end = $someDateTime
+				}
+				# OPTIONAL
+				relativeTimeRange = @{
+					# REQUIRED
+					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+					# REQUIRED
+					magnitude = $someInt
 				}
 			}
 			# OPTIONAL
@@ -2967,10 +2971,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			date = $someDateTime
 		}
-		# OPTIONAL
-		isHidden = $someBoolean
-		# OPTIONAL
-		isReadOnly = $someBoolean
 	}
 }"
             );
@@ -3002,6 +3002,10 @@ $query.Var.input = @{
 		# REQUIRED
 		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
 		# OPTIONAL
+		isHidden = $someBoolean
+		# OPTIONAL
+		isReadOnly = $someBoolean
+		# OPTIONAL
 		charts = @(
 			@{
 				# REQUIRED
@@ -3072,18 +3076,18 @@ $query.Var.input = @{
 			# OPTIONAL
 			timeRange = @{
 				# OPTIONAL
-				relativeTimeRange = @{
-					# REQUIRED
-					magnitude = $someInt
-					# REQUIRED
-					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-				}
-				# OPTIONAL
 				absoluteTimeRange = @{
 					# REQUIRED
 					start = $someDateTime
 					# REQUIRED
 					end = $someDateTime
+				}
+				# OPTIONAL
+				relativeTimeRange = @{
+					# REQUIRED
+					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
+					# REQUIRED
+					magnitude = $someInt
 				}
 			}
 			# OPTIONAL
@@ -3167,10 +3171,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			date = $someDateTime
 		}
-		# OPTIONAL
-		isHidden = $someBoolean
-		# OPTIONAL
-		isReadOnly = $someBoolean
 	}
 }"
             );

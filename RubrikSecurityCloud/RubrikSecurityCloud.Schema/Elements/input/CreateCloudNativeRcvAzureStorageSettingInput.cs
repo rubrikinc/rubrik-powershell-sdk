@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rcvRegion")]
         public RcsRegionEnumType? RcvRegion { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
         //      C# -> AzureStorageTier? Tier
         // GraphQL -> tier: AzureStorageTier (enum)
         [JsonProperty("tier")]
@@ -55,20 +60,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
-        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
-        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
-        [JsonProperty("sourceWorkloadCloud")]
-        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
-
-        //      C# -> RcvRedundancy? Redundancy
-        // GraphQL -> redundancy: RcvRedundancy (enum)
-        [JsonProperty("redundancy")]
-        public RcvRedundancy? Redundancy { get; set; }
-
         //      C# -> System.String? RsaKey
         // GraphQL -> rsaKey: String (scalar)
         [JsonProperty("rsaKey")]
         public System.String? RsaKey { get; set; }
+
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
 
         //      C# -> AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey
         // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput (input)

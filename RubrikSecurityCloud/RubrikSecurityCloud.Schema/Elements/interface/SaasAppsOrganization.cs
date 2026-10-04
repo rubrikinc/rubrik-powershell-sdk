@@ -39,20 +39,85 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
-        //      C# -> SlaDomain? EffectiveSlaDomain
-        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        [JsonProperty("effectiveSlaDomain")]
-        SlaDomain? EffectiveSlaDomain { get; set; }
+        //      C# -> List<PathNode>? LogicalPath
+        // GraphQL -> logicalPath: [PathNode!]! (type)
+        [JsonProperty("logicalPath")]
+        List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> List<PathNode>? PhysicalPath
+        // GraphQL -> physicalPath: [PathNode!]! (type)
+        [JsonProperty("physicalPath")]
+        List<PathNode>? PhysicalPath { get; set; }
+
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        [JsonProperty("effectiveSlaSourceObject")]
+        PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        SecurityMetadata? SecurityMetadata { get; set; }
+
+        //      C# -> SaasEnvironmentType? EnvironmentType
+        // GraphQL -> environmentType: SaasEnvironmentType! (enum)
+        [JsonProperty("environmentType")]
+        SaasEnvironmentType? EnvironmentType { get; set; }
+
+        //      C# -> SaasOrganizationStatus? Status
+        // GraphQL -> status: SaasOrganizationStatus! (enum)
+        [JsonProperty("status")]
+        SaasOrganizationStatus? Status { get; set; }
+
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        [JsonProperty("lastRefreshTime")]
+        DateTime? LastRefreshTime { get; set; }
+
+        //      C# -> List<SaasAppType>? OnboardedAppTypes
+        // GraphQL -> onboardedAppTypes: [SaasAppType!]! (enum)
+        [JsonProperty("onboardedAppTypes")]
+        List<SaasAppType>? OnboardedAppTypes { get; set; }
+
+        //      C# -> System.String? StorageRegion
+        // GraphQL -> storageRegion: String (scalar)
+        [JsonProperty("storageRegion")]
+        System.String? StorageRegion { get; set; }
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
+        //      C# -> ConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: ConnectionStatus! (type)
+        [JsonProperty("connectionStatus")]
+        ConnectionStatus? ConnectionStatus { get; set; }
+
+        //      C# -> ApiUsageInfo? ApiUsage
+        // GraphQL -> apiUsage: ApiUsageInfo! (type)
+        [JsonProperty("apiUsage")]
+        ApiUsageInfo? ApiUsage { get; set; }
+
+        //      C# -> SaasAppsOrgInfo? SaasAppsOrgInfo
+        // GraphQL -> saasAppsOrgInfo: SaasAppsOrgInfo! (type)
+        [JsonProperty("saasAppsOrgInfo")]
+        SaasAppsOrgInfo? SaasAppsOrgInfo { get; set; }
+
+        //      C# -> BackupJobsStats? BackupJobsStats
+        // GraphQL -> backupJobsStats: backupJobsStats (type)
+        [JsonProperty("backupJobsStats")]
+        BackupJobsStats? BackupJobsStats { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         System.Boolean? SlaPauseStatus { get; set; }
 
-        //      C# -> SnapshotDistribution? SnapshotDistribution
-        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        [JsonProperty("snapshotDistribution")]
-        SnapshotDistribution? SnapshotDistribution { get; set; }
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        [JsonProperty("effectiveSlaDomain")]
+        SlaDomain? EffectiveSlaDomain { get; set; }
 
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
@@ -64,40 +129,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
 
-        //      C# -> PathNode? EffectiveSlaSourceObject
-        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        [JsonProperty("effectiveSlaSourceObject")]
-        PathNode? EffectiveSlaSourceObject { get; set; }
+        //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
+        // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
+        [JsonProperty("rscNativeObjectPendingSla")]
+        CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
 
-        //      C# -> List<PathNode>? LogicalPath
-        // GraphQL -> logicalPath: [PathNode!]! (type)
-        [JsonProperty("logicalPath")]
-        List<PathNode>? LogicalPath { get; set; }
+        //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
+        // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("rscPendingObjectPauseAssignment")]
+        PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment { get; set; }
 
-        //      C# -> List<PathNode>? PhysicalPath
-        // GraphQL -> physicalPath: [PathNode!]! (type)
-        [JsonProperty("physicalPath")]
-        List<PathNode>? PhysicalPath { get; set; }
+        //      C# -> SnapshotDistribution? SnapshotDistribution
+        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
+        [JsonProperty("snapshotDistribution")]
+        SnapshotDistribution? SnapshotDistribution { get; set; }
 
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         System.Int32? NumWorkloadDescendants { get; set; }
 
-        //      C# -> List<Org>? AllOrgs
-        // GraphQL -> allOrgs: [Org!]! (type)
-        [JsonProperty("allOrgs")]
-        List<Org>? AllOrgs { get; set; }
-
         //      C# -> List<AssignedRscTag>? AllTags
         // GraphQL -> allTags: [AssignedRscTag!]! (type)
         [JsonProperty("allTags")]
         List<AssignedRscTag>? AllTags { get; set; }
-
-        //      C# -> SecurityMetadata? SecurityMetadata
-        // GraphQL -> securityMetadata: SecurityMetadata (type)
-        [JsonProperty("securityMetadata")]
-        SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -119,55 +174,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("futureLegalHoldInfo")]
         FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
-        //      C# -> System.String? StorageRegion
-        // GraphQL -> storageRegion: String (scalar)
-        [JsonProperty("storageRegion")]
-        System.String? StorageRegion { get; set; }
-
-        //      C# -> SaasEnvironmentType? EnvironmentType
-        // GraphQL -> environmentType: SaasEnvironmentType! (enum)
-        [JsonProperty("environmentType")]
-        SaasEnvironmentType? EnvironmentType { get; set; }
-
-        //      C# -> BackupJobsStats? BackupJobsStats
-        // GraphQL -> backupJobsStats: backupJobsStats (type)
-        [JsonProperty("backupJobsStats")]
-        BackupJobsStats? BackupJobsStats { get; set; }
-
-        //      C# -> SaasOrganizationStatus? Status
-        // GraphQL -> status: SaasOrganizationStatus! (enum)
-        [JsonProperty("status")]
-        SaasOrganizationStatus? Status { get; set; }
-
-        //      C# -> ConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: ConnectionStatus! (type)
-        [JsonProperty("connectionStatus")]
-        ConnectionStatus? ConnectionStatus { get; set; }
-
-        //      C# -> ApiUsageInfo? ApiUsage
-        // GraphQL -> apiUsage: ApiUsageInfo! (type)
-        [JsonProperty("apiUsage")]
-        ApiUsageInfo? ApiUsage { get; set; }
-
-        //      C# -> SaasAppsOrgInfo? SaasAppsOrgInfo
-        // GraphQL -> saasAppsOrgInfo: SaasAppsOrgInfo! (type)
-        [JsonProperty("saasAppsOrgInfo")]
-        SaasAppsOrgInfo? SaasAppsOrgInfo { get; set; }
-
-        //      C# -> DateTime? LastRefreshTime
-        // GraphQL -> lastRefreshTime: DateTime (scalar)
-        [JsonProperty("lastRefreshTime")]
-        DateTime? LastRefreshTime { get; set; }
-
-        //      C# -> List<SaasAppType>? OnboardedAppTypes
-        // GraphQL -> onboardedAppTypes: [SaasAppType!]! (enum)
-        [JsonProperty("onboardedAppTypes")]
-        List<SaasAppType>? OnboardedAppTypes { get; set; }
-
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
+        //      C# -> List<Org>? AllOrgs
+        // GraphQL -> allOrgs: [Org!]! (type)
+        [JsonProperty("allOrgs")]
+        List<Org>? AllOrgs { get; set; }
 
 
         #endregion

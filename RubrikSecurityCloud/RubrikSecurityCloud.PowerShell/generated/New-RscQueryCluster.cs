@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 55
+    /// Create a new RscQuery object for any of the 59
     /// operations in the 'Cluster' API domain:
-    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CanIgnoreClusterRemovalPrechecks, CdmClusterConfigNamespaces, CdmClusterGlobalConfigParams, CdmClusterLocalConfigParams, CdmClusterNodes, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 55 operations
+    /// There are 59 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CanIgnoreClusterRemovalPrechecks, CdmClusterConfigNamespaces, CdmClusterGlobalConfigParams, CdmClusterLocalConfigParams, CdmClusterNodes, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,178 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: IgnoreClusterRemovalPrecheckReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CdmClusterConfigNamespaces operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CdmClusterConfigNamespaces
+    /// 
+    /// $query = New-RscQueryCluster -Operation CdmClusterConfigNamespaces
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.configType = $someCdmConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigType]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.searchTerm = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CdmConfigNamespace&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CdmClusterGlobalConfigParams operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CdmClusterGlobalConfigParams
+    /// 
+    /// $query = New-RscQueryCluster -Operation CdmClusterGlobalConfigParams
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @{
+    /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// 	# OPTIONAL
+    /// 	states = @(
+    /// 		$someCdmConfigParamState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigParamState]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	namespaces = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmGlobalConfigParamConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CdmClusterLocalConfigParams operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CdmClusterLocalConfigParams
+    /// 
+    /// $query = New-RscQueryCluster -Operation CdmClusterLocalConfigParams
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @{
+    /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// 	# OPTIONAL
+    /// 	states = @(
+    /// 		$someCdmConfigParamState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigParamState]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	nodes = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	namespaces = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmLocalConfigParamConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CdmClusterNodes operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CdmClusterNodes
+    /// 
+    /// $query = New-RscQueryCluster -Operation CdmClusterNodes
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # OPTIONAL
+    /// $query.Var.searchTerm = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmClusterNodeConnection
     /// 
     /// 
     /// 
@@ -2709,6 +2881,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CanIgnoreClusterRemovalPrechecks",
+                "CdmClusterConfigNamespaces",
+                "CdmClusterGlobalConfigParams",
+                "CdmClusterLocalConfigParams",
+                "CdmClusterNodes",
                 "CheckClusterRuSupport",
                 "CloudClusterInstanceProperties",
                 "CloudClusterNodesInstanceProperties",
@@ -2780,6 +2956,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "CanIgnoreClusterRemovalPrechecks":
                         this.ProcessRecord_CanIgnoreClusterRemovalPrechecks();
+                        break;
+                    case "CdmClusterConfigNamespaces":
+                        this.ProcessRecord_CdmClusterConfigNamespaces();
+                        break;
+                    case "CdmClusterGlobalConfigParams":
+                        this.ProcessRecord_CdmClusterGlobalConfigParams();
+                        break;
+                    case "CdmClusterLocalConfigParams":
+                        this.ProcessRecord_CdmClusterLocalConfigParams();
+                        break;
+                    case "CdmClusterNodes":
+                        this.ProcessRecord_CdmClusterNodes();
                         break;
                     case "CheckClusterRuSupport":
                         this.ProcessRecord_CheckClusterRuSupport();
@@ -2960,6 +3148,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CanIgnoreClusterRemovalPrechecks";
             // Create new graphql operation canIgnoreClusterRemovalPrechecks
             InitQueryCanIgnoreClusterRemovalPrechecks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allCdmClusterConfigNamespaces.
+        internal void ProcessRecord_CdmClusterConfigNamespaces()
+        {
+            this._logger.name += " -CdmClusterConfigNamespaces";
+            // Create new graphql operation allCdmClusterConfigNamespaces
+            InitQueryAllCdmClusterConfigNamespaces();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cdmClusterGlobalConfigParams.
+        internal void ProcessRecord_CdmClusterGlobalConfigParams()
+        {
+            this._logger.name += " -CdmClusterGlobalConfigParams";
+            // Create new graphql operation cdmClusterGlobalConfigParams
+            InitQueryCdmClusterGlobalConfigParams();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cdmClusterLocalConfigParams.
+        internal void ProcessRecord_CdmClusterLocalConfigParams()
+        {
+            this._logger.name += " -CdmClusterLocalConfigParams";
+            // Create new graphql operation cdmClusterLocalConfigParams
+            InitQueryCdmClusterLocalConfigParams();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cdmClusterNodes.
+        internal void ProcessRecord_CdmClusterNodes()
+        {
+            this._logger.name += " -CdmClusterNodes";
+            // Create new graphql operation cdmClusterNodes
+            InitQueryCdmClusterNodes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3466,6 +3690,184 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.CanIgnoreClusterRemovalPrechecksFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allCdmClusterConfigNamespaces(clusterUuid: UUID!, configType: CdmConfigType!, searchTerm: String): [CdmConfigNamespace!]!
+        internal void InitQueryAllCdmClusterConfigNamespaces()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("configType", "CdmConfigType!"),
+                Tuple.Create("searchTerm", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllCdmClusterConfigNamespaces",
+                "($clusterUuid: UUID!,$configType: CdmConfigType!,$searchTerm: String)",
+                "List<CdmConfigNamespace>",
+                Query.AllCdmClusterConfigNamespaces,
+                Query.AllCdmClusterConfigNamespacesFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.configType = $someCdmConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigType]) for enum values.
+# OPTIONAL
+$query.Var.searchTerm = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cdmClusterGlobalConfigParams(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     clusterUuid: UUID!
+        //     filters: CdmGlobalConfigFilter
+        //   ): CdmGlobalConfigParamConnection!
+        internal void InitQueryCdmClusterGlobalConfigParams()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("filters", "CdmGlobalConfigFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCdmClusterGlobalConfigParams",
+                "($first: Int,$after: String,$last: Int,$before: String,$clusterUuid: UUID!,$filters: CdmGlobalConfigFilter)",
+                "CdmGlobalConfigParamConnection",
+                Query.CdmClusterGlobalConfigParams,
+                Query.CdmClusterGlobalConfigParamsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.clusterUuid = $someString
+# OPTIONAL
+$query.Var.filters = @{
+	# OPTIONAL
+	searchTerm = $someString
+	# OPTIONAL
+	states = @(
+		$someCdmConfigParamState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigParamState]) for enum values.
+	)
+	# OPTIONAL
+	namespaces = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cdmClusterLocalConfigParams(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     clusterUuid: UUID!
+        //     filters: CdmLocalConfigFilter
+        //   ): CdmLocalConfigParamConnection!
+        internal void InitQueryCdmClusterLocalConfigParams()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("filters", "CdmLocalConfigFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCdmClusterLocalConfigParams",
+                "($first: Int,$after: String,$last: Int,$before: String,$clusterUuid: UUID!,$filters: CdmLocalConfigFilter)",
+                "CdmLocalConfigParamConnection",
+                Query.CdmClusterLocalConfigParams,
+                Query.CdmClusterLocalConfigParamsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.clusterUuid = $someString
+# OPTIONAL
+$query.Var.filters = @{
+	# OPTIONAL
+	searchTerm = $someString
+	# OPTIONAL
+	states = @(
+		$someCdmConfigParamState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmConfigParamState]) for enum values.
+	)
+	# OPTIONAL
+	nodes = @(
+		$someString
+	)
+	# OPTIONAL
+	namespaces = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cdmClusterNodes(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     clusterUuid: UUID!
+        //     searchTerm: String
+        //   ): CdmClusterNodeConnection!
+        internal void InitQueryCdmClusterNodes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("searchTerm", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCdmClusterNodes",
+                "($first: Int,$after: String,$last: Int,$before: String,$clusterUuid: UUID!,$searchTerm: String)",
+                "CdmClusterNodeConnection",
+                Query.CdmClusterNodes,
+                Query.CdmClusterNodesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.clusterUuid = $someString
+# OPTIONAL
+$query.Var.searchTerm = $someString"
             );
         }
 

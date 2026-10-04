@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<System.String>? ClusterUuid
-        // GraphQL -> clusterUuid: [UUID!] (scalar)
-        [JsonProperty("clusterUuid")]
-        public List<System.String>? ClusterUuid { get; set; }
-
         //      C# -> List<System.String>? DatabaseId
         // GraphQL -> databaseId: [String!] (scalar)
         [JsonProperty("databaseId")]
         public List<System.String>? DatabaseId { get; set; }
+
+        //      C# -> List<System.String>? ClusterUuid
+        // GraphQL -> clusterUuid: [UUID!] (scalar)
+        [JsonProperty("clusterUuid")]
+        public List<System.String>? ClusterUuid { get; set; }
 
         //      C# -> DateTime? FromTime
         // GraphQL -> fromTime: DateTime (scalar)

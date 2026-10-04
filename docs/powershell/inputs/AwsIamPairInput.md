@@ -1,5 +1,5 @@
 ### AwsIamPairInput
-Input to specify either AWS IAM pair ID or AWS IAM role name.
+Represents the AWS IAM pair.
 
 - awsIamPairId: System.String
   - ID of the AWS IAM pair.

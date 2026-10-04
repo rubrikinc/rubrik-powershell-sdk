@@ -15,6 +15,8 @@ A digital certificate, or concatenated chain of digital certificates, that permi
 - certificateId: System.String
   - Supported in v9.6+
 The ID corresponding to the imported certificate.
+- isIrisdbProtectionEnabled: System.Boolean
+  - Whether IrisDB Protection is enabled for this storage array. When true, apiToken must be provided in the request.
 - isSnapshotOffloadingEnabled: System.Boolean
   - Supported in v9.6+
 Specifies whether Array Integration (Snapshot Offloading) features are enabled for this storage array. Optional for backward compatibility - older clients may omit this field. When true, username and password must be provided in the request.

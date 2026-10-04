@@ -11,3 +11,5 @@ Type of cluster job.
 - MIGRATE_NODES - Migrate cloud cluster nodes to new configuration.
 - MIGRATE_CLUSTER_TO_MANAGED_IDENTITY - Migrate cloud cluster to use managed identity.
 - MANUAL_ADD_NODES - Manual add node(s) to a Rubrik cluster.
+- CONVERT_TO_REGULAR_CCES - Convert a CCES cluster with dynamic scaling to a regular cluster.
+- CONVERT_TO_DYNAMIC_SCALING_CCES - Convert a CCES cluster to dynamic scaling.

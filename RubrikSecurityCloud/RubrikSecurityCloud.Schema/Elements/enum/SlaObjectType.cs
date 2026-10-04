@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_OBJECT_TYPE")]
         AZURE_BLOB_OBJECT_TYPE,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_OBJECT_TYPE")]
+        AZURE_COSMOS_NOSQL_OBJECT_TYPE,
+
         [EnumMember(Value = "AZURE_DEVOPS_OBJECT_TYPE")]
         AZURE_DEVOPS_OBJECT_TYPE,
 

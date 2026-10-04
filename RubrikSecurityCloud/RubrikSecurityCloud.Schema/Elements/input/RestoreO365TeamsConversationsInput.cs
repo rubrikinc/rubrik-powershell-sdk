@@ -112,6 +112,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetChannelFallbackOwner")]
         public System.String? TargetChannelFallbackOwner { get; set; }
 
+        //      C# -> System.String? LeaseId
+        // GraphQL -> leaseId: String (scalar)
+        [JsonProperty("leaseId")]
+        public System.String? LeaseId { get; set; }
+
 
         #endregion
 

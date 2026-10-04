@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTOR_TYPE_UNSPECIFIED")]
         ACTOR_TYPE_UNSPECIFIED,
 
+        [EnumMember(Value = "AUTOMATION")]
+        AUTOMATION,
+
         [EnumMember(Value = "HUMAN_USER")]
         HUMAN_USER,
 

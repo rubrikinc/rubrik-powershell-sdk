@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enabled")]
         public System.Boolean? Enabled { get; set; }
 
+        //      C# -> List<DtaProduct>? Products
+        // GraphQL -> products: [DtaProduct!] (enum)
+        [JsonProperty("products")]
+        public List<DtaProduct>? Products { get; set; }
+
 
         #endregion
 

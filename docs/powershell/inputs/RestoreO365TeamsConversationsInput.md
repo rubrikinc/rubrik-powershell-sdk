@@ -32,3 +32,7 @@ RSC org id are resolved from req_ctx.
   - Specifies the sequence number of the snapshot being currently restored.
 - targetChannelFallbackOwner: System.String
   - Fallback owner of the private and shared channel while restore, as requested in the RSC Web UI.
+- leaseId: System.String
+  - ID of the just-in-time permission elevation lease covering this
+restore's write permissions, if elevation was required. Empty for
+full-access-mode apps.

@@ -801,6 +801,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH")]
         M365_BACKUP_STORAGE_PROTECTION_STATUS_MISMATCH,
 
+        [EnumMember(Value = "M365_OBJECT_STATUS")]
+        M365_OBJECT_STATUS,
+
         [EnumMember(Value = "M365_PREFERRED_DATA_LOCATION")]
         M365_PREFERRED_DATA_LOCATION,
 
@@ -1184,6 +1187,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SENSITIVITY_STATUS")]
         SENSITIVITY_STATUS,
+
+        [EnumMember(Value = "SNAPSHOT_TIME_RANGE")]
+        SNAPSHOT_TIME_RANGE,
+
+        [EnumMember(Value = "SNAPSHOT_TYPE")]
+        SNAPSHOT_TYPE,
 
         [EnumMember(Value = "TOP_LEVEL_SITES_OF_O365_ORG")]
         TOP_LEVEL_SITES_OF_O365_ORG,

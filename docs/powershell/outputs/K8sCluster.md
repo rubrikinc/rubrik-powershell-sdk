@@ -22,7 +22,7 @@ Kubernetes cluster.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+  - Pending pause or unpause assignment for RSC-native objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String

@@ -10,6 +10,7 @@
 - AwsNativeRdsInstance
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - AWS_NATIVE_CONFIG - AWS Native Config.
+- GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.
 - POWER_PLATFORM_BUSINESS_RULE - Power Platform business rule.
 - O365SharePointList
 - AllSubHierarchyType

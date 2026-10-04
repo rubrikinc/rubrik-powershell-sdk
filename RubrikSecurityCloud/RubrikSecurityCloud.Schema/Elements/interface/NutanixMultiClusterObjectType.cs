@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
-        // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
-        [JsonProperty("duplicateObjectsAbsoluteCount")]
-        System.Int32? DuplicateObjectsAbsoluteCount { get; set; }
-
         //      C# -> List<CdmHierarchyObject>? DuplicateObjects
         // GraphQL -> duplicateObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("duplicateObjects")]
         List<CdmHierarchyObject>? DuplicateObjects { get; set; }
+
+        //      C# -> System.Int32? DuplicateObjectsAbsoluteCount
+        // GraphQL -> duplicateObjectsAbsoluteCount: Int! (scalar)
+        [JsonProperty("duplicateObjectsAbsoluteCount")]
+        System.Int32? DuplicateObjectsAbsoluteCount { get; set; }
 
 
         #endregion

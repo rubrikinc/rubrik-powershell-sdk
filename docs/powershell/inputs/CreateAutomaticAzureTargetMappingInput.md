@@ -8,7 +8,7 @@ Input for create an Azure target mapping.
 - accessKey: System.String
   - Access key of the Azure target.
 - containerNamePrefix: System.String
-  - Prefix of the container inside storage account. 
+  - Prefix of the container inside storage account.
 - cloudAccountId: System.String
   - Cloud Account Id of the target subscription.
 - instanceType: InstanceTypeEnum

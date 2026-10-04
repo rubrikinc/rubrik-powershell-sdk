@@ -935,6 +935,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	refreshTokenEncrypted = $someString
     /// 	# REQUIRED
     /// 	o365AppId = $someString
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -994,6 +996,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1053,6 +1057,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1744,6 +1750,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		leaseId = $someString
     /// 	}
     /// }
     /// 
@@ -1891,6 +1899,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotSequenceNum = $someInt
     /// 	# OPTIONAL
     /// 	targetChannelFallbackOwner = $someString
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2017,6 +2027,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotSequenceNum = $someInt
     /// 	# OPTIONAL
     /// 	targetChannelFallbackOwner = $someString
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3472,6 +3484,8 @@ $query.Var.input = @{
 	refreshTokenEncrypted = $someString
 	# REQUIRED
 	o365AppId = $someString
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -3523,6 +3537,8 @@ $query.Var.restoreConfig = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -3574,6 +3590,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -4257,6 +4275,8 @@ $query.Var.input = @{
 				}
 			)
 		}
+		# OPTIONAL
+		leaseId = $someString
 	}
 }"
             );
@@ -4396,6 +4416,8 @@ $query.Var.input = @{
 	snapshotSequenceNum = $someInt
 	# OPTIONAL
 	targetChannelFallbackOwner = $someString
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -4514,6 +4536,8 @@ $query.Var.input = @{
 	snapshotSequenceNum = $someInt
 	# OPTIONAL
 	targetChannelFallbackOwner = $someString
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }

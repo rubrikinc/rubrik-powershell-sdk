@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean (scalar)
+        [JsonProperty("enableKerberosForSmb")]
+        public System.Boolean? EnableKerberosForSmb { get; set; }
+
         //      C# -> List<System.String>? DnsServers
         // GraphQL -> dnsServers: [String!] (scalar)
         [JsonProperty("dnsServers")]

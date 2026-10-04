@@ -98,11 +98,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	dailyTime = $someDateTime
     /// 	# OPTIONAL
+    /// 	weeklyDays = @(
+    /// 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
     /// 	weeklyTime = $someDateTime
     /// 	# OPTIONAL
     /// 	monthlyDate = $someInt
     /// 	# OPTIONAL
     /// 	monthlyTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	attachmentTypes = @(
+    /// 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
+    /// 	)
     /// 	# REQUIRED
     /// 	rubrikRecipientUserIds = @(
     /// 		$someString
@@ -117,14 +125,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	timeZone = $someString
     /// 	# OPTIONAL
     /// 	showChartsInEmailBody = $someBoolean
-    /// 	# OPTIONAL
-    /// 	weeklyDays = @(
-    /// 		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	attachmentTypes = @(
-    /// 		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -644,11 +644,19 @@ $query.Var.input = @{
 	# OPTIONAL
 	dailyTime = $someDateTime
 	# OPTIONAL
+	weeklyDays = @(
+		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
+	)
+	# OPTIONAL
 	weeklyTime = $someDateTime
 	# OPTIONAL
 	monthlyDate = $someInt
 	# OPTIONAL
 	monthlyTime = $someDateTime
+	# OPTIONAL
+	attachmentTypes = @(
+		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
+	)
 	# REQUIRED
 	rubrikRecipientUserIds = @(
 		$someString
@@ -663,14 +671,6 @@ $query.Var.input = @{
 	timeZone = $someString
 	# OPTIONAL
 	showChartsInEmailBody = $someBoolean
-	# OPTIONAL
-	weeklyDays = @(
-		$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
-	)
-	# OPTIONAL
-	attachmentTypes = @(
-		$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-	)
 }"
             );
         }

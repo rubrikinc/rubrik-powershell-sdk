@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 36
+    /// Create a new RscQuery object for any of the 37
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, LatestPermissionsByPermissionsGroup, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 36 operations
+    /// There are 37 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, LatestPermissionsByPermissionsGroup, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -764,6 +764,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;KmsEncryptionKey&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LatestPermissionsByPermissionsGroup operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: LatestPermissionsByPermissionsGroup
+    /// 
+    /// $query = New-RscQueryAws -Operation LatestPermissionsByPermissionsGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AwsFeaturePermissions&gt;
     /// 
     /// 
     /// 
@@ -1588,6 +1620,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "InstanceProfileNames",
                 "IsS3BucketNameAvailable",
                 "KmsEncryptionKeysByRegion",
+                "LatestPermissionsByPermissionsGroup",
                 "MarketplaceSubscriptionInfo",
                 "OptionGroupsByRegion",
                 "PermissionPolicies",
@@ -1678,6 +1711,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "KmsEncryptionKeysByRegion":
                         this.ProcessRecord_KmsEncryptionKeysByRegion();
+                        break;
+                    case "LatestPermissionsByPermissionsGroup":
+                        this.ProcessRecord_LatestPermissionsByPermissionsGroup();
                         break;
                     case "MarketplaceSubscriptionInfo":
                         this.ProcessRecord_MarketplaceSubscriptionInfo();
@@ -1915,6 +1951,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -KmsEncryptionKeysByRegion";
             // Create new graphql operation allKmsEncryptionKeysByRegionFromAws
             InitQueryAllKmsEncryptionKeysByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAWSLatestPermissionsByPermissionsGroup.
+        internal void ProcessRecord_LatestPermissionsByPermissionsGroup()
+        {
+            this._logger.name += " -LatestPermissionsByPermissionsGroup";
+            // Create new graphql operation allAWSLatestPermissionsByPermissionsGroup
+            InitQueryAllAwsLatestPermissionsByPermissionsGroup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2647,6 +2692,31 @@ $query.Var.awsAccountRubrikId = $someString
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # OPTIONAL
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAWSLatestPermissionsByPermissionsGroup(features: [CloudAccountFeature!]!, serviceType: AwsCloudAccountServiceType): [AwsFeaturePermissions!]!
+        internal void InitQueryAllAwsLatestPermissionsByPermissionsGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+                Tuple.Create("serviceType", "AwsCloudAccountServiceType"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAwsLatestPermissionsByPermissionsGroup",
+                "($features: [CloudAccountFeature!]!,$serviceType: AwsCloudAccountServiceType)",
+                "List<AwsFeaturePermissions>",
+                Query.AllAwsLatestPermissionsByPermissionsGroup,
+                Query.AllAwsLatestPermissionsByPermissionsGroupFieldSpec,
+                @"# REQUIRED
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
+# OPTIONAL
+$query.Var.serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values."
             );
         }
 

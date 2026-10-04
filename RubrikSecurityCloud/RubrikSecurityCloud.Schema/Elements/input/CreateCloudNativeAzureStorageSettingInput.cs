@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cmkInfo")]
         public List<AzureCmkInput>? CmkInfo { get; set; }
 
+        //      C# -> AzureCloudType? AzureCloudType
+        // GraphQL -> azureCloudType: AzureCloudType (enum)
+        [JsonProperty("azureCloudType")]
+        public AzureCloudType? AzureCloudType { get; set; }
+
         //      C# -> AzureStorageAccountNetworkAccess? NetworkAccessType
         // GraphQL -> networkAccessType: AzureStorageAccountNetworkAccess (enum)
         [JsonProperty("networkAccessType")]
@@ -99,11 +104,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
         [JsonProperty("sourceWorkloadCloud")]
         public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
-
-        //      C# -> AzureCloudType? AzureCloudType
-        // GraphQL -> azureCloudType: AzureCloudType (enum)
-        [JsonProperty("azureCloudType")]
-        public AzureCloudType? AzureCloudType { get; set; }
 
         //      C# -> AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey
         // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput (input)

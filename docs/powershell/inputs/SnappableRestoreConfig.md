@@ -31,3 +31,9 @@ Represents the snappable contents to be restored.
   - Relic restore configuration for restore jobs.
 - tasksRestoreConfig: TasksRestoreConfig
   - Restore configuration for Microsoft To Do tasks jobs.
+- leaseId: System.String
+  - ID of the just-in-time permission elevation lease covering this
+restore's write permissions, if elevation was required. Empty for
+full-access-mode apps and for JIT-mode restores that needed no write
+permissions the app didn't already have. Correlates the restore
+taskchain to the lease adopted in `prepare` and released in `teardown`.

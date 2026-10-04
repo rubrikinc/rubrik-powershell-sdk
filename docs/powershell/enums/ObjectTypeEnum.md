@@ -119,3 +119,4 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - HPE_VME_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
+- GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.

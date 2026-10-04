@@ -151,6 +151,13 @@ List of encryption keys in the specified region on the specified AWS Native acco
     - region - AwsNativeRegion: Region in AWS.
     - feature - CloudAccountFeature: Cloud account feature to filter encryption keys for accounts that support per-feature IAM roles.
 - Returns list of KmsEncryptionKeys.
+### latestpermissionsbypermissionsgroup
+Retrieves the latest permissions required for each of the provided features. Permissions for each feature are grouped by permissions group.
+
+- There are 2 arguments.
+    - features - list of CloudAccountFeatures: Cloud account features.
+    - serviceType - AwsCloudAccountServiceType: Service type of the AWS cloud account.
+- Returns list of AwsFeaturePermissionss.
 ### marketplacesubscriptioninfo
 Check AWS marketplace subscription status for a given CDM version.
 

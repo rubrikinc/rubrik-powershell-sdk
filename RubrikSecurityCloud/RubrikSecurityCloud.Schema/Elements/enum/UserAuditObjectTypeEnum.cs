@@ -201,6 +201,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUPS_METADATA")]
+        GOOGLE_WORKSPACE_GROUPS_METADATA,
+
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
         GOOGLE_WORKSPACE_USER_MAILBOX,
 

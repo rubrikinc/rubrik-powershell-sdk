@@ -10,3 +10,4 @@ Paginated list of Row objects. Each page of the results includes at most 1000 en
 - count: System.Int32
   - Total number of Row objects matching the request arguments.
 - columns: list of Columns
+  - The columns present in the result, in result order.

@@ -17,8 +17,6 @@ An Azure Native Resource Group Base. Refers to a collection of resources in whic
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean
@@ -31,6 +29,8 @@ An Azure Native Resource Group Base. Refers to a collection of resources in whic
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

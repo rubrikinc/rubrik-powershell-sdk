@@ -125,16 +125,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("computeProxySettings")]
         public ProxySettingsInput? ComputeProxySettings { get; set; }
 
-        //      C# -> System.String? AwsIamPairId
-        // GraphQL -> awsIamPairId: String (scalar)
-        [JsonProperty("awsIamPairId")]
-        public System.String? AwsIamPairId { get; set; }
-
-        //      C# -> List<System.String>? ArchivalDataSourceIds
-        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
-        [JsonProperty("archivalDataSourceIds")]
-        public List<System.String>? ArchivalDataSourceIds { get; set; }
-
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]
@@ -142,10 +132,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
 
+        //      C# -> System.String? AwsIamPairId
+        // GraphQL -> awsIamPairId: String (scalar)
+        [JsonProperty("awsIamPairId")]
+        public System.String? AwsIamPairId { get; set; }
+
         //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
         // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)
         [JsonProperty("awsKmsKey")]
         public AwsKmsKeyIdentifierInput? AwsKmsKey { get; set; }
+
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
 
 
         #endregion

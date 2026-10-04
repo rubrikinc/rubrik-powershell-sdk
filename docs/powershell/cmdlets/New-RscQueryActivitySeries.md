@@ -26,7 +26,7 @@ Paginated list of event series objects. Each page of the results will include at
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortOrder - SortOrder: Activity sort order
     - sortBy - ActivitySeriesSortField: Sort activity series by field.
-    - filters - ActivitySeriesFilter
+    - filters - ActivitySeriesFilter: Filters applied to the activity series.
 - Returns ActivitySeriesConnection.
 ### sessionintimeoutinseconds
 The session inactivity timeout in seconds for the authenticated user.

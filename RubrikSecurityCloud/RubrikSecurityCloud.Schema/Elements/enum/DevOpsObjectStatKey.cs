@@ -27,11 +27,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NUM_ADO_CUSTOM_PACKAGE_VERSIONS")]
         NUM_ADO_CUSTOM_PACKAGE_VERSIONS,
 
+        [EnumMember(Value = "NUM_ADO_PULL_REQUESTS")]
+        NUM_ADO_PULL_REQUESTS,
+
         [EnumMember(Value = "NUM_ADO_WIKIS")]
         NUM_ADO_WIKIS,
 
         [EnumMember(Value = "NUM_ADO_WORK_ITEMS")]
         NUM_ADO_WORK_ITEMS,
+
+        [EnumMember(Value = "NUM_GITHUB_ACTIONS_WORKFLOWS")]
+        NUM_GITHUB_ACTIONS_WORKFLOWS,
+
+        [EnumMember(Value = "NUM_GITHUB_ACTIONS_WORKFLOW_RUNS")]
+        NUM_GITHUB_ACTIONS_WORKFLOW_RUNS,
 
         [EnumMember(Value = "NUM_GITHUB_ISSUES")]
         NUM_GITHUB_ISSUES,

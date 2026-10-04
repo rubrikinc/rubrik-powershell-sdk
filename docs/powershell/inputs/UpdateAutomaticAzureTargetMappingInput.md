@@ -7,6 +7,8 @@ Input to edit Azure automatic target mapping.
   - Name of the Azure target mapping.
 - storageAccountName: System.String
   - Storage account name of the Azure archival target.
+- clusterUuidList: list of System.Strings
+  - List of Rubrik cluster UUIDs.
 - accessKey: System.String
   - Access key of the Azure target.
 - cloudAccountId: System.String
@@ -15,7 +17,5 @@ Input to edit Azure automatic target mapping.
   - Compute settings of the Azure target.
 - proxySettings: ProxySettingsInput
   - Proxy settings of the Azure target.
-- clusterUuidList: list of System.Strings
-  - List of Rubrik cluster UUIDs.
 - isConsolidationEnabled: System.Boolean
   - Specifies whether consolidation is enabled on the Azure target.

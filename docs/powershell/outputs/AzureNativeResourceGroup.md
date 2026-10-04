@@ -17,8 +17,6 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - azureSubscriptionRubrikId: System.String
   - Rubrik ID of the Azure Native Resource Group.
 - vmsCount: System.Int32
@@ -71,6 +69,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

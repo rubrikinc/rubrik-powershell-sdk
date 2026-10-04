@@ -1,6 +1,8 @@
 ### NutanixLiveMount
 Nutanix virtual machine live mount.
 
+- id: System.String
+  - Fid of the live mount.
 - cdmId: System.String
   - CDM ID of the live mount.
 - isVmReady: System.Boolean
@@ -51,8 +53,6 @@ Nutanix virtual machine live mount.
   - Indicates whether the mount is a disk mount.
 - attachedDiskCount: System.Int32
   - Number of disks attached to the target virtual machine.
-- id: System.String
-  - Fid of the live mount.
 - cluster: Cluster
   - Cluster of the live mount.
 - sourceSnapshot: CdmSnapshot

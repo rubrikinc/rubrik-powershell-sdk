@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tier")]
         public RcsTierEnumType? Tier { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
+        //      C# -> System.String? RsaKey
+        // GraphQL -> rsaKey: String (scalar)
+        [JsonProperty("rsaKey")]
+        public System.String? RsaKey { get; set; }
+
         //      C# -> System.Int64? LockDurationDays
         // GraphQL -> lockDurationDays: Long (scalar)
         [JsonProperty("lockDurationDays")]
@@ -69,16 +79,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldBypassProxyForDatapaths: Boolean (scalar)
         [JsonProperty("shouldBypassProxyForDatapaths")]
         public System.Boolean? ShouldBypassProxyForDatapaths { get; set; }
-
-        //      C# -> RcvRedundancy? Redundancy
-        // GraphQL -> redundancy: RcvRedundancy (enum)
-        [JsonProperty("redundancy")]
-        public RcvRedundancy? Redundancy { get; set; }
-
-        //      C# -> System.String? RsaKey
-        // GraphQL -> rsaKey: String (scalar)
-        [JsonProperty("rsaKey")]
-        public System.String? RsaKey { get; set; }
 
         //      C# -> AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey
         // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput (input)

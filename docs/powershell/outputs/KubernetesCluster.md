@@ -81,6 +81,8 @@ Rubrik CDM. NULL for non-Helm onboarded clusters.
   - Virtual machines belonging to the Kubernetes cluster.
 - descendantConnection: KubernetesClusterDescendantConnection
   - List of descendants.
+- k8sApi: K8sApiProxyResponse
+  - Proxy a K8s API request through the CDM cluster.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

@@ -17,8 +17,6 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - azureSubscriptionId: System.String
   - Native ID of the Azure subscription associated with the region.
 - vmsCount: System.Int32
@@ -45,6 +43,8 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

@@ -57,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsMasterKeyId")]
         public System.String? KmsMasterKeyId { get; set; }
 
+        //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
+        // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)
+        [JsonProperty("awsKmsKey")]
+        public AwsKmsKeyIdentifierInput? AwsKmsKey { get; set; }
+
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         [Required]
@@ -68,11 +73,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bucketTags: TagsInput (input)
         [JsonProperty("bucketTags")]
         public TagsInput? BucketTags { get; set; }
-
-        //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
-        // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)
-        [JsonProperty("awsKmsKey")]
-        public AwsKmsKeyIdentifierInput? AwsKmsKey { get; set; }
 
 
         #endregion

@@ -11,3 +11,5 @@ Maximum number of kupr backup agents allowed to run concurrently against this Ku
 - serviceAccount: ServiceAccountInputInput
   - Required. Supported in v9.2+
 The RSC service account used for regenerating the manifest.
+- loadBalancerAnnotations: RegenerateLoadBalancerAnnotationInput
+  - Annotations to set on the regenerated load balancer Service. Only used when the cluster transport is loadbalancer. When non-empty, this map replaces the built-in per-distribution annotations entirely.

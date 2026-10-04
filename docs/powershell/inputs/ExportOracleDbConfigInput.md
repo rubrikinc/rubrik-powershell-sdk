@@ -58,6 +58,8 @@ List of RAC host simple IDs to recover the database during the clone.
 - shouldRestoreWithExactTime: System.Boolean
   - Supported in v9.5+
 Clone (RMAN DUPLICATE) only. When false, the UNTIL TIME clause is omitted and RMAN recovers to the end of available archive logs. When the field is omitted, server-side behavior treats it as true (UNTIL TIME is included) for backward compatibility.
+- shouldRestoreAsStandby: System.Boolean
+  - Clone (RMAN DUPLICATE) only. When true, the cloned database is restored as a physical standby (mounted for recovery and not opened read-write). When the field is omitted or false, the database is restored normally. The default value is false.
 - targetRacPrimaryHostId: System.String
   - Supported in v9.0+
 Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.

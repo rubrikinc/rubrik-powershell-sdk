@@ -21,8 +21,6 @@ O365 Mailbox.
   - The user principal name of the object.
 - preferredDataLocation: System.String
   - The preferred data location of the workload.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - isRelic: System.Boolean
   - Specifies whether the mailbox is a relic.
 - jobTitle: System.String
@@ -71,3 +69,5 @@ O365 Mailbox.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.

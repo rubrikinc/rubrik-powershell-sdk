@@ -67,3 +67,7 @@ Power Platform objects (canvas app, model-driven app, flow).
 - IRISDB_INSTANCE_OBJECT_TYPE - IRIS DB instance object type. SLA Domains are assigned at the instance
 level; databases within the instance inherit the instance's SLA Domain.
 - HPE_VME_OBJECT_TYPE - HPE Virtual Machine Essentials SLA Domain object.
+- AZURE_COSMOS_NOSQL_OBJECT_TYPE - Azure Cosmos DB for NoSQL object. SLA Domains are assignable at the
+account, database and container levels; the container is the object
+that is backed up, and the levels above it cascade their SLA Domain
+down to the containers beneath them.

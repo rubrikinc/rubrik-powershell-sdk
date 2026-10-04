@@ -17,8 +17,6 @@ Salesforce object.
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - isRelic: System.Boolean
   - True if the Salesforce object is a relic.
 - label: System.String
@@ -31,6 +29,10 @@ Salesforce object.
   - Indicates whether the Salesforce object is recommended for backup. Objects
 matching certain patterns (e.g., *History, *Share, *Feed) are not
 recommended for backup.
+- rtpInfo: SaasWorkloadRtpInfo
+  - Real-time protection status and configuration for this object.
+Only populated when LIC_ENABLE_SALESFORCE_REAL_TIME_PROTECTION is enabled
+for the account.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean
@@ -43,6 +45,8 @@ recommended for backup.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

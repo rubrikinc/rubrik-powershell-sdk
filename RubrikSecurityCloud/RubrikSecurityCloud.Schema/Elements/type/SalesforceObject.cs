@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rscNativeObjectPendingSla")]
         public CompactSlaDomain? RscNativeObjectPendingSla { get; set; }
 
+        //      C# -> SaasWorkloadRtpInfo? RtpInfo
+        // GraphQL -> rtpInfo: SaasWorkloadRtpInfo (type)
+        [JsonProperty("rtpInfo")]
+        public SaasWorkloadRtpInfo? RtpInfo { get; set; }
+
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]
@@ -341,6 +346,7 @@ namespace RubrikSecurityCloud.Types
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
+        SaasWorkloadRtpInfo? RtpInfo = null,
         SecurityMetadata? SecurityMetadata = null,
         PolarisSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
@@ -438,6 +444,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RscNativeObjectPendingSla != null ) {
             this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
+        }
+        if ( RtpInfo != null ) {
+            this.RtpInfo = RtpInfo;
         }
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
@@ -786,6 +795,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "rscNativeObjectPendingSla" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SaasWorkloadRtpInfo? RtpInfo
+        // GraphQL -> rtpInfo: SaasWorkloadRtpInfo (type)
+        if (this.RtpInfo != null) {
+            var fspec = this.RtpInfo.AsFieldSpec(conf.Child("rtpInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rtpInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1422,6 +1443,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RscNativeObjectPendingSla != null && ec.Excludes("rscNativeObjectPendingSla",false))
         {
             this.RscNativeObjectPendingSla = null;
+        }
+        //      C# -> SaasWorkloadRtpInfo? RtpInfo
+        // GraphQL -> rtpInfo: SaasWorkloadRtpInfo (type)
+        if (ec.Includes("rtpInfo",false))
+        {
+            if(this.RtpInfo == null) {
+
+                this.RtpInfo = new SaasWorkloadRtpInfo();
+                this.RtpInfo.ApplyExploratoryFieldSpec(ec.NewChild("rtpInfo"));
+
+            } else {
+
+                this.RtpInfo.ApplyExploratoryFieldSpec(ec.NewChild("rtpInfo"));
+
+            }
+        }
+        else if (this.RtpInfo != null && ec.Excludes("rtpInfo",false))
+        {
+            this.RtpInfo = null;
         }
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)

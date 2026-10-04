@@ -1,6 +1,8 @@
 ### SmbDomain
 SMB domain.
 
+- id: System.String
+  - ID of the SMB domain.
 - name: System.String
   - Name of the SMB domain.
 - domainId: System.String
@@ -13,7 +15,5 @@ SMB domain.
   - Authentication status of the SMB domain.
 - dnsServers: list of System.Strings
   - DNS servers authoritative for this SMB domain. Empty when per-domain DNS is not configured.
-- id: System.String
-  - ID of the SMB domain.
 - cluster: Cluster
   - Cluster of the SMB domain.

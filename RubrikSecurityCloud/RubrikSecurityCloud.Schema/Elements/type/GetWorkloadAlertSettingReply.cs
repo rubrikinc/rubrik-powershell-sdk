@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enabled")]
         public System.Boolean? Enabled { get; set; }
 
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        [JsonProperty("isThreatMonitoringEnabled")]
+        public System.Boolean? IsThreatMonitoringEnabled { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetWorkloadAlertSettingReply Set(
-        System.Boolean? Enabled = null
+        System.Boolean? Enabled = null,
+        System.Boolean? IsThreatMonitoringEnabled = null
     ) 
     {
         if ( Enabled != null ) {
             this.Enabled = Enabled;
+        }
+        if ( IsThreatMonitoringEnabled != null ) {
+            this.IsThreatMonitoringEnabled = IsThreatMonitoringEnabled;
         }
         return this;
     }
@@ -62,6 +71,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enabled\n" ;
             } else {
                 s += ind + "enabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        if (this.IsThreatMonitoringEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isThreatMonitoringEnabled\n" ;
+            } else {
+                s += ind + "isThreatMonitoringEnabled\n" ;
             }
         }
         return s;
@@ -87,6 +105,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Enabled != null && ec.Excludes("enabled",true))
         {
             this.Enabled = null;
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        if (ec.Includes("isThreatMonitoringEnabled",true))
+        {
+            if(this.IsThreatMonitoringEnabled == null) {
+
+                this.IsThreatMonitoringEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThreatMonitoringEnabled != null && ec.Excludes("isThreatMonitoringEnabled",true))
+        {
+            this.IsThreatMonitoringEnabled = null;
         }
     }
 

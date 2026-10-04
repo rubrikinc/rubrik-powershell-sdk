@@ -46,10 +46,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasNoActiveUserOwner")]
         public System.Boolean? HasNoActiveUserOwner { get; set; }
 
+        //      C# -> System.Boolean? HasOwnPasswordCredential
+        // GraphQL -> hasOwnPasswordCredential: Boolean! (scalar)
+        [JsonProperty("hasOwnPasswordCredential")]
+        public System.Boolean? HasOwnPasswordCredential { get; set; }
+
         //      C# -> System.String? Homepage
         // GraphQL -> homepage: String! (scalar)
         [JsonProperty("homepage")]
         public System.String? Homepage { get; set; }
+
+        //      C# -> System.Boolean? IsExternallyOwned
+        // GraphQL -> isExternallyOwned: Boolean! (scalar)
+        [JsonProperty("isExternallyOwned")]
+        public System.Boolean? IsExternallyOwned { get; set; }
 
         //      C# -> System.String? PublisherName
         // GraphQL -> publisherName: String! (scalar)
@@ -76,7 +86,9 @@ namespace RubrikSecurityCloud.Types
         System.String? ApplicationTemplateId = null,
         System.Boolean? HasForbiddenRole = null,
         System.Boolean? HasNoActiveUserOwner = null,
+        System.Boolean? HasOwnPasswordCredential = null,
         System.String? Homepage = null,
+        System.Boolean? IsExternallyOwned = null,
         System.String? PublisherName = null,
         List<EntraIdOwner>? AppOwners = null
     ) 
@@ -96,8 +108,14 @@ namespace RubrikSecurityCloud.Types
         if ( HasNoActiveUserOwner != null ) {
             this.HasNoActiveUserOwner = HasNoActiveUserOwner;
         }
+        if ( HasOwnPasswordCredential != null ) {
+            this.HasOwnPasswordCredential = HasOwnPasswordCredential;
+        }
         if ( Homepage != null ) {
             this.Homepage = Homepage;
+        }
+        if ( IsExternallyOwned != null ) {
+            this.IsExternallyOwned = IsExternallyOwned;
         }
         if ( PublisherName != null ) {
             this.PublisherName = PublisherName;
@@ -164,6 +182,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "hasNoActiveUserOwner\n" ;
             }
         }
+        //      C# -> System.Boolean? HasOwnPasswordCredential
+        // GraphQL -> hasOwnPasswordCredential: Boolean! (scalar)
+        if (this.HasOwnPasswordCredential != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasOwnPasswordCredential\n" ;
+            } else {
+                s += ind + "hasOwnPasswordCredential\n" ;
+            }
+        }
         //      C# -> System.String? Homepage
         // GraphQL -> homepage: String! (scalar)
         if (this.Homepage != null) {
@@ -171,6 +198,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "homepage\n" ;
             } else {
                 s += ind + "homepage\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExternallyOwned
+        // GraphQL -> isExternallyOwned: Boolean! (scalar)
+        if (this.IsExternallyOwned != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExternallyOwned\n" ;
+            } else {
+                s += ind + "isExternallyOwned\n" ;
             }
         }
         //      C# -> System.String? PublisherName
@@ -286,6 +322,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.HasNoActiveUserOwner = null;
         }
+        //      C# -> System.Boolean? HasOwnPasswordCredential
+        // GraphQL -> hasOwnPasswordCredential: Boolean! (scalar)
+        if (ec.Includes("hasOwnPasswordCredential",true))
+        {
+            if(this.HasOwnPasswordCredential == null) {
+
+                this.HasOwnPasswordCredential = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasOwnPasswordCredential != null && ec.Excludes("hasOwnPasswordCredential",true))
+        {
+            this.HasOwnPasswordCredential = null;
+        }
         //      C# -> System.String? Homepage
         // GraphQL -> homepage: String! (scalar)
         if (ec.Includes("homepage",true))
@@ -302,6 +355,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Homepage != null && ec.Excludes("homepage",true))
         {
             this.Homepage = null;
+        }
+        //      C# -> System.Boolean? IsExternallyOwned
+        // GraphQL -> isExternallyOwned: Boolean! (scalar)
+        if (ec.Includes("isExternallyOwned",true))
+        {
+            if(this.IsExternallyOwned == null) {
+
+                this.IsExternallyOwned = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExternallyOwned != null && ec.Excludes("isExternallyOwned",true))
+        {
+            this.IsExternallyOwned = null;
         }
         //      C# -> System.String? PublisherName
         // GraphQL -> publisherName: String! (scalar)

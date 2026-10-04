@@ -1,0 +1,47 @@
+### GetSupportCaseReply
+Details of a single support case.
+
+- caseId: System.String
+  - Salesforce record ID of the support case.
+- caseNumber: System.String
+  - Case number, e.g. "00123456".
+- caseLink: System.String
+  - URL to view the case on the Rubrik Support portal.
+- subject: System.String
+  - Short title describing the issue.
+- status: System.String
+  - Current status of the support case, e.g. "In Progress".
+- priority: NewCasePriority
+  - Priority level of the support case.
+- createdDate: DateTime
+  - Timestamp when the support case was created.
+- description: System.String
+  - Detailed description of the support case.
+- origin: System.String
+  - How the case was opened, e.g. "Rubrik Security Cloud".
+- type: System.String
+  - Case type, such as "Software", "Hardware".
+- isEscalated: System.Boolean
+  - Whether the case has been escalated.
+- closedDate: DateTime
+  - Timestamp when the case was closed, if applicable.
+- contactName: System.String
+  - Name of the contact who filed the case.
+- contactPhone: System.String
+  - Phone number of the contact.
+- contactEmail: System.String
+  - Email address of the contact.
+- assignedTo: System.String
+  - Name of the Salesforce user the case is assigned to.
+- isClosed: System.Boolean
+  - Whether the case is in a closed state.
+- contactMethod: System.String
+  - How the case was opened, e.g. "Email", "Phone".
+- productLine: System.String
+  - Product line for the support case.
+- functionalArea: System.String
+  - Functional area for the support case.
+- component: System.String
+  - Component for the support case.
+- resolutionDetails: System.String
+  - Resolution details for the support case.

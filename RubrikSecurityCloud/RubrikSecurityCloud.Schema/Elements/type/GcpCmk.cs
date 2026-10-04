@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("keyRingName")]
         public System.String? KeyRingName { get; set; }
 
+        //      C# -> System.String? ProjectNativeId
+        // GraphQL -> projectNativeId: String! (scalar)
+        [JsonProperty("projectNativeId")]
+        public System.String? ProjectNativeId { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public GcpCmk Set(
         GcpRegion? Region = null,
         System.String? KeyName = null,
-        System.String? KeyRingName = null
+        System.String? KeyRingName = null,
+        System.String? ProjectNativeId = null
     ) 
     {
         if ( Region != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( KeyRingName != null ) {
             this.KeyRingName = KeyRingName;
+        }
+        if ( ProjectNativeId != null ) {
+            this.ProjectNativeId = ProjectNativeId;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "keyRingName\n" ;
             } else {
                 s += ind + "keyRingName\n" ;
+            }
+        }
+        //      C# -> System.String? ProjectNativeId
+        // GraphQL -> projectNativeId: String! (scalar)
+        if (this.ProjectNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "projectNativeId\n" ;
+            } else {
+                s += ind + "projectNativeId\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.KeyRingName != null && ec.Excludes("keyRingName",true))
         {
             this.KeyRingName = null;
+        }
+        //      C# -> System.String? ProjectNativeId
+        // GraphQL -> projectNativeId: String! (scalar)
+        if (ec.Includes("projectNativeId",true))
+        {
+            if(this.ProjectNativeId == null) {
+
+                this.ProjectNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectNativeId != null && ec.Excludes("projectNativeId",true))
+        {
+            this.ProjectNativeId = null;
         }
     }
 

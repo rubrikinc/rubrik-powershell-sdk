@@ -251,6 +251,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("futureLegalHoldInfo")]
         public FutureLegalHoldInfo? FutureLegalHoldInfo { get; set; }
 
+        //      C# -> K8sApiProxyResponse? K8sApi
+        // GraphQL -> k8sApi: K8sApiProxyResponse! (type)
+        [JsonProperty("k8sApi")]
+        public K8sApiProxyResponse? K8sApi { get; set; }
+
         //      C# -> KubernetesProtectionSetConnection? K8sDescendantProtectionSets
         // GraphQL -> k8sDescendantProtectionSets: KubernetesProtectionSetConnection! (type)
         [JsonProperty("k8sDescendantProtectionSets")]
@@ -322,6 +327,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars DescendantConnection { get; set; }
 
+        public RscGqlVars K8sApi { get; set; }
+
         public RscGqlVars K8sDescendantProtectionSets { get; set; }
 
         public RscGqlVars K8sDescendantVirtualMachines { get; set; }
@@ -350,6 +357,11 @@ namespace RubrikSecurityCloud.Types
                 };
             this.DescendantConnection =
                 new RscGqlVars(null, descendantConnectionArgs, null, true);
+            Tuple<string, string>[] k8sApiArgs = {
+                    Tuple.Create("path", "String!"),
+                };
+            this.K8sApi =
+                new RscGqlVars(null, k8sApiArgs, null, true);
             Tuple<string, string>[] k8sDescendantProtectionSetsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -431,6 +443,7 @@ namespace RubrikSecurityCloud.Types
         KubernetesClusterDescendantConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         FutureLegalHoldInfo? FutureLegalHoldInfo = null,
+        K8sApiProxyResponse? K8sApi = null,
         KubernetesProtectionSetConnection? K8sDescendantProtectionSets = null,
         KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
@@ -582,6 +595,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FutureLegalHoldInfo != null ) {
             this.FutureLegalHoldInfo = FutureLegalHoldInfo;
+        }
+        if ( K8sApi != null ) {
+            this.K8sApi = K8sApi;
         }
         if ( K8sDescendantProtectionSets != null ) {
             this.K8sDescendantProtectionSets = K8sDescendantProtectionSets;
@@ -1085,6 +1101,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "futureLegalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> K8sApiProxyResponse? K8sApi
+        // GraphQL -> k8sApi: K8sApiProxyResponse! (type)
+        if (this.K8sApi != null) {
+            var fspec = this.K8sApi.AsFieldSpec(conf.Child("k8sApi"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "k8sApi" + "\n(" + this.Vars.K8sApi.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2064,6 +2092,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FutureLegalHoldInfo != null && ec.Excludes("futureLegalHoldInfo",false))
         {
             this.FutureLegalHoldInfo = null;
+        }
+        //      C# -> K8sApiProxyResponse? K8sApi
+        // GraphQL -> k8sApi: K8sApiProxyResponse! (type)
+        if (ec.Includes("k8sApi",false))
+        {
+            if(this.K8sApi == null) {
+
+                this.K8sApi = new K8sApiProxyResponse();
+                this.K8sApi.ApplyExploratoryFieldSpec(ec.NewChild("k8sApi"));
+
+            } else {
+
+                this.K8sApi.ApplyExploratoryFieldSpec(ec.NewChild("k8sApi"));
+
+            }
+        }
+        else if (this.K8sApi != null && ec.Excludes("k8sApi",false))
+        {
+            this.K8sApi = null;
         }
         //      C# -> KubernetesProtectionSetConnection? K8sDescendantProtectionSets
         // GraphQL -> k8sDescendantProtectionSets: KubernetesProtectionSetConnection! (type)

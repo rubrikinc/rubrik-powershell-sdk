@@ -157,6 +157,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		certificateId = $someString
     /// 		# OPTIONAL
+    /// 		isIrisdbProtectionEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		isSnapshotOffloadingEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		password = $someString
@@ -339,6 +341,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		caCerts = $someString
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		isIrisdbProtectionEnabled = $someBoolean
     /// 		# REQUIRED
     /// 		isSnapshotOffloadingEnabled = $someBoolean
     /// 		# OPTIONAL
@@ -557,6 +561,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		certificateId = $someString
 		# OPTIONAL
+		isIrisdbProtectionEnabled = $someBoolean
+		# OPTIONAL
 		isSnapshotOffloadingEnabled = $someBoolean
 		# OPTIONAL
 		password = $someString
@@ -707,6 +713,8 @@ $query.Var.input = @{
 		caCerts = $someString
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		isIrisdbProtectionEnabled = $someBoolean
 		# REQUIRED
 		isSnapshotOffloadingEnabled = $someBoolean
 		# OPTIONAL

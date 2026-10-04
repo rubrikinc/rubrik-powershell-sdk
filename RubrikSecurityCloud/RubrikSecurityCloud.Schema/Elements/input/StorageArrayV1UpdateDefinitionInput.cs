@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateId")]
         public System.String? CertificateId { get; set; }
 
+        //      C# -> System.Boolean? IsIrisdbProtectionEnabled
+        // GraphQL -> isIrisdbProtectionEnabled: Boolean (scalar)
+        [JsonProperty("isIrisdbProtectionEnabled")]
+        public System.Boolean? IsIrisdbProtectionEnabled { get; set; }
+
         //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
         // GraphQL -> isSnapshotOffloadingEnabled: Boolean! (scalar)
         [Required]

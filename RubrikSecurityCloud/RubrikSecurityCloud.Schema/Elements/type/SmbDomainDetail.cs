@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dnsServers")]
         public List<System.String>? DnsServers { get; set; }
 
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean (scalar)
+        [JsonProperty("enableKerberosForSmb")]
+        public System.Boolean? EnableKerberosForSmb { get; set; }
+
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)
         [JsonProperty("isStickySmbService")]
@@ -63,6 +68,7 @@ namespace RubrikSecurityCloud.Types
         SmbDomainStatus? Status = null,
         System.Boolean? AllowTrustedDomain = null,
         List<System.String>? DnsServers = null,
+        System.Boolean? EnableKerberosForSmb = null,
         System.Boolean? IsStickySmbService = null,
         System.String? Name = null,
         System.String? ServiceAccount = null
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DnsServers != null ) {
             this.DnsServers = DnsServers;
+        }
+        if ( EnableKerberosForSmb != null ) {
+            this.EnableKerberosForSmb = EnableKerberosForSmb;
         }
         if ( IsStickySmbService != null ) {
             this.IsStickySmbService = IsStickySmbService;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dnsServers\n" ;
             } else {
                 s += ind + "dnsServers\n" ;
+            }
+        }
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean (scalar)
+        if (this.EnableKerberosForSmb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "enableKerberosForSmb\n" ;
+            } else {
+                s += ind + "enableKerberosForSmb\n" ;
             }
         }
         //      C# -> System.Boolean? IsStickySmbService
@@ -211,6 +229,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
         {
             this.DnsServers = null;
+        }
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean (scalar)
+        if (ec.Includes("enableKerberosForSmb",true))
+        {
+            if(this.EnableKerberosForSmb == null) {
+
+                this.EnableKerberosForSmb = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableKerberosForSmb != null && ec.Excludes("enableKerberosForSmb",true))
+        {
+            this.EnableKerberosForSmb = null;
         }
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)

@@ -1,4 +1,6 @@
 ### CustomReportFiltersConfig
+Filters for custom reports data.
+
 - activityObjectType: list of ActivityObjectTypeEnums
 - objectType: list of ObjectTypeEnums
   - List of snappable types to filter on.

@@ -33,6 +33,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_RECOVER")]
         CLUSTER_RECOVER,
 
+        [EnumMember(Value = "CONVERT_TO_DYNAMIC_SCALING_CCES")]
+        CONVERT_TO_DYNAMIC_SCALING_CCES,
+
+        [EnumMember(Value = "CONVERT_TO_REGULAR_CCES")]
+        CONVERT_TO_REGULAR_CCES,
+
         [EnumMember(Value = "MANUAL_ADD_NODES")]
         MANUAL_ADD_NODES,
 

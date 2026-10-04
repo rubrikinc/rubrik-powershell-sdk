@@ -179,6 +179,12 @@ Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. 
 
 - There is a single argument of type StartDisableAzureCloudAccountJobInput.
 - Returns BatchAsyncJobStatus.
+### startexportlocalvirtualmachinejob
+Start an asynchronous job to export an Azure Local Arc virtual machine snapshot
+into Azure.
+
+- There is a single argument of type StartExportAzureLocalVirtualMachineJobInput.
+- Returns AsyncRequestStatus.
 ### startexportsqldatabasedbjob
 Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
 

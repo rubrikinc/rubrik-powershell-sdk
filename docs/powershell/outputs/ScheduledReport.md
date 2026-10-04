@@ -3,20 +3,22 @@ Metadata for rendering a scheduled report.
 
 - id: System.Int64
   - ID of the schedule of the custom report.
+- reportId: System.Int32
+  - The custom report ID corresponding to this scheduled report.
 - title: System.String
   - Title of the report.
 - creator: User
   - Rubrik user that created the report. If the user does not exist anymore, this stores a dummy inactive user.
 - lastEditor: User
   - Rubrik user that last edited this schedule. If the user does not exist anymore, this stores a dummy inactive user.
-- reportId: System.Int32
-  - The custom report ID corresponding to this scheduled report.
 - createdAt: DateTime
   - Creation time of the schedule.
 - lastUpdatedAt: DateTime
   - Last update time of the schedule.
 - dailyTime: DateTime
   - Time of the day for daily report delivery if the schedule has daily configuration.
+- weeklyDays: list of WeekDays
+  - Weekdays for report delivery if weekly schedule is enabled.
 - weeklyTime: DateTime
   - Time of the day for weekly report delivery if the schedule has weekly configuration.
 - monthlyDate: System.Int32
@@ -33,5 +35,3 @@ Metadata for rendering a scheduled report.
   - Time zone of the schedule time in IANA format.
 - showChartsInEmailBody: System.Boolean
   - Specifies whether to show charts in email body.
-- weeklyDays: list of WeekDays
-  - Weekdays for report delivery if weekly schedule is enabled.

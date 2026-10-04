@@ -15,6 +15,10 @@ NAS namespace instance associated with registered NAS system.
   - Specifies all available NFS data interfaces for the namespace.
 - smbDataAddresses: list of System.Strings
   - Specifies all available SMB data interfaces for the namespace.
+- smbAuthMode: NasAuthMode
+  - SMB authentication mode for this namespace. If absent, the namespace inherits from the NAS system setting.
+- nfsAuthMode: NasAuthMode
+  - NFS authentication mode for this namespace. If absent, the namespace inherits from the NAS system setting.
 - id: System.String
   - Object ID.
 - descendantConnection: NasNamespaceDescendantTypeConnection

@@ -144,6 +144,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
         GLUE_ICEBERG_TABLE,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUPS_METADATA")]
+        GOOGLE_WORKSPACE_GROUPS_METADATA,
+
         [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
         GOOGLE_WORKSPACE_SHARED_DRIVE,
 

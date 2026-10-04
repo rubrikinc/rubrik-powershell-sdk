@@ -33,6 +33,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("focus")]
         public ReportFocusEnum? Focus { get; set; }
 
+        //      C# -> System.Boolean? IsHidden
+        // GraphQL -> isHidden: Boolean (scalar)
+        [JsonProperty("isHidden")]
+        public System.Boolean? IsHidden { get; set; }
+
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        [JsonProperty("isReadOnly")]
+        public System.Boolean? IsReadOnly { get; set; }
+
         //      C# -> List<ReportChartCreate>? Charts
         // GraphQL -> charts: [ReportChartCreate!] (input)
         [JsonProperty("charts")]
@@ -49,16 +59,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("filters")]
         public CustomReportFiltersConfig? Filters { get; set; }
-
-        //      C# -> System.Boolean? IsHidden
-        // GraphQL -> isHidden: Boolean (scalar)
-        [JsonProperty("isHidden")]
-        public System.Boolean? IsHidden { get; set; }
-
-        //      C# -> System.Boolean? IsReadOnly
-        // GraphQL -> isReadOnly: Boolean (scalar)
-        [JsonProperty("isReadOnly")]
-        public System.Boolean? IsReadOnly { get; set; }
 
 
         #endregion

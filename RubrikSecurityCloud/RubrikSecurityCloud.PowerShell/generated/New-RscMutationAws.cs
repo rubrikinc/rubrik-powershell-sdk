@@ -502,6 +502,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
     /// 	# OPTIONAL
     /// 	kmsMasterKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	awsKmsKey = @{
+    /// 		# REQUIRED
+    /// 		keyManagerId = $someString
+    /// 		# REQUIRED
+    /// 		keyId = $someString
+    /// 	}
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
     /// 	# OPTIONAL
@@ -515,13 +522,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				value = $someString
     /// 			}
     /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	awsKmsKey = @{
-    /// 		# REQUIRED
-    /// 		keyManagerId = $someString
-    /// 		# REQUIRED
-    /// 		keyId = $someString
     /// 	}
     /// }
     /// 
@@ -942,14 +942,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		protocol = $someString
     /// 	}
-    /// 	# OPTIONAL
-    /// 	awsIamPairId = $someString
-    /// 	# OPTIONAL
-    /// 	archivalDataSourceIds = @(
-    /// 		$someString
-    /// 	)
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	awsIamPairId = $someString
     /// 	# OPTIONAL
     /// 	awsKmsKey = @{
     /// 		# REQUIRED
@@ -957,6 +953,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		keyId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	archivalDataSourceIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1069,10 +1069,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	s3Endpoint = $someString
     /// 	# OPTIONAL
     /// 	kmsEndpoint = $someString
-    /// 	# OPTIONAL
-    /// 	awsIamPairId = $someString
     /// 	# REQUIRED
     /// 	bypassProxy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	awsIamPairId = $someString
     /// 	# OPTIONAL
     /// 	awsKmsKey = @{
     /// 		# REQUIRED
@@ -3380,6 +3380,13 @@ $query.Var.input = @{
 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 	# OPTIONAL
 	kmsMasterKeyId = $someString
+	# OPTIONAL
+	awsKmsKey = @{
+		# REQUIRED
+		keyManagerId = $someString
+		# REQUIRED
+		keyId = $someString
+	}
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL
@@ -3393,13 +3400,6 @@ $query.Var.input = @{
 				value = $someString
 			}
 		)
-	}
-	# OPTIONAL
-	awsKmsKey = @{
-		# REQUIRED
-		keyManagerId = $someString
-		# REQUIRED
-		keyId = $someString
 	}
 }"
             );
@@ -3796,14 +3796,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		protocol = $someString
 	}
-	# OPTIONAL
-	awsIamPairId = $someString
-	# OPTIONAL
-	archivalDataSourceIds = @(
-		$someString
-	)
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	awsIamPairId = $someString
 	# OPTIONAL
 	awsKmsKey = @{
 		# REQUIRED
@@ -3811,6 +3807,10 @@ $query.Var.input = @{
 		# REQUIRED
 		keyId = $someString
 	}
+	# OPTIONAL
+	archivalDataSourceIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -3915,10 +3915,10 @@ $query.Var.input = @{
 	s3Endpoint = $someString
 	# OPTIONAL
 	kmsEndpoint = $someString
-	# OPTIONAL
-	awsIamPairId = $someString
 	# REQUIRED
 	bypassProxy = $someBoolean
+	# OPTIONAL
+	awsIamPairId = $someString
 	# OPTIONAL
 	awsKmsKey = @{
 		# REQUIRED

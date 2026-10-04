@@ -13,3 +13,6 @@ persisted in the devops_object_stat_kv table's stat_key column.
 - NUM_ADO_CUSTOM_PACKAGE_VERSIONS - Count of customer-owned Azure DevOps package versions under a project:
 those published directly to a feed, and those cached from an internal
 feed upstream. Versions cached from a public upstream are excluded.
+- NUM_ADO_PULL_REQUESTS - Count of active Azure DevOps pull requests under a repository.
+- NUM_GITHUB_ACTIONS_WORKFLOWS - Count of GitHub Actions workflows under a repository.
+- NUM_GITHUB_ACTIONS_WORKFLOW_RUNS - Count of GitHub Actions workflow runs under a repository.

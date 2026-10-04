@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? Magnitude
-        // GraphQL -> magnitude: Int! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("magnitude")]
-        public System.Int32? Magnitude { get; set; }
-
         //      C# -> TimeUnitEnum? Unit
         // GraphQL -> unit: TimeUnitEnum! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("unit")]
         public TimeUnitEnum? Unit { get; set; }
+
+        //      C# -> System.Int32? Magnitude
+        // GraphQL -> magnitude: Int! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("magnitude")]
+        public System.Int32? Magnitude { get; set; }
 
 
         #endregion

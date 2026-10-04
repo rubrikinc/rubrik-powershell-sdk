@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("o365AppId")]
         public System.String? O365AppId { get; set; }
 
+        //      C# -> System.String? LeaseId
+        // GraphQL -> leaseId: String (scalar)
+        [JsonProperty("leaseId")]
+        public System.String? LeaseId { get; set; }
+
 
         #endregion
 

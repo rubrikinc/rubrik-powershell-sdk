@@ -7,6 +7,10 @@ Input for creating Rubrik Cloud Vault Azure locations.
   - Region for the Rubrik Cloud Vault Azure location.
 - tier: RcsTierEnumType
   - Tier for the Rubrik Cloud Vault Azure location.
+- redundancy: RcvRedundancy
+  - Redundancy for the Rubrik Cloud Vault Azure location.
+- rsaKey: System.String
+  - RSA key for the Rubrik Cloud Vault Azure location.
 - lockDurationDays: System.Int64
   - Immutability lock period in days.
 - clusterUuidList: list of System.Strings
@@ -19,9 +23,5 @@ Input for creating Rubrik Cloud Vault Azure locations.
   - Proxy configuration for the Rubrik cluster to reach this Rubrik Cloud Vault (RCV) Azure location.
 - shouldBypassProxyForDatapaths: System.Boolean
   - When set, blob storage (data path) traffic bypasses the configured proxy while Azure AD authentication traffic continues to use it.
-- redundancy: RcvRedundancy
-  - Redundancy for the Rubrik Cloud Vault Azure location.
-- rsaKey: System.String
-  - RSA key for the Rubrik Cloud Vault Azure location.
 - azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
   - Azure Key Vault key to encrypt the archival target.

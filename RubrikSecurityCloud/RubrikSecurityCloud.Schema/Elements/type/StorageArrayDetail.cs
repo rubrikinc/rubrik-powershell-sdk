@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsIrisdbProtectionEnabled
+        // GraphQL -> isIrisdbProtectionEnabled: Boolean (scalar)
+        [JsonProperty("isIrisdbProtectionEnabled")]
+        public System.Boolean? IsIrisdbProtectionEnabled { get; set; }
+
         //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
         // GraphQL -> isSnapshotOffloadingEnabled: Boolean (scalar)
         [JsonProperty("isSnapshotOffloadingEnabled")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CaCerts = null,
         System.String? Hostname = null,
         System.String? Id = null,
+        System.Boolean? IsIrisdbProtectionEnabled = null,
         System.Boolean? IsSnapshotOffloadingEnabled = null,
         System.Boolean? IsVolumeProtectionEnabled = null,
         System.String? Username = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsIrisdbProtectionEnabled != null ) {
+            this.IsIrisdbProtectionEnabled = IsIrisdbProtectionEnabled;
         }
         if ( IsSnapshotOffloadingEnabled != null ) {
             this.IsSnapshotOffloadingEnabled = IsSnapshotOffloadingEnabled;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsIrisdbProtectionEnabled
+        // GraphQL -> isIrisdbProtectionEnabled: Boolean (scalar)
+        if (this.IsIrisdbProtectionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isIrisdbProtectionEnabled\n" ;
+            } else {
+                s += ind + "isIrisdbProtectionEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
@@ -267,6 +285,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsIrisdbProtectionEnabled
+        // GraphQL -> isIrisdbProtectionEnabled: Boolean (scalar)
+        if (ec.Includes("isIrisdbProtectionEnabled",true))
+        {
+            if(this.IsIrisdbProtectionEnabled == null) {
+
+                this.IsIrisdbProtectionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsIrisdbProtectionEnabled != null && ec.Excludes("isIrisdbProtectionEnabled",true))
+        {
+            this.IsIrisdbProtectionEnabled = null;
         }
         //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
         // GraphQL -> isSnapshotOffloadingEnabled: Boolean (scalar)

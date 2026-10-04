@@ -1005,6 +1005,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			clientId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		loadBalancerAnnotations = @{
+    /// 			# REQUIRED
+    /// 			loadBalancerAnnotationList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					annotationKey = $someString
+    /// 					# OPTIONAL
+    /// 					annotationValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -1117,6 +1129,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			accessToken = $someString
     /// 			# REQUIRED
     /// 			clientId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		loadBalancerAnnotations = @{
+    /// 			# REQUIRED
+    /// 			loadBalancerAnnotationList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					annotationKey = $someString
+    /// 					# OPTIONAL
+    /// 					annotationValue = $someString
+    /// 				}
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -2726,6 +2750,18 @@ $query.Var.input = @{
 			# REQUIRED
 			clientId = $someString
 		}
+		# OPTIONAL
+		loadBalancerAnnotations = @{
+			# REQUIRED
+			loadBalancerAnnotationList = @(
+				@{
+					# OPTIONAL
+					annotationKey = $someString
+					# OPTIONAL
+					annotationValue = $someString
+				}
+			)
+		}
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -2814,6 +2850,18 @@ $query.Var.input = @{
 			accessToken = $someString
 			# REQUIRED
 			clientId = $someString
+		}
+		# OPTIONAL
+		loadBalancerAnnotations = @{
+			# REQUIRED
+			loadBalancerAnnotationList = @(
+				@{
+					# OPTIONAL
+					annotationKey = $someString
+					# OPTIONAL
+					annotationValue = $someString
+				}
+			)
 		}
 	}
 }"

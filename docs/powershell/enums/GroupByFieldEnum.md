@@ -1,49 +1,51 @@
 ### GroupByFieldEnum
-- ComplianceStatus - Group by the SLA compliance status of the workload.
-- FailoverStatus - Group by the failover status.
-- HOUR - Group by hour.
-- POLICY_VIOLATIONS
-- SEVERITY - Group by severity of the anomaly.
-- LastActivityType
-- DAY - Group by day.
-- TaskDetailClusterType
-- TaskDetailObjectType
-- ProtectionStatus - Group by the protection status of the workload.
-- Month - Group by month.
-- SLA_DOMAIN
+Grouping field for the aggregate custom report group-by input, covering all report focus domains.
+
+- ANALYZER - Group by the data-classification analyzer that produced the content hits.
+- CLUSTER - Group by the Rubrik cluster associated with the classified content.
 - CLUSTER_UUID - The unique ID of the cluster.
-- MANAGED_ID - The managed ID of the object.
-- ClusterType - Group by the type of the cluster that the workload belongs to.
-- Quarter - Group by quarter.
-- Year - Group by year.
-- MONTH - Group by month.
-- Day - Group by day.
-- YEAR - Group by year.
-- SlaDomain - Group by the SLA Domain assigned to the workload.
-- UserAuditStatus
-- Source - Group by the source site.
-- TIME_ISSUES
-- WEEK - Group by week.
-- Week - Group by week.
-- TRANSFERRED_BYTES_OBJECT_TYPE - Bytes transferred group by object type.
-- IS_ANOMALY - Specifies whether the result is an anomaly.
-- UserAuditType
-- POLICY
-- FILE
-- CLUSTER
-- LastTestStatus - Group by the last test status.
-- ANALYZER
-- FailoverType - Group by the failover type.
-- Hour - Group by hour.
 - Cluster - Group by the cluster that the workload belongs to.
-- STATUS_POLICY
-- TIME
+- ClusterType - Group by the type of the cluster that the workload belongs to.
+- ComplianceStatus - Group by the SLA compliance status of the workload.
+- DAY - Group by day.
+- Day - Group by day.
+- FILE - Group by an individual file in the sensitive data content report.
+- FailoverStatus - Group by the failover status.
+- FailoverType - Group by the failover type.
+- HOUR - Group by hour.
+- Hour - Group by hour.
+- IS_ANOMALY - Specifies whether the result is an anomaly.
+- LastActivityStatus - Group by the status of the last activity on the workload.
+- LastActivityType - Group by the type of the last activity on the workload.
+- LastTestStatus - Group by the last test status.
+- MANAGED_ID - The managed ID of the object.
+- MONTH - Group by month.
+- Month - Group by month.
+- OBJECT_NAME - Group by the protected object's name in the sensitive data content report.
+- ObjectType - Group by the type of the workload.
+- POLICY - Group by the data-classification policy applied to the content.
+- POLICY_VIOLATIONS - Group by the policy-violation count in the sensitive data report.
+- ProtectionStatus - Group by the protection status of the workload.
 - PullTimeWithOffset - Group by the time at which the workload data was pulled from the cluster,
 adjusted by the requested timezone offset.
-- TIME_VIOLATIONS
-- ObjectType - Group by the type of the workload.
-- LastActivityStatus
-- OBJECT_NAME
+- Quarter - Group by quarter.
+- SEVERITY - Group by severity of the anomaly.
+- SLA_DOMAIN - Group by the SLA Domain protecting the classified content.
+- STATUS_POLICY - Group by the policy status in the sensitive data report.
+- SlaDomain - Group by the SLA Domain assigned to the workload.
+- Source - Group by the source site.
+- Status - Group by the protection or recovery task status.
+- TIME - Group by the time bucket in the sensitive data content report.
+- TIME_ISSUES - Group by the time bucket of detected issues in the sensitive data report.
+- TIME_VIOLATIONS - Group by the time bucket of policy violations in the sensitive data report.
+- TRANSFERRED_BYTES_OBJECT_TYPE - Bytes transferred group by object type.
 - TargetSite - Group by the target site.
-- Status
-- Type
+- TaskDetailClusterType - Group task-detail results by the cluster type of the task.
+- TaskDetailObjectType - Group task-detail results by the protected object's type.
+- Type - Group infrastructure results by the cluster type.
+- UserAuditStatus - Group user-audit results by the audit event status.
+- UserAuditType - Group user-audit results by the audit type.
+- WEEK - Group by week.
+- Week - Group by week.
+- YEAR - Group by year.
+- Year - Group by year.

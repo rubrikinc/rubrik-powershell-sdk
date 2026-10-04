@@ -51,12 +51,14 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 ### clusters
 Paginated list of Nutanix Clusters.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns NutanixClusterConnection.
 ### mounts
 Nutanix Live Mount Connection.
@@ -80,12 +82,14 @@ Details of the given Prism Central.
 ### prismcentrals
 Paginated list of Nutanix Prism Central objects.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns NutanixPrismCentralConnection.
 ### searchvm
 v5.0-v8.0: Search for file in Nutanix VM
@@ -109,25 +113,31 @@ Retrieve detailed information about the virtual disks.
 - There is a single argument of type GetNutanixVmSnapshotVdisksInput.
 - Returns NutanixVmSnapshotVdiskDetailListResponse.
 ### topleveldescendants
-Paginated list of the highest-level Nutanix Objects accessible by the current user.
+Paginated list of the highest-level Nutanix Objects accessible by the
+current user.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns CdmHierarchyObjectConnection.
 ### vdiskmountablevms
-A paginated list of Nutanix virtual machines with the vDisk Mount privilege.
+A paginated list of Nutanix virtual machines with the vDisk Mount
+privilege.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns NutanixVmConnection.
 ### vm
 A Nutanix Virtual Machine.
@@ -157,10 +167,12 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 ### vms
 Paginated list of Nutanix Virtual Machines.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns NutanixVmConnection.

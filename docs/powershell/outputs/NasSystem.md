@@ -34,6 +34,10 @@ Instance of a registered NAS system.
   - List of hostnames or IP addresses used for SMB operations on the system.
 - nfsPseudoFsPrefix: System.String
   - NFSv4 pseudo-filesystem prefix removed from mountd export paths to derive NFSv4-accessible paths during NFS share discovery and mount-time path reconstruction. Only applicable to Generic NAS systems.
+- smbAuthMode: NasAuthMode
+  - SMB authentication mode for all namespaces on this NAS system.
+- nfsAuthMode: NasAuthMode
+  - NFS authentication mode for all namespaces on this NAS system.
 - id: System.String
   - Object ID.
 - descendantConnection: NasSystemDescendantTypeConnection

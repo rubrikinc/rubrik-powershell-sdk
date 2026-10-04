@@ -257,6 +257,9 @@ in this hierarchy.
 - AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
+- GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups metadata snappable -- one per org, backed by saasapps_fixed_objects.
+Stores group settings and membership data for all groups in the org.
+- GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings container -- one per org, backed by saasapps_fixed_objects.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

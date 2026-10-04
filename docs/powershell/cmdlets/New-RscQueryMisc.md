@@ -2228,7 +2228,7 @@ Retrieves basic information for recovery plans with pagination support.
 RSC prioritizes recovery_plan_ids if they are passed in the filter. All
 filters are combined using AND logic.
 
-- There are 20 arguments.
+- There are 21 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
@@ -2249,6 +2249,7 @@ filters are combined using AND logic.
     - sourceRootDomainSids - list of System.Strings: Optional filter for AD forest root domain SIDs.
     - recoveryPlanStatuses - list of RecoveryPlanStatuss: Optional filter for recovery plan configuration statuses.
     - lastRecoveryOutcomes - list of RecoveryOutcomes: Optional filter by the outcome of the most recent completed recovery. Plans with no recovery history are excluded from filtered results.
+    - isPreSeedEnabled - System.Boolean: Optional filter by whether Pre-Seed is enabled for the recovery plan. When unset, recovery plans are returned regardless of Pre-Seed state.
 - Returns RecoveryPlanBasicInfoConnection.
 ### recoveryspecs
 List the workload recovery specifications associated with the given
@@ -2526,11 +2527,45 @@ Given a request ID for generate support bundle request, provide the status of th
 
 - There is a single argument of type QuerySupportBundleInput.
 - Returns AsyncRequestStatus.
+### supportcase
+GetSupportCase gets the support case information for a given (cluster, SupportCaseSource),
+or directly by Salesforce record ID when caseId is provided.
+
+- There is a single argument of type System.String.
+- Returns GetSupportCaseReply.
+### supportcaseattachmentcontent
+Returns the content of a support case attachment identified by its
+content version ID.
+
+- There is a single argument of type System.String.
+- Returns DownloadCaseAttachmentReply.
+### supportcaseattachments
+ListCaseAttachments returns metadata for all files attached to a support case.
+
+- There is a single argument of type ListCaseAttachmentsReq.
+- Returns ListCaseAttachmentsReply.
 ### supportcasecomments
 GetSupportCaseComments retrieves the comments for a support case.
 
 - There is a single argument of type System.String.
 - Returns GetSupportCaseCommentsReply.
+### supportcases
+GetAllSupportCases returns all support cases for the current user.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filters - SupportCasesFilterInput: Optional filters for status and priority.
+    - sortField - SupportCasesSortField: Field to sort the results on.
+    - sortOrder - SortOrder: Sort order (ascending or descending).
+- Returns SupportCaseSummaryConnection.
+### supportportalrole
+Rubrik Support portal role.
+
+- The supportportalrole subcommand takes no arguments.
+- Returns SupportPortalRole.
 ### supportuseraccesses
 All support user access objects that satisfy the query criteria.
 

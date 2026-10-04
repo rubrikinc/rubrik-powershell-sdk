@@ -7,6 +7,8 @@ Filters for list of Azure Postgres Flexible Servers.
   - Filter by effective SLA Domain.
 - regionFilter: AzureNativeRegionFilter
   - Filter by region.
+- relicFilter: RelicFilter
+  - Filter by relic status.
 - resourceGroupFilter: AzurePostgresFlexibleServerResourceGroupFilter
   - Filter by resource group name.
 - subscriptionFilter: AzurePostgresFlexibleServerSubscriptionFilter

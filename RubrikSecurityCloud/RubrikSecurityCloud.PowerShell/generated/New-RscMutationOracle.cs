@@ -689,6 +689,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldRestoreWithExactTime = $someBoolean
     /// 			# OPTIONAL
+    /// 			shouldRestoreAsStandby = $someBoolean
+    /// 			# OPTIONAL
     /// 			targetRacPrimaryHostId = $someString
     /// 			# OPTIONAL
     /// 			shouldAllowRenameToSource = $someBoolean
@@ -2079,6 +2081,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldRestoreWithExactTime = $someBoolean
+			# OPTIONAL
+			shouldRestoreAsStandby = $someBoolean
 			# OPTIONAL
 			targetRacPrimaryHostId = $someString
 			# OPTIONAL

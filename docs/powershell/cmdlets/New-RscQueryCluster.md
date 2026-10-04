@@ -5,6 +5,53 @@ Specifies if the cluster can ignore cluster removal prechecks.
 
 - There is a single argument of type System.String.
 - Returns IgnoreClusterRemovalPrecheckReply.
+### cdmclusterconfignamespaces
+Lists distinct configuration namespaces for a cluster, scoped to either
+global or local configuration. Powers the namespace filter dropdown shared
+by the global and local configuration lists.
+
+- There are 3 arguments.
+    - clusterUuid - System.String: Cluster UUID whose namespaces are listed.
+    - configType - CdmConfigType: Whether to list GLOBAL or LOCAL namespaces.
+    - searchTerm - System.String: Optional substring filter on namespace name.
+- Returns list of CdmConfigNamespaces.
+### cdmclusterglobalconfigparams
+Lists CDM global (cluster-wide) configuration parameters for a cluster,
+paginated. Powers the RSC Settings > Cluster > CONFIGURATION global list.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - clusterUuid - System.String: Cluster UUID whose global config parameters are listed.
+    - filters - CdmGlobalConfigFilter: Optional search/state/namespace filters.
+- Returns CdmGlobalConfigParamConnection.
+### cdmclusterlocalconfigparams
+Lists CDM local (per-node) configuration parameters for a cluster,
+paginated. Each parameter group carries its per-node values nested inline.
+Powers the RSC Settings > Cluster > CONFIGURATION local list.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - clusterUuid - System.String: Cluster UUID whose local config parameters are listed.
+    - filters - CdmLocalConfigFilter: Optional search/state/node/namespace filters.
+- Returns CdmLocalConfigParamConnection.
+### cdmclusternodes
+Lists nodes of a cluster, paginated. Powers the node filter dropdown for
+the local configuration list.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - clusterUuid - System.String: Cluster UUID whose nodes are listed.
+    - searchTerm - System.String: Optional substring filter on node id or name.
+- Returns CdmClusterNodeConnection.
 ### checkclusterrusupport
 Check if a cluster supports Rolling Upgrade (RU) based on its workload types.
 

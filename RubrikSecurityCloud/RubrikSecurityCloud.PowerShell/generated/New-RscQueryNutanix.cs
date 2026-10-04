@@ -310,9 +310,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -372,6 +372,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -510,9 +514,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -572,6 +576,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -702,13 +710,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.typeFilter = @(
-    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// )
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -767,6 +771,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
     /// )
     /// 
     /// # Execute the query
@@ -799,9 +811,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -861,6 +873,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -984,9 +1000,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
@@ -1046,6 +1062,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1538,24 +1558,28 @@ $query.Var.input = @{
         // nutanixClusters(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): NutanixClusterConnection!
         internal void InitQueryNutanixClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryNutanixClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "NutanixClusterConnection",
                 Query.NutanixClusters,
                 Query.NutanixClustersFieldSpec,
@@ -1564,9 +1588,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -1625,7 +1649,11 @@ $query.Var.filter = @(
 			}
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -1724,24 +1752,28 @@ $query.Var.fid = $someString"
         // nutanixPrismCentrals(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): NutanixPrismCentralConnection!
         internal void InitQueryNutanixPrismCentrals()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryNutanixPrismCentrals",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "NutanixPrismCentralConnection",
                 Query.NutanixPrismCentrals,
                 Query.NutanixPrismCentralsFieldSpec,
@@ -1750,9 +1782,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -1811,7 +1843,11 @@ $query.Var.filter = @(
 			}
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -1894,26 +1930,30 @@ $query.Var.input = @{
         // nutanixTopLevelDescendants(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     typeFilter: [HierarchyObjectTypeEnum!]
-        //     filter: [Filter!]
         //   ): CdmHierarchyObjectConnection!
         internal void InitQueryNutanixTopLevelDescendants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryNutanixTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!])",
                 "CdmHierarchyObjectConnection",
                 Query.NutanixTopLevelDescendants,
                 Query.NutanixTopLevelDescendantsFieldSpec,
@@ -1922,13 +1962,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.typeFilter = @(
-	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -1987,6 +2023,14 @@ $query.Var.filter = @(
 			}
 		)
 }
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 )"
             );
         }
@@ -1995,24 +2039,28 @@ $query.Var.filter = @(
         // vDiskMountableNutanixVms(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): NutanixVmConnection!
         internal void InitQueryVdiskMountableNutanixVms()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryVdiskMountableNutanixVms",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "NutanixVmConnection",
                 Query.VdiskMountableNutanixVms,
                 Query.VdiskMountableNutanixVmsFieldSpec,
@@ -2021,9 +2069,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -2082,7 +2130,11 @@ $query.Var.filter = @(
 			}
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -2158,24 +2210,28 @@ $query.Var.input = @{
         // nutanixVms(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [Filter!]
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     filter: [Filter!]
         //   ): NutanixVmConnection!
         internal void InitQueryNutanixVms()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryNutanixVms",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [Filter!],$sortBy: HierarchySortByField,$sortOrder: SortOrder)",
                 "NutanixVmConnection",
                 Query.NutanixVms,
                 Query.NutanixVmsFieldSpec,
@@ -2184,9 +2240,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -2245,7 +2301,11 @@ $query.Var.filter = @(
 			}
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

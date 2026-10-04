@@ -99,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_WORKSPACE")]
         GOOGLE_WORKSPACE,
 
+        [EnumMember(Value = "HPE_VME")]
+        HPE_VME,
+
         [EnumMember(Value = "HYPERV")]
         HYPERV,
 

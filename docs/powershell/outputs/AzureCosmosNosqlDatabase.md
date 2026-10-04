@@ -19,8 +19,6 @@ https://learn.microsoft.com/en-us/azure/cosmos-nosql/resource-model.
   - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - cosmosDbAccountId: System.String
   - Rubrik ID of the Azure Cosmos NoSQL account that owns the database.
 - cloudNativeId: System.String
@@ -53,6 +51,8 @@ throughputMode is not autoscale.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

@@ -112,6 +112,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 			# OPTIONAL
+    /// 			enableKerberosForSmb = $someBoolean
+    /// 			# OPTIONAL
     /// 			dnsServers = @(
     /// 				$someString
     /// 			)
@@ -266,6 +268,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		username = $someString
     /// 		# OPTIONAL
+    /// 		enableKerberosForSmb = $someBoolean
+    /// 		# OPTIONAL
     /// 		dnsServers = @(
     /// 			$someString
     /// 		)
@@ -376,6 +380,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		enableKerberosForSmb = $someBoolean
     /// 		# OPTIONAL
     /// 		dnsServers = @(
     /// 			$someString
@@ -581,6 +587,8 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 			# OPTIONAL
+			enableKerberosForSmb = $someBoolean
+			# OPTIONAL
 			dnsServers = @(
 				$someString
 			)
@@ -703,6 +711,8 @@ $query.Var.input = @{
 		# REQUIRED
 		username = $someString
 		# OPTIONAL
+		enableKerberosForSmb = $someBoolean
+		# OPTIONAL
 		dnsServers = @(
 			$someString
 		)
@@ -789,6 +799,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		enableKerberosForSmb = $someBoolean
 		# OPTIONAL
 		dnsServers = @(
 			$someString

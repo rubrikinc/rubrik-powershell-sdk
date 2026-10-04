@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmPendingObjectPauseAssignment")]
         public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> NasAuthMode? NfsAuthMode
+        // GraphQL -> nfsAuthMode: NasAuthMode (enum)
+        [JsonProperty("nfsAuthMode")]
+        public NasAuthMode? NfsAuthMode { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
+        //      C# -> NasAuthMode? SmbAuthMode
+        // GraphQL -> smbAuthMode: NasAuthMode (enum)
+        [JsonProperty("smbAuthMode")]
+        public NasAuthMode? SmbAuthMode { get; set; }
 
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -287,8 +297,10 @@ namespace RubrikSecurityCloud.Types
     public NasNamespace Set(
         List<Operation>? AuthorizedOperations = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
+        NasAuthMode? NfsAuthMode = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        NasAuthMode? SmbAuthMode = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -334,11 +346,17 @@ namespace RubrikSecurityCloud.Types
         if ( CdmPendingObjectPauseAssignment != null ) {
             this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
         }
+        if ( NfsAuthMode != null ) {
+            this.NfsAuthMode = NfsAuthMode;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( SmbAuthMode != null ) {
+            this.SmbAuthMode = SmbAuthMode;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -483,6 +501,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cdmPendingObjectPauseAssignment\n" ;
             }
         }
+        //      C# -> NasAuthMode? NfsAuthMode
+        // GraphQL -> nfsAuthMode: NasAuthMode (enum)
+        if (this.NfsAuthMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsAuthMode\n" ;
+            } else {
+                s += ind + "nfsAuthMode\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -499,6 +526,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> NasAuthMode? SmbAuthMode
+        // GraphQL -> smbAuthMode: NasAuthMode (enum)
+        if (this.SmbAuthMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "smbAuthMode\n" ;
+            } else {
+                s += ind + "smbAuthMode\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -949,6 +985,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmPendingObjectPauseAssignment = null;
         }
+        //      C# -> NasAuthMode? NfsAuthMode
+        // GraphQL -> nfsAuthMode: NasAuthMode (enum)
+        if (ec.Includes("nfsAuthMode",true))
+        {
+            if(this.NfsAuthMode == null) {
+
+                this.NfsAuthMode = new NasAuthMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsAuthMode != null && ec.Excludes("nfsAuthMode",true))
+        {
+            this.NfsAuthMode = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -982,6 +1035,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> NasAuthMode? SmbAuthMode
+        // GraphQL -> smbAuthMode: NasAuthMode (enum)
+        if (ec.Includes("smbAuthMode",true))
+        {
+            if(this.SmbAuthMode == null) {
+
+                this.SmbAuthMode = new NasAuthMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbAuthMode != null && ec.Excludes("smbAuthMode",true))
+        {
+            this.SmbAuthMode = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)

@@ -23,8 +23,6 @@ Microsoft 365 Backup Storage SharePoint Site.
   - The URL of the SharePoint Site.
 - preferredDataLocation: System.String
   - The preferred data location of the SharePoint Site.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - isRelic: System.Boolean
   - Specifies whether the SharePoint Site is a relic.
 - backupStorageProtectionStatus: BackupStorageProtectionStatus
@@ -57,6 +55,8 @@ Microsoft 365 Backup Storage SharePoint Site.
   - SLA Domain configured for the hierarchy object.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

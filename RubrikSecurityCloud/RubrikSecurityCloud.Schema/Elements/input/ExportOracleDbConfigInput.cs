@@ -113,6 +113,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRestoreWithExactTime")]
         public System.Boolean? ShouldRestoreWithExactTime { get; set; }
 
+        //      C# -> System.Boolean? ShouldRestoreAsStandby
+        // GraphQL -> shouldRestoreAsStandby: Boolean (scalar)
+        [JsonProperty("shouldRestoreAsStandby")]
+        public System.Boolean? ShouldRestoreAsStandby { get; set; }
+
         //      C# -> System.String? TargetRacPrimaryHostId
         // GraphQL -> targetRacPrimaryHostId: String (scalar)
         [JsonProperty("targetRacPrimaryHostId")]

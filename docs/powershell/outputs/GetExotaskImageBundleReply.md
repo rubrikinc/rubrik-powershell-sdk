@@ -13,3 +13,5 @@ Represents the reply of get exotask image bundle.
   - AWS Exocompute image details.
 - azureImages: AzureExoTaskImageBundle
   - Azure Exocompute image details.
+- gcpImages: GcpExoTaskImageBundle
+  - GCP Exocompute image details for PCR customers.

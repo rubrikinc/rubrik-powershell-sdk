@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("disableAutomations")]
         public System.Boolean? DisableAutomations { get; set; }
 
+        //      C# -> System.Boolean? ShouldChooseDefaultsOnMetadataMismatch
+        // GraphQL -> shouldChooseDefaultsOnMetadataMismatch: Boolean (scalar)
+        [JsonProperty("shouldChooseDefaultsOnMetadataMismatch")]
+        public System.Boolean? ShouldChooseDefaultsOnMetadataMismatch { get; set; }
+
 
         #endregion
 

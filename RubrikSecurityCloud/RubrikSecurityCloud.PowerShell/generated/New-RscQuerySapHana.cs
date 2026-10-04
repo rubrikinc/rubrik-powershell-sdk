@@ -336,11 +336,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.filter = @{
     /// 	# OPTIONAL
-    /// 	clusterUuid = @(
+    /// 	databaseId = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	databaseId = @(
+    /// 	clusterUuid = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
@@ -894,11 +894,11 @@ $query.Var.sortBy = $someSapHanaRecoverableRangeSortBy # Call [Enum]::GetValues(
 # OPTIONAL
 $query.Var.filter = @{
 	# OPTIONAL
-	clusterUuid = @(
+	databaseId = @(
 		$someString
 	)
 	# OPTIONAL
-	databaseId = @(
+	clusterUuid = @(
 		$someString
 	)
 	# OPTIONAL

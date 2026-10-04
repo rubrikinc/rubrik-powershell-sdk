@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bundleImages")]
         public List<BundleImage>? BundleImages { get; set; }
 
+        //      C# -> GcpExoTaskImageBundle? GcpImages
+        // GraphQL -> gcpImages: GcpExoTaskImageBundle (type)
+        [JsonProperty("gcpImages")]
+        public GcpExoTaskImageBundle? GcpImages { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         System.String? RepoUrl = null,
         AwsExoTaskImageBundle? AwsImages = null,
         AzureExoTaskImageBundle? AzureImages = null,
-        List<BundleImage>? BundleImages = null
+        List<BundleImage>? BundleImages = null,
+        GcpExoTaskImageBundle? GcpImages = null
     ) 
     {
         if ( BundleVersion != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BundleImages != null ) {
             this.BundleImages = BundleImages;
+        }
+        if ( GcpImages != null ) {
+            this.GcpImages = GcpImages;
         }
         return this;
     }
@@ -160,6 +169,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "bundleImages" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpExoTaskImageBundle? GcpImages
+        // GraphQL -> gcpImages: GcpExoTaskImageBundle (type)
+        if (this.GcpImages != null) {
+            var fspec = this.GcpImages.AsFieldSpec(conf.Child("gcpImages"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpImages" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -277,6 +298,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BundleImages != null && ec.Excludes("bundleImages",false))
         {
             this.BundleImages = null;
+        }
+        //      C# -> GcpExoTaskImageBundle? GcpImages
+        // GraphQL -> gcpImages: GcpExoTaskImageBundle (type)
+        if (ec.Includes("gcpImages",false))
+        {
+            if(this.GcpImages == null) {
+
+                this.GcpImages = new GcpExoTaskImageBundle();
+                this.GcpImages.ApplyExploratoryFieldSpec(ec.NewChild("gcpImages"));
+
+            } else {
+
+                this.GcpImages.ApplyExploratoryFieldSpec(ec.NewChild("gcpImages"));
+
+            }
+        }
+        else if (this.GcpImages != null && ec.Excludes("gcpImages",false))
+        {
+            this.GcpImages = null;
         }
     }
 

@@ -100,6 +100,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
     /// 	# OPTIONAL
+    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
     /// 	lockDurationDays = $someInt64
     /// 	# OPTIONAL
     /// 	clusterUuidList = @(
@@ -119,6 +121,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 		# REQUIRED
+    /// 		keyVersion = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	proxySettings = @{
     /// 		# OPTIONAL
     /// 		proxyServer = $someString
@@ -133,17 +144,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	shouldBypassProxyForDatapaths = $someBoolean
-    /// 	# OPTIONAL
-    /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
-    /// 	# OPTIONAL
-    /// 	azureKeyVaultKey = @{
-    /// 		# REQUIRED
-    /// 		kmsKeyVaultId = $someString
-    /// 		# REQUIRED
-    /// 		keyName = $someString
-    /// 		# REQUIRED
-    /// 		keyVersion = $someString
-    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -454,6 +454,8 @@ $query.Var.input = @{
 	# REQUIRED
 	tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
 	# OPTIONAL
+	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
 	lockDurationDays = $someInt64
 	# OPTIONAL
 	clusterUuidList = @(
@@ -473,6 +475,15 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
 	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+		# REQUIRED
+		keyVersion = $someString
+	}
+	# OPTIONAL
 	proxySettings = @{
 		# OPTIONAL
 		proxyServer = $someString
@@ -487,17 +498,6 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	shouldBypassProxyForDatapaths = $someBoolean
-	# OPTIONAL
-	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
-	# OPTIONAL
-	azureKeyVaultKey = @{
-		# REQUIRED
-		kmsKeyVaultId = $someString
-		# REQUIRED
-		keyName = $someString
-		# REQUIRED
-		keyVersion = $someString
-	}
 }"
             );
         }

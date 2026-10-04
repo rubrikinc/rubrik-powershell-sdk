@@ -83,17 +83,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("readerRetrievalMethod")]
         public ReaderRetrievalMethod? ReaderRetrievalMethod { get; set; }
 
-        //      C# -> List<System.String>? ArchivalDataSourceIds
-        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
-        [JsonProperty("archivalDataSourceIds")]
-        public List<System.String>? ArchivalDataSourceIds { get; set; }
-
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("bypassProxy")]
         public System.Boolean? BypassProxy { get; set; }
+
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
 
 
         #endregion

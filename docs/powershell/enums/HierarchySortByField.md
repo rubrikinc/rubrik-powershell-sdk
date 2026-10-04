@@ -260,8 +260,8 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 - AWS_NATIVE_S3_BUCKET_SIZE_BYTES - Sort AWS S3 buckets by bucket size in bytes.
 - AWS_NATIVE_S3_BUCKET_OBJECT_COUNT - Sort AWS S3 buckets by number of objects.
 - AZURE_POSTGRES_FLEXIBLE_SERVER_REGION - Sort Azure Postgres Flexible Servers by region.
-+mo:sort:db:table=cloud_native_object_properties
-+mo:sort:db:column=property_value
++mo:sort:db:table=cloud_native_resource
++mo:sort:db:column=region_name
 +mo:sort:db:index:not_needed
 - AZURE_POSTGRES_FLEXIBLE_SERVER_RESOURCE_GROUP - Sort Azure Postgres Flexible Servers by resource group.
 +mo:sort:db:table=azure_native_resource_groups

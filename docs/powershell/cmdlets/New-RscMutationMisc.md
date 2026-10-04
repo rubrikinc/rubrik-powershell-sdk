@@ -84,6 +84,11 @@ Existing role assignments are preserved.
     - groupIds - list of System.Strings: List of group IDs.
     - roleIds - list of System.Strings: List of role IDs to assign.
 - Returns System.Boolean.
+### addsupportcasecomment
+AddSupportCaseComment posts a new comment to a support case.
+
+- There is a single argument of type AddSupportCaseCommentInput.
+- Returns AddSupportCaseCommentReply.
 ### addvlan
 Add VLAN to Rubrik cluster.
 
@@ -223,6 +228,11 @@ Cleans up recoveries by scheduling a clean up job for each recovery.
 
 - There is a single argument of type CleanupRecoveriesInput.
 - Returns CleanupRecoveriesReply.
+### closesupportcase
+CloseSupportCase closes a support case with an optional comment.
+
+- There is a single argument of type CloseSupportCaseInput.
+- Returns CloseSupportCaseReply.
 ### clouddirectaddsubdirbackup
 CloudDirectAddSubdirBackup is used to add Details of Subdir for backup.
 
@@ -371,6 +381,11 @@ Create SSO users.
 
 - There is a single argument of type CreateSsoUsersInput.
 - Returns CreateSsoUsersReply.
+### createsupportcase
+Create a support case.
+
+- There is a single argument of type CreateSupportCaseInput.
+- Returns CreateSupportCaseReply.
 ### createvappsinstantrecovery
 Initiate instant recovery from vApp snapshots.
 
@@ -557,6 +572,11 @@ Enable TPR for an organization.
 
 - There is a single argument of type EnableTprOrgInput.
 - Returns System.String.
+### escalatesupportcasewithcomment
+EscalateSupportCaseWithComment escalates a support case and posts a required comment.
+
+- There is a single argument of type EscalateSupportCaseWithCommentInput.
+- Returns EscalateSupportCaseWithCommentReply.
 ### excludevmdisks
 Exclude or include virtual disks during snapshot.
 
@@ -865,6 +885,11 @@ Delete cluster VLAN(s).
 
 - There is a single argument of type RemoveVlansInput.
 - Returns RemoveVlansReply.
+### reopensupportcase
+ReopenSupportCase reopens a support case with a required comment.
+
+- There is a single argument of type ReopenSupportCaseInput.
+- Returns ReopenSupportCaseReply.
 ### reseedlogshippingsecondary
 Reseed a secondary database.
 
@@ -1511,6 +1536,11 @@ Existing role assignments are overwritten with the provided role IDs.
     - groupIds - list of System.Strings: List of group IDs.
     - roleIds - list of System.Strings: List of role IDs to assign.
 - Returns System.Boolean.
+### updatesupportcase
+Update a support case.
+
+- There is a single argument of type UpdateSupportCaseInput.
+- Returns UpdateSupportCaseReply.
 ### updatesupportuseraccess
 Updates a Rubrik Support representative's access to the customer's account.
 

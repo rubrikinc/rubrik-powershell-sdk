@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> RelativeTimeRangeInput? RelativeTimeRange
-        // GraphQL -> relativeTimeRange: RelativeTimeRangeInput (input)
-        [JsonProperty("relativeTimeRange")]
-        public RelativeTimeRangeInput? RelativeTimeRange { get; set; }
-
         //      C# -> TimeRangeInput? AbsoluteTimeRange
         // GraphQL -> absoluteTimeRange: TimeRangeInput (input)
         [JsonProperty("absoluteTimeRange")]
         public TimeRangeInput? AbsoluteTimeRange { get; set; }
+
+        //      C# -> RelativeTimeRangeInput? RelativeTimeRange
+        // GraphQL -> relativeTimeRange: RelativeTimeRangeInput (input)
+        [JsonProperty("relativeTimeRange")]
+        public RelativeTimeRangeInput? RelativeTimeRange { get; set; }
 
 
         #endregion

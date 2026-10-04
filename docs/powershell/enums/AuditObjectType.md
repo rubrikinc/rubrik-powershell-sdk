@@ -244,3 +244,5 @@ Represents all the object types for which we expect to see audits.
 - ORACLE_FAILOVER_CLUSTER - Oracle Failover Cluster object.
 - ORACLE_FAILOVER_SERVICE - Oracle Failover Service object.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds, packages) per project.
+- GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups metadata object (one per org).
+- GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings object (one per org).

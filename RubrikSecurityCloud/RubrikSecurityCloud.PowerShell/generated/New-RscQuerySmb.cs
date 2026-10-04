@@ -125,6 +125,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -250,6 +254,8 @@ $query.Var.input = @{
         // smbDomains(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     filters: [SmbDomainFilterInput!]
         //     sortBy: SmbDomainSortByInput
         //   ): SmbDomainConnection!
@@ -258,6 +264,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filters", "[SmbDomainFilterInput!]"),
                 Tuple.Create("sortBy", "SmbDomainSortByInput"),
             };
@@ -265,7 +273,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QuerySmbDomains",
-                "($first: Int,$after: String,$filters: [SmbDomainFilterInput!],$sortBy: SmbDomainSortByInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filters: [SmbDomainFilterInput!],$sortBy: SmbDomainSortByInput)",
                 "SmbDomainConnection",
                 Query.SmbDomains,
                 Query.SmbDomainsFieldSpec,
@@ -273,6 +281,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filters = @(
 	@{

@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tasksRestoreConfig")]
         public TasksRestoreConfig? TasksRestoreConfig { get; set; }
 
+        //      C# -> System.String? LeaseId
+        // GraphQL -> leaseId: String (scalar)
+        [JsonProperty("leaseId")]
+        public System.String? LeaseId { get; set; }
+
 
         #endregion
 

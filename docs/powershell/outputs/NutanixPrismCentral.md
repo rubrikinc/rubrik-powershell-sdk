@@ -1,16 +1,36 @@
 ### NutanixPrismCentral
 Nutanix Prism Central details.
 
+- id: System.String
+  - Object ID.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - cdmId: System.String
   - CDM ID of the Nutanix Virtual Machine.
-- lastRefreshTime: DateTime
-  - Last refresh timestamp of Nutanix Prism Central.
 - hostName: System.String
   - IP address of Nutanix Prism Central.
 - userName: System.String
   - Username.
 - naturalId: System.String
   - Natural ID of Nutanix Prism Central.
+- lastRefreshTime: DateTime
+  - Last refresh timestamp of Nutanix Prism Central.
 - nosVersion: System.String
   - Nutanix Prism Central version.
 - nutanixClusterIds: list of System.Strings
@@ -19,24 +39,26 @@ Nutanix Prism Central details.
   - Specifies whether Nutanix DR support is enabled for the Prism Central object.
 - shouldUseV4: System.Boolean
   - Indicates whether requests for this Prism Central should dispatch through the Nutanix V4 API on supported Rubrik clusters. Defaults to false when no preference has been set.
-- id: System.String
-  - Object ID.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status of the Nutanix Prism Central. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
-- nutanixClusters: CdmHierarchyObjectConnection
-  - Provide a list of child nutanix cluster objects for the current Nutanix Prism Central.
 - descendantConnection: NutanixPrismCentralDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: NutanixPrismCentralLogicalChildTypeConnection
   - List of logical children.
+- nutanixClusters: CdmHierarchyObjectConnection
+  - Provide a list of child nutanix cluster objects for the current Nutanix Prism Central.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -49,40 +71,16 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -91,7 +89,9 @@ cluster. Null when the source cluster is unknown.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
-- duplicateObjectsAbsoluteCount: System.Int32
-  - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - duplicateObjects: list of CdmHierarchyObjects
   - Provide a list of duplicated objects representing identical instances of the Multi Cluster Object. Each instance is located on a different Rubrik cluster.
+- duplicateObjectsAbsoluteCount: System.Int32
+  - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.

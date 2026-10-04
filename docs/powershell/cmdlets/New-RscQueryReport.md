@@ -60,29 +60,28 @@ Retrieve reports created by users.
 - There is a single argument of type AllCustomReportsInput.
 - Returns list of CustomReportInfos.
 ### data
+Returns the rows of a report data view.
+
 - There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - dataView - DataViewTypeEnum
-    - columns - list of System.Strings: A list of columns to include in the result. It can be omitted when
-           requesting aggregations, and server will derive columns by
-           concatenating groupBy and aggregation arguments.
-        
-    - filters - list of ReportFilterInputs: A list of filters to filter result with
-    - groupBy - list of System.Strings: A list of the names of the columns to group result by, it must be
-           used in conjunction of aggregations.
-        
-    - secondaryGroupBy - System.String: SecondaryGroupBy used for when groupBy values need to be pivoted.
-        
-    - aggregations - list of System.Strings: A list of aggregations to apply to the grouped rows, it must be used
-           in conjunction with groupBy arg (except for count(*)). Supported
-           aggregations are:
-           hour, day, week, month, year for datetime columns
-           sum, avg for integer columns
-           count(*)
-        
+    - dataView - DataViewTypeEnum: The data view type of the report.
+    - columns - list of System.Strings: A list of columns to include in the result. It can be
+omitted when requesting aggregations, and server will derive columns by
+concatenating groupBy and aggregation arguments.
+    - filters - list of ReportFilterInputs: A list of filters to filter result with.
+    - groupBy - list of System.Strings: A list of the names of the columns to group result by, it
+must be used in conjunction of aggregations.
+    - secondaryGroupBy - System.String: SecondaryGroupBy used for when groupBy values need
+to be pivoted.
+    - aggregations - list of System.Strings: A list of aggregations to apply to the grouped rows, it
+must be used in conjunction with groupBy arg (except for count(*)).
+Supported aggregations are:
+hour, day, week, month, year for datetime columns
+sum, avg for integer columns
+count(*)
     - sortBy - System.String: Name of the column to sort results by.
     - sortOrder - SortOrder: Sorts the order of results.
     - timezone - System.String: The timezone to be used in the results.

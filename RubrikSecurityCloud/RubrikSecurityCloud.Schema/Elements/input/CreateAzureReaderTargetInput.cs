@@ -112,11 +112,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retrievalTier")]
         public AzureRetrievalTier? RetrievalTier { get; set; }
 
-        //      C# -> List<System.String>? ArchivalDataSourceIds
-        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
-        [JsonProperty("archivalDataSourceIds")]
-        public List<System.String>? ArchivalDataSourceIds { get; set; }
-
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
         [Required]
@@ -128,6 +123,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierWithoutKeyVersionInput (input)
         [JsonProperty("azureKeyVaultKey")]
         public AzureKeyVaultKeyIdentifierWithoutKeyVersionInput? AzureKeyVaultKey { get; set; }
+
+        //      C# -> List<System.String>? ArchivalDataSourceIds
+        // GraphQL -> archivalDataSourceIds: [String!] (scalar)
+        [JsonProperty("archivalDataSourceIds")]
+        public List<System.String>? ArchivalDataSourceIds { get; set; }
 
 
         #endregion
