@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeClusterId")]
         public System.String? ExocomputeClusterId { get; set; }
 
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        [JsonProperty("isProvisioned")]
+        public System.Boolean? IsProvisioned { get; set; }
+
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         [JsonProperty("region")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public DevOpsRubrikHostedExocompute Set(
         System.String? ExocomputeClusterId = null,
+        System.Boolean? IsProvisioned = null,
         System.String? Region = null
     ) 
     {
         if ( ExocomputeClusterId != null ) {
             this.ExocomputeClusterId = ExocomputeClusterId;
+        }
+        if ( IsProvisioned != null ) {
+            this.IsProvisioned = IsProvisioned;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -71,6 +80,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "exocomputeClusterId\n" ;
             } else {
                 s += ind + "exocomputeClusterId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        if (this.IsProvisioned != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProvisioned\n" ;
+            } else {
+                s += ind + "isProvisioned\n" ;
             }
         }
         //      C# -> System.String? Region
@@ -105,6 +123,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExocomputeClusterId != null && ec.Excludes("exocomputeClusterId",true))
         {
             this.ExocomputeClusterId = null;
+        }
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        if (ec.Includes("isProvisioned",true))
+        {
+            if(this.IsProvisioned == null) {
+
+                this.IsProvisioned = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProvisioned != null && ec.Excludes("isProvisioned",true))
+        {
+            this.IsProvisioned = null;
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)

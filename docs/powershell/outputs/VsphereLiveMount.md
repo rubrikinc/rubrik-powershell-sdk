@@ -1,37 +1,37 @@
 ### VsphereLiveMount
-Live Mount of a vSphere Virtual Machine.
+Live Mount of a vSphere virtual machine.
 
 - id: System.String
-  - ID of the vSphere Live Mount.
+  - The ID of the vSphere Live Mount.
 - cdmId: System.String
-  - CDM ID of the vSphere Live Mount.
+  - The CDM ID of the vSphere Live Mount.
 - isReady: System.Boolean
-  - Ready status of the vSphere Live Mount.
+  - Whether the vSphere Live Mount is ready.
+- vmStatus: VsphereLiveMountStatus
+  - The status of the vSphere Live Mount.
+- newVmName: System.String
+  - The name of the new virtual machine created by the vSphere Live Mount.
 - vcenterId: System.String
-  - Vcenter ID of the Live Mount.
+  - The vCenter ID of the vSphere Live Mount.
 - hasAttachingDisk: System.Boolean
-  - Whether or not the mount has an attaching disk.
+  - Whether the vSphere Live Mount has an attaching disk.
 - attachingDiskCount: System.Int32
-  - Attaching disk count of the Live Mount.
+  - The number of attaching disks for the vSphere Live Mount.
 - mountTimestamp: DateTime
-  - Mount timestamp of the vSphere Live Mount.
+  - The time the vSphere Live Mount was mounted.
 - migrateDatastoreRequestId: System.String
-  - Migrate datastore request id of the vSphere Live Mount.
+  - The request ID for migrating the datastore of the vSphere Live Mount.
 - unmountTimestamp: DateTime
-  - Timestamp for scheduled unmount job if there is one.
-- vCenter: VsphereVcenter
-  - Vcenter of the Live Mount.
+  - The time the vSphere Live Mount was unmounted.
 - cluster: Cluster
   - Cluster id of the vSphere Live Mount.
-- vmStatus: VsphereLiveMountStatus
-  - Status of the vSphere Live Mount.
+- vCenter: VsphereVcenter
+  - Vcenter of the Live Mount.
 - sourceVm: VsphereVm
   - Source Virtual Machine of the vSphere Live Mount.
 - sourceSnapshot: CdmSnapshot
   - Source snapshot of the vSphere Live Mount.
 - host: VsphereHost
   - Host of the vSphere Live Mount.
-- newVmName: System.String
-  - Name of the vSphere Live Mount.
 - mountedVm: VsphereVm
   - New Virtual Machine of the vSphere Live Mount.

@@ -1162,6 +1162,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		limit = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	onlyLocationsWithSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -3563,6 +3565,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		limit = $someInt
 	}
+	# OPTIONAL
+	onlyLocationsWithSnapshots = $someBoolean
 }"
             );
         }

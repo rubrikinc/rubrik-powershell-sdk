@@ -26,3 +26,5 @@ The resource type associated with the notification.
 - TPR_BREAK_GLASS_ENROLLMENT - Quorum Authorization break-glass approver enrollment.
 - SUPPORT_CASE - Rubrik support case.
 - ARCHIVAL_LOCATION - Data center archival location.
+- TPR_BREAK_GLASS_ACCESS - Quorum Authorization break-glass approver management page.
+- GCP_PRIVATE_CONTAINER_REGISTRY - GCP private container registry for Exocompute.

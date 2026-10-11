@@ -21,6 +21,8 @@ Summary of a threat hunt for an object.
   - Scan status of the object.
 - hasQuarantinedMatches: System.Boolean
   - Specifies whether the object has quarantined matches.
+- totalRegistryKeyMatches: System.Int64
+  - Total number of Windows registry key matches across all snapshots.
 - objectV2: HierarchySnappable
   - The scanned object.
 - object: CdmHierarchySnappableNew

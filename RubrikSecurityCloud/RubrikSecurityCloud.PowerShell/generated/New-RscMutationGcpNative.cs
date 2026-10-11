@@ -144,12 +144,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	targetDiskSizeGb = $someInt
     /// 	# REQUIRED
-    /// 	replaceAttached = $someBoolean
-    /// 	# OPTIONAL
-    /// 	replicaZones = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
     /// 	shouldCopyLabels = $someBoolean
     /// 	# REQUIRED
     /// 	shouldAddRubrikLabels = $someBoolean
@@ -168,14 +162,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	kmsCryptoKeyResourceId = $someString
+    /// 	# REQUIRED
+    /// 	replaceAttached = $someBoolean
+    /// 	# OPTIONAL
+    /// 	replicaZones = @(
+    /// 		$someString
+    /// 	)
     /// 	# OPTIONAL
     /// 	targetGcpProjectRubrikId = $someString
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -220,13 +220,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# REQUIRED
-    /// 	shouldPowerOff = $someBoolean
-    /// 	# REQUIRED
     /// 	shouldCopyLabels = $someBoolean
     /// 	# REQUIRED
     /// 	shouldAddRubrikLabels = $someBoolean
     /// 	# OPTIONAL
     /// 	sharedVpcHostProjectNativeId = $someString
+    /// 	# REQUIRED
+    /// 	shouldPowerOff = $someBoolean
     /// 	# REQUIRED
     /// 	diskEncryptionType = $someDiskEncryptionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiskEncryptionType]) for enum values.
     /// 	# OPTIONAL
@@ -245,13 +245,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	targetGcpProjectRubrikId = $someString
     /// 	# OPTIONAL
-    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
-    /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	serviceAccountId = $someString
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -317,17 +317,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// 	# REQUIRED
-    /// 	shouldAddRubrikLabels = $someBoolean
-    /// 	# REQUIRED
     /// 	shouldRestoreLabels = $someBoolean
     /// 	# REQUIRED
+    /// 	shouldAddRubrikLabels = $someBoolean
+    /// 	# REQUIRED
     /// 	shouldStartRestoredInstance = $someBoolean
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -511,12 +511,6 @@ $query.Var.input = @{
 	# REQUIRED
 	targetDiskSizeGb = $someInt
 	# REQUIRED
-	replaceAttached = $someBoolean
-	# OPTIONAL
-	replicaZones = @(
-		$someString
-	)
-	# REQUIRED
 	shouldCopyLabels = $someBoolean
 	# REQUIRED
 	shouldAddRubrikLabels = $someBoolean
@@ -535,14 +529,20 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	kmsCryptoKeyResourceId = $someString
+	# REQUIRED
+	replaceAttached = $someBoolean
+	# OPTIONAL
+	replicaZones = @(
+		$someString
+	)
 	# OPTIONAL
 	targetGcpProjectRubrikId = $someString
-	# OPTIONAL
-	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }
@@ -579,13 +579,13 @@ $query.Var.input = @{
 		$someString
 	)
 	# REQUIRED
-	shouldPowerOff = $someBoolean
-	# REQUIRED
 	shouldCopyLabels = $someBoolean
 	# REQUIRED
 	shouldAddRubrikLabels = $someBoolean
 	# OPTIONAL
 	sharedVpcHostProjectNativeId = $someString
+	# REQUIRED
+	shouldPowerOff = $someBoolean
 	# REQUIRED
 	diskEncryptionType = $someDiskEncryptionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiskEncryptionType]) for enum values.
 	# OPTIONAL
@@ -604,13 +604,13 @@ $query.Var.input = @{
 	# OPTIONAL
 	targetGcpProjectRubrikId = $someString
 	# OPTIONAL
-	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
-	# OPTIONAL
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	serviceAccountId = $someString
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }
@@ -660,17 +660,17 @@ $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
 	# REQUIRED
-	shouldAddRubrikLabels = $someBoolean
-	# REQUIRED
 	shouldRestoreLabels = $someBoolean
 	# REQUIRED
+	shouldAddRubrikLabels = $someBoolean
+	# REQUIRED
 	shouldStartRestoredInstance = $someBoolean
-	# OPTIONAL
-	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+	# OPTIONAL
+	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 }"
             );
         }

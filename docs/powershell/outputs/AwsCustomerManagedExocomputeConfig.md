@@ -2,6 +2,7 @@
 AWS Customer Managed Exocompute Configuration in a region.
 
 - clusterName: System.String
+  - Name of the customer managed exocompute cluster.
 - byokClusterId: System.String
   - Cluster ID of the customer managed exocompute.
 - configUuid: System.String

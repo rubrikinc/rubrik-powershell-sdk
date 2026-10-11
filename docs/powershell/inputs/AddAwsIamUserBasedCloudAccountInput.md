@@ -17,6 +17,7 @@ Input to add IAM user-based AWS cloud account for native protection.
   - Native ID of cloud account.
 - roleArn: System.String
   - AWS Role ARN with native protection policy on AWS cloud account. Role name must start with 'rubrik-polaris-'. Role ARN is required only while adding new AWS cloud account.
+Deprecated: no longer used.
 - externalArtifactMap: list of ExternalArtifactss
   - Key value pair for external artifacts associated with an AWS account.
 - featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss

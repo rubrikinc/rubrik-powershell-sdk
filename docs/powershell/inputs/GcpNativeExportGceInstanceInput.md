@@ -13,14 +13,15 @@ Input required to export a GCP GCE instance snapshot.
   - The subnet name of the exported instance. If not provided, the subnet of the source instance at the time of taking the snapshot will be used.
 - targetNetworkTags: list of System.Strings
   - The network tags of the exported instance. If not provided, the network tags of the source instance at the time of taking the snapshot will be used.
-- shouldPowerOff: System.Boolean
-  - Specifies whether the exported instance will be created in a powered-off state.
 - shouldCopyLabels: System.Boolean
-  - Specfies whether the labels will be copied to the exported disk from the source disk that were there at the time of taking the snapshot or not.
+  - Specifies whether the labels will be copied to the exported disk from
+the source disk that were there at the time of taking the snapshot or not.
 - shouldAddRubrikLabels: System.Boolean
   - Specifies whether to allow Rubrik labels on the exported disk or not.
 - sharedVpcHostProjectNativeId: System.String
   - Native ID of the shared VPC host project for the current service project. If not provided, the exported instance will have its network in the target project. If provided, targetSubnetName must be provided.
+- shouldPowerOff: System.Boolean
+  - Specifies whether the exported instance will be created in a powered-off state.
 - diskEncryptionType: DiskEncryptionType
   - Encryption type of created disk.
 - kmsCryptoKey: KmsCryptoKey
@@ -29,11 +30,11 @@ Input required to export a GCP GCE instance snapshot.
   - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKeyResourceId.
 - targetGcpProjectRubrikId: System.String
   - The target project cloud account ID for cross project export. If provided, targetSubnetName must be provided.
-- snapshotType: GcpSnapshotType
-  - The type of the snapshot to recover from.
 - archivedSnapshotId: System.String
   - The archived snapshot ID from which the recovery should happen.
 - serviceAccountId: System.String
   - Optional service account email to attach to the exported instance. If not provided or empty, no service account will be attached.
 - recoveryPurpose: RecoveryPurpose
   - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
+- snapshotType: GcpSnapshotType
+  - The type of the snapshot to recover from.

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int64? ObjectCount
+        // GraphQL -> objectCount: Long! (scalar)
+        [JsonProperty("objectCount")]
+        public System.Int64? ObjectCount { get; set; }
+
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public DataTypeHits Set(
         System.String? DataTypeId = null,
         System.String? Id = null,
+        System.Int64? ObjectCount = null,
         System.Int64? TotalHits = null,
         System.Int64? TotalViolatedHits = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( ObjectCount != null ) {
+            this.ObjectCount = ObjectCount;
         }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Int64? ObjectCount
+        // GraphQL -> objectCount: Long! (scalar)
+        if (this.ObjectCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectCount\n" ;
+            } else {
+                s += ind + "objectCount\n" ;
             }
         }
         //      C# -> System.Int64? TotalHits
@@ -158,6 +176,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Int64? ObjectCount
+        // GraphQL -> objectCount: Long! (scalar)
+        if (ec.Includes("objectCount",true))
+        {
+            if(this.ObjectCount == null) {
+
+                this.ObjectCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectCount != null && ec.Excludes("objectCount",true))
+        {
+            this.ObjectCount = null;
         }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)

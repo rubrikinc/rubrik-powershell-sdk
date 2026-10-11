@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("prioritizedOnboardingSpec")]
         public PrioritizedOnboardingSpec? PrioritizedOnboardingSpec { get; set; }
 
+        //      C# -> UemKmsSpecInput? UemKmsSpec
+        // GraphQL -> uemKmsSpec: UemKmsSpecInput (input)
+        [JsonProperty("uemKmsSpec")]
+        public UemKmsSpecInput? UemKmsSpec { get; set; }
+
 
         #endregion
 

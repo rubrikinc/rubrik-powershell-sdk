@@ -55,13 +55,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetNetworkTags")]
         public List<System.String>? TargetNetworkTags { get; set; }
 
-        //      C# -> System.Boolean? ShouldPowerOff
-        // GraphQL -> shouldPowerOff: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldPowerOff")]
-        public System.Boolean? ShouldPowerOff { get; set; }
-
         //      C# -> System.Boolean? ShouldCopyLabels
         // GraphQL -> shouldCopyLabels: Boolean! (scalar)
         [Required]
@@ -80,6 +73,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sharedVpcHostProjectNativeId: String (scalar)
         [JsonProperty("sharedVpcHostProjectNativeId")]
         public System.String? SharedVpcHostProjectNativeId { get; set; }
+
+        //      C# -> System.Boolean? ShouldPowerOff
+        // GraphQL -> shouldPowerOff: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldPowerOff")]
+        public System.Boolean? ShouldPowerOff { get; set; }
 
         //      C# -> DiskEncryptionType? DiskEncryptionType
         // GraphQL -> diskEncryptionType: DiskEncryptionType! (enum)
@@ -103,11 +103,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetGcpProjectRubrikId")]
         public System.String? TargetGcpProjectRubrikId { get; set; }
 
-        //      C# -> GcpSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: GcpSnapshotType (enum)
-        [JsonProperty("snapshotType")]
-        public GcpSnapshotType? SnapshotType { get; set; }
-
         //      C# -> System.String? ArchivedSnapshotId
         // GraphQL -> archivedSnapshotId: UUID (scalar)
         [JsonProperty("archivedSnapshotId")]
@@ -122,6 +117,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
         [JsonProperty("recoveryPurpose")]
         public RecoveryPurpose? RecoveryPurpose { get; set; }
+
+        //      C# -> GcpSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: GcpSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public GcpSnapshotType? SnapshotType { get; set; }
 
 
         #endregion

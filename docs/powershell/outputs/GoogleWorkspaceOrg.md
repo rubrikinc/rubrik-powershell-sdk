@@ -45,6 +45,8 @@ Google Workspace organization managed by Rubrik.
   - Org size info by org ID.
 - backupJobsStats: backupJobsStats
   - Backup job stats by org ID.
+- fixedObjectWorkloads: GoogleWorkspaceOrgFixedObjectWorkloads
+  - Workload IDs for Google Workspace fixed objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

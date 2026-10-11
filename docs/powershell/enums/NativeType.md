@@ -76,3 +76,25 @@ Native type of principal.
 - AD_PKI_ENROLLMENT_SERVICE - Active Directory PKI Enrollment Service (AD CS CA).
 - AD_MSKDS_PROV_ROOT_KEY - Active Directory MS Key Distribution Service provisioned root key.
 - AD_NTFRS_SUBSCRIBER - Active Directory NTFRS Subscriber (File Replication Service).
+- OKTA_NETWORK_ZONE - Okta network zone.
+- OKTA_POLICY_RULE - Okta policy rule.
+- OKTA_GROUP_RULE - Okta group rule.
+- OKTA_PROFILE_MAPPING - Okta profile mapping.
+- OKTA_IDENTITY_PROVIDER - Okta external identity provider.
+- OKTA_IDP_KEY_CREDENTIAL - Okta identity provider key credential.
+- OKTA_AUTHORIZATION_SERVER - Okta authorization server.
+- OKTA_AUTHORIZATION_SERVER_SCOPE - Okta authorization server scope.
+- OKTA_AUTHORIZATION_SERVER_CLAIM - Okta authorization server claim.
+- OKTA_AUTHORIZATION_SERVER_POLICY - Okta authorization server policy.
+- OKTA_AUTHORIZATION_SERVER_POLICY_RULE - Okta authorization server policy rule.
+- OKTA_USER_SCHEMA - Okta user profile schema.
+- OKTA_EVENT_HOOK - Okta event hook.
+- OKTA_INLINE_HOOK - Okta inline hook.
+- OKTA_PROVISIONING_SETTING - Okta application provisioning setting.
+- OKTA_GROUP_PUSH_MAPPING - Okta group push mapping.
+- OKTA_WORKFLOW - Okta Workflows flow.
+- OKTA_WORKFLOW_FOLDER - Okta Workflows folder.
+- OKTA_WORKFLOW_DATA_TABLE - Okta Workflows data table.
+- OKTA_WORKFLOW_DATA_TABLE_ROW - Okta Workflows data table row.
+- OKTA_WORKFLOW_CONNECTION - Okta Workflows connection.
+- OKTA_AUTHENTICATOR - Okta authenticator.

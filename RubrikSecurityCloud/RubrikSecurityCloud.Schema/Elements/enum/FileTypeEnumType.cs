@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AD_REPORT")]
         AD_REPORT,
 
+        [EnumMember(Value = "ALERT_ACTIONS_LOG_CSV")]
+        ALERT_ACTIONS_LOG_CSV,
+
         [EnumMember(Value = "ANOMALY_DETAILS_CSV")]
         ANOMALY_DETAILS_CSV,
 

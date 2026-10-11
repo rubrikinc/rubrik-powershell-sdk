@@ -36,6 +36,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUTHENTICATION_STRENGTH")]
         AUTHENTICATION_STRENGTH,
 
+        [EnumMember(Value = "AUTHENTICATOR")]
+        AUTHENTICATOR,
+
+        [EnumMember(Value = "AUTHORIZATION_SERVER")]
+        AUTHORIZATION_SERVER,
+
+        [EnumMember(Value = "AUTHORIZATION_SERVER_CLAIM")]
+        AUTHORIZATION_SERVER_CLAIM,
+
+        [EnumMember(Value = "AUTHORIZATION_SERVER_POLICY")]
+        AUTHORIZATION_SERVER_POLICY,
+
+        [EnumMember(Value = "AUTHORIZATION_SERVER_POLICY_RULE")]
+        AUTHORIZATION_SERVER_POLICY_RULE,
+
+        [EnumMember(Value = "AUTHORIZATION_SERVER_SCOPE")]
+        AUTHORIZATION_SERVER_SCOPE,
+
         [EnumMember(Value = "CERTIFICATE_TEMPLATE")]
         CERTIFICATE_TEMPLATE,
 
@@ -78,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_DNS")]
         DOMAIN_DNS,
 
+        [EnumMember(Value = "EVENT_HOOK")]
+        EVENT_HOOK,
+
         [EnumMember(Value = "EXTERNAL_ACCOUNT")]
         EXTERNAL_ACCOUNT,
 
@@ -93,8 +114,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP")]
         GROUP,
 
+        [EnumMember(Value = "GROUP_PUSH_MAPPING")]
+        GROUP_PUSH_MAPPING,
+
+        [EnumMember(Value = "GROUP_RULE")]
+        GROUP_RULE,
+
+        [EnumMember(Value = "IDENTITY_PROVIDER")]
+        IDENTITY_PROVIDER,
+
+        [EnumMember(Value = "IDP_KEY_CREDENTIAL")]
+        IDP_KEY_CREDENTIAL,
+
         [EnumMember(Value = "INFRASTRUCTURE_UPDATE")]
         INFRASTRUCTURE_UPDATE,
+
+        [EnumMember(Value = "INLINE_HOOK")]
+        INLINE_HOOK,
 
         [EnumMember(Value = "INTER_SITE_TRANSPORT")]
         INTER_SITE_TRANSPORT,
@@ -147,8 +183,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PKI_ENROLLMENT_SERVICE")]
         PKI_ENROLLMENT_SERVICE,
 
+        [EnumMember(Value = "POLICY_RULE")]
+        POLICY_RULE,
+
         [EnumMember(Value = "PRINT_QUEUE")]
         PRINT_QUEUE,
+
+        [EnumMember(Value = "PROFILE_MAPPING")]
+        PROFILE_MAPPING,
+
+        [EnumMember(Value = "PROVISIONING_SETTING")]
+        PROVISIONING_SETTING,
 
         [EnumMember(Value = "PUBLIC")]
         PUBLIC,
@@ -198,8 +243,29 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "USER")]
         USER,
 
+        [EnumMember(Value = "USER_SCHEMA")]
+        USER_SCHEMA,
+
+        [EnumMember(Value = "USER_TYPE")]
+        USER_TYPE,
+
         [EnumMember(Value = "VOLUME")]
-        VOLUME
+        VOLUME,
+
+        [EnumMember(Value = "WORKFLOW")]
+        WORKFLOW,
+
+        [EnumMember(Value = "WORKFLOW_CONNECTION")]
+        WORKFLOW_CONNECTION,
+
+        [EnumMember(Value = "WORKFLOW_DATA_TABLE")]
+        WORKFLOW_DATA_TABLE,
+
+        [EnumMember(Value = "WORKFLOW_DATA_TABLE_ROW")]
+        WORKFLOW_DATA_TABLE_ROW,
+
+        [EnumMember(Value = "WORKFLOW_FOLDER")]
+        WORKFLOW_FOLDER
 
 
     } // enum ViolationPrincipalType

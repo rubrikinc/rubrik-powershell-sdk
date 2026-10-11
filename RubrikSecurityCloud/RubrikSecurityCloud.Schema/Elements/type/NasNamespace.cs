@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        [JsonProperty("adDomain")]
+        public System.String? AdDomain { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
         [JsonProperty("cdmId")]
@@ -115,6 +120,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.String? RealmStatus
+        // GraphQL -> realmStatus: String (scalar)
+        [JsonProperty("realmStatus")]
+        public System.String? RealmStatus { get; set; }
+
+        //      C# -> System.String? RealmStatusReason
+        // GraphQL -> realmStatusReason: String (scalar)
+        [JsonProperty("realmStatusReason")]
+        public System.String? RealmStatusReason { get; set; }
 
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
@@ -263,6 +278,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -274,6 +291,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] logicalChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -306,6 +325,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? AdDomain = null,
         System.String? CdmId = null,
         System.String? Id = null,
         System.Boolean? IsReadonly = null,
@@ -314,6 +334,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         List<System.String>? NfsDataAddresses = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.String? RealmStatus = null,
+        System.String? RealmStatusReason = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<System.String>? SmbDataAddresses = null,
@@ -373,6 +395,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( AdDomain != null ) {
+            this.AdDomain = AdDomain;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -396,6 +421,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( RealmStatus != null ) {
+            this.RealmStatus = RealmStatus;
+        }
+        if ( RealmStatusReason != null ) {
+            this.RealmStatusReason = RealmStatusReason;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -602,6 +633,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (this.AdDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "adDomain\n" ;
+            } else {
+                s += ind + "adDomain\n" ;
+            }
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
         if (this.CdmId != null) {
@@ -672,6 +712,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.String? RealmStatus
+        // GraphQL -> realmStatus: String (scalar)
+        if (this.RealmStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "realmStatus\n" ;
+            } else {
+                s += ind + "realmStatus\n" ;
+            }
+        }
+        //      C# -> System.String? RealmStatusReason
+        // GraphQL -> realmStatusReason: String (scalar)
+        if (this.RealmStatusReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "realmStatusReason\n" ;
+            } else {
+                s += ind + "realmStatusReason\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1168,6 +1226,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (ec.Includes("adDomain",true))
+        {
+            if(this.AdDomain == null) {
+
+                this.AdDomain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AdDomain != null && ec.Excludes("adDomain",true))
+        {
+            this.AdDomain = null;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
         if (ec.Includes("cdmId",true))
@@ -1303,6 +1378,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.String? RealmStatus
+        // GraphQL -> realmStatus: String (scalar)
+        if (ec.Includes("realmStatus",true))
+        {
+            if(this.RealmStatus == null) {
+
+                this.RealmStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RealmStatus != null && ec.Excludes("realmStatus",true))
+        {
+            this.RealmStatus = null;
+        }
+        //      C# -> System.String? RealmStatusReason
+        // GraphQL -> realmStatusReason: String (scalar)
+        if (ec.Includes("realmStatusReason",true))
+        {
+            if(this.RealmStatusReason == null) {
+
+                this.RealmStatusReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RealmStatusReason != null && ec.Excludes("realmStatusReason",true))
+        {
+            this.RealmStatusReason = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldIncludeOneDrive")]
         public System.Boolean? ShouldIncludeOneDrive { get; set; }
 
+        //      C# -> M365RecoveryConflictRule? ConflictRule
+        // GraphQL -> conflictRule: M365RecoveryConflictRule (enum)
+        [JsonProperty("conflictRule")]
+        public M365RecoveryConflictRule? ConflictRule { get; set; }
+
 
         #endregion
 

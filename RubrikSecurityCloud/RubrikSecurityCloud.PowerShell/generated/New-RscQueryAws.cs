@@ -901,8 +901,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	awsNativeId = $someString
-    /// 	# OPTIONAL
     /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	features = @(
@@ -946,6 +944,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	awsNativeId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1507,6 +1507,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						}
     /// 					)
     /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			regions = @(
+    /// 				$someString
     /// 			)
     /// 		}
     /// 	)
@@ -2814,8 +2818,6 @@ $query.Var.majorEngineVersion = $someString"
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
-	awsNativeId = $someString
-	# OPTIONAL
 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	# OPTIONAL
 	features = @(
@@ -2859,6 +2861,8 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	awsNativeId = $someString
 }"
             );
         }
@@ -3350,6 +3354,10 @@ $query.Var.input = @{
 						}
 					)
 				}
+			)
+			# OPTIONAL
+			regions = @(
+				$someString
 			)
 		}
 	)

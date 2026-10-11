@@ -15,3 +15,7 @@ can vary from the totalUnaffectedObjects for turbo threat hunts.
 - cleanRecoverableObjectLimit: System.Int64
   - Maximum number of clean objects eligible for cyber recovery that can be
 stored in the database. This can vary based on the corresponding AST value.
+- totalRegistryAffectedObjects: System.Int64
+  - Total number of objects with at least one Windows registry key match. An
+object with both file and registry matches is also counted in the total
+affected objects, so the two must not be summed.

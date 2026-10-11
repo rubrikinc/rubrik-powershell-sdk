@@ -1,4 +1,4 @@
-# v20260928-50
+# v20261005-29
 type Query {
   # Account ID.
   accountId: String! @deprecated(reason: "This endpoint is deprecated.")
@@ -1336,7 +1336,10 @@ type Query {
   # Quarantine details of all snapshots.
   allQuarantinedDetailsForSnapshots(
     # List of snapshot IDs.
-    snapshotIds: [String!]!): [QuarantineSpec!]!
+    snapshotIds: [String!]!,
+
+    # Specifies whether to include clean-version recovery details for each quarantined file.
+    shouldIncludeRecoveryInfo: Boolean): [QuarantineSpec!]!
 
   # Quarantine details of a workload.
   allQuarantinedDetailsForWorkload(
@@ -1451,6 +1454,14 @@ type Query {
   allS3BucketsFromAws(
     # Rubrik ID for AWS account.
     awsAccountRubrikId: UUID!): [String!]!
+
+  # Returns the managed object types a Data Threat Analytics product
+  # supports, so a client can decide whether to render that product's
+  # per-object state before any inventory query resolves. A pure function of
+  # `product`; issues no per-account query.
+  allSecurityFeatureSupportedObjectTypes(
+    # The Data Threat Analytics product to return supported object types for.
+    product: DtaProduct!): [ManagedObjectType!]!
 
   # All security policies.
   allSecurityPolicies(
@@ -1584,7 +1595,7 @@ type Query {
     # Specifies the time at which or after which the snapshot was taken.
     afterTime: DateTime,
 
-    # Workload UUIDs.
+    # Workload FIDs.
     snappableIds: [String!]!,
 
     # Specifies whether the retrieved snapshots should include the linked snapshots.
@@ -1833,7 +1844,7 @@ type Query {
     fid: UUID!,
 
     # Input to get all vm recovery jobs info.
-    input: AllVmRecoveryJobsInfoInput!): [VmRecoveryJobInfo!]!
+    input: AllVmRecoveryJobsInfoInput!): [VmRecoveryJobInfo!]! @deprecated(reason: "Deprecated: API is not supported anymore. Use allWorkloadsRecoveryInfo instead.")
 
   # Batch get vsphere vmware cdp state infos.
   allVmwareCdpStateInfos(
@@ -4805,7 +4816,10 @@ type Query {
   # Count Rubrik clusters grouped by status.
   countClusters(
     # Filter by cluster.
-    filter: ClusterFilterInput): CountClustersReply!
+    filter: ClusterFilterInput,
+
+    # When true and the MSP multi-account registration feature flag is enabled, clusters assigned by a parent account are counted in assignedByParentAccountClusters instead of the health-status buckets.
+    separateSharedClusters: Boolean): CountClustersReply!
 
   # The number of objects protected by the SLA Domains.
   countOfObjectsProtectedBySlas(
@@ -6639,6 +6653,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Filter for Guest OS credentials.
     filter: [GuestOsCredentialFilterInput!],
 
@@ -7261,6 +7281,8 @@ type Query {
   isUpgradeRecommended(
     # Specifies the cluster UUID.
     clusterUuid: UUID!): CdmUpgradeRecommendationReply!
+
+  # Whether VMware management is enabled for the account.
   isVMwareManagementEnabled: Boolean!
 
   # Validate the name of a TPR policy.
@@ -8016,6 +8038,14 @@ type Query {
   mongoRestoreTargetsForSnapshot(
     # Input for V2GetValidOpsManagerManagedRestoreTargetsForSnapshot.
     input: GetValidOpsManagerManagedRestoreTargetsForSnapshotInput!): MongoOpsManagerRestoreTargetsForSnapshotListResponse!
+
+  # Get the MongoDB RBAC summary of an admin database snapshot
+  # 
+  # Supported in v9.6+
+  # Retrieve the role-based access control (RBAC) summary captured in a snapshot of a MongoDB admin database. The summary lists the user accounts in the snapshot and the roles granted to each account. A snapshot that is not a snapshot of an admin database carries no RBAC summary, and the Rubrik cluster returns a 404 response for it.
+  mongoSnapshotRbacSummary(
+    # Input for InternalGetMongoSnapshotRbacSummary.
+    input: GetMongoSnapshotRbacSummaryInput!): MongoSnapshotRbacSummary!
 
   # Provides details for the MongoDB source cluster identified by the fid.
   mongoSource(
@@ -10936,7 +10966,11 @@ type Query {
     recoveryNameSubstring: String,
 
     # Sorting parameters for the recovery list.
-    sortParam: RecoverySortParamInput): RecoveryConnection!
+    sortParam: RecoverySortParamInput,
+
+    # Filter by tag clauses. A recovery matches if it has all the tags in at least
+    # one clause. Empty clauses are ignored.
+    recoveryTags: [RecoveryTagClause!]): RecoveryConnection!
 
   # Retrieves basic information for recovery plans with pagination support.
   # RSC prioritizes recovery_plan_ids if they are passed in the filter. All
@@ -11001,6 +11035,10 @@ type Query {
 
     # Optional filter by the outcome of the most recent completed recovery. Plans with no recovery history are excluded from filtered results.
     lastRecoveryOutcomes: [RecoveryOutcome!],
+
+    # Optional filter by tag clauses. A plan matches if it has all the tags in at
+    # least one clause. Empty clauses are ignored.
+    recoveryTags: [RecoveryTagClause!],
 
     # Optional filter by whether Pre-Seed is enabled for the recovery plan. When unset, recovery plans are returned regardless of Pre-Seed state.
     isPreSeedEnabled: Boolean): RecoveryPlanBasicInfoConnection!
@@ -11306,6 +11344,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -11383,6 +11427,12 @@ type Query {
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -12425,7 +12475,7 @@ type Query {
     # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     before: String,
 
-    # Workload UUIDs.
+    # Workload FIDs.
     snappableIds: [String!]!,
 
     # Filters for snapshot connection.
@@ -13253,7 +13303,10 @@ type Query {
     matchTypeFilter: [IndicatorOfCompromiseKind!],
 
     # Filters according to the severity of the match.
-    severityFilter: [MatchSeverity!]): ThreatMonitoringMatchedObjectConnection!
+    severityFilter: [MatchSeverity!],
+
+    # Filter by whether the matched object is muted for Threat Monitoring notifications. Unset/UNSPECIFIED applies no filter.
+    muteStatusFilter: ThreatMonitoringMuteStatusFilter): ThreatMonitoringMatchedObjectConnection!
 
   # Threat Monitoring object enablement stats.
   threatMonitoringObjectEnablementStats(
@@ -13698,6 +13751,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Filter for vCenter hotadd proxy virtual machine.
     filter: [VcenterProxyVmsFilterInput!],
 
@@ -13748,6 +13807,8 @@ type Query {
 
     # Sorts the order of results.
     sortOrder: SortOrder): NutanixVmConnection!
+
+  # Details of the vSphere compute cluster with the given Rubrik ID.
   vSphereComputeCluster(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereComputeCluster!
@@ -13760,6 +13821,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -13768,6 +13835,8 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): VsphereComputeClusterConnection!
+
+  # Details of the vSphere datacenter with the given Rubrik ID.
   vSphereDatacenter(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereDatacenter!
@@ -13790,6 +13859,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -13798,12 +13873,20 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): VsphereDatastoreClusterConnection!
+
+  # Query vSphere datastores.
   vSphereDatastoreConnection(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -13813,6 +13896,8 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): VsphereDatastoreConnection!
+
+  # Vsphere folder based on id passed in.
   vSphereFolder(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereFolder!
@@ -13825,6 +13910,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -13833,15 +13924,25 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): VsphereFolderConnection!
+
+  # Details of the vSphere host with the given Rubrik ID.
   vSphereHost(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereHost!
+
+  # Query vSphere hosts.
   vSphereHostConnection(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -13873,6 +13974,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Filter for virtual machine Live Mounts.
     filter: [VsphereLiveMountFilterInput!],
 
@@ -13892,14 +13999,27 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Filter for virtual machine Live Mounts.
-    filter: VSphereMountFilter, sortBy: VsphereMountSortBy,
+    filter: VSphereMountFilter,
+
+    # Sort virtual machine Live Mounts.
+    sortBy: VsphereMountSortBy,
 
     # Sorts the order of results.
     sortOrder: SortOrder): VsphereMountConnection!
+
+  # Details of the vSphere network with the given Rubrik ID.
   vSphereNetwork(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereNetwork!
+
+  # Details of a vSphere resource pool for a given ID.
   vSphereResourcePool(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereResourcePool!
@@ -13928,18 +14048,31 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): CdmHierarchyObjectConnection!
+
+  # Details of the vSphere tag with the given Rubrik ID.
   vSphereTag(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereTag!
+
+  # Details of the vSphere tag category with the given Rubrik ID.
   vSphereTagCategory(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereTagCategory!
+
+  # Paginated list of the vSphere objects immediately below the vSphere
+  # inventory root.
   vSphereTopLevelDescendantsConnection(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -13961,6 +14094,12 @@ type Query {
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -13972,15 +14111,25 @@ type Query {
 
     # Hierarchy object filter.
     filter: [Filter!]): CdmHierarchyObjectConnection!
+
+  # Details of the vSphere vCenter Server with the given Rubrik ID.
   vSphereVCenter(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereVcenter!
+
+  # Query vSphere vCenters.
   vSphereVCenterConnection(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -13998,15 +14147,25 @@ type Query {
 
     # ID of the asynchronous request.
     id: String!): AsyncRequestStatus!
+
+  # Details of the vSphere virtual machine with the given Rubrik ID.
   vSphereVmNew(
     # Rubrik UUID for the object.
     fid: UUID!): VsphereVm!
+
+  # Query vSphere virtual machines.
   vSphereVmNewConnection(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -14177,13 +14336,20 @@ type Query {
     # Hierarchy object filter.
     filter: [Filter!]): VcdOrgConnection!
 
-  # Paginated list of the highest-level vCloud Director objects accessible by the current user.
+  # Paginated list of the highest-level vCloud Director objects accessible by
+  # the current user.
   vcdTopLevelDescendants(
     # Returns the first n elements from the list.
     first: Int,
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -14204,6 +14370,12 @@ type Query {
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -15608,6 +15780,8 @@ type Mutation {
   createAutomaticRcsTargetMapping(
     # Request argument for creating a new Rubrik Cloud Vault location.
     input: CreateAutomaticRcsTargetMappingInput!): TargetMapping! @deprecated(reason: "This mutation is deprecated. Please use createRcvLocationsFromTemplate.")
+
+  # Creates a new AWS cloud account.
   createAwsAccount(
     # Request argument for creating a new AWS account.
     input: CreateAwsAccountInput!): CloudAccount!
@@ -15626,6 +15800,8 @@ type Mutation {
   createAwsReaderTarget(
     # Input for creating a new AWS reader target.
     input: CreateAwsReaderTargetInput!): Target!
+
+  # Creates an AWS archival target on a Rubrik cluster.
   createAwsTarget(
     # Request for creating a new AWS target.
     input: CreateAwsTargetInput!): Target!
@@ -15770,6 +15946,8 @@ type Mutation {
   createGcpReaderTarget(
     # Request for creating a new Gcp reader target.
     input: CreateGcpReaderTargetInput!): Target!
+
+  # Creates a Polaris-managed GCP archival location.
   createGcpTarget(
     # Request for creating a new Gcp target.
     input: CreateGcpTargetInput!): Target!
@@ -18341,6 +18519,14 @@ type Mutation {
     # Source table, snapshot, and recovery destination.
     input: RecoverGlueIcebergTableSnapshotInput!): RecoverGlueIcebergTableSnapshotReply!
 
+  # Recover objects from source to target MongoDB cluster with cluster-level config
+  # 
+  # Supported in v9.6+
+  # Recovers the selected database or collection objects managed using logical backups from a source to a target MongoDB cluster, including admin-DB RBAC and config-DB zone/balancer state. Drops every user database on the target and overwrites cluster-wide config.tags — use only for full-cluster recovery.
+  recoverMongoCluster(
+    # Input for V1RecoverMongoCluster.
+    input: RecoverMongoClusterInput!): AsyncRequestStatus!
+
   # Recover a MongoDB source from Rubrik CDM cluster.
   recoverMongoSource(
     # Input for V1RecoverMongoDatabasesAndCollections.
@@ -19044,6 +19230,11 @@ type Mutation {
   setCloudNativeGatewayKmsKeys(
     # Input for setting gateway KMS keys.
     input: SetCloudNativeGatewayKmsKeysInput!): Void
+
+  # Sets or updates the KMS key ID for a CCES cluster.
+  setClusterKmsKeyId(
+    # Input for setting or updating the KMS key ID of a CCES cluster.
+    input: SetClusterKmsKeyIdInput!): SetClusterKmsKeyIdReply!
 
   # SetCoordinatorLabels replaces the coordinator labels
   # for virtual machines on a Cloud Direct cluster.
@@ -19765,6 +19956,8 @@ type Mutation {
   updateAutomaticAzureTargetMapping(
     # Update Azure automatic target mapping.
     input: UpdateAutomaticAzureTargetMappingInput!): TargetMapping! @deprecated(reason: "This mutation is deprecated.")
+
+  # Updates an existing AWS cloud account.
   updateAwsAccount(
     # Request for editing an existing AWS account.
     input: UpdateAwsAccountInput!): CloudAccount!
@@ -20069,6 +20262,8 @@ type Mutation {
   updateFusionComputeVrm(
     # Input for updateFusionComputeVrm.
     input: UpdateFusionComputeVrmInput!): UpdateFusionComputeVrmReply!
+
+  # Edits a GCP archival location's mutable fields.
   updateGcpTarget(
     # Request for updating an existing Gcp target.
     input: UpdateGcpTargetInput!): Target!
@@ -20797,11 +20992,6 @@ type Mutation {
   vsphereDeleteVcenter(
     # Input for V1DeleteVcenter.
     input: VsphereDeleteVcenterInput!): AsyncRequestStatus!
-
-  # Exclude or include virtual disks during snapshot.
-  vsphereExcludeVmDisks(
-    # Input to include/exclude disk for taking snapshot.
-    input: [VsphereExcludeVmDisksInput!]!): RequestSuccess! @deprecated(reason: "Deprecated. Use excludeVmDisks instead.")
 
   # Initiates an export job for a vSphere snapshot to a standalone ESXi host.
   vsphereExportSnapshotToStandaloneHostV2(
@@ -23714,6 +23904,9 @@ enum ActivityObjectTypeEnum {
 
   # Microsoft 365 Backup Storage SharePoint Site.
   M365_BACKUP_STORAGE_SITE
+
+  # M365 Configurations Organization.
+  M365_CONFIGS_ORG
 
   # MariaDB instance.
   MARIADB_INSTANCE
@@ -29375,6 +29568,28 @@ input ArchivalTieringSpecInput {
   # Set to tier existing snapshots for instant tiering.
   shouldTierExistingSnapshots: Boolean = false
 }
+# ArchivalTieringStatus holds the current storage tier and rehydration status
+# for a snapshot at a specific archival location. Populated from CDM's
+# archival_tiering_status column, computed server-side by the snapshot service.
+type ArchivalTieringStatus {
+  # Current storage tier for this snapshot's blobs in the given location.
+  currentTier: SnapshotCloudStorageTier!
+
+  # True once all blobs in the snapshot chain are in current_tier.
+  # False means tiering is in progress or partially complete.
+  isFullyTiered: Boolean!
+
+  # ID of the archival location this entry applies to.
+  locationId: String!
+
+  # When rehydration was initiated (from CDM's timeToTierBackDown field).
+  # Not set if rehydration has not been requested.
+  rehydrationInitiatedAt: DateTime
+
+  # True when the snapshot requires cloud-provider rehydration before download
+  # can start. Computed server-side from current_tier and is_fully_tiered.
+  rehydrationNeeded: Boolean!
+}
 # Action to apply to an archival upload job.
 enum ArchivalUploadJobPauseAction {
   # Pause the job at its next pausable boundary.
@@ -30086,6 +30301,9 @@ enum AuditObjectType {
   # Agent Cloud policy object.
   AGENT_CLOUD_POLICY
 
+  # Agent Cloud rewind object.
+  AGENT_CLOUD_REWIND_OBJECT
+
   # Agent Cloud violation object.
   AGENT_CLOUD_VIOLATION
 
@@ -30496,6 +30714,9 @@ enum AuditObjectType {
 
   # Microsoft 365 Backup Storage SharePoint Site.
   M365_BACKUP_STORAGE_SITE
+
+  # M365 Configurations Organization.
+  M365_CONFIGS_ORG
 
   # Managed Volume object.
   MANAGED_VOLUME
@@ -31295,6 +31516,9 @@ enum AuthorizedOperation {
   # Manage user access.
   MANAGE_ACCESS
 
+  # Manage Agent Cloud policies, violations, alerts, and insights.
+  MANAGE_AGENT_CLOUD_POLICIES
+
   # Manage anomalies.
   MANAGE_ANOMALY_DETECTION
 
@@ -31390,6 +31614,9 @@ enum AuthorizedOperation {
 
   # Manage log shipping.
   MANAGE_LOG_SHIPPING
+
+  # Manage maintenance mode.
+  MANAGE_MAINTENANCE_MODE
 
   # Manage migration dashboard.
   MANAGE_MIGRATION_DASHBOARD
@@ -31570,6 +31797,9 @@ enum AuthorizedOperation {
 
   # Send license notification.
   SEND_LICENSE_NOTIFICATION
+
+  # Set the enforcement type of Agent Cloud policies.
+  SET_AGENT_CLOUD_POLICY_ENFORCEMENT
 
   # Suspend child accounts.
   SUSPEND_CHILD_ACCOUNTS
@@ -49925,15 +50155,15 @@ type AzureSnappableLocation {
   # Azure Rubrik subscription name.
   subscriptionRubrikName: String
 }
-# The type of snapshot to be used in export or restore jobs.
+# Type of snapshot to be used for recovery.
 enum AzureSnapshotType {
-  # Use the archived snapshot.
+  # Archived snapshot.
   ARCHIVED
 
-  # Use the replicated snapshot.
+  # Replicated snapshot.
   REPLICATED
 
-  # Use the source snapshot.
+  # Source snapshot.
   SOURCE
 }
 # Specific details for the feature, varies based on the feature type.
@@ -56272,6 +56502,11 @@ type CdmSnapshot implements GenericSnapshot {
   # Archival locations where the snapshot is present.
   archivalLocations: [DataLocation!]
 
+  # Per-location archival tiering status. One entry per archival location for
+  # which CDM has written tiering history. Empty when the snapshot has never
+  # been tiered to cold storage.
+  archivalTieringStatus: [ArchivalTieringStatus!]!
+
   # The CDM internal ID.
   cdmId: String!
 
@@ -58228,6 +58463,11 @@ enum CloudAccountAction {
   # Delete a cloud account.
   DELETE
 
+  # Download the CloudFormation template for manual deployment instead of
+  # launching the stack. AWS role-mode resolution keeps the entity's
+  # existing mode and does not start a role-mode migration.
+  DOWNLOAD_CFT_TEMPLATE
+
   # Update child accounts of a cloud account.
   UPDATE_CHILD_ACCOUNTS
 
@@ -58416,6 +58656,10 @@ enum CloudAccountFeature {
   # GITHUB_DEVELOPER_COLLABORATION_PROTECTION refers to the GitHub Developer
   # Collaboration feature.
   GITHUB_DEVELOPER_COLLABORATION_PROTECTION
+
+  # GITHUB_PACKAGES_PROTECTION refers to the feature enabling protection of
+  # the packages published to a GitHub organization.
+  GITHUB_PACKAGES_PROTECTION
 
   # GITHUB_REPOSITORY_PROTECTION refers to the feature enabling
   # protection of GitHub repositories and related workload.
@@ -66546,6 +66790,11 @@ type CountChange {
 }
 # Cluster Count grouped by status.
 type CountClustersReply {
+  # The number of clusters assigned to this child account by its parent
+  # account (shared clusters). Populated only when separate_shared_clusters
+  # is true in the request; excluded from the health-status bucket counts.
+  assignedByParentAccountClusters: Int!
+
   # The number of Rubrik clusters that are in disconnected state.
   disconnectedClusters: Int!
 
@@ -66947,6 +67196,9 @@ input CreateAwsClusterInput {
   # Flag to keep the cluster on failure.
   keepClusterOnFailure: Boolean
 
+  # KMS key ID for CCES upgrade context.
+  kmsKeyId: String
+
   # Aws region.
   region: String
 
@@ -67142,6 +67394,9 @@ input CreateAzureClusterInput {
 
   # Flag to keep the cluster on failure.
   keepClusterOnFailure: Boolean
+
+  # KMS key ID for CCES upgrade context.
+  kmsKeyId: String
 
   # Validations to perform on the request.
   validations: [ClusterCreateValidations!]
@@ -68685,6 +68940,9 @@ input CreateS3CompatibleReaderTargetInput {
   # Field for specifying the bucket prefix of the S3Compatible target.
   bucketPrefix: String!
 
+  # The TLS trust mode for the S3-compatible target.
+  certificateTrustMode: CertificateTrustMode
+
   # Field for specifying cluster UUID of the target.
   clusterUuid: UUID!
 
@@ -68720,6 +68978,9 @@ input CreateS3CompatibleReaderTargetInput {
 
   # Subtype of an S3-compatible target.
   subType: S3CompatibleSubType
+
+  # Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3-compatible target.
+  tlsCertificateId: String
 
   # Field for specifying whether to use system proxy or not.
   useSystemProxy: Boolean!
@@ -71106,11 +71367,20 @@ type DataTypeStats {
   # Name of the data type.
   name: String!
 
+  # Number of files that have at least one hit for this data type.
+  totalFilesWithHits: Long!
+
   # Total hits of the data type.
   totalHits: Long!
 
+  # Number of files with at least one permitted hit for this data type.
+  totalPermittedFilesWithHits: Long!
+
   # Total permitted hits of the data type.
   totalPermittedHits: Long!
+
+  # Number of files with at least one violated hit for this data type.
+  totalViolatedFilesWithHits: Long!
 
   # Total violated hits of the data type.
   totalViolatedHits: Long!
@@ -71368,8 +71638,9 @@ input DatabaseLogRetentionConfigEntry {
   # Log retention policy for this workload type.
   config: DatabaseLogRetentionConfig
 
-  # The database workload type. Canonical value is "mssql";
-  # must be unique within the parent entry list.
+  # The database workload type. Canonical values are "mssql",
+  # "oracle_database" and "db2_database"; must be unique within the
+  # parent entry list.
   workloadType: String
 }
 # A single workload-to-log-retention-policy entry. Pairs a workload
@@ -71379,8 +71650,9 @@ type DatabaseLogRetentionConfigEntryType {
   # Log retention policy for this workload type.
   config: DatabaseLogRetentionConfigType
 
-  # The database workload type. Canonical value is "mssql";
-  # must be unique within the parent entry list.
+  # The database workload type. Canonical values are "mssql",
+  # "oracle_database" and "db2_database"; must be unique within the
+  # parent entry list.
   workloadType: String!
 }
 # Log retention policy for a single database workload. Used as the
@@ -78230,6 +78502,9 @@ enum EventObjectType {
   # Microsoft 365 Backup Storage SharePoint Site.
   M365_BACKUP_STORAGE_SITE
 
+  # M365 Configurations Organization.
+  M365_CONFIGS_ORG
+
   # Managed Volume object.
   MANAGED_VOLUME
 
@@ -81375,6 +81650,11 @@ input ExportO365MailboxInput {
   # In-place restore configuration for the restore job.
   inplaceRestoreConfig: InplaceRestoreConfig
 
+  # ID of the just-in-time permission elevation lease covering this
+  # export's write permissions, if elevation was required. Empty for
+  # full-access-mode apps.
+  leaseId: String
+
   # Polaris ID of O365 subscription.
   orgUuid: UUID
 
@@ -81447,7 +81727,7 @@ input ExportOracleDbConfigInput {
   # When true, applies Zero RPO redo logs after RMAN recovery to achieve maximum data recovery up to the latest streamed transaction. Requires Zero RPO to be enabled on the source database.
   shouldRecoverToLatestFromRedo: Boolean
 
-  # Clone (RMAN DUPLICATE) only. When true, the cloned database is restored as a physical standby (mounted for recovery and not opened read-write). When the field is omitted or false, the database is restored normally. The default value is false. Constraints: cannot be combined with cloneDbName (a standby must keep the source DB_NAME), pdbsToClone (a standby requires all PDBs), shouldRestoreFilesOnly (files-only export runs no DUPLICATE), or a same-host target.
+  # Clone (RMAN DUPLICATE) only. When true, the cloned database is restored in the physical standby role and left open read only. Requires db_unique_name, differing from the source database, set either in the advanced recovery options or in the custom pfile. Constraints: cannot be combined with cloneDbName (a standby must keep the source DB_NAME), pdbsToClone (a standby requires all PDBs), shouldRestoreFilesOnly (files-only export runs no DUPLICATE), or a same-host target.
   shouldRestoreAsStandby: Boolean
 
   # Specifies whether the database files are copied to the target host without recreating the database.
@@ -81971,6 +82251,12 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -82035,13 +82321,13 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
     # Returns the first n elements from the list.
     first: Int,
 
-    # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
     # Returns the last n elements from the list.
     last: Int,
 
-    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    # Returns the elements in the list that occur before the specified cursor.
     before: String,
 
     # Types of objects to limit the results. If absent, all object types are returned.
@@ -82069,6 +82355,12 @@ type FailoverClusterApp implements CdmHierarchyObject , HierarchyObject , HostFa
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -83626,6 +83918,11 @@ enum FileCountType {
 }
 # Details of a particular file.
 type FileDetails {
+  # Unique identifier of the snapshot holding a clean (non-quarantined)
+  # version of this file. Set only when the request sets
+  # should_include_recovery_info and a retained snapshot holds one.
+  cleanSnapshotId: UUID
+
   # Name of the file.
   fileName: String!
 }
@@ -84250,6 +84547,10 @@ enum FileTypeEnumType {
   # export/skipped-records/failed-records NDJSON reports.
   DYNAMODB_RECOVERY_EXPORT
 
+  # ENCRYPTED_FILES_CSV is a filetype for the encrypted files of a snapshot,
+  # exported by lambda-configuration-service.
+  ENCRYPTED_FILES_CSV
+
   # ENTRA_ID_DOWNLOAD_SNAPSHOT is a filetype for Entra ID download objects job.
   ENTRA_ID_DOWNLOAD_SNAPSHOT
 
@@ -84262,6 +84563,10 @@ enum FileTypeEnumType {
 
   # POLICY_VIOLATIONS_CSV is a filetype for CSV exports of policy violations.
   POLICY_VIOLATIONS_CSV
+
+  # QUARANTINED_FILES_CSV is a filetype for the quarantined files of a
+  # snapshot, exported by orion-hunt-service during surgical recovery.
+  QUARANTINED_FILES_CSV
 
   # RECOVERY_IMPACT_CSV is a filetype for per-file recovery impact exports.
   RECOVERY_IMPACT_CSV
@@ -86039,6 +86344,11 @@ enum FilterType {
 
   # Identity event target entity type.
   SECURITY_IDENTITY_EVENT_TARGET_ENTITY_TYPE
+
+  # Filters identity events by the Active Directory Organizational Unit the
+  # event's resource belongs to, including nested sub-OUs. Values are OU
+  # distinguished names. Applies to on-prem AD events only.
+  SECURITY_IDENTITY_EVENT_TARGET_OU
 
   # Identity event timestamp.
   SECURITY_IDENTITY_EVENT_TIMESTAMP
@@ -90311,144 +90621,144 @@ type GcpBigQueryDatasetSpecificSnapshot implements PolarisSpecificSnapshot {
   tables: [GcpBigQueryTableSpecificSnapshot!]!
 }
 # GCP BigQuery locations (multi-regions and regions).
-# See https://cloud.google.com/bigquery/docs/locations.
+# See https://docs.cloud.google.com/bigquery/docs/locations.
 enum GcpBigQueryLocation {
-  # Johannesburg.
+  # Johannesburg, South Africa.
   AFRICA_SOUTH1
 
-  # Taiwan.
+  # Changhua County, Taiwan.
   ASIA_EAST1
 
   # Hong Kong.
   ASIA_EAST2
 
-  # Tokyo.
+  # Tokyo, Japan.
   ASIA_NORTHEAST1
 
-  # Osaka.
+  # Osaka, Japan.
   ASIA_NORTHEAST2
 
-  # Seoul.
+  # Seoul, South Korea.
   ASIA_NORTHEAST3
 
-  # Mumbai.
+  # Mumbai, India.
   ASIA_SOUTH1
 
-  # Delhi.
+  # Delhi, India.
   ASIA_SOUTH2
 
-  # Singapore.
+  # Jurong West, Singapore.
   ASIA_SOUTHEAST1
 
-  # Jakarta.
+  # Jakarta, Indonesia.
   ASIA_SOUTHEAST2
 
-  # Bangkok.
+  # Bangkok, Thailand.
   ASIA_SOUTHEAST3
 
-  # Sydney.
+  # Sydney, Australia.
   AUSTRALIA_SOUTHEAST1
 
-  # Melbourne.
+  # Melbourne, Australia.
   AUSTRALIA_SOUTHEAST2
 
-  # Multi-region: European Union.
+  # Multi-region: Data centers within member states of the European Union.
   EU
 
-  # Warsaw.
+  # Warsaw, Poland.
   EUROPE_CENTRAL2
 
-  # Finland.
+  # Hamina, Finland.
   EUROPE_NORTH1
 
-  # Stockholm.
+  # Stockholm, Sweden.
   EUROPE_NORTH2
 
-  # Madrid.
+  # Madrid, Spain.
   EUROPE_SOUTHWEST1
 
-  # Belgium.
+  # St. Ghislain, Belgium.
   EUROPE_WEST1
 
-  # Berlin.
+  # Berlin, Germany.
   EUROPE_WEST10
 
-  # Turin.
+  # Turin, Italy.
   EUROPE_WEST12
 
-  # London.
+  # London, England.
   EUROPE_WEST2
 
-  # Frankfurt.
+  # Frankfurt, Germany.
   EUROPE_WEST3
 
-  # Netherlands.
+  # Eemshaven, Netherlands.
   EUROPE_WEST4
 
-  # Zurich.
+  # Zurich, Switzerland.
   EUROPE_WEST6
 
-  # Milan.
+  # Milan, Italy.
   EUROPE_WEST8
 
-  # Paris.
+  # Paris, France.
   EUROPE_WEST9
 
-  # Doha.
+  # Doha, Qatar.
   ME_CENTRAL1
 
-  # Dammam.
+  # Dammam, Saudi Arabia.
   ME_CENTRAL2
 
-  # Tel Aviv.
+  # Tel Aviv, Israel.
   ME_WEST1
 
-  # Montreal.
+  # Montreal, Canada.
   NORTHAMERICA_NORTHEAST1
 
-  # Toronto.
+  # Toronto, Canada.
   NORTHAMERICA_NORTHEAST2
 
-  # Mexico.
+  # Queretaro, Mexico.
   NORTHAMERICA_SOUTH1
 
-  # Sao Paulo.
+  # Sao Paulo, Brazil.
   SOUTHAMERICA_EAST1
 
-  # Santiago.
+  # Santiago, Chile.
   SOUTHAMERICA_WEST1
 
-  # Multi-region: United States.
+  # Multi-region: Data centers in the United States.
   US
 
-  # Iowa.
+  # Council Bluffs, Iowa.
   US_CENTRAL1
 
-  # Oklahoma.
+  # Pryor, Oklahoma.
   US_CENTRAL2
 
-  # South Carolina.
+  # Moncks Corner, South Carolina.
   US_EAST1
 
-  # Northern Virginia.
+  # Ashburn, Virginia.
   US_EAST4
 
   # Columbus, Ohio.
   US_EAST5
 
-  # Dallas.
+  # Dallas, Texas.
   US_SOUTH1
 
-  # Oregon.
+  # The Dalles, Oregon.
   US_WEST1
 
-  # Los Angeles.
+  # Los Angeles, California.
   US_WEST2
 
-  # Salt Lake City.
+  # Salt Lake City, Utah.
   US_WEST3
 
-  # Las Vegas.
+  # Las Vegas, Nevada.
   US_WEST4
 }
 # Represents a GCP BigQuery model.
@@ -90761,140 +91071,141 @@ type GcpCloudAccountProjectUpgradeStatus {
   success: Boolean!
 }
 # GCP Compute regions.
+# See https://docs.cloud.google.com/compute/docs/regions-zones.
 enum GcpCloudAccountRegion {
-  # Africa South 1.
+  # Johannesburg, South Africa.
   AFRICA_SOUTH1
 
-  # Asia East 1.
+  # Changhua County, Taiwan.
   ASIA_EAST1
 
-  # Asia East 2.
+  # Hong Kong.
   ASIA_EAST2
 
-  # Asia Northeast 1.
+  # Tokyo, Japan.
   ASIA_NORTHEAST1
 
-  # Asia Northeast 2.
+  # Osaka, Japan.
   ASIA_NORTHEAST2
 
-  # Asia Northeast 3.
+  # Seoul, South Korea.
   ASIA_NORTHEAST3
 
-  # Asia South 1.
+  # Mumbai, India.
   ASIA_SOUTH1
 
-  # Asia South 2.
+  # Delhi, India.
   ASIA_SOUTH2
 
-  # Asia Southeast 1.
+  # Jurong West, Singapore.
   ASIA_SOUTHEAST1
 
-  # Asia Southeast 2.
+  # Jakarta, Indonesia.
   ASIA_SOUTHEAST2
 
-  # Asia Southeast 3.
+  # Bangkok, Thailand.
   ASIA_SOUTHEAST3
 
-  # Australia Southeast 1.
+  # Sydney, Australia.
   AUSTRALIA_SOUTHEAST1
 
-  # Australia Southeast 2.
+  # Melbourne, Australia.
   AUSTRALIA_SOUTHEAST2
 
-  # Europe Central 2.
+  # Warsaw, Poland.
   EUROPE_CENTRAL2
 
-  # Europe North 1.
+  # Hamina, Finland.
   EUROPE_NORTH1
 
-  # Europe North 2.
+  # Stockholm, Sweden.
   EUROPE_NORTH2
 
-  # Europe Southwest 1.
+  # Madrid, Spain.
   EUROPE_SOUTHWEST1
 
-  # Europe West 1.
+  # St. Ghislain, Belgium.
   EUROPE_WEST1
 
-  # Europe West 10.
+  # Berlin, Germany.
   EUROPE_WEST10
 
-  # Europe West 12.
+  # Turin, Italy.
   EUROPE_WEST12
 
-  # Europe West 2.
+  # London, England.
   EUROPE_WEST2
 
-  # Europe West 3.
+  # Frankfurt, Germany.
   EUROPE_WEST3
 
-  # Europe West 4.
+  # Eemshaven, Netherlands.
   EUROPE_WEST4
 
-  # Europe West 6.
+  # Zurich, Switzerland.
   EUROPE_WEST6
 
-  # Europe West 8.
+  # Milan, Italy.
   EUROPE_WEST8
 
-  # Europe West 9.
+  # Paris, France.
   EUROPE_WEST9
 
-  # Middle East Central 1.
+  # Doha, Qatar.
   ME_CENTRAL1
 
-  # Middle East Central 2.
+  # Dammam, Saudi Arabia.
   ME_CENTRAL2
 
-  # Middle East West 1.
+  # Tel Aviv, Israel.
   ME_WEST1
 
-  # North America Northeast 1.
+  # Montreal, Canada.
   NORTHAMERICA_NORTHEAST1
 
-  # North America Northeast 2.
+  # Toronto, Canada.
   NORTHAMERICA_NORTHEAST2
 
-  # North America South 1.
+  # Queretaro, Mexico.
   NORTHAMERICA_SOUTH1
 
-  # South America East 1.
+  # Sao Paulo, Brazil.
   SOUTHAMERICA_EAST1
 
-  # South America West 1.
+  # Santiago, Chile.
   SOUTHAMERICA_WEST1
 
-  # US Central 1.
+  # Council Bluffs, Iowa.
   US_CENTRAL1
 
-  # US East 1.
+  # Moncks Corner, South Carolina.
   US_EAST1
 
-  # US East 4.
+  # Ashburn, Virginia.
   US_EAST4
 
-  # US East 5.
+  # Columbus, Ohio.
   US_EAST5
 
-  # US East 7.
+  # Bridgeport, Alabama.
   US_EAST7
 
-  # US South 1.
+  # Dallas, Texas.
   US_SOUTH1
 
-  # US West 1.
+  # The Dalles, Oregon.
   US_WEST1
 
-  # US West 2.
+  # Los Angeles, California.
   US_WEST2
 
-  # US West 3.
+  # Salt Lake City, Utah.
   US_WEST3
 
-  # US West 4.
+  # Las Vegas, Nevada.
   US_WEST4
 
-  # US West 8.
+  # Phoenix, Arizona.
   US_WEST8
 }
 # Input required to upgrade a list of GCP projects.
@@ -93266,171 +93577,172 @@ type GcpProjectThreatAnalyticsEnablement {
   # Indicates whether Threat Monitoring is enabled.
   threatMonitoringEnabled: Boolean!
 }
-# Regions for GCP.
+# GCP GCS locations (multi-regions, dual-regions, and regions).
+# See https://docs.cloud.google.com/storage/docs/locations.
 enum GcpRegion {
-  # GCP region is Africa South 1.
+  # Johannesburg, South Africa.
   AFRICA_SOUTH1
 
-  # GCP region is Asia.
+  # Multi-region: Data centers in Asia, excluding Hong Kong and Indonesia.
   ASIA
 
-  # GCP region is Asia 1.
+  # Dual-region: Tokyo, Japan + Osaka, Japan.
   ASIA1
 
-  # GCP region is Asia East 1.
+  # Changhua County, Taiwan.
   ASIA_EAST1
 
-  # GCP region is Asia East 2.
+  # Hong Kong.
   ASIA_EAST2
 
-  # GCP region is Asia North East 1.
+  # Tokyo, Japan.
   ASIA_NORTHEAST1
 
-  # GCP region is Asia North East 2.
+  # Osaka, Japan.
   ASIA_NORTHEAST2
 
-  # GCP region is Asia North East 3.
+  # Seoul, South Korea.
   ASIA_NORTHEAST3
 
-  # GCP region is Asia South 1.
+  # Mumbai, India.
   ASIA_SOUTH1
 
-  # GCP region is Asia South 2.
+  # Delhi, India.
   ASIA_SOUTH2
 
-  # GCP region is Asia South East 1.
+  # Jurong West, Singapore.
   ASIA_SOUTHEAST1
 
-  # GCP region is Asia South East 2.
+  # Jakarta, Indonesia.
   ASIA_SOUTHEAST2
 
-  # GCP region is Asia South East 3.
+  # Bangkok, Thailand.
   ASIA_SOUTHEAST3
 
-  # GCP region is Australia South East 1.
+  # Sydney, Australia.
   AUSTRALIA_SOUTHEAST1
 
-  # GCP region is Australia South East 2.
+  # Melbourne, Australia.
   AUSTRALIA_SOUTHEAST2
 
-  # GCP region is Europe.
+  # Multi-region: Data centers within member states of the European Union.
   EU
 
-  # GCP region is Europe 4.
+  # Dual-region: Hamina, Finland + Eemshaven, Netherlands.
   EUR4
 
-  # GCP region is Europe 5.
+  # Dual-region: St. Ghislain, Belgium + London, England.
   EUR5
 
-  # GCP region is Europe 7.
+  # Dual-region: London, England + Frankfurt, Germany.
   EUR7
 
-  # GCP region is Europe 8.
+  # Dual-region: Frankfurt, Germany + Zurich, Switzerland.
   EUR8
 
-  # GCP region is Europe Central 2.
+  # Warsaw, Poland.
   EUROPE_CENTRAL2
 
-  # GCP region is Europe North 1.
+  # Hamina, Finland.
   EUROPE_NORTH1
 
-  # GCP region is Europe North 2.
+  # Stockholm, Sweden.
   EUROPE_NORTH2
 
-  # GCP region is Europe South West 1.
+  # Madrid, Spain.
   EUROPE_SOUTHWEST1
 
-  # GCP region is Europe West 1.
+  # St. Ghislain, Belgium.
   EUROPE_WEST1
 
-  # GCP region is Europe West 10.
+  # Berlin, Germany.
   EUROPE_WEST10
 
-  # GCP region is Europe West 12.
+  # Turin, Italy.
   EUROPE_WEST12
 
-  # GCP region is Europe West 2.
+  # London, England.
   EUROPE_WEST2
 
-  # GCP region is Europe West 3.
+  # Frankfurt, Germany.
   EUROPE_WEST3
 
-  # GCP region is Europe West 4.
+  # Eemshaven, Netherlands.
   EUROPE_WEST4
 
-  # GCP region is Europe West 6.
+  # Zurich, Switzerland.
   EUROPE_WEST6
 
-  # GCP region is Europe West 8.
+  # Milan, Italy.
   EUROPE_WEST8
 
-  # GCP region is Europe West 9.
+  # Paris, France.
   EUROPE_WEST9
 
-  # GCP region is ME Central 1.
+  # Doha, Qatar.
   ME_CENTRAL1
 
-  # GCP region is ME Central 2.
+  # Dammam, Saudi Arabia.
   ME_CENTRAL2
 
-  # GCP region is ME West 1.
+  # Tel Aviv, Israel.
   ME_WEST1
 
-  # GCP region is North America 4.
+  # Dual-region: Council Bluffs, Iowa + Moncks Corner, South Carolina.
   NAM4
 
-  # GCP region is North America North East 1.
+  # Montreal, Canada.
   NORTHAMERICA_NORTHEAST1
 
-  # GCP region is North America North East 2.
+  # Toronto, Canada.
   NORTHAMERICA_NORTHEAST2
 
-  # GCP region is North America South 1.
+  # Queretaro, Mexico.
   NORTHAMERICA_SOUTH1
 
-  # GCP region is South America East 1.
+  # Sao Paulo, Brazil.
   SOUTHAMERICA_EAST1
 
-  # GCP region is South America West 1.
+  # Santiago, Chile.
   SOUTHAMERICA_WEST1
 
-  # GCP region is Unknown.
+  # Location not specified.
   UNKNOWN_GCP_REGION
 
-  # GCP region is in US.
+  # Multi-region: Data centers in the United States.
   US
 
-  # GCP region is US Central 1.
+  # Council Bluffs, Iowa.
   USCENTRAL1
 
-  # GCP region is US East 1.
+  # Moncks Corner, South Carolina.
   USEAST1
 
-  # GCP region is US East 4.
+  # Ashburn, Virginia.
   USEAST4
 
-  # GCP region is US West 1.
+  # The Dalles, Oregon.
   USWEST1
 
-  # GCP region is US West 2.
+  # Los Angeles, California.
   USWEST2
 
-  # GCP region is US East 5.
+  # Columbus, Ohio.
   US_EAST5
 
-  # GCP region is US East 7.
+  # Bridgeport, Alabama.
   US_EAST7
 
-  # GCP region is US South 1.
+  # Dallas, Texas.
   US_SOUTH1
 
-  # GCP region is US West 3.
+  # Salt Lake City, Utah.
   US_WEST3
 
-  # GCP region is US West 4.
+  # Las Vegas, Nevada.
   US_WEST4
 
-  # GCP region is US West 8.
+  # Phoenix, Arizona.
   US_WEST8
 }
 # GCP role based Account specific info.
@@ -93480,8 +93792,8 @@ enum GcpSnapshotType {
   # Use the source snapshot.
   SOURCE
 }
-# GCP GCS Storage Classes.
-# https://docs.cloud.google.com/storage/docs/storage-classes.
+# GCP GCS storage classes.
+# See https://docs.cloud.google.com/storage/docs/storage-classes.
 enum GcpStorageClass {
   # Archive GCP storage class.
   ARCHIVE_GCP
@@ -94687,6 +94999,11 @@ input GetMissedOracleDbSnapshotsInput {
   beforeTime: DateTime
 
   # Required. ID assigned to an Oracle database object.
+  id: String!
+}
+# Input for retrieving the RBAC summary captured in a snapshot of a MongoDB admin database.
+input GetMongoSnapshotRbacSummaryInput {
+  # Required. ID of the snapshot of the MongoDB admin database.
   id: String!
 }
 # Input for retrieving details about an SQL Server object-related job.
@@ -99775,6 +100092,14 @@ enum HierarchyFilterField {
   # Filter by status of SapHanaSystem.
   SAP_HANA_SYSTEM_STATUS
 
+  # Filter by whether the object is muted for either Threat Monitoring or
+  # Anomaly Detection security notifications. Combine with `texts`:
+  # texts = ["MUTED"] for the Muted bucket, texts = ["ACTIVE"] for the
+  # Active bucket. Omit the filter entirely for "All". Gated on the
+  # REL_ENABLE_DTA_OBJECT_MUTE feature flag; passing this filter for an
+  # account where the flag is off is rejected.
+  SECURITY_NOTIFICATION_MUTE_STATUS
+
   # Filter by sensitivity status.
   SENSITIVITY_STATUS
 
@@ -100351,6 +100676,9 @@ enum HierarchyObjectTypeEnum {
 
   # M365 Backup Storage User.
   M365_BACKUP_STORAGE_USER
+
+  # M365 Configurations Organization.
+  M365_CONFIGS_ORG
 
   # Managed Volume Export.
   MANAGED_VOLUME_EXPORT
@@ -101552,6 +101880,10 @@ type HostDetail {
   # Specifies the status of VFD-based volume backups on Windows hosts. The value is 'Enabled' when VFD-based volume backups are enabled. The value is 'Disabled' when VFD-based volume backups are disabled.
   hostVfdEnabled: HostVfdInstallConfig
 
+  # Supported in v9.7
+  # Indicates whether a host with this identity was already registered on the Rubrik cluster before this registration request. When true, the returned host is the pre-existing host and no new host object was created. Only populated on host registration responses; null on other host detail responses.
+  isDuplicateRegistration: Boolean
+
   # Supported in v5.2+
   # v5.2: Specifies whether the host is an Oracle host. When the host is an Oracle host, the UI displays the Oracle discovery fields.
   # v5.3: Specifies whether this is an Oracle host. This indicates whether to show Oracle discovery fields in the UI.
@@ -101676,6 +102008,12 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
 
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
+
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
 
@@ -101734,13 +102072,13 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
     # Returns the first n elements from the list.
     first: Int,
 
-    # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    # Returns the elements in the list that occur after the specified cursor.
     after: String,
 
     # Returns the last n elements from the list.
     last: Int,
 
-    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    # Returns the elements in the list that occur before the specified cursor.
     before: String,
 
     # Types of objects to limit the results. If absent, all object types are returned.
@@ -101768,6 +102106,12 @@ type HostFailoverCluster implements CdmHierarchyObject , HierarchyObject , Failo
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # Sort hierarchy objects according to the hierarchy field.
     sortBy: HierarchySortByField,
@@ -109871,6 +110215,9 @@ enum InventoryCard {
   # Inventory Card is Microsoft 365 Backup Storage.
   M365_BACKUP_STORAGE
 
+  # Inventory card is Microsoft 365 tenant configurations.
+  M365_CONFIGS
+
   # Inventory Card is Managed Volumes.
   MANAGED_VOLUMES
 
@@ -110156,6 +110503,9 @@ enum InventorySubHierarchyRootEnum {
 
   # M365 Backup Storage Root.
   M365_BACKUP_STORAGE_ROOT
+
+  # M365 Configs root.
+  M365_CONFIGS_ROOT
 
   # Managed Volume root.
   MANAGED_VOLUME_ROOT
@@ -112054,6 +112404,9 @@ input K8sClusterAddInput {
   # Supported in v9.2+
   # Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
   isAutoPsCreationEnabled: Boolean
+
+  # UID of the kube-system namespace, the stable identifier of the physical Kubernetes cluster. For manifest and Helm onboarding the api-handler reads it from the in-cluster Kubernetes API and passes it here. For kubeconfig onboarding CDM reads it itself and ignores this field. Omit if unavailable; CDM populates it on the first refresh.
+  kubeSystemUid: String
 
   # Supported in v9.0+
   # Kubeconfig is a YAML string to store Kubernetes cluster authentication information. You can get this config file directly from the cluster administrator or from a cloud platform if you are using managed Kubernetes cluster.
@@ -121188,6 +121541,9 @@ enum ManagedObjectType {
   # M365 Backup Storage User.
   M365_BACKUP_STORAGE_USER
 
+  # M365 Configurations Organization.
+  M365_CONFIGS_ORG
+
   # Managed Volume.
   MANAGED_VOLUME
 
@@ -125343,6 +125699,77 @@ input MongoClientHostInput {
   # v9.3+: Managed ID of the host object after registering the host where MongoDB is deployed.
   hostId: String!
 }
+# Supported in v9.6+
+# Configuration for MongoDB databases or collections cluster-level recovery from source to target cluster. This is a destructive action since it drops every user database on the target and overwrites cluster-wide config collection.
+input MongoClusterRecoveryRequestConfigInput {
+  # Supported in v9.6+
+  # Timestamp of the admin database snapshot to use. Omit this field to skip admin database recovery.
+  adminDbSnapshotTime: DateTime
+
+  # Supported in v9.6+
+  # Timestamp of the config database snapshot to use. Omit this field to skip config database recovery.
+  configdbSnapshotTime: DateTime
+
+  # Supported in v9.6+
+  # Boolean flag to restore collections and databases by connecting directly to MongoDB from the Rubrik cluster.
+  isRestoreFromCdm: Boolean
+
+  # Supported in v9.6+
+  # Boolean flag to restore MongoDB collections with index.
+  isRestoreWithIndex: Boolean
+
+  # Supported in v9.6+
+  # Prefix for the restored collections.
+  prefix: String
+
+  # Supported in v9.6+
+  # Password of the target MongoDB source.
+  restoreDbPassword: String
+
+  # Supported in v9.6+
+  # Username of the target MongoDB source.
+  restoreDbUsername: String
+
+  # Supported in v9.6+
+  # Rate limit restore data ingestion on target MongoDB cluster.
+  restoreThrottleInBytesPerSecond: Long
+
+  # Supported in v9.6+
+  # Specifies whether the collection can be dropped if it already exists on the source MongoDB cluster.
+  shouldDropExistingCollection: Boolean
+
+  # Supported in v9.6+
+  # Managed IDs of the MongoDB collection objects.
+  sourceCollectionIds: [String!] = []
+
+  # Supported in v9.6+
+  # Managed IDs of the MongoDB database objects.
+  sourceDatabaseIds: [String!] = []
+
+  # Required. Supported in v9.6+
+  # Managed ID of the MongoDB source cluster.
+  sourceMongoClusterId: String!
+
+  # Supported in v9.6+
+  # Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used while adding the target source is used.
+  targetAuthenticationType: MongoAuthenticationType
+
+  # Supported in v9.6+
+  # Name of the target collection for recovery.
+  targetCollectionName: String
+
+  # Supported in v9.6+
+  # Name of the target database for recovery.
+  targetDatabaseName: String
+
+  # Required. Supported in v9.6+
+  # Managed ID of the MongoDB target cluster.
+  targetMongoClusterId: String!
+
+  # Supported in v9.6+
+  # Timestamp of the snapshot version used to restore the user databases. Omit this field to skip user database recovery.
+  versionTime: DateTime
+}
 # Information about MongoDB Collection.
 type MongoCollection implements HierarchyObject , CdmHierarchyObject , MongoSourceDescendantType , MongoDatabaseDescendantType , MongoCollectionSetDescendantType , MongoCollectionSetPhysicalChildType {
   # Organizations to which this hierarchy object belongs.
@@ -126667,6 +127094,9 @@ type MongoHostDetail {
 
   # Specifies the host name.
   name: String!
+
+  # Specifies the ID of the shard the host belongs to.
+  shardId: String!
 }
 # Represents the management type of the MongoDB source.
 enum MongoManagementType {
@@ -127023,6 +127453,39 @@ enum MongoSnapshotGroupByTime {
 
   # Group by year.
   YEAR
+}
+# Supported in v9.6+
+# A role granted to a MongoDB user account, along with the database in which the role is defined.
+type MongoSnapshotRbacRoleAssignment {
+  # Required. Supported in v9.6+
+  # Name of the database in which the role is defined.
+  db: String!
+
+  # Required. Supported in v9.6+
+  # Name of the role granted to the user account.
+  role: String!
+}
+# Supported in v9.6+
+# Summary of the role-based access control (RBAC) data captured in a snapshot of a MongoDB admin database. Lists the user accounts in the snapshot and the roles granted to each account.
+type MongoSnapshotRbacSummary {
+  # Required. Supported in v9.6+
+  # User accounts captured in the snapshot of the admin database.
+  users: [MongoSnapshotRbacUser!]!
+}
+# Supported in v9.6+
+# A MongoDB user account captured in a snapshot of the admin database, along with the roles granted to the account.
+type MongoSnapshotRbacUser {
+  # Required. Supported in v9.6+
+  # Name of the authentication database of the user account.
+  db: String!
+
+  # Supported in v9.6+
+  # Roles granted to the user account. Empty if the account has no roles, or if the Rubrik cluster was configured not to record role assignments when the snapshot was taken.
+  roles: [MongoSnapshotRbacRoleAssignment!]!
+
+  # Required. Supported in v9.6+
+  # Name of the MongoDB user account.
+  user: String!
 }
 # Information about MongoDB Source.
 type MongoSource implements HierarchyObject , CdmHierarchySnappableNew , CdmHierarchyObject {
@@ -137074,7 +137537,7 @@ input NodeConfigInput {
   dataIpConfig: IpConfigInput
 
   # IP configuration for IPMI.
-  ipmiIpConfig: IpConfigInput!
+  ipmiIpConfig: IpConfigInput
 
   # IP configuration for management network.
   managementIpConfig: IpConfigInput!
@@ -137191,6 +137654,7 @@ enum NodeStatsAggregationType {
 }
 # Supported in v5.0+
 type NodeStatus {
+  # Supported in v9.6+
   # System serial number of the node from dmidecode, used as the Salesforce asset ID. Absent for virtual and cloud nodes.
   assetId: String
 
@@ -152625,6 +153089,9 @@ enum Operation {
   # Manage user access.
   MANAGE_ACCESS
 
+  # Manage Agent Cloud policies, violations, alerts, and insights.
+  MANAGE_AGENT_CLOUD_POLICIES
+
   # Manage anomalies.
   MANAGE_ANOMALY_DETECTION
 
@@ -152720,6 +153187,9 @@ enum Operation {
 
   # Manage log shipping.
   MANAGE_LOG_SHIPPING
+
+  # Manage maintenance mode.
+  MANAGE_MAINTENANCE_MODE
 
   # Manage migration dashboard.
   MANAGE_MIGRATION_DASHBOARD
@@ -152903,6 +153373,9 @@ enum Operation {
 
   # Send license notification.
   SEND_LICENSE_NOTIFICATION
+
+  # Set the enforcement type of Agent Cloud policies.
+  SET_AGENT_CLOUD_POLICY_ENFORCEMENT
 
   # Suspend child accounts.
   SUSPEND_CHILD_ACCOUNTS
@@ -161563,6 +162036,10 @@ type PostgreSQLDbCluster implements KosmosDiscoverableEntityType , KosmosParentH
   # cluster. Null when the source cluster is unknown.
   isReplica: Boolean
 
+  # Unix epoch seconds when the recoverable range was last calculated. Absent
+  # until the first calculation completes.
+  lastRecoverableRangeCheckedAt: Long
+
   # Latest user note information.
   latestUserNote: LatestUserNote
 
@@ -169768,6 +170245,14 @@ type RecoverGlueIcebergTableSnapshotReply {
   # Unique identifier of the triggered recovery job.
   taskchainUuid: UUID!
 }
+# Input for cluster-level MongoDB recovery.
+input RecoverMongoClusterInput {
+  # Required. The MongoDB cluster-level recovery request object containing the database or collection objects to be recovered from the source to the target MongoDB cluster along with cluster-recovery config details.
+  input: MongoClusterRecoveryRequestConfigInput!
+
+  # User note to associate with audits.
+  userNote: String
+}
 # Input for recovering MongoDB databases and collections.
 input RecoverMongoSourceInput {
   # Required. v9.0-v9.2: The MongoDB recovery request object containing the collection objects to be recovered from source to the target MongoDB cluster.
@@ -171020,6 +171505,26 @@ type RecoverySubStep {
 
   # Status of the recovery substep.
   substepStatus: RecoveryStepStatus!
+}
+# Tag annotations on recovery plans and recoveries. Tags are derived from the
+# recovery spec, not supplied by callers.
+enum RecoveryTag {
+  # The recovery plan or recovery recovers Hyper-V virtual machines only to
+  # Azure Local.
+  AZURE_LOCAL
+
+  # The recovery plan or recovery recovers Hyper-V virtual machines to a
+  # target other than Azure Local, such as a standalone Hyper-V host.
+  HYPERV
+
+  # The recovery plan or recovery provisions a SQL host.
+  SQL_HOST_PROVISIONED
+}
+# A conjunctive group of tags used in a tag filter. An item satisfies the
+# clause only when it carries every tag listed here.
+input RecoveryTagClause {
+  # Tags that must all be present on an item for this clause to match.
+  tags: [RecoveryTag!]
 }
 # Filter on valid organization recovery targets.
 input RecoveryTargetFilter {
@@ -178071,8 +178576,12 @@ input SaasAppSpecificRestoreConfig {
 # Each SaaS application type corresponds to exactly one
 # SaaS organization type.
 enum SaasAppType {
-  # Anthropic Chat application type (claude.ai conversations, projects, artifacts).
-  ANTHROPIC_CHAT
+  # Anthropic Apps application type (claude.ai conversations, projects,
+  # artifacts).
+  ANTHROPIC_APPS
+
+  # Anthropic Chat application type.
+  ANTHROPIC_CHAT @deprecated(reason: "Use ANTHROPIC_APPS instead.")
 
   # Anthropic Code application type (Claude Code endpoint files).
   ANTHROPIC_CODE
@@ -178163,6 +178672,10 @@ enum SaasAppsCascadingImpactOperationType {
 
   # RESTORE indicates the job is triggered as part of a restore operation.
   RESTORE
+
+  # RTP_RESTORE indicates the job is triggered as part of a real-time
+  # protection restore operation.
+  RTP_RESTORE
 
   # SANDBOX_SEEDING indicates the job is triggered as part of a sandbox
   # seeding.
@@ -178427,6 +178940,9 @@ enum SaasOrgType {
 
   # M365 Backup Storage Org type.
   M365_BACKUP_STORAGE_ORG
+
+  # M365 Configurations Organization type.
+  M365_CONFIGS_ORG
 
   # OKTA Org type.
   OKTA_ORG
@@ -179261,7 +179777,9 @@ type SapHanaDatabase implements CdmHierarchyObject , HierarchyObject , Hierarchy
   # Specifies whether the SAP HANA database is a relic.
   isRelic: Boolean!
 
-  # True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
   isReplica: Boolean
 
   # Latest user note information.
@@ -180126,9 +180644,13 @@ type SapHanaSystem implements CdmHierarchyObject , HierarchyObject , CdmHierarch
 
   # Whether to force a full backup after a database failover.
   isForceFullOnMasterChangeEnabled: Boolean
+
+  # Specifies whether the SAP HANA system is a relic.
   isRelic: Boolean!
 
-  # True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
+  # True if this object is a replica, its current cluster differs from its
+  # source (primary) cluster. False if the object resides on its source
+  # cluster. Null when the source cluster is unknown.
   isReplica: Boolean
 
   # Timestamp of the SAP HANA system refresh. Refresh process is responsible for configuring backint and discovering new databases.
@@ -181520,6 +182042,31 @@ input SecretNameMappingInput {
   # List of secret name mappings.
   secretNameMappingList: [SecretNameMappingEntry!]!
 }
+# Security notification feature state for one object.
+type SecurityFeaturesStatus {
+  # True if Anomaly Detection is configured on for the entity that owns
+  # this object. Always true for CDM-cluster-backed objects, since no
+  # per-entity enablement row exists for that type and cluster license
+  # state is not consulted.
+  isAnomalyDetectionFeatureEnabled: Boolean!
+
+  # True if this object's leaf workload is muted for Anomaly Detection
+  # notifications.
+  isMutedForAnomalyDetection: Boolean!
+
+  # True if this object's leaf workload is muted for Threat Monitoring
+  # notifications.
+  isMutedForThreatMonitoring: Boolean!
+
+  # True if Threat Monitoring is configured on for the entity that owns
+  # this object -- its CDM cluster, Cloud Direct cluster, Active
+  # Directory cluster, cloud-native root, or Microsoft 365 organization.
+  # Distinct from mute: enablement is an entity-level setting, mute is
+  # per object. For CDM and Active Directory clusters this reports the
+  # control plane's record of the setting pushed to the cluster, which
+  # enforces scanning itself.
+  isThreatMonitoringFeatureEnabled: Boolean!
+}
 # SecurityGroup represents the security policy attached to a subnet on Azure.
 type SecurityGroup {
   # The security group ID.
@@ -181544,6 +182091,11 @@ type SecurityMetadata {
 
   # Total hits with medium sensitivity.
   mediumSensitiveHits: Long!
+
+  # Threat Monitoring and Anomaly Detection security-notification mute and
+  # enablement state for this object. Null unless the requesting account
+  # has the DTA object mute feature enabled.
+  securityFeaturesStatus: SecurityFeaturesStatus
 
   # Sensitivity status of a workload.
   sensitivityStatus: SensitivityStatus!
@@ -182232,6 +182784,19 @@ input SetCloudDirectSystemOverrideInput {
 input SetCloudNativeGatewayKmsKeysInput {
   # GatewayKmsKeyMap.
   gatewayKmsKeyMap: GatewayKmsKeyMapInput
+}
+# Input for setting or updating the KMS key ID on a CCES cluster.
+input SetClusterKmsKeyIdInput {
+  # UUID of the cluster to update.
+  clusterUuid: String
+
+  # KMS key ID to set. Pass an empty string to clear.
+  kmsKeyId: String
+}
+# Response for SetClusterKmsKeyId.
+type SetClusterKmsKeyIdReply {
+  # Whether the operation succeeded.
+  isSuccessful: Boolean!
 }
 # Request to set coordinator labels on virtual machines in
 # a Cloud Direct cluster. This always receives the full
@@ -184444,6 +185009,9 @@ enum SlaObjectType {
   # Microsoft 365 Backup Storage object.
   M365_BACKUP_STORAGE_OBJECT_TYPE
 
+  # Microsoft 365 Configs Object.
+  M365_CONFIGS_OBJECT_TYPE
+
   # Managed Volume object.
   MANAGED_VOLUME_OBJECT_TYPE
 
@@ -184749,6 +185317,7 @@ type SmbDomainDetail {
   # DNS servers authoritative for this AD domain (max 3, glibc resolver limit). Each must be a usable IPv4 or IPv6 address (not loopback, link-local, multicast, broadcast, or unspecified). Strict tenant isolation: the SMB container resolves this domain via these servers only, no fallback to cluster DNS.
   dnsServers: [String!]!
 
+  # Supported in v9.6+
   # A Boolean value that determines whether SMB sessions for this domain authenticate over Kerberos instead of NTLM. When this value is 'true,' Kerberos is used. When this value is 'false,' NTLM is used. The default value is 'false.'
   enableKerberosForSmb: Boolean
 
@@ -184818,6 +185387,7 @@ input SmbDomainJoinRequestInput {
   # v5.1+:
   domainControllers: [String!] = []
 
+  # Supported in v9.6+
   # A Boolean value that determines whether SMB sessions for this domain authenticate over Kerberos instead of NTLM. When this value is 'true,' Kerberos is used. When this value is 'false,' NTLM is used. Omit to default to 'false.'
   enableKerberosForSmb: Boolean
 
@@ -184869,6 +185439,7 @@ input SmbDomainUpdateRequestInput {
   # Updated DNS servers for this AD domain. Pass empty array [] to clear and revert to Rubrik cluster DNS. Omit to leave unchanged.
   dnsServers: [String!] = []
 
+  # Supported in v9.6+
   # Whether SMB sessions for this domain authenticate over Kerberos instead of NTLM. Pass 'false' to revert the domain to NTLM. Omit to leave unchanged.
   enableKerberosForSmb: Boolean
 }
@@ -188167,77 +188738,77 @@ input StartExportAzureLocalVirtualMachineJobInput {
   # Name of the exported ARM virtual machine.
   vmName: String!
 }
-# Input for the job to export the specified Azure Native Managed Disk to the specified destination.
+# Input for the job to export an Azure managed disk from a snapshot.
 input StartExportAzureNativeManagedDiskJobInput {
-  # ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+  # ID of the archived snapshot to export. This field should be specified only when `snapshotType` is set to `Archived`.
   archivedSnapshotId: UUID
 
-  # Availability Zone in which to export the disk. It is empty for regions types which do not support availability zones.
+  # Availability zone the managed disk is exported to. Leave empty for regions or disk types that do not support availability zones.
   destinationAvailabilityZone: String
 
-  # Region in which the disk created after export will exist.
+  # Azure region the managed disk is exported to.
   destinationRegion: AzureNativeRegion!
 
-  # Rubrik ID of the subscription in which to export the disk. When empty, the disk is exported to same subscription.
+  # Rubrik ID of the Azure subscription the managed disk is exported to. When empty, the disk is exported to the subscription it was backed up from.
   destinationSubscriptionRubrikId: UUID
 
-  # Native ID of the disk encryption set for encrypting the newly created disks.
+  # Native ID of the disk encryption set used to encrypt the exported managed disk. When empty the disk is encrypted with the platform-managed key, which is the Azure default.
   diskEncryptionSetNativeId: String
 
-  # Name of the disk created after export.
+  # Name of the exported managed disk.
   diskName: String!
 
-  # Size of the disk created after export, in GiB.
+  # Size of the exported managed disk, in GiB.
   diskSize: Int!
 
-  # Type of the disk created after export.
+  # Storage tier of the exported managed disk.
   diskStorageTier: AzureNativeManagedDiskType!
 
-  # Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
+  # Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported managed disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
   recoveryPurpose: RecoveryPurpose
 
-  # Resource group to be associated with the disk created after export.
+  # Name of the resource group the exported managed disk is created in.
   resourceGroup: String!
 
-  # Specifies whether to export tags from the snapshot or not. When true, the tags from the snapshot are exported as well.
+  # Specifies whether the tags at the time of the snapshot are applied to the exported managed disk.
   shouldExportTags: Boolean!
 
-  # Specifies whether to run only the export job or to run both the export and replace jobs. When true, the attached managed disk is exported and replaced.
+  # Specifies whether the exported managed disk replaces the original disk on the virtual machine it is attached to.
   shouldReplaceAttachedManagedDisk: Boolean!
 
-  # Specifies whether to recover from the replica of the source snapshot or not. Default value is false.
+  # Specifies whether the replica of the snapshot is used for the export. Ignored when `snapshotType` is specified.
   shouldUseReplica: Boolean
 
-  # Snapshot ID of the snapshot with which the disk is to be exported.
+  # Snapshot ID of the snapshot from which the managed disk is exported.
   snapshotId: UUID!
 
-  # The type of the snapshot to recover from.
+  # Copy of the snapshot to export from. Defaults to the replica when `shouldUseReplica` is true, and to the source snapshot otherwise.
   snapshotType: AzureSnapshotType
 }
-# Input for the job to export the specified Azure Native Virtual Machine to the specified destination.
+# Input for the job to export an Azure virtual machine from a snapshot.
 input StartExportAzureNativeVirtualMachineJobInput {
-  # ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+  # ID of the archived snapshot to export. This field should be specified only when `snapshotType` is set to `Archived`.
   archivedSnapshotId: UUID
 
-  # The native ID of the availability set used by the virtual machine created by the export job.
+  # Native ID of the availability set the exported virtual machine joins.
   availabilitySetNativeId: String
 
-  # The Availability Zone where the virtual machine created by the export job exists. When the region type does not support Availability Zones, this value is null.
+  # Availability zone the virtual machine is exported to. Leave empty for regions or virtual machine sizes that do not support availability zones.
   destinationAvailabilityZone: String
 
-  # Name of the key vault created in the destination region.This is required for cross region export of ADE enabled VMs.
+  # Name of the key vault created in the destination region. Required for cross-region export of virtual machines with Azure Disk Encryption enabled.
   destinationKeyVaultName: String
 
-  # The region where the virtual machine created by the export job exists.
+  # Azure region the virtual machine is exported to.
   destinationRegion: AzureNativeRegion!
 
-  # The Rubrik ID of the Azure subscription to which the virtual machine is exported. When this value is not specified, the virtual machine is exported to the same Azure subscription.
+  # Rubrik ID of the Azure subscription the virtual machine is exported to. When empty, the virtual machine is exported to the subscription it was backed up from.
   destinationSubscriptionRubrikId: UUID
 
-  # Native ID of the disk encryption set for encrypting the newly created disks.
+  # Native ID of the disk encryption set used to encrypt the disks created for the exported virtual machine.
   diskEncryptionSetNativeId: String
 
-  # The native ID of the network security group used by the virtual machine created by the export job.
+  # Native ID of the network security group applied to the exported virtual machine.
   networkSecurityGroupNativeId: String
 
   # Specifies a list of Azure disk unique native IDs that will be exported. When empty, all disks from the snapshot will be exported.
@@ -188246,34 +188817,34 @@ input StartExportAzureNativeVirtualMachineJobInput {
   # Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported virtual machine (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
   recoveryPurpose: RecoveryPurpose
 
-  # The resource group associated with the virtual machine created by the export job.
+  # Name of the resource group the exported virtual machine is created in.
   resourceGroupName: String!
 
-  # Specifies whether to enable accelerated networking for the virtual machine created by the export job. This value is false by default.
+  # Specifies whether accelerated networking is enabled on the exported virtual machine.
   shouldEnableAcceleratedNetworking: Boolean
 
-  # Specifies whether to export the tags from the snapshot.
+  # Specifies whether the tags at the time of the snapshot are applied to the exported virtual machine.
   shouldExportTags: Boolean!
 
-  # Specifies whether to export the virtual machine in a powered-down state.
+  # Specifies whether the exported virtual machine is powered off after the export completes.
   shouldPowerOff: Boolean!
 
-  # Specifies whether to recover from a replica of the source snapshot.
+  # Specifies whether the replica of the snapshot is used for the export. Ignored when `snapshotType` is specified.
   shouldUseReplica: Boolean
 
-  # The snapshot ID of the snapshot used to export a virtual machine.
+  # Snapshot ID of the snapshot from which the virtual machine is exported.
   snapshotId: UUID!
 
-  # The type of the snapshot to recover from.
+  # Copy of the snapshot to export from. Defaults to the replica when `shouldUseReplica` is true, and to the source snapshot otherwise.
   snapshotType: AzureSnapshotType
 
-  # The native ID of the subnet used by the virtual machine created by the export job.
+  # Native ID of the subnet the exported virtual machine is attached to.
   subnetNativeId: String!
 
-  # The name of the virtual machine created as a result of the export job.
+  # Name of the exported virtual machine.
   virtualMachineName: String!
 
-  # The size, in GiB, of the virtual machine created by the export job.
+  # Azure size of the exported virtual machine.
   virtualMachineSize: String!
 }
 # Input for the job to export the specified Azure SQL Database.
@@ -190824,6 +191395,9 @@ enum TargetEncryptionTypeEnum {
   # UEKM with AWS KMS encryption.
   UEKM_AWS_KMS_BASED
 
+  # UEKM with GCP Cloud KMS encryption.
+  UEKM_GCP_KMS_BASED
+
   # UEKM with RSA encryption.
   UEKM_RSA_BASED
 
@@ -192947,6 +193521,19 @@ type ThreatMonitoringMatchedObjectEdge {
 
   # The actual ThreatMonitoringMatchedObject object wrapped by this edge.
   node: ThreatMonitoringMatchedObject!
+}
+# Threat Monitoring mute-status filter for threatMonitoringMatchedObjects.
+# Orion-only -- unrelated to the SECURITY_NOTIFICATION_MUTE_STATUS hierarchy
+# filter, which covers both Threat Monitoring and Anomaly Detection.
+enum ThreatMonitoringMuteStatusFilter {
+  # Matches objects that are not muted for Threat Monitoring.
+  THREAT_MONITORING_MUTE_STATUS_FILTER_ACTIVE
+
+  # Matches objects that are muted for Threat Monitoring.
+  THREAT_MONITORING_MUTE_STATUS_FILTER_MUTED
+
+  # No mute-status filter applied; matches objects regardless of mute state.
+  THREAT_MONITORING_MUTE_STATUS_FILTER_UNSPECIFIED
 }
 # Specifies the objects with threats and without threats.
 type ThreatMonitoringObjects {
@@ -198728,6 +199315,9 @@ enum UserAuditObjectTypeEnum {
   # Agent Cloud policy object type.
   AGENT_CLOUD_POLICY
 
+  # Agent Cloud rewind object type.
+  AGENT_CLOUD_REWIND_OBJECT
+
   # Agent Cloud violation object type.
   AGENT_CLOUD_VIOLATION
 
@@ -198934,6 +199524,9 @@ enum UserAuditObjectTypeEnum {
 
   # Intel feed.
   INTEL_FEED
+
+  # IRIS DB instance type.
+  IRISDB_INSTANCE
 
   # IP Whitelist type.
   IpWhitelist
@@ -199871,10 +200464,19 @@ enum V2QueryLogShippingConfigurationsV2RequestStatus {
   V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_OK
   V2_QUERY_LOG_SHIPPING_CONFIGURATIONS_V2_REQUEST_STATUS_STALE
 }
+# Filter for virtual machine Live Mounts.
 input VSphereMountFilter {
+  # Filters Live Mounts by the UUIDs of the Rubrik clusters hosting them.
   clusterUuid: [UUID!]
+
+  # Filters Live Mounts by name.
   name: String
+
+  # Filters Live Mounts by power status: true for powered on, false for
+  # powered off.
   powerStatus: [Boolean!]
+
+  # Filters Live Mounts by the RSC ID of the source virtual machine.
   sourceVmId: UUID
 }
 # The valid replication source Rubrik cluster-specific information.
@@ -207481,6 +208083,8 @@ type VsphereDatastore implements HierarchyObject , CdmHierarchyObject , VsphereC
 
   # Specifies the device backing the datastore.
   backingDeviceName: String!
+
+  # Total capacity of the datastore, in bytes.
   capacity: Long!
 
   # Object pause pending assignment details for CDM objects.
@@ -207494,6 +208098,8 @@ type VsphereDatastore implements HierarchyObject , CdmHierarchyObject , VsphereC
 
   # Cross-account objects either replicated by this object or related to this object by replication.
   crossAccountReplicatedObjectInfos: [CrossAccountReplicatedObjectInfo!]
+
+  # Type of the datastore, e.g. VMFS or NFS.
   datastoreType: String!
 
   # Effective retention of the SLA Domain of the hierarchy object.
@@ -207504,6 +208110,8 @@ type VsphereDatastore implements HierarchyObject , CdmHierarchyObject , VsphereC
 
   # Path node of the effective SLA Domain source.
   effectiveSlaSourceObject: PathNode
+
+  # Free space available on the datastore, in bytes.
   freeSpace: Long!
 
   # Future legal hold rule configured for this object, if any.
@@ -207514,6 +208122,8 @@ type VsphereDatastore implements HierarchyObject , CdmHierarchyObject , VsphereC
 
   # Indicates whether the datastore is archived or not.
   isArchived: Boolean!
+
+  # Indicates whether the datastore is local to a single host.
   isLocal: Boolean!
 
   # True if this object is a replica, its current cluster differs from its
@@ -208090,14 +208700,6 @@ type VsphereDatastoreEdge {
 input VsphereDeleteVcenterInput {
   # Required. ID of the vCenter Server. to remove.
   id: String!
-}
-# Set disks to be included/excluded in snapshot.
-input VsphereExcludeVmDisksInput {
-  # Virtual disk will be excluded from snapshot.
-  excludeFromSnapshots: Boolean
-
-  # Fid of virtual disk.
-  virtualDiskFid: UUID!
 }
 # Input for exporting snapshot to standalone host.
 input VsphereExportSnapshotToStandaloneHostV2Input {
@@ -209305,24 +209907,50 @@ enum VsphereLiveMountStatus {
 type VsphereMount {
   # Flattened from the CDM mount spec.
   attachingDiskCount: Int
+
+  # Operations the caller is authorized to perform on the Live Mount.
   authorizedOperations: AuthorizedOperations!
+
+  # ID of the Live Mount on the Rubrik cluster.
   cdmId: String!
 
   # Cluster hosting this mount.
   cluster: Cluster!
+
+  # Name of the Rubrik cluster hosting the Live Mount.
   clusterName: String!
+
+  # Specifies whether the Live Mount attaches disks to an existing virtual
+  # machine.
   hasAttachingDisk: Boolean
   host: VsphereHost
+
+  # RSC ID of the Live Mount.
   id: UUID!
+
+  # Specifies whether the mounted virtual machine is ready.
   isReady: Boolean!
+
+  # ID of the async request that migrates the Live Mount to another
+  # datastore.
   migrateDatastoreRequestId: String
+
+  # ID of the async request that created the Live Mount.
   mountRequestId: String
+
+  # Time of the Live Mount, as recorded in the CDM mount spec.
   mountTimestamp: DateTime
   newVm: VsphereVm
+
+  # Name of the virtual machine created by the Live Mount.
   newVmName: String
   sourceSnapshot: CdmSnapshot
   sourceVm: VsphereVm
+
+  # Status of the Live Mount.
   status: VsphereMountStatus!
+
+  # ID of the async request that removes the Live Mount.
   unmountRequestId: String
 }
 # Paginated list of VsphereMount objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -212005,7 +212633,7 @@ enum VsphereVirtualDiskSortBy {
   SIZE
 }
 # A vSphere virtual machine.
-type VsphereVm implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , HierarchySnappable , VsphereVcenterDescendantType , VsphereComputeClusterDescendantType , VsphereContentLibraryDescendantType , VsphereContentLibraryLibraryChildType , VsphereDatacenterDescendantType , VsphereDatacenterFolderDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType , VcdTopLevelDescendantType {
+type VsphereVm implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , HierarchySnappable , VsphereVcenterDescendantType , VsphereComputeClusterDescendantType , VsphereContentLibraryDescendantType , VsphereContentLibraryLibraryChildType , VsphereDatacenterDescendantType , VsphereDatacenterFolderDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdTopLevelDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType {
   # Rubrik Backup Service (RBS) agent status on this virtual machine.
   agentStatus: AgentStatus
 

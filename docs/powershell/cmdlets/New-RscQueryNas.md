@@ -42,9 +42,11 @@ A NAS Namespace.
 ### namespaces
 Paginated list of NAS Namespaces.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -57,9 +59,11 @@ A NAS Share.
 ### shares
 Paginated list of NAS Shares.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -72,9 +76,11 @@ A NAS System.
 ### systems
 Paginated list of NAS Systems.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -82,9 +88,11 @@ Paginated list of NAS Systems.
 ### topleveldescendants
 Paginated list of the highest-level NAS Objects accessible by the current user.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.

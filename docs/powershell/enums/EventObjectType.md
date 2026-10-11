@@ -313,3 +313,5 @@ Enum representing all the possible object types which generate events.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds, packages) per project.
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups metadata object (one per org).
 - GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings object (one per org).
+- AGENT_CLOUD_REWIND_OBJECT - Agent Cloud rewind object.
+- GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages per organization.

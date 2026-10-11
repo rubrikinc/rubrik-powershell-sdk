@@ -90,3 +90,9 @@ value and is added for maintaining backward compatability.
 - PROXMOX_CLUSTER - Represents the Proxmox cluster.
 - PROXMOX_NODE - Represents the Proxmox node.
 - PROXMOX_ROOT - Represents the Proxmox root.
+- FUSION_COMPUTE_VIRTUAL_MACHINE - Represents the FusionCompute virtual machine.
+- FUSION_COMPUTE_VRM - Represents the FusionCompute VRM.
+- FUSION_COMPUTE_SITE - Represents the FusionCompute site.
+- FUSION_COMPUTE_CLUSTER - Represents the FusionCompute cluster.
+- FUSION_COMPUTE_HOST - Represents the FusionCompute host.
+- FUSION_COMPUTE_ROOT - Represents the FusionCompute root.

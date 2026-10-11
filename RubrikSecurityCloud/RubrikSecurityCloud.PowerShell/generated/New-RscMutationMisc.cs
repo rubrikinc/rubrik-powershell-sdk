@@ -3008,6 +3008,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -19809,6 +19811,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

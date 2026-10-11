@@ -9,3 +9,6 @@ Represents a GCP permission group.
   - Permissions required without condition to onboard the permission group.
 - permissionsWithConditions: list of System.Strings
   - Permissions required with condition to onboard the permission group.
+- conditions: list of System.Strings
+  - IAM conditions restricting permissions_with_conditions to Rubrik-managed resources.
+Multiple conditions are logically OR-ed together.

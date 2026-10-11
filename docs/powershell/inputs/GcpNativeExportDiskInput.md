@@ -13,12 +13,9 @@ Input required to export a GCP native disk snapshot.
   - The type of the exported disk.
 - targetDiskSizeGb: System.Int32
   - The size of the exported disk in GBs.
-- replaceAttached: System.Boolean
-  - Specifies whether the exported disk should replace the source disk from the attached instance.
-- replicaZones: list of System.Strings
-  - The zones where the regional exported disk should be replicated.
 - shouldCopyLabels: System.Boolean
-  - Specfies whether the labels will be copied to the exported disk from the source disk that were there at the time of taking the snapshot or not.
+  - Specifies whether the labels will be copied to the exported disk from
+the source disk that were there at the time of taking the snapshot or not.
 - shouldAddRubrikLabels: System.Boolean
   - Specifies whether to allow Rubrik labels on the exported disk or not.
 - diskEncryptionType: DiskEncryptionType
@@ -27,11 +24,15 @@ Input required to export a GCP native disk snapshot.
   - Customer managed key to encrypt exported disk. This is only applicable when encryption type is CustomerManagedKey.
 - kmsCryptoKeyResourceId: System.String
   - Customer managed key to encrypt exported disk. This is only applicable when encryption type is CustomerManagedKeyResourceId.
+- replaceAttached: System.Boolean
+  - Specifies whether the exported disk should replace the source disk from the attached instance.
+- replicaZones: list of System.Strings
+  - The zones where the regional exported disk should be replicated.
 - targetGcpProjectRubrikId: System.String
-  - The target project cloud account ID for cross project export.
-- snapshotType: GcpSnapshotType
-  - The type of the snapshot to recover from.
+  - The target GCP project's Rubrik ID for cross project export.
 - archivedSnapshotId: System.String
   - The archived snapshot ID from which the recovery should happen.
 - recoveryPurpose: RecoveryPurpose
   - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
+- snapshotType: GcpSnapshotType
+  - The type of the snapshot to recover from.

@@ -9,13 +9,15 @@ Mount of vSphere virtual machine.
 - clusterName: System.String
 - status: VsphereMountStatus
 - authorizedOperations: AuthorizedOperations
-- cluster: Cluster
 - attachingDiskCount: System.Int32
+  - Flattened from the CDM mount spec.
 - hasAttachingDisk: System.Boolean
-- host: VsphereHost
 - migrateDatastoreRequestId: System.String
 - mountTimestamp: DateTime
+- newVmName: System.String
+- cluster: Cluster
+  - Cluster hosting this mount.
+- host: VsphereHost
 - newVm: VsphereVm
 - sourceSnapshot: CdmSnapshot
 - sourceVm: VsphereVm
-- newVmName: System.String

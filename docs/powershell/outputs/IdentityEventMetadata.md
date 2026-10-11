@@ -50,3 +50,7 @@ IDPSpecificPrincipalProperties.GetEntityName().
   - Type of the actor identity.
 - actorPrivilegeType: PrivilegeType
   - Privilege type of the actor identity.
+- additionalTargets: list of IdentityEventTargets
+  - Targets of the originating event other than the violation's own target
+identity, in event order. Empty when the originating event is unavailable
+or touched no other principal.

@@ -35,6 +35,10 @@ results.
   - Data category IDs selected for the crawl at Start time. Populated only on
 the single-crawl read path (GetCrawl) for v2 crawls; empty on the list
 path and for v1 crawls.
+- inProgressRscObjectCount: System.Int32
+  - Number of RSC workloads whose crawl objects are currently in progress.
+Zero until derivation logic is added; exposed to drive the Stop button
+on the crawl details page.
 - crawlObjConnection: CrawlObjConnection
   - The per-workload crawl objects in this crawl.
 - crawlObj: CrawlObj

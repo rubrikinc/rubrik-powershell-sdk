@@ -37,7 +37,7 @@ List of matched files for an object for Threat Monitoring.
 ### monitoringmatchedobjects
 List of matched objects for Threat Monitoring.
 
-- There are 11 arguments.
+- There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
@@ -52,6 +52,7 @@ an error.
     - workloadNameSearch - System.String: Optional object name search filter with partial match.
     - matchTypeFilter - list of IndicatorOfCompromiseKinds: Filters by the type of match.
     - severityFilter - list of MatchSeveritys: Filters according to the severity of the match.
+    - muteStatusFilter - ThreatMonitoringMuteStatusFilter: Filter by whether the matched object is muted for Threat Monitoring notifications. Unset/UNSPECIFIED applies no filter.
 - Returns ThreatMonitoringMatchedObjectConnection.
 ### monitoringobjectenablementstats
 Threat Monitoring object enablement stats.

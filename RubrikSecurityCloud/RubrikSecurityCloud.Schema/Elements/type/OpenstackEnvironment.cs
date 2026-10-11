@@ -101,6 +101,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> List<System.String>? TargetAzNames
+        // GraphQL -> targetAzNames: [String!]! (scalar)
+        [JsonProperty("targetAzNames")]
+        public List<System.String>? TargetAzNames { get; set; }
+
+        //      C# -> List<System.String>? TargetDomainIds
+        // GraphQL -> targetDomainIds: [String!]! (scalar)
+        [JsonProperty("targetDomainIds")]
+        public List<System.String>? TargetDomainIds { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -285,6 +295,8 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? TargetAzNames = null,
+        List<System.String>? TargetDomainIds = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -352,6 +364,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( TargetAzNames != null ) {
+            this.TargetAzNames = TargetAzNames;
+        }
+        if ( TargetDomainIds != null ) {
+            this.TargetDomainIds = TargetDomainIds;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -583,6 +601,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> List<System.String>? TargetAzNames
+        // GraphQL -> targetAzNames: [String!]! (scalar)
+        if (this.TargetAzNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetAzNames\n" ;
+            } else {
+                s += ind + "targetAzNames\n" ;
+            }
+        }
+        //      C# -> List<System.String>? TargetDomainIds
+        // GraphQL -> targetDomainIds: [String!]! (scalar)
+        if (this.TargetDomainIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetDomainIds\n" ;
+            } else {
+                s += ind + "targetDomainIds\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1109,6 +1145,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> List<System.String>? TargetAzNames
+        // GraphQL -> targetAzNames: [String!]! (scalar)
+        if (ec.Includes("targetAzNames",true))
+        {
+            if(this.TargetAzNames == null) {
+
+                this.TargetAzNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetAzNames != null && ec.Excludes("targetAzNames",true))
+        {
+            this.TargetAzNames = null;
+        }
+        //      C# -> List<System.String>? TargetDomainIds
+        // GraphQL -> targetDomainIds: [String!]! (scalar)
+        if (ec.Includes("targetDomainIds",true))
+        {
+            if(this.TargetDomainIds == null) {
+
+                this.TargetDomainIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetDomainIds != null && ec.Excludes("targetDomainIds",true))
+        {
+            this.TargetDomainIds = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

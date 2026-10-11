@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 28
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'VMware vSphere VM' API domain:
-    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
+    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 28 operations
+    /// There are 26 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -484,41 +484,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the ExcludeVmDisks operation
-    /// of the 'VMware vSphere VM' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    VsphereVm
-    /// # API Operation: ExcludeVmDisks
-    /// 
-    /// $query = New-RscMutationVsphereVm -Operation ExcludeVmDisks
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @(
-    /// 	@{
-    /// 		# REQUIRED
-    /// 		virtualDiskFid = $someString
-    /// 		# OPTIONAL
-    /// 		excludeFromSnapshots = $someBoolean
-    /// }
-    /// )
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RequestSuccess
     /// 
     /// 
     /// 
@@ -1590,69 +1555,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the RecoverFiles operation
-    /// of the 'VMware vSphere VM' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    VsphereVm
-    /// # API Operation: RecoverFiles
-    /// 
-    /// $query = New-RscMutationVsphereVm -Operation RecoverFiles
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	snapshotFid = $someString
-    /// 	# REQUIRED
-    /// 	restoreConfig = @{
-    /// 		# OPTIONAL
-    /// 		restoreFilesConfig = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				path = $someString
-    /// 				# OPTIONAL
-    /// 				restorePath = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		domainName = $someString
-    /// 		# OPTIONAL
-    /// 		username = $someString
-    /// 		# OPTIONAL
-    /// 		password = $someString
-    /// 		# OPTIONAL
-    /// 		shouldIgnoreErrors = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldSaveCredentials = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldUseAgent = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldRestoreXAttrs = $someBoolean
-    /// 		# OPTIONAL
-    /// 		deltaTypeFilter = @(
-    /// 			$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		nextSnapshotFid = $someString
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: VsphereAsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the RecoverFilesNew operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -2061,7 +1963,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteSnapshot",
                 "DownloadSnapshot",
                 "DownloadSnapshotFiles",
-                "ExcludeVmDisks",
                 "ExportSnapshotV2",
                 "ExportSnapshotV3",
                 "ExportSnapshotWithDownloadFromCloud",
@@ -2074,7 +1975,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "MountRelocate",
                 "MountRelocateV2",
                 "PowerOnOffLiveMount",
-                "RecoverFiles",
                 "RecoverFilesNew",
                 "RefreshAgent",
                 "RegisterAgent",
@@ -2116,9 +2016,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DownloadSnapshotFiles":
                         this.ProcessRecord_DownloadSnapshotFiles();
                         break;
-                    case "ExcludeVmDisks":
-                        this.ProcessRecord_ExcludeVmDisks();
-                        break;
                     case "ExportSnapshotV2":
                         this.ProcessRecord_ExportSnapshotV2();
                         break;
@@ -2154,9 +2051,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PowerOnOffLiveMount":
                         this.ProcessRecord_PowerOnOffLiveMount();
-                        break;
-                    case "RecoverFiles":
-                        this.ProcessRecord_RecoverFiles();
                         break;
                     case "RecoverFilesNew":
                         this.ProcessRecord_RecoverFilesNew();
@@ -2244,15 +2138,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadSnapshotFiles";
             // Create new graphql operation vsphereVmDownloadSnapshotFiles
             InitMutationVsphereVmDownloadSnapshotFiles();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereExcludeVmDisks.
-        internal void ProcessRecord_ExcludeVmDisks()
-        {
-            this._logger.name += " -ExcludeVmDisks";
-            // Create new graphql operation vsphereExcludeVmDisks
-            InitMutationVsphereExcludeVmDisks();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2361,15 +2246,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PowerOnOffLiveMount";
             // Create new graphql operation vsphereVmPowerOnOffLiveMount
             InitMutationVsphereVmPowerOnOffLiveMount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVmRecoverFiles.
-        internal void ProcessRecord_RecoverFiles()
-        {
-            this._logger.name += " -RecoverFiles";
-            // Create new graphql operation vsphereVmRecoverFiles
-            InitMutationVsphereVmRecoverFiles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2809,33 +2685,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	zipPassword = $someString
 }"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!): RequestSuccess!
-        internal void InitMutationVsphereExcludeVmDisks()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "[VsphereExcludeVmDisksInput!]!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereExcludeVmDisks",
-                "($input: [VsphereExcludeVmDisksInput!]!)",
-                "RequestSuccess",
-                Mutation.VsphereExcludeVmDisks,
-                Mutation.VsphereExcludeVmDisksFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @(
-	@{
-		# REQUIRED
-		virtualDiskFid = $someString
-		# OPTIONAL
-		excludeFromSnapshots = $someBoolean
-}
-)"
             );
         }
 
@@ -3802,61 +3651,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!): VsphereAsyncRequestStatus!
-        internal void InitMutationVsphereVmRecoverFiles()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VsphereVmRecoverFilesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmRecoverFiles",
-                "($input: VsphereVmRecoverFilesInput!)",
-                "VsphereAsyncRequestStatus",
-                Mutation.VsphereVmRecoverFiles,
-                Mutation.VsphereVmRecoverFilesFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	snapshotFid = $someString
-	# REQUIRED
-	restoreConfig = @{
-		# OPTIONAL
-		restoreFilesConfig = @(
-			@{
-				# OPTIONAL
-				path = $someString
-				# OPTIONAL
-				restorePath = $someString
-			}
-		)
-		# OPTIONAL
-		domainName = $someString
-		# OPTIONAL
-		username = $someString
-		# OPTIONAL
-		password = $someString
-		# OPTIONAL
-		shouldIgnoreErrors = $someBoolean
-		# OPTIONAL
-		shouldSaveCredentials = $someBoolean
-		# OPTIONAL
-		shouldUseAgent = $someBoolean
-		# OPTIONAL
-		shouldRestoreXAttrs = $someBoolean
-		# OPTIONAL
-		deltaTypeFilter = @(
-			$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
-		)
-		# OPTIONAL
-		nextSnapshotFid = $someString
-	}
 }"
             );
         }

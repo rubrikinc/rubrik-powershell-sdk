@@ -16,6 +16,8 @@ Creates reader type for S3Compatible archival location on a CDM cluster.
 - There is a single argument of type CreateS3CompatibleReaderTargetInput.
 - Returns Target.
 ### creates3compatibletarget
+Creates an S3-compatible archival target on the Rubrik cluster.
+
 - There is a single argument of type CreateS3CompatibleTargetInput.
 - Returns Target.
 ### deletetarget
@@ -67,6 +69,11 @@ or an inconsistent location state.
 
 - There is a single argument of type FinishArchivalMigrationInput.
 - Returns FinishArchivalMigrationReply.
+### pauseresumeuploadjob
+Pauses or resumes an in-flight archival upload job on a CDM cluster.
+
+- There is a single argument of type PauseResumeArchivalUploadJobInput.
+- Returns PauseResumeArchivalUploadJobReply.
 ### pausetarget
 Pauses an Archival Location.
 
@@ -132,6 +139,8 @@ Audit events: every successful PATCH emits the UpdatePureStorageProtectionGroupQ
 - There is a single argument of type UpdatePureStorageProtectionGroupQuiesceTargetsInput.
 - Returns UpdatePureStorageProtectionGroupQuiesceTargetsReply.
 ### updates3compatibletarget
+Updates an existing S3 compatible archival target.
+
 - There is a single argument of type UpdateS3CompatibleTargetInput.
 - Returns Target.
 ### upgradecdmmanagedtarget

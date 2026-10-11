@@ -7,3 +7,6 @@ the permissions for the given AWS cloud account.
 - featureReqs: list of ValidatePermissionsForFeatureReqs
   - Specifies the requests for each of the features
 to validate.
+- regions: list of System.Strings
+  - Specifies the AWS regions to validate the permissions in. When empty,
+the permissions are validated without any region context.

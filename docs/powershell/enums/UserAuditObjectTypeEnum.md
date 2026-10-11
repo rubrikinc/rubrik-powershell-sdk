@@ -171,3 +171,4 @@ User audit object type.
 - PING_FEDERATE_CLUSTER - PingFederate cluster type.
 - MARIADB_INSTANCE - MariaDB instance type.
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.
+- AGENT_CLOUD_REWIND_OBJECT - Agent Cloud rewind object type.

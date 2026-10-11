@@ -31,10 +31,7 @@ namespace RubrikSecurityCloud.Types
         NEARLINE_GCP,
 
         [EnumMember(Value = "STANDARD_GCP")]
-        STANDARD_GCP,
-
-        [EnumMember(Value = "UNKNOWN_STORAGE_CLASS_GCP")]
-        UNKNOWN_STORAGE_CLASS_GCP
+        STANDARD_GCP
 
 
     } // enum GcpStorageClass

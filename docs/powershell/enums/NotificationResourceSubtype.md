@@ -11,3 +11,4 @@ The resource subtype associated with notifications and resources.
 - RESTORE_IMPACT_ANALYSIS - Restore impact analysis.
 - MVC_RECOVERY_ANALYSIS - Minimum viable company recovery analysis.
 - EXOCOMPUTE_CLUSTER_READY - Exocompute cluster ready for data samples.
+- M365_RECOVERY_PERMISSIONS - Write permissions granted to a Microsoft 365 workload app for recovery.

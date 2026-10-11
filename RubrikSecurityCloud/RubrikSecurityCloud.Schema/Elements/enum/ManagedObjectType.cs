@@ -264,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GITHUB_ORGANIZATION")]
         GITHUB_ORGANIZATION,
 
+        [EnumMember(Value = "GITHUB_ORG_PACKAGES_FIXED_OBJECT")]
+        GITHUB_ORG_PACKAGES_FIXED_OBJECT,
+
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
 

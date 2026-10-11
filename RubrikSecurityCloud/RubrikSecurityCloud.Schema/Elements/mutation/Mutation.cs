@@ -12349,6 +12349,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> PauseResumeArchivalUploadJobReply? PauseResumeArchivalUploadJob
+        // GraphQL -> pauseResumeArchivalUploadJob: PauseResumeArchivalUploadJobReply! (type)
+        public static string PauseResumeArchivalUploadJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "pauseResumeArchivalUploadJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PauseResumeArchivalUploadJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PauseResumeArchivalUploadJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PauseSlaReply? PauseSla
         // GraphQL -> pauseSla: PauseSlaReply! (type)
         public static string PauseSla(object fsObj)
@@ -17803,24 +17821,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> RequestSuccess? VsphereExcludeVmDisks
-        // GraphQL -> vsphereExcludeVmDisks: RequestSuccess! (type)
-        public static string VsphereExcludeVmDisks(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "vsphereExcludeVmDisks" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object VsphereExcludeVmDisksFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new RequestSuccess() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> AsyncRequestStatus? VsphereExportSnapshotToStandaloneHostV2
         // GraphQL -> vsphereExportSnapshotToStandaloneHostV2: AsyncRequestStatus! (type)
         public static string VsphereExportSnapshotToStandaloneHostV2(object fsObj)
@@ -18213,24 +18213,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new VsphereVmPowerOnOffLiveMountReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereVmRecoverFiles
-        // GraphQL -> vsphereVmRecoverFiles: VsphereAsyncRequestStatus! (type)
-        public static string VsphereVmRecoverFiles(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "vsphereVmRecoverFiles" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object VsphereVmRecoverFilesFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new VsphereAsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

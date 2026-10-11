@@ -1,5 +1,5 @@
 ### AgentStatus
-The status of the virtual machine's agent.
+Status of a virtual machine's agent.
 
-- disconnectReason: System.String
 - agentStatus: AgentConnectionStatus
+- disconnectReason: System.String

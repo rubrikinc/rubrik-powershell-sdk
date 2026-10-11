@@ -218,6 +218,9 @@ Get CDM release details from support portal for a given list of clusters.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
 ### getgroupcountbycdmclusterstatus
+Counts of Rubrik clusters, grouped by CDM cluster status, with the total
+number of clusters.
+
 - The getgroupcountbycdmclusterstatus subcommand takes no arguments.
 - Returns GroupCountListWithTotal.
 ### groupbylist
@@ -419,6 +422,8 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 - There is a single argument of type list of System.Strings.
 - Returns list of System.Booleans.
 ### typelist
+Counts of Rubrik clusters, grouped by cluster type.
+
 - The typelist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### validateclusterlicensecapacity

@@ -22,6 +22,12 @@ deployment.
   - True if this object is a replica, its current cluster differs from its
 source (primary) cluster. False if the object resides on its source
 cluster. Null when the source cluster is unknown.
+- targetDomainIds: list of System.Strings
+  - Keystone domain IDs the environment is limited to. Empty when the
+environment covers every domain.
+- targetAzNames: list of System.Strings
+  - Availability Zone names the environment is limited to. Empty when the
+environment covers every Availability Zone.
 - descendantConnection: OpenstackEnvironmentDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: OpenstackEnvironmentLogicalChildTypeConnection

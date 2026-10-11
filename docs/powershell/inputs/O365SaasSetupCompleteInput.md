@@ -10,8 +10,12 @@ Configuration for the setup of a Rubrik-hosted subscription.
 - appTypes: list of System.Strings
   - Types of the apps created in the flow.
 - kmsSpec: KmsSpecInput
-  - Azure KMS configuration, excluding the app secret.
+  - Azure KMS configuration, excluding the app secret. Mutually exclusive with
+uem_kms_spec; enforced in the service handler.
 - storeBackupInSameRegionAsData: System.Boolean
   - Specifies whether the backups will be stored in the same region as the source data. When true, the regionName field represents the name of the central data location of the M365 organization.
 - prioritizedOnboardingSpec: PrioritizedOnboardingSpec
   - Prioritized onboarding configuration.
+- uemKmsSpec: UemKmsSpecInput
+  - UEM-managed KMS configuration. Set when the customer opts for a
+UEM-managed KMS. Mutually exclusive with kms_spec.

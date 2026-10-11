@@ -45,6 +45,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalProcessedSnapshots")]
         public System.Int64? TotalProcessedSnapshots { get; set; }
 
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        [JsonProperty("totalRegistryAffectedObjects")]
+        public System.Int64? TotalRegistryAffectedObjects { get; set; }
+
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        [JsonProperty("totalRegistryKeyMatches")]
+        public System.Int64? TotalRegistryKeyMatches { get; set; }
+
+        //      C# -> System.Int64? TotalRegistryPatterns
+        // GraphQL -> totalRegistryPatterns: Long! (scalar)
+        [JsonProperty("totalRegistryPatterns")]
+        public System.Int64? TotalRegistryPatterns { get; set; }
+
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)
         [JsonProperty("totalSnapshotsScanned")]
@@ -80,6 +95,9 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalIocs = null,
         System.Int64? TotalObjectsScanned = null,
         System.Int64? TotalProcessedSnapshots = null,
+        System.Int64? TotalRegistryAffectedObjects = null,
+        System.Int64? TotalRegistryKeyMatches = null,
+        System.Int64? TotalRegistryPatterns = null,
         System.Int64? TotalSnapshotsScanned = null,
         System.Int64? TotalSucceededScans = null,
         System.Int64? TotalUniqueMatchedPaths = null,
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalProcessedSnapshots != null ) {
             this.TotalProcessedSnapshots = TotalProcessedSnapshots;
+        }
+        if ( TotalRegistryAffectedObjects != null ) {
+            this.TotalRegistryAffectedObjects = TotalRegistryAffectedObjects;
+        }
+        if ( TotalRegistryKeyMatches != null ) {
+            this.TotalRegistryKeyMatches = TotalRegistryKeyMatches;
+        }
+        if ( TotalRegistryPatterns != null ) {
+            this.TotalRegistryPatterns = TotalRegistryPatterns;
         }
         if ( TotalSnapshotsScanned != null ) {
             this.TotalSnapshotsScanned = TotalSnapshotsScanned;
@@ -170,6 +197,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalProcessedSnapshots\n" ;
             } else {
                 s += ind + "totalProcessedSnapshots\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        if (this.TotalRegistryAffectedObjects != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryAffectedObjects\n" ;
+            } else {
+                s += ind + "totalRegistryAffectedObjects\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (this.TotalRegistryKeyMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryKeyMatches\n" ;
+            } else {
+                s += ind + "totalRegistryKeyMatches\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryPatterns
+        // GraphQL -> totalRegistryPatterns: Long! (scalar)
+        if (this.TotalRegistryPatterns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryPatterns\n" ;
+            } else {
+                s += ind + "totalRegistryPatterns\n" ;
             }
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
@@ -299,6 +353,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalProcessedSnapshots != null && ec.Excludes("totalProcessedSnapshots",true))
         {
             this.TotalProcessedSnapshots = null;
+        }
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        if (ec.Includes("totalRegistryAffectedObjects",true))
+        {
+            if(this.TotalRegistryAffectedObjects == null) {
+
+                this.TotalRegistryAffectedObjects = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryAffectedObjects != null && ec.Excludes("totalRegistryAffectedObjects",true))
+        {
+            this.TotalRegistryAffectedObjects = null;
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (ec.Includes("totalRegistryKeyMatches",true))
+        {
+            if(this.TotalRegistryKeyMatches == null) {
+
+                this.TotalRegistryKeyMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryKeyMatches != null && ec.Excludes("totalRegistryKeyMatches",true))
+        {
+            this.TotalRegistryKeyMatches = null;
+        }
+        //      C# -> System.Int64? TotalRegistryPatterns
+        // GraphQL -> totalRegistryPatterns: Long! (scalar)
+        if (ec.Includes("totalRegistryPatterns",true))
+        {
+            if(this.TotalRegistryPatterns == null) {
+
+                this.TotalRegistryPatterns = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryPatterns != null && ec.Excludes("totalRegistryPatterns",true))
+        {
+            this.TotalRegistryPatterns = null;
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)

@@ -252,6 +252,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -263,6 +265,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] physicalChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -274,6 +278,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] recoveryTargetChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -285,6 +291,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] recoveryTargetDescendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),

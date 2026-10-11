@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_ACCOUNT_ID")]
         CLOUD_ACCOUNT_ID,
 
+        [EnumMember(Value = "CLOUD_NATIVE_LOC_TEMPLATE_TYPE")]
+        CLOUD_NATIVE_LOC_TEMPLATE_TYPE,
+
         [EnumMember(Value = "CLOUD_NATIVE_USE_CASE")]
         CLOUD_NATIVE_USE_CASE,
 

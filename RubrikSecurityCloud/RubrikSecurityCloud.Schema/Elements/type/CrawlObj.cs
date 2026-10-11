@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CrawlObjErrorReason? ErrorReason
+        // GraphQL -> errorReason: CrawlObjErrorReason! (enum)
+        [JsonProperty("errorReason")]
+        public CrawlObjErrorReason? ErrorReason { get; set; }
+
         //      C# -> SnappableCrawlStatus? Status
         // GraphQL -> status: SnappableCrawlStatus! (enum)
         [JsonProperty("status")]
@@ -145,6 +150,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CrawlObj Set(
+        CrawlObjErrorReason? ErrorReason = null,
         SnappableCrawlStatus? Status = null,
         HierarchyObject? Snappable = null,
         System.String? CrawlId = null,
@@ -165,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         FileResultConnection? FileResultConnection = null
     ) 
     {
+        if ( ErrorReason != null ) {
+            this.ErrorReason = ErrorReason;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -233,6 +242,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CrawlObjErrorReason? ErrorReason
+        // GraphQL -> errorReason: CrawlObjErrorReason! (enum)
+        if (this.ErrorReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "errorReason\n" ;
+            } else {
+                s += ind + "errorReason\n" ;
+            }
+        }
         //      C# -> SnappableCrawlStatus? Status
         // GraphQL -> status: SnappableCrawlStatus! (enum)
         if (this.Status != null) {
@@ -418,6 +436,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CrawlObjErrorReason? ErrorReason
+        // GraphQL -> errorReason: CrawlObjErrorReason! (enum)
+        if (ec.Includes("errorReason",true))
+        {
+            if(this.ErrorReason == null) {
+
+                this.ErrorReason = new CrawlObjErrorReason();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorReason != null && ec.Excludes("errorReason",true))
+        {
+            this.ErrorReason = null;
+        }
         //      C# -> SnappableCrawlStatus? Status
         // GraphQL -> status: SnappableCrawlStatus! (enum)
         if (ec.Includes("status",true))

@@ -6,6 +6,8 @@ Download cdm upgrades table pdf.
 - There is a single argument of type DownloadCdmUpgradesPdfFiltersInput.
 - Returns DownloadCdmUpgradesPdfReply.
 ### downloadedversionlist
+Counts of Rubrik clusters grouped by the CDM version each has downloaded.
+
 - The downloadedversionlist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### packagestatus

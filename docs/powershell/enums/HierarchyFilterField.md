@@ -1513,3 +1513,22 @@ cluster has no management type is treated as self-managed.
 +mo:filter:db:column=management_type
 +mo:filter:db:index:key=NULL
 +reason: clusters holds one row per registered cluster per account and the scan is already bounded by the unique-keyed join on clusters.uuid
+- SECURITY_NOTIFICATION_MUTE_STATUS - Filter by whether the object is muted for either Threat Monitoring or
+Anomaly Detection security notifications. Combine with `texts`:
+texts = ["MUTED"] for the Muted bucket, texts = ["ACTIVE"] for the
+Active bucket. Omit the filter entirely for "All". Gated on the
+REL_ENABLE_DTA_OBJECT_MUTE feature flag; passing this filter for an
+account where the flag is off is rejected.
++mo:filter:db:table=orion_threat_monitoring_muted_objects
++mo:filter:db:column=snappable_fid
++mo:filter:db:index:key=muted_objects_fid_unique_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=RadarSnappableConfigurations
++mo:filter:db:column=snappable_fid
++mo:filter:db:index:key=snappable_fid_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++reason: LEFT JOIN both tables (1:1 on unique snappable_fid); missing row = "not muted". Cost bounded like CLUSTER_MANAGEMENT_TYPE.

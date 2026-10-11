@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 369
+    /// Create a new RscQuery object for any of the 370
     /// operations in the 'Miscellaneous' API domain:
-    /// ActiveCustomAnalyzers, Activities, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AppAccessGraph, AppAccessImpact, AppAccessPrincipals, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BackupWindowsForObjects, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTasks, BrowseTeamsChannels, BrowseTeamsDrive, CapSettingsData, CcProvisionMetadata, CdmAdminUser, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, ClassifiableAssetCount, CloudDirectCheckSharePath, CloudDirectGlobalSearch, CloudDirectNasBucket, CloudDirectNasBuckets, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSiteSettings, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, CoordinatorLabels, CoordinatorLabelsValidation, Crawl, Crawls, CrossAccountPairs, CrowdStrikeIngestionStatus, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DailyViolationsSummary, DashboardSummary, DataAccessStats, DataDiscoveryObjectsCount, DataPreview, DataProtectionCoverageSummary, DatagovSecDesc, DecryptExportUrl, DefenderIngestionStatuses, DeploymentIpAddresses, DeploymentVersion, DevOpsBackupJobInformation, DevOpsProtectedObjectCountSummary, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DocumentTypes, DocumentTypesDetails, EdgeWindowsToolLink, EffectiveRbacPermissions, EntityInsights, EventDigests, ExocomputeGetSupportedHealthChecks, ExocomputeHealthChecks, ExotaskImageBundle, ExternalDeploymentName, FailedRestoreItemsInfo, FailoverGroupWorkloads, FederatedLoginStatus, FileActivities, FileSchemaResults, FileSummariesCount, FusionComputeDatastore, FusionComputeDatastores, FusionComputeEcho, FusionComputeMounts, FusionComputeNetwork, FusionComputeNetworks, FusionComputeRecoverableDatastores, FusionComputeRecoverableNetworks, FusionComputeSite, FusionComputeSites, FusionComputeVirtualDisks, FusionComputeVirtualMachine, FusionComputeVirtualMachines, FusionComputeVmRequestStatus, FusionComputeVrm, FusionComputeVrms, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetCloudObjectsCountByRegion, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetLaminarFeatureStatus, GetObjectProtectionAndSensitivitySummary, GetPermissions, GetRolesByIds, GetUserDownloads, GitHubConnectionStatusSummary, GitHubOrganization, GitHubOrganizations, GitHubRepositories, GitHubRepository, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GlueIcebergInventoryStats, GlueIcebergTable, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, HitsExposureStats, IdentityDataLocationsEncryptionInfo, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IocFeedEntries, IpWhitelist, IpWhitelistEntries, IpWhitelistSettings, IsAppAccessGraphReady, IsCloudDirectSharePathValid, IsIdPSetupComplete, IsIdentitySecurityRoleAssignmentComplete, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LacpConfigurations, LambdaSettings, LaminarSsoDetails, LatestGpoSettings, LicensedProducts, ListAccessGrantingIdentities, ListAllUploadRecords, ListDataAccessIdentities, ListLinkedEntitiesForGpo, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, MultiHopUpgradePath, MysqlDatabase, MysqlDatabases, MysqlInstance, MysqlInstanceLiveMounts, MysqlInstances, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NodesToRemoveByCount, OauthCodesForEdgeReg, ObjectFiles, ObjectTagKeys, ObjectTagValues, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, OwnersFilterValues, PasskeyConfig, PasskeyInfo, PausedObjects, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PoliciesMaxLastEvaluatedAt, PolicyDetails, PolicyObj, PolicyObjFolderChildren, PolicyObjOpt, PolicyObjs, PolicyViolation, PolicyViolationHistoryEntries, PolicyViolations, PolicyViolationsByResource, PostgreSQLDatabase, PostgreSQLDatabases, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrincipalApiPermissions, PrincipalAttributes, PrincipalCountsSummaries, PrincipalDepartments, PrincipalDetails, PrincipalEntities, PrincipalObjectSummaries, PrincipalRiskChanges, PrincipalRiskSummaries, PrincipalRiskTrend, PrincipalSummaries, PrincipalSummary, PrincipalTagStats, PrincipalTitles, PrivateContainerRegistry, PrivilegedPrincipalSummaries, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, ProtectionSummaryV2, PureStorageProtectionGroupQuiesceCandidates, PureStorageProtectionGroupV1, PureStorageProtectionGroupsV1, PureStorageVolumeV1, PureStorageVolumesV1, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, Recoveries, RecoveryPlansBasicInfo, RecoverySpecs, Regions, RemediationTypes, RemovedNodeDetails, ResetTypeOfRemovalJob, ResourceGroups, ResourceSpecs, RoleTemplates, RscPermsToCdmInfo, RscpUpgradeStatus, RvcDeploymentToolLink, RvcLsOvaDetails, RvcSsOvaDetails, S3TablesIcebergInventoryStats, SaasAppCascadingImpact, SaasAppOrganizations, SaasWorkloadMetadataTypes, SalesforceObjects, ScriptsForManualPermissionValidation, SearchCloudDirectWorkload, SearchFileByPrefix, SelfServeRollingUpgrade, SensitiveDataSummary, SensitiveFileDetails, SigninLogDetails, SigninLogFilterValues, SigninLogs, SnoozedDirectories, SourceRecoverySpecsV2, SqlServerSetupScriptsBulk, SsmDocumentForEc2, SsoGroupAlreadyExists, StaticRoutes, SupportBundle, SupportCase, SupportCaseAttachmentContent, SupportCaseAttachments, SupportCaseComments, SupportCases, SupportPortalRole, SupportUserAccesses, TableFilters, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TopRiskPrincipals, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UnifiedUnregisteredDomainControllers, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradePathEligibility, UpgradeStatus, UserAccessInsights, UserAccessMetrics, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, UsersSummary, ValidRegionsForDynamoDbRecovery, ValidateAdForestTransition, ValidateIocEntry, ValidateOrgName, ValidateOutpostAccountNetwork, ValidateRdsExportExocomputePort, ValidateRoleName, ValidateScriptOutputForManualPermissionValidation, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, ViolationsCategorySummary, ViolationsEnvironmentSummary, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkdayIngestionStatus, WorkloadAlertSetting, WorkloadAnomalies, WorkloadForeverId, WorkloadResourceSpecs, WorkloadsProtectionDetails, or WorkloadsRecoveryInfo.
+    /// ActiveCustomAnalyzers, Activities, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AppAccessGraph, AppAccessImpact, AppAccessPrincipals, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BackupWindowsForObjects, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTasks, BrowseTeamsChannels, BrowseTeamsDrive, CapSettingsData, CcProvisionMetadata, CdmAdminUser, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, ClassifiableAssetCount, CloudDirectCheckSharePath, CloudDirectGlobalSearch, CloudDirectNasBucket, CloudDirectNasBuckets, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSiteSettings, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, CoordinatorLabels, CoordinatorLabelsValidation, Crawl, Crawls, CrossAccountPairs, CrowdStrikeIngestionStatus, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DailyViolationsSummary, DashboardSummary, DataAccessStats, DataDiscoveryObjectsCount, DataPreview, DataProtectionCoverageSummary, DatagovSecDesc, DecryptExportUrl, DefenderIngestionStatuses, DeploymentIpAddresses, DeploymentVersion, DevOpsBackupJobInformation, DevOpsProtectedObjectCountSummary, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DocumentTypes, DocumentTypesDetails, EdgeWindowsToolLink, EffectiveRbacPermissions, EntityInsights, EventDigests, ExocomputeGetSupportedHealthChecks, ExocomputeHealthChecks, ExotaskImageBundle, ExternalDeploymentName, FailedRestoreItemsInfo, FailoverGroupWorkloads, FederatedLoginStatus, FileActivities, FileSchemaResults, FileSummariesCount, FusionComputeDatastore, FusionComputeDatastores, FusionComputeEcho, FusionComputeMounts, FusionComputeNetwork, FusionComputeNetworks, FusionComputeRecoverableDatastores, FusionComputeRecoverableNetworks, FusionComputeSite, FusionComputeSites, FusionComputeVirtualDisks, FusionComputeVirtualMachine, FusionComputeVirtualMachines, FusionComputeVmRequestStatus, FusionComputeVrm, FusionComputeVrms, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetCloudObjectsCountByRegion, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetLaminarFeatureStatus, GetObjectProtectionAndSensitivitySummary, GetPermissions, GetRolesByIds, GetUserDownloads, GitHubConnectionStatusSummary, GitHubOrganization, GitHubOrganizations, GitHubRepositories, GitHubRepository, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GlueIcebergInventoryStats, GlueIcebergTable, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, HitsExposureStats, IdentityDataLocationsEncryptionInfo, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IocFeedEntries, IpWhitelist, IpWhitelistEntries, IpWhitelistSettings, IsAppAccessGraphReady, IsCloudDirectSharePathValid, IsIdPSetupComplete, IsIdentitySecurityRoleAssignmentComplete, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LacpConfigurations, LambdaSettings, LaminarSsoDetails, LatestGpoSettings, LicensedProducts, ListAccessGrantingIdentities, ListAllUploadRecords, ListDataAccessIdentities, ListLinkedEntitiesForGpo, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, MultiHopUpgradePath, MysqlDatabase, MysqlDatabases, MysqlInstance, MysqlInstanceLiveMounts, MysqlInstances, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NodesToRemoveByCount, OauthCodesForEdgeReg, ObjectFiles, ObjectTagKeys, ObjectTagValues, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, OwnersFilterValues, PasskeyConfig, PasskeyInfo, PausedObjects, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PoliciesMaxLastEvaluatedAt, PolicyDetails, PolicyObj, PolicyObjFolderChildren, PolicyObjOpt, PolicyObjs, PolicyViolation, PolicyViolationHistoryEntries, PolicyViolations, PolicyViolationsByResource, PostgreSQLDatabase, PostgreSQLDatabases, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrincipalApiPermissions, PrincipalAttributes, PrincipalCountsSummaries, PrincipalDepartments, PrincipalDetails, PrincipalEntities, PrincipalObjectSummaries, PrincipalRiskChanges, PrincipalRiskSummaries, PrincipalRiskTrend, PrincipalSummaries, PrincipalSummary, PrincipalTagStats, PrincipalTitles, PrivateContainerRegistry, PrivilegedPrincipalSummaries, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, ProtectionSummaryV2, PureStorageProtectionGroupQuiesceCandidates, PureStorageProtectionGroupV1, PureStorageProtectionGroupsV1, PureStorageVolumeV1, PureStorageVolumesV1, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, Recoveries, RecoveryPlansBasicInfo, RecoverySpecs, Regions, RemediationTypes, RemovedNodeDetails, ResetTypeOfRemovalJob, ResourceGroups, ResourceSpecs, RoleTemplates, RscPermsToCdmInfo, RscpUpgradeStatus, RvcDeploymentToolLink, RvcLsOvaDetails, RvcSsOvaDetails, S3TablesIcebergInventoryStats, SaasAppCascadingImpact, SaasAppOrganizations, SaasWorkloadMetadataTypes, SalesforceObjects, ScriptsForManualPermissionValidation, SearchCloudDirectWorkload, SearchFileByPrefix, SecurityFeatureSupportedObjectTypes, SelfServeRollingUpgrade, SensitiveDataSummary, SensitiveFileDetails, SigninLogDetails, SigninLogFilterValues, SigninLogs, SnoozedDirectories, SourceRecoverySpecsV2, SqlServerSetupScriptsBulk, SsmDocumentForEc2, SsoGroupAlreadyExists, StaticRoutes, SupportBundle, SupportCase, SupportCaseAttachmentContent, SupportCaseAttachments, SupportCaseComments, SupportCases, SupportPortalRole, SupportUserAccesses, TableFilters, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TopRiskPrincipals, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UnifiedUnregisteredDomainControllers, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradePathEligibility, UpgradeStatus, UserAccessInsights, UserAccessMetrics, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, UsersSummary, ValidRegionsForDynamoDbRecovery, ValidateAdForestTransition, ValidateIocEntry, ValidateOrgName, ValidateOutpostAccountNetwork, ValidateRdsExportExocomputePort, ValidateRoleName, ValidateScriptOutputForManualPermissionValidation, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, ViolationsCategorySummary, ViolationsEnvironmentSummary, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkdayIngestionStatus, WorkloadAlertSetting, WorkloadAnomalies, WorkloadForeverId, WorkloadResourceSpecs, WorkloadsProtectionDetails, or WorkloadsRecoveryInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 369 operations
+    /// There are 370 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveCustomAnalyzers, Activities, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AppAccessGraph, AppAccessImpact, AppAccessPrincipals, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BackupWindowsForObjects, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTasks, BrowseTeamsChannels, BrowseTeamsDrive, CapSettingsData, CcProvisionMetadata, CdmAdminUser, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, ClassifiableAssetCount, CloudDirectCheckSharePath, CloudDirectGlobalSearch, CloudDirectNasBucket, CloudDirectNasBuckets, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSiteSettings, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, CoordinatorLabels, CoordinatorLabelsValidation, Crawl, Crawls, CrossAccountPairs, CrowdStrikeIngestionStatus, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DailyViolationsSummary, DashboardSummary, DataAccessStats, DataDiscoveryObjectsCount, DataPreview, DataProtectionCoverageSummary, DatagovSecDesc, DecryptExportUrl, DefenderIngestionStatuses, DeploymentIpAddresses, DeploymentVersion, DevOpsBackupJobInformation, DevOpsProtectedObjectCountSummary, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DocumentTypes, DocumentTypesDetails, EdgeWindowsToolLink, EffectiveRbacPermissions, EntityInsights, EventDigests, ExocomputeGetSupportedHealthChecks, ExocomputeHealthChecks, ExotaskImageBundle, ExternalDeploymentName, FailedRestoreItemsInfo, FailoverGroupWorkloads, FederatedLoginStatus, FileActivities, FileSchemaResults, FileSummariesCount, FusionComputeDatastore, FusionComputeDatastores, FusionComputeEcho, FusionComputeMounts, FusionComputeNetwork, FusionComputeNetworks, FusionComputeRecoverableDatastores, FusionComputeRecoverableNetworks, FusionComputeSite, FusionComputeSites, FusionComputeVirtualDisks, FusionComputeVirtualMachine, FusionComputeVirtualMachines, FusionComputeVmRequestStatus, FusionComputeVrm, FusionComputeVrms, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetCloudObjectsCountByRegion, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetLaminarFeatureStatus, GetObjectProtectionAndSensitivitySummary, GetPermissions, GetRolesByIds, GetUserDownloads, GitHubConnectionStatusSummary, GitHubOrganization, GitHubOrganizations, GitHubRepositories, GitHubRepository, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GlueIcebergInventoryStats, GlueIcebergTable, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, HitsExposureStats, IdentityDataLocationsEncryptionInfo, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IocFeedEntries, IpWhitelist, IpWhitelistEntries, IpWhitelistSettings, IsAppAccessGraphReady, IsCloudDirectSharePathValid, IsIdPSetupComplete, IsIdentitySecurityRoleAssignmentComplete, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LacpConfigurations, LambdaSettings, LaminarSsoDetails, LatestGpoSettings, LicensedProducts, ListAccessGrantingIdentities, ListAllUploadRecords, ListDataAccessIdentities, ListLinkedEntitiesForGpo, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, MultiHopUpgradePath, MysqlDatabase, MysqlDatabases, MysqlInstance, MysqlInstanceLiveMounts, MysqlInstances, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NodesToRemoveByCount, OauthCodesForEdgeReg, ObjectFiles, ObjectTagKeys, ObjectTagValues, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, OwnersFilterValues, PasskeyConfig, PasskeyInfo, PausedObjects, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PoliciesMaxLastEvaluatedAt, PolicyDetails, PolicyObj, PolicyObjFolderChildren, PolicyObjOpt, PolicyObjs, PolicyViolation, PolicyViolationHistoryEntries, PolicyViolations, PolicyViolationsByResource, PostgreSQLDatabase, PostgreSQLDatabases, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrincipalApiPermissions, PrincipalAttributes, PrincipalCountsSummaries, PrincipalDepartments, PrincipalDetails, PrincipalEntities, PrincipalObjectSummaries, PrincipalRiskChanges, PrincipalRiskSummaries, PrincipalRiskTrend, PrincipalSummaries, PrincipalSummary, PrincipalTagStats, PrincipalTitles, PrivateContainerRegistry, PrivilegedPrincipalSummaries, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, ProtectionSummaryV2, PureStorageProtectionGroupQuiesceCandidates, PureStorageProtectionGroupV1, PureStorageProtectionGroupsV1, PureStorageVolumeV1, PureStorageVolumesV1, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, Recoveries, RecoveryPlansBasicInfo, RecoverySpecs, Regions, RemediationTypes, RemovedNodeDetails, ResetTypeOfRemovalJob, ResourceGroups, ResourceSpecs, RoleTemplates, RscPermsToCdmInfo, RscpUpgradeStatus, RvcDeploymentToolLink, RvcLsOvaDetails, RvcSsOvaDetails, S3TablesIcebergInventoryStats, SaasAppCascadingImpact, SaasAppOrganizations, SaasWorkloadMetadataTypes, SalesforceObjects, ScriptsForManualPermissionValidation, SearchCloudDirectWorkload, SearchFileByPrefix, SelfServeRollingUpgrade, SensitiveDataSummary, SensitiveFileDetails, SigninLogDetails, SigninLogFilterValues, SigninLogs, SnoozedDirectories, SourceRecoverySpecsV2, SqlServerSetupScriptsBulk, SsmDocumentForEc2, SsoGroupAlreadyExists, StaticRoutes, SupportBundle, SupportCase, SupportCaseAttachmentContent, SupportCaseAttachments, SupportCaseComments, SupportCases, SupportPortalRole, SupportUserAccesses, TableFilters, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TopRiskPrincipals, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UnifiedUnregisteredDomainControllers, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradePathEligibility, UpgradeStatus, UserAccessInsights, UserAccessMetrics, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, UsersSummary, ValidRegionsForDynamoDbRecovery, ValidateAdForestTransition, ValidateIocEntry, ValidateOrgName, ValidateOutpostAccountNetwork, ValidateRdsExportExocomputePort, ValidateRoleName, ValidateScriptOutputForManualPermissionValidation, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, ViolationsCategorySummary, ViolationsEnvironmentSummary, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkdayIngestionStatus, WorkloadAlertSetting, WorkloadAnomalies, WorkloadForeverId, WorkloadResourceSpecs, WorkloadsProtectionDetails, or WorkloadsRecoveryInfo.
+    /// one of: ActiveCustomAnalyzers, Activities, AdGroupMembers, AdVolumeExports, AgentDeploymentSetting, AgentDeploymentSettings, AllowedOrgAdminOperations, AnalyzerGroups, AnalyzerUsages, AnomalyResultOpt, AnomalyResults, AnomalyResultsGrouped, AppAccessGraph, AppAccessImpact, AppAccessPrincipals, AreMultiGeoBackupsEnabled, AuthorizationsForGlobalResource, AuthorizationsForObject, AuthorizationsForObjects, AzureResourceGroups, AzureSubnets, BackupThrottleSettings, BackupWindowsForObjects, BrowseCalendar, BrowseContacts, BrowseFolder, BrowseOnedrive, BrowseTasks, BrowseTeamsChannels, BrowseTeamsDrive, CapSettingsData, CcProvisionMetadata, CdmAdminUser, CdmGuestCredentials, CdmInventorySubHierarchyRoot, CdmOvaDetails, CdmVersionCheck, CdpVmsInfos, CheckCloudComputeConnectivityJobProgress, CheckLatestVersionMgmtAppExists, ClassifiableAssetCount, CloudDirectCheckSharePath, CloudDirectGlobalSearch, CloudDirectNasBucket, CloudDirectNasBuckets, CloudDirectNasExport, CloudDirectNasNamespace, CloudDirectNasNamespaces, CloudDirectNasShare, CloudDirectShares, CloudDirectSiteSettings, CloudDirectSites, CloudDirectSystems, ConfiguredGroupMembers, CoordinatorLabels, CoordinatorLabelsValidation, Crawl, Crawls, CrossAccountPairs, CrowdStrikeIngestionStatus, CurrentIpAddress, CurrentOrg, CurrentOrgAuthDomainConfig, CurrentOrgIdentityProviders, CustomAnalyzer, DailyViolationsSummary, DashboardSummary, DataAccessStats, DataDiscoveryObjectsCount, DataPreview, DataProtectionCoverageSummary, DatagovSecDesc, DecryptExportUrl, DefenderIngestionStatuses, DeploymentIpAddresses, DeploymentVersion, DevOpsBackupJobInformation, DevOpsProtectedObjectCountSummary, DhrcActiveRecommendations, DhrcLatestMetrics, DhrcScores, DiffFmd, DiscoverNodes, DiscoveryTimeline, DistributionListDigest, DistributionListDigests, DocumentTypes, DocumentTypesDetails, EdgeWindowsToolLink, EffectiveRbacPermissions, EntityInsights, EventDigests, ExocomputeGetSupportedHealthChecks, ExocomputeHealthChecks, ExotaskImageBundle, ExternalDeploymentName, FailedRestoreItemsInfo, FailoverGroupWorkloads, FederatedLoginStatus, FileActivities, FileSchemaResults, FileSummariesCount, FusionComputeDatastore, FusionComputeDatastores, FusionComputeEcho, FusionComputeMounts, FusionComputeNetwork, FusionComputeNetworks, FusionComputeRecoverableDatastores, FusionComputeRecoverableNetworks, FusionComputeSite, FusionComputeSites, FusionComputeVirtualDisks, FusionComputeVirtualMachine, FusionComputeVirtualMachines, FusionComputeVmRequestStatus, FusionComputeVrm, FusionComputeVrms, GeoLocationList, GetAllRolesInOrgList, GetCdmReleaseDetailsForVersionFromSupportPortal, GetCdmReleaseDetailsFromSupportPortal, GetCloudObjectsCountByRegion, GetGroupCountByPrechecksStatus, GetGroupCountByUpgradeJobStatus, GetGroupCountByVersionStatus, GetKorgTaskchainStatus, GetLaminarFeatureStatus, GetObjectProtectionAndSensitivitySummary, GetPermissions, GetRolesByIds, GetUserDownloads, GitHubConnectionStatusSummary, GitHubOrganization, GitHubOrganizations, GitHubRepositories, GitHubRepository, GlobalFileSearch, GlobalLockoutConfig, GlobalMfaSetting, GlobalSearchResults, GlueIcebergInventoryStats, GlueIcebergTable, GroupsInCurrentAndDescendantOrganization, GuestCredentials, GuestCredentialsV2, HasIdpConfigured, HelpContentSnippets, HierarchyObject, HierarchyObjects, HitsExposureStats, IdentityDataLocationsEncryptionInfo, InstalledVersionList, InventoryRoot, InventorySubHierarchyRoot, InventoryWorkloads, InvestigationCsvDownloadLink, IocFeedEntries, IpWhitelist, IpWhitelistEntries, IpWhitelistSettings, IsAppAccessGraphReady, IsCloudDirectSharePathValid, IsIdPSetupComplete, IsIdentitySecurityRoleAssignmentComplete, IsIpmiEnabled, IsLoggedIntoRubrikSupportPortal, IsReplaceNodeTprConfigured, IsSfdcReachable, IsUpgradeAvailable, IsUpgradeRecommended, IsZrsAvailableForLocation, Issue, Issues, IssuesJobIds, JobInfo, KnowledgeBaseArticle, LacpConfigurations, LambdaSettings, LaminarSsoDetails, LatestGpoSettings, LicensedProducts, ListAccessGrantingIdentities, ListAllUploadRecords, ListDataAccessIdentities, ListLinkedEntitiesForGpo, LockoutConfig, MfaSetting, MicrosoftGroups, MicrosoftSites, MinimumCdmVersionForFeatureSet, MipLabels, MultiHopUpgradePath, MysqlDatabase, MysqlDatabases, MysqlInstance, MysqlInstanceLiveMounts, MysqlInstances, NetworkThrottle, NfAnomalyResults, NfAnomalyResultsGrouped, NodeRemovalCancelPermission, NodeToReplace, NodeTunnelStatuses, NodesToRemoveByCount, OauthCodesForEdgeReg, ObjectFiles, ObjectTagKeys, ObjectTagValues, ObjectTypeAccessSummary, ObjectsAlreadyAssignedToOrgs, Org, Orgs, OrgsByIds, OrgsForPrincipal, OwnersFilterValues, PasskeyConfig, PasskeyInfo, PausedObjects, PendingAction, PendingActions, PhoenixRolloutProgress, PipelineHealthForTimeRange, PolarisInventorySubHierarchyRoot, PoliciesMaxLastEvaluatedAt, PolicyDetails, PolicyObj, PolicyObjFolderChildren, PolicyObjOpt, PolicyObjs, PolicyViolation, PolicyViolationHistoryEntries, PolicyViolations, PolicyViolationsByResource, PostgreSQLDatabase, PostgreSQLDatabases, PrechecksStatus, PrechecksStatusWithNextJobInfo, PrincipalApiPermissions, PrincipalAttributes, PrincipalCountsSummaries, PrincipalDepartments, PrincipalDetails, PrincipalEntities, PrincipalObjectSummaries, PrincipalRiskChanges, PrincipalRiskSummaries, PrincipalRiskTrend, PrincipalSummaries, PrincipalSummary, PrincipalTagStats, PrincipalTitles, PrivateContainerRegistry, PrivilegedPrincipalSummaries, ProductDocumentation, ProtectedObjectsList, ProtectedVolumesCount, ProtectionSummaryV2, PureStorageProtectionGroupQuiesceCandidates, PureStorageProtectionGroupV1, PureStorageProtectionGroupsV1, PureStorageVolumeV1, PureStorageVolumesV1, QuarantinedDetailsForWorkload, QueryDatastoreFreespaceThresholds, Recoveries, RecoveryPlansBasicInfo, RecoverySpecs, Regions, RemediationTypes, RemovedNodeDetails, ResetTypeOfRemovalJob, ResourceGroups, ResourceSpecs, RoleTemplates, RscPermsToCdmInfo, RscpUpgradeStatus, RvcDeploymentToolLink, RvcLsOvaDetails, RvcSsOvaDetails, S3TablesIcebergInventoryStats, SaasAppCascadingImpact, SaasAppOrganizations, SaasWorkloadMetadataTypes, SalesforceObjects, ScriptsForManualPermissionValidation, SearchCloudDirectWorkload, SearchFileByPrefix, SecurityFeatureSupportedObjectTypes, SelfServeRollingUpgrade, SensitiveDataSummary, SensitiveFileDetails, SigninLogDetails, SigninLogFilterValues, SigninLogs, SnoozedDirectories, SourceRecoverySpecsV2, SqlServerSetupScriptsBulk, SsmDocumentForEc2, SsoGroupAlreadyExists, StaticRoutes, SupportBundle, SupportCase, SupportCaseAttachmentContent, SupportCaseAttachments, SupportCaseComments, SupportCases, SupportPortalRole, SupportUserAccesses, TableFilters, TaskDetailGroupByList, TaskDetailList, Taskchain, TeamChannelNameAvailable, TopRiskPrincipals, TotpConfigStatus, TprConfiguration, TprPublicConfiguration, TprRequestDetail, TprRequestSummaries, TprRoleEligibility, TprRulesMap, TprStatusForNodeRemoval, TunnelStatus, UnifiedUnregisteredDomainControllers, UniqueVcdCount, UnmanagedObjects, UnmanagedObjectsSupportedTypes, UpgradePathEligibility, UpgradeStatus, UserAccessInsights, UserAccessMetrics, UserActivities, UserAlreadyExists, UserAnalyzerAccess, UserAuditList, UserDetail, UserFile, UserFiles, UserGroups, UserSessionManagementConfig, UserSettings, UsersInCurrentAndDescendantOrganization, UsersOnAccountList, UsersSummary, ValidRegionsForDynamoDbRecovery, ValidateAdForestTransition, ValidateIocEntry, ValidateOrgName, ValidateOutpostAccountNetwork, ValidateRdsExportExocomputePort, ValidateRoleName, ValidateScriptOutputForManualPermissionValidation, VcdOrgs, VcdTopLevelDescendants, VcdVappVms, VcdVapps, VerifyTotp, ViolationsCategorySummary, ViolationsEnvironmentSummary, VirtualMachineFiles, VmRecoveryJobsInfo, VolumeGroupMounts, WorkdayIngestionStatus, WorkloadAlertSetting, WorkloadAnomalies, WorkloadForeverId, WorkloadResourceSpecs, WorkloadsProtectionDetails, or WorkloadsRecoveryInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -13648,6 +13648,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SecurityFeatureSupportedObjectTypes operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SecurityFeatureSupportedObjectTypes
+    /// 
+    /// $query = New-RscQueryMisc -Operation SecurityFeatureSupportedObjectTypes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.product = $someDtaProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DtaProduct]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;ManagedObjectType&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SelfServeRollingUpgrade operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -16447,6 +16475,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -16729,6 +16761,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -17613,6 +17649,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ScriptsForManualPermissionValidation",
                 "SearchCloudDirectWorkload",
                 "SearchFileByPrefix",
+                "SecurityFeatureSupportedObjectTypes",
                 "SelfServeRollingUpgrade",
                 "SensitiveDataSummary",
                 "SensitiveFileDetails",
@@ -18572,6 +18609,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SearchFileByPrefix":
                         this.ProcessRecord_SearchFileByPrefix();
+                        break;
+                    case "SecurityFeatureSupportedObjectTypes":
+                        this.ProcessRecord_SecurityFeatureSupportedObjectTypes();
                         break;
                     case "SelfServeRollingUpgrade":
                         this.ProcessRecord_SelfServeRollingUpgrade();
@@ -21416,6 +21456,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SearchFileByPrefix";
             // Create new graphql operation searchFileByPrefix
             InitQuerySearchFileByPrefix();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allSecurityFeatureSupportedObjectTypes.
+        internal void ProcessRecord_SecurityFeatureSupportedObjectTypes()
+        {
+            this._logger.name += " -SecurityFeatureSupportedObjectTypes";
+            // Create new graphql operation allSecurityFeatureSupportedObjectTypes
+            InitQueryAllSecurityFeatureSupportedObjectTypes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -35010,6 +35059,26 @@ $query.Var.filenamePrefix = $someString"
         }
 
         // Create new GraphQL Query:
+        // allSecurityFeatureSupportedObjectTypes(product: DtaProduct!): [ManagedObjectType!]!
+        internal void InitQueryAllSecurityFeatureSupportedObjectTypes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("product", "DtaProduct!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllSecurityFeatureSupportedObjectTypes",
+                "($product: DtaProduct!)",
+                "List<ManagedObjectType>",
+                Query.AllSecurityFeatureSupportedObjectTypes,
+                Query.AllSecurityFeatureSupportedObjectTypesFieldSpec,
+                @"# REQUIRED
+$query.Var.product = $someDtaProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DtaProduct]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // selfServeRollingUpgrade: GetSelfServeRollingUpgradeReply!
         internal void InitQuerySelfServeRollingUpgrade()
         {
@@ -37542,6 +37611,8 @@ $query.Var.input = @{
         // vcdOrgs(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -37551,6 +37622,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -37559,7 +37632,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryVcdOrgs",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VcdOrgConnection",
                 Query.VcdOrgs,
                 Query.VcdOrgsFieldSpec,
@@ -37567,6 +37640,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -37833,6 +37910,8 @@ $query.Var.filter = @(
         // vcdVapps(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -37842,6 +37921,8 @@ $query.Var.filter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -37850,7 +37931,7 @@ $query.Var.filter = @(
                 argDefs,
                 "query",
                 "QueryVcdVapps",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VcdVappConnection",
                 Query.VcdVapps,
                 Query.VcdVappsFieldSpec,
@@ -37858,6 +37939,10 @@ $query.Var.filter = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

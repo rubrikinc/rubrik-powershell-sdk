@@ -120,9 +120,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SOUTHAMERICA_WEST1")]
         SOUTHAMERICA_WEST1,
 
-        [EnumMember(Value = "UNKNOWN_GCP_REGION")]
-        UNKNOWN_GCP_REGION,
-
         [EnumMember(Value = "US_CENTRAL1")]
         US_CENTRAL1,
 

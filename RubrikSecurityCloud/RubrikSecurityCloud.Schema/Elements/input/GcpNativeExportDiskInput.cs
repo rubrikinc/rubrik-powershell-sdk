@@ -59,18 +59,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetDiskSizeGb")]
         public System.Int32? TargetDiskSizeGb { get; set; }
 
-        //      C# -> System.Boolean? ReplaceAttached
-        // GraphQL -> replaceAttached: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("replaceAttached")]
-        public System.Boolean? ReplaceAttached { get; set; }
-
-        //      C# -> List<System.String>? ReplicaZones
-        // GraphQL -> replicaZones: [String!] (scalar)
-        [JsonProperty("replicaZones")]
-        public List<System.String>? ReplicaZones { get; set; }
-
         //      C# -> System.Boolean? ShouldCopyLabels
         // GraphQL -> shouldCopyLabels: Boolean! (scalar)
         [Required]
@@ -102,15 +90,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsCryptoKeyResourceId")]
         public System.String? KmsCryptoKeyResourceId { get; set; }
 
+        //      C# -> System.Boolean? ReplaceAttached
+        // GraphQL -> replaceAttached: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("replaceAttached")]
+        public System.Boolean? ReplaceAttached { get; set; }
+
+        //      C# -> List<System.String>? ReplicaZones
+        // GraphQL -> replicaZones: [String!] (scalar)
+        [JsonProperty("replicaZones")]
+        public List<System.String>? ReplicaZones { get; set; }
+
         //      C# -> System.String? TargetGcpProjectRubrikId
         // GraphQL -> targetGcpProjectRubrikId: UUID (scalar)
         [JsonProperty("targetGcpProjectRubrikId")]
         public System.String? TargetGcpProjectRubrikId { get; set; }
-
-        //      C# -> GcpSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: GcpSnapshotType (enum)
-        [JsonProperty("snapshotType")]
-        public GcpSnapshotType? SnapshotType { get; set; }
 
         //      C# -> System.String? ArchivedSnapshotId
         // GraphQL -> archivedSnapshotId: UUID (scalar)
@@ -121,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
         [JsonProperty("recoveryPurpose")]
         public RecoveryPurpose? RecoveryPurpose { get; set; }
+
+        //      C# -> GcpSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: GcpSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public GcpSnapshotType? SnapshotType { get; set; }
 
 
         #endregion

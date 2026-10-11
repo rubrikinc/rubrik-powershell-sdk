@@ -19,3 +19,12 @@ Represents the statistics related to the threat hunt.
   - Total number of IOCs.
 - totalProcessedSnapshots: System.Int64
   - Total number of snapshots that are processed.
+- totalRegistryKeyMatches: System.Int64
+  - Total number of Windows registry key matches.
+- totalRegistryAffectedObjects: System.Int64
+  - Total objects with at least one Windows registry key match. An object with
+both file and registry matches is also counted in the total affected
+objects.
+- totalRegistryPatterns: System.Int64
+  - Total number of Windows registry key patterns, which are not included in
+the total number of IOCs.

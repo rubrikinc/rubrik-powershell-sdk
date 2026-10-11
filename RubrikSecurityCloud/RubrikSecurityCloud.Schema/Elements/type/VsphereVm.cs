@@ -503,6 +503,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] vSphereLiveMountsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "[VsphereLiveMountFilterInput!]"),
                     Tuple.Create("sortBy", "VsphereLiveMountSortBy"),
                     Tuple.Create("sortOrder", "SortOrder"),
@@ -512,6 +514,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] vSphereMountsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "VSphereMountFilter"),
                     Tuple.Create("sortBy", "VsphereMountSortBy"),
                     Tuple.Create("sortOrder", "SortOrder"),
@@ -521,6 +525,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] vsphereVirtualDisksArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "VsphereVirtualDiskFilter"),
                     Tuple.Create("sortBy", "VsphereVirtualDiskSortBy"),
                     Tuple.Create("sortOrder", "SortOrder"),

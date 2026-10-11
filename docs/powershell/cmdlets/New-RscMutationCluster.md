@@ -11,7 +11,10 @@ Add nodes to the CDM cluster.
 - There is a single argument of type AddClusterNodesInput.
 - Returns AddClusterNodesReply.
 ### addclusterroute
-Add a new route config to all hosts in a Rubrik cluster. Supported in Rubrik CDM v5.0+
+Add a new route config to all hosts
+
+Supported in v5.0+
+Add a new route config to all hosts.
 
 - There is a single argument of type AddClusterRouteInput.
 - Returns AddClusterRouteReply.
@@ -29,7 +32,10 @@ Start an asynchronous job to create an instance of PostgreSQL database cluster.
 - There is a single argument of type AddPostgreSqlDbClusterInput.
 - Returns AddPostgreSqlDbClusterReply.
 ### deleteclusterroute
-Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
+Delete an existing route
+
+Supported in v5.0+
+Delete an existing route that was configured.
 
 - There is a single argument of type DeleteClusterRouteInput.
 - Returns System.String.

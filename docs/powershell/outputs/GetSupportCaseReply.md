@@ -45,3 +45,6 @@ Details of a single support case.
   - Component for the support case.
 - resolutionDetails: System.String
   - Resolution details for the support case.
+- rscCaseLink: System.String
+  - URL to view the case in RSC support portal when REL_ENABLE_SUPPORT_PORTAL is enabled.
+Prefer this for in-app navigation over the external caseLink when present.

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataTypeResults")]
         public List<DataTypeResults>? DataTypeResults { get; set; }
 
+        //      C# -> SecurityFeaturesStatus? SecurityFeaturesStatus
+        // GraphQL -> securityFeaturesStatus: SecurityFeaturesStatus (type)
+        [JsonProperty("securityFeaturesStatus")]
+        public SecurityFeaturesStatus? SecurityFeaturesStatus { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsLaminarEnabled = null,
         System.Int64? LowSensitiveHits = null,
         System.Int64? MediumSensitiveHits = null,
-        List<DataTypeResults>? DataTypeResults = null
+        List<DataTypeResults>? DataTypeResults = null,
+        SecurityFeaturesStatus? SecurityFeaturesStatus = null
     ) 
     {
         if ( SensitivityStatus != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DataTypeResults != null ) {
             this.DataTypeResults = DataTypeResults;
+        }
+        if ( SecurityFeaturesStatus != null ) {
+            this.SecurityFeaturesStatus = SecurityFeaturesStatus;
         }
         return this;
     }
@@ -154,6 +163,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "dataTypeResults" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SecurityFeaturesStatus? SecurityFeaturesStatus
+        // GraphQL -> securityFeaturesStatus: SecurityFeaturesStatus (type)
+        if (this.SecurityFeaturesStatus != null) {
+            var fspec = this.SecurityFeaturesStatus.AsFieldSpec(conf.Child("securityFeaturesStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "securityFeaturesStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,6 +288,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataTypeResults != null && ec.Excludes("dataTypeResults",false))
         {
             this.DataTypeResults = null;
+        }
+        //      C# -> SecurityFeaturesStatus? SecurityFeaturesStatus
+        // GraphQL -> securityFeaturesStatus: SecurityFeaturesStatus (type)
+        if (ec.Includes("securityFeaturesStatus",false))
+        {
+            if(this.SecurityFeaturesStatus == null) {
+
+                this.SecurityFeaturesStatus = new SecurityFeaturesStatus();
+                this.SecurityFeaturesStatus.ApplyExploratoryFieldSpec(ec.NewChild("securityFeaturesStatus"));
+
+            } else {
+
+                this.SecurityFeaturesStatus.ApplyExploratoryFieldSpec(ec.NewChild("securityFeaturesStatus"));
+
+            }
+        }
+        else if (this.SecurityFeaturesStatus != null && ec.Excludes("securityFeaturesStatus",false))
+        {
+            this.SecurityFeaturesStatus = null;
         }
     }
 

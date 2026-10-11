@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? InProgressRscObjectCount
+        // GraphQL -> inProgressRscObjectCount: Int! (scalar)
+        [JsonProperty("inProgressRscObjectCount")]
+        public System.Int32? InProgressRscObjectCount { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -170,6 +175,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? FilesTotal = null,
         System.Int64? FilesWithHits = null,
         System.String? Id = null,
+        System.Int32? InProgressRscObjectCount = null,
         System.String? Name = null,
         System.Single? Progress = null,
         System.Int64? StartTime = null,
@@ -209,6 +215,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( InProgressRscObjectCount != null ) {
+            this.InProgressRscObjectCount = InProgressRscObjectCount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -336,6 +345,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Int32? InProgressRscObjectCount
+        // GraphQL -> inProgressRscObjectCount: Int! (scalar)
+        if (this.InProgressRscObjectCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "inProgressRscObjectCount\n" ;
+            } else {
+                s += ind + "inProgressRscObjectCount\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -617,6 +635,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Int32? InProgressRscObjectCount
+        // GraphQL -> inProgressRscObjectCount: Int! (scalar)
+        if (ec.Includes("inProgressRscObjectCount",true))
+        {
+            if(this.InProgressRscObjectCount == null) {
+
+                this.InProgressRscObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.InProgressRscObjectCount != null && ec.Excludes("inProgressRscObjectCount",true))
+        {
+            this.InProgressRscObjectCount = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

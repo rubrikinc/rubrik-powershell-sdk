@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("localInfo")]
         public SnapshotLocationDetail? LocalInfo { get; set; }
 
+        //      C# -> SnapshotLocationDetail? RehydratedInfo
+        // GraphQL -> rehydratedInfo: SnapshotLocationDetail (type)
+        [JsonProperty("rehydratedInfo")]
+        public SnapshotLocationDetail? RehydratedInfo { get; set; }
+
         //      C# -> List<SnapshotLocationDetail>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationDetail!] (type)
         [JsonProperty("replicationInfos")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public AggregateSnapshotLocationDetail Set(
         List<SnapshotLocationDetail>? ArchivalInfos = null,
         SnapshotLocationDetail? LocalInfo = null,
+        SnapshotLocationDetail? RehydratedInfo = null,
         List<SnapshotLocationDetail>? ReplicationInfos = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LocalInfo != null ) {
             this.LocalInfo = LocalInfo;
+        }
+        if ( RehydratedInfo != null ) {
+            this.RehydratedInfo = RehydratedInfo;
         }
         if ( ReplicationInfos != null ) {
             this.ReplicationInfos = ReplicationInfos;
@@ -94,6 +103,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "localInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SnapshotLocationDetail? RehydratedInfo
+        // GraphQL -> rehydratedInfo: SnapshotLocationDetail (type)
+        if (this.RehydratedInfo != null) {
+            var fspec = this.RehydratedInfo.AsFieldSpec(conf.Child("rehydratedInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rehydratedInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -153,6 +174,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LocalInfo != null && ec.Excludes("localInfo",false))
         {
             this.LocalInfo = null;
+        }
+        //      C# -> SnapshotLocationDetail? RehydratedInfo
+        // GraphQL -> rehydratedInfo: SnapshotLocationDetail (type)
+        if (ec.Includes("rehydratedInfo",false))
+        {
+            if(this.RehydratedInfo == null) {
+
+                this.RehydratedInfo = new SnapshotLocationDetail();
+                this.RehydratedInfo.ApplyExploratoryFieldSpec(ec.NewChild("rehydratedInfo"));
+
+            } else {
+
+                this.RehydratedInfo.ApplyExploratoryFieldSpec(ec.NewChild("rehydratedInfo"));
+
+            }
+        }
+        else if (this.RehydratedInfo != null && ec.Excludes("rehydratedInfo",false))
+        {
+            this.RehydratedInfo = null;
         }
         //      C# -> List<SnapshotLocationDetail>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationDetail!] (type)

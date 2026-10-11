@@ -115,6 +115,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resolutionDetails")]
         public System.String? ResolutionDetails { get; set; }
 
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        [JsonProperty("rscCaseLink")]
+        public System.String? RscCaseLink { get; set; }
+
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
@@ -159,6 +164,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Origin = null,
         System.String? ProductLine = null,
         System.String? ResolutionDetails = null,
+        System.String? RscCaseLink = null,
         System.String? Status = null,
         System.String? Subject = null,
         System.String? Type = null
@@ -220,6 +226,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ResolutionDetails != null ) {
             this.ResolutionDetails = ResolutionDetails;
+        }
+        if ( RscCaseLink != null ) {
+            this.RscCaseLink = RscCaseLink;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -413,6 +422,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "resolutionDetails\n" ;
             } else {
                 s += ind + "resolutionDetails\n" ;
+            }
+        }
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        if (this.RscCaseLink != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rscCaseLink\n" ;
+            } else {
+                s += ind + "rscCaseLink\n" ;
             }
         }
         //      C# -> System.String? Status
@@ -771,6 +789,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ResolutionDetails != null && ec.Excludes("resolutionDetails",true))
         {
             this.ResolutionDetails = null;
+        }
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        if (ec.Includes("rscCaseLink",true))
+        {
+            if(this.RscCaseLink == null) {
+
+                this.RscCaseLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscCaseLink != null && ec.Excludes("rscCaseLink",true))
+        {
+            this.RscCaseLink = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)

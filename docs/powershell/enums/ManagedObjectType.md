@@ -260,6 +260,7 @@ in this hierarchy.
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups metadata snappable -- one per org, backed by saasapps_fixed_objects.
 Stores group settings and membership data for all groups in the org.
 - GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings container -- one per org, backed by saasapps_fixed_objects.
+- GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

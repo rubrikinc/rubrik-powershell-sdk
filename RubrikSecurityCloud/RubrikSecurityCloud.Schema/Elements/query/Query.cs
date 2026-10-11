@@ -145,6 +145,24 @@ namespace RubrikSecurityCloud.Types
             return new List<FilterType>() ;
         }
 
+        //      C# -> List<ManagedObjectType>? AllSecurityFeatureSupportedObjectTypes
+        // GraphQL -> allSecurityFeatureSupportedObjectTypes: [ManagedObjectType!]! (enum)
+        public static string AllSecurityFeatureSupportedObjectTypes(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nproduct: $product\n)";
+            return "allSecurityFeatureSupportedObjectTypes" + args + "\n";
+        }
+        public static object AllSecurityFeatureSupportedObjectTypesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return new List<ManagedObjectType>() ;
+        }
+
         //      C# -> List<ManagedObjectType>? AllUnmanagedObjectsSupportedTypes
         // GraphQL -> allUnmanagedObjectsSupportedTypes: [ManagedObjectType!]! (enum)
         public static string AllUnmanagedObjectsSupportedTypes(object fsObj)
@@ -3279,24 +3297,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<GcpCloudAccountProjectForOauth>() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> List<GcpNativeKmsCryptoKey>? AllGcpNativeAvailableKmsCryptoKeys
-        // GraphQL -> allGcpNativeAvailableKmsCryptoKeys: [GcpNativeKmsCryptoKey!]! (type)
-        public static string AllGcpNativeAvailableKmsCryptoKeys(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nprojectId: $projectId\nregionName: $regionName\n)";
-            return "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object AllGcpNativeAvailableKmsCryptoKeysFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new List<GcpNativeKmsCryptoKey>() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8238,7 +8238,7 @@ namespace RubrikSecurityCloud.Types
         public static string ClusterReportMigrationStatus(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nclusterUuid: $clusterUuid\nstatus: $status\n)";
             return "clusterReportMigrationStatus" + args + "\n{\n" + fs + "}\n";
         }
         public static object ClusterReportMigrationStatusFieldSpec(AutofieldContext? ec=null)
@@ -13692,7 +13692,7 @@ namespace RubrikSecurityCloud.Types
         public static string NasNamespaces(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasNamespaces" + args + "\n{\n" + fs + "}\n";
         }
         public static object NasNamespacesFieldSpec(AutofieldContext? ec=null)
@@ -13728,7 +13728,7 @@ namespace RubrikSecurityCloud.Types
         public static string NasShares(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasShares" + args + "\n{\n" + fs + "}\n";
         }
         public static object NasSharesFieldSpec(AutofieldContext? ec=null)
@@ -13764,7 +13764,7 @@ namespace RubrikSecurityCloud.Types
         public static string NasSystems(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasSystems" + args + "\n{\n" + fs + "}\n";
         }
         public static object NasSystemsFieldSpec(AutofieldContext? ec=null)
@@ -13782,7 +13782,7 @@ namespace RubrikSecurityCloud.Types
         public static string NasTopLevelDescendants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "nasTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
         public static object NasTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
@@ -19146,7 +19146,7 @@ namespace RubrikSecurityCloud.Types
         public static string ThreatMonitoringMatchedObjects(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nobjectTypeFilter: $objectTypeFilter\nworkloadNameSearch: $workloadNameSearch\nmatchTypeFilter: $matchTypeFilter\nseverityFilter: $severityFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nobjectTypeFilter: $objectTypeFilter\nworkloadNameSearch: $workloadNameSearch\nmatchTypeFilter: $matchTypeFilter\nseverityFilter: $severityFilter\nmuteStatusFilter: $muteStatusFilter\n)";
             return "threatMonitoringMatchedObjects" + args + "\n{\n" + fs + "}\n";
         }
         public static object ThreatMonitoringMatchedObjectsFieldSpec(AutofieldContext? ec=null)
@@ -20766,7 +20766,7 @@ namespace RubrikSecurityCloud.Types
         public static string VcdOrgs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vcdOrgs" + args + "\n{\n" + fs + "}\n";
         }
         public static object VcdOrgsFieldSpec(AutofieldContext? ec=null)
@@ -20820,7 +20820,7 @@ namespace RubrikSecurityCloud.Types
         public static string VcdVapps(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vcdVapps" + args + "\n{\n" + fs + "}\n";
         }
         public static object VcdVappsFieldSpec(AutofieldContext? ec=null)

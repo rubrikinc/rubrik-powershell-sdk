@@ -2148,6 +2148,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldIncludeExchange = $someBoolean
     /// 		# REQUIRED
     /// 		shouldIncludeOneDrive = $someBoolean
+    /// 		# OPTIONAL
+    /// 		conflictRule = $someM365RecoveryConflictRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365RecoveryConflictRule]) for enum values.
     /// 	}
     /// }
     /// 
@@ -6063,6 +6065,8 @@ $query.Var.input = @{
 		shouldIncludeExchange = $someBoolean
 		# REQUIRED
 		shouldIncludeOneDrive = $someBoolean
+		# OPTIONAL
+		conflictRule = $someM365RecoveryConflictRule # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365RecoveryConflictRule]) for enum values.
 	}
 }"
             );

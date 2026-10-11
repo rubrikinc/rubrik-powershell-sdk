@@ -56,6 +56,8 @@ in the in-memory session store.
 - There is a single argument of type CompleteAzureDevOpsOauthInput.
 - Returns System.String.
 ### createaccount
+Creates a new Azure cloud account.
+
 - There is a single argument of type CreateAzureAccountInput.
 - Returns CloudAccount.
 ### createautomatictargetmapping
@@ -206,6 +208,8 @@ Unmaps the archival location from the subscription.
 - There is a single argument of type UnmapAzurePersistentStorageSubscriptionInput.
 - Returns System.String.
 ### updateaccount
+Updates an existing Azure cloud account.
+
 - There is a single argument of type UpdateAzureAccountInput.
 - Returns CloudAccount.
 ### updateautomatictargetmapping
@@ -222,6 +226,9 @@ Updates an existing Rubrik Cloud Vault Azure storage settings for the archival o
 - There is a single argument of type UpdateCloudNativeRcvAzureStorageSettingInput.
 - Returns UpdateCloudNativeRcvAzureStorageSettingReply.
 ### updatecloudnativestoragesetting
+Updates an existing storage setting for the archival of Azure cloud
+native protected objects.
+
 - There is a single argument of type UpdateCloudNativeAzureStorageSettingInput.
 - Returns UpdateCloudNativeAzureStorageSettingReply.
 ### updateclusterstorageaccountredundancy
@@ -242,6 +249,8 @@ existing Azure DevOps cloud account.
 - There is a single argument of type UpdateAzureDevOpsCloudAccountInput.
 - Returns System.String.
 ### updatetarget
+Updates an Azure archival target on the Rubrik cluster.
+
 - There is a single argument of type UpdateAzureTargetInput.
 - Returns Target.
 ### updatetenantforsubscription

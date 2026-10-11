@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXOCOMPUTE_CLUSTER_READY")]
         EXOCOMPUTE_CLUSTER_READY,
 
+        [EnumMember(Value = "M365_RECOVERY_PERMISSIONS")]
+        M365_RECOVERY_PERMISSIONS,
+
         [EnumMember(Value = "MSSQL_DISCOVERY")]
         MSSQL_DISCOVERY,
 

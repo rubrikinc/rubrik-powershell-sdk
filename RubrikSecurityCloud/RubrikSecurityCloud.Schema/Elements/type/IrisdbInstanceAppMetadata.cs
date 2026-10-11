@@ -25,10 +25,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotType")]
         public IrisdbSnapshotType? SnapshotType { get; set; }
 
+        //      C# -> System.String? InstanceVersion
+        // GraphQL -> instanceVersion: String (scalar)
+        [JsonProperty("instanceVersion")]
+        public System.String? InstanceVersion { get; set; }
+
+        //      C# -> List<System.String>? MountPaths
+        // GraphQL -> mountPaths: [String!]! (scalar)
+        [JsonProperty("mountPaths")]
+        public List<System.String>? MountPaths { get; set; }
+
         //      C# -> KosmosDataSnapshotStats? Stats
         // GraphQL -> stats: KosmosDataSnapshotStats! (type)
         [JsonProperty("stats")]
         public KosmosDataSnapshotStats? Stats { get; set; }
+
+        //      C# -> List<IrisdbSnapshotVolumeInfo>? Volumes
+        // GraphQL -> volumes: [IrisdbSnapshotVolumeInfo!]! (type)
+        [JsonProperty("volumes")]
+        public List<IrisdbSnapshotVolumeInfo>? Volumes { get; set; }
 
 
         #endregion
@@ -41,14 +56,26 @@ namespace RubrikSecurityCloud.Types
 
     public IrisdbInstanceAppMetadata Set(
         IrisdbSnapshotType? SnapshotType = null,
-        KosmosDataSnapshotStats? Stats = null
+        System.String? InstanceVersion = null,
+        List<System.String>? MountPaths = null,
+        KosmosDataSnapshotStats? Stats = null,
+        List<IrisdbSnapshotVolumeInfo>? Volumes = null
     ) 
     {
         if ( SnapshotType != null ) {
             this.SnapshotType = SnapshotType;
         }
+        if ( InstanceVersion != null ) {
+            this.InstanceVersion = InstanceVersion;
+        }
+        if ( MountPaths != null ) {
+            this.MountPaths = MountPaths;
+        }
         if ( Stats != null ) {
             this.Stats = Stats;
+        }
+        if ( Volumes != null ) {
+            this.Volumes = Volumes;
         }
         return this;
     }
@@ -73,6 +100,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "snapshotType\n" ;
             }
         }
+        //      C# -> System.String? InstanceVersion
+        // GraphQL -> instanceVersion: String (scalar)
+        if (this.InstanceVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceVersion\n" ;
+            } else {
+                s += ind + "instanceVersion\n" ;
+            }
+        }
+        //      C# -> List<System.String>? MountPaths
+        // GraphQL -> mountPaths: [String!]! (scalar)
+        if (this.MountPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mountPaths\n" ;
+            } else {
+                s += ind + "mountPaths\n" ;
+            }
+        }
         //      C# -> KosmosDataSnapshotStats? Stats
         // GraphQL -> stats: KosmosDataSnapshotStats! (type)
         if (this.Stats != null) {
@@ -82,6 +127,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "stats" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<IrisdbSnapshotVolumeInfo>? Volumes
+        // GraphQL -> volumes: [IrisdbSnapshotVolumeInfo!]! (type)
+        if (this.Volumes != null) {
+            var fspec = this.Volumes.AsFieldSpec(conf.Child("volumes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumes" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -109,6 +166,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.SnapshotType = null;
         }
+        //      C# -> System.String? InstanceVersion
+        // GraphQL -> instanceVersion: String (scalar)
+        if (ec.Includes("instanceVersion",true))
+        {
+            if(this.InstanceVersion == null) {
+
+                this.InstanceVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceVersion != null && ec.Excludes("instanceVersion",true))
+        {
+            this.InstanceVersion = null;
+        }
+        //      C# -> List<System.String>? MountPaths
+        // GraphQL -> mountPaths: [String!]! (scalar)
+        if (ec.Includes("mountPaths",true))
+        {
+            if(this.MountPaths == null) {
+
+                this.MountPaths = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountPaths != null && ec.Excludes("mountPaths",true))
+        {
+            this.MountPaths = null;
+        }
         //      C# -> KosmosDataSnapshotStats? Stats
         // GraphQL -> stats: KosmosDataSnapshotStats! (type)
         if (ec.Includes("stats",false))
@@ -127,6 +218,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Stats != null && ec.Excludes("stats",false))
         {
             this.Stats = null;
+        }
+        //      C# -> List<IrisdbSnapshotVolumeInfo>? Volumes
+        // GraphQL -> volumes: [IrisdbSnapshotVolumeInfo!]! (type)
+        if (ec.Includes("volumes",false))
+        {
+            if(this.Volumes == null) {
+
+                this.Volumes = new List<IrisdbSnapshotVolumeInfo>();
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            } else {
+
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            }
+        }
+        else if (this.Volumes != null && ec.Excludes("volumes",false))
+        {
+            this.Volumes = null;
         }
     }
 

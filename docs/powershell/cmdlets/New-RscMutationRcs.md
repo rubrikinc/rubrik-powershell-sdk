@@ -9,6 +9,8 @@ Creates reader type for RCS Azure archival location on a CDM cluster.
 - There is a single argument of type CreateRcsReaderTargetInput.
 - Returns Target.
 ### creatercstarget
+Creates an RCS Azure archival target on the Rubrik cluster.
+
 - There is a single argument of type CreateRcsTargetInput.
 - Returns Target.
 ### updatercsautomatictargetmapping

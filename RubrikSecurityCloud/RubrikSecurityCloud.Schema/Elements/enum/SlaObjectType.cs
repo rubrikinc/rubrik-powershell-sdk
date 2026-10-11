@@ -120,6 +120,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_OBJECT_TYPE")]
         K8S_OBJECT_TYPE,
 
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER_OBJECT_TYPE")]
+        K8S_POSTGRES_DB_CLUSTER_OBJECT_TYPE,
+
         [EnumMember(Value = "KUPR_OBJECT_TYPE")]
         KUPR_OBJECT_TYPE,
 

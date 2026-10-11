@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectsWithFeatures")]
         public List<ProjectWithFeatures>? ProjectsWithFeatures { get; set; }
 
+        //      C# -> GcpPcrConfig? PcrConfig
+        // GraphQL -> pcrConfig: GcpPcrConfig (input)
+        [JsonProperty("pcrConfig")]
+        public GcpPcrConfig? PcrConfig { get; set; }
+
         //      C# -> ProjectIdToServiceAccount? ProjectIdToServiceAccount
         // GraphQL -> projectIdToServiceAccount: ProjectIdToServiceAccount (input)
         [JsonProperty("projectIdToServiceAccount")]

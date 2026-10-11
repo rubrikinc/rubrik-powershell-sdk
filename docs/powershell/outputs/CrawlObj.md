@@ -16,6 +16,8 @@
 - analyzerGroupResults: list of AnalyzerGroupResults
 - error: System.String
 - totalHits: System.Int32
+- errorReason: CrawlObjErrorReason
+  - Structured reason this crawl object failed, when it did.
 - fileResultConnection: FileResultConnection
   - Browses the file classification results within this crawl object.
 - cluster: Cluster

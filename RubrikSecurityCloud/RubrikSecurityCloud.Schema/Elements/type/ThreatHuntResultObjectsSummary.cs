@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalMatchedSnapshots")]
         public System.Int32? TotalMatchedSnapshots { get; set; }
 
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        [JsonProperty("totalRegistryKeyMatches")]
+        public System.Int64? TotalRegistryKeyMatches { get; set; }
+
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
         [JsonProperty("totalUniqueMatchedPaths")]
@@ -110,6 +115,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Location = null,
         System.Int64? TotalMatchedPaths = null,
         System.Int32? TotalMatchedSnapshots = null,
+        System.Int64? TotalRegistryKeyMatches = null,
         System.Int64? TotalUniqueMatchedPaths = null,
         Cluster? ClusterInfo = null,
         List<IndicatorOfCompromise>? MatchTypes = null,
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalMatchedSnapshots != null ) {
             this.TotalMatchedSnapshots = TotalMatchedSnapshots;
+        }
+        if ( TotalRegistryKeyMatches != null ) {
+            this.TotalRegistryKeyMatches = TotalRegistryKeyMatches;
         }
         if ( TotalUniqueMatchedPaths != null ) {
             this.TotalUniqueMatchedPaths = TotalUniqueMatchedPaths;
@@ -268,6 +277,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalMatchedSnapshots\n" ;
             } else {
                 s += ind + "totalMatchedSnapshots\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (this.TotalRegistryKeyMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryKeyMatches\n" ;
+            } else {
+                s += ind + "totalRegistryKeyMatches\n" ;
             }
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
@@ -505,6 +523,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalMatchedSnapshots != null && ec.Excludes("totalMatchedSnapshots",true))
         {
             this.TotalMatchedSnapshots = null;
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (ec.Includes("totalRegistryKeyMatches",true))
+        {
+            if(this.TotalRegistryKeyMatches == null) {
+
+                this.TotalRegistryKeyMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryKeyMatches != null && ec.Excludes("totalRegistryKeyMatches",true))
+        {
+            this.TotalRegistryKeyMatches = null;
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)

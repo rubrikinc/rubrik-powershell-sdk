@@ -35,12 +35,12 @@ Retrieve the status of the cluster report migration job.
 Retrieve details of the Rubrik clusters' reports migration.
 
 - There are 6 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - clusterUuid - System.String: The Rubrik cluster ID.
+    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
 - Returns ReportMigrationStatusConnection.
 ### custom
 Retrieves reports created by users with pagination support.

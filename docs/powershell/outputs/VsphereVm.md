@@ -1,44 +1,60 @@
 ### VsphereVm
+A vSphere virtual machine.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmId: System.String
+  - The ID of the workload on the Rubrik cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - isRelic: System.Boolean
+  - Whether the virtual machine is a relic.
 - guestOsName: System.String
-- powerStatus: VmPowerStatus
-- vmwareToolsInstalled: System.Boolean
-- vsphereTagPath: list of PathNodes
+  - Guest OS name of the virtual machine.
 - isBlueprintChild: System.Boolean
   - Specifies whether the virtual machine is a child of a disaster recovery or local recovery Plan.
 - isActive: System.Boolean
   - Specifies whether the virtual machine is active or not.
-- blueprintName: System.String
-  - Name of the Recovery Plan when the virtual machine is a child of the Recovery Plan.
 - blueprintId: System.String
   - ID of the recovery plan when the virtual machine is a child of the recovery plan.
+- blueprintName: System.String
+  - Name of the Recovery Plan when the virtual machine is a child of the Recovery Plan.
 - isArrayIntegrationPossible: System.Boolean
   - If Virtual Machine integration with storage array is possible.
 - guestCredentialId: System.String
   - ID of guest credential assigned to the virtual machine.
 - templateType: VmwareTemplateType
   - VMware virtual machine template type.
-- resourceSpec: VmwareVmResourceSpec
-  - Resource specification for a virtual machine.
 - parentResourcePoolId: System.String
   - ID of the parent resource pool.
-- snapshotConsistencySource: System.String
-  - Fid of the object from where the snapshot consistency mandate is inherited.
+- powerStatus: VmPowerStatus
+  - Power status of the virtual machine.
+- vmwareToolsInstalled: System.Boolean
+  - Whether VMware tools are installed.
 - parentWorkloadIdOpt: System.String
   - Parent ID of this workload.
 - parentWorkloadTypeOpt: System.String
   - Parent workload type of this workload.
-- id: System.String
-  - Object ID.
-- vSphereMounts: VsphereMountConnection
-  - List of Live Mounts for this virtual machine.
-- vSphereLiveMounts: VsphereLiveMountConnection
-  - List of Live Mounts for this virtual machine.
-- vsphereVirtualDisks: VsphereVirtualDiskConnection
-  - List of virtual disks for this virtual machine.
-- reportWorkload: Snappable
-  - Contains statistics for the protected objects, for example, capacity.
+- vsphereTagPath: list of PathNodes
+  - The vSphere tag path for this virtual machine.
+- snapshotConsistencySource: System.String
+  - ID of the object from which the snapshot consistency mandate is inherited.
 - agentStatus: AgentStatus
   - Rubrik Backup Service (RBS) agent status on this virtual machine.
 - arrayIntegrationEnabled: System.Boolean
@@ -60,15 +76,45 @@
 - duplicatedVms: list of DuplicatedVms
   - List of duplicated virtual machines.
 - linkedActiveVm: LinkedActiveVm
-  - The active virtual machine in a linked group for this virtual machine. Returns the active virtual machine for any inactive member (relic or unarchived). Returns null for virtual machines not in a group or already active. Used to show 'inactive member' banner with link to active virtual machine.
+  - The active virtual machine in a linked group for this virtual machine.
+- reportWorkload: Snappable
+  - Contains statistics for the protected objects, for example, capacity.
+- vSphereMounts: VsphereMountConnection
+  - List of Live Mounts for this virtual machine.
+- vSphereLiveMounts: VsphereLiveMountConnection
+  - List of Live Mounts for this virtual machine.
+- vsphereVirtualDisks: VsphereVirtualDiskConnection
+  - List of virtual disks for this virtual machine.
+- resourceSpec: VmwareVmResourceSpec
+  - Resource specification for a virtual machine.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -81,48 +127,10 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
-- objectPauseStatus: ObjectPauseStatus
-  - Pause status of the hierarchy object.
-- objectBackupWindow: ObjectBackupWindowStatus
-  - Object-level backup window status of the hierarchy object.
-- legallyHeldSnapshotCount: System.Int32
-  - Number of snapshots on legal hold for this object.
-- futureLegalHoldInfo: FutureLegalHoldInfo
-  - Future legal hold rule configured for this object, if any.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

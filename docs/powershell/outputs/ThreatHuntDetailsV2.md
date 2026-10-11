@@ -23,5 +23,7 @@ the threat hunt. This can be used to provide a warning for turbo threat
 hunts that the hunt is not conclusive.
 - baseConfig: ThreatHuntBaseConfig
   - The configuration of the threat hunt.
+- totalRegistryKeyMatches: System.Int64
+  - Total number of Windows registry key matches.
 - clusters: list of Clusters
   - The Rubrik clusters associated with the threat hunt.

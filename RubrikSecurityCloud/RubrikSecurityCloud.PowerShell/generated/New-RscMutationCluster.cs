@@ -1448,6 +1448,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			systemUsername = $someString
     /// 			# OPTIONAL
+    /// 			postgresAutomatedRestoreDatabaseDetails = @{
+    /// 				# OPTIONAL
+    /// 				databasePrefixName = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			shouldRestoreAsReplica = $someBoolean
     /// 			# OPTIONAL
     /// 			shouldOverrideConfFiles = $someBoolean
@@ -1473,6 +1478,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					shouldUseCustomRestartScript = $someBoolean
     /// 					# OPTIONAL
     /// 					systemUsername = $someString
+    /// 					# OPTIONAL
+    /// 					postgresAutomatedRestoreDatabaseDetails = @{
+    /// 						# OPTIONAL
+    /// 						databasePrefixName = $someString
+    /// 					}
     /// 					# OPTIONAL
     /// 					shouldRestoreAsReplica = $someBoolean
     /// 					# OPTIONAL
@@ -3500,6 +3510,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			systemUsername = $someString
 			# OPTIONAL
+			postgresAutomatedRestoreDatabaseDetails = @{
+				# OPTIONAL
+				databasePrefixName = $someString
+			}
+			# OPTIONAL
 			shouldRestoreAsReplica = $someBoolean
 			# OPTIONAL
 			shouldOverrideConfFiles = $someBoolean
@@ -3525,6 +3540,11 @@ $query.Var.input = @{
 					shouldUseCustomRestartScript = $someBoolean
 					# OPTIONAL
 					systemUsername = $someString
+					# OPTIONAL
+					postgresAutomatedRestoreDatabaseDetails = @{
+						# OPTIONAL
+						databasePrefixName = $someString
+					}
 					# OPTIONAL
 					shouldRestoreAsReplica = $someBoolean
 					# OPTIONAL

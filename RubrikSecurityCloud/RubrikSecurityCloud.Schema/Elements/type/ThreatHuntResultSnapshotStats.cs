@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalMatchedPaths")]
         public System.Int64? TotalMatchedPaths { get; set; }
 
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        [JsonProperty("totalRegistryKeyMatches")]
+        public System.Int64? TotalRegistryKeyMatches { get; set; }
+
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         [JsonProperty("matchTypes")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? SnapshotDate = null,
         System.String? SnapshotFid = null,
         System.Int64? TotalMatchedPaths = null,
+        System.Int64? TotalRegistryKeyMatches = null,
         List<IndicatorOfCompromise>? MatchTypes = null
     ) 
     {
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalMatchedPaths != null ) {
             this.TotalMatchedPaths = TotalMatchedPaths;
+        }
+        if ( TotalRegistryKeyMatches != null ) {
+            this.TotalRegistryKeyMatches = TotalRegistryKeyMatches;
         }
         if ( MatchTypes != null ) {
             this.MatchTypes = MatchTypes;
@@ -179,6 +188,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalMatchedPaths\n" ;
             } else {
                 s += ind + "totalMatchedPaths\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (this.TotalRegistryKeyMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryKeyMatches\n" ;
+            } else {
+                s += ind + "totalRegistryKeyMatches\n" ;
             }
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
@@ -318,6 +336,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalMatchedPaths != null && ec.Excludes("totalMatchedPaths",true))
         {
             this.TotalMatchedPaths = null;
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (ec.Includes("totalRegistryKeyMatches",true))
+        {
+            if(this.TotalRegistryKeyMatches == null) {
+
+                this.TotalRegistryKeyMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryKeyMatches != null && ec.Excludes("totalRegistryKeyMatches",true))
+        {
+            this.TotalRegistryKeyMatches = null;
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)

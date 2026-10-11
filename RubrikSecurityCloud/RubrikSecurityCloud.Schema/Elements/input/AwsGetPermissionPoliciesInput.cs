@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AwsNativeId
-        // GraphQL -> awsNativeId: String (scalar)
-        [JsonProperty("awsNativeId")]
-        public System.String? AwsNativeId { get; set; }
-
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType (enum)
         [JsonProperty("cloudType")]
@@ -43,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] (input)
         [JsonProperty("featuresWithPermissionsGroups")]
         public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups { get; set; }
+
+        //      C# -> System.String? AwsNativeId
+        // GraphQL -> awsNativeId: String (scalar)
+        [JsonProperty("awsNativeId")]
+        public System.String? AwsNativeId { get; set; }
 
 
         #endregion

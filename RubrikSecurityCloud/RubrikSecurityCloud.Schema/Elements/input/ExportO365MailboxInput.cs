@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("skipRifItems")]
         public System.Boolean? SkipRifItems { get; set; }
 
+        //      C# -> System.String? LeaseId
+        // GraphQL -> leaseId: String (scalar)
+        [JsonProperty("leaseId")]
+        public System.String? LeaseId { get; set; }
+
 
         #endregion
 

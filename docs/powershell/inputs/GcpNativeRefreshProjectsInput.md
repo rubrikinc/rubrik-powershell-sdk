@@ -1,5 +1,5 @@
 ### GcpNativeRefreshProjectsInput
-Input to refresh GCP native projects.
+Input to refresh GCP projects.
 
 - projectIds: list of System.Strings
-  - List of project IDs.
+  - List of Rubrik IDs of the GCP projects.

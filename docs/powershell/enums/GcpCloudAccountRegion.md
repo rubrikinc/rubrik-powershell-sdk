@@ -1,7 +1,6 @@
 ### GcpCloudAccountRegion
-Enums containing GCP regions.
+GCP Compute regions.
 
-- UNKNOWN_GCP_REGION - Unknown region.
 - ASIA_EAST1 - Asia East 1.
 - ASIA_EAST2 - Asia East 2.
 - ASIA_NORTHEAST1 - Asia Northeast 1.

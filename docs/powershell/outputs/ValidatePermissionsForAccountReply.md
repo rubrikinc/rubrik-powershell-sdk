@@ -19,3 +19,6 @@ the given AWS cloud account.
 given AWS cloud account.
 - featureResults: list of ValidatePermissionsForFeatureReplys
   - Specifies the validation results for each of the features.
+- region: System.String
+  - Specifies the AWS region the permissions were validated in. Empty when
+the permissions were validated without any region context.

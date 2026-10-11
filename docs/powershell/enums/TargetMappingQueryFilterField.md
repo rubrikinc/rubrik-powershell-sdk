@@ -17,3 +17,5 @@ archival locations are filtered out when the corresponding UEM
 feature flag is not enabled for the snappable types.
 - SOURCE_WORKLOAD_CLOUD - Filter by the cloud platform of the source workload associated with
 the archival group's template. Accepts a single value.
+- CLOUD_NATIVE_LOC_TEMPLATE_TYPE - Filter by the cloudNativeLocTemplateType of the archival group's
+template (SOURCE_REGION or SPECIFIC_REGION). Accepts a single value.

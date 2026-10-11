@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pagination")]
         public Pagination? Pagination { get; set; }
 
+        //      C# -> System.Boolean? OnlyLocationsWithSnapshots
+        // GraphQL -> onlyLocationsWithSnapshots: Boolean (scalar)
+        [JsonProperty("onlyLocationsWithSnapshots")]
+        public System.Boolean? OnlyLocationsWithSnapshots { get; set; }
+
 
         #endregion
 

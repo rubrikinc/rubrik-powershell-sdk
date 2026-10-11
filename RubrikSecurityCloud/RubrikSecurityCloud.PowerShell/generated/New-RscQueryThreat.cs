@@ -269,6 +269,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.severityFilter = @(
     /// 	$someMatchSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MatchSeverity]) for enum values.
     /// )
+    /// # OPTIONAL
+    /// $query.Var.muteStatusFilter = $someThreatMonitoringMuteStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatMonitoringMuteStatusFilter]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -618,6 +620,7 @@ $query.Var.filenameSearchFilter = $someString"
         //     workloadNameSearch: String
         //     matchTypeFilter: [IndicatorOfCompromiseKind!]
         //     severityFilter: [MatchSeverity!]
+        //     muteStatusFilter: ThreatMonitoringMuteStatusFilter
         //   ): ThreatMonitoringMatchedObjectConnection!
         internal void InitQueryThreatMonitoringMatchedObjects()
         {
@@ -633,12 +636,13 @@ $query.Var.filenameSearchFilter = $someString"
                 Tuple.Create("workloadNameSearch", "String"),
                 Tuple.Create("matchTypeFilter", "[IndicatorOfCompromiseKind!]"),
                 Tuple.Create("severityFilter", "[MatchSeverity!]"),
+                Tuple.Create("muteStatusFilter", "ThreatMonitoringMuteStatusFilter"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryThreatMonitoringMatchedObjects",
-                "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime,$endTime: DateTime,$clusterUuidFilter: [String!],$objectTypeFilter: [String!],$workloadNameSearch: String,$matchTypeFilter: [IndicatorOfCompromiseKind!],$severityFilter: [MatchSeverity!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$beginTime: DateTime,$endTime: DateTime,$clusterUuidFilter: [String!],$objectTypeFilter: [String!],$workloadNameSearch: String,$matchTypeFilter: [IndicatorOfCompromiseKind!],$severityFilter: [MatchSeverity!],$muteStatusFilter: ThreatMonitoringMuteStatusFilter)",
                 "ThreatMonitoringMatchedObjectConnection",
                 Query.ThreatMonitoringMatchedObjects,
                 Query.ThreatMonitoringMatchedObjectsFieldSpec,
@@ -671,7 +675,9 @@ $query.Var.matchTypeFilter = @(
 # OPTIONAL
 $query.Var.severityFilter = @(
 	$someMatchSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MatchSeverity]) for enum values.
-)"
+)
+# OPTIONAL
+$query.Var.muteStatusFilter = $someThreatMonitoringMuteStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatMonitoringMuteStatusFilter]) for enum values."
             );
         }
 

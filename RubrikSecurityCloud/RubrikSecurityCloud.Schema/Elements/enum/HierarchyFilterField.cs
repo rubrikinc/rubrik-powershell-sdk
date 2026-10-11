@@ -1185,6 +1185,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAP_HANA_SYSTEM_STATUS")]
         SAP_HANA_SYSTEM_STATUS,
 
+        [EnumMember(Value = "SECURITY_NOTIFICATION_MUTE_STATUS")]
+        SECURITY_NOTIFICATION_MUTE_STATUS,
+
         [EnumMember(Value = "SENSITIVITY_STATUS")]
         SENSITIVITY_STATUS,
 

@@ -620,6 +620,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -681,6 +683,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	leaseId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2125,6 +2129,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		prioritizedOnboardingDays = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	uemKmsSpec = @{
+    /// 		# REQUIRED
+    /// 		uemKmsId = $someString
+    /// 		# REQUIRED
+    /// 		kmsKeyName = $someString
+    /// 		# OPTIONAL
+    /// 		kmsKeyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3225,6 +3238,8 @@ $query.Var.exportConfig = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -3278,6 +3293,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	leaseId = $someString
 }"
             );
         }
@@ -4617,6 +4634,15 @@ $query.Var.input = @{
 		operationMode = $someO365SetupOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365SetupOperationMode]) for enum values.
 		# OPTIONAL
 		prioritizedOnboardingDays = $someInt
+	}
+	# OPTIONAL
+	uemKmsSpec = @{
+		# REQUIRED
+		uemKmsId = $someString
+		# REQUIRED
+		kmsKeyName = $someString
+		# OPTIONAL
+		kmsKeyVersion = $someString
 	}
 }"
             );

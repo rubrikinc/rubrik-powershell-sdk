@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("caseNumber")]
         public System.String? CaseNumber { get; set; }
 
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        [JsonProperty("rscCaseLink")]
+        public System.String? RscCaseLink { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public CreateSupportCaseReply Set(
         System.String? CaseId = null,
         System.String? CaseLink = null,
-        System.String? CaseNumber = null
+        System.String? CaseNumber = null,
+        System.String? RscCaseLink = null
     ) 
     {
         if ( CaseId != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CaseNumber != null ) {
             this.CaseNumber = CaseNumber;
+        }
+        if ( RscCaseLink != null ) {
+            this.RscCaseLink = RscCaseLink;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "caseNumber\n" ;
             } else {
                 s += ind + "caseNumber\n" ;
+            }
+        }
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        if (this.RscCaseLink != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rscCaseLink\n" ;
+            } else {
+                s += ind + "rscCaseLink\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CaseNumber != null && ec.Excludes("caseNumber",true))
         {
             this.CaseNumber = null;
+        }
+        //      C# -> System.String? RscCaseLink
+        // GraphQL -> rscCaseLink: URL (scalar)
+        if (ec.Includes("rscCaseLink",true))
+        {
+            if(this.RscCaseLink == null) {
+
+                this.RscCaseLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscCaseLink != null && ec.Excludes("rscCaseLink",true))
+        {
+            this.RscCaseLink = null;
         }
     }
 

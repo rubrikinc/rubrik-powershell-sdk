@@ -228,9 +228,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.attributes = @(
     /// 	@{
     /// 		# REQUIRED
-    /// 		value = $someString
-    /// 		# REQUIRED
     /// 		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
+    /// 		# REQUIRED
+    /// 		value = $someString
     /// }
     /// )
     /// 
@@ -1303,9 +1303,9 @@ $query.Var.input = @{
 $query.Var.attributes = @(
 	@{
 		# REQUIRED
-		value = $someString
-		# REQUIRED
 		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
+		# REQUIRED
+		value = $someString
 }
 )"
             );

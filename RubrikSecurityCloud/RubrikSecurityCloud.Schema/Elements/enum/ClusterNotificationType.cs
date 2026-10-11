@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "SEAGATE_ST24000NM007H_FIRMWARE_RISK")]
+        SEAGATE_ST24000NM007H_FIRMWARE_RISK,
+
         [EnumMember(Value = "SSD_V2_UPGRADE")]
         SSD_V2_UPGRADE
 

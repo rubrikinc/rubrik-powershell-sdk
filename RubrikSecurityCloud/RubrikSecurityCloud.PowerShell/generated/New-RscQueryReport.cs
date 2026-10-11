@@ -214,12 +214,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryReport -Operation ClusterMigrationStatus
     /// 
     /// # OPTIONAL
-    /// $query.Var.clusterUuid = $someString
-    /// # REQUIRED
-    /// $query.Var.status = @(
-    /// 	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
-    /// )
-    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -227,6 +221,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.last = $someInt
     /// # OPTIONAL
     /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.status = @(
+    /// 	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1344,45 +1344,45 @@ $query.Var.clusterUuid = $someString"
 
         // Create new GraphQL Query:
         // clusterReportMigrationStatus(
-        //     clusterUuid: UUID
-        //     status: [CdmReportMigrationStatus!]!
         //     first: Int
         //     after: String
         //     last: Int
         //     before: String
+        //     clusterUuid: UUID
+        //     status: [CdmReportMigrationStatus!]!
         //   ): ReportMigrationStatusConnection!
         internal void InitQueryClusterReportMigrationStatus()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID"),
-                Tuple.Create("status", "[CdmReportMigrationStatus!]!"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
+                Tuple.Create("clusterUuid", "UUID"),
+                Tuple.Create("status", "[CdmReportMigrationStatus!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryClusterReportMigrationStatus",
-                "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!,$first: Int,$after: String,$last: Int,$before: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!)",
                 "ReportMigrationStatusConnection",
                 Query.ClusterReportMigrationStatus,
                 Query.ClusterReportMigrationStatusFieldSpec,
                 @"# OPTIONAL
-$query.Var.clusterUuid = $someString
-# REQUIRED
-$query.Var.status = @(
-	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
-)
-# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
 $query.Var.last = $someInt
 # OPTIONAL
-$query.Var.before = $someString"
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.status = @(
+	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
+)"
             );
         }
 

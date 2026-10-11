@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Value
-        // GraphQL -> value: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("value")]
-        public System.String? Value { get; set; }
-
         //      C# -> FlagAttribute? Attribute
         // GraphQL -> attribute: FlagAttribute! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("attribute")]
         public FlagAttribute? Attribute { get; set; }
+
+        //      C# -> System.String? Value
+        // GraphQL -> value: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("value")]
+        public System.String? Value { get; set; }
 
 
         #endregion

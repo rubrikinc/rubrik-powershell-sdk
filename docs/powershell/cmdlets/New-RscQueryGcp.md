@@ -74,13 +74,6 @@ Details of all the supported permission groups for the specified features.
 
 - There is a single argument of type list of CloudAccountFeatures.
 - Returns list of GcpFeatureWithPermissionGroupss.
-### nativeavailablekmscryptokeys
-List of GCP KMS Crypto keys accessible in the provided region.
-
-- There are 2 arguments.
-    - projectId - System.String: ID of the Project.
-    - regionName - System.String: GCP region native name.
-- Returns list of GcpNativeKmsCryptoKeys.
 ### nativecompatiblemachinetypes
 List of compatible machine types for instance.
 

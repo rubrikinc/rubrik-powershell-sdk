@@ -26,13 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
-        //      C# -> System.Boolean? ShouldAddRubrikLabels
-        // GraphQL -> shouldAddRubrikLabels: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldAddRubrikLabels")]
-        public System.Boolean? ShouldAddRubrikLabels { get; set; }
-
         //      C# -> System.Boolean? ShouldRestoreLabels
         // GraphQL -> shouldRestoreLabels: Boolean! (scalar)
         [Required]
@@ -40,17 +33,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRestoreLabels")]
         public System.Boolean? ShouldRestoreLabels { get; set; }
 
+        //      C# -> System.Boolean? ShouldAddRubrikLabels
+        // GraphQL -> shouldAddRubrikLabels: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldAddRubrikLabels")]
+        public System.Boolean? ShouldAddRubrikLabels { get; set; }
+
         //      C# -> System.Boolean? ShouldStartRestoredInstance
         // GraphQL -> shouldStartRestoredInstance: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("shouldStartRestoredInstance")]
         public System.Boolean? ShouldStartRestoredInstance { get; set; }
-
-        //      C# -> GcpSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: GcpSnapshotType (enum)
-        [JsonProperty("snapshotType")]
-        public GcpSnapshotType? SnapshotType { get; set; }
 
         //      C# -> System.String? ArchivedSnapshotId
         // GraphQL -> archivedSnapshotId: UUID (scalar)
@@ -61,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
         [JsonProperty("recoveryPurpose")]
         public RecoveryPurpose? RecoveryPurpose { get; set; }
+
+        //      C# -> GcpSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: GcpSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public GcpSnapshotType? SnapshotType { get; set; }
 
 
         #endregion

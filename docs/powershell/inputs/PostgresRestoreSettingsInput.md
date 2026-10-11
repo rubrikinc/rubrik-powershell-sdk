@@ -11,6 +11,8 @@ Whether to use custom scripts for start/stop during restore. When true, customSt
 - systemUsername: System.String
   - Supported in v9.4+
 Username for accessing the host machine.
+- postgresAutomatedRestoreDatabaseDetails: PostgresAutomatedRestoreDatabaseDetailsInput
+  - Database-level restore options. Omit for cluster-level restores.
 - shouldRestoreAsReplica: System.Boolean
   - Supported in v9.4+
 Specifies whether the database should be restored as a replica or the primary database cluster.

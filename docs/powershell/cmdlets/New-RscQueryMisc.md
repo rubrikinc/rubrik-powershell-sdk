@@ -947,6 +947,8 @@ Summary of all FusionCompute VRMs.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns FusionComputeVrmConnection.
 ### geolocationlist
+Geo locations of Rubrik clusters, grouped by location.
+
 - The geolocationlist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getallrolesinorglist
@@ -998,12 +1000,18 @@ Get the count of cloud objects by region.
     - awsServiceTypeFilter - list of AwsCloudAccountServiceTypes: Filter AWS objects by deployment model (BaaS / non-BaaS). Non-AWS objects pass through unfiltered. Empty or omitted disables the filter.
 - Returns GetCloudObjectsCountByRegionReply.
 ### getgroupcountbyprechecksstatus
+Counts of Rubrik clusters, grouped by the CDM upgrade prechecks status.
+
 - The getgroupcountbyprechecksstatus subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getgroupcountbyupgradejobstatus
+Counts of Rubrik clusters grouped by upgrade job status.
+
 - The getgroupcountbyupgradejobstatus subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getgroupcountbyversionstatus
+Counts of Rubrik clusters grouped by CDM version status.
+
 - The getgroupcountbyversionstatus subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getkorgtaskchainstatus
@@ -1210,6 +1218,9 @@ Retrieve the encryption information for identity data locations.
     - pagination - Pagination: Pagination param.
 - Returns IdentityDataLocationEncryptionInfoConnection.
 ### installedversionlist
+Retrieves the list of CDM versions installed across Rubrik clusters, with
+the cluster count for each version and whether an upgrade is recommended.
+
 - The installedversionlist subcommand takes no arguments.
 - Returns list of InstalledVersionGroupCounts.
 ### inventoryroot
@@ -2418,6 +2429,14 @@ Search file under given folder and with given prefix.
     - searchFolderPath - System.String: Root path to search file inside FMD.
     - filenamePrefix - System.String: Filename prefix that should match.
 - Returns DiffResult.
+### securityfeaturesupportedobjecttypes
+Returns the managed object types a Data Threat Analytics product
+supports, so a client can decide whether to render that product's
+per-object state before any inventory query resolves. A pure function of
+`product`; issues no per-account query.
+
+- There is a single argument of type DtaProduct.
+- Returns list of ManagedObjectTypes.
 ### selfserverollingupgrade
 Gets the rolling upgrade enabled setting for the account.
 
@@ -2921,9 +2940,11 @@ provided cloud accounts have Exocompute configured for DynamoDB recovery.
 ### vcdorgs
 Paginated list of vCloud Director orgs.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2942,9 +2963,11 @@ Paginated list of the highest-level vCloud Director objects accessible by the cu
 ### vcdvapps
 Paginated list of vCloud Director vApps.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

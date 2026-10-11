@@ -81,3 +81,4 @@ per-user licensing classification for a selected month.
 - CLOUD_COST_DAILY - Cloud cost daily report -- raw daily costs per cloud account.
 - CLOUD_COST_MONTHLY - Cloud cost monthly report -- aggregated monthly costs per cloud account.
 - IDENTITY_INVENTORY - Specifies the Identity Inventory report information.
+- MONITORING_PAUSED - Specifies the monitoring paused jobs report information.

@@ -120,3 +120,4 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.
+- GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages.

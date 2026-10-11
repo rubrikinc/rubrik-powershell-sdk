@@ -1,7 +1,8 @@
 # New-RscQueryAws
 ## Subcommands
 ### artifactstodelete
-Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
+Retrieves the AWS artifacts that need to be deleted when an account is being
+deleted.
 
 - There is a single argument of type AwsArtifactsToDeleteInput.
 - Returns AwsArtifactsToDelete.
@@ -58,7 +59,8 @@ Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
     - region - AwsRegion: AWS region argument for archival use case.
 - Returns AwsCloudAccountListVpcResponse.
 ### cloudaccountswithfeatures
-List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+List of active AWS cloud accounts and the features for the accounts. A
+cloud account is an AWS account added to the Rubrik platform.
 
 - There is a single argument of type AwsCloudAccountsWithFeaturesInput.
 - Returns list of AwsCloudAccountWithFeaturess.
@@ -66,8 +68,8 @@ List of active AWS cloud accounts and the features for the accounts. A cloud acc
 List of AWS cloud accounts and the features for each account, classified by ID.
 
 - There are 2 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - awsCloudAccountArg - AwsCloudAccountWithFeaturesInput: Arguments for get cloud account.
+    - cloudAccountId - System.String: The UUID of the AWS cloud account to fetch.
+    - awsCloudAccountArg - AwsCloudAccountWithFeaturesInput: Arguments for getting the AWS cloud account with features.
 - Returns AwsCloudAccountWithFeatures.
 ### dbparametergroupsbyregion
 List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
@@ -116,14 +118,19 @@ Retrieves the list of accounts eligible for migration to an AWS organization.
     - awsOrganizationUuid - System.String: The ID of the AWS organization.
 - Returns AwsCloudAccountConnection.
 ### exocomputeconfigs
-List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix. When an operation is supplied, the returned accounts are scoped to those the caller can perform that operation on.
+List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account
+name prefix. When an operation is supplied, the returned accounts are scoped to those the
+caller can perform that operation on.
 
 - There are 2 arguments.
-    - awsNativeAccountIdOrNamePrefix - System.String: A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
-    - operation - Operation: The operation used to scope the returned accounts to those the caller is authorized to perform. Defaults to CREATE_REPORT, which returns all accounts without operation-based scoping.
+    - awsNativeAccountIdOrNamePrefix - System.String: Native account ID or account name prefix used to filter
+the AWS exocompute configurations to return.
+    - operation - Operation: Operation used to scope the returned accounts to those the caller can perform
+that operation on.
 - Returns list of AwsExocomputeConfigs.
 ### exocomputegetclusterconnectioninfo
-Obtains the connection command and yaml which can be used to connect a customer-managed cluster to RSC.
+Obtains the connection command and yaml which can be used to connect a
+customer-managed cluster to RSC.
 
 - There is a single argument of type AwsExocomputeGetClusterConnectionInput.
 - Returns AwsExocomputeGetClusterConnectionInfoReply.
@@ -152,7 +159,8 @@ List of encryption keys in the specified region on the specified AWS Native acco
     - feature - CloudAccountFeature: Cloud account feature to filter encryption keys for accounts that support per-feature IAM roles.
 - Returns list of KmsEncryptionKeys.
 ### latestpermissionsbypermissionsgroup
-Retrieves the latest permissions required for each of the provided features. Permissions for each feature are grouped by permissions group.
+Retrieves the latest permissions required for each of the provided
+features. Permissions for each feature are grouped by permissions group.
 
 - There are 2 arguments.
     - features - list of CloudAccountFeatures: Cloud account features.

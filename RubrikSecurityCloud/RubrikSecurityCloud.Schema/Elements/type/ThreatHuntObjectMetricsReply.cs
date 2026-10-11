@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalObjectsUnscannable")]
         public System.Int64? TotalObjectsUnscannable { get; set; }
 
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        [JsonProperty("totalRegistryAffectedObjects")]
+        public System.Int64? TotalRegistryAffectedObjects { get; set; }
+
         //      C# -> System.Int64? TotalUnaffectedObjects
         // GraphQL -> totalUnaffectedObjects: Long! (scalar)
         [JsonProperty("totalUnaffectedObjects")]
@@ -64,6 +69,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalAffectedObjects = null,
         System.Int64? TotalObjectsScanned = null,
         System.Int64? TotalObjectsUnscannable = null,
+        System.Int64? TotalRegistryAffectedObjects = null,
         System.Int64? TotalUnaffectedObjects = null,
         System.Int64? UnaffectedObjectsFromDb = null
     ) 
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalObjectsUnscannable != null ) {
             this.TotalObjectsUnscannable = TotalObjectsUnscannable;
+        }
+        if ( TotalRegistryAffectedObjects != null ) {
+            this.TotalRegistryAffectedObjects = TotalRegistryAffectedObjects;
         }
         if ( TotalUnaffectedObjects != null ) {
             this.TotalUnaffectedObjects = TotalUnaffectedObjects;
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalObjectsUnscannable\n" ;
             } else {
                 s += ind + "totalObjectsUnscannable\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        if (this.TotalRegistryAffectedObjects != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryAffectedObjects\n" ;
+            } else {
+                s += ind + "totalRegistryAffectedObjects\n" ;
             }
         }
         //      C# -> System.Int64? TotalUnaffectedObjects
@@ -228,6 +246,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalObjectsUnscannable != null && ec.Excludes("totalObjectsUnscannable",true))
         {
             this.TotalObjectsUnscannable = null;
+        }
+        //      C# -> System.Int64? TotalRegistryAffectedObjects
+        // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
+        if (ec.Includes("totalRegistryAffectedObjects",true))
+        {
+            if(this.TotalRegistryAffectedObjects == null) {
+
+                this.TotalRegistryAffectedObjects = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryAffectedObjects != null && ec.Excludes("totalRegistryAffectedObjects",true))
+        {
+            this.TotalRegistryAffectedObjects = null;
         }
         //      C# -> System.Int64? TotalUnaffectedObjects
         // GraphQL -> totalUnaffectedObjects: Long! (scalar)

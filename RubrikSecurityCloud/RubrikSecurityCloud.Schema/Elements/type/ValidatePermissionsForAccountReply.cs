@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionMissingForSimulation")]
         public System.Boolean? PermissionMissingForSimulation { get; set; }
 
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        [JsonProperty("region")]
+        public System.String? Region { get; set; }
+
         //      C# -> List<ValidatePermissionsForFeatureReply>? FeatureResults
         // GraphQL -> featureResults: [ValidatePermissionsForFeatureReply!]! (type)
         [JsonProperty("featureResults")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudAccountNativeId = null,
         System.Int32? NumMissingPermissions = null,
         System.Boolean? PermissionMissingForSimulation = null,
+        System.String? Region = null,
         List<ValidatePermissionsForFeatureReply>? FeatureResults = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PermissionMissingForSimulation != null ) {
             this.PermissionMissingForSimulation = PermissionMissingForSimulation;
+        }
+        if ( Region != null ) {
+            this.Region = Region;
         }
         if ( FeatureResults != null ) {
             this.FeatureResults = FeatureResults;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "permissionMissingForSimulation\n" ;
             } else {
                 s += ind + "permissionMissingForSimulation\n" ;
+            }
+        }
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        if (this.Region != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
             }
         }
         //      C# -> List<ValidatePermissionsForFeatureReply>? FeatureResults
@@ -283,6 +301,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionMissingForSimulation != null && ec.Excludes("permissionMissingForSimulation",true))
         {
             this.PermissionMissingForSimulation = null;
+        }
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        if (ec.Includes("region",true))
+        {
+            if(this.Region == null) {
+
+                this.Region = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> List<ValidatePermissionsForFeatureReply>? FeatureResults
         // GraphQL -> featureResults: [ValidatePermissionsForFeatureReply!]! (type)

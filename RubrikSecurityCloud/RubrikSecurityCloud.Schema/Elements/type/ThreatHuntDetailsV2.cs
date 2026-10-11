@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalObjectFids")]
         public System.Int64? TotalObjectFids { get; set; }
 
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        [JsonProperty("totalRegistryKeyMatches")]
+        public System.Int64? TotalRegistryKeyMatches { get; set; }
+
         //      C# -> System.Int64? TotalScannedSnapshots
         // GraphQL -> totalScannedSnapshots: Long! (scalar)
         [JsonProperty("totalScannedSnapshots")]
@@ -92,6 +97,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? StartTime = null,
         System.Int64? TotalMatchedSnapshots = null,
         System.Int64? TotalObjectFids = null,
+        System.Int64? TotalRegistryKeyMatches = null,
         System.Int64? TotalScannedSnapshots = null,
         System.Int64? TotalUniqueFileMatches = null,
         ThreatHuntBaseConfig? BaseConfig = null,
@@ -118,6 +124,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalObjectFids != null ) {
             this.TotalObjectFids = TotalObjectFids;
+        }
+        if ( TotalRegistryKeyMatches != null ) {
+            this.TotalRegistryKeyMatches = TotalRegistryKeyMatches;
         }
         if ( TotalScannedSnapshots != null ) {
             this.TotalScannedSnapshots = TotalScannedSnapshots;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalObjectFids\n" ;
             } else {
                 s += ind + "totalObjectFids\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (this.TotalRegistryKeyMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRegistryKeyMatches\n" ;
+            } else {
+                s += ind + "totalRegistryKeyMatches\n" ;
             }
         }
         //      C# -> System.Int64? TotalScannedSnapshots
@@ -375,6 +393,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalObjectFids != null && ec.Excludes("totalObjectFids",true))
         {
             this.TotalObjectFids = null;
+        }
+        //      C# -> System.Int64? TotalRegistryKeyMatches
+        // GraphQL -> totalRegistryKeyMatches: Long! (scalar)
+        if (ec.Includes("totalRegistryKeyMatches",true))
+        {
+            if(this.TotalRegistryKeyMatches == null) {
+
+                this.TotalRegistryKeyMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRegistryKeyMatches != null && ec.Excludes("totalRegistryKeyMatches",true))
+        {
+            this.TotalRegistryKeyMatches = null;
         }
         //      C# -> System.Int64? TotalScannedSnapshots
         // GraphQL -> totalScannedSnapshots: Long! (scalar)

@@ -13,6 +13,8 @@ Summary of a threat hunt for a snapshot.
   - List of IOCs found in this snapshot.
 - snapshotScanStatus: ThreatHuntStatus
   - Status of scanning this snapshot.
+- totalRegistryKeyMatches: System.Int64
+  - Total number of Windows registry key matches in this snapshot.
 - isExpired: System.Boolean
   - Specifies whether the snapshot has expired.
 - isQuarantined: System.Boolean

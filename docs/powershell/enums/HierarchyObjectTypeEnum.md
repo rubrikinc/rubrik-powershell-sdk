@@ -259,3 +259,4 @@ this hierarchy.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups -- one backup metadata object per organization.
 - GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings container -- one per org, backed by saasapps_fixed_objects.
+- GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages.

@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> GoogleWorkspaceOrgFixedObjectWorkloads? FixedObjectWorkloads
+        // GraphQL -> fixedObjectWorkloads: GoogleWorkspaceOrgFixedObjectWorkloads (type)
+        [JsonProperty("fixedObjectWorkloads")]
+        public GoogleWorkspaceOrgFixedObjectWorkloads? FixedObjectWorkloads { get; set; }
+
         //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
         // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)
         [JsonProperty("futureLegalHoldInfo")]
@@ -265,6 +270,7 @@ namespace RubrikSecurityCloud.Types
         BackupJobsStats? BackupJobsStats = null,
         ConnectionStatus? ConnectionStatus = null,
         PathNode? EffectiveSlaSourceObject = null,
+        GoogleWorkspaceOrgFixedObjectWorkloads? FixedObjectWorkloads = null,
         FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<PathNode>? LogicalPath = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
@@ -355,6 +361,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( FixedObjectWorkloads != null ) {
+            this.FixedObjectWorkloads = FixedObjectWorkloads;
         }
         if ( FutureLegalHoldInfo != null ) {
             this.FutureLegalHoldInfo = FutureLegalHoldInfo;
@@ -664,6 +673,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GoogleWorkspaceOrgFixedObjectWorkloads? FixedObjectWorkloads
+        // GraphQL -> fixedObjectWorkloads: GoogleWorkspaceOrgFixedObjectWorkloads (type)
+        if (this.FixedObjectWorkloads != null) {
+            var fspec = this.FixedObjectWorkloads.AsFieldSpec(conf.Child("fixedObjectWorkloads"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fixedObjectWorkloads" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1280,6 +1301,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> GoogleWorkspaceOrgFixedObjectWorkloads? FixedObjectWorkloads
+        // GraphQL -> fixedObjectWorkloads: GoogleWorkspaceOrgFixedObjectWorkloads (type)
+        if (ec.Includes("fixedObjectWorkloads",false))
+        {
+            if(this.FixedObjectWorkloads == null) {
+
+                this.FixedObjectWorkloads = new GoogleWorkspaceOrgFixedObjectWorkloads();
+                this.FixedObjectWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("fixedObjectWorkloads"));
+
+            } else {
+
+                this.FixedObjectWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("fixedObjectWorkloads"));
+
+            }
+        }
+        else if (this.FixedObjectWorkloads != null && ec.Excludes("fixedObjectWorkloads",false))
+        {
+            this.FixedObjectWorkloads = null;
         }
         //      C# -> FutureLegalHoldInfo? FutureLegalHoldInfo
         // GraphQL -> futureLegalHoldInfo: FutureLegalHoldInfo (type)

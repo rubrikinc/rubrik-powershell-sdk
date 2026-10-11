@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionGroupType")]
         public PermissionsGroup? PermissionGroupType { get; set; }
 
+        //      C# -> List<System.String>? Conditions
+        // GraphQL -> conditions: [String!]! (scalar)
+        [JsonProperty("conditions")]
+        public List<System.String>? Conditions { get; set; }
+
         //      C# -> List<System.String>? PermissionsWithConditions
         // GraphQL -> permissionsWithConditions: [String!]! (scalar)
         [JsonProperty("permissionsWithConditions")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public GcpPermissionGroup Set(
         PermissionsGroup? PermissionGroupType = null,
+        List<System.String>? Conditions = null,
         List<System.String>? PermissionsWithConditions = null,
         List<System.String>? PermissionsWithoutConditions = null,
         System.Int32? PolicyVersion = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( PermissionGroupType != null ) {
             this.PermissionGroupType = PermissionGroupType;
+        }
+        if ( Conditions != null ) {
+            this.Conditions = Conditions;
         }
         if ( PermissionsWithConditions != null ) {
             this.PermissionsWithConditions = PermissionsWithConditions;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "permissionGroupType\n" ;
             } else {
                 s += ind + "permissionGroupType\n" ;
+            }
+        }
+        //      C# -> List<System.String>? Conditions
+        // GraphQL -> conditions: [String!]! (scalar)
+        if (this.Conditions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "conditions\n" ;
+            } else {
+                s += ind + "conditions\n" ;
             }
         }
         //      C# -> List<System.String>? PermissionsWithConditions
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionGroupType != null && ec.Excludes("permissionGroupType",true))
         {
             this.PermissionGroupType = null;
+        }
+        //      C# -> List<System.String>? Conditions
+        // GraphQL -> conditions: [String!]! (scalar)
+        if (ec.Includes("conditions",true))
+        {
+            if(this.Conditions == null) {
+
+                this.Conditions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Conditions != null && ec.Excludes("conditions",true))
+        {
+            this.Conditions = null;
         }
         //      C# -> List<System.String>? PermissionsWithConditions
         // GraphQL -> permissionsWithConditions: [String!]! (scalar)

@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetIdentityUniqueIdentifier")]
         public System.String? TargetIdentityUniqueIdentifier { get; set; }
 
+        //      C# -> List<IdentityEventTarget>? AdditionalTargets
+        // GraphQL -> additionalTargets: [IdentityEventTarget!]! (type)
+        [JsonProperty("additionalTargets")]
+        public List<IdentityEventTarget>? AdditionalTargets { get; set; }
+
 
         #endregion
 
@@ -174,7 +179,8 @@ namespace RubrikSecurityCloud.Types
         System.String? SourceIdentityUniqueIdentifier = null,
         System.String? TargetIdentityName = null,
         System.String? TargetIdentitySource = null,
-        System.String? TargetIdentityUniqueIdentifier = null
+        System.String? TargetIdentityUniqueIdentifier = null,
+        List<IdentityEventTarget>? AdditionalTargets = null
     ) 
     {
         if ( ActorIdentityType != null ) {
@@ -248,6 +254,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TargetIdentityUniqueIdentifier != null ) {
             this.TargetIdentityUniqueIdentifier = TargetIdentityUniqueIdentifier;
+        }
+        if ( AdditionalTargets != null ) {
+            this.AdditionalTargets = AdditionalTargets;
         }
         return this;
     }
@@ -477,6 +486,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "targetIdentityUniqueIdentifier\n" ;
             } else {
                 s += ind + "targetIdentityUniqueIdentifier\n" ;
+            }
+        }
+        //      C# -> List<IdentityEventTarget>? AdditionalTargets
+        // GraphQL -> additionalTargets: [IdentityEventTarget!]! (type)
+        if (this.AdditionalTargets != null) {
+            var fspec = this.AdditionalTargets.AsFieldSpec(conf.Child("additionalTargets"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "additionalTargets" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -893,6 +914,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TargetIdentityUniqueIdentifier != null && ec.Excludes("targetIdentityUniqueIdentifier",true))
         {
             this.TargetIdentityUniqueIdentifier = null;
+        }
+        //      C# -> List<IdentityEventTarget>? AdditionalTargets
+        // GraphQL -> additionalTargets: [IdentityEventTarget!]! (type)
+        if (ec.Includes("additionalTargets",false))
+        {
+            if(this.AdditionalTargets == null) {
+
+                this.AdditionalTargets = new List<IdentityEventTarget>();
+                this.AdditionalTargets.ApplyExploratoryFieldSpec(ec.NewChild("additionalTargets"));
+
+            } else {
+
+                this.AdditionalTargets.ApplyExploratoryFieldSpec(ec.NewChild("additionalTargets"));
+
+            }
+        }
+        else if (this.AdditionalTargets != null && ec.Excludes("additionalTargets",false))
+        {
+            this.AdditionalTargets = null;
         }
     }
 

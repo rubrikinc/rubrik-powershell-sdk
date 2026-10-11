@@ -295,8 +295,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	hosts = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -400,6 +398,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1111,8 +1111,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	hosts = @(
 		@{
 			# OPTIONAL
@@ -1216,6 +1214,8 @@ $query.Var.input = @{
 			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

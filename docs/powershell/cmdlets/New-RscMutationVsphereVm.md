@@ -33,11 +33,6 @@ Download files from snapshot.
 
 - There is a single argument of type VsphereVmDownloadSnapshotFilesInput.
 - Returns AsyncRequestStatus.
-### excludevmdisks
-Exclude or include virtual disks during snapshot.
-
-- There is a single argument of type list of VsphereExcludeVmDisksInputs.
-- Returns RequestSuccess.
 ### exportsnapshotv2
 Create a vSphere Export from a snapshot or a point-in-time.
 
@@ -110,11 +105,6 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 
 - There is a single argument of type VsphereVmPowerOnOffLiveMountInput.
 - Returns VsphereVmPowerOnOffLiveMountReply.
-### recoverfiles
-Restores multiple files/directories from snapshot.
-
-- There is a single argument of type VsphereVmRecoverFilesInput.
-- Returns VsphereAsyncRequestStatus.
 ### recoverfilesnew
 Restores multiple files/directories from snapshot.
 

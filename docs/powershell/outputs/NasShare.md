@@ -1,10 +1,30 @@
 ### NasShare
 NAS share instance of a registered NAS system.
 
-- shareType: System.String
-  - File sharing protocol (NFS or SMB).
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - exportPoint: System.String
   - NFS/SMB export path for the NAS share.
+- shareType: System.String
+  - File sharing protocol (NFS or SMB).
 - isChangelistEnabled: System.Boolean
   - Specifies whether the Changelist option is enabled.
 - isNutanixCftEnabled: System.Boolean
@@ -23,14 +43,12 @@ NAS share instance of a registered NAS system.
   - Specifies whether the NAS shares are manually configured on the NAS system.
 - userSelectedInterfaces: list of System.Strings
   - List of hostnames or IP addresses used for Fileset jobs on the share.
-- id: System.String
-  - Object ID.
 - nasSystem: NasSystem
   - The NAS System to which this NAS Share belongs.
-- nasNamespace: NasNamespace
-  - The NAS Namespace to which this NAS Share belongs.
 - nasVolume: NasVolume
   - The NAS Volume to which this NAS Share belongs.
+- nasNamespace: NasNamespace
+  - The NAS Namespace to which this NAS Share belongs.
 - primaryFileset: NasFileset
   - NAS Share Protection Fileset.
 - connectedThrough: ConnectedThroughEnumType
@@ -43,14 +61,18 @@ NAS share instance of a registered NAS system.
   - List of descendants.
 - logicalChildConnection: NasShareLogicalChildTypeConnection
   - List of logical children.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -63,40 +85,16 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -105,3 +103,5 @@ cluster. Null when the source cluster is unknown.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

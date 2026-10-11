@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Google Cloud Platform' API domain:
-    /// CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// </summary>
     /// <description>
     /// New-RscQueryGcp creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 21 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// one of: CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -484,6 +484,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
+    /// 	pcrConfig = @{
+    /// 		# REQUIRED
+    /// 		registryUrl = $someString
+    /// 		# REQUIRED
+    /// 		projectNativeId = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	projectIdToServiceAccount = @{
     /// 		# REQUIRED
     /// 		projectIdToServiceAccountList = @(
@@ -532,36 +539,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;GcpFeatureWithPermissionGroups&gt;
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the NativeAvailableKmsCryptoKeys operation
-    /// of the 'Google Cloud Platform' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Gcp
-    /// # API Operation: NativeAvailableKmsCryptoKeys
-    /// 
-    /// $query = New-RscQueryGcp -Operation NativeAvailableKmsCryptoKeys
-    /// 
-    /// # REQUIRED
-    /// $query.Var.projectId = $someString
-    /// # REQUIRED
-    /// $query.Var.regionName = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: List&lt;GcpNativeKmsCryptoKey&gt;
     /// 
     /// 
     /// 
@@ -875,7 +852,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetDefaultCredentialsServiceAccount",
                 "GetResourceSetupTemplate",
                 "LatestPermissionsByPermissionsGroup",
-                "NativeAvailableKmsCryptoKeys",
                 "NativeCompatibleMachineTypes",
                 "NativeNetworks",
                 "NativeProjectsWithAccessibleNetworks",
@@ -933,9 +909,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LatestPermissionsByPermissionsGroup":
                         this.ProcessRecord_LatestPermissionsByPermissionsGroup();
-                        break;
-                    case "NativeAvailableKmsCryptoKeys":
-                        this.ProcessRecord_NativeAvailableKmsCryptoKeys();
                         break;
                     case "NativeCompatibleMachineTypes":
                         this.ProcessRecord_NativeCompatibleMachineTypes();
@@ -1074,15 +1047,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LatestPermissionsByPermissionsGroup";
             // Create new graphql operation allLatestPermissionsByPermissionsGroupGcp
             InitQueryAllLatestPermissionsByPermissionsGroupGcp();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allGcpNativeAvailableKmsCryptoKeys.
-        internal void ProcessRecord_NativeAvailableKmsCryptoKeys()
-        {
-            this._logger.name += " -NativeAvailableKmsCryptoKeys";
-            // Create new graphql operation allGcpNativeAvailableKmsCryptoKeys
-            InitQueryAllGcpNativeAvailableKmsCryptoKeys();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1540,6 +1504,13 @@ $query.Var.input = @{
 		}
 	)
 	# OPTIONAL
+	pcrConfig = @{
+		# REQUIRED
+		registryUrl = $someString
+		# REQUIRED
+		projectNativeId = $someString
+	}
+	# OPTIONAL
 	projectIdToServiceAccount = @{
 		# REQUIRED
 		projectIdToServiceAccountList = @(
@@ -1574,29 +1545,6 @@ $query.Var.input = @{
 $query.Var.features = @(
 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 )"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // allGcpNativeAvailableKmsCryptoKeys(projectId: UUID!, regionName: String!): [GcpNativeKmsCryptoKey!]!
-        internal void InitQueryAllGcpNativeAvailableKmsCryptoKeys()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("projectId", "UUID!"),
-                Tuple.Create("regionName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllGcpNativeAvailableKmsCryptoKeys",
-                "($projectId: UUID!,$regionName: String!)",
-                "List<GcpNativeKmsCryptoKey>",
-                Query.AllGcpNativeAvailableKmsCryptoKeys,
-                Query.AllGcpNativeAvailableKmsCryptoKeysFieldSpec,
-                @"# REQUIRED
-$query.Var.projectId = $someString
-# REQUIRED
-$query.Var.regionName = $someString"
             );
         }
 

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsTlsAtSnapshot
+        // GraphQL -> isTlsAtSnapshot: Boolean (scalar)
+        [JsonProperty("isTlsAtSnapshot")]
+        public System.Boolean? IsTlsAtSnapshot { get; set; }
+
         //      C# -> ManagedVolumeSnapshotStats? Stats
         // GraphQL -> stats: ManagedVolumeSnapshotStats! (type)
         [JsonProperty("stats")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ManagedVolumeAppMetadata Set(
+        System.Boolean? IsTlsAtSnapshot = null,
         ManagedVolumeSnapshotStats? Stats = null
     ) 
     {
+        if ( IsTlsAtSnapshot != null ) {
+            this.IsTlsAtSnapshot = IsTlsAtSnapshot;
+        }
         if ( Stats != null ) {
             this.Stats = Stats;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? IsTlsAtSnapshot
+        // GraphQL -> isTlsAtSnapshot: Boolean (scalar)
+        if (this.IsTlsAtSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTlsAtSnapshot\n" ;
+            } else {
+                s += ind + "isTlsAtSnapshot\n" ;
+            }
+        }
         //      C# -> ManagedVolumeSnapshotStats? Stats
         // GraphQL -> stats: ManagedVolumeSnapshotStats! (type)
         if (this.Stats != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? IsTlsAtSnapshot
+        // GraphQL -> isTlsAtSnapshot: Boolean (scalar)
+        if (ec.Includes("isTlsAtSnapshot",true))
+        {
+            if(this.IsTlsAtSnapshot == null) {
+
+                this.IsTlsAtSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTlsAtSnapshot != null && ec.Excludes("isTlsAtSnapshot",true))
+        {
+            this.IsTlsAtSnapshot = null;
+        }
         //      C# -> ManagedVolumeSnapshotStats? Stats
         // GraphQL -> stats: ManagedVolumeSnapshotStats! (type)
         if (ec.Includes("stats",false))

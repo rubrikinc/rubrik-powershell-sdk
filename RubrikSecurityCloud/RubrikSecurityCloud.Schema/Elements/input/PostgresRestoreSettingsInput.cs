@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemUsername")]
         public System.String? SystemUsername { get; set; }
 
+        //      C# -> PostgresAutomatedRestoreDatabaseDetailsInput? PostgresAutomatedRestoreDatabaseDetails
+        // GraphQL -> postgresAutomatedRestoreDatabaseDetails: PostgresAutomatedRestoreDatabaseDetailsInput (input)
+        [JsonProperty("postgresAutomatedRestoreDatabaseDetails")]
+        public PostgresAutomatedRestoreDatabaseDetailsInput? PostgresAutomatedRestoreDatabaseDetails { get; set; }
+
         //      C# -> System.Boolean? ShouldRestoreAsReplica
         // GraphQL -> shouldRestoreAsReplica: Boolean (scalar)
         [JsonProperty("shouldRestoreAsReplica")]

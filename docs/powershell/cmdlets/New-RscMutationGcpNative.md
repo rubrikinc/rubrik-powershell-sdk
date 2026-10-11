@@ -16,7 +16,7 @@ Triggers GCP native export instance job for the given GCE instance.
 - There is a single argument of type GcpNativeExportGceInstanceInput.
 - Returns AsyncJobStatus.
 ### refreshprojects
-Trigger GCP native refresh project job for the given project IDs
+Trigger refresh of the given GCP projects.
 
 - There is a single argument of type GcpNativeRefreshProjectsInput.
 - Returns BatchAsyncJobStatus.

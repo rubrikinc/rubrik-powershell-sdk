@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MONITORING_IN_PROGRESS")]
         MONITORING_IN_PROGRESS,
 
+        [EnumMember(Value = "MONITORING_PAUSED")]
+        MONITORING_PAUSED,
+
         [EnumMember(Value = "MONITORING_RETRYABLE_CANCELED")]
         MONITORING_RETRYABLE_CANCELED,
 

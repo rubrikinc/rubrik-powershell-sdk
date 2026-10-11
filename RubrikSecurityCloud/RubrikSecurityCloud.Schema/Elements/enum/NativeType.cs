@@ -228,17 +228,83 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OKTA_APPLICATION")]
         OKTA_APPLICATION,
 
+        [EnumMember(Value = "OKTA_AUTHENTICATOR")]
+        OKTA_AUTHENTICATOR,
+
+        [EnumMember(Value = "OKTA_AUTHORIZATION_SERVER")]
+        OKTA_AUTHORIZATION_SERVER,
+
+        [EnumMember(Value = "OKTA_AUTHORIZATION_SERVER_CLAIM")]
+        OKTA_AUTHORIZATION_SERVER_CLAIM,
+
+        [EnumMember(Value = "OKTA_AUTHORIZATION_SERVER_POLICY")]
+        OKTA_AUTHORIZATION_SERVER_POLICY,
+
+        [EnumMember(Value = "OKTA_AUTHORIZATION_SERVER_POLICY_RULE")]
+        OKTA_AUTHORIZATION_SERVER_POLICY_RULE,
+
+        [EnumMember(Value = "OKTA_AUTHORIZATION_SERVER_SCOPE")]
+        OKTA_AUTHORIZATION_SERVER_SCOPE,
+
+        [EnumMember(Value = "OKTA_EVENT_HOOK")]
+        OKTA_EVENT_HOOK,
+
         [EnumMember(Value = "OKTA_GROUP")]
         OKTA_GROUP,
+
+        [EnumMember(Value = "OKTA_GROUP_PUSH_MAPPING")]
+        OKTA_GROUP_PUSH_MAPPING,
+
+        [EnumMember(Value = "OKTA_GROUP_RULE")]
+        OKTA_GROUP_RULE,
+
+        [EnumMember(Value = "OKTA_IDENTITY_PROVIDER")]
+        OKTA_IDENTITY_PROVIDER,
+
+        [EnumMember(Value = "OKTA_IDP_KEY_CREDENTIAL")]
+        OKTA_IDP_KEY_CREDENTIAL,
+
+        [EnumMember(Value = "OKTA_INLINE_HOOK")]
+        OKTA_INLINE_HOOK,
+
+        [EnumMember(Value = "OKTA_NETWORK_ZONE")]
+        OKTA_NETWORK_ZONE,
 
         [EnumMember(Value = "OKTA_POLICY")]
         OKTA_POLICY,
 
+        [EnumMember(Value = "OKTA_POLICY_RULE")]
+        OKTA_POLICY_RULE,
+
+        [EnumMember(Value = "OKTA_PROFILE_MAPPING")]
+        OKTA_PROFILE_MAPPING,
+
+        [EnumMember(Value = "OKTA_PROVISIONING_SETTING")]
+        OKTA_PROVISIONING_SETTING,
+
         [EnumMember(Value = "OKTA_USER")]
         OKTA_USER,
 
+        [EnumMember(Value = "OKTA_USER_SCHEMA")]
+        OKTA_USER_SCHEMA,
+
         [EnumMember(Value = "OKTA_USER_TYPE")]
         OKTA_USER_TYPE,
+
+        [EnumMember(Value = "OKTA_WORKFLOW")]
+        OKTA_WORKFLOW,
+
+        [EnumMember(Value = "OKTA_WORKFLOW_CONNECTION")]
+        OKTA_WORKFLOW_CONNECTION,
+
+        [EnumMember(Value = "OKTA_WORKFLOW_DATA_TABLE")]
+        OKTA_WORKFLOW_DATA_TABLE,
+
+        [EnumMember(Value = "OKTA_WORKFLOW_DATA_TABLE_ROW")]
+        OKTA_WORKFLOW_DATA_TABLE_ROW,
+
+        [EnumMember(Value = "OKTA_WORKFLOW_FOLDER")]
+        OKTA_WORKFLOW_FOLDER,
 
         [EnumMember(Value = "UNKNOWN_NATIVE_TYPE")]
         UNKNOWN_NATIVE_TYPE

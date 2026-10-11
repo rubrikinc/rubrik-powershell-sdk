@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureReqs")]
         public List<ValidatePermissionsForFeatureReq>? FeatureReqs { get; set; }
 
+        //      C# -> List<System.String>? Regions
+        // GraphQL -> regions: [String!] (scalar)
+        [JsonProperty("regions")]
+        public List<System.String>? Regions { get; set; }
+
 
         #endregion
 

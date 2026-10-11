@@ -75,6 +75,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE")]
         CLOUD_NATIVE_TAG_RULE,
 
+        [EnumMember(Value = "FUSION_COMPUTE_CLUSTER")]
+        FUSION_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "FUSION_COMPUTE_HOST")]
+        FUSION_COMPUTE_HOST,
+
+        [EnumMember(Value = "FUSION_COMPUTE_ROOT")]
+        FUSION_COMPUTE_ROOT,
+
+        [EnumMember(Value = "FUSION_COMPUTE_SITE")]
+        FUSION_COMPUTE_SITE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VRM")]
+        FUSION_COMPUTE_VRM,
+
         [EnumMember(Value = "GCP_NATIVE_DISK")]
         GCP_NATIVE_DISK,
 

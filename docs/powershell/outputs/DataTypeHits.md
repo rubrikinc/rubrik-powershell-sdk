@@ -9,3 +9,5 @@ Hits stats of an individual data type within a data category.
   - Total hits of the data type.
 - totalViolatedHits: System.Int64
   - Total violated hits of the data type.
+- objectCount: System.Int64
+  - Number of objects with hits of the data type.

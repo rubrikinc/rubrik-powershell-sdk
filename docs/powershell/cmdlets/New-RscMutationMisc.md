@@ -825,6 +825,8 @@ Create a job to refresh the metadata for the specified FusionCompute VRM instanc
 - There is a single argument of type RefreshFusionComputeVrmInput.
 - Returns AsyncRequestStatus.
 ### refreshglobalmanagerconnectivitystatus
+Refreshes the global manager connectivity status of the Rubrik cluster.
+
 - There is a single argument of type System.String.
 - Returns GlobalManagerConnectivity.
 ### refreshmysqlinstance

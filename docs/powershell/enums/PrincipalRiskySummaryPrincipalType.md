@@ -64,3 +64,25 @@ Principal type for risk summary.
 - PKI_ENROLLMENT_SERVICE - Principal of the AD PKI Enrollment Service type (CA).
 - UNIDENTIFIED - Principal that could not be matched to a known identity (unidentified
 target on a third-party alert).
+- POLICY_RULE - Principal of the policy rule type.
+- GROUP_RULE - Principal of the group rule type.
+- PROFILE_MAPPING - Principal of the profile mapping type.
+- IDENTITY_PROVIDER - Principal of the external identity provider type.
+- IDP_KEY_CREDENTIAL - Principal of the identity provider key credential type.
+- AUTHORIZATION_SERVER - Principal of the authorization server type.
+- AUTHORIZATION_SERVER_SCOPE - Principal of the authorization server scope type.
+- AUTHORIZATION_SERVER_CLAIM - Principal of the authorization server claim type.
+- AUTHORIZATION_SERVER_POLICY - Principal of the authorization server policy type.
+- AUTHORIZATION_SERVER_POLICY_RULE - Principal of the authorization server policy rule type.
+- USER_TYPE - Principal of the user type definition type.
+- USER_SCHEMA - Principal of the user profile schema type.
+- EVENT_HOOK - Principal of the event hook type.
+- INLINE_HOOK - Principal of the inline hook type.
+- PROVISIONING_SETTING - Principal of the application provisioning setting type.
+- GROUP_PUSH_MAPPING - Principal of the group push mapping type.
+- WORKFLOW - Principal of the workflow type.
+- WORKFLOW_FOLDER - Principal of the workflow folder type.
+- WORKFLOW_DATA_TABLE - Principal of the workflow data table type.
+- WORKFLOW_DATA_TABLE_ROW - Principal of the workflow data table row type.
+- WORKFLOW_CONNECTION - Principal of the workflow connection type.
+- AUTHENTICATOR - Principal of the authenticator type.

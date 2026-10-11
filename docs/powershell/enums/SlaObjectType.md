@@ -71,3 +71,6 @@ level; databases within the instance inherit the instance's SLA Domain.
 account, database and container levels; the container is the object
 that is backed up, and the levels above it cascade their SLA Domain
 down to the containers beneath them.
+- K8S_POSTGRES_DB_CLUSTER_OBJECT_TYPE - K8s PostgreSQL database cluster object type. SLA Domains are assigned at
+the cluster level; databases within the cluster inherit the cluster's
+SLA Domain.

@@ -11,12 +11,15 @@ Adds an IAM user-based AWS cloud account and enables the features specified in t
 - There is a single argument of type AddAwsIamUserBasedCloudAccountInput.
 - Returns AddAwsIamUserBasedCloudAccountReply.
 ### bulkdeletecloudaccountwithoutcft
-Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
+BulkDeleteAwsCloudAccountWithoutCft deletes cloud accounts for the features
+provided in the request. If no feature is provided, then all the
+unarchived features are deleted. The API works in a best effort manner
+and reports back features along with the deletion status.
 
 - There is a single argument of type BulkDeleteAwsCloudAccountWithoutCftInput.
 - Returns BulkDeleteAwsCloudAccountWithoutCftReply.
 ### cloudaccountsmigrateinitiate
-Generate CFT for migrating an existing AWS cloud accounts to AWS organizations.
+AwsCloudAccountsMigrateInitiate return template details for migrating the existing AWS accounts which are eligible for migration.
 
 - There is a single argument of type AwsCloudAccountsMigrateInitiateInput.
 - Returns AwsCloudAccountsMigrateInitiateReply.
@@ -27,6 +30,8 @@ Generate CFT for migrating an existing AWS cloud accounts to AWS organizations.
 - There is a single argument of type CreateAutomaticAwsTargetMappingInput.
 - Returns TargetMapping.
 ### createcloudnativestoragesetting
+Create storage settings for archiving AWS cloud native protected objects.
+
 - There is a single argument of type CreateCloudNativeAwsStorageSettingInput.
 - Returns CreateCloudNativeAwsStorageSettingReply.
 ### createcluster
@@ -58,7 +63,11 @@ Disconnects a customer-managed cluster from RSC.
 - There is a single argument of type DisconnectAwsExocomputeClusterInput.
 - Returns System.String.
 ### exocomputeclusterconnect
-Connects a customer-managed cluster to RSC and obtains the connection command.
+AwsExocomputeClusterConnect takes the input of a BYOK8s cluster
+configured by the customer and stores the details in RSC.It also
+returns a kubectl command to be run by the customer in their
+cluster to establish secure reverse tunnel between the cluster
+and RSC.
 
 - There is a single argument of type AwsExocomputeClusterConnectInput.
 - Returns AwsExocomputeClusterConnectReply.
@@ -83,7 +92,8 @@ Updates IAM user-based AWS cloud account. Use this mutation to update account de
 - There is a single argument of type PatchAwsIamUserBasedCloudAccountInput.
 - Returns System.Boolean.
 ### preparecloudaccountdeletion
-Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
+Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for
+deletion of cloud account and does not change any state of account.
 
 - There is a single argument of type PrepareAwsCloudAccountDeletionInput.
 - Returns PrepareAwsCloudAccountDeletionReply.
@@ -98,7 +108,8 @@ Registers the AWS account artifacts such as roles in RSC backend while onboardin
 - There is a single argument of type RegisterAwsFeatureArtifactsInput.
 - Returns RegisterAwsFeatureArtifactsReply.
 ### startexocomputedisablejob
-Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
+Starts a job to disable AWS Exocompute feature. When complete, the job will
+disable exocompute feature for the specified AWS Native account.
 
 - There is a single argument of type StartAwsExocomputeDisableJobInput.
 - Returns AsyncJobStatus.
@@ -119,6 +130,8 @@ Updates regions, stack ARN, and role ARN for a feature for a given cloud account
 - There is a single argument of type UpdateAwsCloudAccountFeatureInput.
 - Returns UpdateAwsCloudAccountFeatureReply.
 ### updatecloudnativestoragesetting
+Update storage settings for archiving AWS cloud native protected objects.
+
 - There is a single argument of type UpdateCloudNativeAwsStorageSettingInput.
 - Returns UpdateCloudNativeAwsStorageSettingReply.
 ### updateexocomputeconfigs
@@ -132,6 +145,8 @@ Updates the role name for AWS IAM pair.
 - There is a single argument of type UpdateAwsIamPairInput.
 - Returns System.String.
 ### updatetarget
+Updates an existing AWS archival target.
+
 - There is a single argument of type UpdateAwsTargetInput.
 - Returns Target.
 ### upgradecloudaccountfeatureswithoutcft
@@ -145,12 +160,18 @@ Set IAM user-based AWS account features status to Connected from Update Permissi
 - There is a single argument of type UpgradeAwsIamUserBasedCloudAccountPermissionsInput.
 - Returns System.Boolean.
 ### validateandcreatecloudaccount
-Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the "message" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
+Validate and create AWS cloud account. If validation fails, no error is returned and the cause
+is present in the "message" field of return object or within admin/child accounts of return
+object. In case validation succeeds, it initiates creation of AWS cloud account. This is the
+first step to set up native protection.
 
 - There is a single argument of type ValidateAndCreateAwsCloudAccountInput.
 - Returns ValidateAndCreateAwsCloudAccountReply.
 ### validateandinitiateoutpostaccount
-Validate and initiates the setup of AWS Outpost account. If validation fails, no error is returned and the cause is present in the "message" field of return object In case validation succeeds, it initiates creation of AWS Outpost account cloud formation stack. This is the first step to set up Laminar data classification on RSC.
+AwsOutpostAccountValidateAndInitiate validates the request to set up an AWS
+Outpost account and, on successful validation, initiates the CloudFormation
+stack setup. On validation failure it returns the validation error in
+validate_response without initiating (no error is returned).
 
 - There is a single argument of type ValidateAndInitiateAwsOutpostAccountInput.
 - Returns ValidateAndInitiateAwsOutpostAccountReply.

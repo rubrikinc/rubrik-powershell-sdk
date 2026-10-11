@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AGENT_CLOUD_POLICY")]
         AGENT_CLOUD_POLICY,
 
+        [EnumMember(Value = "AGENT_CLOUD_REWIND_OBJECT")]
+        AGENT_CLOUD_REWIND_OBJECT,
+
         [EnumMember(Value = "AGENT_CLOUD_VIOLATION")]
         AGENT_CLOUD_VIOLATION,
 

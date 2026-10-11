@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AGENT_CLOUD_POLICY")]
         AGENT_CLOUD_POLICY,
 
+        [EnumMember(Value = "AGENT_CLOUD_REWIND_OBJECT")]
+        AGENT_CLOUD_REWIND_OBJECT,
+
         [EnumMember(Value = "ANTHROPIC_CHILD_ORG")]
         ANTHROPIC_CHILD_ORG,
 
@@ -287,6 +290,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_ORGANIZATION")]
         GITHUB_ORGANIZATION,
+
+        [EnumMember(Value = "GITHUB_ORG_PACKAGES_FIXED_OBJECT")]
+        GITHUB_ORG_PACKAGES_FIXED_OBJECT,
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,

@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXOCOMPUTE_CLUSTER")]
         EXOCOMPUTE_CLUSTER,
 
+        [EnumMember(Value = "GCP_PRIVATE_CONTAINER_REGISTRY")]
+        GCP_PRIVATE_CONTAINER_REGISTRY,
+
         [EnumMember(Value = "HIGH_IMPACT_CHANGE")]
         HIGH_IMPACT_CHANGE,
 
@@ -86,6 +89,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "THREAT_MONITORING_MATCH")]
         THREAT_MONITORING_MATCH,
+
+        [EnumMember(Value = "TPR_BREAK_GLASS_ACCESS")]
+        TPR_BREAK_GLASS_ACCESS,
 
         [EnumMember(Value = "TPR_BREAK_GLASS_ENROLLMENT")]
         TPR_BREAK_GLASS_ENROLLMENT,
