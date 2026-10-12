@@ -1,4 +1,4 @@
-# v20261005-29
+# v20261005-31
 type Query {
   # Account ID.
   accountId: String! @deprecated(reason: "This endpoint is deprecated.")
@@ -11584,6 +11584,12 @@ type Query {
 
     # An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    before: String,
 
     # The ID of the workload.
     snappableFid: UUID!,
@@ -26208,6 +26214,10 @@ input AddNodesToCloudClusterInput {
   numberOfNodes: Int = 0
 
   # OCI Image ID to deploy to add nodes to an OCI Cloud Cluster without the marketplace.
+  # 
+  # Deprecated: supplying an image bypasses Marketplace resolution and with it the
+  # App Catalog terms gate. Select a CDM version and let RSC resolve the image. The
+  # field is removed in a later release; the tag is not reused.
   ociImageId: String = ""
 
   # Specifies whether node resources are preserved if the add node operation fails.
@@ -29411,6 +29421,10 @@ type ArchivalObjectInfo {
 
   # Archival storage usage of the object in bytes.
   storageUsage: Long!
+
+  # FID of the object. Use this, not workloadId, for snapshot queries that
+  # require an object FID.
+  workloadFid: String
 
   # Internal ID of the object.
   workloadId: String
@@ -32946,6 +32960,9 @@ enum AwsCloudExternalArtifact {
   # Keyword to capture the customer-provided gateway KMS key ARN.
   GATEWAY_KMS_KEY_ARN
 
+  # Keyword to capture the GLUE_ICEBERG_PROTECTION feature role.
+  GLUE_ICEBERG_PROTECTION_ROLE_ARN
+
   # Keyword to capture AWS account IAM user ARN.
   IAM_USER_ARN
 
@@ -32957,6 +32974,9 @@ enum AwsCloudExternalArtifact {
 
   # Keyword to capture role chaining role ARN.
   ROLE_CHAINING_ROLE_ARN
+
+  # Keyword to capture the S3_TABLES_ICEBERG_PROTECTION feature role.
+  S3_TABLES_ICEBERG_PROTECTION_ROLE_ARN
 
   # Keyword to capture AWS account secret key.
   SECRET_KEY
@@ -46307,7 +46327,8 @@ type AzureLocalExportTargetCluster {
 }
 # Reply for listing Azure Local export target clusters.
 type AzureLocalExportTargetClustersResponse {
-  # Azure Local clusters eligible as export destinations for the requested snapshot.
+  # Azure Local clusters eligible as export destinations for the requested
+  # snapshot or source CDM cluster.
   clusters: [AzureLocalExportTargetCluster!]!
 }
 # IP allocation method for a NIC attached to a Static logical network.
@@ -46529,6 +46550,9 @@ type AzureNativeAvailabilitySet {
 input AzureNativeCommonResourceGroupFilters {
   # Filter by effective SLA Domain.
   effectiveSlaFilter: AzureNativeRgSlaFilter
+
+  # Filter by name prefix.
+  namePrefixFilter: NamePrefixFilter
 
   # Filter by name substring.
   nameSubstringFilter: NameSubstringFilter
@@ -62751,6 +62775,19 @@ type Cluster {
   # Web server certificate of the cluster.
   webServerCertificate: WebServerCertificate
 }
+# Entry mapping a load balancer Service annotation key to its value.
+input ClusterAddLoadBalancerAnnotationEntry {
+  # Annotation key to set on the load balancer Service.
+  annotationKey: String
+
+  # Annotation value to set on the load balancer Service.
+  annotationValue: String
+}
+# Input for a load balancer Service annotation when adding a Kubernetes cluster.
+input ClusterAddLoadBalancerAnnotationInput {
+  # List of load balancer Service annotations.
+  loadBalancerAnnotationList: [ClusterAddLoadBalancerAnnotationEntry!]!
+}
 # CDM archiving specification.
 type ClusterArchivalSpec {
   # Archival location ID.
@@ -65638,6 +65675,19 @@ input ClusterUpdateInput {
 
   # New time zone for a Rubrik cluster.
   timezone: ClusterTimezoneInput
+}
+# Entry mapping a load balancer Service annotation key to its value.
+input ClusterUpdateLoadBalancerAnnotationEntry {
+  # Annotation key to set on the load balancer Service.
+  annotationKey: String
+
+  # Annotation value to set on the load balancer Service.
+  annotationValue: String
+}
+# Input for a load balancer Service annotation when updating a Kubernetes cluster.
+input ClusterUpdateLoadBalancerAnnotationInput {
+  # List of load balancer Service annotations.
+  loadBalancerAnnotationList: [ClusterUpdateLoadBalancerAnnotationEntry!]!
 }
 # Contains the cluster UUID and Oracle database ID.
 input ClusterUuidWithDbIdInput {
@@ -84632,7 +84682,9 @@ type FileVersion {
   # The location where the file is stored, either in the cloud or locally.
   source: String
 }
+# The location where a file version is stored.
 enum FileVersionSourceEnum {
+  # The file version is stored in the cloud.
   CLOUD
 }
 # Files summary count response.
@@ -93707,7 +93759,7 @@ enum GcpRegion {
   SOUTHAMERICA_WEST1
 
   # Location not specified.
-  UNKNOWN_GCP_REGION
+  UNKNOWN_GCP_REGION @deprecated(reason: "Do not use. Specify a valid GCP region instead.")
 
   # Multi-region: Data centers in the United States.
   US
@@ -101153,17 +101205,33 @@ type HierarchySnappableEdge {
   # The actual HierarchySnappable object wrapped by this edge.
   node: HierarchySnappable!
 }
+# A single version of a file, as captured in one snapshot.
 type HierarchySnappableFileVersion {
+  # The time at which the file was created. Populated only for CDM clusters
+  # starting from 9.2.2 onwards, and only when the file system supports a
+  # creation time.
   fileCreationTime: DateTime
+
+  # The type of file system entry, such as a file or a directory.
   fileMode: FileModeEnum!
+
+  # The time at which this version of the file was last modified.
   lastModified: DateTime!
 
   # Quarantine information corresponding to the path.
   quarantineInfo: QuarantineInfo
+
+  # The size of this version of the file, in bytes.
   size: Long!
   snapshot: CdmSnapshot
+
+  # The FID of the snapshot that contains this version of the file.
   snapshotId: String!
+
+  # The time at which the snapshot containing this version was taken.
   snapshotTime: DateTime
+
+  # The location where the file is stored, either in the cloud or locally.
   source: FileVersionSourceEnum!
 }
 # Fields for sorting hierarchy objects.
@@ -105158,6 +105226,53 @@ type HypervAsyncRequestSuccessSummary {
   # ID of the Hyper-V virtual machine.
   vmId: String!
 }
+# Network configuration for an Azure Local NIC at recovery time.
+input HypervAzureLocalNicSpecInput {
+  # IP configuration for this NIC. Only DHCP is supported by the Azure Local
+  # recovery flow. See SPARK-914317.
+  ipConfig: NicIpConfigInput!
+
+  # ARM ID of the target Azure Local logical network
+  # (Microsoft.AzureStackHCI/logicalNetworks).
+  logicalNetworkId: String!
+
+  # WMI instance ID of the source NIC, used to correlate NIC selections across
+  # recovery-spec revisions.
+  nicInstanceId: String
+
+  # Zero-based index of the source NIC on the original virtual machine, in
+  # source NIC order.
+  sourceNicIndex: Int
+}
+# Recovery target representing an Azure Local cluster (Arc virtual machine
+# export path).
+# See SPARK-914317.
+# 
+# hyperv_cluster_id, resource_group and nics are the only caller inputs. Every
+# Azure coordinate below is resolved from the onboarded Azure Local cluster
+# that hyperv_cluster_id names, within the caller's account, and is never
+# accepted from the caller: authorization is enforced on RSC object IDs, and a
+# caller able to name a cluster and separately name a subscription could
+# authorize against one cluster and export into another.
+input HypervAzureLocalTargetInput {
+  # RSC object ID of the Hyper-V cluster backing this Azure Local cluster.
+  # Used to resolve the cluster to a CDM cluster ID via CRS, and the object
+  # the target-side recovery authorization is enforced on.
+  hypervClusterId: UUID!
+
+  # Per-NIC target mapping. Positional: nics[i].source_nic_index is the
+  # 0-based index of the source virtual machine NIC that maps to
+  # nics[i].logical_network_id.
+  # 
+  # Optional on input because a network_preservation_mode of REMOVE_ALL
+  # recovers a virtual machine with no network devices, for which an empty
+  # mapping is the correct request rather than a missing one.
+  nics: [HypervAzureLocalNicSpecInput!]
+
+  # Resource group name in the destination subscription, chosen by the user
+  # from the resource groups the destination cluster's subscription offers.
+  resourceGroup: String!
+}
 # Supported in v7.0+
 input HypervBatchExportSnapshotJobConfigInput {
   # Required. Supported in v7.0+
@@ -106278,6 +106393,10 @@ type HypervTargetConfig {
 }
 # Target configuration for the recovered virtual machine.
 input HypervTargetConfigInput {
+  # Azure Local cluster target (Arc virtual machine export path).
+  # See SPARK-914317.
+  azureLocal: HypervAzureLocalTargetInput
+
   # Standalone HyperV host target.
   standalone: HypervStandaloneTargetInput
 }
@@ -112416,6 +112535,9 @@ input K8sClusterAddInput {
   # The configuration for the kupr server proxy to be added.
   kuprServerProxyConfig: KuprServerProxyConfigInput
 
+  # Annotations to set on the load balancer Service for the Kubernetes cluster. Only used when transport is loadbalancer. When non-empty, this map replaces the built-in per-distribution annotations entirely.
+  loadBalancerAnnotations: ClusterAddLoadBalancerAnnotationInput
+
   # Supported in v9.6+
   # Maximum number of kupr backup agents allowed to run concurrently against this Kubernetes cluster. Set to 0 (or omit) to leave the throttle unlimited.
   maxConcurrentAgents: Int
@@ -112845,6 +112967,9 @@ input K8sClusterUpdateConfigInput {
   # Supported in v9.2+
   # The configuration for the kupr server proxy to be updated.
   kuprServerProxyConfig: KuprServerProxyConfigInput
+
+  # Annotations to set on the load balancer Service for the Kubernetes cluster. Only used when transport is loadbalancer. When non-empty, this list replaces the current custom annotations entirely. Omitting the field or sending an empty list leaves the current annotations unchanged. Removing all custom annotations is not supported through this API.
+  loadBalancerAnnotations: ClusterUpdateLoadBalancerAnnotationInput
 
   # Supported in v9.6+
   # Maximum number of kupr backup agents allowed to run concurrently against this Kubernetes cluster. Set to 0 to disable the concurrent-agent throttle. Omit to leave the current setting unchanged.
@@ -137522,6 +137647,23 @@ type NicIpConfig {
 
   # Subnet mask (required when method is STATIC).
   subnetMask: String!
+}
+# IP configuration for a NIC at recovery time.
+input NicIpConfigInput {
+  # DNS server addresses.
+  dnsServers: [String!]
+
+  # Default gateway (required when method is STATIC).
+  gateway: String
+
+  # IPv4 address (required when method is STATIC).
+  ipv4Address: String
+
+  # IP allocation method.
+  method: IpAllocationMethod
+
+  # Subnet mask (required when method is STATIC).
+  subnetMask: String
 }
 # A recurrence range without an end (e.g. repeat the pattern forever starting from 7/29/2019).
 type NoEndRecurrenceRange {
@@ -164252,6 +164394,9 @@ enum ProductName {
   # AppFlows UCL.
   APPFLOWS_UCL
 
+  # Atlassian Confluence protection.
+  ATLASSIAN_CONFLUENCE
+
   # Atlassian Jira protection.
   ATLASSIAN_JIRA
 
@@ -178646,6 +178791,10 @@ enum SaasAppType {
 
   # GitHub application type.
   SAAS_GITHUB
+
+  # GitHub organization-level application type, such as organization
+  # packages.
+  SAAS_GITHUB_ORG
 
   # Salesforce application type.
   SALESFORCE
@@ -203508,11 +203657,22 @@ enum VersionStatus {
   # Cluster upgrade is recommended.
   UPGRADE_RECOMMENDED
 }
+# A file matched by a file search, with the versions of the file that are
+# available in snapshots.
 type VersionedFile {
+  # The absolute path of the file.
   absolutePath: String!
+
+  # The path of the file, formatted for display.
   displayPath: String!
+
+  # The versions of the file that are available in snapshots.
   fileVersions: [HierarchySnappableFileVersion!]!
+
+  # The name of the file.
   filename: String!
+
+  # The path of the file, relative to the root of the snapshot.
   path: String!
 }
 # Paginated list of VersionedFile objects. Each page of the results includes at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
