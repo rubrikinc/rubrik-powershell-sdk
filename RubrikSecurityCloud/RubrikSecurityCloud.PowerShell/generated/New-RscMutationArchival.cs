@@ -226,6 +226,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archivalDataSourceIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	tlsCertificateId = $someString
+    /// 	# OPTIONAL
+    /// 	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1638,6 +1642,10 @@ $query.Var.input = @{
 	archivalDataSourceIds = @(
 		$someString
 	)
+	# OPTIONAL
+	tlsCertificateId = $someString
+	# OPTIONAL
+	certificateTrustMode = $someCertificateTrustMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateTrustMode]) for enum values.
 }"
             );
         }

@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DYNAMODB_RECOVERY_EXPORT")]
         DYNAMODB_RECOVERY_EXPORT,
 
+        [EnumMember(Value = "ENCRYPTED_FILES_CSV")]
+        ENCRYPTED_FILES_CSV,
+
         [EnumMember(Value = "ENTRA_ID_DOWNLOAD_SNAPSHOT")]
         ENTRA_ID_DOWNLOAD_SNAPSHOT,
 
@@ -47,6 +50,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POLICY_VIOLATIONS_CSV")]
         POLICY_VIOLATIONS_CSV,
+
+        [EnumMember(Value = "QUARANTINED_FILES_CSV")]
+        QUARANTINED_FILES_CSV,
 
         [EnumMember(Value = "RECOVERY_IMPACT_CSV")]
         RECOVERY_IMPACT_CSV,

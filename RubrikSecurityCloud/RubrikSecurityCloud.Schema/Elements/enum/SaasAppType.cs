@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANTHROPIC_APPS")]
+        ANTHROPIC_APPS,
+
         [EnumMember(Value = "ANTHROPIC_CHAT")]
         ANTHROPIC_CHAT,
 
@@ -83,6 +86,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAAS_GITHUB")]
         SAAS_GITHUB,
+
+        [EnumMember(Value = "SAAS_GITHUB_ORG")]
+        SAAS_GITHUB_ORG,
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,

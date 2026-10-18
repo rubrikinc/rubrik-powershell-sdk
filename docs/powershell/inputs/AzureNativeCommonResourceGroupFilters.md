@@ -9,3 +9,5 @@ Filters for listing Azure resource groups.
   - Filter by region.
 - effectiveSlaFilter: AzureNativeRgSlaFilter
   - Filter by effective SLA Domain.
+- namePrefixFilter: NamePrefixFilter
+  - Filter by name prefix.

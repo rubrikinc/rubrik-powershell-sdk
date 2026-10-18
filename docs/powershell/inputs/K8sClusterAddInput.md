@@ -58,6 +58,8 @@ Maximum number of kupr backup agents allowed to run concurrently against this Ku
 - accessToken: System.String
   - Supported in v9.1+
 The access token for the service account.
+- kubeSystemUid: System.String
+  - UID of the kube-system namespace, the stable identifier of the physical Kubernetes cluster. For manifest and Helm onboarding the api-handler reads it from the in-cluster Kubernetes API and passes it here. For kubeconfig onboarding CDM reads it itself and ignores this field. Omit if unavailable; CDM populates it on the first refresh.
 - helmMinCdmVersion: System.String
   - Supported in v9.6+
 Minimum CDM version required by the Helm chart being installed. Empty for non-Helm onboarding.

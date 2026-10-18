@@ -61,10 +61,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.Boolean? IsContentPending
-        // GraphQL -> isContentPending: Boolean (scalar)
-        [JsonProperty("isContentPending")]
-        public System.Boolean? IsContentPending { get; set; }
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        [JsonProperty("isContentDeferred")]
+        public System.Boolean? IsContentDeferred { get; set; }
 
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? CreateTime = null,
         System.String? FileType = null,
         System.String? Id = null,
-        System.Boolean? IsContentPending = null,
+        System.Boolean? IsContentDeferred = null,
         DateTime? ModifiedTime = null,
         System.String? Name = null,
         System.String? ParentFolderId = null,
@@ -165,8 +165,8 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
-        if ( IsContentPending != null ) {
-            this.IsContentPending = IsContentPending;
+        if ( IsContentDeferred != null ) {
+            this.IsContentDeferred = IsContentDeferred;
         }
         if ( ModifiedTime != null ) {
             this.ModifiedTime = ModifiedTime;
@@ -281,13 +281,13 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
-        //      C# -> System.Boolean? IsContentPending
-        // GraphQL -> isContentPending: Boolean (scalar)
-        if (this.IsContentPending != null) {
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        if (this.IsContentDeferred != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "isContentPending\n" ;
+                s += conf.Prefix + "isContentDeferred\n" ;
             } else {
-                s += ind + "isContentPending\n" ;
+                s += ind + "isContentDeferred\n" ;
             }
         }
         //      C# -> DateTime? ModifiedTime
@@ -517,22 +517,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
-        //      C# -> System.Boolean? IsContentPending
-        // GraphQL -> isContentPending: Boolean (scalar)
-        if (ec.Includes("isContentPending",true))
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        if (ec.Includes("isContentDeferred",true))
         {
-            if(this.IsContentPending == null) {
+            if(this.IsContentDeferred == null) {
 
-                this.IsContentPending = true;
+                this.IsContentDeferred = true;
 
             } else {
 
 
             }
         }
-        else if (this.IsContentPending != null && ec.Excludes("isContentPending",true))
+        else if (this.IsContentDeferred != null && ec.Excludes("isContentDeferred",true))
         {
-            this.IsContentPending = null;
+            this.IsContentDeferred = null;
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)

@@ -17,11 +17,11 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (59,32)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (36,34)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (59,33)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (36,34)](#snapshot-domain) |
 | [Active Directory (5,6)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (13,4)](#microsoft-365-domain) | [Policy (20,21)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (7,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
 | [Archival (18,24)](#archival-domain) | [Report Download (4,28)](#report-download-domain) | [Miscellaneous (370,271)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (3,6)](#storage-arrays-domain) |
-| [AWS (37,34)](#aws-domain) | [Microsoft Exchange (7,5)](#microsoft-exchange-domain) | [Mongo (11,17)](#mongo-domain) | [RCV (6,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
+| [AWS (37,34)](#aws-domain) | [Microsoft Exchange (7,5)](#microsoft-exchange-domain) | [Mongo (12,18)](#mongo-domain) | [RCV (6,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (0,1)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (76,53)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (0,0)](#mosaic-domain) | [Report (21,9)](#report-domain) | [Threat (8,1)](#threat-domain) |
 | [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (21,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (21,26)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [ThreatHunt (10,6)](#threathunt-domain) |
@@ -754,6 +754,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationCluster -Operation RequestPersistentExo` | `New-RscMutation -Gql requestPersistentExocluster` | [requestPersistentExocluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationCluster -Operation RestorePostgreSqlDb` | `New-RscMutation -Gql restorePostgreSqlDbCluster` | [restorePostgreSqlDbCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationCluster -Operation RestorePostgreSqlDbClusterToSnapshot` | `New-RscMutation -Gql restorePostgreSQLDbClusterToSnapshot` | [restorePostgreSQLDbClusterToSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationCluster -Operation SetClusterKmsKeyId` | `New-RscMutation -Gql setClusterKmsKeyId` | [setClusterKmsKeyId](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationCluster -Operation SetMissingClusterStatus` | `New-RscMutation -Gql setMissingClusterStatus` | [setMissingClusterStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationCluster -Operation TakeOnDemandPostgreSqlDbClusterSnapshot` | `New-RscMutation -Gql takeOnDemandPostgreSQLDbClusterSnapshot` | [takeOnDemandPostgreSQLDbClusterSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationCluster -Operation UpdateClusterDefaultAddress` | `New-RscMutation -Gql updateClusterDefaultAddress` | [updateClusterDefaultAddress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1947,6 +1948,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryMongo -Operation GetMissedOpsManagerManagedSourceSnapshots` | `New-RscQuery -Gql getMissedOpsManagerManagedMongoSourceSnapshots` | [getMissedOpsManagerManagedMongoSourceSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMongo -Operation RecoverableRanges` | `New-RscQuery -Gql mongoRecoverableRanges` | [mongoRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMongo -Operation RestoreTargetsForSnapshot` | `New-RscQuery -Gql mongoRestoreTargetsForSnapshot` | [mongoRestoreTargetsForSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryMongo -Operation SnapshotRbacSummary` | `New-RscQuery -Gql mongoSnapshotRbacSummary` | [mongoSnapshotRbacSummary](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMongo -Operation Source` | `New-RscQuery -Gql mongoSource` | [mongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryMongo -Operation Sources` | `New-RscQuery -Gql mongoSources` | [mongoSources](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
@@ -1968,6 +1970,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationMongo -Operation ExpireOpsManagerSourceDownloadedSnapshots` | `New-RscMutation -Gql expireMongoOpsManagerSourceDownloadedSnapshots` | [expireMongoOpsManagerSourceDownloadedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMongo -Operation PatchOpsManagerManagedSource` | `New-RscMutation -Gql patchOpsManagerManagedMongoSource` | [patchOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMongo -Operation PatchSource` | `New-RscMutation -Gql patchMongoSource` | [patchMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationMongo -Operation RecoverCluster` | `New-RscMutation -Gql recoverMongoCluster` | [recoverMongoCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMongo -Operation RecoverOpsManagerManagedSource` | `New-RscMutation -Gql recoverOpsManagerManagedMongoSource` | [recoverOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMongo -Operation RecoverSource` | `New-RscMutation -Gql recoverMongoSource` | [recoverMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMongo -Operation RetryAddOpsManagerManagedSource` | `New-RscMutation -Gql retryAddOpsManagerManagedMongoSource` | [retryAddOpsManagerManagedMongoSource](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

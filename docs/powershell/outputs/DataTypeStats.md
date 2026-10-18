@@ -11,3 +11,9 @@ Stats of an individual data type.
   - Total permitted hits of the data type.
 - name: System.String
   - Name of the data type.
+- totalFilesWithHits: System.Int64
+  - Number of files that have at least one hit for this data type.
+- totalViolatedFilesWithHits: System.Int64
+  - Number of files with at least one violated hit for this data type.
+- totalPermittedFilesWithHits: System.Int64
+  - Number of files with at least one permitted hit for this data type.

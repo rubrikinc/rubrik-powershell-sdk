@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Mongo' API domain:
-    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverCluster, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// </summary>
     /// <description>
     /// New-RscMutationMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverCluster, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -660,6 +660,78 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoverCluster operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: RecoverCluster
+    /// 
+    /// $query = New-RscMutationMongo -Operation RecoverCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# REQUIRED
+    /// 	input = @{
+    /// 		# OPTIONAL
+    /// 		restoreThrottleInBytesPerSecond = $someInt64
+    /// 		# REQUIRED
+    /// 		sourceMongoClusterId = $someString
+    /// 		# OPTIONAL
+    /// 		isRestoreWithIndex = $someBoolean
+    /// 		# OPTIONAL
+    /// 		restoreDbPassword = $someString
+    /// 		# OPTIONAL
+    /// 		adminDbSnapshotTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		sourceDatabaseIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		sourceCollectionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		configdbSnapshotTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		restoreDbUsername = $someString
+    /// 		# OPTIONAL
+    /// 		targetDatabaseName = $someString
+    /// 		# OPTIONAL
+    /// 		shouldDropExistingCollection = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetCollectionName = $someString
+    /// 		# OPTIONAL
+    /// 		prefix = $someString
+    /// 		# REQUIRED
+    /// 		targetMongoClusterId = $someString
+    /// 		# OPTIONAL
+    /// 		isRestoreFromCdm = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		versionTime = $someDateTime
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RecoverOpsManagerManagedSource operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -930,6 +1002,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExpireOpsManagerSourceDownloadedSnapshots",
                 "PatchOpsManagerManagedSource",
                 "PatchSource",
+                "RecoverCluster",
                 "RecoverOpsManagerManagedSource",
                 "RecoverSource",
                 "RetryAddOpsManagerManagedSource",
@@ -987,6 +1060,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "PatchSource":
                         this.ProcessRecord_PatchSource();
+                        break;
+                    case "RecoverCluster":
+                        this.ProcessRecord_RecoverCluster();
                         break;
                     case "RecoverOpsManagerManagedSource":
                         this.ProcessRecord_RecoverOpsManagerManagedSource();
@@ -1125,6 +1201,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -PatchSource";
             // Create new graphql operation patchMongoSource
             InitMutationPatchMongoSource();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverMongoCluster.
+        internal void ProcessRecord_RecoverCluster()
+        {
+            this._logger.name += " -RecoverCluster";
+            // Create new graphql operation recoverMongoCluster
+            InitMutationRecoverMongoCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1640,6 +1725,70 @@ $query.Var.input = @{
 	id = $someString
 	# OPTIONAL
 	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // recoverMongoCluster(input: RecoverMongoClusterInput!): AsyncRequestStatus!
+        internal void InitMutationRecoverMongoCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverMongoClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverMongoCluster",
+                "($input: RecoverMongoClusterInput!)",
+                "AsyncRequestStatus",
+                Mutation.RecoverMongoCluster,
+                Mutation.RecoverMongoClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	userNote = $someString
+	# REQUIRED
+	input = @{
+		# OPTIONAL
+		restoreThrottleInBytesPerSecond = $someInt64
+		# REQUIRED
+		sourceMongoClusterId = $someString
+		# OPTIONAL
+		isRestoreWithIndex = $someBoolean
+		# OPTIONAL
+		restoreDbPassword = $someString
+		# OPTIONAL
+		adminDbSnapshotTime = $someDateTime
+		# OPTIONAL
+		sourceDatabaseIds = @(
+			$someString
+		)
+		# OPTIONAL
+		sourceCollectionIds = @(
+			$someString
+		)
+		# OPTIONAL
+		configdbSnapshotTime = $someDateTime
+		# OPTIONAL
+		restoreDbUsername = $someString
+		# OPTIONAL
+		targetDatabaseName = $someString
+		# OPTIONAL
+		shouldDropExistingCollection = $someBoolean
+		# OPTIONAL
+		targetCollectionName = $someString
+		# OPTIONAL
+		prefix = $someString
+		# REQUIRED
+		targetMongoClusterId = $someString
+		# OPTIONAL
+		isRestoreFromCdm = $someBoolean
+		# OPTIONAL
+		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
+		versionTime = $someDateTime
+	}
 }"
             );
         }

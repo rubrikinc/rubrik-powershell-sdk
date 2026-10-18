@@ -59,7 +59,7 @@ List of RAC host simple IDs to recover the database during the clone.
   - Supported in v9.5+
 Clone (RMAN DUPLICATE) only. When false, the UNTIL TIME clause is omitted and RMAN recovers to the end of available archive logs. When the field is omitted, server-side behavior treats it as true (UNTIL TIME is included) for backward compatibility.
 - shouldRestoreAsStandby: System.Boolean
-  - Clone (RMAN DUPLICATE) only. When true, the cloned database is restored as a physical standby (mounted for recovery and not opened read-write). When the field is omitted or false, the database is restored normally. The default value is false. Constraints: cannot be combined with cloneDbName (a standby must keep the source DB_NAME), pdbsToClone (a standby requires all PDBs), shouldRestoreFilesOnly (files-only export runs no DUPLICATE), or a same-host target.
+  - Clone (RMAN DUPLICATE) only. When true, the cloned database is restored in the physical standby role and left open read only. Requires db_unique_name, differing from the source database, set either in the advanced recovery options or in the custom pfile. Constraints: cannot be combined with cloneDbName (a standby must keep the source DB_NAME), pdbsToClone (a standby requires all PDBs), shouldRestoreFilesOnly (files-only export runs no DUPLICATE), or a same-host target.
 - targetRacPrimaryHostId: System.String
   - Supported in v9.0+
 Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.

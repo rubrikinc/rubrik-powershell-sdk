@@ -1259,6 +1259,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	kmsKeyId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2552,14 +2554,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	sourceManagedInstanceDatabaseRubrikId = $someString
+    /// 	# REQUIRED
+    /// 	destinationDatabaseName = $someString
     /// 	# OPTIONAL
     /// 	destinationManagedInstanceRubrikId = $someString
     /// 	# REQUIRED
-    /// 	destinationDatabaseName = $someString
+    /// 	destinationResourceGroupName = $someString
     /// 	# REQUIRED
     /// 	destinationManagedInstanceName = $someString
-    /// 	# REQUIRED
-    /// 	destinationResourceGroupName = $someString
     /// 	# OPTIONAL
     /// 	azureSqlManagedInstanceDbPitExportInput = @{
     /// 		# REQUIRED
@@ -5299,6 +5301,8 @@ $query.Var.input = @{
 			}
 		}
 	}
+	# OPTIONAL
+	kmsKeyId = $someString
 }"
             );
         }
@@ -6405,14 +6409,14 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	sourceManagedInstanceDatabaseRubrikId = $someString
+	# REQUIRED
+	destinationDatabaseName = $someString
 	# OPTIONAL
 	destinationManagedInstanceRubrikId = $someString
 	# REQUIRED
-	destinationDatabaseName = $someString
+	destinationResourceGroupName = $someString
 	# REQUIRED
 	destinationManagedInstanceName = $someString
-	# REQUIRED
-	destinationResourceGroupName = $someString
 	# OPTIONAL
 	azureSqlManagedInstanceDbPitExportInput = @{
 		# REQUIRED

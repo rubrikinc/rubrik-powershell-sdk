@@ -17,3 +17,5 @@ RSC snapshot location retention information.
   - Specifies the retention lock mode at this location. Can be NO_MODE, COMPLIANCE, or GOVERNANCE. Derived from CDM per-location retention info when available.
 - locationName: System.String
   - Location name of snapshot.
+- locationPurpose: StorageLocationPurpose
+  - Purpose of the location of snapshot. Null when the location cannot be resolved.

@@ -160,6 +160,11 @@ Initiates a job to mount the snapshot to the given host. The GET /postgresql/db_
 
 - There is a single argument of type RestorePostgresDbClusterSnapshotInput.
 - Returns RestorePostgresDbClusterSnapshotResponse.
+### setclusterkmskeyid
+Sets or updates the KMS key ID for a CCES cluster.
+
+- There is a single argument of type SetClusterKmsKeyIdInput.
+- Returns SetClusterKmsKeyIdReply.
 ### setmissingclusterstatus
 Updates the connection status of a missing cluster.
 

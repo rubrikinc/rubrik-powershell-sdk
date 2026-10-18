@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sortByParam")]
         public SaasSortByParam? SortByParam { get; set; }
 
+        //      C# -> SaasRtpPointInTimeInfo? RtpPointInTimeInfo
+        // GraphQL -> rtpPointInTimeInfo: SaasRtpPointInTimeInfo (input)
+        [JsonProperty("rtpPointInTimeInfo")]
+        public SaasRtpPointInTimeInfo? RtpPointInTimeInfo { get; set; }
+
         //      C# -> RecordFilter? ItemFilters
         // GraphQL -> itemFilters: RecordFilter! (input)
         [Required]

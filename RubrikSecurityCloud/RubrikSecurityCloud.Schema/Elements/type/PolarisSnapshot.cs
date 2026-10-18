@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> BackupType? BackupType
         // GraphQL -> backupType: BackupType (enum)
         [JsonProperty("backupType")]
@@ -266,6 +271,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PolarisSnapshot Set(
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         BackupType? BackupType = null,
         SnapshotConsistencyLevel? ConsistencyLevel = null,
         RetentionLockMode? RetentionLockModeAcrossLocations = null,
@@ -315,6 +321,9 @@ namespace RubrikSecurityCloud.Types
         RscSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
+        }
         if ( BackupType != null ) {
             this.BackupType = BackupType;
         }
@@ -470,6 +479,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
+            }
+        }
         //      C# -> BackupType? BackupType
         // GraphQL -> backupType: BackupType (enum)
         if (this.BackupType != null) {
@@ -930,6 +948,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
+        }
         //      C# -> BackupType? BackupType
         // GraphQL -> backupType: BackupType (enum)
         if (ec.Includes("backupType",true))

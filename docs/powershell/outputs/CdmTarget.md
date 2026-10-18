@@ -37,5 +37,7 @@ Target-specific information created and synchronized from a Rubrik CDM cluster.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- archivalLocationPurpose: StorageLocationPurpose
+  - Purpose of the target (e.g. CNP_BAAS for BaaS, PURPOSE_DEFAULT for user-created). Null on older servers that don't populate the field.
 - cluster: Cluster
   - The cluster to which this target belongs.

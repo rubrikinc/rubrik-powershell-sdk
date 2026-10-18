@@ -1572,8 +1572,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	id = $someString
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		domainName = $someString
@@ -1616,6 +1614,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	deltaRequest = @{
     /// 		# REQUIRED
@@ -3675,8 +3675,6 @@ $query.Var.input = @{
 	# REQUIRED
 	id = $someString
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		domainName = $someString
@@ -3719,6 +3717,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	deltaRequest = @{
 		# REQUIRED

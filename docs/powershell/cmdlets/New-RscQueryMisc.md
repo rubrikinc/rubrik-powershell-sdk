@@ -1168,9 +1168,11 @@ Retrieve the ID, domain, username and password for all guest OS credentials.
 ### guestcredentialsv2
 Get Guest OS credentials.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of GuestOsCredentialFilterInputs: Filter for Guest OS credentials.
     - sortBy - GuestOsCredentialSortBy: Sort Guest OS credentials.
 - Returns GuestOsCredentialConnection.
@@ -2214,7 +2216,7 @@ Return a paginated list of recoveries corresponding to the filter passed.
 RSC prioritizes recovery_ids if they are passed in the filter. All the filters, if passed, will work as AND logic.
 A maximum of 50 objects per page is supported.
 
-- There are 18 arguments.
+- There are 19 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
@@ -2233,13 +2235,15 @@ A maximum of 50 objects per page is supported.
     - workloadTypeFilter - ManagedObjectType: Filter by workload type.
     - recoveryNameSubstring - System.String: Filter by recovery name substring.
     - sortParam - RecoverySortParamInput: Sorting parameters for the recovery list.
+    - recoveryTags - list of RecoveryTagClauses: Filter by tag clauses. A recovery matches if it has all the tags in at least
+one clause. Empty clauses are ignored.
 - Returns RecoveryConnection.
 ### recoveryplansbasicinfo
 Retrieves basic information for recovery plans with pagination support.
 RSC prioritizes recovery_plan_ids if they are passed in the filter. All
 filters are combined using AND logic.
 
-- There are 21 arguments.
+- There are 22 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
@@ -2260,6 +2264,8 @@ filters are combined using AND logic.
     - sourceRootDomainSids - list of System.Strings: Optional filter for AD forest root domain SIDs.
     - recoveryPlanStatuses - list of RecoveryPlanStatuss: Optional filter for recovery plan configuration statuses.
     - lastRecoveryOutcomes - list of RecoveryOutcomes: Optional filter by the outcome of the most recent completed recovery. Plans with no recovery history are excluded from filtered results.
+    - recoveryTags - list of RecoveryTagClauses: Optional filter by tag clauses. A plan matches if it has all the tags in at
+least one clause. Empty clauses are ignored.
     - isPreSeedEnabled - System.Boolean: Optional filter by whether Pre-Seed is enabled for the recovery plan. When unset, recovery plans are returned regardless of Pre-Seed state.
 - Returns RecoveryPlanBasicInfoConnection.
 ### recoveryspecs
@@ -2950,11 +2956,14 @@ Paginated list of vCloud Director orgs.
     - filter - list of Filters: Hierarchy object filter.
 - Returns VcdOrgConnection.
 ### vcdtopleveldescendants
-Paginated list of the highest-level vCloud Director objects accessible by the current user.
+Paginated list of the highest-level vCloud Director objects accessible by
+the current user.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
@@ -2975,9 +2984,11 @@ Paginated list of vCloud Director vApps.
 ### vcdvappvms
 Paginated list of virtual machines under vCloud Director hiearchy.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: The hierarchy object filter.

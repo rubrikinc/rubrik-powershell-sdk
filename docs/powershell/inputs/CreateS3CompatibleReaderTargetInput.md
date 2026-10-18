@@ -33,3 +33,7 @@ Input for creating a S3Compatible Reader Target.
   - Deprecated: IBM subtype location specific details is no longer used.
 - archivalDataSourceIds: list of System.Strings
   - List of workload IDs on the original Rubrik cluster. This list should be empty for a full refresh.
+- tlsCertificateId: System.String
+  - Rubrik Security Cloud managed ID of the certificate to use as the TLS trust anchor for the S3-compatible target.
+- certificateTrustMode: CertificateTrustMode
+  - The TLS trust mode for the S3-compatible target.

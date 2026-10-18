@@ -832,6 +832,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
     /// }
+    /// # OPTIONAL
+    /// $query.Var.separateSharedClusters = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -4287,17 +4289,18 @@ $query.Var.clusterFilterArg = $someClusterTypeEnum # Call [Enum]::GetValues([Rub
         }
 
         // Create new GraphQL Query:
-        // countClusters(filter: ClusterFilterInput): CountClustersReply!
+        // countClusters(filter: ClusterFilterInput, separateSharedClusters: Boolean): CountClustersReply!
         internal void InitQueryCountClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("filter", "ClusterFilterInput"),
+                Tuple.Create("separateSharedClusters", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryCountClusters",
-                "($filter: ClusterFilterInput)",
+                "($filter: ClusterFilterInput,$separateSharedClusters: Boolean)",
                 "CountClustersReply",
                 Query.CountClusters,
                 Query.CountClustersFieldSpec,
@@ -4376,7 +4379,9 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
-}"
+}
+# OPTIONAL
+$query.Var.separateSharedClusters = $someBoolean"
             );
         }
 

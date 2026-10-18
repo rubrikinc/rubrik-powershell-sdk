@@ -47,6 +47,8 @@ Rubrik cluster upgrade Information.
   - Time taken by the last upgrade.
 - authorizedOperations: AuthorizedOperations
   - The authorized operations on the Rubrik cluster.
+- kmsKeyRequired: System.Boolean
+  - Specifies whether the cluster requires a KMS key.
 - upgradeRecommendationInfo: UpgradeRecommendationInfo
   - Recommended upgrade version of the Rubrik cluster.
 - cdmClusterNodeDetails: list of CdmNodeDetails

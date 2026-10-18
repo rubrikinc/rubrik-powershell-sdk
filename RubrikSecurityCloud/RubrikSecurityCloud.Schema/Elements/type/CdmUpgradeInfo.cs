@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRuSupported")]
         public System.Boolean? IsRuSupported { get; set; }
 
+        //      C# -> System.Boolean? KmsKeyRequired
+        // GraphQL -> kmsKeyRequired: Boolean! (scalar)
+        [JsonProperty("kmsKeyRequired")]
+        public System.Boolean? KmsKeyRequired { get; set; }
+
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
         [JsonProperty("overallProgress")]
@@ -184,6 +189,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? FastUpgradePreferred = null,
         System.String? FinishedStates = null,
         System.Boolean? IsRuSupported = null,
+        System.Boolean? KmsKeyRequired = null,
         System.Single? OverallProgress = null,
         System.String? PendingStates = null,
         System.String? PreviousVersion = null,
@@ -232,6 +238,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRuSupported != null ) {
             this.IsRuSupported = IsRuSupported;
+        }
+        if ( KmsKeyRequired != null ) {
+            this.KmsKeyRequired = KmsKeyRequired;
         }
         if ( OverallProgress != null ) {
             this.OverallProgress = OverallProgress;
@@ -386,6 +395,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRuSupported\n" ;
             } else {
                 s += ind + "isRuSupported\n" ;
+            }
+        }
+        //      C# -> System.Boolean? KmsKeyRequired
+        // GraphQL -> kmsKeyRequired: Boolean! (scalar)
+        if (this.KmsKeyRequired != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsKeyRequired\n" ;
+            } else {
+                s += ind + "kmsKeyRequired\n" ;
             }
         }
         //      C# -> System.Single? OverallProgress
@@ -748,6 +766,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRuSupported != null && ec.Excludes("isRuSupported",true))
         {
             this.IsRuSupported = null;
+        }
+        //      C# -> System.Boolean? KmsKeyRequired
+        // GraphQL -> kmsKeyRequired: Boolean! (scalar)
+        if (ec.Includes("kmsKeyRequired",true))
+        {
+            if(this.KmsKeyRequired == null) {
+
+                this.KmsKeyRequired = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsKeyRequired != null && ec.Excludes("kmsKeyRequired",true))
+        {
+            this.KmsKeyRequired = null;
         }
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)

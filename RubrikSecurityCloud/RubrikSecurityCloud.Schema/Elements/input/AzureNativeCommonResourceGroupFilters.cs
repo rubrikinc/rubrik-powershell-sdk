@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public AzureNativeRgSlaFilter? EffectiveSlaFilter { get; set; }
 
+        //      C# -> NamePrefixFilter? NamePrefixFilter
+        // GraphQL -> namePrefixFilter: NamePrefixFilter (input)
+        [JsonProperty("namePrefixFilter")]
+        public NamePrefixFilter? NamePrefixFilter { get; set; }
+
 
         #endregion
 

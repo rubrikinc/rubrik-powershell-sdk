@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 32
+    /// Create a new RscQuery object for any of the 33
     /// operations in the 'Cluster' API domain:
-    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetClusterKmsKeyId, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 32 operations
+    /// There are 33 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetClusterKmsKeyId, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -155,7 +155,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					vlan = $someInt
     /// 				}
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				ipmiIpConfig = @{
     /// 					# REQUIRED
     /// 					address = $someString
@@ -1582,6 +1582,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SetClusterKmsKeyId operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: SetClusterKmsKeyId
+    /// 
+    /// $query = New-RscMutationCluster -Operation SetClusterKmsKeyId
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	kmsKeyId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetClusterKmsKeyIdReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SetMissingClusterStatus operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1895,6 +1928,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RequestPersistentExo",
                 "RestorePostgreSqlDb",
                 "RestorePostgreSqlDbClusterToSnapshot",
+                "SetClusterKmsKeyId",
                 "SetMissingClusterStatus",
                 "TakeOnDemandPostgreSqlDbClusterSnapshot",
                 "UpdateClusterDefaultAddress",
@@ -1991,6 +2025,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestorePostgreSqlDbClusterToSnapshot":
                         this.ProcessRecord_RestorePostgreSqlDbClusterToSnapshot();
+                        break;
+                    case "SetClusterKmsKeyId":
+                        this.ProcessRecord_SetClusterKmsKeyId();
                         break;
                     case "SetMissingClusterStatus":
                         this.ProcessRecord_SetMissingClusterStatus();
@@ -2249,6 +2286,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // setClusterKmsKeyId.
+        internal void ProcessRecord_SetClusterKmsKeyId()
+        {
+            this._logger.name += " -SetClusterKmsKeyId";
+            // Create new graphql operation setClusterKmsKeyId
+            InitMutationSetClusterKmsKeyId();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // setMissingClusterStatus.
         internal void ProcessRecord_SetMissingClusterStatus()
         {
@@ -2385,7 +2431,7 @@ $query.Var.AddClusterNodesInput = @{
 					# OPTIONAL
 					vlan = $someInt
 				}
-				# REQUIRED
+				# OPTIONAL
 				ipmiIpConfig = @{
 					# REQUIRED
 					address = $someString
@@ -3621,6 +3667,31 @@ $query.Var.input = @{
 			subnet = $someString
 		}
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setClusterKmsKeyId(input: SetClusterKmsKeyIdInput!): SetClusterKmsKeyIdReply!
+        internal void InitMutationSetClusterKmsKeyId()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetClusterKmsKeyIdInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetClusterKmsKeyId",
+                "($input: SetClusterKmsKeyIdInput!)",
+                "SetClusterKmsKeyIdReply",
+                Mutation.SetClusterKmsKeyId,
+                Mutation.SetClusterKmsKeyIdFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterUuid = $someString
+	# OPTIONAL
+	kmsKeyId = $someString
 }"
             );
         }

@@ -256,6 +256,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -300,6 +304,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -824,6 +832,8 @@ $query.Var.clusterUuids = @(
         // vCenterHotAddProxyVmsV2(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     filter: [VcenterProxyVmsFilterInput!]
         //     clusterUuids: [UUID!]!
         //   ): VsphereProxyVmInfoConnection!
@@ -832,6 +842,8 @@ $query.Var.clusterUuids = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filter", "[VcenterProxyVmsFilterInput!]"),
                 Tuple.Create("clusterUuids", "[UUID!]!"),
             };
@@ -839,7 +851,7 @@ $query.Var.clusterUuids = @(
                 argDefs,
                 "query",
                 "QueryVcenterHotAddProxyVmsV2",
-                "($first: Int,$after: String,$filter: [VcenterProxyVmsFilterInput!],$clusterUuids: [UUID!]!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [VcenterProxyVmsFilterInput!],$clusterUuids: [UUID!]!)",
                 "VsphereProxyVmInfoConnection",
                 Query.VcenterHotAddProxyVmsV2,
                 Query.VcenterHotAddProxyVmsV2FieldSpec,
@@ -847,6 +859,10 @@ $query.Var.clusterUuids = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -869,6 +885,8 @@ $query.Var.clusterUuids = @(
         // vSphereVCenterConnection(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -878,6 +896,8 @@ $query.Var.clusterUuids = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -886,7 +906,7 @@ $query.Var.clusterUuids = @(
                 argDefs,
                 "query",
                 "QueryVsphereVcenterConnection",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereVcenterConnection",
                 Query.VsphereVcenterConnection,
                 Query.VsphereVcenterConnectionFieldSpec,
@@ -894,6 +914,10 @@ $query.Var.clusterUuids = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

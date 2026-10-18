@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessToken")]
         public System.String? AccessToken { get; set; }
 
+        //      C# -> System.String? KubeSystemUid
+        // GraphQL -> kubeSystemUid: String (scalar)
+        [JsonProperty("kubeSystemUid")]
+        public System.String? KubeSystemUid { get; set; }
+
         //      C# -> System.String? HelmMinCdmVersion
         // GraphQL -> helmMinCdmVersion: String (scalar)
         [JsonProperty("helmMinCdmVersion")]

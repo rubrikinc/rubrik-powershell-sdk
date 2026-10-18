@@ -41,16 +41,22 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 ### hotaddproxyvmsv2
 Retrieve HotAdd proxy virtual machines.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - list of VcenterProxyVmsFilterInputs: Filter for vCenter hotadd proxy virtual machine.
     - clusterUuids - list of System.Strings: List of cluster IDs.
 - Returns VsphereProxyVmInfoConnection.
 ### list
-- There are 5 arguments.
+Query vSphere vCenters.
+
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -77,5 +83,7 @@ Get preAddInfo for a vcenter.
 - There is a single argument of type PreAddVcenterInput.
 - Returns VcenterPreAddInfo.
 ### vcenter
+Details of the vSphere vCenter Server with the given Rubrik ID.
+
 - There is a single argument of type System.String.
 - Returns VsphereVcenter.

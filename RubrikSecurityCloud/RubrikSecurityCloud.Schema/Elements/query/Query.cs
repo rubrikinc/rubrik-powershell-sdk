@@ -3828,7 +3828,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllQuarantinedDetailsForSnapshots(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nsnapshotIds: $snapshotIds\n)";
+            string args = "\n(\nsnapshotIds: $snapshotIds\nshouldIncludeRecoveryInfo: $shouldIncludeRecoveryInfo\n)";
             return "allQuarantinedDetailsForSnapshots" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllQuarantinedDetailsForSnapshotsFieldSpec(AutofieldContext? ec=null)
@@ -8418,7 +8418,7 @@ namespace RubrikSecurityCloud.Types
         public static string CountClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfilter: $filter\n)";
+            string args = "\n(\nfilter: $filter\nseparateSharedClusters: $separateSharedClusters\n)";
             return "countClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object CountClustersFieldSpec(AutofieldContext? ec=null)
@@ -11118,7 +11118,7 @@ namespace RubrikSecurityCloud.Types
         public static string GuestCredentialsV2(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\n)";
             return "guestCredentialsV2" + args + "\n{\n" + fs + "}\n";
         }
         public static object GuestCredentialsV2FieldSpec(AutofieldContext? ec=null)
@@ -13179,6 +13179,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new MongoOpsManagerRestoreTargetsForSnapshotListResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MongoSnapshotRbacSummary? MongoSnapshotRbacSummary
+        // GraphQL -> mongoSnapshotRbacSummary: MongoSnapshotRbacSummary! (type)
+        public static string MongoSnapshotRbacSummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "mongoSnapshotRbacSummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MongoSnapshotRbacSummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MongoSnapshotRbacSummary() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -16824,7 +16842,7 @@ namespace RubrikSecurityCloud.Types
         public static string Recoveries(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryIds: $recoveryIds\nrecoveryType: $recoveryType\nendTime: $endTime\nstartTime: $startTime\nrecoveryPlanNames: $recoveryPlanNames\nworkloadIds: $workloadIds\nrecoveryStatuses: $recoveryStatuses\nrecoveryOutcomes: $recoveryOutcomes\nrecoveryNames: $recoveryNames\nrecoveryTriggeredFrom: $recoveryTriggeredFrom\nrecoveryPlanIds: $recoveryPlanIds\nworkloadTypeFilter: $workloadTypeFilter\nrecoveryNameSubstring: $recoveryNameSubstring\nsortParam: $sortParam\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryIds: $recoveryIds\nrecoveryType: $recoveryType\nendTime: $endTime\nstartTime: $startTime\nrecoveryPlanNames: $recoveryPlanNames\nworkloadIds: $workloadIds\nrecoveryStatuses: $recoveryStatuses\nrecoveryOutcomes: $recoveryOutcomes\nrecoveryNames: $recoveryNames\nrecoveryTriggeredFrom: $recoveryTriggeredFrom\nrecoveryPlanIds: $recoveryPlanIds\nworkloadTypeFilter: $workloadTypeFilter\nrecoveryNameSubstring: $recoveryNameSubstring\nsortParam: $sortParam\nrecoveryTags: $recoveryTags\n)";
             return "recoveries" + args + "\n{\n" + fs + "}\n";
         }
         public static object RecoveriesFieldSpec(AutofieldContext? ec=null)
@@ -16842,7 +16860,7 @@ namespace RubrikSecurityCloud.Types
         public static string RecoveryPlansBasicInfo(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryPlanIds: $recoveryPlanIds\nsortParam: $sortParam\nrecoveryPlanTypes: $recoveryPlanTypes\nworkloadTypes: $workloadTypes\nsourceLocationIds: $sourceLocationIds\nnameSubstring: $nameSubstring\ntargetLocationIds: $targetLocationIds\nsourceAccountIds: $sourceAccountIds\ntargetAccountIds: $targetAccountIds\nsourceSubscriptionIds: $sourceSubscriptionIds\ntargetSubscriptionIds: $targetSubscriptionIds\nawsRegions: $awsRegions\nazureRegions: $azureRegions\nsourceRootDomainSids: $sourceRootDomainSids\nrecoveryPlanStatuses: $recoveryPlanStatuses\nlastRecoveryOutcomes: $lastRecoveryOutcomes\nisPreSeedEnabled: $isPreSeedEnabled\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryPlanIds: $recoveryPlanIds\nsortParam: $sortParam\nrecoveryPlanTypes: $recoveryPlanTypes\nworkloadTypes: $workloadTypes\nsourceLocationIds: $sourceLocationIds\nnameSubstring: $nameSubstring\ntargetLocationIds: $targetLocationIds\nsourceAccountIds: $sourceAccountIds\ntargetAccountIds: $targetAccountIds\nsourceSubscriptionIds: $sourceSubscriptionIds\ntargetSubscriptionIds: $targetSubscriptionIds\nawsRegions: $awsRegions\nazureRegions: $azureRegions\nsourceRootDomainSids: $sourceRootDomainSids\nrecoveryPlanStatuses: $recoveryPlanStatuses\nlastRecoveryOutcomes: $lastRecoveryOutcomes\nrecoveryTags: $recoveryTags\nisPreSeedEnabled: $isPreSeedEnabled\n)";
             return "recoveryPlansBasicInfo" + args + "\n{\n" + fs + "}\n";
         }
         public static object RecoveryPlansBasicInfoFieldSpec(AutofieldContext? ec=null)
@@ -17274,7 +17292,7 @@ namespace RubrikSecurityCloud.Types
         public static string SapHanaDatabases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaDatabases" + args + "\n{\n" + fs + "}\n";
         }
         public static object SapHanaDatabasesFieldSpec(AutofieldContext? ec=null)
@@ -17382,7 +17400,7 @@ namespace RubrikSecurityCloud.Types
         public static string SapHanaSystems(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaSystems" + args + "\n{\n" + fs + "}\n";
         }
         public static object SapHanaSystemsFieldSpec(AutofieldContext? ec=null)
@@ -19812,7 +19830,7 @@ namespace RubrikSecurityCloud.Types
         public static string VcenterHotAddProxyVmsV2(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nclusterUuids: $clusterUuids\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nclusterUuids: $clusterUuids\n)";
             return "vCenterHotAddProxyVmsV2" + args + "\n{\n" + fs + "}\n";
         }
         public static object VcenterHotAddProxyVmsV2FieldSpec(AutofieldContext? ec=null)
@@ -19902,7 +19920,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereComputeClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereComputeClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereComputeClustersFieldSpec(AutofieldContext? ec=null)
@@ -19974,7 +19992,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereDatastoreClusters(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreClusters" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereDatastoreClustersFieldSpec(AutofieldContext? ec=null)
@@ -19992,7 +20010,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereDatastoreConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereDatastoreConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20028,7 +20046,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereFolders(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereFolders" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereFoldersFieldSpec(AutofieldContext? ec=null)
@@ -20064,7 +20082,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereHostConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereHostConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereHostConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20118,7 +20136,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereLiveMounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\n)";
             return "vSphereLiveMounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereLiveMountsFieldSpec(AutofieldContext? ec=null)
@@ -20154,7 +20172,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereMountConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "vSphereMountConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereMountConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20280,7 +20298,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereTopLevelDescendantsConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereTopLevelDescendantsConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereTopLevelDescendantsConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20298,7 +20316,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereTopLevelRecoveryTargets(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereTopLevelRecoveryTargets" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereTopLevelRecoveryTargetsFieldSpec(AutofieldContext? ec=null)
@@ -20334,7 +20352,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereVcenterConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVCenterConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereVcenterConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20388,7 +20406,7 @@ namespace RubrikSecurityCloud.Types
         public static string VsphereVmNewConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVmNewConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object VsphereVmNewConnectionFieldSpec(AutofieldContext? ec=null)
@@ -20784,7 +20802,7 @@ namespace RubrikSecurityCloud.Types
         public static string VcdTopLevelDescendants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vcdTopLevelDescendants" + args + "\n{\n" + fs + "}\n";
         }
         public static object VcdTopLevelDescendantsFieldSpec(AutofieldContext? ec=null)
@@ -20802,7 +20820,7 @@ namespace RubrikSecurityCloud.Types
         public static string VcdVappVms(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vcdVappVms" + args + "\n{\n" + fs + "}\n";
         }
         public static object VcdVappVmsFieldSpec(AutofieldContext? ec=null)

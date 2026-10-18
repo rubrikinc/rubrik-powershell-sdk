@@ -22,9 +22,13 @@ Vsphere datastore.
 source (primary) cluster. False if the object resides on its source
 cluster. Null when the source cluster is unknown.
 - capacity: System.Int64
+  - Total capacity of the datastore, in bytes.
 - freeSpace: System.Int64
+  - Free space available on the datastore, in bytes.
 - datastoreType: System.String
+  - Type of the datastore, e.g. VMFS or NFS.
 - isLocal: System.Boolean
+  - Indicates whether the datastore is local to a single host.
 - isStandaloneDatastore: System.Boolean
   - Indicates whether the datastore is standalone or not.
 - isArchived: System.Boolean

@@ -68,7 +68,7 @@ Retrieves a paginated list of all Azure Native Managed Disks.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeDiskSortFields: Sort fields for list of Azure disks.
     - sortOrder - SortOrder: Sorts the order of results.
-    - diskFilters - AzureNativeDiskFilters
+    - diskFilters - AzureNativeDiskFilters: 
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeManagedDiskConnection.
 ### regions
@@ -158,7 +158,7 @@ Retrieves a paginated list of all Azure Native Subscriptions.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
     - sortOrder - SortOrder: Sorts the order of results.
-    - subscriptionFilters - AzureNativeSubscriptionFilters
+    - subscriptionFilters - AzureNativeSubscriptionFilters: 
     - authorizedOperationFilter - Operation: Filters the results to objects on which the caller is authorized to perform the specified operation. Only privilege operations are accepted.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
     - azureNativeProtectionFeature - AzureNativeProtectionFeature: The type of Azure Native feature that RSC supports.
@@ -196,7 +196,7 @@ Retrieves a paginated list of all Azure Virtual Machines (VMs).
     - sortBy - AzureNativeVirtualMachineSortFields: Sort fields for list of Azure virtual machines.
     - sortOrder - SortOrder: Sorts the order of results.
     - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
-    - virtualMachineFilters - AzureNativeVirtualMachineFilters
+    - virtualMachineFilters - AzureNativeVirtualMachineFilters: 
     - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
 - Returns AzureNativeVirtualMachineConnection.
 ### virtualmachinesizes

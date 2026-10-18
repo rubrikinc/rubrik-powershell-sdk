@@ -65,6 +65,9 @@ Specifies the username configured for the SQL server instance for sensitive data
   - Supported in v9.0+
 v9.0-v9.1: Specify the name of active directory domain.
 v9.2+: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Specify the name of active directory domain.
+- isDuplicateRegistration: System.Boolean
+  - Supported in v9.7
+Indicates whether a host with this identity was already registered on the Rubrik cluster before this registration request. When true, the returned host is the pre-existing host and no new host object was created. Only populated on host registration responses; null on other host detail responses.
 - hostDomainId: System.String
   - Supported in v9.0+
 v9.0-v9.1: Id of the Active Directory Domain if the windows host has domain controller hosted.

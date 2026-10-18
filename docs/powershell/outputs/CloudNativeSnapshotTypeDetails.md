@@ -17,3 +17,5 @@ Recovery details for different snapshot types.
   - Cloud-provider native storage class for the archival location, grouped per cloud. All sub-fields are null for non-native locations, SOURCE/REPLICATED snapshots, and older servers that don't populate the field.
 - rcvTier: RcsTierEnumType
   - Rubrik Cloud Vault tier for the archival location (cloud-agnostic; e.g. BACKUP, ARCHIVE). Null for non-RCV locations, SOURCE/REPLICATED snapshots, and older servers that don't populate the field.
+- archivalLocationPurpose: StorageLocationPurpose
+  - Purpose of the archival location (e.g. CNP_BAAS for BaaS, PURPOSE_DEFAULT for user-created). Null for SOURCE/REPLICATED snapshots, which have no archival location, and older servers that don't populate the field.

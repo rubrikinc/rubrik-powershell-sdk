@@ -1,43 +1,43 @@
 ### StartExportAzureNativeVirtualMachineJobInput
-Input for the job to export the specified Azure Native Virtual Machine to the specified destination.
+Input for the job to export an Azure virtual machine from a snapshot.
 
 - snapshotId: System.String
-  - The snapshot ID of the snapshot used to export a virtual machine.
+  - Snapshot ID of the snapshot from which the virtual machine is exported.
 - virtualMachineName: System.String
-  - The name of the virtual machine created as a result of the export job.
+  - Name of the exported virtual machine.
 - diskEncryptionSetNativeId: System.String
-  - Native ID of the disk encryption set for encrypting the newly created disks.
+  - Native ID of the disk encryption set used to encrypt the disks created for the exported virtual machine.
 - resourceGroupName: System.String
-  - The resource group associated with the virtual machine created by the export job.
+  - Name of the resource group the exported virtual machine is created in.
 - destinationRegion: AzureNativeRegion
-  - The region where the virtual machine created by the export job exists.
+  - Azure region the virtual machine is exported to.
 - destinationAvailabilityZone: System.String
-  - The Availability Zone where the virtual machine created by the export job exists. When the region type does not support Availability Zones, this value is null.
+  - Availability zone the virtual machine is exported to. Leave empty for regions or virtual machine sizes that do not support availability zones.
 - destinationSubscriptionRubrikId: System.String
-  - The Rubrik ID of the Azure subscription to which the virtual machine is exported. When this value is not specified, the virtual machine is exported to the same Azure subscription.
+  - Rubrik ID of the Azure subscription the virtual machine is exported to. When empty, the virtual machine is exported to the subscription it was backed up from.
 - virtualMachineSize: System.String
-  - The size, in GiB, of the virtual machine created by the export job.
+  - Azure size of the exported virtual machine.
 - subnetNativeId: System.String
-  - The native ID of the subnet used by the virtual machine created by the export job.
+  - Native ID of the subnet the exported virtual machine is attached to.
 - networkSecurityGroupNativeId: System.String
-  - The native ID of the network security group used by the virtual machine created by the export job.
+  - Native ID of the network security group applied to the exported virtual machine.
 - shouldExportTags: System.Boolean
-  - Specifies whether to export the tags from the snapshot.
+  - Specifies whether the tags at the time of the snapshot are applied to the exported virtual machine.
 - shouldPowerOff: System.Boolean
-  - Specifies whether to export the virtual machine in a powered-down state.
+  - Specifies whether the exported virtual machine is powered off after the export completes.
 - shouldUseReplica: System.Boolean
-  - Specifies whether to recover from a replica of the source snapshot.
+  - Specifies whether the replica of the snapshot is used for the export. Ignored when `snapshotType` is specified.
 - availabilitySetNativeId: System.String
-  - The native ID of the availability set used by the virtual machine created by the export job.
+  - Native ID of the availability set the exported virtual machine joins.
 - shouldEnableAcceleratedNetworking: System.Boolean
-  - Specifies whether to enable accelerated networking for the virtual machine created by the export job. This value is false by default.
+  - Specifies whether accelerated networking is enabled on the exported virtual machine.
+- snapshotType: AzureSnapshotType
+  - Copy of the snapshot to export from. Defaults to the replica when `shouldUseReplica` is true, and to the source snapshot otherwise.
 - recoveryDiskIds: list of System.Strings
   - Specifies a list of Azure disk unique native IDs that will be exported. When empty, all disks from the snapshot will be exported.
 - archivedSnapshotId: System.String
-  - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+  - ID of the archived snapshot to export. This field should be specified only when `snapshotType` is set to `Archived`.
 - destinationKeyVaultName: System.String
-  - Name of the key vault created in the destination region.This is required for cross region export of ADE enabled VMs.
-- snapshotType: AzureSnapshotType
-  - The type of the snapshot to recover from.
+  - Name of the key vault created in the destination region. Required for cross-region export of virtual machines with Azure Disk Encryption enabled.
 - recoveryPurpose: RecoveryPurpose
   - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported virtual machine (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

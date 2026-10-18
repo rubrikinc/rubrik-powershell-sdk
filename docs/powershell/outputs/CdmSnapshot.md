@@ -52,6 +52,10 @@ workloads.
 snapshot, measured when the snapshot was indexed. Returns null when the
 size is unavailable, for example when the snapshot is not indexed yet or
 its workload type does not report the value.
+- archivalTieringStatus: list of ArchivalTieringStatuss
+  - Per-location archival tiering status. One entry per archival location for
+which CDM has written tiering history. Empty when the snapshot has never
+been tiered to cold storage.
 - cluster: Cluster
   - The Rubrik cluster that owns the snapshot.
 - cloudState: SnapshotCloudState

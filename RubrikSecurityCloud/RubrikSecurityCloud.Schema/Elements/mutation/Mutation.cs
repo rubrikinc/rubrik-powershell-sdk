@@ -12637,6 +12637,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RecoverMongoCluster
+        // GraphQL -> recoverMongoCluster: AsyncRequestStatus! (type)
+        public static string RecoverMongoCluster(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverMongoCluster" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverMongoClusterFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? RecoverMongoSource
         // GraphQL -> recoverMongoSource: AsyncRequestStatus! (type)
         public static string RecoverMongoSource(object fsObj)
@@ -14181,6 +14199,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SetCloudDirectGlobalSmbSettingsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetClusterKmsKeyIdReply? SetClusterKmsKeyId
+        // GraphQL -> setClusterKmsKeyId: SetClusterKmsKeyIdReply! (type)
+        public static string SetClusterKmsKeyId(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setClusterKmsKeyId" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetClusterKmsKeyIdFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetClusterKmsKeyIdReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

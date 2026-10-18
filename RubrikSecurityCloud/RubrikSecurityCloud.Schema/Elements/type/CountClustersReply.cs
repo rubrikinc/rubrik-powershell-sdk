@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? AssignedByParentAccountClusters
+        // GraphQL -> assignedByParentAccountClusters: Int! (scalar)
+        [JsonProperty("assignedByParentAccountClusters")]
+        public System.Int32? AssignedByParentAccountClusters { get; set; }
+
         //      C# -> System.Int32? DisconnectedClusters
         // GraphQL -> disconnectedClusters: Int! (scalar)
         [JsonProperty("disconnectedClusters")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CountClustersReply Set(
+        System.Int32? AssignedByParentAccountClusters = null,
         System.Int32? DisconnectedClusters = null,
         System.Int32? FatalClusters = null,
         System.Int32? OkClusters = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         System.Int32? WarningClusters = null
     ) 
     {
+        if ( AssignedByParentAccountClusters != null ) {
+            this.AssignedByParentAccountClusters = AssignedByParentAccountClusters;
+        }
         if ( DisconnectedClusters != null ) {
             this.DisconnectedClusters = DisconnectedClusters;
         }
@@ -100,6 +109,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? AssignedByParentAccountClusters
+        // GraphQL -> assignedByParentAccountClusters: Int! (scalar)
+        if (this.AssignedByParentAccountClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "assignedByParentAccountClusters\n" ;
+            } else {
+                s += ind + "assignedByParentAccountClusters\n" ;
+            }
+        }
         //      C# -> System.Int32? DisconnectedClusters
         // GraphQL -> disconnectedClusters: Int! (scalar)
         if (this.DisconnectedClusters != null) {
@@ -161,6 +179,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int32? AssignedByParentAccountClusters
+        // GraphQL -> assignedByParentAccountClusters: Int! (scalar)
+        if (ec.Includes("assignedByParentAccountClusters",true))
+        {
+            if(this.AssignedByParentAccountClusters == null) {
+
+                this.AssignedByParentAccountClusters = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AssignedByParentAccountClusters != null && ec.Excludes("assignedByParentAccountClusters",true))
+        {
+            this.AssignedByParentAccountClusters = null;
+        }
         //      C# -> System.Int32? DisconnectedClusters
         // GraphQL -> disconnectedClusters: Int! (scalar)
         if (ec.Includes("disconnectedClusters",true))

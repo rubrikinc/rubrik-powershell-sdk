@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Mongo' API domain:
-    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
+    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, SnapshotRbacSummary, Source, or Sources.
     /// </summary>
     /// <description>
     /// New-RscQueryMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
+    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, SnapshotRbacSummary, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -498,6 +498,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SnapshotRbacSummary operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: SnapshotRbacSummary
+    /// 
+    /// $query = New-RscQueryMongo -Operation SnapshotRbacSummary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MongoSnapshotRbacSummary
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Source operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -643,6 +674,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetMissedOpsManagerManagedSourceSnapshots",
                 "RecoverableRanges",
                 "RestoreTargetsForSnapshot",
+                "SnapshotRbacSummary",
                 "Source",
                 "Sources",
                 IgnoreCase = true)]
@@ -686,6 +718,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreTargetsForSnapshot":
                         this.ProcessRecord_RestoreTargetsForSnapshot();
+                        break;
+                    case "SnapshotRbacSummary":
+                        this.ProcessRecord_SnapshotRbacSummary();
                         break;
                     case "Source":
                         this.ProcessRecord_Source();
@@ -782,6 +817,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreTargetsForSnapshot";
             // Create new graphql operation mongoRestoreTargetsForSnapshot
             InitQueryMongoRestoreTargetsForSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongoSnapshotRbacSummary.
+        internal void ProcessRecord_SnapshotRbacSummary()
+        {
+            this._logger.name += " -SnapshotRbacSummary";
+            // Create new graphql operation mongoSnapshotRbacSummary
+            InitQueryMongoSnapshotRbacSummary();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1164,6 +1208,29 @@ $query.Var.input = @{
                 "MongoOpsManagerRestoreTargetsForSnapshotListResponse",
                 Query.MongoRestoreTargetsForSnapshot,
                 Query.MongoRestoreTargetsForSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // mongoSnapshotRbacSummary(input: GetMongoSnapshotRbacSummaryInput!): MongoSnapshotRbacSummary!
+        internal void InitQueryMongoSnapshotRbacSummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetMongoSnapshotRbacSummaryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryMongoSnapshotRbacSummary",
+                "($input: GetMongoSnapshotRbacSummaryInput!)",
+                "MongoSnapshotRbacSummary",
+                Query.MongoSnapshotRbacSummary,
+                Query.MongoSnapshotRbacSummaryFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED

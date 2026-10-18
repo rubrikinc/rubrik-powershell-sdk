@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> RestoreFilesJobConfigInput? Config
         // GraphQL -> config: RestoreFilesJobConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public RestoreFilesJobConfigInput? Config { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
         //      C# -> DeltaRecoveryInput? DeltaRequest
         // GraphQL -> deltaRequest: DeltaRecoveryInput (input)

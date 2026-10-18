@@ -104,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isComplianceImmutabilitySupported")]
         System.Boolean? IsComplianceImmutabilitySupported { get; set; }
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]

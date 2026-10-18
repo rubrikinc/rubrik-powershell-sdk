@@ -67,3 +67,4 @@ Name of product.
 - SALESFORCE_ARCHIVAL - Salesforce archiving.
 - POWER_PLATFORM - Microsoft Power Platform protection.
 - AAD_B2B_RECOVERY - Entra ID B2B Recovery.
+- ATLASSIAN_CONFLUENCE - Atlassian Confluence protection.

@@ -275,6 +275,9 @@ Operations defined in the RBAC system.
 - VIEW_RSCP_UPGRADE - View RSC-P upgrade status.
 - MANAGE_RSCP_UPGRADE - Trigger and manage RSC-P appliance upgrades.
 - VIEW_K8S_DB_CREDENTIALS - View K8s database credentials.
+- MANAGE_AGENT_CLOUD_POLICIES - Manage Agent Cloud policies, violations, alerts, and insights.
+- SET_AGENT_CLOUD_POLICY_ENFORCEMENT - Set the enforcement type of Agent Cloud policies.
+- MANAGE_MAINTENANCE_MODE - Manage maintenance mode.
 - CATEGORY_VIEW_DATA_SOURCE - View data source.
 - CATEGORY_MANAGE_DATA_SOURCE - Manage data source.
 - CATEGORY_PROTECTION - Manage protection.

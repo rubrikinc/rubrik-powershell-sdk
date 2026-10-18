@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CleanSnapshotId
+        // GraphQL -> cleanSnapshotId: UUID (scalar)
+        [JsonProperty("cleanSnapshotId")]
+        public System.String? CleanSnapshotId { get; set; }
+
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         [JsonProperty("fileName")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FileDetails Set(
+        System.String? CleanSnapshotId = null,
         System.String? FileName = null
     ) 
     {
+        if ( CleanSnapshotId != null ) {
+            this.CleanSnapshotId = CleanSnapshotId;
+        }
         if ( FileName != null ) {
             this.FileName = FileName;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CleanSnapshotId
+        // GraphQL -> cleanSnapshotId: UUID (scalar)
+        if (this.CleanSnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cleanSnapshotId\n" ;
+            } else {
+                s += ind + "cleanSnapshotId\n" ;
+            }
+        }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? CleanSnapshotId
+        // GraphQL -> cleanSnapshotId: UUID (scalar)
+        if (ec.Includes("cleanSnapshotId",true))
+        {
+            if(this.CleanSnapshotId == null) {
+
+                this.CleanSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CleanSnapshotId != null && ec.Excludes("cleanSnapshotId",true))
+        {
+            this.CleanSnapshotId = null;
+        }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (ec.Includes("fileName",true))

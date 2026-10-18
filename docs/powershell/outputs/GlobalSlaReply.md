@@ -61,6 +61,8 @@ Metadata for rendering an SLA Domain.
   - Purpose of the SLA Domain.
 - replicationSpec: ReplicationSpec
   - Replication specification for the SLA Domain.
+- assignedSystemTags: list of AssignedRscTags
+  - System tags that are directly assigned to this SLA Domain.
 - allOrgsHavingAccess: list of SlaAssociatedOrganizations
   - Specifies the list of organizations that have view access for the SLA Domain.
 - allOrgsWithAccess: list of Orgs
@@ -73,8 +75,6 @@ Metadata for rendering an SLA Domain.
   - Source clusters configured in the SLA Domain.
 - haPolicy: HaPolicy
   - HA policy of the HA SLA Domain.
-- assignedSystemTags: list of AssignedRscTags
-  - System tags that are directly assigned to this SLA Domain.
 - id: System.String
   - The ID of the SLA Domain.
 - name: System.String

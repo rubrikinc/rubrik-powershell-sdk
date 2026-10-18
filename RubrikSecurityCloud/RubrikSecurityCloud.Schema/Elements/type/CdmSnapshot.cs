@@ -216,6 +216,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLocations")]
         public List<DataLocation>? ArchivalLocations { get; set; }
 
+        //      C# -> List<ArchivalTieringStatus>? ArchivalTieringStatus
+        // GraphQL -> archivalTieringStatus: [ArchivalTieringStatus!]! (type)
+        [JsonProperty("archivalTieringStatus")]
+        public List<ArchivalTieringStatus>? ArchivalTieringStatus { get; set; }
+
         //      C# -> CdmWorkloadSnapshot? CdmWorkloadSnapshot
         // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)
         [JsonProperty("cdmWorkloadSnapshot")]
@@ -410,6 +415,7 @@ namespace RubrikSecurityCloud.Types
         ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata = null,
         AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail = null,
         List<DataLocation>? ArchivalLocations = null,
+        List<ArchivalTieringStatus>? ArchivalTieringStatus = null,
         CdmWorkloadSnapshot? CdmWorkloadSnapshot = null,
         List<CdmSnapshot>? ChildSnapshots = null,
         List<DataLocation>? CloudNativeLocations = null,
@@ -557,6 +563,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalLocations != null ) {
             this.ArchivalLocations = ArchivalLocations;
+        }
+        if ( ArchivalTieringStatus != null ) {
+            this.ArchivalTieringStatus = ArchivalTieringStatus;
         }
         if ( CdmWorkloadSnapshot != null ) {
             this.CdmWorkloadSnapshot = CdmWorkloadSnapshot;
@@ -1028,6 +1037,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "archivalLocations" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<ArchivalTieringStatus>? ArchivalTieringStatus
+        // GraphQL -> archivalTieringStatus: [ArchivalTieringStatus!]! (type)
+        if (this.ArchivalTieringStatus != null) {
+            var fspec = this.ArchivalTieringStatus.AsFieldSpec(conf.Child("archivalTieringStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalTieringStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2075,6 +2096,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalLocations != null && ec.Excludes("archivalLocations",false))
         {
             this.ArchivalLocations = null;
+        }
+        //      C# -> List<ArchivalTieringStatus>? ArchivalTieringStatus
+        // GraphQL -> archivalTieringStatus: [ArchivalTieringStatus!]! (type)
+        if (ec.Includes("archivalTieringStatus",false))
+        {
+            if(this.ArchivalTieringStatus == null) {
+
+                this.ArchivalTieringStatus = new List<ArchivalTieringStatus>();
+                this.ArchivalTieringStatus.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringStatus"));
+
+            } else {
+
+                this.ArchivalTieringStatus.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringStatus"));
+
+            }
+        }
+        else if (this.ArchivalTieringStatus != null && ec.Excludes("archivalTieringStatus",false))
+        {
+            this.ArchivalTieringStatus = null;
         }
         //      C# -> CdmWorkloadSnapshot? CdmWorkloadSnapshot
         // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)

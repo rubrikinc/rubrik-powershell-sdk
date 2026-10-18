@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_ORG")]
         M365_BACKUP_STORAGE_ORG,
 
+        [EnumMember(Value = "M365_CONFIGS_ORG")]
+        M365_CONFIGS_ORG,
+
         [EnumMember(Value = "OKTA_ORG")]
         OKTA_ORG,
 

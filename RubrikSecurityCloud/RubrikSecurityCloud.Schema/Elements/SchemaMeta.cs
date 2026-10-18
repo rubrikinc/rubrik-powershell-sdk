@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20261005-31" ;
+        public static string GraphqlSchemaVersion = "v20261012-34" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -442,6 +442,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalSpec,
             ArchivalStorageUsage,
             ArchivalTieringSpec,
+            ArchivalTieringStatus,
             ArchivedSnapshot,
             ArchiveK8sClusterReply,
             ArchiveLayer,
@@ -2363,6 +2364,9 @@ namespace RubrikSecurityCloud.Types
             MongoSnapshotGroupBy,
             MongoSnapshotGroupByConnection,
             MongoSnapshotGroupByEdge,
+            MongoSnapshotRbacRoleAssignment,
+            MongoSnapshotRbacSummary,
+            MongoSnapshotRbacUser,
             MongoSource,
             MongoSourceAppMetadata,
             MongoSourceConnection,
@@ -2677,8 +2681,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -3459,6 +3463,7 @@ namespace RubrikSecurityCloud.Types
             SetAnalyzerRisksReply,
             SetCephSettingsReply,
             SetCloudDirectGlobalSmbSettingsReply,
+            SetClusterKmsKeyIdReply,
             SetCoordinatorLabelsReply,
             SetDatastoreFreespaceThresholdsReply,
             SetHostRbsNetworkLimitReply,
@@ -5298,6 +5303,7 @@ namespace RubrikSecurityCloud.Types
             GetMissedMssqlDbSnapshotsInput,
             GetMissedOpsManagerManagedMongoSourceSnapshotsInput,
             GetMissedOracleDbSnapshotsInput,
+            GetMongoSnapshotRbacSummaryInput,
             GetMssqlAsyncRequestStatusInput,
             GetMssqlDbMissedRecoverableRangesInput,
             GetMssqlDbRecoverableRangesInput,
@@ -5608,6 +5614,7 @@ namespace RubrikSecurityCloud.Types
             ModifyIdentityProviderInput,
             ModifyIpmiInput,
             MongoClientHostInput,
+            MongoClusterRecoveryRequestConfigInput,
             MongoCollectionAssignSlaConfigInput,
             MongoCollectionsInfo,
             MongoConfigInput,
@@ -5967,6 +5974,7 @@ namespace RubrikSecurityCloud.Types
             RecoverDb2DatabaseToPointInTimeInput,
             RecoverDevOpsRepositoryInput,
             RecoverGlueIcebergTableSnapshotInput,
+            RecoverMongoClusterInput,
             RecoverMongoSourceInput,
             RecoverOpsManagerManagedMongoSourceInput,
             RecoverOracleDbConfigInput,
@@ -5990,6 +5998,7 @@ namespace RubrikSecurityCloud.Types
             RecoverySpecConfigInputEntry,
             RecoverySpecInfo,
             RecoverySpecsInput,
+            RecoveryTagClause,
             RecoveryTargetFilter,
             RefreshDb2DatabaseInput,
             RefreshDevOpsOrganizationsInput,
@@ -6122,6 +6131,7 @@ namespace RubrikSecurityCloud.Types
             S3TablesIcebergExportToNewTableRecoveryTarget,
             S3TablesIcebergInPlaceRecoveryTarget,
             SaasAppSpecificRestoreConfig,
+            SaasRtpPointInTimeInfo,
             SaasSortByParam,
             SaasWorkloadMetadataTypesReq,
             SailPointIntegrationConfigInput,
@@ -6182,6 +6192,7 @@ namespace RubrikSecurityCloud.Types
             SetCloudDirectShareExclusionsInput,
             SetCloudDirectSystemOverrideInput,
             SetCloudNativeGatewayKmsKeysInput,
+            SetClusterKmsKeyIdInput,
             SetCoordinatorLabelsInput,
             SetCustomerTagsInput,
             SetDatastoreFreespaceThresholdInput,
@@ -7445,6 +7456,7 @@ namespace RubrikSecurityCloud.Types
             mongoDatabases,
             mongoRecoverableRanges,
             mongoRestoreTargetsForSnapshot,
+            mongoSnapshotRbacSummary,
             mongoSource,
             mongoSources,
             mssqlAvailabilityGroup,
@@ -8512,6 +8524,7 @@ namespace RubrikSecurityCloud.Types
             recoverCloudDirectPath,
             recoverDevOpsRepository,
             recoverGlueIcebergTableSnapshot,
+            recoverMongoCluster,
             recoverMongoSource,
             recoverOpsManagerManagedMongoSource,
             recoverS3TablesIcebergTableSnapshot,
@@ -8617,6 +8630,7 @@ namespace RubrikSecurityCloud.Types
             setCloudDirectShareExclusions,
             setCloudDirectSystemOverride,
             setCloudNativeGatewayKmsKeys,
+            setClusterKmsKeyId,
             setCoordinatorLabels,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
@@ -9863,6 +9877,7 @@ namespace RubrikSecurityCloud.Types
             RecoverySpecTypeV2,
             RecoveryStatus,
             RecoveryStepStatus,
+            RecoveryTag,
             RecoveryTriggeredFrom,
             RecoveryType,
             RefreshableObjectConnectionStatusType,
@@ -10027,6 +10042,7 @@ namespace RubrikSecurityCloud.Types
             StorageAccountSku,
             StorageAccountTier,
             StorageArrayType,
+            StorageLocationPurpose,
             SuccessStatus,
             SupportCasesSortField,
             SupportCaseStatus,
@@ -14269,6 +14285,7 @@ namespace RubrikSecurityCloud.Types
             mongoDatabases,
             mongoRecoverableRanges,
             mongoRestoreTargetsForSnapshot,
+            mongoSnapshotRbacSummary,
             mongoSource,
             mongoSources,
             mountDisk,
@@ -14517,6 +14534,7 @@ namespace RubrikSecurityCloud.Types
             recoverDb2DatabaseToPointInTime,
             recoverDevOpsRepository,
             recoverGlueIcebergTableSnapshot,
+            recoverMongoCluster,
             recoverMongoSource,
             recoverOpsManagerManagedMongoSource,
             recoverS3TablesIcebergTableSnapshot,
@@ -14672,6 +14690,7 @@ namespace RubrikSecurityCloud.Types
             setCloudDirectShareExclusions,
             setCloudDirectSystemOverride,
             setCloudNativeGatewayKmsKeys,
+            setClusterKmsKeyId,
             setCoordinatorLabels,
             setCustomerTags,
             setDatastoreFreespaceThresholds,
@@ -25359,6 +25378,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.mongoSnapshotRbacSummary,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "SnapshotRbacSummary",
+                        gqlRootFieldName: "mongoSnapshotRbacSummary"
+                    )
+                },
+                {
                     GqlRootFieldName.mongoSource,
                     new RscOp(
                         cmdletName: "New-RscQueryMongo",
@@ -27343,6 +27370,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.recoverMongoCluster,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "RecoverCluster",
+                        gqlRootFieldName: "recoverMongoCluster"
+                    )
+                },
+                {
                     GqlRootFieldName.recoverMongoSource,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
@@ -28580,6 +28615,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationCloudNative",
                         cmdletSwitchName: "SetGatewayKmsKeys",
                         gqlRootFieldName: "setCloudNativeGatewayKmsKeys"
+                    )
+                },
+                {
+                    GqlRootFieldName.setClusterKmsKeyId,
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "SetClusterKmsKeyId",
+                        gqlRootFieldName: "setClusterKmsKeyId"
                     )
                 },
                 {
@@ -37778,6 +37821,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mongoRestoreTargetsForSnapshot
                 },
                 {
+                    "New-RscQueryMongo -Op SnapshotRbacSummary",
+                    GqlRootFieldName.mongoSnapshotRbacSummary
+                },
+                {
                     "New-RscQueryMongo -Op Source",
                     GqlRootFieldName.mongoSource
                 },
@@ -38770,6 +38817,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.recoverGlueIcebergTableSnapshot
                 },
                 {
+                    "New-RscMutationMongo -Op RecoverCluster",
+                    GqlRootFieldName.recoverMongoCluster
+                },
+                {
                     "New-RscMutationMongo -Op RecoverSource",
                     GqlRootFieldName.recoverMongoSource
                 },
@@ -39388,6 +39439,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationCloudNative -Op SetGatewayKmsKeys",
                     GqlRootFieldName.setCloudNativeGatewayKmsKeys
+                },
+                {
+                    "New-RscMutationCluster -Op SetClusterKmsKeyId",
+                    GqlRootFieldName.setClusterKmsKeyId
                 },
                 {
                     "New-RscMutationMisc -Op SetCoordinatorLabels",
@@ -41949,6 +42004,7 @@ namespace RubrikSecurityCloud.Types
                         "recoverCloudDirectPath",
                         "recoverDb2DatabaseToEndOfBackup",
                         "recoverDb2DatabaseToPointInTime",
+                        "recoverMongoCluster",
                         "recoverMongoSource",
                         "recoverOpsManagerManagedMongoSource",
                         "recoverSapHanaDatabaseToFullBackup",
@@ -44658,6 +44714,10 @@ namespace RubrikSecurityCloud.Types
                         "mongoRecoverableRanges",
                     }
                 },
+                {   "MongoSnapshotRbacSummary", new List<string> {
+                        "mongoSnapshotRbacSummary",
+                    }
+                },
                 {   "MongoSource", new List<string> {
                         "mongoSource",
                     }
@@ -45845,6 +45905,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "SetCloudDirectGlobalSmbSettingsReply", new List<string> {
                         "setCloudDirectGlobalSmbSettings",
+                    }
+                },
+                {   "SetClusterKmsKeyIdReply", new List<string> {
+                        "setClusterKmsKeyId",
                     }
                 },
                 {   "SetCoordinatorLabelsReply", new List<string> {
@@ -48620,6 +48684,7 @@ namespace RubrikSecurityCloud.Types
                         "allPendingActions",
                         "allPolicyRiskSummaries",
                         "allPrincipalRiskSummaries",
+                        "allQuarantinedDetailsForSnapshots",
                         "allSecurityPolicies",
                         "allSnapshotPvcs",
                         "allSnapshotsByIds",
@@ -48653,6 +48718,7 @@ namespace RubrikSecurityCloud.Types
                         "browseO365TeamConvChannels",
                         "browseSnapshotFileConnection",
                         "cloudNativeApplicationSnapshots",
+                        "countClusters",
                         "createRole",
                         "dashboardSummary",
                         "datagovSecDesc",
@@ -50986,6 +51052,10 @@ namespace RubrikSecurityCloud.Types
                         "oracleMissedSnapshots",
                     }
                 },
+                {   "GetMongoSnapshotRbacSummaryInput", new List<string> {
+                        "mongoSnapshotRbacSummary",
+                    }
+                },
                 {   "GetMssqlAsyncRequestStatusInput", new List<string> {
                         "mssqlJobStatus",
                     }
@@ -52569,6 +52639,10 @@ namespace RubrikSecurityCloud.Types
                         "recoverGlueIcebergTableSnapshot",
                     }
                 },
+                {   "RecoverMongoClusterInput", new List<string> {
+                        "recoverMongoCluster",
+                    }
+                },
                 {   "RecoverMongoSourceInput", new List<string> {
                         "recoverMongoSource",
                     }
@@ -53076,6 +53150,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "SetCloudNativeGatewayKmsKeysInput", new List<string> {
                         "setCloudNativeGatewayKmsKeys",
+                    }
+                },
+                {   "SetClusterKmsKeyIdInput", new List<string> {
+                        "setClusterKmsKeyId",
                     }
                 },
                 {   "SetCoordinatorLabelsInput", new List<string> {
@@ -56337,6 +56415,11 @@ namespace RubrikSecurityCloud.Types
                         "recoveries",
                     }
                 },
+                {   "[RecoveryTagClause]", new List<string> {
+                        "recoveries",
+                        "recoveryPlansBasicInfo",
+                    }
+                },
                 {   "[RecoveryTriggeredFrom]", new List<string> {
                         "recoveries",
                     }
@@ -56893,6 +56976,7 @@ namespace RubrikSecurityCloud.Types
                 { "recoverCloudDirectPath", "AsyncRequestStatus"},
                 { "recoverDb2DatabaseToEndOfBackup", "AsyncRequestStatus"},
                 { "recoverDb2DatabaseToPointInTime", "AsyncRequestStatus"},
+                { "recoverMongoCluster", "AsyncRequestStatus"},
                 { "recoverMongoSource", "AsyncRequestStatus"},
                 { "recoverOpsManagerManagedMongoSource", "AsyncRequestStatus"},
                 { "recoverSapHanaDatabaseToFullBackup", "AsyncRequestStatus"},
@@ -57755,6 +57839,7 @@ namespace RubrikSecurityCloud.Types
                 { "mongoRestoreTargetsForSnapshot", "MongoOpsManagerRestoreTargetsForSnapshotListResponse"},
                 { "mongoBulkRecoverableRanges", "MongoRecoverableRanges"},
                 { "mongoRecoverableRanges", "MongoRecoverableRanges"},
+                { "mongoSnapshotRbacSummary", "MongoSnapshotRbacSummary"},
                 { "mongoSource", "MongoSource"},
                 { "mongoSources", "MongoSourceConnection"},
                 { "mountDisk", "MountDiskReply"},
@@ -58119,6 +58204,7 @@ namespace RubrikSecurityCloud.Types
                 { "setAnalyzerRisks", "SetAnalyzerRisksReply"},
                 { "setCephSettings", "SetCephSettingsReply"},
                 { "setCloudDirectGlobalSmbSettings", "SetCloudDirectGlobalSmbSettingsReply"},
+                { "setClusterKmsKeyId", "SetClusterKmsKeyIdReply"},
                 { "setCoordinatorLabels", "SetCoordinatorLabelsReply"},
                 { "setDatastoreFreespaceThresholds", "SetDatastoreFreespaceThresholdsReply"},
                 { "setHostRbsNetworkLimit", "SetHostRbsNetworkLimitReply"},
@@ -59703,6 +59789,7 @@ namespace RubrikSecurityCloud.Types
                     "RestorePostgreSqlDb",
                     "RestorePostgreSqlDbClusterToSnapshot",
                     "Routes",
+                    "SetClusterKmsKeyId",
                     "SetMissingClusterStatus",
                     "TakeOnDemandPostgreSqlDbClusterSnapshot",
                     "TotpAckStatus",
@@ -60767,12 +60854,14 @@ namespace RubrikSecurityCloud.Types
                     "GetMissedOpsManagerManagedSourceSnapshots",
                     "PatchOpsManagerManagedSource",
                     "PatchSource",
+                    "RecoverCluster",
                     "RecoverOpsManagerManagedSource",
                     "RecoverSource",
                     "RecoverableRanges",
                     "RestoreTargetsForSnapshot",
                     "RetryAddOpsManagerManagedSource",
                     "RetryAddSource",
+                    "SnapshotRbacSummary",
                     "Source",
                     "Sources",
                     }

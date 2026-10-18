@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("proxyConfig")]
         public CcesProxyConfig? ProxyConfig { get; set; }
 
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String (scalar)
+        [JsonProperty("kmsKeyId")]
+        public System.String? KmsKeyId { get; set; }
+
 
         #endregion
 

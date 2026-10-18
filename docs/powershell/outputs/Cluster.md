@@ -54,6 +54,8 @@ or the customer.
   - End of support status.
 - isClusterRemovalTprEnabled: System.Boolean
   - Specifies whether Quorum Authorization is enabled for cluster removal.
+- kmsKeyId: System.String
+  - The KMS key id stored for the cluster.
 - isTprEnabled: System.Boolean
   - Indicates if TPR is enabled on the cluster.
 - cdmRbacMigrationStatus: System.String

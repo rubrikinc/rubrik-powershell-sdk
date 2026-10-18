@@ -39,3 +39,7 @@ export/skipped-records/failed-records NDJSON reports.
 DevOps repository recovery could not restore.
 - ALERT_ACTIONS_LOG_CSV - ALERT_ACTIONS_LOG_CSV is a filetype for the actions log exported after an
 Identity Resilience alert revert.
+- QUARANTINED_FILES_CSV - QUARANTINED_FILES_CSV is a filetype for the quarantined files of a
+snapshot, exported by orion-hunt-service during surgical recovery.
+- ENCRYPTED_FILES_CSV - ENCRYPTED_FILES_CSV is a filetype for the encrypted files of a snapshot,
+exported by lambda-configuration-service.

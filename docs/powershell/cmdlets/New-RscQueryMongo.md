@@ -61,6 +61,14 @@ Get the list of valid restore targets for a snapshot. Supported in v9.3. Retriev
 
 - There is a single argument of type GetValidOpsManagerManagedRestoreTargetsForSnapshotInput.
 - Returns MongoOpsManagerRestoreTargetsForSnapshotListResponse.
+### snapshotrbacsummary
+Get the MongoDB RBAC summary of an admin database snapshot
+
+Supported in v9.6+
+Retrieve the role-based access control (RBAC) summary captured in a snapshot of a MongoDB admin database. The summary lists the user accounts in the snapshot and the roles granted to each account. A snapshot that is not a snapshot of an admin database carries no RBAC summary, and the Rubrik cluster returns a 404 response for it.
+
+- There is a single argument of type GetMongoSnapshotRbacSummaryInput.
+- Returns MongoSnapshotRbacSummary.
 ### source
 Provides details for the MongoDB source cluster identified by the fid.
 

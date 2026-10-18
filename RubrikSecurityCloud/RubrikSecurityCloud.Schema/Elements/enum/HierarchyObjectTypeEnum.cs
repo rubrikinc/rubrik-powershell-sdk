@@ -414,6 +414,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_USER")]
         M365_BACKUP_STORAGE_USER,
 
+        [EnumMember(Value = "M365_CONFIGS_ORG")]
+        M365_CONFIGS_ORG,
+
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT")]
         MANAGED_VOLUME_EXPORT,
 

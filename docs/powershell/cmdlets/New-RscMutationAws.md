@@ -24,6 +24,8 @@ AwsCloudAccountsMigrateInitiate return template details for migrating the existi
 - There is a single argument of type AwsCloudAccountsMigrateInitiateInput.
 - Returns AwsCloudAccountsMigrateInitiateReply.
 ### createaccount
+Creates a new AWS cloud account.
+
 - There is a single argument of type CreateAwsAccountInput.
 - Returns CloudAccount.
 ### createautomatictargetmapping
@@ -50,6 +52,8 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 - There is a single argument of type CreateAwsReaderTargetInput.
 - Returns Target.
 ### createtarget
+Creates an AWS archival target on a Rubrik cluster.
+
 - There is a single argument of type CreateAwsTargetInput.
 - Returns Target.
 ### deleteexocomputeconfigs
@@ -114,6 +118,8 @@ disable exocompute feature for the specified AWS Native account.
 - There is a single argument of type StartAwsExocomputeDisableJobInput.
 - Returns AsyncJobStatus.
 ### updateaccount
+Updates an existing AWS cloud account.
+
 - There is a single argument of type UpdateAwsAccountInput.
 - Returns CloudAccount.
 ### updateautomatictargetmapping

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostDomainName")]
         public System.String? HostDomainName { get; set; }
 
+        //      C# -> System.Boolean? IsDuplicateRegistration
+        // GraphQL -> isDuplicateRegistration: Boolean (scalar)
+        [JsonProperty("isDuplicateRegistration")]
+        public System.Boolean? IsDuplicateRegistration { get; set; }
+
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
         [JsonProperty("isOracleHost")]
@@ -146,6 +151,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? CompressionEnabled = null,
         System.String? HostDomainId = null,
         System.String? HostDomainName = null,
+        System.Boolean? IsDuplicateRegistration = null,
         System.Boolean? IsOracleHost = null,
         System.Boolean? IsRefreshPaused = null,
         System.Boolean? IsRelic = null,
@@ -181,6 +187,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostDomainName != null ) {
             this.HostDomainName = HostDomainName;
+        }
+        if ( IsDuplicateRegistration != null ) {
+            this.IsDuplicateRegistration = IsDuplicateRegistration;
         }
         if ( IsOracleHost != null ) {
             this.IsOracleHost = IsOracleHost;
@@ -296,6 +305,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostDomainName\n" ;
             } else {
                 s += ind + "hostDomainName\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDuplicateRegistration
+        // GraphQL -> isDuplicateRegistration: Boolean (scalar)
+        if (this.IsDuplicateRegistration != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDuplicateRegistration\n" ;
+            } else {
+                s += ind + "isDuplicateRegistration\n" ;
             }
         }
         //      C# -> System.Boolean? IsOracleHost
@@ -559,6 +577,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HostDomainName != null && ec.Excludes("hostDomainName",true))
         {
             this.HostDomainName = null;
+        }
+        //      C# -> System.Boolean? IsDuplicateRegistration
+        // GraphQL -> isDuplicateRegistration: Boolean (scalar)
+        if (ec.Includes("isDuplicateRegistration",true))
+        {
+            if(this.IsDuplicateRegistration == null) {
+
+                this.IsDuplicateRegistration = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDuplicateRegistration != null && ec.Excludes("isDuplicateRegistration",true))
+        {
+            this.IsDuplicateRegistration = null;
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)

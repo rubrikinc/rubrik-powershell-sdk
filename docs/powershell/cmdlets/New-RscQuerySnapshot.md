@@ -28,7 +28,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
 - There are 14 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
-    - snappableIds - list of System.Strings: Workload UUIDs.
+    - snappableIds - list of System.Strings: Workload FIDs.
     - includeLinked - System.Boolean: Specifies whether the retrieved snapshots should include the linked snapshots.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - excludeQuarantined - System.Boolean: Specifies whether to exclude quarantined snapshots.
@@ -239,7 +239,9 @@ All PVCs in a snapshot.
 ### quarantineddetails
 Quarantine details of all snapshots.
 
-- There is a single argument of type list of System.Strings.
+- There are 2 arguments.
+    - snapshotIds - list of System.Strings: List of snapshot IDs.
+    - shouldIncludeRecoveryInfo - System.Boolean: Specifies whether to include clean-version recovery details for each quarantined file.
 - Returns list of QuarantineSpecs.
 ### querypurestorageprotectiongroup
 Get list of snapshots of a Pure Storage protection group
@@ -289,7 +291,7 @@ Returns list of snapshots for a list of workloads.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - snappableIds - list of System.Strings: Workload UUIDs.
+    - snappableIds - list of System.Strings: Workload FIDs.
     - snapshotFilter - list of SnapshotQueryFilterInputs: Filters for snapshot connection.
     - sortOrder - SortOrder: Sorts the order of results.
     - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.

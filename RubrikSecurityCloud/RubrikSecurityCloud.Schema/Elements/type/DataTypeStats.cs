@@ -30,15 +30,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int64? TotalFilesWithHits
+        // GraphQL -> totalFilesWithHits: Long! (scalar)
+        [JsonProperty("totalFilesWithHits")]
+        public System.Int64? TotalFilesWithHits { get; set; }
+
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
         public System.Int64? TotalHits { get; set; }
 
+        //      C# -> System.Int64? TotalPermittedFilesWithHits
+        // GraphQL -> totalPermittedFilesWithHits: Long! (scalar)
+        [JsonProperty("totalPermittedFilesWithHits")]
+        public System.Int64? TotalPermittedFilesWithHits { get; set; }
+
         //      C# -> System.Int64? TotalPermittedHits
         // GraphQL -> totalPermittedHits: Long! (scalar)
         [JsonProperty("totalPermittedHits")]
         public System.Int64? TotalPermittedHits { get; set; }
+
+        //      C# -> System.Int64? TotalViolatedFilesWithHits
+        // GraphQL -> totalViolatedFilesWithHits: Long! (scalar)
+        [JsonProperty("totalViolatedFilesWithHits")]
+        public System.Int64? TotalViolatedFilesWithHits { get; set; }
 
         //      C# -> System.Int64? TotalViolatedHits
         // GraphQL -> totalViolatedHits: Long! (scalar)
@@ -57,8 +72,11 @@ namespace RubrikSecurityCloud.Types
     public DataTypeStats Set(
         System.String? Id = null,
         System.String? Name = null,
+        System.Int64? TotalFilesWithHits = null,
         System.Int64? TotalHits = null,
+        System.Int64? TotalPermittedFilesWithHits = null,
         System.Int64? TotalPermittedHits = null,
+        System.Int64? TotalViolatedFilesWithHits = null,
         System.Int64? TotalViolatedHits = null
     ) 
     {
@@ -68,11 +86,20 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( TotalFilesWithHits != null ) {
+            this.TotalFilesWithHits = TotalFilesWithHits;
+        }
         if ( TotalHits != null ) {
             this.TotalHits = TotalHits;
         }
+        if ( TotalPermittedFilesWithHits != null ) {
+            this.TotalPermittedFilesWithHits = TotalPermittedFilesWithHits;
+        }
         if ( TotalPermittedHits != null ) {
             this.TotalPermittedHits = TotalPermittedHits;
+        }
+        if ( TotalViolatedFilesWithHits != null ) {
+            this.TotalViolatedFilesWithHits = TotalViolatedFilesWithHits;
         }
         if ( TotalViolatedHits != null ) {
             this.TotalViolatedHits = TotalViolatedHits;
@@ -109,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.Int64? TotalFilesWithHits
+        // GraphQL -> totalFilesWithHits: Long! (scalar)
+        if (this.TotalFilesWithHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalFilesWithHits\n" ;
+            } else {
+                s += ind + "totalFilesWithHits\n" ;
+            }
+        }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         if (this.TotalHits != null) {
@@ -118,6 +154,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "totalHits\n" ;
             }
         }
+        //      C# -> System.Int64? TotalPermittedFilesWithHits
+        // GraphQL -> totalPermittedFilesWithHits: Long! (scalar)
+        if (this.TotalPermittedFilesWithHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalPermittedFilesWithHits\n" ;
+            } else {
+                s += ind + "totalPermittedFilesWithHits\n" ;
+            }
+        }
         //      C# -> System.Int64? TotalPermittedHits
         // GraphQL -> totalPermittedHits: Long! (scalar)
         if (this.TotalPermittedHits != null) {
@@ -125,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalPermittedHits\n" ;
             } else {
                 s += ind + "totalPermittedHits\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalViolatedFilesWithHits
+        // GraphQL -> totalViolatedFilesWithHits: Long! (scalar)
+        if (this.TotalViolatedFilesWithHits != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalViolatedFilesWithHits\n" ;
+            } else {
+                s += ind + "totalViolatedFilesWithHits\n" ;
             }
         }
         //      C# -> System.Int64? TotalViolatedHits
@@ -177,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.Int64? TotalFilesWithHits
+        // GraphQL -> totalFilesWithHits: Long! (scalar)
+        if (ec.Includes("totalFilesWithHits",true))
+        {
+            if(this.TotalFilesWithHits == null) {
+
+                this.TotalFilesWithHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalFilesWithHits != null && ec.Excludes("totalFilesWithHits",true))
+        {
+            this.TotalFilesWithHits = null;
+        }
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         if (ec.Includes("totalHits",true))
@@ -194,6 +265,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.TotalHits = null;
         }
+        //      C# -> System.Int64? TotalPermittedFilesWithHits
+        // GraphQL -> totalPermittedFilesWithHits: Long! (scalar)
+        if (ec.Includes("totalPermittedFilesWithHits",true))
+        {
+            if(this.TotalPermittedFilesWithHits == null) {
+
+                this.TotalPermittedFilesWithHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalPermittedFilesWithHits != null && ec.Excludes("totalPermittedFilesWithHits",true))
+        {
+            this.TotalPermittedFilesWithHits = null;
+        }
         //      C# -> System.Int64? TotalPermittedHits
         // GraphQL -> totalPermittedHits: Long! (scalar)
         if (ec.Includes("totalPermittedHits",true))
@@ -210,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalPermittedHits != null && ec.Excludes("totalPermittedHits",true))
         {
             this.TotalPermittedHits = null;
+        }
+        //      C# -> System.Int64? TotalViolatedFilesWithHits
+        // GraphQL -> totalViolatedFilesWithHits: Long! (scalar)
+        if (ec.Includes("totalViolatedFilesWithHits",true))
+        {
+            if(this.TotalViolatedFilesWithHits == null) {
+
+                this.TotalViolatedFilesWithHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalViolatedFilesWithHits != null && ec.Excludes("totalViolatedFilesWithHits",true))
+        {
+            this.TotalViolatedFilesWithHits = null;
         }
         //      C# -> System.Int64? TotalViolatedHits
         // GraphQL -> totalViolatedHits: Long! (scalar)

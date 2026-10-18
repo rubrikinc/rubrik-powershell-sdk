@@ -10,3 +10,5 @@ seeding.
 create seeding template flow.
 - EDIT_SEEDING_TEMPLATE - EDIT_SEEDING_TEMPLATE indicates the job is triggered during the
 edit seeding template flow.
+- RTP_RESTORE - RTP_RESTORE indicates the job is triggered as part of a real-time
+protection restore operation.

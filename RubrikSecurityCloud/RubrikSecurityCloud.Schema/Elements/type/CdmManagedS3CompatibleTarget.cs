@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("locationConnectionStatus")]
@@ -126,6 +131,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CdmManagedS3CompatibleTarget Set(
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
@@ -147,6 +153,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
+        }
         if ( LocationConnectionStatus != null ) {
             this.LocationConnectionStatus = LocationConnectionStatus;
         }
@@ -218,6 +227,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
+            }
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (this.LocationConnectionStatus != null) {
@@ -405,6 +423,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (ec.Includes("locationConnectionStatus",true))

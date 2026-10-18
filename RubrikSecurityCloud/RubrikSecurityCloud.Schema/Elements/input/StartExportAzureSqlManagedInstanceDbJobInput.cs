@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceManagedInstanceDatabaseRubrikId")]
         public System.String? SourceManagedInstanceDatabaseRubrikId { get; set; }
 
-        //      C# -> System.String? DestinationManagedInstanceRubrikId
-        // GraphQL -> destinationManagedInstanceRubrikId: UUID (scalar)
-        [JsonProperty("destinationManagedInstanceRubrikId")]
-        public System.String? DestinationManagedInstanceRubrikId { get; set; }
-
         //      C# -> System.String? DestinationDatabaseName
         // GraphQL -> destinationDatabaseName: String! (scalar)
         [Required]
@@ -38,12 +33,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("destinationDatabaseName")]
         public System.String? DestinationDatabaseName { get; set; }
 
-        //      C# -> System.String? DestinationManagedInstanceName
-        // GraphQL -> destinationManagedInstanceName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("destinationManagedInstanceName")]
-        public System.String? DestinationManagedInstanceName { get; set; }
+        //      C# -> System.String? DestinationManagedInstanceRubrikId
+        // GraphQL -> destinationManagedInstanceRubrikId: UUID (scalar)
+        [JsonProperty("destinationManagedInstanceRubrikId")]
+        public System.String? DestinationManagedInstanceRubrikId { get; set; }
 
         //      C# -> System.String? DestinationResourceGroupName
         // GraphQL -> destinationResourceGroupName: String! (scalar)
@@ -51,6 +44,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("destinationResourceGroupName")]
         public System.String? DestinationResourceGroupName { get; set; }
+
+        //      C# -> System.String? DestinationManagedInstanceName
+        // GraphQL -> destinationManagedInstanceName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("destinationManagedInstanceName")]
+        public System.String? DestinationManagedInstanceName { get; set; }
 
         //      C# -> AzureSqlManagedInstanceDbPitExport? AzureSqlManagedInstanceDbPitExportInput
         // GraphQL -> azureSqlManagedInstanceDbPitExportInput: AzureSqlManagedInstanceDbPitExport (input)

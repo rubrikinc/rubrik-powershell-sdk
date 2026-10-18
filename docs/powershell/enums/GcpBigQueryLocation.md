@@ -1,50 +1,50 @@
 ### GcpBigQueryLocation
 GCP BigQuery locations (multi-regions and regions).
-See https://cloud.google.com/bigquery/docs/locations.
+See https://docs.cloud.google.com/bigquery/docs/locations.
 
-- US - Multi-region: United States.
-- EU - Multi-region: European Union.
+- US - Multi-region: Data centers in the United States.
+- EU - Multi-region: Data centers within member states of the European Union.
 - US_EAST5 - Columbus, Ohio.
-- US_SOUTH1 - Dallas.
-- US_CENTRAL1 - Iowa.
-- US_WEST2 - Los Angeles.
-- US_WEST4 - Las Vegas.
-- NORTHAMERICA_SOUTH1 - Mexico.
-- NORTHAMERICA_NORTHEAST1 - Montreal.
-- US_EAST4 - Northern Virginia.
-- US_CENTRAL2 - Oklahoma.
-- US_WEST1 - Oregon.
-- US_WEST3 - Salt Lake City.
-- SOUTHAMERICA_EAST1 - Sao Paulo.
-- SOUTHAMERICA_WEST1 - Santiago.
-- US_EAST1 - South Carolina.
-- NORTHAMERICA_NORTHEAST2 - Toronto.
-- EUROPE_WEST1 - Belgium.
-- EUROPE_WEST10 - Berlin.
-- EUROPE_NORTH1 - Finland.
-- EUROPE_WEST3 - Frankfurt.
-- EUROPE_WEST2 - London.
-- EUROPE_SOUTHWEST1 - Madrid.
-- EUROPE_WEST8 - Milan.
-- EUROPE_WEST4 - Netherlands.
-- EUROPE_WEST9 - Paris.
-- EUROPE_NORTH2 - Stockholm.
-- EUROPE_WEST12 - Turin.
-- EUROPE_CENTRAL2 - Warsaw.
-- EUROPE_WEST6 - Zurich.
-- ASIA_SOUTHEAST3 - Bangkok.
-- ASIA_SOUTH2 - Delhi.
+- US_SOUTH1 - Dallas, Texas.
+- US_CENTRAL1 - Council Bluffs, Iowa.
+- US_WEST2 - Los Angeles, California.
+- US_WEST4 - Las Vegas, Nevada.
+- NORTHAMERICA_SOUTH1 - Queretaro, Mexico.
+- NORTHAMERICA_NORTHEAST1 - Montreal, Canada.
+- US_EAST4 - Ashburn, Virginia.
+- US_CENTRAL2 - Pryor, Oklahoma.
+- US_WEST1 - The Dalles, Oregon.
+- US_WEST3 - Salt Lake City, Utah.
+- SOUTHAMERICA_EAST1 - Sao Paulo, Brazil.
+- SOUTHAMERICA_WEST1 - Santiago, Chile.
+- US_EAST1 - Moncks Corner, South Carolina.
+- NORTHAMERICA_NORTHEAST2 - Toronto, Canada.
+- EUROPE_WEST1 - St. Ghislain, Belgium.
+- EUROPE_WEST10 - Berlin, Germany.
+- EUROPE_NORTH1 - Hamina, Finland.
+- EUROPE_WEST3 - Frankfurt, Germany.
+- EUROPE_WEST2 - London, England.
+- EUROPE_SOUTHWEST1 - Madrid, Spain.
+- EUROPE_WEST8 - Milan, Italy.
+- EUROPE_WEST4 - Eemshaven, Netherlands.
+- EUROPE_WEST9 - Paris, France.
+- EUROPE_NORTH2 - Stockholm, Sweden.
+- EUROPE_WEST12 - Turin, Italy.
+- EUROPE_CENTRAL2 - Warsaw, Poland.
+- EUROPE_WEST6 - Zurich, Switzerland.
+- ASIA_SOUTHEAST3 - Bangkok, Thailand.
+- ASIA_SOUTH2 - Delhi, India.
 - ASIA_EAST2 - Hong Kong.
-- ASIA_SOUTHEAST2 - Jakarta.
-- AUSTRALIA_SOUTHEAST2 - Melbourne.
-- ASIA_SOUTH1 - Mumbai.
-- ASIA_NORTHEAST2 - Osaka.
-- ASIA_NORTHEAST3 - Seoul.
-- ASIA_SOUTHEAST1 - Singapore.
-- AUSTRALIA_SOUTHEAST1 - Sydney.
-- ASIA_EAST1 - Taiwan.
-- ASIA_NORTHEAST1 - Tokyo.
-- ME_CENTRAL2 - Dammam.
-- ME_CENTRAL1 - Doha.
-- ME_WEST1 - Tel Aviv.
-- AFRICA_SOUTH1 - Johannesburg.
+- ASIA_SOUTHEAST2 - Jakarta, Indonesia.
+- AUSTRALIA_SOUTHEAST2 - Melbourne, Australia.
+- ASIA_SOUTH1 - Mumbai, India.
+- ASIA_NORTHEAST2 - Osaka, Japan.
+- ASIA_NORTHEAST3 - Seoul, South Korea.
+- ASIA_SOUTHEAST1 - Jurong West, Singapore.
+- AUSTRALIA_SOUTHEAST1 - Sydney, Australia.
+- ASIA_EAST1 - Changhua County, Taiwan.
+- ASIA_NORTHEAST1 - Tokyo, Japan.
+- ME_CENTRAL2 - Dammam, Saudi Arabia.
+- ME_CENTRAL1 - Doha, Qatar.
+- ME_WEST1 - Tel Aviv, Israel.
+- AFRICA_SOUTH1 - Johannesburg, South Africa.

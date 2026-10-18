@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> AzureNativeRegionFilter? RegionFilter
-        // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
-        [JsonProperty("regionFilter")]
-        public AzureNativeRegionFilter? RegionFilter { get; set; }
-
-        //      C# -> System.Boolean? IsEligibleForProtection
-        // GraphQL -> isEligibleForProtection: Boolean (scalar)
-        [JsonProperty("isEligibleForProtection")]
-        public System.Boolean? IsEligibleForProtection { get; set; }
-
         //      C# -> AzureSqlDatabaseServerResourceGroupFilter? ResourceGroupFilter
         // GraphQL -> resourceGroupFilter: AzureSqlDatabaseServerResourceGroupFilter (input)
         [JsonProperty("resourceGroupFilter")]
@@ -49,10 +39,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subscriptionFilter")]
         public AzureSqlDatabaseServerSubscriptionFilter? SubscriptionFilter { get; set; }
 
+        //      C# -> AzureNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AzureNativeRegionFilter? RegionFilter { get; set; }
+
         //      C# -> AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter? AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter
         // GraphQL -> azureNativeIsEligibleForSqlDatabaseServerProtectionFilter: AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter (input)
         [JsonProperty("azureNativeIsEligibleForSqlDatabaseServerProtectionFilter")]
         public AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter? AzureNativeIsEligibleForSqlDatabaseServerProtectionFilter { get; set; }
+
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
 
 
         #endregion

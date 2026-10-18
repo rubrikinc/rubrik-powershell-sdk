@@ -37,11 +37,11 @@ Input to update SLA Domain.
   - Object types of the SLA Domain.
 - isRetentionLockedSla: System.Boolean
   - Specifies if the SLA Domain to be updated must be Retention Locked or not.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode for the intended SLA Domain update.
 - backupLocationSpecs: list of BackupLocationSpecInputs
   - Specifies the list of backup location specifications for the SLA Domain.
 - failoverGroupId: System.String
   - Specifies the failover group ID for the HA SLA Domain. Required for HA SLAs, omit for non-HA SLAs.
 - backupWindowSpec: BackupWindowSpecInput
   - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
-- retentionLockMode: RetentionLockMode
-  - Specifies the retention lock mode for the intended SLA Domain update.

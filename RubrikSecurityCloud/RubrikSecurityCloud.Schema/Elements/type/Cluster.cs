@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isTunnelEnabled")]
         public System.Boolean? IsTunnelEnabled { get; set; }
 
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String (scalar)
+        [JsonProperty("kmsKeyId")]
+        public System.String? KmsKeyId { get; set; }
+
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         [JsonProperty("lastConnectionTime")]
@@ -471,6 +476,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
         System.Boolean? IsTunnelEnabled = null,
+        System.String? KmsKeyId = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
         System.Boolean? PassesConnectivityCheck = null,
@@ -590,6 +596,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsTunnelEnabled != null ) {
             this.IsTunnelEnabled = IsTunnelEnabled;
+        }
+        if ( KmsKeyId != null ) {
+            this.KmsKeyId = KmsKeyId;
         }
         if ( LastConnectionTime != null ) {
             this.LastConnectionTime = LastConnectionTime;
@@ -957,6 +966,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isTunnelEnabled\n" ;
             } else {
                 s += ind + "isTunnelEnabled\n" ;
+            }
+        }
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String (scalar)
+        if (this.KmsKeyId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsKeyId\n" ;
+            } else {
+                s += ind + "kmsKeyId\n" ;
             }
         }
         //      C# -> DateTime? LastConnectionTime
@@ -1860,6 +1878,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsTunnelEnabled != null && ec.Excludes("isTunnelEnabled",true))
         {
             this.IsTunnelEnabled = null;
+        }
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String (scalar)
+        if (ec.Includes("kmsKeyId",true))
+        {
+            if(this.KmsKeyId == null) {
+
+                this.KmsKeyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsKeyId != null && ec.Excludes("kmsKeyId",true))
+        {
+            this.KmsKeyId = null;
         }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)

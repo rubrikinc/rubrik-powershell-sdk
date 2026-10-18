@@ -80,6 +80,8 @@ additional fields for cloud-managed snapshots.
   - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - archivalLocationName: System.String
   - Specifies the name of the location where the snapshot is uploaded.
+- archivalLocationPurpose: StorageLocationPurpose
+  - Specifies the purpose of the location where the snapshot is uploaded. Null when the location cannot be resolved.
 - isRansomwareInvestigatedSnapshot: System.Boolean
   - Specifies whether the snapshot has been analyzed by Ransomware Detection.
 - isQuarantined: System.Boolean

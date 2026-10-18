@@ -116,6 +116,14 @@ v9.3+: Edits the properties of a MongoDB source managed using logical backup and
 
 - There is a single argument of type PatchMongoSourceInput.
 - Returns AsyncRequestStatus.
+### recovercluster
+Recover objects from source to target MongoDB cluster with cluster-level config
+
+Supported in v9.6+
+Recovers the selected database or collection objects managed using logical backups from a source to a target MongoDB cluster, including admin-DB RBAC and config-DB zone/balancer state. Drops every user database on the target and overwrites cluster-wide config.tags — use only for full-cluster recovery.
+
+- There is a single argument of type RecoverMongoClusterInput.
+- Returns AsyncRequestStatus.
 ### recoveropsmanagermanagedsource
 Recover an existing snapshot to the target MongoDB cluster managed by Ops Manager
 

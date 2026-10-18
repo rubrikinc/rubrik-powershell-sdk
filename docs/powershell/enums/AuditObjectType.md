@@ -248,3 +248,4 @@ Represents all the object types for which we expect to see audits.
 - GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings object (one per org).
 - AGENT_CLOUD_REWIND_OBJECT - Agent Cloud rewind object.
 - GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages per organization.
+- M365_CONFIGS_ORG - M365 Configurations Organization.

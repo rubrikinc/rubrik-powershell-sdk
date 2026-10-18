@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE")]
         DELETE,
 
+        [EnumMember(Value = "DOWNLOAD_CFT_TEMPLATE")]
+        DOWNLOAD_CFT_TEMPLATE,
+
         [EnumMember(Value = "UPDATE_CHILD_ACCOUNTS")]
         UPDATE_CHILD_ACCOUNTS,
 

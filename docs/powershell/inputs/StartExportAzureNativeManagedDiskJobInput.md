@@ -1,33 +1,33 @@
 ### StartExportAzureNativeManagedDiskJobInput
-Input for the job to export the specified Azure Native Managed Disk to the specified destination.
+Input for the job to export an Azure managed disk from a snapshot.
 
 - snapshotId: System.String
-  - Snapshot ID of the snapshot with which the disk is to be exported.
+  - Snapshot ID of the snapshot from which the managed disk is exported.
 - diskName: System.String
-  - Name of the disk created after export.
+  - Name of the exported managed disk.
 - diskEncryptionSetNativeId: System.String
-  - Native ID of the disk encryption set for encrypting the newly created disks.
+  - Native ID of the disk encryption set used to encrypt the exported managed disk. When empty the disk is encrypted with the platform-managed key, which is the Azure default.
 - diskStorageTier: AzureNativeManagedDiskType
-  - Type of the disk created after export.
+  - Storage tier of the exported managed disk.
 - diskSize: System.Int32
-  - Size of the disk created after export, in GiB.
+  - Size of the exported managed disk, in GiB.
 - resourceGroup: System.String
-  - Resource group to be associated with the disk created after export.
+  - Name of the resource group the exported managed disk is created in.
 - destinationRegion: AzureNativeRegion
-  - Region in which the disk created after export will exist.
+  - Azure region the managed disk is exported to.
 - destinationAvailabilityZone: System.String
-  - Availability Zone in which to export the disk. It is empty for regions types which do not support availability zones.
+  - Availability zone the managed disk is exported to. Leave empty for regions or disk types that do not support availability zones.
 - destinationSubscriptionRubrikId: System.String
-  - Rubrik ID of the subscription in which to export the disk. When empty, the disk is exported to same subscription.
+  - Rubrik ID of the Azure subscription the managed disk is exported to. When empty, the disk is exported to the subscription it was backed up from.
 - shouldExportTags: System.Boolean
-  - Specifies whether to export tags from the snapshot or not. When true, the tags from the snapshot are exported as well.
+  - Specifies whether the tags at the time of the snapshot are applied to the exported managed disk.
 - shouldReplaceAttachedManagedDisk: System.Boolean
-  - Specifies whether to run only the export job or to run both the export and replace jobs. When true, the attached managed disk is exported and replaced.
+  - Specifies whether the exported managed disk replaces the original disk on the virtual machine it is attached to.
 - shouldUseReplica: System.Boolean
-  - Specifies whether to recover from the replica of the source snapshot or not. Default value is false.
-- archivedSnapshotId: System.String
-  - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+  - Specifies whether the replica of the snapshot is used for the export. Ignored when `snapshotType` is specified.
 - snapshotType: AzureSnapshotType
-  - The type of the snapshot to recover from.
+  - Copy of the snapshot to export from. Defaults to the replica when `shouldUseReplica` is true, and to the source snapshot otherwise.
+- archivedSnapshotId: System.String
+  - ID of the archived snapshot to export. This field should be specified only when `snapshotType` is set to `Archived`.
 - recoveryPurpose: RecoveryPurpose
-  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported managed disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

@@ -243,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
 
+        [EnumMember(Value = "IRISDB_INSTANCE")]
+        IRISDB_INSTANCE,
+
         [EnumMember(Value = "IpWhitelist")]
         IP_WHITELIST,
 

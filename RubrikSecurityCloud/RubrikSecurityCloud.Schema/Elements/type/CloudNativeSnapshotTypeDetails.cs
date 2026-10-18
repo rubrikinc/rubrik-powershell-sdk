@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
         [JsonProperty("cloudType")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudNativeSnapshotTypeDetails Set(
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         CloudProviderType? CloudType = null,
         RcsTierEnumType? RcvTier = null,
         SnapshotType? SnapshotType = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         CloudNativeStorageClassTier? StorageClassTier = null
     ) 
     {
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
+        }
         if ( CloudType != null ) {
             this.CloudType = CloudType;
         }
@@ -118,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
+            }
+        }
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
         if (this.CloudType != null) {
@@ -206,6 +224,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
+        }
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
         if (ec.Includes("cloudType",true))

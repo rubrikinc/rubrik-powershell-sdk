@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        [JsonProperty("shardId")]
+        public System.String? ShardId { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public MongoHostDetail Set(
         HostConnectivityStatusEnum? ConnectionStatus = null,
         System.String? Id = null,
-        System.String? Name = null
+        System.String? Name = null,
+        System.String? ShardId = null
     ) 
     {
         if ( ConnectionStatus != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ShardId != null ) {
+            this.ShardId = ShardId;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        if (this.ShardId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shardId\n" ;
+            } else {
+                s += ind + "shardId\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        if (ec.Includes("shardId",true))
+        {
+            if(this.ShardId == null) {
+
+                this.ShardId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShardId != null && ec.Excludes("shardId",true))
+        {
+            this.ShardId = null;
         }
     }
 

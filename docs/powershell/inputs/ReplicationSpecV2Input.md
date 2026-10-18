@@ -17,9 +17,9 @@ Replication specification.
   - Cascading Archival Specifications.
 - replicationPairs: list of ReplicationPairInputs
   - Datacenter replication pairs.
-- databaseLogRetentionInfo: DatabaseLogRetentionInfo
-  - Optional per-workload database transaction log retention policy for this replication location.
 - awsRegion: AwsNativeRegionForReplication
   - AWS region.
 - azureRegion: AzureNativeRegionForReplication
   - Azure region.
+- databaseLogRetentionInfo: DatabaseLogRetentionInfo
+  - Optional per-workload database transaction log retention policy for this replication location.

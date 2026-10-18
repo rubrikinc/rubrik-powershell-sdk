@@ -1227,6 +1227,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.snapshotIds = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.shouldIncludeRecoveryInfo = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -3598,24 +3600,27 @@ $query.Var.isReplica = $someBoolean"
         }
 
         // Create new GraphQL Query:
-        // allQuarantinedDetailsForSnapshots(snapshotIds: [String!]!): [QuarantineSpec!]!
+        // allQuarantinedDetailsForSnapshots(snapshotIds: [String!]!, shouldIncludeRecoveryInfo: Boolean): [QuarantineSpec!]!
         internal void InitQueryAllQuarantinedDetailsForSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotIds", "[String!]!"),
+                Tuple.Create("shouldIncludeRecoveryInfo", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllQuarantinedDetailsForSnapshots",
-                "($snapshotIds: [String!]!)",
+                "($snapshotIds: [String!]!,$shouldIncludeRecoveryInfo: Boolean)",
                 "List<QuarantineSpec>",
                 Query.AllQuarantinedDetailsForSnapshots,
                 Query.AllQuarantinedDetailsForSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotIds = @(
 	$someString
-)"
+)
+# OPTIONAL
+$query.Var.shouldIncludeRecoveryInfo = $someBoolean"
             );
         }
 

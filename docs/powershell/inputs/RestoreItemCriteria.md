@@ -11,6 +11,8 @@ Info specifying the item criteria for restore.
   - Optional, limits the number of records to be restored.
 - sortByParam: SaasSortByParam
   - Optional, field and order used to sort the records.
+- rtpPointInTimeInfo: SaasRtpPointInTimeInfo
+  - Optional, real-time protection (RTP) point in time to read the items from, in place of a backup snapshot.
 - itemFilters: RecordFilter
   - Criteria for which matching items will be restored.
 - childRestoreItemCriteria: ChildRestoreItemCriteria

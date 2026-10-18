@@ -42,10 +42,15 @@ SAP HANA system details object.
 - systemInfo: SapHanaSystemInformation
   - Additional information about the SAP HANA system.
 - isRelic: System.Boolean
+  - Specifies whether the SAP HANA system is a relic.
 - isForceFullOnMasterChangeEnabled: System.Boolean
   - Whether to force a full backup after a database failover.
 - rbaRole: System.String
   - The role of this SAP HANA system in a multi-cluster Rubrik Backup Agent configuration.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - backupTriggerType: BackupTriggerType
   - The backup trigger type for the SAP HANA system.
 - descendantConnection: SapHanaSystemDescendantTypeConnection
@@ -98,8 +103,6 @@ SAP HANA system details object.
   - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection

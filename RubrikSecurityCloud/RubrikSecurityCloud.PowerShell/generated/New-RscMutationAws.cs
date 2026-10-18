@@ -738,6 +738,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	kmsKeyId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3608,6 +3610,8 @@ $query.Var.input = @{
 			}
 		}
 	}
+	# OPTIONAL
+	kmsKeyId = $someString
 }"
             );
         }

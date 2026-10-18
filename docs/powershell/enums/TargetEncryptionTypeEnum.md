@@ -12,3 +12,4 @@ Encryption type for data in target location.
 - SSE_DEFAULT_PMK - Server Side Encryption with Platform Managed Keys (Default).
 - SSE_CMK - Server Side Encryption with Customer Managed Keys.
 - SSE_CPK - Server Side Encryption with Customer Provided Keys.
+- UEKM_GCP_KMS_BASED - UEKM with GCP Cloud KMS encryption.

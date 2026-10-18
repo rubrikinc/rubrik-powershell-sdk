@@ -22,3 +22,4 @@ The different SaaS organization types supported.
 - POWER_PLATFORM_ORG - Power Platform Org type.
 - ANTHROPIC_CLOUD_ORG - Anthropic cloud org type (control plane + chat surfaces).
 - ANTHROPIC_ENDPOINT_ORG - Anthropic endpoint org type (code + cowork surfaces).
+- M365_CONFIGS_ORG - M365 Configurations Organization type.

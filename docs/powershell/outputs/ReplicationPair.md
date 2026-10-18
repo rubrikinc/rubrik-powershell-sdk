@@ -1,6 +1,10 @@
 ### ReplicationPair
 Replication pair specific information.
 
+- sourceCluster: ReplicationCluster
+  - Source Rubrik cluster details.
+- targetCluster: ReplicationCluster
+  - Target Rubrik cluster details.
 - storage: System.Int64
   - Storage (in bytes) consumed on target cluster by replicated snapshots.
 - status: ReplicationPairConnectionStatus
@@ -9,15 +13,11 @@ Replication pair specific information.
   - Represents replication pair pause enablement status.
 - networkThrottle: NetworkThrottle
   - Network throttle details for source Rubrik cluster.
+- connectionDetails: ConnectionStatusDetails
+  - Additional information about the connection status of the replication pair Rubrik clusters.
 - configDetails: ReplicationPairConfigDetails
   - Configuration details about the replication pair of Rubrik clusters.
 - runningTasks: System.Int64
   - Running replication task count.
 - failedTasks: System.Int64
   - Failed replication task count in last 24 hours.
-- sourceCluster: ReplicationCluster
-  - Source Rubrik cluster details.
-- targetCluster: ReplicationCluster
-  - Target Rubrik cluster details.
-- connectionDetails: ConnectionStatusDetails
-  - Additional information about the connection status of the replication pair Rubrik clusters.

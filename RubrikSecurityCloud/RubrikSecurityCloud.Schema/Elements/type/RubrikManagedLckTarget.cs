@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> AwsRetrievalTier? AwsRetrievalTier
         // GraphQL -> awsRetrievalTier: AwsRetrievalTier! (enum)
         [JsonProperty("awsRetrievalTier")]
@@ -201,6 +206,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedLckTarget Set(
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         AwsRetrievalTier? AwsRetrievalTier = null,
         ConnectionStatusType? ConnectionStatus = null,
         TargetEncryptionTypeEnum? EncryptionType = null,
@@ -237,6 +243,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
+        }
         if ( AwsRetrievalTier != null ) {
             this.AwsRetrievalTier = AwsRetrievalTier;
         }
@@ -353,6 +362,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
+            }
+        }
         //      C# -> AwsRetrievalTier? AwsRetrievalTier
         // GraphQL -> awsRetrievalTier: AwsRetrievalTier! (enum)
         if (this.AwsRetrievalTier != null) {
@@ -675,6 +693,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
+        }
         //      C# -> AwsRetrievalTier? AwsRetrievalTier
         // GraphQL -> awsRetrievalTier: AwsRetrievalTier! (enum)
         if (ec.Includes("awsRetrievalTier",true))

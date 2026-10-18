@@ -8,12 +8,18 @@ Retrieve the details of an asynchronous request that includes a VMware virtual m
     - id - System.String: ID of the asynchronous request.
 - Returns AsyncRequestStatus.
 ### new
+Details of the vSphere virtual machine with the given Rubrik ID.
+
 - There is a single argument of type System.String.
 - Returns VsphereVm.
 ### newlist
-- There are 5 arguments.
+Query vSphere virtual machines.
+
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

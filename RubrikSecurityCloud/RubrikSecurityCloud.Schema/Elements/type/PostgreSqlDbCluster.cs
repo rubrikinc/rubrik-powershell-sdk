@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplica")]
         public System.Boolean? IsReplica { get; set; }
 
+        //      C# -> System.Int64? LastRecoverableRangeCheckedAt
+        // GraphQL -> lastRecoverableRangeCheckedAt: Long (scalar)
+        [JsonProperty("lastRecoverableRangeCheckedAt")]
+        public System.Int64? LastRecoverableRangeCheckedAt { get; set; }
+
         //      C# -> System.Int32? LegallyHeldSnapshotCount
         // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
         [JsonProperty("legallyHeldSnapshotCount")]
@@ -458,6 +463,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplica = null,
+        System.Int64? LastRecoverableRangeCheckedAt = null,
         System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -545,6 +551,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsReplica != null ) {
             this.IsReplica = IsReplica;
+        }
+        if ( LastRecoverableRangeCheckedAt != null ) {
+            this.LastRecoverableRangeCheckedAt = LastRecoverableRangeCheckedAt;
         }
         if ( LegallyHeldSnapshotCount != null ) {
             this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
@@ -836,6 +845,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isReplica\n" ;
             } else {
                 s += ind + "isReplica\n" ;
+            }
+        }
+        //      C# -> System.Int64? LastRecoverableRangeCheckedAt
+        // GraphQL -> lastRecoverableRangeCheckedAt: Long (scalar)
+        if (this.LastRecoverableRangeCheckedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRecoverableRangeCheckedAt\n" ;
+            } else {
+                s += ind + "lastRecoverableRangeCheckedAt\n" ;
             }
         }
         //      C# -> System.Int32? LegallyHeldSnapshotCount
@@ -1603,6 +1621,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsReplica != null && ec.Excludes("isReplica",true))
         {
             this.IsReplica = null;
+        }
+        //      C# -> System.Int64? LastRecoverableRangeCheckedAt
+        // GraphQL -> lastRecoverableRangeCheckedAt: Long (scalar)
+        if (ec.Includes("lastRecoverableRangeCheckedAt",true))
+        {
+            if(this.LastRecoverableRangeCheckedAt == null) {
+
+                this.LastRecoverableRangeCheckedAt = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRecoverableRangeCheckedAt != null && ec.Excludes("lastRecoverableRangeCheckedAt",true))
+        {
+            this.LastRecoverableRangeCheckedAt = null;
         }
         //      C# -> System.Int32? LegallyHeldSnapshotCount
         // GraphQL -> legallyHeldSnapshotCount: Int (scalar)

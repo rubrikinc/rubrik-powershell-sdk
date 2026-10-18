@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> BliMigrationStatus? BliMigrationStatusType
         // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
         [JsonProperty("bliMigrationStatusType")]
@@ -236,6 +241,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedRcsTarget Set(
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         BliMigrationStatus? BliMigrationStatusType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
@@ -279,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
+        }
         if ( BliMigrationStatusType != null ) {
             this.BliMigrationStatusType = BliMigrationStatusType;
         }
@@ -416,6 +425,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
+            }
+        }
         //      C# -> BliMigrationStatus? BliMigrationStatusType
         // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
         if (this.BliMigrationStatusType != null) {
@@ -819,6 +837,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
+        }
         //      C# -> BliMigrationStatus? BliMigrationStatusType
         // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
         if (ec.Includes("bliMigrationStatusType",true))

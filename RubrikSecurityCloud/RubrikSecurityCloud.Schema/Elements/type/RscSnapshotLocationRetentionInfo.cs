@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageLocationPurpose? LocationPurpose
+        // GraphQL -> locationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("locationPurpose")]
+        public StorageLocationPurpose? LocationPurpose { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
         [JsonProperty("retentionLockMode")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RscSnapshotLocationRetentionInfo Set(
+        StorageLocationPurpose? LocationPurpose = null,
         RetentionLockMode? RetentionLockMode = null,
         SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         System.String? LocationName = null
     ) 
     {
+        if ( LocationPurpose != null ) {
+            this.LocationPurpose = LocationPurpose;
+        }
         if ( RetentionLockMode != null ) {
             this.RetentionLockMode = RetentionLockMode;
         }
@@ -118,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> StorageLocationPurpose? LocationPurpose
+        // GraphQL -> locationPurpose: StorageLocationPurpose (enum)
+        if (this.LocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "locationPurpose\n" ;
+            } else {
+                s += ind + "locationPurpose\n" ;
+            }
+        }
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
         if (this.RetentionLockMode != null) {
@@ -197,6 +215,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> StorageLocationPurpose? LocationPurpose
+        // GraphQL -> locationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("locationPurpose",true))
+        {
+            if(this.LocationPurpose == null) {
+
+                this.LocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationPurpose != null && ec.Excludes("locationPurpose",true))
+        {
+            this.LocationPurpose = null;
+        }
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
         if (ec.Includes("retentionLockMode",true))

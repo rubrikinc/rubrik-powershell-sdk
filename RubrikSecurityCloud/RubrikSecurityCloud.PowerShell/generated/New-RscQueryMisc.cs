@@ -6315,6 +6315,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.filter = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -12430,6 +12434,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// }
+    /// # OPTIONAL
+    /// $query.Var.recoveryTags = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		tags = @(
+    /// 			$someRecoveryTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTag]) for enum values.
+    /// 		)
+    /// }
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -12528,6 +12541,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.lastRecoveryOutcomes = @(
     /// 	$someRecoveryOutcome # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryOutcome]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.recoveryTags = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		tags = @(
+    /// 			$someRecoveryTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTag]) for enum values.
+    /// 		)
+    /// }
     /// )
     /// # OPTIONAL
     /// $query.Var.isPreSeedEnabled = $someBoolean
@@ -13070,6 +13092,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		rtpPointInTimeInfo = @{
+    /// 			# OPTIONAL
+    /// 			sourceModifiedTime = $someDateTime
+    /// 		}
     /// 		# REQUIRED
     /// 		itemFilters = @{
     /// 			# REQUIRED
@@ -13142,6 +13169,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					field = $someString
     /// 					# OPTIONAL
     /// 					sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				rtpPointInTimeInfo = @{
+    /// 					# OPTIONAL
+    /// 					sourceModifiedTime = $someDateTime
     /// 				}
     /// 				# REQUIRED
     /// 				itemFilters = @{
@@ -16572,6 +16604,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -16668,6 +16704,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -27938,6 +27978,8 @@ $query.Var.input = @{
         // guestCredentialsV2(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     filter: [GuestOsCredentialFilterInput!]
         //     sortBy: GuestOsCredentialSortBy
         //   ): GuestOsCredentialConnection!
@@ -27946,6 +27988,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filter", "[GuestOsCredentialFilterInput!]"),
                 Tuple.Create("sortBy", "GuestOsCredentialSortBy"),
             };
@@ -27953,7 +27997,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryGuestCredentialsV2",
-                "($first: Int,$after: String,$filter: [GuestOsCredentialFilterInput!],$sortBy: GuestOsCredentialSortBy)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [GuestOsCredentialFilterInput!],$sortBy: GuestOsCredentialSortBy)",
                 "GuestOsCredentialConnection",
                 Query.GuestCredentialsV2,
                 Query.GuestCredentialsV2FieldSpec,
@@ -27961,6 +28005,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @(
 	@{
@@ -33800,6 +33848,7 @@ $query.Var.queryDatastoreFreespaceThresholdsInput = @(
         //     workloadTypeFilter: ManagedObjectType = VSPHERE_VIRTUAL_MACHINE
         //     recoveryNameSubstring: String
         //     sortParam: RecoverySortParamInput
+        //     recoveryTags: [RecoveryTagClause!]
         //   ): RecoveryConnection!
         internal void InitQueryRecoveries()
         {
@@ -33822,12 +33871,13 @@ $query.Var.queryDatastoreFreespaceThresholdsInput = @(
                 Tuple.Create("workloadTypeFilter", "ManagedObjectType"),
                 Tuple.Create("recoveryNameSubstring", "String"),
                 Tuple.Create("sortParam", "RecoverySortParamInput"),
+                Tuple.Create("recoveryTags", "[RecoveryTagClause!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryRecoveries",
-                "($first: Int,$after: String,$last: Int,$before: String,$recoveryIds: [UUID!],$recoveryType: [RecoveryType!],$endTime: DateTime,$startTime: DateTime,$recoveryPlanNames: [String!],$workloadIds: [UUID!],$recoveryStatuses: [RecoveryStatus!],$recoveryOutcomes: [RecoveryOutcome!],$recoveryNames: [String!],$recoveryTriggeredFrom: [RecoveryTriggeredFrom!],$recoveryPlanIds: [UUID!],$workloadTypeFilter: ManagedObjectType,$recoveryNameSubstring: String,$sortParam: RecoverySortParamInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$recoveryIds: [UUID!],$recoveryType: [RecoveryType!],$endTime: DateTime,$startTime: DateTime,$recoveryPlanNames: [String!],$workloadIds: [UUID!],$recoveryStatuses: [RecoveryStatus!],$recoveryOutcomes: [RecoveryOutcome!],$recoveryNames: [String!],$recoveryTriggeredFrom: [RecoveryTriggeredFrom!],$recoveryPlanIds: [UUID!],$workloadTypeFilter: ManagedObjectType,$recoveryNameSubstring: String,$sortParam: RecoverySortParamInput,$recoveryTags: [RecoveryTagClause!])",
                 "RecoveryConnection",
                 Query.Recoveries,
                 Query.RecoveriesFieldSpec,
@@ -33889,7 +33939,16 @@ $query.Var.sortParam = @{
 	sortType = $someRecoverySortType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySortType]) for enum values.
 	# OPTIONAL
 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}"
+}
+# OPTIONAL
+$query.Var.recoveryTags = @(
+	@{
+		# OPTIONAL
+		tags = @(
+			$someRecoveryTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTag]) for enum values.
+		)
+}
+)"
             );
         }
 
@@ -33915,6 +33974,7 @@ $query.Var.sortParam = @{
         //     sourceRootDomainSids: [String!]
         //     recoveryPlanStatuses: [RecoveryPlanStatus!]
         //     lastRecoveryOutcomes: [RecoveryOutcome!]
+        //     recoveryTags: [RecoveryTagClause!]
         //     isPreSeedEnabled: Boolean
         //   ): RecoveryPlanBasicInfoConnection!
         internal void InitQueryRecoveryPlansBasicInfo()
@@ -33940,13 +34000,14 @@ $query.Var.sortParam = @{
                 Tuple.Create("sourceRootDomainSids", "[String!]"),
                 Tuple.Create("recoveryPlanStatuses", "[RecoveryPlanStatus!]"),
                 Tuple.Create("lastRecoveryOutcomes", "[RecoveryOutcome!]"),
+                Tuple.Create("recoveryTags", "[RecoveryTagClause!]"),
                 Tuple.Create("isPreSeedEnabled", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryRecoveryPlansBasicInfo",
-                "($first: Int,$after: String,$last: Int,$before: String,$recoveryPlanIds: [UUID!],$sortParam: RecoveryPlanSortParamInput,$recoveryPlanTypes: [RecoveryPlanType!],$workloadTypes: [ManagedObjectType!],$sourceLocationIds: [String!],$nameSubstring: String,$targetLocationIds: [UUID!],$sourceAccountIds: [String!],$targetAccountIds: [String!],$sourceSubscriptionIds: [String!],$targetSubscriptionIds: [String!],$awsRegions: [String!],$azureRegions: [String!],$sourceRootDomainSids: [String!],$recoveryPlanStatuses: [RecoveryPlanStatus!],$lastRecoveryOutcomes: [RecoveryOutcome!],$isPreSeedEnabled: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$recoveryPlanIds: [UUID!],$sortParam: RecoveryPlanSortParamInput,$recoveryPlanTypes: [RecoveryPlanType!],$workloadTypes: [ManagedObjectType!],$sourceLocationIds: [String!],$nameSubstring: String,$targetLocationIds: [UUID!],$sourceAccountIds: [String!],$targetAccountIds: [String!],$sourceSubscriptionIds: [String!],$targetSubscriptionIds: [String!],$awsRegions: [String!],$azureRegions: [String!],$sourceRootDomainSids: [String!],$recoveryPlanStatuses: [RecoveryPlanStatus!],$lastRecoveryOutcomes: [RecoveryOutcome!],$recoveryTags: [RecoveryTagClause!],$isPreSeedEnabled: Boolean)",
                 "RecoveryPlanBasicInfoConnection",
                 Query.RecoveryPlansBasicInfo,
                 Query.RecoveryPlansBasicInfoFieldSpec,
@@ -34022,6 +34083,15 @@ $query.Var.recoveryPlanStatuses = @(
 # OPTIONAL
 $query.Var.lastRecoveryOutcomes = @(
 	$someRecoveryOutcome # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryOutcome]) for enum values.
+)
+# OPTIONAL
+$query.Var.recoveryTags = @(
+	@{
+		# OPTIONAL
+		tags = @(
+			$someRecoveryTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTag]) for enum values.
+		)
+}
 )
 # OPTIONAL
 $query.Var.isPreSeedEnabled = $someBoolean"
@@ -34481,6 +34551,11 @@ $query.Var.restoreConfig = @{
 			# OPTIONAL
 			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 		}
+		# OPTIONAL
+		rtpPointInTimeInfo = @{
+			# OPTIONAL
+			sourceModifiedTime = $someDateTime
+		}
 		# REQUIRED
 		itemFilters = @{
 			# REQUIRED
@@ -34553,6 +34628,11 @@ $query.Var.restoreConfig = @{
 					field = $someString
 					# OPTIONAL
 					sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+				}
+				# OPTIONAL
+				rtpPointInTimeInfo = @{
+					# OPTIONAL
+					sourceModifiedTime = $someDateTime
 				}
 				# REQUIRED
 				itemFilters = @{
@@ -37714,6 +37794,8 @@ $query.Var.filter = @(
         // vcdTopLevelDescendants(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     typeFilter: [HierarchyObjectTypeEnum!]
@@ -37724,6 +37806,8 @@ $query.Var.filter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -37733,7 +37817,7 @@ $query.Var.filter = @(
                 argDefs,
                 "query",
                 "QueryVcdTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
                 "VcdTopLevelDescendantTypeConnection",
                 Query.VcdTopLevelDescendants,
                 Query.VcdTopLevelDescendantsFieldSpec,
@@ -37741,6 +37825,10 @@ $query.Var.filter = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -37815,6 +37903,8 @@ $query.Var.filter = @(
         // vcdVappVms(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!] = []
@@ -37824,6 +37914,8 @@ $query.Var.filter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -37832,7 +37924,7 @@ $query.Var.filter = @(
                 argDefs,
                 "query",
                 "QueryVcdVappVms",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "VsphereVmConnection",
                 Query.VcdVappVms,
                 Query.VcdVappVmsFieldSpec,
@@ -37840,6 +37932,10 @@ $query.Var.filter = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

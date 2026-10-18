@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPFLOWS_UCL")]
         APPFLOWS_UCL,
 
+        [EnumMember(Value = "ATLASSIAN_CONFLUENCE")]
+        ATLASSIAN_CONFLUENCE,
+
         [EnumMember(Value = "ATLASSIAN_JIRA")]
         ATLASSIAN_JIRA,
 

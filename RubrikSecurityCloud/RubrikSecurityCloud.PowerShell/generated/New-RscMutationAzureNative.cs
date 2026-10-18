@@ -261,9 +261,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldUseReplica = $someBoolean
     /// 	# OPTIONAL
-    /// 	archivedSnapshotId = $someString
-    /// 	# OPTIONAL
     /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
@@ -326,6 +326,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldEnableAcceleratedNetworking = $someBoolean
     /// 	# OPTIONAL
+    /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+    /// 	# OPTIONAL
     /// 	recoveryDiskIds = @(
     /// 		$someString
     /// 	)
@@ -333,8 +335,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	destinationKeyVaultName = $someString
-    /// 	# OPTIONAL
-    /// 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
@@ -796,9 +796,9 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldUseReplica = $someBoolean
 	# OPTIONAL
-	archivedSnapshotId = $someString
-	# OPTIONAL
 	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+	# OPTIONAL
+	archivedSnapshotId = $someString
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
@@ -853,6 +853,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldEnableAcceleratedNetworking = $someBoolean
 	# OPTIONAL
+	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
+	# OPTIONAL
 	recoveryDiskIds = @(
 		$someString
 	)
@@ -860,8 +862,6 @@ $query.Var.input = @{
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	destinationKeyVaultName = $someString
-	# OPTIONAL
-	snapshotType = $someAzureSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"

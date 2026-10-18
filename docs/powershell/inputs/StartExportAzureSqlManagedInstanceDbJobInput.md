@@ -3,14 +3,14 @@ Input for the job to export the specified Azure SQL Managed Instance database.
 
 - sourceManagedInstanceDatabaseRubrikId: System.String
   - Rubrik ID of the Azure SQL Managed Instance Database to be exported.
-- destinationManagedInstanceRubrikId: System.String
-  - Destination Rubrik ID of the Asure SQL Managed Instance to which export will be done.
 - destinationDatabaseName: System.String
   - Name of the exported Azure SQL Managed Instance database.
-- destinationManagedInstanceName: System.String
-  - Name of the Azure SQL Managed Instance in which database is being exported.
+- destinationManagedInstanceRubrikId: System.String
+  - Destination Rubrik ID of the Asure SQL Managed Instance to which export will be done.
 - destinationResourceGroupName: System.String
   - Resource Group in which database is being exported.
+- destinationManagedInstanceName: System.String
+  - Name of the Azure SQL Managed Instance in which database is being exported.
 - azureSqlManagedInstanceDbPitExportInput: AzureSqlManagedInstanceDbPitExport
   - Input for exporting from Point-in-Time (PiT) backup.
 - azureSqlManagedInstanceDbLtrExportInput: AzureSqlManagedInstanceDbLtrExport

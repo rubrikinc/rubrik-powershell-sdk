@@ -120,7 +120,9 @@ List all connected clusters.
 ### count
 Count Rubrik clusters grouped by status.
 
-- There is a single argument of type ClusterFilterInput.
+- There are 2 arguments.
+    - filter - ClusterFilterInput: Filter by cluster.
+    - separateSharedClusters - System.Boolean: When true and the MSP multi-account registration feature flag is enabled, clusters assigned by a parent account are counted in assignedByParentAccountClusters instead of the health-status buckets.
 - Returns CountClustersReply.
 ### defaultgateway
 Get current default gateway

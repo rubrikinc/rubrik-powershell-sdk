@@ -144,6 +144,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		accessToken = $someString
     /// 		# OPTIONAL
+    /// 		kubeSystemUid = $someString
+    /// 		# OPTIONAL
     /// 		helmMinCdmVersion = $someString
     /// 		# OPTIONAL
     /// 		dataPathTransport = $someString
@@ -2008,6 +2010,8 @@ $query.Var.input = @{
 		maxConcurrentAgents = $someInt
 		# OPTIONAL
 		accessToken = $someString
+		# OPTIONAL
+		kubeSystemUid = $someString
 		# OPTIONAL
 		helmMinCdmVersion = $someString
 		# OPTIONAL

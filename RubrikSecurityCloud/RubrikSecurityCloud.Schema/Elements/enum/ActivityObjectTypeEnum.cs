@@ -474,6 +474,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_SITE")]
         M365_BACKUP_STORAGE_SITE,
 
+        [EnumMember(Value = "M365_CONFIGS_ORG")]
+        M365_CONFIGS_ORG,
+
         [EnumMember(Value = "MARIADB_INSTANCE")]
         MARIADB_INSTANCE,
 

@@ -158,3 +158,6 @@ unscoped policy would match activity across all of them.
 - SECURITY_SAAS_ACTIVITY_ACTOR_TYPE - Filters SaaS activity events by the kind of actor that performed the
 activity, as reported by the SaaS provider. Values are free-form strings,
 not a closed enumeration, and are absent on some activities.
+- SECURITY_IDENTITY_EVENT_TARGET_OU - Filters identity events by the Active Directory Organizational Unit the
+event's resource belongs to, including nested sub-OUs. Values are OU
+names. Applies to on-prem AD events only.

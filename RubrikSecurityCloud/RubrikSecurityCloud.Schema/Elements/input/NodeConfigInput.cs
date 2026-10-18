@@ -25,9 +25,7 @@ namespace RubrikSecurityCloud.Types
         public IpConfigInput? DataIpConfig { get; set; }
 
         //      C# -> IpConfigInput? IpmiIpConfig
-        // GraphQL -> ipmiIpConfig: IpConfigInput! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> ipmiIpConfig: IpConfigInput (input)
         [JsonProperty("ipmiIpConfig")]
         public IpConfigInput? IpmiIpConfig { get; set; }
 

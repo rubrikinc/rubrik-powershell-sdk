@@ -9,10 +9,10 @@ Metadata for rendering protected objects.
   - Specifies whether the object is archived or not.
 - effectiveSlaOpt: System.String
   - Effective SLA Domain of the object.
-- isUnprotected: System.Boolean
-  - Specifies whether the object is unprotected.
 - objectType: ManagedObjectType
   - Object type.
+- isUnprotected: System.Boolean
+  - Specifies whether the object is unprotected.
 - cluster: ObjectClusterSummary
   - The cluster corresponding to the object.
 - slaPauseStatus: System.Boolean

@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessTier")]
         public AzureStorageTier? AccessTier { get; set; }
 
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        [JsonProperty("archivalLocationPurpose")]
+        public StorageLocationPurpose? ArchivalLocationPurpose { get; set; }
+
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("connectionStatus")]
@@ -207,6 +212,7 @@ namespace RubrikSecurityCloud.Types
 
     public RubrikManagedAzureTarget Set(
         AzureStorageTier? AccessTier = null,
+        StorageLocationPurpose? ArchivalLocationPurpose = null,
         ConnectionStatusType? ConnectionStatus = null,
         InstanceTypeEnum? InstanceType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
@@ -245,6 +251,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AccessTier != null ) {
             this.AccessTier = AccessTier;
+        }
+        if ( ArchivalLocationPurpose != null ) {
+            this.ArchivalLocationPurpose = ArchivalLocationPurpose;
         }
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
@@ -369,6 +378,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accessTier\n" ;
             } else {
                 s += ind + "accessTier\n" ;
+            }
+        }
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (this.ArchivalLocationPurpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationPurpose\n" ;
+            } else {
+                s += ind + "archivalLocationPurpose\n" ;
             }
         }
         //      C# -> ConnectionStatusType? ConnectionStatus
@@ -725,6 +743,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccessTier != null && ec.Excludes("accessTier",true))
         {
             this.AccessTier = null;
+        }
+        //      C# -> StorageLocationPurpose? ArchivalLocationPurpose
+        // GraphQL -> archivalLocationPurpose: StorageLocationPurpose (enum)
+        if (ec.Includes("archivalLocationPurpose",true))
+        {
+            if(this.ArchivalLocationPurpose == null) {
+
+                this.ArchivalLocationPurpose = new StorageLocationPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationPurpose != null && ec.Excludes("archivalLocationPurpose",true))
+        {
+            this.ArchivalLocationPurpose = null;
         }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)

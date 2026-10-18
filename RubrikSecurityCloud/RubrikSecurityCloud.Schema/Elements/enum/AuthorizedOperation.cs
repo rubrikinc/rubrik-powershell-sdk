@@ -276,6 +276,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ACCESS")]
         MANAGE_ACCESS,
 
+        [EnumMember(Value = "MANAGE_AGENT_CLOUD_POLICIES")]
+        MANAGE_AGENT_CLOUD_POLICIES,
+
         [EnumMember(Value = "MANAGE_ANOMALY_DETECTION")]
         MANAGE_ANOMALY_DETECTION,
 
@@ -371,6 +374,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_LOG_SHIPPING")]
         MANAGE_LOG_SHIPPING,
+
+        [EnumMember(Value = "MANAGE_MAINTENANCE_MODE")]
+        MANAGE_MAINTENANCE_MODE,
 
         [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
         MANAGE_MIGRATION_DASHBOARD,
@@ -551,6 +557,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SEND_LICENSE_NOTIFICATION")]
         SEND_LICENSE_NOTIFICATION,
+
+        [EnumMember(Value = "SET_AGENT_CLOUD_POLICY_ENFORCEMENT")]
+        SET_AGENT_CLOUD_POLICY_ENFORCEMENT,
 
         [EnumMember(Value = "SUSPEND_CHILD_ACCOUNTS")]
         SUSPEND_CHILD_ACCOUNTS,

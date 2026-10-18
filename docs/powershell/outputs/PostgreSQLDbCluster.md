@@ -40,6 +40,9 @@ cluster. Null when the source cluster is unknown.
 - postgresHaClusterInfo: PostgresHaClusterInfo
   - HA cluster info including the group name and replica topology. Null for
 standalone clusters.
+- lastRecoverableRangeCheckedAt: System.Int64
+  - Unix epoch seconds when the recoverable range was last calculated. Absent
+until the first calculation completes.
 - descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: KosmosParentHierarchyObjectPhysicalChildTypeConnection

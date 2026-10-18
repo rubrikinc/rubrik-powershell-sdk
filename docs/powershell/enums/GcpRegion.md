@@ -1,58 +1,59 @@
 ### GcpRegion
-Regions for GCP.
+GCP GCS locations (multi-regions, dual-regions, and regions).
+See https://docs.cloud.google.com/storage/docs/locations.
 
-- UNKNOWN_GCP_REGION - GCP region is Unknown.
-- USCENTRAL1 - GCP region is US Central 1.
-- USEAST1 - GCP region is US East 1.
-- USEAST4 - GCP region is US East 4.
-- USWEST1 - GCP region is US West 1.
-- USWEST2 - GCP region is US West 2.
-- US_WEST3 - GCP region is US West 3.
-- US_WEST4 - GCP region is US West 4.
-- NAM4 - GCP region is North America 4.
-- NORTHAMERICA_NORTHEAST1 - GCP region is North America North East 1.
-- SOUTHAMERICA_EAST1 - GCP region is South America East 1.
-- ASIA1 - GCP region is Asia 1.
-- ASIA_EAST1 - GCP region is Asia East 1.
-- ASIA_EAST2 - GCP region is Asia East 2.
-- ASIA_NORTHEAST1 - GCP region is Asia North East 1.
-- ASIA_NORTHEAST2 - GCP region is Asia North East 2.
-- ASIA_NORTHEAST3 - GCP region is Asia North East 3.
-- ASIA_SOUTHEAST1 - GCP region is Asia South East 1.
-- ASIA_SOUTHEAST2 - GCP region is Asia South East 2.
-- ASIA_SOUTH1 - GCP region is Asia South 1.
-- AUSTRALIA_SOUTHEAST1 - GCP region is Australia South East 1.
-- EUR4 - GCP region is Europe 4.
-- EUROPE_WEST1 - GCP region is Europe West 1.
-- EUROPE_WEST2 - GCP region is Europe West 2.
-- EUROPE_WEST3 - GCP region is Europe West 3.
-- EUROPE_WEST4 - GCP region is Europe West 4.
-- EUROPE_WEST6 - GCP region is Europe West 6.
-- EUROPE_NORTH1 - GCP region is Europe North 1.
-- US - GCP region is in US.
-- EU - GCP region is Europe.
-- ASIA - GCP region is Asia.
-- ASIA_SOUTH2 - GCP region is Asia South 2.
-- AUSTRALIA_SOUTHEAST2 - GCP region is Australia South East 2.
-- EUROPE_CENTRAL2 - GCP region is Europe Central 2.
-- EUROPE_SOUTHWEST1 - GCP region is Europe South West 1.
-- EUROPE_WEST8 - GCP region is Europe West 8.
-- EUROPE_WEST9 - GCP region is Europe West 9.
-- EUROPE_WEST10 - GCP region is Europe West 10.
-- EUROPE_WEST12 - GCP region is Europe West 12.
-- ME_CENTRAL1 - GCP region is ME Central 1.
-- ME_CENTRAL2 - GCP region is ME Central 2.
-- ME_WEST1 - GCP region is ME West 1.
-- NORTHAMERICA_NORTHEAST2 - GCP region is North America North East 2.
-- NORTHAMERICA_SOUTH1 - GCP region is North America South 1.
-- SOUTHAMERICA_WEST1 - GCP region is South America West 1.
-- US_EAST5 - GCP region is US East 5.
-- US_EAST7 - GCP region is US East 7.
-- US_SOUTH1 - GCP region is US South 1.
-- US_WEST8 - GCP region is US West 8.
-- AFRICA_SOUTH1 - GCP region is Africa South 1.
-- ASIA_SOUTHEAST3 - GCP region is Asia South East 3.
-- EUROPE_NORTH2 - GCP region is Europe North 2.
-- EUR5 - GCP region is Europe 5.
-- EUR7 - GCP region is Europe 7.
-- EUR8 - GCP region is Europe 8.
+- UNKNOWN_GCP_REGION - Location not specified.
+- USCENTRAL1 - Council Bluffs, Iowa.
+- USEAST1 - Moncks Corner, South Carolina.
+- USEAST4 - Ashburn, Virginia.
+- USWEST1 - The Dalles, Oregon.
+- USWEST2 - Los Angeles, California.
+- US_WEST3 - Salt Lake City, Utah.
+- US_WEST4 - Las Vegas, Nevada.
+- NAM4 - Dual-region: Council Bluffs, Iowa + Moncks Corner, South Carolina.
+- NORTHAMERICA_NORTHEAST1 - Montreal, Canada.
+- SOUTHAMERICA_EAST1 - Sao Paulo, Brazil.
+- ASIA1 - Dual-region: Tokyo, Japan + Osaka, Japan.
+- ASIA_EAST1 - Changhua County, Taiwan.
+- ASIA_EAST2 - Hong Kong.
+- ASIA_NORTHEAST1 - Tokyo, Japan.
+- ASIA_NORTHEAST2 - Osaka, Japan.
+- ASIA_NORTHEAST3 - Seoul, South Korea.
+- ASIA_SOUTHEAST1 - Jurong West, Singapore.
+- ASIA_SOUTHEAST2 - Jakarta, Indonesia.
+- ASIA_SOUTH1 - Mumbai, India.
+- AUSTRALIA_SOUTHEAST1 - Sydney, Australia.
+- EUR4 - Dual-region: Hamina, Finland + Eemshaven, Netherlands.
+- EUROPE_WEST1 - St. Ghislain, Belgium.
+- EUROPE_WEST2 - London, England.
+- EUROPE_WEST3 - Frankfurt, Germany.
+- EUROPE_WEST4 - Eemshaven, Netherlands.
+- EUROPE_WEST6 - Zurich, Switzerland.
+- EUROPE_NORTH1 - Hamina, Finland.
+- US - Multi-region: Data centers in the United States.
+- EU - Multi-region: Data centers within member states of the European Union.
+- ASIA - Multi-region: Data centers in Asia, excluding Hong Kong and Indonesia.
+- ASIA_SOUTH2 - Delhi, India.
+- AUSTRALIA_SOUTHEAST2 - Melbourne, Australia.
+- EUROPE_CENTRAL2 - Warsaw, Poland.
+- EUROPE_SOUTHWEST1 - Madrid, Spain.
+- EUROPE_WEST8 - Milan, Italy.
+- EUROPE_WEST9 - Paris, France.
+- EUROPE_WEST10 - Berlin, Germany.
+- EUROPE_WEST12 - Turin, Italy.
+- ME_CENTRAL1 - Doha, Qatar.
+- ME_CENTRAL2 - Dammam, Saudi Arabia.
+- ME_WEST1 - Tel Aviv, Israel.
+- NORTHAMERICA_NORTHEAST2 - Toronto, Canada.
+- NORTHAMERICA_SOUTH1 - Queretaro, Mexico.
+- SOUTHAMERICA_WEST1 - Santiago, Chile.
+- US_EAST5 - Columbus, Ohio.
+- US_EAST7 - Bridgeport, Alabama.
+- US_SOUTH1 - Dallas, Texas.
+- US_WEST8 - Phoenix, Arizona.
+- AFRICA_SOUTH1 - Johannesburg, South Africa.
+- ASIA_SOUTHEAST3 - Bangkok, Thailand.
+- EUROPE_NORTH2 - Stockholm, Sweden.
+- EUR5 - Dual-region: St. Ghislain, Belgium + London, England.
+- EUR7 - Dual-region: London, England + Frankfurt, Germany.
+- EUR8 - Dual-region: Frankfurt, Germany + Zurich, Switzerland.

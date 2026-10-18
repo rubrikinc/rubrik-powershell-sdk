@@ -1082,6 +1082,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 			# OPTIONAL
+    /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+    /// 			# OPTIONAL
+    /// 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+    /// 			# OPTIONAL
     /// 			databaseLogRetentionInfo = @{
     /// 				# OPTIONAL
     /// 				databaseLogRetentionConfigs = @(
@@ -1098,10 +1102,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 				)
     /// 			}
-    /// 			# OPTIONAL
-    /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-    /// 			# OPTIONAL
-    /// 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1110,6 +1110,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isRetentionLockedSla = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// 	# OPTIONAL
     /// 	backupLocationSpecs = @(
     /// 		@{
@@ -1149,8 +1151,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	purpose = $someSlaPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaPurpose]) for enum values.
-    /// 	# OPTIONAL
-    /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2214,6 +2214,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 			# OPTIONAL
+    /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+    /// 			# OPTIONAL
+    /// 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+    /// 			# OPTIONAL
     /// 			databaseLogRetentionInfo = @{
     /// 				# OPTIONAL
     /// 				databaseLogRetentionConfigs = @(
@@ -2230,10 +2234,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 				)
     /// 			}
-    /// 			# OPTIONAL
-    /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-    /// 			# OPTIONAL
-    /// 			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2242,6 +2242,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isRetentionLockedSla = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// 	# OPTIONAL
     /// 	backupLocationSpecs = @(
     /// 		@{
@@ -2279,8 +2281,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		terminateBackupsExceedingBackupWindow = $someBoolean
     /// 	}
-    /// 	# OPTIONAL
-    /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3569,6 +3569,10 @@ $query.Var.input = @{
 				}
 			)
 			# OPTIONAL
+			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+			# OPTIONAL
 			databaseLogRetentionInfo = @{
 				# OPTIONAL
 				databaseLogRetentionConfigs = @(
@@ -3585,10 +3589,6 @@ $query.Var.input = @{
 					}
 				)
 			}
-			# OPTIONAL
-			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-			# OPTIONAL
-			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -3597,6 +3597,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = $someBoolean
+	# OPTIONAL
+	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 	# OPTIONAL
 	backupLocationSpecs = @(
 		@{
@@ -3636,8 +3638,6 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	purpose = $someSlaPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaPurpose]) for enum values.
-	# OPTIONAL
-	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
         }
@@ -4662,6 +4662,10 @@ $query.Var.input = @{
 				}
 			)
 			# OPTIONAL
+			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+			# OPTIONAL
 			databaseLogRetentionInfo = @{
 				# OPTIONAL
 				databaseLogRetentionConfigs = @(
@@ -4678,10 +4682,6 @@ $query.Var.input = @{
 					}
 				)
 			}
-			# OPTIONAL
-			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-			# OPTIONAL
-			azureRegion = $someAzureNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -4690,6 +4690,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = $someBoolean
+	# OPTIONAL
+	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 	# OPTIONAL
 	backupLocationSpecs = @(
 		@{
@@ -4727,8 +4729,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		terminateBackupsExceedingBackupWindow = $someBoolean
 	}
-	# OPTIONAL
-	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
         }

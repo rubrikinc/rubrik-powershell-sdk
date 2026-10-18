@@ -25,3 +25,5 @@ availability zones.
 - proxyConfig: CcesProxyConfig
   - Optional proxy configuration for proxy-enabled CCES Rubrik cluster
 creation. Present only when the customer configures a web proxy.
+- kmsKeyId: System.String
+  - KMS key ID for CCES upgrade context.

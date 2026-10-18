@@ -48,6 +48,8 @@ Creates reader type for GCP archival location on a CDM cluster.
 - There is a single argument of type CreateGcpReaderTargetInput.
 - Returns Target.
 ### createtarget
+Creates a Polaris-managed GCP archival location.
+
 - There is a single argument of type CreateGcpTargetInput.
 - Returns Target.
 ### setdefaultserviceaccountjwtconfig
@@ -63,6 +65,8 @@ subnets.
 - There is a single argument of type SetGcpExocomputeConfigsInput.
 - Returns System.String.
 ### updatetarget
+Edits a GCP archival location's mutable fields.
+
 - There is a single argument of type UpdateGcpTargetInput.
 - Returns Target.
 ### upgradecloudaccountpermissionswithoutoauth

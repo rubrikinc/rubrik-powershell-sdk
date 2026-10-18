@@ -14,3 +14,7 @@ Cluster Count grouped by status.
 - tunnelEnabledClusters: System.Int32
   - The number of Rubrik clusters with at least one node whose support
 tunnel is open.
+- assignedByParentAccountClusters: System.Int32
+  - The number of clusters assigned to this child account by its parent
+account (shared clusters). Populated only when separate_shared_clusters
+is true in the request; excluded from the health-status bucket counts.

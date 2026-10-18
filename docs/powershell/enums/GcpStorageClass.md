@@ -1,6 +1,6 @@
 ### GcpStorageClass
-GCP GCS Storage Classes.
-https://docs.cloud.google.com/storage/docs/storage-classes.
+GCP GCS storage classes.
+See https://docs.cloud.google.com/storage/docs/storage-classes.
 
 - STANDARD_GCP - Standard GCP storage class.
 - DURABLE_REDUCED_AVAILABILITY_GCP - Durable reduced Availability GCP storage class.
