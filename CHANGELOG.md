@@ -3,6 +3,9 @@
 ## Version TBD
 
 New Features:
+- `Get-RscGcpGceInstance`: new cmdlet to list and retrieve GCP Compute Engine
+  (GCE) VM instances managed by Rubrik Security Cloud. Supports filtering by
+  name substring, SLA Domain, and relic status.
 
 Fixes:
 
