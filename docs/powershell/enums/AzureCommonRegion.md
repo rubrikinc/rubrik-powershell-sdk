@@ -66,3 +66,5 @@ Azure region Enum.
 - BELGIUMCENTRAL - Azure region is Belgium Central.
 - NEWZEALANDNORTH - Azure region is New Zealand North.
 - TAIWANNORTH - Azure region is Taiwan North.
+- DENMARKEAST - Azure region is Denmark East.
+- INDIASOUTHCENTRAL - Azure region is India South Central.

@@ -39,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storageSnapshotConfig")]
         public SapHanaStorageSnapshotConfigInput? StorageSnapshotConfig { get; set; }
 
+        //      C# -> GlobalSnapshotScheduleInput? IncrementalSchedule
+        // GraphQL -> incrementalSchedule: GlobalSnapshotScheduleInput (input)
+        [JsonProperty("incrementalSchedule")]
+        public GlobalSnapshotScheduleInput? IncrementalSchedule { get; set; }
+
+        //      C# -> GlobalSnapshotScheduleInput? DifferentialSchedule
+        // GraphQL -> differentialSchedule: GlobalSnapshotScheduleInput (input)
+        [JsonProperty("differentialSchedule")]
+        public GlobalSnapshotScheduleInput? DifferentialSchedule { get; set; }
+
 
         #endregion
 

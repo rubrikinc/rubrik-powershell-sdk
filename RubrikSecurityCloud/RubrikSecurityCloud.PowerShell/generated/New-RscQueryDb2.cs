@@ -155,6 +155,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -275,6 +279,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
@@ -847,6 +855,8 @@ $query.Var.input = @{
         // db2Databases(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -856,6 +866,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -864,7 +876,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryDb2Databases",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "Db2DatabaseConnection",
                 Query.Db2Databases,
                 Query.Db2DatabasesFieldSpec,
@@ -872,6 +884,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -962,6 +978,8 @@ $query.Var.id = $someString"
         // db2Instances(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -971,6 +989,8 @@ $query.Var.id = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -979,7 +999,7 @@ $query.Var.id = $someString"
                 argDefs,
                 "query",
                 "QueryDb2Instances",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "Db2InstanceConnection",
                 Query.Db2Instances,
                 Query.Db2InstancesFieldSpec,
@@ -987,6 +1007,10 @@ $query.Var.id = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL

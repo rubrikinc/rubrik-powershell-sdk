@@ -15,6 +15,10 @@ Nodes add request for a cloud cluster.
   - Azure image name to deploy to add nodes to an Azure Cloud Cluster without the marketplace.
 - ociImageId: System.String
   - OCI Image ID to deploy to add nodes to an OCI Cloud Cluster without the marketplace.
+
+Deprecated: supplying an image bypasses Marketplace resolution and with it the
+App Catalog terms gate. Select a CDM version and let RSC resolve the image. The
+field is removed in a later release; the tag is not reused.
 - gcpImageId: System.String
   - GCP image ID to deploy to add nodes to a Rubrik Cloud Cluster for GCP, without accessing the marketplace.
 - cloudAccountIdV2: System.String

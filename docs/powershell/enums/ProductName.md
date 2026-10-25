@@ -68,3 +68,4 @@ Name of product.
 - POWER_PLATFORM - Microsoft Power Platform protection.
 - AAD_B2B_RECOVERY - Entra ID B2B Recovery.
 - ATLASSIAN_CONFLUENCE - Atlassian Confluence protection.
+- AWS_BAAS_STORAGE - Rubrik-managed storage (BETB) for AWS Backup as a Service.

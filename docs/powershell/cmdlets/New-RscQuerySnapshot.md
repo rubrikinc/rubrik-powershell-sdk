@@ -112,9 +112,11 @@ Browse or search the given path for files and directories along with their delta
 ### filesdeltav2
 Browse or search the given path for files and directories along with their deltas in a given snapshot.
 
-- There are 10 arguments.
+- There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
@@ -172,9 +174,11 @@ List of legal hold snapshots for a workload.
 ### listdifffilesfor
 List files with their deltas in a given snapshot, with optional search string filtering.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - searchString - System.String: Optional search string to filter files by filename.
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.

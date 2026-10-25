@@ -1,5 +1,5 @@
 ### ClusterFilterInput
-Filters for the cluster list.
+Input to filter clusters for the cluster list.
 
 - id: list of System.Strings
   - Cluster UUIDs.
@@ -23,10 +23,6 @@ Filters for the cluster list.
   - Type of Rubrik cluster.
 - registeredMode: list of ClusterRegistrationModes
   - The mode in which the cluster is registered.
-- product: Product
-  - The licensed product type.
-- orgId: list of System.Strings
-  - Filter for clusters belonging to the specified organizations.
 - productFilters: list of ClusterFilterPerProductInputs
   - Product type specific filters for the clusters.
 - excludeId: list of System.Strings
@@ -36,10 +32,19 @@ Filters for the cluster list.
 - connectionState: list of ClusterStatuss
   - Connection status of the Rubrik cluster.
 - isInFatalOrDisconnectedState: System.Boolean
-  - Include Rubrik clusters which are disconnected  or in fatal state.
+  - Include Rubrik clusters which are disconnected or in fatal state.
+- orgId: list of System.Strings
+  - Filter for clusters belonging to the specified organizations.
+- product: Product
+  - The licensed product type.
 - cyberEventLockdownMode: list of ClusterCyberEventLockdownModes
   - Cyber Event Lockdown mode of the Rubrik cluster.
 - isAssignedByParentAccount: System.Boolean
-  - Filter on shared (parent-assigned) clusters. When true, return only shared clusters; when false, exclude them; omit for no filter.
+  - Filter on shared (parent-assigned) clusters. When true, return only shared clusters;
+when false, exclude them; omit for no filter.
 - isSupportTunnelEnabled: System.Boolean
-  - Filter on the support tunnel state of the Rubrik cluster. When true, return only Rubrik clusters with at least one node whose support tunnel is open; when false, return only Rubrik clusters with no such node; omit for no filter.
+  - Filter on the support tunnel state of the Rubrik cluster. When true, return only Rubrik
+clusters with at least one node whose support tunnel is open; when false, return only
+Rubrik clusters with no such node; omit for no filter.
+- managementType: list of ClusterManagementTypes
+  - Filter on who operates the Rubrik cluster. Omit for no filter. MANAGEMENT_TYPE_SELF_MANAGED keeps clusters the customer operates, including clusters with no recorded management type; MANAGEMENT_TYPE_RUBRIK_MANAGED keeps clusters Rubrik operates on the customer's behalf.

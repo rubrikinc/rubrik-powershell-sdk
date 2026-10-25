@@ -920,6 +920,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -2302,6 +2306,8 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
         // searchSnappableVersionedFiles(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     searchQuery: String!
         //     usePrefixSearch: Boolean
@@ -2311,6 +2317,8 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("searchQuery", "String!"),
                 Tuple.Create("usePrefixSearch", "Boolean"),
@@ -2319,7 +2327,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 argDefs,
                 "query",
                 "QuerySearchSnappableVersionedFiles",
-                "($first: Int,$after: String,$snappableFid: UUID!,$searchQuery: String!,$usePrefixSearch: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$searchQuery: String!,$usePrefixSearch: Boolean)",
                 "VersionedFileConnection",
                 Query.SearchSnappableVersionedFiles,
                 Query.SearchSnappableVersionedFilesFieldSpec,
@@ -2327,6 +2335,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED

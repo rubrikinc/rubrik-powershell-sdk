@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preferredLocationId")]
         public System.String? PreferredLocationId { get; set; }
 
+        //      C# -> CloudStorageRehydrationSpeed? CloudRehydrationSpeed
+        // GraphQL -> cloudRehydrationSpeed: CloudStorageRehydrationSpeed (enum)
+        [JsonProperty("cloudRehydrationSpeed")]
+        public CloudStorageRehydrationSpeed? CloudRehydrationSpeed { get; set; }
+
 
         #endregion
 

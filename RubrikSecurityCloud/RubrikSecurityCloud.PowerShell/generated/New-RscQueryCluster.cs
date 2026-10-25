@@ -488,12 +488,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -517,6 +511,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -524,6 +524,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -630,12 +634,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -659,6 +657,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -666,6 +670,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -795,12 +803,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -824,6 +826,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -831,6 +839,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.separateSharedClusters = $someBoolean
@@ -1480,12 +1492,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -1509,6 +1515,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -1516,6 +1528,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -1823,12 +1839,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -1852,6 +1862,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -1859,6 +1875,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -2338,12 +2358,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-    /// 	# OPTIONAL
-    /// 	orgId = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	productFilters = @(
     /// 		@{
     /// 			# REQUIRED
@@ -2367,6 +2381,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isInFatalOrDisconnectedState = $someBoolean
     /// 	# OPTIONAL
+    /// 	orgId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+    /// 	# OPTIONAL
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
@@ -2374,6 +2394,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
     /// 	isSupportTunnelEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementType = @(
+    /// 		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -2787,25 +2811,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.upgradeFilter = @{
     /// 	# OPTIONAL
-    /// 	id = @(
+    /// 	clusterLocation = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	name = @(
-    /// 		$someString
+    /// 	connectionState = @(
+    /// 		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
     /// 	)
-    /// 	# OPTIONAL
-    /// 	type = @(
-    /// 		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	registrationTime_gt = $someDateTime
-    /// 	# OPTIONAL
-    /// 	registrationTime_lt = $someDateTime
-    /// 	# OPTIONAL
-    /// 	minSoftwareVersion = $someString
     /// 	# OPTIONAL
     /// 	downloadedVersion = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	eosStatus = @(
+    /// 		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	id = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
@@ -2813,40 +2835,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	upgradeJobStatus = @(
-    /// 		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
-    /// 	)
+    /// 	isAssignedByParentAccount = $someBoolean
     /// 	# OPTIONAL
-    /// 	clusterLocation = @(
+    /// 	minSoftwareVersion = $someString
+    /// 	# OPTIONAL
+    /// 	name = @(
     /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	versionStatus = @(
-    /// 		$someVersionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VersionStatus]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	prechecksStatus = @(
     /// 		$somePrechecksStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrechecksStatusTypeEnum]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	connectionState = @(
-    /// 		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	upgradeScheduled = $someBoolean
-    /// 	# OPTIONAL
     /// 	productType = @(
     /// 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	registrationTime_gt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	registrationTime_lt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	type = @(
+    /// 		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	upgradeJobStatus = @(
+    /// 		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	upgradeScheduled = $someBoolean
     /// 	# OPTIONAL
     /// 	upgradeStatusCategory = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	isAssignedByParentAccount = $someBoolean
-    /// 	# OPTIONAL
-    /// 	eosStatus = @(
-    /// 		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+    /// 	versionStatus = @(
+    /// 		$someVersionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VersionStatus]) for enum values.
     /// 	)
     /// }
     /// # OPTIONAL
@@ -4061,12 +4085,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -4090,6 +4108,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -4097,6 +4121,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -4201,12 +4229,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -4230,6 +4252,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -4237,6 +4265,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -4343,12 +4375,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -4372,6 +4398,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -4379,6 +4411,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.separateSharedClusters = $someBoolean"
@@ -5023,12 +5059,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -5052,6 +5082,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -5059,6 +5095,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle"
@@ -5316,12 +5356,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -5345,6 +5379,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -5352,6 +5392,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -5796,12 +5840,6 @@ $query.Var.filter = @{
 		$someClusterRegistrationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
 	)
 	# OPTIONAL
-	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
-	# OPTIONAL
-	orgId = @(
-		$someString
-	)
-	# OPTIONAL
 	productFilters = @(
 		@{
 			# REQUIRED
@@ -5825,6 +5863,12 @@ $query.Var.filter = @{
 	# OPTIONAL
 	isInFatalOrDisconnectedState = $someBoolean
 	# OPTIONAL
+	orgId = @(
+		$someString
+	)
+	# OPTIONAL
+	product = $someProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
@@ -5832,6 +5876,10 @@ $query.Var.filter = @{
 	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
 	isSupportTunnelEnabled = $someBoolean
+	# OPTIONAL
+	managementType = @(
+		$someClusterManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterManagementType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -6183,25 +6231,23 @@ $query.Var.before = $someString
 # OPTIONAL
 $query.Var.upgradeFilter = @{
 	# OPTIONAL
-	id = @(
+	clusterLocation = @(
 		$someString
 	)
 	# OPTIONAL
-	name = @(
-		$someString
+	connectionState = @(
+		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
 	)
-	# OPTIONAL
-	type = @(
-		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	registrationTime_gt = $someDateTime
-	# OPTIONAL
-	registrationTime_lt = $someDateTime
-	# OPTIONAL
-	minSoftwareVersion = $someString
 	# OPTIONAL
 	downloadedVersion = @(
+		$someString
+	)
+	# OPTIONAL
+	eosStatus = @(
+		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+	)
+	# OPTIONAL
+	id = @(
 		$someString
 	)
 	# OPTIONAL
@@ -6209,40 +6255,42 @@ $query.Var.upgradeFilter = @{
 		$someString
 	)
 	# OPTIONAL
-	upgradeJobStatus = @(
-		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
-	)
+	isAssignedByParentAccount = $someBoolean
 	# OPTIONAL
-	clusterLocation = @(
+	minSoftwareVersion = $someString
+	# OPTIONAL
+	name = @(
 		$someString
-	)
-	# OPTIONAL
-	versionStatus = @(
-		$someVersionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VersionStatus]) for enum values.
 	)
 	# OPTIONAL
 	prechecksStatus = @(
 		$somePrechecksStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrechecksStatusTypeEnum]) for enum values.
 	)
 	# OPTIONAL
-	connectionState = @(
-		$someClusterStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
-	)
-	# OPTIONAL
-	upgradeScheduled = $someBoolean
-	# OPTIONAL
 	productType = @(
 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
 	)
+	# OPTIONAL
+	registrationTime_gt = $someDateTime
+	# OPTIONAL
+	registrationTime_lt = $someDateTime
+	# OPTIONAL
+	type = @(
+		$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	upgradeJobStatus = @(
+		$someClusterJobStatusTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	upgradeScheduled = $someBoolean
 	# OPTIONAL
 	upgradeStatusCategory = @(
 		$someString
 	)
 	# OPTIONAL
-	isAssignedByParentAccount = $someBoolean
-	# OPTIONAL
-	eosStatus = @(
-		$someClusterEosStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEosStatus]) for enum values.
+	versionStatus = @(
+		$someVersionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VersionStatus]) for enum values.
 	)
 }
 # OPTIONAL

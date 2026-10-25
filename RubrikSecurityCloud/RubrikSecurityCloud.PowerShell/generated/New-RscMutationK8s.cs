@@ -157,6 +157,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		clientId = $someString
     /// 		# OPTIONAL
     /// 		pvcGroupingStrategy = $someString
+    /// 		# OPTIONAL
+    /// 		loadBalancerAnnotations = @{
+    /// 			# REQUIRED
+    /// 			loadBalancerAnnotationList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					annotationKey = $someString
+    /// 					# OPTIONAL
+    /// 					annotationValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -629,6 +641,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
     /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
@@ -1482,6 +1496,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		clientId = $someString
     /// 		# OPTIONAL
     /// 		pvcGroupingStrategy = $someString
+    /// 		# OPTIONAL
+    /// 		loadBalancerAnnotations = @{
+    /// 			# REQUIRED
+    /// 			loadBalancerAnnotationList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					annotationKey = $someString
+    /// 					# OPTIONAL
+    /// 					annotationValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -2024,6 +2050,18 @@ $query.Var.input = @{
 		clientId = $someString
 		# OPTIONAL
 		pvcGroupingStrategy = $someString
+		# OPTIONAL
+		loadBalancerAnnotations = @{
+			# REQUIRED
+			loadBalancerAnnotationList = @(
+				@{
+					# OPTIONAL
+					annotationKey = $someString
+					# OPTIONAL
+					annotationValue = $someString
+				}
+			)
+		}
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -2408,6 +2446,8 @@ $query.Var.input = @{
 	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
+		# OPTIONAL
+		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
 		# OPTIONAL
 		slaId = $someString
 	}
@@ -3165,6 +3205,18 @@ $query.Var.input = @{
 		clientId = $someString
 		# OPTIONAL
 		pvcGroupingStrategy = $someString
+		# OPTIONAL
+		loadBalancerAnnotations = @{
+			# REQUIRED
+			loadBalancerAnnotationList = @(
+				@{
+					# OPTIONAL
+					annotationKey = $someString
+					# OPTIONAL
+					annotationValue = $someString
+				}
+			)
+		}
 	}
 }"
             );

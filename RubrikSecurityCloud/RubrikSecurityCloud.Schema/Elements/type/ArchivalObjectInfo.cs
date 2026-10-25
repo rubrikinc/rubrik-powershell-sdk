@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storageUsage")]
         public System.Int64? StorageUsage { get; set; }
 
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: String (scalar)
+        [JsonProperty("workloadFid")]
+        public System.String? WorkloadFid { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String (scalar)
         [JsonProperty("workloadId")]
@@ -125,6 +130,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SlaDomain = null,
         System.String? StorageTier = null,
         System.Int64? StorageUsage = null,
+        System.String? WorkloadFid = null,
         System.String? WorkloadId = null
     ) 
     {
@@ -172,6 +178,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StorageUsage != null ) {
             this.StorageUsage = StorageUsage;
+        }
+        if ( WorkloadFid != null ) {
+            this.WorkloadFid = WorkloadFid;
         }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
@@ -323,6 +332,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "storageUsage\n" ;
             } else {
                 s += ind + "storageUsage\n" ;
+            }
+        }
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: String (scalar)
+        if (this.WorkloadFid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadFid\n" ;
+            } else {
+                s += ind + "workloadFid\n" ;
             }
         }
         //      C# -> System.String? WorkloadId
@@ -595,6 +613,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.StorageUsage != null && ec.Excludes("storageUsage",true))
         {
             this.StorageUsage = null;
+        }
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: String (scalar)
+        if (ec.Includes("workloadFid",true))
+        {
+            if(this.WorkloadFid == null) {
+
+                this.WorkloadFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadFid != null && ec.Excludes("workloadFid",true))
+        {
+            this.WorkloadFid = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String (scalar)

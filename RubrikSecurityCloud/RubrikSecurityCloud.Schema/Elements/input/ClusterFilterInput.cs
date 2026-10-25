@@ -74,16 +74,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("registeredMode")]
         public List<ClusterRegistrationMode>? RegisteredMode { get; set; }
 
-        //      C# -> Product? Product
-        // GraphQL -> product: Product (enum)
-        [JsonProperty("product")]
-        public Product? Product { get; set; }
-
-        //      C# -> List<System.String>? OrgId
-        // GraphQL -> orgId: [UUID!] (scalar)
-        [JsonProperty("orgId")]
-        public List<System.String>? OrgId { get; set; }
-
         //      C# -> List<ClusterFilterPerProductInput>? ProductFilters
         // GraphQL -> productFilters: [ClusterFilterPerProductInput!] (input)
         [JsonProperty("productFilters")]
@@ -109,6 +99,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInFatalOrDisconnectedState")]
         public System.Boolean? IsInFatalOrDisconnectedState { get; set; }
 
+        //      C# -> List<System.String>? OrgId
+        // GraphQL -> orgId: [UUID!] (scalar)
+        [JsonProperty("orgId")]
+        public List<System.String>? OrgId { get; set; }
+
+        //      C# -> Product? Product
+        // GraphQL -> product: Product (enum)
+        [JsonProperty("product")]
+        public Product? Product { get; set; }
+
         //      C# -> List<ClusterCyberEventLockdownMode>? CyberEventLockdownMode
         // GraphQL -> cyberEventLockdownMode: [ClusterCyberEventLockdownMode!] (enum)
         [JsonProperty("cyberEventLockdownMode")]
@@ -123,6 +123,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isSupportTunnelEnabled: Boolean (scalar)
         [JsonProperty("isSupportTunnelEnabled")]
         public System.Boolean? IsSupportTunnelEnabled { get; set; }
+
+        //      C# -> List<ClusterManagementType>? ManagementType
+        // GraphQL -> managementType: [ClusterManagementType!] (enum)
+        [JsonProperty("managementType")]
+        public List<ClusterManagementType>? ManagementType { get; set; }
 
 
         #endregion

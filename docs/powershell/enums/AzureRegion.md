@@ -68,3 +68,5 @@ Regions for Azure.
 - CHILE_CENTRAL - Azure region is Chile Central.
 - AUSTRIA_EAST - Azure region is Austria East.
 - BELGIUM_CENTRAL - Azure region is Belgium Central.
+- DENMARK_EAST - Azure region is Denmark East.
+- INDIA_SOUTH_CENTRAL - Azure region is India South Central.

@@ -47,3 +47,5 @@ Object-specific configurations.
   - SLA Domain configuration for IRIS DB instances.
 - githubSlaConfig: GithubSlaConfig
   - SLA Domain configuration for GitHub developer collaboration backup.
+- azureCosmosNosqlConfig: AzureCosmosNosqlConfig
+  - SLA Domain configuration for Azure Cosmos DB for NoSQL.

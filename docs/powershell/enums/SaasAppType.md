@@ -44,7 +44,6 @@ workloads. Not intended for direct customer use.
 - POWER_PLATFORM_FLOW - Power Platform Flows (Power Automate) application type.
 - OKTA_FEDERATION - Okta federation integration app type.
 - ANTHROPIC_SETTINGS - Anthropic settings application type (org settings, child org settings).
-- ANTHROPIC_CHAT - Anthropic Chat application type.
 - ANTHROPIC_CODE - Anthropic Code application type (Claude Code endpoint files).
 - ANTHROPIC_COWORK - Anthropic Cowork application type (Claude Cowork endpoint files).
 - GOOGLE_GROUPS - Google Workspace Groups application type.

@@ -96,15 +96,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	tenantDomainName = $someString
     /// 	# REQUIRED
+    /// 	regions = @(
+    /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 	)
+    /// 	# REQUIRED
     /// 	subscriptions = @(
     /// 		@{
     /// 			# REQUIRED
+    /// 			subscription = @{
+    /// 				# REQUIRED
+    /// 				nativeId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
     /// 			features = @(
     /// 				@{
+    /// 					# REQUIRED
+    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 					# OPTIONAL
     /// 					resourceGroup = @{
     /// 						# REQUIRED
     /// 						name = $someString
+    /// 						# REQUIRED
+    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 						# OPTIONAL
     /// 						tags = @{
     /// 							# REQUIRED
@@ -117,29 +132,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 								}
     /// 							)
     /// 						}
-    /// 						# REQUIRED
-    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 					}
-    /// 					# REQUIRED
-    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 					# OPTIONAL
     /// 					permissionsGroups = @(
     /// 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 					)
     /// 				}
     /// 			)
-    /// 			# REQUIRED
-    /// 			subscription = @{
-    /// 				# REQUIRED
-    /// 				nativeId = $someString
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 			}
     /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	regions = @(
-    /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	isAsynchronous = $someBoolean
@@ -197,6 +197,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			optionalConfig = @{
     /// 				# OPTIONAL
+    /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+    /// 				# OPTIONAL
     /// 				aksNodeRgPrefix = $someString
     /// 				# OPTIONAL
     /// 				diskEncryptionAtHost = $someBoolean
@@ -213,6 +217,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				aksCustomPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
+    /// 				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
+    /// 				# OPTIONAL
     /// 				azureSqlPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				diskEncryptionSetId = $someString
@@ -222,12 +228,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				azurePostgresFlexServerPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				healthCheckVmNamePrefix = $someString
-    /// 				# OPTIONAL
-    /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
-    /// 				# OPTIONAL
-    /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-    /// 				# OPTIONAL
-    /// 				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -288,33 +288,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	tenantDomainName = $someString
+    /// 	# OPTIONAL
+    /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+    /// 	# REQUIRED
+    /// 	regions = @(
+    /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 	)
     /// 	# REQUIRED
     /// 	subscriptions = @(
     /// 		@{
     /// 			# REQUIRED
+    /// 			subscription = @{
+    /// 				# REQUIRED
+    /// 				nativeId = $someString
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
     /// 			features = @(
     /// 				@{
     /// 					# REQUIRED
+    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 					# REQUIRED
     /// 					policyVersion = $someInt
     /// 					# OPTIONAL
-    /// 					resourceGroup = @{
-    /// 						# REQUIRED
-    /// 						name = $someString
-    /// 						# OPTIONAL
-    /// 						tags = @{
+    /// 					permissionsGroups = @(
+    /// 						@{
     /// 							# REQUIRED
-    /// 							tagList = @(
-    /// 								@{
-    /// 									# REQUIRED
-    /// 									key = $someString
-    /// 									# REQUIRED
-    /// 									value = $someString
-    /// 								}
-    /// 							)
+    /// 							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 							# OPTIONAL
+    /// 							version = $someInt
     /// 						}
-    /// 						# REQUIRED
-    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-    /// 					}
+    /// 					)
     /// 					# OPTIONAL
     /// 					specificFeatureInput = @{
     /// 						# REQUIRED
@@ -329,38 +334,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 						}
     /// 					}
-    /// 					# REQUIRED
-    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 					# OPTIONAL
-    /// 					permissionsGroups = @(
-    /// 						@{
+    /// 					resourceGroup = @{
+    /// 						# REQUIRED
+    /// 						name = $someString
+    /// 						# REQUIRED
+    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 						# OPTIONAL
+    /// 						tags = @{
     /// 							# REQUIRED
-    /// 							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-    /// 							# OPTIONAL
-    /// 							version = $someInt
+    /// 							tagList = @(
+    /// 								@{
+    /// 									# REQUIRED
+    /// 									key = $someString
+    /// 									# REQUIRED
+    /// 									value = $someString
+    /// 								}
+    /// 							)
     /// 						}
-    /// 					)
+    /// 					}
     /// 				}
     /// 			)
-    /// 			# REQUIRED
-    /// 			subscription = @{
-    /// 				# REQUIRED
-    /// 				nativeId = $someString
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 			}
     /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	regions = @(
-    /// 		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	isAsynchronous = $someBoolean
     /// 	# OPTIONAL
     /// 	entraIdGroupId = $someString
-    /// 	# OPTIONAL
-    /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1617,12 +1617,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	sessionId = $someString
     /// 	# REQUIRED
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# REQUIRED
     /// 	azureSubscriptionRubrikIds = @(
     /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// }
     /// 
@@ -1687,12 +1687,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# REQUIRED
     /// 	azureSubscriptionRubrikIds = @(
     /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// }
     /// 
@@ -2099,7 +2099,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		attributeRecoveryConfigs = @(
     /// 			@{
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				id = $someString
     /// 				# OPTIONAL
     /// 				idString = $someString
@@ -3236,12 +3236,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	sessionId = $someString
     /// 	# OPTIONAL
+    /// 	azureSubscriptionRubrikIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	featuresToUpgrade = @(
     /// 		@{
+    /// 			# REQUIRED
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# REQUIRED
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			resourceGroup = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 				# REQUIRED
+    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tags = @{
+    /// 					# REQUIRED
+    /// 					tagList = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							key = $someString
+    /// 							# REQUIRED
+    /// 							value = $someString
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
     /// 			# OPTIONAL
     /// 			specificFeatureInput = @{
     /// 				# REQUIRED
@@ -3256,36 +3285,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 				}
     /// 			}
-    /// 			# REQUIRED
-    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 			# REQUIRED
-    /// 			permissionsGroups = @(
-    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			resourceGroup = @{
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 				# OPTIONAL
-    /// 				tags = @{
-    /// 					# REQUIRED
-    /// 					tagList = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							key = $someString
-    /// 							# REQUIRED
-    /// 							value = $someString
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 				# REQUIRED
-    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-    /// 			}
     /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	azureSubscriptionRubrikIds = @(
-    /// 		$someString
     /// 	)
     /// 	# OPTIONAL
     /// 	subscriptionIdsWithFeaturesToUpgrade = @(
@@ -3295,6 +3295,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			featuresToUpgrade = @(
     /// 				@{
+    /// 					# REQUIRED
+    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 					# REQUIRED
+    /// 					permissionsGroups = @(
+    /// 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					resourceGroup = @{
+    /// 						# REQUIRED
+    /// 						name = $someString
+    /// 						# REQUIRED
+    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 						# OPTIONAL
+    /// 						tags = @{
+    /// 							# REQUIRED
+    /// 							tagList = @(
+    /// 								@{
+    /// 									# REQUIRED
+    /// 									key = $someString
+    /// 									# REQUIRED
+    /// 									value = $someString
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 					}
     /// 					# OPTIONAL
     /// 					specificFeatureInput = @{
     /// 						# REQUIRED
@@ -3308,31 +3333,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 							# REQUIRED
     /// 							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 						}
-    /// 					}
-    /// 					# REQUIRED
-    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 					# REQUIRED
-    /// 					permissionsGroups = @(
-    /// 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-    /// 					)
-    /// 					# OPTIONAL
-    /// 					resourceGroup = @{
-    /// 						# REQUIRED
-    /// 						name = $someString
-    /// 						# OPTIONAL
-    /// 						tags = @{
-    /// 							# REQUIRED
-    /// 							tagList = @(
-    /// 								@{
-    /// 									# REQUIRED
-    /// 									key = $someString
-    /// 									# REQUIRED
-    /// 									value = $someString
-    /// 								}
-    /// 							)
-    /// 						}
-    /// 						# REQUIRED
-    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 					}
     /// 				}
     /// 			)
@@ -3374,6 +3374,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	featureToUpgrade = @(
     /// 		@{
+    /// 			# REQUIRED
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# REQUIRED
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			resourceGroup = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 				# REQUIRED
+    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tags = @{
+    /// 					# REQUIRED
+    /// 					tagList = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							key = $someString
+    /// 							# REQUIRED
+    /// 							value = $someString
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
     /// 			# OPTIONAL
     /// 			specificFeatureInput = @{
     /// 				# REQUIRED
@@ -3387,31 +3412,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 				}
-    /// 			}
-    /// 			# REQUIRED
-    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 			# REQUIRED
-    /// 			permissionsGroups = @(
-    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			resourceGroup = @{
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 				# OPTIONAL
-    /// 				tags = @{
-    /// 					# REQUIRED
-    /// 					tagList = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							key = $someString
-    /// 							# REQUIRED
-    /// 							value = $someString
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 				# REQUIRED
-    /// 				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -4250,15 +4250,30 @@ $query.Var.input = @{
 	# REQUIRED
 	tenantDomainName = $someString
 	# REQUIRED
+	regions = @(
+		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+	)
+	# REQUIRED
 	subscriptions = @(
 		@{
 			# REQUIRED
+			subscription = @{
+				# REQUIRED
+				nativeId = $someString
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
 			features = @(
 				@{
+					# REQUIRED
+					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 					# OPTIONAL
 					resourceGroup = @{
 						# REQUIRED
 						name = $someString
+						# REQUIRED
+						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 						# OPTIONAL
 						tags = @{
 							# REQUIRED
@@ -4271,29 +4286,14 @@ $query.Var.input = @{
 								}
 							)
 						}
-						# REQUIRED
-						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 					}
-					# REQUIRED
-					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 					# OPTIONAL
 					permissionsGroups = @(
 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 					)
 				}
 			)
-			# REQUIRED
-			subscription = @{
-				# REQUIRED
-				nativeId = $someString
-				# REQUIRED
-				name = $someString
-			}
 		}
-	)
-	# REQUIRED
-	regions = @(
-		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
 	# OPTIONAL
 	isAsynchronous = $someBoolean
@@ -4343,6 +4343,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			optionalConfig = @{
 				# OPTIONAL
+				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+				# OPTIONAL
+				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+				# OPTIONAL
 				aksNodeRgPrefix = $someString
 				# OPTIONAL
 				diskEncryptionAtHost = $someBoolean
@@ -4359,6 +4363,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				aksCustomPrivateDnsZoneId = $someString
 				# OPTIONAL
+				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
+				# OPTIONAL
 				azureSqlPrivateDnsZoneId = $someString
 				# OPTIONAL
 				diskEncryptionSetId = $someString
@@ -4368,12 +4374,6 @@ $query.Var.input = @{
 				azurePostgresFlexServerPrivateDnsZoneId = $someString
 				# OPTIONAL
 				healthCheckVmNamePrefix = $someString
-				# OPTIONAL
-				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
-				# OPTIONAL
-				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-				# OPTIONAL
-				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
 			}
 		}
 	)
@@ -4426,33 +4426,38 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	tenantDomainName = $someString
+	# OPTIONAL
+	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# REQUIRED
+	regions = @(
+		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+	)
 	# REQUIRED
 	subscriptions = @(
 		@{
 			# REQUIRED
+			subscription = @{
+				# REQUIRED
+				nativeId = $someString
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
 			features = @(
 				@{
 					# REQUIRED
+					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+					# REQUIRED
 					policyVersion = $someInt
 					# OPTIONAL
-					resourceGroup = @{
-						# REQUIRED
-						name = $someString
-						# OPTIONAL
-						tags = @{
+					permissionsGroups = @(
+						@{
 							# REQUIRED
-							tagList = @(
-								@{
-									# REQUIRED
-									key = $someString
-									# REQUIRED
-									value = $someString
-								}
-							)
+							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+							# OPTIONAL
+							version = $someInt
 						}
-						# REQUIRED
-						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-					}
+					)
 					# OPTIONAL
 					specificFeatureInput = @{
 						# REQUIRED
@@ -4467,38 +4472,33 @@ $query.Var.input = @{
 							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 						}
 					}
-					# REQUIRED
-					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 					# OPTIONAL
-					permissionsGroups = @(
-						@{
+					resourceGroup = @{
+						# REQUIRED
+						name = $someString
+						# REQUIRED
+						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+						# OPTIONAL
+						tags = @{
 							# REQUIRED
-							permissionsGroup = $somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-							# OPTIONAL
-							version = $someInt
+							tagList = @(
+								@{
+									# REQUIRED
+									key = $someString
+									# REQUIRED
+									value = $someString
+								}
+							)
 						}
-					)
+					}
 				}
 			)
-			# REQUIRED
-			subscription = @{
-				# REQUIRED
-				nativeId = $someString
-				# REQUIRED
-				name = $someString
-			}
 		}
-	)
-	# REQUIRED
-	regions = @(
-		$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
 	# OPTIONAL
 	isAsynchronous = $someBoolean
 	# OPTIONAL
 	entraIdGroupId = $someString
-	# OPTIONAL
-	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }"
             );
         }
@@ -5618,12 +5618,12 @@ $query.Var.input = @{
 	# REQUIRED
 	sessionId = $someString
 	# REQUIRED
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# REQUIRED
 	azureSubscriptionRubrikIds = @(
 		$someString
+	)
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 }"
             );
@@ -5672,12 +5672,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# REQUIRED
 	azureSubscriptionRubrikIds = @(
 		$someString
+	)
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 }"
             );
@@ -6018,7 +6018,7 @@ $query.Var.input = @{
 		# REQUIRED
 		attributeRecoveryConfigs = @(
 			@{
-				# REQUIRED
+				# OPTIONAL
 				id = $someString
 				# OPTIONAL
 				idString = $someString
@@ -6986,12 +6986,41 @@ $query.Var.input = @{
 	# REQUIRED
 	sessionId = $someString
 	# OPTIONAL
+	azureSubscriptionRubrikIds = @(
+		$someString
+	)
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
 	featuresToUpgrade = @(
 		@{
+			# REQUIRED
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# REQUIRED
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# OPTIONAL
+			resourceGroup = @{
+				# REQUIRED
+				name = $someString
+				# REQUIRED
+				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+				# OPTIONAL
+				tags = @{
+					# REQUIRED
+					tagList = @(
+						@{
+							# REQUIRED
+							key = $someString
+							# REQUIRED
+							value = $someString
+						}
+					)
+				}
+			}
 			# OPTIONAL
 			specificFeatureInput = @{
 				# REQUIRED
@@ -7006,36 +7035,7 @@ $query.Var.input = @{
 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 				}
 			}
-			# REQUIRED
-			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-			# REQUIRED
-			permissionsGroups = @(
-				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-			)
-			# OPTIONAL
-			resourceGroup = @{
-				# REQUIRED
-				name = $someString
-				# OPTIONAL
-				tags = @{
-					# REQUIRED
-					tagList = @(
-						@{
-							# REQUIRED
-							key = $someString
-							# REQUIRED
-							value = $someString
-						}
-					)
-				}
-				# REQUIRED
-				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
-			}
 		}
-	)
-	# OPTIONAL
-	azureSubscriptionRubrikIds = @(
-		$someString
 	)
 	# OPTIONAL
 	subscriptionIdsWithFeaturesToUpgrade = @(
@@ -7045,6 +7045,31 @@ $query.Var.input = @{
 			# REQUIRED
 			featuresToUpgrade = @(
 				@{
+					# REQUIRED
+					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+					# REQUIRED
+					permissionsGroups = @(
+						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+					)
+					# OPTIONAL
+					resourceGroup = @{
+						# REQUIRED
+						name = $someString
+						# REQUIRED
+						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+						# OPTIONAL
+						tags = @{
+							# REQUIRED
+							tagList = @(
+								@{
+									# REQUIRED
+									key = $someString
+									# REQUIRED
+									value = $someString
+								}
+							)
+						}
+					}
 					# OPTIONAL
 					specificFeatureInput = @{
 						# REQUIRED
@@ -7058,31 +7083,6 @@ $query.Var.input = @{
 							# REQUIRED
 							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 						}
-					}
-					# REQUIRED
-					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-					# REQUIRED
-					permissionsGroups = @(
-						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-					)
-					# OPTIONAL
-					resourceGroup = @{
-						# REQUIRED
-						name = $someString
-						# OPTIONAL
-						tags = @{
-							# REQUIRED
-							tagList = @(
-								@{
-									# REQUIRED
-									key = $someString
-									# REQUIRED
-									value = $someString
-								}
-							)
-						}
-						# REQUIRED
-						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 					}
 				}
 			)
@@ -7116,6 +7116,31 @@ $query.Var.input = @{
 	# OPTIONAL
 	featureToUpgrade = @(
 		@{
+			# REQUIRED
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# REQUIRED
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# OPTIONAL
+			resourceGroup = @{
+				# REQUIRED
+				name = $someString
+				# REQUIRED
+				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+				# OPTIONAL
+				tags = @{
+					# REQUIRED
+					tagList = @(
+						@{
+							# REQUIRED
+							key = $someString
+							# REQUIRED
+							value = $someString
+						}
+					)
+				}
+			}
 			# OPTIONAL
 			specificFeatureInput = @{
 				# REQUIRED
@@ -7129,31 +7154,6 @@ $query.Var.input = @{
 					# REQUIRED
 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 				}
-			}
-			# REQUIRED
-			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-			# REQUIRED
-			permissionsGroups = @(
-				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
-			)
-			# OPTIONAL
-			resourceGroup = @{
-				# REQUIRED
-				name = $someString
-				# OPTIONAL
-				tags = @{
-					# REQUIRED
-					tagList = @(
-						@{
-							# REQUIRED
-							key = $someString
-							# REQUIRED
-							value = $someString
-						}
-					)
-				}
-				# REQUIRED
-				region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 			}
 		}
 	)

@@ -1,7 +1,7 @@
 ### AzureSubscriptionInput
-Input required to add the Azure subscription.
+AzureSubscription is a representation of the native Azure subscription.
 
 - nativeId: System.String
-  - The native subscription ID of the Azure subscription.
+  - Subscription UUID as specified in Azure.
 - name: System.String
-  - Name or subscription alias to identify the Azure subscription.
+  - Subscription name as specified in Azure.

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureBlobConfig")]
         public AzureBlobConfig? AzureBlobConfig { get; set; }
 
+        //      C# -> AzureCosmosNosqlConfig? AzureCosmosNosqlConfig
+        // GraphQL -> azureCosmosNosqlConfig: AzureCosmosNosqlConfig (type)
+        [JsonProperty("azureCosmosNosqlConfig")]
+        public AzureCosmosNosqlConfig? AzureCosmosNosqlConfig { get; set; }
+
         //      C# -> AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig
         // GraphQL -> azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig (type)
         [JsonProperty("azurePostgresFlexibleServerConfig")]
@@ -149,6 +154,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeS3SlaConfig? AwsNativeS3SlaConfig = null,
         AwsRdsConfig? AwsRdsConfig = null,
         AzureBlobConfig? AzureBlobConfig = null,
+        AzureCosmosNosqlConfig? AzureCosmosNosqlConfig = null,
         AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig = null,
         AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig = null,
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
@@ -181,6 +187,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureBlobConfig != null ) {
             this.AzureBlobConfig = AzureBlobConfig;
+        }
+        if ( AzureCosmosNosqlConfig != null ) {
+            this.AzureCosmosNosqlConfig = AzureCosmosNosqlConfig;
         }
         if ( AzurePostgresFlexibleServerConfig != null ) {
             this.AzurePostgresFlexibleServerConfig = AzurePostgresFlexibleServerConfig;
@@ -298,6 +307,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureBlobConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureCosmosNosqlConfig? AzureCosmosNosqlConfig
+        // GraphQL -> azureCosmosNosqlConfig: AzureCosmosNosqlConfig (type)
+        if (this.AzureCosmosNosqlConfig != null) {
+            var fspec = this.AzureCosmosNosqlConfig.AsFieldSpec(conf.Child("azureCosmosNosqlConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureCosmosNosqlConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -611,6 +632,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureBlobConfig != null && ec.Excludes("azureBlobConfig",false))
         {
             this.AzureBlobConfig = null;
+        }
+        //      C# -> AzureCosmosNosqlConfig? AzureCosmosNosqlConfig
+        // GraphQL -> azureCosmosNosqlConfig: AzureCosmosNosqlConfig (type)
+        if (ec.Includes("azureCosmosNosqlConfig",false))
+        {
+            if(this.AzureCosmosNosqlConfig == null) {
+
+                this.AzureCosmosNosqlConfig = new AzureCosmosNosqlConfig();
+                this.AzureCosmosNosqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureCosmosNosqlConfig"));
+
+            } else {
+
+                this.AzureCosmosNosqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureCosmosNosqlConfig"));
+
+            }
+        }
+        else if (this.AzureCosmosNosqlConfig != null && ec.Excludes("azureCosmosNosqlConfig",false))
+        {
+            this.AzureCosmosNosqlConfig = null;
         }
         //      C# -> AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig
         // GraphQL -> azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig (type)

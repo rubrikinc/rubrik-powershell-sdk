@@ -64,3 +64,5 @@ Azure cloud account region Enum.
 - MALAYSIAWEST - Azure Cloud account region is Malaysia West.
 - AUSTRIAEAST - Azure Cloud account region is Austria East.
 - BELGIUMCENTRAL - Azure Cloud account region is Belgium Central.
+- DENMARKEAST - Azure Cloud account region is Denmark East.
+- INDIASOUTHCENTRAL - Azure Cloud account region is India South Central.

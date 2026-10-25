@@ -138,6 +138,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
 
+        [EnumMember(Value = "AZURE_LOCAL_SUBSCRIPTION")]
+        AZURE_LOCAL_SUBSCRIPTION,
+
         [EnumMember(Value = "AZURE_NATIVE_DISK")]
         AZURE_NATIVE_DISK,
 

@@ -71,6 +71,8 @@ gateway KMS key. Applies to any AWS workload backed up through
 exocompute, independently of which protection features are enabled.
 - AZURE_DEVOPS_ARTIFACTS_PROTECTION - AZURE_DEVOPS_ARTIFACTS_PROTECTION refers to the feature enabling
 protection of Azure Artifacts feeds and the packages they hold.
+- GITHUB_ACTIONS_PROTECTION - GITHUB_ACTIONS_PROTECTION refers to the feature enabling protection of
+GitHub Actions workflow runs and run logs.
 - GITHUB_PACKAGES_PROTECTION - GITHUB_PACKAGES_PROTECTION refers to the feature enabling protection of
 the packages published to a GitHub organization.
 - ALL - All cloud account features.

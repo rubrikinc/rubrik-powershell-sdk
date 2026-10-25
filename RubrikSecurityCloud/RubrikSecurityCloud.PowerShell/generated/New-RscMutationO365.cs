@@ -941,6 +941,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	o365AppId = $someString
     /// 	# OPTIONAL
     /// 	leaseId = $someString
+    /// 	# OPTIONAL
+    /// 	leaseIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -3503,6 +3507,10 @@ $query.Var.input = @{
 	o365AppId = $someString
 	# OPTIONAL
 	leaseId = $someString
+	# OPTIONAL
+	leaseIds = @(
+		$someString
+	)
 }"
             );
         }

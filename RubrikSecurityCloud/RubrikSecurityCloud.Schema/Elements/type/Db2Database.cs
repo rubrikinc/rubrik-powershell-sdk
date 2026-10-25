@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region Db2Database
  
-    public class Db2Database: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject
+    public class Db2Database: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject, HierarchySnappable
     {
         #region members
 

@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pvcGroupingStrategy")]
         public System.String? PvcGroupingStrategy { get; set; }
 
+        //      C# -> ClusterUpdateLoadBalancerAnnotationInput? LoadBalancerAnnotations
+        // GraphQL -> loadBalancerAnnotations: ClusterUpdateLoadBalancerAnnotationInput (input)
+        [JsonProperty("loadBalancerAnnotations")]
+        public ClusterUpdateLoadBalancerAnnotationInput? LoadBalancerAnnotations { get; set; }
+
 
         #endregion
 

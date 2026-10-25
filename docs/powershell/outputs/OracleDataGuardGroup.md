@@ -1,6 +1,24 @@
 ### OracleDataGuardGroup
+An Oracle Data Guard group.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - cdmId: System.String
-  - CDM ID of the Oracle Data Guard Group.
+  - The ID of the workload on the Rubrik cluster.
 - isRelic: System.Boolean
   - Whether the Oracle Data Guard Group is a relic in CDM.
 - dbUniqueName: System.String
@@ -45,24 +63,28 @@
   - Supported in v9.5+. Specifies the RMAN RATE parameter in megabytes per second to limit log backup throughput per channel.
 - isZeroRpoEnabled: System.Boolean
   - Supported in v9.6+. Indicates whether Zero RPO (near-zero recovery point) protection is enabled on this database. Null if the database has no ZRPO configuration.
-- descendantConnection: OracleDataGuardGroupDescendantTypeConnection
-  - List of descendants.
-- logicalChildConnection: OracleDataGuardGroupLogicalChildTypeConnection
-  - List of logical children.
 - effectiveLogBackupFrequency: Duration
   - Effective log backup frequency for the Oracle database.
 - effectiveLogRetention: Duration
   - Effective log retention for the Oracle Data Guard group.
 - effectiveHostLogRetention: Duration
   - Effective host log retention for the Oracle Data Guard group, or -1 if indefinite.
+- descendantConnection: OracleDataGuardGroupDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: OracleDataGuardGroupLogicalChildTypeConnection
+  - List of logical children.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -75,42 +97,16 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -119,8 +115,12 @@ cluster. Null when the source cluster is unknown.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection

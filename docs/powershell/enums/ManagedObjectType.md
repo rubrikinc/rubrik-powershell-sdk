@@ -251,8 +251,6 @@ organization and policy assignment (e.g., SLA Domain inheritance via tag).
 not a protectable object.
 - HPE_VME_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine. The protectable object
 in this hierarchy.
-- HPE_VME_DATASTORE - HPE Virtual Machine Essentials datastore.
-- HPE_VME_NETWORK - HPE Virtual Machine Essentials network.
 - AZURE_COSMOS_NOSQL_ACCOUNT - Azure Cosmos NoSQL account.
 - AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
 - AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
@@ -262,6 +260,8 @@ Stores group settings and membership data for all groups in the org.
 - GOOGLE_WORKSPACE_ADMIN_SETTINGS - Google Workspace admin settings container -- one per org, backed by saasapps_fixed_objects.
 - GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages.
 - M365_CONFIGS_ORG - M365 Configurations Organization.
+- ORACLE_FAILOVER_CLUSTER - Oracle failover cluster: a customer-asserted machine set for Oracle AIX PowerHA active-passive clusters.
+- ORACLE_FAILOVER_SERVICE - Oracle failover service: a logical HA resource group under an Oracle failover cluster.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

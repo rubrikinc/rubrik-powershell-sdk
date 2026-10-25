@@ -122,9 +122,11 @@ is never applied to the base table query.
 ### searchversionedfiles
 List of all files in snapshots whose names match the specified search query.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableFid - System.String: The ID of the workload.
     - searchQuery - System.String: Specifies the name or path prefix used to search for files within a workload.
     - usePrefixSearch - System.Boolean: Determines whether to use a prefix search.

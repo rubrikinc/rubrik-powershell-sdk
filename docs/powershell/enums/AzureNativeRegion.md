@@ -64,3 +64,5 @@ Azure native regions.
 - MALAYSIA_WEST - Azure native region is Malaysia West.
 - AUSTRIA_EAST - Azure native region is Austria East.
 - BELGIUM_CENTRAL - Azure native region is Belgium Central.
+- DENMARK_EAST - Azure native region is Denmark East.
+- INDIA_SOUTH_CENTRAL - Azure native region is India South Central.

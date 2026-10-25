@@ -9,3 +9,7 @@ Input to configure the SLA Domain for SAP HANA database.
   - Frequency value for differential backup of SAP HANA databases.
 - storageSnapshotConfig: SapHanaStorageSnapshotConfigInput
   - SLA Domain config for SAP HANA Storage Snapshot.
+- incrementalSchedule: GlobalSnapshotScheduleInput
+  - Schedule of incremental backup of SAP HANA databases, with exactly one unit set and its days listed.
+- differentialSchedule: GlobalSnapshotScheduleInput
+  - Schedule of differential backup of SAP HANA databases, with exactly one unit set and its days listed.

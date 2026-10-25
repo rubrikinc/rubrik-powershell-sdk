@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retention")]
         public Duration? Retention { get; set; }
 
+        //      C# -> SnapshotSchedule? Schedule
+        // GraphQL -> schedule: SnapshotSchedule (type)
+        [JsonProperty("schedule")]
+        public SnapshotSchedule? Schedule { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public SapHanaStorageSnapshotConfig Set(
         Duration? Frequency = null,
-        Duration? Retention = null
+        Duration? Retention = null,
+        SnapshotSchedule? Schedule = null
     ) 
     {
         if ( Frequency != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Retention != null ) {
             this.Retention = Retention;
+        }
+        if ( Schedule != null ) {
+            this.Schedule = Schedule;
         }
         return this;
     }
@@ -85,6 +94,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "retention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SnapshotSchedule? Schedule
+        // GraphQL -> schedule: SnapshotSchedule (type)
+        if (this.Schedule != null) {
+            var fspec = this.Schedule.AsFieldSpec(conf.Child("schedule"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "schedule" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -132,6 +153,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Retention != null && ec.Excludes("retention",false))
         {
             this.Retention = null;
+        }
+        //      C# -> SnapshotSchedule? Schedule
+        // GraphQL -> schedule: SnapshotSchedule (type)
+        if (ec.Includes("schedule",false))
+        {
+            if(this.Schedule == null) {
+
+                this.Schedule = new SnapshotSchedule();
+                this.Schedule.ApplyExploratoryFieldSpec(ec.NewChild("schedule"));
+
+            } else {
+
+                this.Schedule.ApplyExploratoryFieldSpec(ec.NewChild("schedule"));
+
+            }
+        }
+        else if (this.Schedule != null && ec.Excludes("schedule",false))
+        {
+            this.Schedule = null;
         }
     }
 

@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> System.Boolean? ShouldProtectAllChildOrgs
+        // GraphQL -> shouldProtectAllChildOrgs: Boolean! (scalar)
+        [JsonProperty("shouldProtectAllChildOrgs")]
+        public System.Boolean? ShouldProtectAllChildOrgs { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -252,6 +257,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? NaturalId = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Boolean? ShouldProtectAllChildOrgs = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? StorageRegion = null,
         List<Org>? AllOrgs = null,
@@ -325,6 +331,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( ShouldProtectAllChildOrgs != null ) {
+            this.ShouldProtectAllChildOrgs = ShouldProtectAllChildOrgs;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -566,6 +575,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldProtectAllChildOrgs
+        // GraphQL -> shouldProtectAllChildOrgs: Boolean! (scalar)
+        if (this.ShouldProtectAllChildOrgs != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldProtectAllChildOrgs\n" ;
+            } else {
+                s += ind + "shouldProtectAllChildOrgs\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1111,6 +1129,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Boolean? ShouldProtectAllChildOrgs
+        // GraphQL -> shouldProtectAllChildOrgs: Boolean! (scalar)
+        if (ec.Includes("shouldProtectAllChildOrgs",true))
+        {
+            if(this.ShouldProtectAllChildOrgs == null) {
+
+                this.ShouldProtectAllChildOrgs = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldProtectAllChildOrgs != null && ec.Excludes("shouldProtectAllChildOrgs",true))
+        {
+            this.ShouldProtectAllChildOrgs = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

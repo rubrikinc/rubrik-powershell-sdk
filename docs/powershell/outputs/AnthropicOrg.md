@@ -33,6 +33,9 @@ An Anthropic organization managed by Rubrik.
   - The organization type that categorizes the SaaS provider.
 - storageRegions: SaasAppsOrgStorageLocations
   - The storage regions where RSC backs up organization's data.
+- shouldProtectAllChildOrgs: System.Boolean
+  - Whether all child organizations are automatically protected, including
+future ones. When false, only child orgs selected at setup are protected.
 - storageRegion: System.String
   - Exocompute cluster for an org's storage region.
 - connectionStatus: ConnectionStatus

@@ -1,10 +1,10 @@
 ### AzureExocomputeConfigDetails
-Exocompute configurations details.
+Azure Exocompute configuration.
 
 - configUuid: System.String
-  - ID for exocompute configuration.
+  - Unique ID of the Exocompute configuration.
 - region: AzureCloudAccountRegion
-  - Region in which exocompute is configured. It will be in the format like EASTUS.
+  - Azure region for the cloud account in which Exocompute is configured.
 - subnetNativeId: System.String
   - Native ID of cluster subnet corresponding to the Exocompute configuration. This subnet will be used to allocate IP addresses to the nodes of the cluster. For more details, visit https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni.
 - podSubnetNativeId: System.String
@@ -14,7 +14,11 @@ Exocompute configurations details.
 - isRscManaged: System.Boolean
   - Specifies if Exocompute is managed by RSC.
 - message: System.String
-  - Error message received while creating Exocompute configuration.
+  - Specifies the error message received if any.
+- healthCheckStatus: ExocomputeHealthCheckStatus
+  - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.
 - hasPcr: System.Boolean
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
@@ -27,9 +31,5 @@ Exocompute configurations details.
   - Cluster name of the customer-managed Exocompute.
 - byokClusterId: System.String
   - Cluster ID of the customer-managed Exocompute.
-- healthCheckStatus: ExocomputeHealthCheckStatus
-  - Status of the latest Exocompute health check.
-- latestExoclusterDetails: ExocomputeClusterDetails
-  - Details of the latest Exocompute cluster.
 - optionalConfig: AzureExocomputeOptionalConfigInRegion
   - Optional configurations for aks cluster.

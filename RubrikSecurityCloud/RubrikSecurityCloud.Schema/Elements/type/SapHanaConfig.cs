@@ -25,10 +25,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("differentialFrequency")]
         public Duration? DifferentialFrequency { get; set; }
 
+        //      C# -> SnapshotSchedule? DifferentialSchedule
+        // GraphQL -> differentialSchedule: SnapshotSchedule (type)
+        [JsonProperty("differentialSchedule")]
+        public SnapshotSchedule? DifferentialSchedule { get; set; }
+
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
         [JsonProperty("incrementalFrequency")]
         public Duration? IncrementalFrequency { get; set; }
+
+        //      C# -> SnapshotSchedule? IncrementalSchedule
+        // GraphQL -> incrementalSchedule: SnapshotSchedule (type)
+        [JsonProperty("incrementalSchedule")]
+        public SnapshotSchedule? IncrementalSchedule { get; set; }
 
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
@@ -51,7 +61,9 @@ namespace RubrikSecurityCloud.Types
 
     public SapHanaConfig Set(
         Duration? DifferentialFrequency = null,
+        SnapshotSchedule? DifferentialSchedule = null,
         Duration? IncrementalFrequency = null,
+        SnapshotSchedule? IncrementalSchedule = null,
         Duration? LogRetention = null,
         SapHanaStorageSnapshotConfig? StorageSnapshotConfig = null
     ) 
@@ -59,8 +71,14 @@ namespace RubrikSecurityCloud.Types
         if ( DifferentialFrequency != null ) {
             this.DifferentialFrequency = DifferentialFrequency;
         }
+        if ( DifferentialSchedule != null ) {
+            this.DifferentialSchedule = DifferentialSchedule;
+        }
         if ( IncrementalFrequency != null ) {
             this.IncrementalFrequency = IncrementalFrequency;
+        }
+        if ( IncrementalSchedule != null ) {
+            this.IncrementalSchedule = IncrementalSchedule;
         }
         if ( LogRetention != null ) {
             this.LogRetention = LogRetention;
@@ -94,6 +112,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SnapshotSchedule? DifferentialSchedule
+        // GraphQL -> differentialSchedule: SnapshotSchedule (type)
+        if (this.DifferentialSchedule != null) {
+            var fspec = this.DifferentialSchedule.AsFieldSpec(conf.Child("differentialSchedule"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "differentialSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
         if (this.IncrementalFrequency != null) {
@@ -103,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "incrementalFrequency" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SnapshotSchedule? IncrementalSchedule
+        // GraphQL -> incrementalSchedule: SnapshotSchedule (type)
+        if (this.IncrementalSchedule != null) {
+            var fspec = this.IncrementalSchedule.AsFieldSpec(conf.Child("incrementalSchedule"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "incrementalSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -156,6 +198,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.DifferentialFrequency = null;
         }
+        //      C# -> SnapshotSchedule? DifferentialSchedule
+        // GraphQL -> differentialSchedule: SnapshotSchedule (type)
+        if (ec.Includes("differentialSchedule",false))
+        {
+            if(this.DifferentialSchedule == null) {
+
+                this.DifferentialSchedule = new SnapshotSchedule();
+                this.DifferentialSchedule.ApplyExploratoryFieldSpec(ec.NewChild("differentialSchedule"));
+
+            } else {
+
+                this.DifferentialSchedule.ApplyExploratoryFieldSpec(ec.NewChild("differentialSchedule"));
+
+            }
+        }
+        else if (this.DifferentialSchedule != null && ec.Excludes("differentialSchedule",false))
+        {
+            this.DifferentialSchedule = null;
+        }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
         if (ec.Includes("incrementalFrequency",false))
@@ -174,6 +235,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IncrementalFrequency != null && ec.Excludes("incrementalFrequency",false))
         {
             this.IncrementalFrequency = null;
+        }
+        //      C# -> SnapshotSchedule? IncrementalSchedule
+        // GraphQL -> incrementalSchedule: SnapshotSchedule (type)
+        if (ec.Includes("incrementalSchedule",false))
+        {
+            if(this.IncrementalSchedule == null) {
+
+                this.IncrementalSchedule = new SnapshotSchedule();
+                this.IncrementalSchedule.ApplyExploratoryFieldSpec(ec.NewChild("incrementalSchedule"));
+
+            } else {
+
+                this.IncrementalSchedule.ApplyExploratoryFieldSpec(ec.NewChild("incrementalSchedule"));
+
+            }
+        }
+        else if (this.IncrementalSchedule != null && ec.Excludes("incrementalSchedule",false))
+        {
+            this.IncrementalSchedule = null;
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)

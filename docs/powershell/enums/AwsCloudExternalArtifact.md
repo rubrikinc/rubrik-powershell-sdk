@@ -35,3 +35,5 @@ infrastructure roles rather than the feature's own role.
 - CLOUD_NATIVE_UEM_KEY_MANAGEMENT_ROLE_ARN - Keyword to capture the CLOUD_NATIVE_UEM_KEY_MANAGEMENT feature role.
 - CRITICAL_RESOURCE_PROTECTION_ROLE_ARN - Keyword to capture the CRITICAL_RESOURCE_PROTECTION feature role.
 - AWS_KMS_KEY_SHARING_ROLE_ARN - Keyword to capture the AWS_KMS_KEY_SHARING feature role.
+- GLUE_ICEBERG_PROTECTION_ROLE_ARN - Keyword to capture the GLUE_ICEBERG_PROTECTION feature role.
+- S3_TABLES_ICEBERG_PROTECTION_ROLE_ARN - Keyword to capture the S3_TABLES_ICEBERG_PROTECTION feature role.

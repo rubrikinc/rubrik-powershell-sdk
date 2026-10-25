@@ -434,6 +434,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
+    /// 		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
+    /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
     /// 	# REQUIRED
@@ -1272,6 +1274,8 @@ $query.Var.input = @{
 	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
+		# OPTIONAL
+		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
 		# OPTIONAL
 		slaId = $someString
 	}

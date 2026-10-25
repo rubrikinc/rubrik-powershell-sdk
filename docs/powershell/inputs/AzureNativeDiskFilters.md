@@ -33,3 +33,5 @@ Filters for list of Azure disks.
   - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- namePrefixFilter: NamePrefixFilter
+  - Filter by disk name prefix.

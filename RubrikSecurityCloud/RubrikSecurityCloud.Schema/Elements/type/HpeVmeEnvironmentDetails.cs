@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String! (scalar)
+        [JsonProperty("hostName")]
+        public System.String? HostName { get; set; }
+
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String (scalar)
         [JsonProperty("hpeVmeHostId")]
@@ -35,10 +40,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipAddresses")]
         public List<System.String>? IpAddresses { get; set; }
 
+        //      C# -> System.Boolean? IsRefreshed
+        // GraphQL -> isRefreshed: Boolean! (scalar)
+        [JsonProperty("isRefreshed")]
+        public System.Boolean? IsRefreshed { get; set; }
+
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        [JsonProperty("lastRefreshTime")]
+        public DateTime? LastRefreshTime { get; set; }
+
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
+
         //      C# -> List<System.String>? Versions
         // GraphQL -> versions: [String!]! (scalar)
         [JsonProperty("versions")]
         public List<System.String>? Versions { get; set; }
+
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        [JsonProperty("connectionStatus")]
+        public RefreshableObjectConnectionStatus? ConnectionStatus { get; set; }
 
 
         #endregion
@@ -50,12 +75,20 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HpeVmeEnvironmentDetails Set(
+        System.String? HostName = null,
         System.String? HpeVmeHostId = null,
         System.String? HpeVmeManagerId = null,
         List<System.String>? IpAddresses = null,
-        List<System.String>? Versions = null
+        System.Boolean? IsRefreshed = null,
+        DateTime? LastRefreshTime = null,
+        System.String? Username = null,
+        List<System.String>? Versions = null,
+        RefreshableObjectConnectionStatus? ConnectionStatus = null
     ) 
     {
+        if ( HostName != null ) {
+            this.HostName = HostName;
+        }
         if ( HpeVmeHostId != null ) {
             this.HpeVmeHostId = HpeVmeHostId;
         }
@@ -65,8 +98,20 @@ namespace RubrikSecurityCloud.Types
         if ( IpAddresses != null ) {
             this.IpAddresses = IpAddresses;
         }
+        if ( IsRefreshed != null ) {
+            this.IsRefreshed = IsRefreshed;
+        }
+        if ( LastRefreshTime != null ) {
+            this.LastRefreshTime = LastRefreshTime;
+        }
+        if ( Username != null ) {
+            this.Username = Username;
+        }
         if ( Versions != null ) {
             this.Versions = Versions;
+        }
+        if ( ConnectionStatus != null ) {
+            this.ConnectionStatus = ConnectionStatus;
         }
         return this;
     }
@@ -82,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String! (scalar)
+        if (this.HostName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hostName\n" ;
+            } else {
+                s += ind + "hostName\n" ;
+            }
+        }
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String (scalar)
         if (this.HpeVmeHostId != null) {
@@ -109,6 +163,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "ipAddresses\n" ;
             }
         }
+        //      C# -> System.Boolean? IsRefreshed
+        // GraphQL -> isRefreshed: Boolean! (scalar)
+        if (this.IsRefreshed != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRefreshed\n" ;
+            } else {
+                s += ind + "isRefreshed\n" ;
+            }
+        }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (this.LastRefreshTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshTime\n" ;
+            } else {
+                s += ind + "lastRefreshTime\n" ;
+            }
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
+        }
         //      C# -> List<System.String>? Versions
         // GraphQL -> versions: [String!]! (scalar)
         if (this.Versions != null) {
@@ -118,6 +199,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "versions\n" ;
             }
         }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        if (this.ConnectionStatus != null) {
+            var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -125,6 +218,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String! (scalar)
+        if (ec.Includes("hostName",true))
+        {
+            if(this.HostName == null) {
+
+                this.HostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostName != null && ec.Excludes("hostName",true))
+        {
+            this.HostName = null;
+        }
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String (scalar)
         if (ec.Includes("hpeVmeHostId",true))
@@ -176,6 +286,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.IpAddresses = null;
         }
+        //      C# -> System.Boolean? IsRefreshed
+        // GraphQL -> isRefreshed: Boolean! (scalar)
+        if (ec.Includes("isRefreshed",true))
+        {
+            if(this.IsRefreshed == null) {
+
+                this.IsRefreshed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRefreshed != null && ec.Excludes("isRefreshed",true))
+        {
+            this.IsRefreshed = null;
+        }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (ec.Includes("lastRefreshTime",true))
+        {
+            if(this.LastRefreshTime == null) {
+
+                this.LastRefreshTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshTime != null && ec.Excludes("lastRefreshTime",true))
+        {
+            this.LastRefreshTime = null;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (ec.Includes("username",true))
+        {
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
+        }
         //      C# -> List<System.String>? Versions
         // GraphQL -> versions: [String!]! (scalar)
         if (ec.Includes("versions",true))
@@ -192,6 +353,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Versions != null && ec.Excludes("versions",true))
         {
             this.Versions = null;
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        if (ec.Includes("connectionStatus",false))
+        {
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            } else {
+
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",false))
+        {
+            this.ConnectionStatus = null;
         }
     }
 

@@ -33,19 +33,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantDomainName")]
         public System.String? TenantDomainName { get; set; }
 
-        //      C# -> List<AddAzureCloudAccountSubscriptionInput>? Subscriptions
-        // GraphQL -> subscriptions: [AddAzureCloudAccountSubscriptionInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("subscriptions")]
-        public List<AddAzureCloudAccountSubscriptionInput>? Subscriptions { get; set; }
-
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("regions")]
         public List<AzureCloudAccountRegion>? Regions { get; set; }
+
+        //      C# -> List<AddAzureCloudAccountSubscriptionInput>? Subscriptions
+        // GraphQL -> subscriptions: [AddAzureCloudAccountSubscriptionInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("subscriptions")]
+        public List<AddAzureCloudAccountSubscriptionInput>? Subscriptions { get; set; }
 
         //      C# -> System.Boolean? IsAsynchronous
         // GraphQL -> isAsynchronous: Boolean (scalar)

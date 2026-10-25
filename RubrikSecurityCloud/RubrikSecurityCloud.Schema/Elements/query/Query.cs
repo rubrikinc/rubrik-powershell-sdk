@@ -8868,7 +8868,7 @@ namespace RubrikSecurityCloud.Types
         public static string Db2Databases(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Databases" + args + "\n{\n" + fs + "}\n";
         }
         public static object Db2DatabasesFieldSpec(AutofieldContext? ec=null)
@@ -8904,7 +8904,7 @@ namespace RubrikSecurityCloud.Types
         public static string Db2Instances(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Instances" + args + "\n{\n" + fs + "}\n";
         }
         public static object Db2InstancesFieldSpec(AutofieldContext? ec=null)
@@ -12630,7 +12630,7 @@ namespace RubrikSecurityCloud.Types
         public static string ListDiffFilesForSnapshot(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnapshotFid: $snapshotFid\nsearchString: $searchString\nfilter: $filter\nquarantineFilters: $quarantineFilters\nsensitiveDataDiscoveryFilters: $sensitiveDataDiscoveryFilters\nsort: $sort\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnapshotFid: $snapshotFid\nsearchString: $searchString\nfilter: $filter\nquarantineFilters: $quarantineFilters\nsensitiveDataDiscoveryFilters: $sensitiveDataDiscoveryFilters\nsort: $sort\n)";
             return "listDiffFilesForSnapshot" + args + "\n{\n" + fs + "}\n";
         }
         public static object ListDiffFilesForSnapshotFieldSpec(AutofieldContext? ec=null)
@@ -17598,7 +17598,7 @@ namespace RubrikSecurityCloud.Types
         public static string SearchSnappableVersionedFiles(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsearchQuery: $searchQuery\nusePrefixSearch: $usePrefixSearch\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsearchQuery: $searchQuery\nusePrefixSearch: $usePrefixSearch\n)";
             return "searchSnappableVersionedFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object SearchSnappableVersionedFilesFieldSpec(AutofieldContext? ec=null)
@@ -18246,7 +18246,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotFilesDeltaV2(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nsensitiveDataDiscoveryFilters: $sensitiveDataDiscoveryFilters\nsort: $sort\nworkloadFieldsArg: $workloadFieldsArg\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nsensitiveDataDiscoveryFilters: $sensitiveDataDiscoveryFilters\nsort: $sort\nworkloadFieldsArg: $workloadFieldsArg\n)";
             return "snapshotFilesDeltaV2" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotFilesDeltaV2FieldSpec(AutofieldContext? ec=null)

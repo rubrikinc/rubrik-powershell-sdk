@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<PermissionsGroup>? PermissionsGroups
-        // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)
-        [JsonProperty("permissionsGroups")]
-        public List<PermissionsGroup>? PermissionsGroups { get; set; }
-
         //      C# -> CloudAccountFeature? FeatureType
         // GraphQL -> featureType: CloudAccountFeature! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("featureType")]
         public CloudAccountFeature? FeatureType { get; set; }
+
+        //      C# -> List<PermissionsGroup>? PermissionsGroups
+        // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)
+        [JsonProperty("permissionsGroups")]
+        public List<PermissionsGroup>? PermissionsGroups { get; set; }
 
 
         #endregion

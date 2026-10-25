@@ -9,3 +9,7 @@ The SLA Domain configuration for SAP HANA database.
   - Frequency value for differential backup of SAP HANA databases.
 - storageSnapshotConfig: SapHanaStorageSnapshotConfig
   - SLA Domain configuration for SAP HANA Storage Snapshot.
+- incrementalSchedule: SnapshotSchedule
+  - Schedule of incremental backup of SAP HANA databases.
+- differentialSchedule: SnapshotSchedule
+  - Schedule of differential backup of SAP HANA databases.

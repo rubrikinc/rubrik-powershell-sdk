@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
 
+        //      C# -> CloudStorageRehydrationSpeed? CloudRehydrationSpeed
+        // GraphQL -> cloudRehydrationSpeed: CloudStorageRehydrationSpeed (enum)
+        [JsonProperty("cloudRehydrationSpeed")]
+        public CloudStorageRehydrationSpeed? CloudRehydrationSpeed { get; set; }
+
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String (scalar)
         [JsonProperty("slaId")]

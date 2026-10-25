@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput
-        // GraphQL -> specificFeatureInput: AddAzureCloudAccountSpecificFeatureInput (input)
-        [JsonProperty("specificFeatureInput")]
-        public AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput { get; set; }
-
         //      C# -> CloudAccountFeature? FeatureType
         // GraphQL -> featureType: CloudAccountFeature! (enum)
         [Required]
@@ -42,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
         [JsonProperty("resourceGroup")]
         public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
+
+        //      C# -> AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput
+        // GraphQL -> specificFeatureInput: AddAzureCloudAccountSpecificFeatureInput (input)
+        [JsonProperty("specificFeatureInput")]
+        public AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput { get; set; }
 
 
         #endregion

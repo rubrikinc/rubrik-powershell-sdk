@@ -26,12 +26,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantDomainName")]
         public System.String? TenantDomainName { get; set; }
 
-        //      C# -> List<AddAzureCloudAccountSubscriptionInputWithoutOauth>? Subscriptions
-        // GraphQL -> subscriptions: [AddAzureCloudAccountSubscriptionInputWithoutOauth!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("subscriptions")]
-        public List<AddAzureCloudAccountSubscriptionInputWithoutOauth>? Subscriptions { get; set; }
+        //      C# -> AzureCloudType? AzureCloudType
+        // GraphQL -> azureCloudType: AzureCloudType (enum)
+        [JsonProperty("azureCloudType")]
+        public AzureCloudType? AzureCloudType { get; set; }
 
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
@@ -39,6 +37,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("regions")]
         public List<AzureCloudAccountRegion>? Regions { get; set; }
+
+        //      C# -> List<AddAzureCloudAccountSubscriptionInputWithoutOauth>? Subscriptions
+        // GraphQL -> subscriptions: [AddAzureCloudAccountSubscriptionInputWithoutOauth!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("subscriptions")]
+        public List<AddAzureCloudAccountSubscriptionInputWithoutOauth>? Subscriptions { get; set; }
 
         //      C# -> System.Boolean? IsAsynchronous
         // GraphQL -> isAsynchronous: Boolean (scalar)
@@ -49,11 +54,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> entraIdGroupId: String (scalar)
         [JsonProperty("entraIdGroupId")]
         public System.String? EntraIdGroupId { get; set; }
-
-        //      C# -> AzureCloudType? AzureCloudType
-        // GraphQL -> azureCloudType: AzureCloudType (enum)
-        [JsonProperty("azureCloudType")]
-        public AzureCloudType? AzureCloudType { get; set; }
 
 
         #endregion

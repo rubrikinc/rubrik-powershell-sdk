@@ -19,6 +19,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AksProvisionTier? AksClusterTier
+        // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
+        [JsonProperty("aksClusterTier")]
+        public AksProvisionTier? AksClusterTier { get; set; }
+
+        //      C# -> AksNodeCountBucket? AksNodeCountBucket
+        // GraphQL -> aksNodeCountBucket: AKSNodeCountBucket (enum)
+        [JsonProperty("aksNodeCountBucket")]
+        public AksNodeCountBucket? AksNodeCountBucket { get; set; }
+
         //      C# -> System.String? AksNodeRgPrefix
         // GraphQL -> aksNodeRgPrefix: String (scalar)
         [JsonProperty("aksNodeRgPrefix")]
@@ -54,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksCustomPrivateDnsZoneId")]
         public System.String? AksCustomPrivateDnsZoneId { get; set; }
 
+        //      C# -> AksClusterAccessType? AksClusterAccessType
+        // GraphQL -> aksClusterAccessType: AKSClusterAccessType (enum)
+        [JsonProperty("aksClusterAccessType")]
+        public AksClusterAccessType? AksClusterAccessType { get; set; }
+
         //      C# -> System.String? AzureSqlPrivateDnsZoneId
         // GraphQL -> azureSqlPrivateDnsZoneId: String (scalar)
         [JsonProperty("azureSqlPrivateDnsZoneId")]
@@ -78,21 +93,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> healthCheckVmNamePrefix: String (scalar)
         [JsonProperty("healthCheckVmNamePrefix")]
         public System.String? HealthCheckVmNamePrefix { get; set; }
-
-        //      C# -> AksProvisionTier? AksClusterTier
-        // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
-        [JsonProperty("aksClusterTier")]
-        public AksProvisionTier? AksClusterTier { get; set; }
-
-        //      C# -> AksNodeCountBucket? AksNodeCountBucket
-        // GraphQL -> aksNodeCountBucket: AKSNodeCountBucket (enum)
-        [JsonProperty("aksNodeCountBucket")]
-        public AksNodeCountBucket? AksNodeCountBucket { get; set; }
-
-        //      C# -> AksClusterAccessType? AksClusterAccessType
-        // GraphQL -> aksClusterAccessType: AKSClusterAccessType (enum)
-        [JsonProperty("aksClusterAccessType")]
-        public AksClusterAccessType? AksClusterAccessType { get; set; }
 
 
         #endregion

@@ -227,6 +227,7 @@ Represents all the object types for which we expect to see audits.
 - ANTHROPIC_CHILD_ORG_USER - Anthropic child org user.
 - ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - ANTHROPIC_DEVICE - Anthropic device.
+- AZURE_LOCAL_SUBSCRIPTION - Azure Local subscription object.
 - OPENSTACK_TAG - OpenStack tag object.
 - K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
 - HPE_VME_MANAGER - HPE Virtual Machine Essentials manager.

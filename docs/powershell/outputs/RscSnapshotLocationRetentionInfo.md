@@ -15,6 +15,10 @@ RSC snapshot location retention information.
   - Boolean to indicate whether the snapshot is legally held at the specified location.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode at this location. Can be NO_MODE, COMPLIANCE, or GOVERNANCE. Derived from CDM per-location retention info when available.
+- isReaderArchivalLocation: System.Boolean
+  - When true, this archival location is connected as a reader. Reader clusters
+never assign expiration dates for archival snapshots. The expiration date
+should be checked on the owner cluster.
 - locationName: System.String
   - Location name of snapshot.
 - locationPurpose: StorageLocationPurpose

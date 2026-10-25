@@ -2,4 +2,4 @@
 Represents the filter input for Managed Volume queued snapshots.
 
 - timeRange: TimeRangeInput
-  - Store information.
+  - Time range the snapshot date must fall in.

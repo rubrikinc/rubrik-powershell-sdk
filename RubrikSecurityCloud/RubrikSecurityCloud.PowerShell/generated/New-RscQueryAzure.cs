@@ -287,12 +287,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	featuresToInclude = @(
     /// 		@{
+    /// 			# REQUIRED
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 			# OPTIONAL
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
-    /// 			# REQUIRED
-    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 		}
     /// 	)
     /// }
@@ -3315,6 +3315,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			optionalConfig = @{
     /// 				# OPTIONAL
+    /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+    /// 				# OPTIONAL
     /// 				aksNodeRgPrefix = $someString
     /// 				# OPTIONAL
     /// 				diskEncryptionAtHost = $someBoolean
@@ -3331,6 +3335,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				aksCustomPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
+    /// 				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
+    /// 				# OPTIONAL
     /// 				azureSqlPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				diskEncryptionSetId = $someString
@@ -3340,12 +3346,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				azurePostgresFlexServerPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				healthCheckVmNamePrefix = $someString
-    /// 				# OPTIONAL
-    /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
-    /// 				# OPTIONAL
-    /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-    /// 				# OPTIONAL
-    /// 				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -4816,12 +4816,12 @@ $query.Var.input = @{
 	# OPTIONAL
 	featuresToInclude = @(
 		@{
+			# REQUIRED
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 			# OPTIONAL
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
-			# REQUIRED
-			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 		}
 	)
 }"
@@ -7632,6 +7632,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			optionalConfig = @{
 				# OPTIONAL
+				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
+				# OPTIONAL
+				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+				# OPTIONAL
 				aksNodeRgPrefix = $someString
 				# OPTIONAL
 				diskEncryptionAtHost = $someBoolean
@@ -7648,6 +7652,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				aksCustomPrivateDnsZoneId = $someString
 				# OPTIONAL
+				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
+				# OPTIONAL
 				azureSqlPrivateDnsZoneId = $someString
 				# OPTIONAL
 				diskEncryptionSetId = $someString
@@ -7657,12 +7663,6 @@ $query.Var.input = @{
 				azurePostgresFlexServerPrivateDnsZoneId = $someString
 				# OPTIONAL
 				healthCheckVmNamePrefix = $someString
-				# OPTIONAL
-				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
-				# OPTIONAL
-				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
-				# OPTIONAL
-				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
 			}
 		}
 	)

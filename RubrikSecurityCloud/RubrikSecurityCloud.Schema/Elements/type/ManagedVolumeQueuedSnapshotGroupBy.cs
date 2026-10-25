@@ -51,6 +51,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] managedVolumeQueuedSnapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("sortBy", "ManagedVolumeQueuedSnapshotSortBy"),
                 };

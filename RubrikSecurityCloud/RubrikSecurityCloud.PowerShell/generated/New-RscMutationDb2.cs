@@ -358,6 +358,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
+    /// 		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
+    /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
     /// 	# REQUIRED
@@ -397,6 +399,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		pointInTime = $someDateTime
     /// 		# REQUIRED
     /// 		preferredLocationId = $someString
+    /// 		# OPTIONAL
+    /// 		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1013,6 +1017,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
+		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
+		# OPTIONAL
 		slaId = $someString
 	}
 	# REQUIRED
@@ -1044,6 +1050,8 @@ $query.Var.input = @{
 		pointInTime = $someDateTime
 		# REQUIRED
 		preferredLocationId = $someString
+		# OPTIONAL
+		cloudRehydrationSpeed = $someCloudStorageRehydrationSpeed # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudStorageRehydrationSpeed]) for enum values.
 	}
 	# REQUIRED
 	id = $someString

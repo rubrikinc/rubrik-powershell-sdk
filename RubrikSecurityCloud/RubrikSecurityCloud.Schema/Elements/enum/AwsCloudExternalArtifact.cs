@@ -90,6 +90,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GATEWAY_KMS_KEY_ARN")]
         GATEWAY_KMS_KEY_ARN,
 
+        [EnumMember(Value = "GLUE_ICEBERG_PROTECTION_ROLE_ARN")]
+        GLUE_ICEBERG_PROTECTION_ROLE_ARN,
+
         [EnumMember(Value = "IAM_USER_ARN")]
         IAM_USER_ARN,
 
@@ -101,6 +104,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_CHAINING_ROLE_ARN")]
         ROLE_CHAINING_ROLE_ARN,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_PROTECTION_ROLE_ARN")]
+        S3_TABLES_ICEBERG_PROTECTION_ROLE_ARN,
 
         [EnumMember(Value = "SECRET_KEY")]
         SECRET_KEY,

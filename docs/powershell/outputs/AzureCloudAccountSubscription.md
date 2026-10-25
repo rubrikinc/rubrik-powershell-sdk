@@ -1,5 +1,5 @@
 ### AzureCloudAccountSubscription
-Azure Cloud Account Subscription for a given feature.
+AzureSubscription is a representation of the native Azure subscription.
 
 - nativeId: System.String
   - Subscription UUID as specified in Azure.

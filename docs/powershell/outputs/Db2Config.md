@@ -10,3 +10,7 @@ retained.
   - Frequency value for differential backup of Db2 databases.
 - logArchivalMethod: LogArchivalMethod
   - Configure the log archival method for Db2 database log backups.
+- incrementalSchedule: SnapshotSchedule
+  - Schedule of incremental backup of Db2 databases.
+- differentialSchedule: SnapshotSchedule
+  - Schedule of the Db2 delta backup.

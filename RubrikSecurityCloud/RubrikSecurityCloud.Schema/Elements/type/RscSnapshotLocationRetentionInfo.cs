@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExpirationDateCalculated")]
         public System.Boolean? IsExpirationDateCalculated { get; set; }
 
+        //      C# -> System.Boolean? IsReaderArchivalLocation
+        // GraphQL -> isReaderArchivalLocation: Boolean! (scalar)
+        [JsonProperty("isReaderArchivalLocation")]
+        public System.Boolean? IsReaderArchivalLocation { get; set; }
+
         //      C# -> System.Boolean? IsSnapshotOnLegalHold
         // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
         [JsonProperty("isSnapshotOnLegalHold")]
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
         SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,
         System.Boolean? IsExpirationDateCalculated = null,
+        System.Boolean? IsReaderArchivalLocation = null,
         System.Boolean? IsSnapshotOnLegalHold = null,
         System.Boolean? IsSnapshotPresent = null,
         System.String? LocationId = null,
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsExpirationDateCalculated != null ) {
             this.IsExpirationDateCalculated = IsExpirationDateCalculated;
+        }
+        if ( IsReaderArchivalLocation != null ) {
+            this.IsReaderArchivalLocation = IsReaderArchivalLocation;
         }
         if ( IsSnapshotOnLegalHold != null ) {
             this.IsSnapshotOnLegalHold = IsSnapshotOnLegalHold;
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isExpirationDateCalculated\n" ;
             } else {
                 s += ind + "isExpirationDateCalculated\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReaderArchivalLocation
+        // GraphQL -> isReaderArchivalLocation: Boolean! (scalar)
+        if (this.IsReaderArchivalLocation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReaderArchivalLocation\n" ;
+            } else {
+                s += ind + "isReaderArchivalLocation\n" ;
             }
         }
         //      C# -> System.Boolean? IsSnapshotOnLegalHold
@@ -299,6 +317,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsExpirationDateCalculated != null && ec.Excludes("isExpirationDateCalculated",true))
         {
             this.IsExpirationDateCalculated = null;
+        }
+        //      C# -> System.Boolean? IsReaderArchivalLocation
+        // GraphQL -> isReaderArchivalLocation: Boolean! (scalar)
+        if (ec.Includes("isReaderArchivalLocation",true))
+        {
+            if(this.IsReaderArchivalLocation == null) {
+
+                this.IsReaderArchivalLocation = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReaderArchivalLocation != null && ec.Excludes("isReaderArchivalLocation",true))
+        {
+            this.IsReaderArchivalLocation = null;
         }
         //      C# -> System.Boolean? IsSnapshotOnLegalHold
         // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)

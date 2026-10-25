@@ -21,9 +21,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANTHROPIC_APPS")]
         ANTHROPIC_APPS,
 
-        [EnumMember(Value = "ANTHROPIC_CHAT")]
-        ANTHROPIC_CHAT,
-
         [EnumMember(Value = "ANTHROPIC_CODE")]
         ANTHROPIC_CODE,
 

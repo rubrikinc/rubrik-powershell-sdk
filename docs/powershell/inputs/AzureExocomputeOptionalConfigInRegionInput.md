@@ -1,6 +1,10 @@
 ### AzureExocomputeOptionalConfigInRegionInput
-Represents optional parameters that are to be configured during the configuration of exocompute for azure.
+Represents optional parameters to be configured during the exocompute configuration for Azure.
 
+- aksClusterTier: AKSProvisionTier
+  - Cluster tier of the provisioned AKS cluster.
+- aksNodeCountBucket: AKSNodeCountBucket
+  - Bucket to determine the node count in the AKS cluster.
 - aksNodeRgPrefix: System.String
   - Resource group prefix for AKS nodes.
 - diskEncryptionAtHost: System.Boolean
@@ -15,19 +19,27 @@ Represents optional parameters that are to be configured during the configuratio
   - Azure resource ID of the private DNS zone which will be used to resolve private endpoints if using private access to snapshots.
 - aksCustomPrivateDnsZoneId: System.String
   - Azure resource ID of the private DNS zone which will be used to resolve the API server URL for private exoclusters.
+- aksClusterAccessType: AKSClusterAccessType
+  - Access type of the AKS cluster, whether it is public or private.
 - azureSqlPrivateDnsZoneId: System.String
   - Azure resource ID of the private DNS zone which will be used to resolve the Azure SQL Private Endpoints.
 - diskEncryptionSetId: System.String
   - Azure resource ID of the disk encryption set which will be used to encrypt the AKS node disks using customer managed keys.
 - azurePostgresFlexServerSubnetNativeId: System.String
-  - Azure resource ID of the subnet, in the exocompute VNet, that is delegated to Microsoft.DBforPostgreSQL/flexibleServers. Used for VNet integration of Rubrik-managed Azure Postgres Flexible Servers. Must be different from the exocompute (AKS) subnet. Per-region only: not valid on the globalConfig argument of azureExocomputeConfigsUpdate.
+  - Azure resource ID of the subnet, in the exocompute VNet, that is
+delegated to Microsoft.DBforPostgreSQL/flexibleServers. This subnet is
+used for VNet integration of Rubrik-managed Azure Postgres Flexible
+Servers. Must be different from the exocompute (AKS) subnet - AKS
+cannot launch in a delegated subnet.
+Minimum subnet size: /28 (16 IPs). This is Azure's hard requirement for
+Postgres Flexible Server delegated subnets - Azure reserves 5 addresses
+per delegated subnet for its own use, so a smaller prefix cannot host
+any Postgres instance.
 - azurePostgresFlexServerPrivateDnsZoneId: System.String
-  - Azure resource ID of the private DNS zone used to resolve FQDNs of Rubrik-managed Azure Postgres Flexible Servers from the exocompute subnet. The DNS zone name must end with '.postgres.database.azure.com' and be linked to the exocompute VNet. Per-region only: not valid on the globalConfig argument of azureExocomputeConfigsUpdate.
+  - Azure resource ID of the private DNS zone used to resolve FQDNs of
+Rubrik-managed Azure Postgres Flexible Servers from the exocompute
+subnet.
 - healthCheckVmNamePrefix: System.String
-  - Customer-configured name prefix for the health-check launch virtual machine. When empty, the default prefix is used; a Rubrik-owned marker and a UUID suffix are appended automatically and are not part of this value.
-- aksClusterTier: AKSProvisionTier
-  - Cluster tier of the provisioned aks cluster.
-- aksNodeCountBucket: AKSNodeCountBucket
-  - Bucket to determine the node count in the aks cluster.
-- aksClusterAccessType: AKSClusterAccessType
-  - Access type of the AKS cluster, whether it is public or private.
+  - Customer-configured name prefix for the health-check launch virtual machine. When empty,
+the default prefix is used. A Rubrik-owned marker and a UUID suffix are
+appended automatically and are not part of this value.

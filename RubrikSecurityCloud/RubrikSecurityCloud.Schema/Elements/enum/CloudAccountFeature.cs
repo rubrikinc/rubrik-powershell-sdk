@@ -147,6 +147,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_SHARED_VPC_HOST")]
         GCP_SHARED_VPC_HOST,
 
+        [EnumMember(Value = "GITHUB_ACTIONS_PROTECTION")]
+        GITHUB_ACTIONS_PROTECTION,
+
         [EnumMember(Value = "GITHUB_DEVELOPER_COLLABORATION_PROTECTION")]
         GITHUB_DEVELOPER_COLLABORATION_PROTECTION,
 

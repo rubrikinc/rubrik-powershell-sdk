@@ -433,6 +433,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] liveMountsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filters", "[OracleLiveMountFilterInput!]"),
                     Tuple.Create("sortBy", "OracleLiveMountSortBy"),
                 };

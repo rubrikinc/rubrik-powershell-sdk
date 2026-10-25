@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sessionId")]
         public System.String? SessionId { get; set; }
 
+        //      C# -> List<System.String>? AzureSubscriptionRubrikIds
+        // GraphQL -> azureSubscriptionRubrikIds: [UUID!] (scalar)
+        [JsonProperty("azureSubscriptionRubrikIds")]
+        public List<System.String>? AzureSubscriptionRubrikIds { get; set; }
+
         //      C# -> List<CloudAccountFeature>? Features
         // GraphQL -> features: [CloudAccountFeature!] (enum)
         [JsonProperty("features")]
@@ -35,11 +40,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> featuresToUpgrade: [UpgradeAzureCloudAccountFeatureInput!] (input)
         [JsonProperty("featuresToUpgrade")]
         public List<UpgradeAzureCloudAccountFeatureInput>? FeaturesToUpgrade { get; set; }
-
-        //      C# -> List<System.String>? AzureSubscriptionRubrikIds
-        // GraphQL -> azureSubscriptionRubrikIds: [UUID!] (scalar)
-        [JsonProperty("azureSubscriptionRubrikIds")]
-        public List<System.String>? AzureSubscriptionRubrikIds { get; set; }
 
         //      C# -> List<SubscriptionIdWithFeaturesToUpgradeInput>? SubscriptionIdsWithFeaturesToUpgrade
         // GraphQL -> subscriptionIdsWithFeaturesToUpgrade: [SubscriptionIdWithFeaturesToUpgradeInput!] (input)

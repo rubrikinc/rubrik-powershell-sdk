@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<CloudAccountFeature>? Features
-        // GraphQL -> features: [CloudAccountFeature!]! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("features")]
-        public List<CloudAccountFeature>? Features { get; set; }
-
         //      C# -> List<System.String>? AzureSubscriptionRubrikIds
         // GraphQL -> azureSubscriptionRubrikIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("azureSubscriptionRubrikIds")]
         public List<System.String>? AzureSubscriptionRubrikIds { get; set; }
+
+        //      C# -> List<CloudAccountFeature>? Features
+        // GraphQL -> features: [CloudAccountFeature!]! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("features")]
+        public List<CloudAccountFeature>? Features { get; set; }
 
 
         #endregion

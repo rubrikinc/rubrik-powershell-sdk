@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_S3_BUCKET")]
         AWS_S3_BUCKET,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_ACCOUNT")]
+        AZURE_COSMOS_NOSQL_ACCOUNT,
+
         [EnumMember(Value = "AZURE_MANAGED_DISK")]
         AZURE_MANAGED_DISK,
 

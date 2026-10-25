@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
 
+        //      C# -> NamePrefixFilter? NamePrefixFilter
+        // GraphQL -> namePrefixFilter: NamePrefixFilter (input)
+        [JsonProperty("namePrefixFilter")]
+        public NamePrefixFilter? NamePrefixFilter { get; set; }
+
 
         #endregion
 

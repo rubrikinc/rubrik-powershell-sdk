@@ -592,6 +592,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.path = $someString
     /// # REQUIRED
@@ -894,6 +898,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
     /// # OPTIONAL
@@ -2997,6 +3005,8 @@ $query.Var.workloadFieldsArg = @{
         // snapshotFilesDeltaV2(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     path: String!
         //     snapshotFid: UUID!
         //     filter: SnapshotDeltaFilterInput
@@ -3011,6 +3021,8 @@ $query.Var.workloadFieldsArg = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("path", "String!"),
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("filter", "SnapshotDeltaFilterInput"),
@@ -3024,7 +3036,7 @@ $query.Var.workloadFieldsArg = @{
                 argDefs,
                 "query",
                 "QuerySnapshotFilesDeltaV2",
-                "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$filter: SnapshotDeltaFilterInput,$searchPrefix: String,$quarantineFilters: [QuarantineFilter!],$sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput,$sort: FileResultSortInput,$workloadFieldsArg: WorkloadFieldsInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$path: String!,$snapshotFid: UUID!,$filter: SnapshotDeltaFilterInput,$searchPrefix: String,$quarantineFilters: [QuarantineFilter!],$sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput,$sort: FileResultSortInput,$workloadFieldsArg: WorkloadFieldsInput)",
                 "SnapshotFileDeltaV2Connection",
                 Query.SnapshotFilesDeltaV2,
                 Query.SnapshotFilesDeltaV2FieldSpec,
@@ -3032,6 +3044,10 @@ $query.Var.workloadFieldsArg = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.path = $someString
 # REQUIRED
@@ -3290,6 +3306,8 @@ $query.Var.input = @{
         // listDiffFilesForSnapshot(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snapshotFid: UUID!
         //     searchString: String
         //     filter: SnapshotDeltaFilterInput
@@ -3302,6 +3320,8 @@ $query.Var.input = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("searchString", "String"),
                 Tuple.Create("filter", "SnapshotDeltaFilterInput"),
@@ -3313,7 +3333,7 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryListDiffFilesForSnapshot",
-                "($first: Int,$after: String,$snapshotFid: UUID!,$searchString: String,$filter: SnapshotDeltaFilterInput,$quarantineFilters: [QuarantineFilter!],$sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput,$sort: FileResultSortInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snapshotFid: UUID!,$searchString: String,$filter: SnapshotDeltaFilterInput,$quarantineFilters: [QuarantineFilter!],$sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput,$sort: FileResultSortInput)",
                 "SnapshotFileDeltaV2Connection",
                 Query.ListDiffFilesForSnapshot,
                 Query.ListDiffFilesForSnapshotFieldSpec,
@@ -3321,6 +3341,10 @@ $query.Var.input = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
 # OPTIONAL

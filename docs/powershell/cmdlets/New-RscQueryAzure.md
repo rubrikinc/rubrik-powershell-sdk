@@ -382,7 +382,7 @@ Gets the Azure resource groups for the given subscription.
     - subscriptionId - System.String: Azure subscription ID.
 - Returns ResourceGroupConnection.
 ### resourcegroupsfromazure
-Retrieves a list og all resource groups in the specified account.
+Retrieves a list of all resource groups in the specified account.
 
 - There are 3 arguments.
     - cloudAccountId - System.String: The Rubrik ID of the cloud account.

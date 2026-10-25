@@ -321,9 +321,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HPE_VME_CLUSTER")]
         HPE_VME_CLUSTER,
 
-        [EnumMember(Value = "HPE_VME_DATASTORE")]
-        HPE_VME_DATASTORE,
-
         [EnumMember(Value = "HPE_VME_GROUP")]
         HPE_VME_GROUP,
 
@@ -335,9 +332,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "HPE_VME_MANAGER")]
         HPE_VME_MANAGER,
-
-        [EnumMember(Value = "HPE_VME_NETWORK")]
-        HPE_VME_NETWORK,
 
         [EnumMember(Value = "HPE_VME_VIRTUAL_MACHINE")]
         HPE_VME_VIRTUAL_MACHINE,
@@ -605,6 +599,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORACLE_DATA_GUARD_GROUP")]
         ORACLE_DATA_GUARD_GROUP,
+
+        [EnumMember(Value = "ORACLE_FAILOVER_CLUSTER")]
+        ORACLE_FAILOVER_CLUSTER,
+
+        [EnumMember(Value = "ORACLE_FAILOVER_SERVICE")]
+        ORACLE_FAILOVER_SERVICE,
 
         [EnumMember(Value = "ORACLE_HOST")]
         ORACLE_HOST,

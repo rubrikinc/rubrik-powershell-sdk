@@ -903,6 +903,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME_OR_EMAIL_ADDRESS")]
         NAME_OR_EMAIL_ADDRESS,
 
+        [EnumMember(Value = "NAME_OR_EMAIL_ADDRESS_PREFIX")]
+        NAME_OR_EMAIL_ADDRESS_PREFIX,
+
         [EnumMember(Value = "NAME_PREFIX")]
         NAME_PREFIX,
 
@@ -977,6 +980,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365_SITE_NAME_OR_URL")]
         O365_SITE_NAME_OR_URL,
+
+        [EnumMember(Value = "O365_SITE_NAME_PREFIX")]
+        O365_SITE_NAME_PREFIX,
 
         [EnumMember(Value = "O365_SPECIFIC_TYPE")]
         O365_SPECIFIC_TYPE,

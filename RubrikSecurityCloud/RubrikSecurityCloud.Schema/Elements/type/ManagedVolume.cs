@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ManagedVolume
  
-    public class ManagedVolume: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject
+    public class ManagedVolume: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable
     {
         #region members
 
@@ -411,6 +411,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -422,6 +424,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] liveMountsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("filter", "[Filter!]"),
@@ -457,6 +461,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] physicalChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -480,6 +486,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] queuedSnapshotsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "ManagedVolumeQueuedSnapshotFilterInput"),
                     Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("timezone", "Timezone"),

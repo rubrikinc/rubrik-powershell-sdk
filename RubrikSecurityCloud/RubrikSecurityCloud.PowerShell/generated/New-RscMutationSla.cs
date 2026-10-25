@@ -579,6 +579,453 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 				}
+    /// 				# OPTIONAL
+    /// 				schedule = @{
+    /// 					# OPTIONAL
+    /// 					minute = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					hourly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					daily = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						restrictToDaysOfWeek = @(
+    /// 							$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					weekly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfWeek = @(
+    /// 							@{
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					monthly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfMonth = @(
+    /// 							@{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					quarterly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 						# OPTIONAL
+    /// 						quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					yearly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 						# OPTIONAL
+    /// 						yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfYear = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 								# REQUIRED
+    /// 								dayOfMonthSpecification = @{
+    /// 									# OPTIONAL
+    /// 									specificDate = @{
+    /// 										# OPTIONAL
+    /// 										dateOffset = $someInt
+    /// 									}
+    /// 									# OPTIONAL
+    /// 									dayOfWeekPattern = @{
+    /// 										# OPTIONAL
+    /// 										weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 										# OPTIONAL
+    /// 										dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			incrementalSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
     /// 			}
     /// 		}
     /// 		# OPTIONAL
@@ -689,6 +1136,304 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
+    /// 			# OPTIONAL
+    /// 			incrementalSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		mssqlConfigInput = @{
@@ -953,6 +1698,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		githubSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			isDeveloperCollaborationEnabled = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		azureCosmosNosqlConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			shouldChangeContinuousBackupRetention = $someBoolean
+    /// 			# OPTIONAL
+    /// 			continuousBackupRetentionInDays = $someInt
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -1699,6 +2451,453 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 				}
+    /// 				# OPTIONAL
+    /// 				schedule = @{
+    /// 					# OPTIONAL
+    /// 					minute = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					hourly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					daily = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						restrictToDaysOfWeek = @(
+    /// 							$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					weekly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfWeek = @(
+    /// 							@{
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					monthly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfMonth = @(
+    /// 							@{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					quarterly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 						# OPTIONAL
+    /// 						quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					yearly = @{
+    /// 						# OPTIONAL
+    /// 						basicSchedule = @{
+    /// 							# OPTIONAL
+    /// 							frequency = $someInt
+    /// 							# OPTIONAL
+    /// 							retention = $someInt
+    /// 							# OPTIONAL
+    /// 							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 						# OPTIONAL
+    /// 						yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 						# OPTIONAL
+    /// 						daysOfYear = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 								# REQUIRED
+    /// 								dayOfMonthSpecification = @{
+    /// 									# OPTIONAL
+    /// 									specificDate = @{
+    /// 										# OPTIONAL
+    /// 										dateOffset = $someInt
+    /// 									}
+    /// 									# OPTIONAL
+    /// 									dayOfWeekPattern = @{
+    /// 										# OPTIONAL
+    /// 										weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 										# OPTIONAL
+    /// 										dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			incrementalSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
     /// 			}
     /// 		}
     /// 		# OPTIONAL
@@ -1809,6 +3008,304 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
+    /// 			# OPTIONAL
+    /// 			incrementalSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialSchedule = @{
+    /// 				# OPTIONAL
+    /// 				minute = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				hourly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				daily = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					restrictToDaysOfWeek = @(
+    /// 						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				weekly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfWeek = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfMonth = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							specificDate = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							dayOfWeekPattern = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				quarterly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+    /// 					# OPTIONAL
+    /// 					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearly = @{
+    /// 					# OPTIONAL
+    /// 					basicSchedule = @{
+    /// 						# OPTIONAL
+    /// 						frequency = $someInt
+    /// 						# OPTIONAL
+    /// 						retention = $someInt
+    /// 						# OPTIONAL
+    /// 						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+    /// 					# OPTIONAL
+    /// 					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# OPTIONAL
+    /// 					daysOfYear = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 							# REQUIRED
+    /// 							dayOfMonthSpecification = @{
+    /// 								# OPTIONAL
+    /// 								specificDate = @{
+    /// 									# OPTIONAL
+    /// 									dateOffset = $someInt
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								dayOfWeekPattern = @{
+    /// 									# OPTIONAL
+    /// 									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 									# OPTIONAL
+    /// 									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		mssqlConfigInput = @{
@@ -2073,6 +3570,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		githubSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			isDeveloperCollaborationEnabled = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		azureCosmosNosqlConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			shouldChangeContinuousBackupRetention = $someBoolean
+    /// 			# OPTIONAL
+    /// 			continuousBackupRetentionInDays = $someInt
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -3066,6 +4570,453 @@ $query.Var.input = @{
 					# OPTIONAL
 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 				}
+				# OPTIONAL
+				schedule = @{
+					# OPTIONAL
+					minute = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+					}
+					# OPTIONAL
+					hourly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+					}
+					# OPTIONAL
+					daily = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						restrictToDaysOfWeek = @(
+							$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						)
+					}
+					# OPTIONAL
+					weekly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						# OPTIONAL
+						daysOfWeek = @(
+							@{
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						)
+					}
+					# OPTIONAL
+					monthly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+						# OPTIONAL
+						daysOfMonth = @(
+							@{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						)
+					}
+					# OPTIONAL
+					quarterly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+						# OPTIONAL
+						quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					}
+					# OPTIONAL
+					yearly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+						# OPTIONAL
+						yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+						# OPTIONAL
+						daysOfYear = @(
+							@{
+								# REQUIRED
+								monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+								# REQUIRED
+								dayOfMonthSpecification = @{
+									# OPTIONAL
+									specificDate = @{
+										# OPTIONAL
+										dateOffset = $someInt
+									}
+									# OPTIONAL
+									dayOfWeekPattern = @{
+										# OPTIONAL
+										weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+										# OPTIONAL
+										dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+									}
+								}
+							}
+						)
+					}
+				}
+			}
+			# OPTIONAL
+			incrementalSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			differentialSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
 			}
 		}
 		# OPTIONAL
@@ -3176,6 +5127,304 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
+			# OPTIONAL
+			incrementalSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			differentialSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
 		}
 		# OPTIONAL
 		mssqlConfigInput = @{
@@ -3440,6 +5689,13 @@ $query.Var.input = @{
 		githubSlaConfigInput = @{
 			# OPTIONAL
 			isDeveloperCollaborationEnabled = $someBoolean
+		}
+		# OPTIONAL
+		azureCosmosNosqlConfigInput = @{
+			# OPTIONAL
+			shouldChangeContinuousBackupRetention = $someBoolean
+			# OPTIONAL
+			continuousBackupRetentionInDays = $someInt
 		}
 	}
 	# OPTIONAL
@@ -4147,6 +6403,453 @@ $query.Var.input = @{
 					# OPTIONAL
 					unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 				}
+				# OPTIONAL
+				schedule = @{
+					# OPTIONAL
+					minute = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+					}
+					# OPTIONAL
+					hourly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+					}
+					# OPTIONAL
+					daily = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						restrictToDaysOfWeek = @(
+							$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						)
+					}
+					# OPTIONAL
+					weekly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						# OPTIONAL
+						daysOfWeek = @(
+							@{
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						)
+					}
+					# OPTIONAL
+					monthly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+						# OPTIONAL
+						daysOfMonth = @(
+							@{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						)
+					}
+					# OPTIONAL
+					quarterly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+						# OPTIONAL
+						quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					}
+					# OPTIONAL
+					yearly = @{
+						# OPTIONAL
+						basicSchedule = @{
+							# OPTIONAL
+							frequency = $someInt
+							# OPTIONAL
+							retention = $someInt
+							# OPTIONAL
+							retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+						}
+						# OPTIONAL
+						dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+						# OPTIONAL
+						yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+						# OPTIONAL
+						daysOfYear = @(
+							@{
+								# REQUIRED
+								monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+								# REQUIRED
+								dayOfMonthSpecification = @{
+									# OPTIONAL
+									specificDate = @{
+										# OPTIONAL
+										dateOffset = $someInt
+									}
+									# OPTIONAL
+									dayOfWeekPattern = @{
+										# OPTIONAL
+										weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+										# OPTIONAL
+										dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+									}
+								}
+							}
+						)
+					}
+				}
+			}
+			# OPTIONAL
+			incrementalSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			differentialSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
 			}
 		}
 		# OPTIONAL
@@ -4257,6 +6960,304 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			logArchivalMethod = $someLogArchivalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogArchivalMethod]) for enum values.
+			# OPTIONAL
+			incrementalSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
+			# OPTIONAL
+			differentialSchedule = @{
+				# OPTIONAL
+				minute = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				hourly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+				}
+				# OPTIONAL
+				daily = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					restrictToDaysOfWeek = @(
+						$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					)
+				}
+				# OPTIONAL
+				weekly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					# OPTIONAL
+					daysOfWeek = @(
+						@{
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					)
+				}
+				# OPTIONAL
+				monthly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+					# OPTIONAL
+					daysOfMonth = @(
+						@{
+							# OPTIONAL
+							specificDate = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+							# OPTIONAL
+							dayOfWeekPattern = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					)
+				}
+				# OPTIONAL
+				quarterly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfQuarter = $someDayOfQuarter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+					# OPTIONAL
+					quarterStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+				}
+				# OPTIONAL
+				yearly = @{
+					# OPTIONAL
+					basicSchedule = @{
+						# OPTIONAL
+						frequency = $someInt
+						# OPTIONAL
+						retention = $someInt
+						# OPTIONAL
+						retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+					# OPTIONAL
+					yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# OPTIONAL
+					daysOfYear = @(
+						@{
+							# REQUIRED
+							monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+							# REQUIRED
+							dayOfMonthSpecification = @{
+								# OPTIONAL
+								specificDate = @{
+									# OPTIONAL
+									dateOffset = $someInt
+								}
+								# OPTIONAL
+								dayOfWeekPattern = @{
+									# OPTIONAL
+									weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+									# OPTIONAL
+									dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+								}
+							}
+						}
+					)
+				}
+			}
 		}
 		# OPTIONAL
 		mssqlConfigInput = @{
@@ -4521,6 +7522,13 @@ $query.Var.input = @{
 		githubSlaConfigInput = @{
 			# OPTIONAL
 			isDeveloperCollaborationEnabled = $someBoolean
+		}
+		# OPTIONAL
+		azureCosmosNosqlConfigInput = @{
+			# OPTIONAL
+			shouldChangeContinuousBackupRetention = $someBoolean
+			# OPTIONAL
+			continuousBackupRetentionInDays = $someInt
 		}
 	}
 	# OPTIONAL

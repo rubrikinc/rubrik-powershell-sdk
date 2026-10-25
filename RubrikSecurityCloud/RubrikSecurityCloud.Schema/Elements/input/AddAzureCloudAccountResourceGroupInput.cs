@@ -26,17 +26,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> TagsInput? Tags
-        // GraphQL -> tags: TagsInput (input)
-        [JsonProperty("tags")]
-        public TagsInput? Tags { get; set; }
-
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("region")]
         public AzureCloudAccountRegion? Region { get; set; }
+
+        //      C# -> TagsInput? Tags
+        // GraphQL -> tags: TagsInput (input)
+        [JsonProperty("tags")]
+        public TagsInput? Tags { get; set; }
 
 
         #endregion

@@ -43,6 +43,12 @@ GitHub Organization.
 for legacy orgs that pre-date the GHEC data residency migration.
 - zeusState: DevopsZeusState
   - Zeus provisioning lifecycle state of the GitHub organization.
+- patOwnerLogin: System.String
+  - Login of the GitHub user who owns the personal access token set for the
+GitHub organization. Empty when no token is set or its owner is unknown.
+- patExpiry: DateTime
+  - Expiry of the personal access token set for the GitHub organization.
+Null when no token is set or the token does not expire.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - objectStats: DevOpsObjectStats

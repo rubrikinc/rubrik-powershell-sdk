@@ -19,23 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? PolicyVersion
-        // GraphQL -> policyVersion: Int! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("policyVersion")]
-        public System.Int32? PolicyVersion { get; set; }
-
-        //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
-        // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
-        [JsonProperty("resourceGroup")]
-        public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
-
-        //      C# -> AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput
-        // GraphQL -> specificFeatureInput: AddAzureCloudAccountSpecificFeatureInput (input)
-        [JsonProperty("specificFeatureInput")]
-        public AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput { get; set; }
-
         //      C# -> CloudAccountFeature? FeatureType
         // GraphQL -> featureType: CloudAccountFeature! (enum)
         [Required]
@@ -43,10 +26,27 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureType")]
         public CloudAccountFeature? FeatureType { get; set; }
 
+        //      C# -> System.Int32? PolicyVersion
+        // GraphQL -> policyVersion: Int! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("policyVersion")]
+        public System.Int32? PolicyVersion { get; set; }
+
         //      C# -> List<PermissionsGroupWithVersionInput>? PermissionsGroups
         // GraphQL -> permissionsGroups: [PermissionsGroupWithVersionInput!] (input)
         [JsonProperty("permissionsGroups")]
         public List<PermissionsGroupWithVersionInput>? PermissionsGroups { get; set; }
+
+        //      C# -> AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput
+        // GraphQL -> specificFeatureInput: AddAzureCloudAccountSpecificFeatureInput (input)
+        [JsonProperty("specificFeatureInput")]
+        public AddAzureCloudAccountSpecificFeatureInput? SpecificFeatureInput { get; set; }
+
+        //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
+        // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
+        [JsonProperty("resourceGroup")]
+        public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
 
 
         #endregion

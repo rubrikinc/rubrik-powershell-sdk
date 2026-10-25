@@ -455,6 +455,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	namePrefixFilter = @{
+    /// 		# REQUIRED
+    /// 		namePrefix = $someString
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2080,6 +2085,11 @@ $query.Var.diskFilters = @{
 	}
 	# OPTIONAL
 	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	namePrefixFilter = @{
+		# REQUIRED
+		namePrefix = $someString
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

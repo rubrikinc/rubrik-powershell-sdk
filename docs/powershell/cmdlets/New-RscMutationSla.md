@@ -44,6 +44,8 @@ Create SLA Domain.
 - There is a single argument of type CreateGlobalSlaInput.
 - Returns GlobalSlaReply.
 ### deleteglobal
+Endpoint to delete an SLA Domain.
+
 - There are 2 arguments.
     - id - System.String: SLA Domain ID.
     - userNote - System.String: Optional user note.

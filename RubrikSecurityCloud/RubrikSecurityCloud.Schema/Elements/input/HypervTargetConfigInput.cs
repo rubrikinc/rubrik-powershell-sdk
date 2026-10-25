@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("standalone")]
         public HypervStandaloneTargetInput? Standalone { get; set; }
 
+        //      C# -> HypervAzureLocalTargetInput? AzureLocal
+        // GraphQL -> azureLocal: HypervAzureLocalTargetInput (input)
+        [JsonProperty("azureLocal")]
+        public HypervAzureLocalTargetInput? AzureLocal { get; set; }
+
 
         #endregion
 

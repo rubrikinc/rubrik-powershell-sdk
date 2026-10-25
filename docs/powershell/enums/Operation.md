@@ -232,7 +232,7 @@ Operations defined in the RBAC system.
 - MANAGE_SERVICE_ACCOUNT_CREDENTIALS - Rotate service account secret.
 - SEND_LICENSE_NOTIFICATION - Send license notification.
 - MANAGE_CLASSIFICATION_SETTINGS - Manage classification banner and login settings.
-- MANAGE_RUBY - Manage Ruby (LLM) settings, including enablement.
+- MANAGE_RUBY - Manage Rubrik AI settings, including enablement.
 - VIEW_PERSONAL_ACCESS_TOKENS - View personal access tokens.
 - MANAGE_OWN_PERSONAL_ACCESS_TOKEN - Create, rotate, and deactivate your own personal access token.
 - DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN - Deactivate personal access token for other users.

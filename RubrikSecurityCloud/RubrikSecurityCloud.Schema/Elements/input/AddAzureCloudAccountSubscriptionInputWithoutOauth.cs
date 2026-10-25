@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<AddAzureCloudAccountFeatureInputWithoutOauth>? Features
-        // GraphQL -> features: [AddAzureCloudAccountFeatureInputWithoutOauth!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("features")]
-        public List<AddAzureCloudAccountFeatureInputWithoutOauth>? Features { get; set; }
-
         //      C# -> AzureSubscriptionInput? Subscription
         // GraphQL -> subscription: AzureSubscriptionInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("subscription")]
         public AzureSubscriptionInput? Subscription { get; set; }
+
+        //      C# -> List<AddAzureCloudAccountFeatureInputWithoutOauth>? Features
+        // GraphQL -> features: [AddAzureCloudAccountFeatureInputWithoutOauth!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("features")]
+        public List<AddAzureCloudAccountFeatureInputWithoutOauth>? Features { get; set; }
 
 
         #endregion

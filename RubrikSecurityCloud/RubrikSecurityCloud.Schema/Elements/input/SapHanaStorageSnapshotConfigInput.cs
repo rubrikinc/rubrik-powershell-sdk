@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retention")]
         public SlaDurationInput? Retention { get; set; }
 
+        //      C# -> GlobalSnapshotScheduleInput? Schedule
+        // GraphQL -> schedule: GlobalSnapshotScheduleInput (input)
+        [JsonProperty("schedule")]
+        public GlobalSnapshotScheduleInput? Schedule { get; set; }
+
 
         #endregion
 

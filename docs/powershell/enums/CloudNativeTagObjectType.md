@@ -14,3 +14,4 @@ Object Type for cloud-native tag rule.
 - AZURE_STORAGE_ACCOUNT - Azure Storage Account.
 - AWS_CONFIG - AWS Config.
 - AZURE_POSTGRES_FLEXIBLE_SERVER - Azure Postgres Flexible Server.
+- AZURE_COSMOS_NOSQL_ACCOUNT - Azure Cosmos DB for NoSQL Account.

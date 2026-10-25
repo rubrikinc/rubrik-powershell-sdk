@@ -1444,6 +1444,30 @@ end, both inclusive.
 +mo:filter:db:table=snapshots
 +mo:filter:db:column=snapshot_time
 +mo:filter:db:index:key=snappable_id_snapshot_time_idx
+- NAME_OR_EMAIL_ADDRESS_PREFIX - Filter by name or email address of a Microsoft 365 user, matching
+values that start with the specified prefix. Prefix counterpart of
+NAME_OR_EMAIL_ADDRESS.
++mo:filter:db:table=managed_object
++mo:filter:db:column=name
++mo:filter:db:index:key=sort_by_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:table=managed_object
++mo:filter:db:column=mail_address
++mo:filter:db:index:key=mail_id_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- O365_SITE_NAME_PREFIX - Filter top-level SharePoint sites in Microsoft 365 whose name starts
+with the specified prefix. Prefix counterpart of O365_SITE_NAME_OR_URL;
+does not match the site URL.
++mo:filter:db:table=managed_object
++mo:filter:db:column=name
++mo:filter:db:index:key=sort_by_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
 - IRISDB_CONNECTION_STATUS - Filter IRIS DB instances by the Rubrik Backup Service (RBS)
 connection status of their host.
 +mo:filter:db:table=cdm_irisdb_instance

@@ -5,3 +5,5 @@ SLA Domain configuration for SAP HANA Storage Snapshot.
   - Frequency value for storage snapshot of SAP HANA systems.
 - retention: Duration
   - Number of days for which storage snapshot of SAP HANA systems will be retained.
+- schedule: SnapshotSchedule
+  - Schedule of the storage snapshot.

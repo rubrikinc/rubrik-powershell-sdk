@@ -25,3 +25,7 @@ Indicates whether expiration information of the snapshot is unavailable at this 
   - Boolean to indicate whether the snapshot is legally held at the specified location.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode at this location. Can be NO_MODE, COMPLIANCE, or GOVERNANCE. Populated by the cdmSnapshotWithPerLocationRetentionInfo query.
+- isReaderArchivalLocation: System.Boolean
+  - When true, this archival location is connected as a reader. Reader clusters
+never assign expiration dates for archival snapshots. The expiration date
+should be checked on the owner cluster.

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
-        // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
-        [JsonProperty("resourceGroup")]
-        public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
-
         //      C# -> CloudAccountFeature? FeatureType
         // GraphQL -> featureType: CloudAccountFeature! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("featureType")]
         public CloudAccountFeature? FeatureType { get; set; }
+
+        //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
+        // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
+        [JsonProperty("resourceGroup")]
+        public AddAzureCloudAccountResourceGroupInput? ResourceGroup { get; set; }
 
         //      C# -> List<PermissionsGroup>? PermissionsGroups
         // GraphQL -> permissionsGroups: [PermissionsGroup!] (enum)

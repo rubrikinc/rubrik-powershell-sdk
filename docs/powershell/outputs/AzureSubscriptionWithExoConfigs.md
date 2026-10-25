@@ -11,12 +11,10 @@ Azure Cloud Account Subscription with exocompute configurations for feature conf
   - Feature details of subscription.
 - mappedExocomputeSubscription: AzureMappedExocomputeSubscription
   - Mapped Exocompute subscription for launching Exocompute.
-- mappedCloudAccountIds: list of System.Strings
-  - Cloud Account IDs of subscriptions that are mapped to this Exocompute account.
-- exocomputeConfigs: list of AzureExocomputeConfigDetailss
-  - Exocompute configurations of the subscription.
 - mappedExocomputeConfigs: list of AzureExocomputeConfigDetailss
   - Exocompute configurations available through mapped subscription.
+- exocomputeConfigs: list of AzureExocomputeConfigDetailss
+  - Exocompute configurations of the subscription.
 - globalRegionExocomputeConfigs: list of AzureExocomputeConfigDetailss
   - Optional Exocompute configurations that apply to all the regions.
 - mappedCloudAccounts: list of CloudAccountDetailss
@@ -27,3 +25,5 @@ Azure Cloud Account Subscription with exocompute configurations for feature conf
   - Management group of the Azure subscription.
 - app: AzureCloudAccountTenantApp
   - The Azure application backing this subscription, together with the authentication method it is bound to. Unset when the app cannot be resolved.
+- mappedCloudAccountIds: list of System.Strings
+  - Cloud Account IDs of subscriptions that are mapped to this Exocompute account.

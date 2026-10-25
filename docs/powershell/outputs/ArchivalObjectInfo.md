@@ -38,3 +38,6 @@ GLACIER, GOOGLE).
 - isRcv: System.Boolean
   - Convenience flag indicating whether the location is a Rubrik Cloud
 Vault target (RCV_AWS or RCS_AZURE), derived from location_type.
+- workloadFid: System.String
+  - FID of the object. Use this, not workloadId, for snapshot queries that
+require an object FID.

@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("leaseId")]
         public System.String? LeaseId { get; set; }
 
+        //      C# -> List<System.String>? LeaseIds
+        // GraphQL -> leaseIds: [String!] (scalar)
+        [JsonProperty("leaseIds")]
+        public List<System.String>? LeaseIds { get; set; }
+
 
         #endregion
 

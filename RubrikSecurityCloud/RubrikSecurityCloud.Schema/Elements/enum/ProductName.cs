@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_BAAS")]
         AWS_BAAS,
 
+        [EnumMember(Value = "AWS_BAAS_STORAGE")]
+        AWS_BAAS_STORAGE,
+
         [EnumMember(Value = "BAAS_UNSTRUCTURED")]
         BAAS_UNSTRUCTURED,
 

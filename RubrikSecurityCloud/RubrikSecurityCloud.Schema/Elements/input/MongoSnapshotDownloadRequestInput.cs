@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudStorageRehydrationSpeed? CloudRehydrationSpeed
+        // GraphQL -> cloudRehydrationSpeed: CloudStorageRehydrationSpeed (enum)
+        [JsonProperty("cloudRehydrationSpeed")]
+        public CloudStorageRehydrationSpeed? CloudRehydrationSpeed { get; set; }
+
         //      C# -> DateTime? PointInTime
         // GraphQL -> pointInTime: DateTime (scalar)
         [JsonProperty("pointInTime")]

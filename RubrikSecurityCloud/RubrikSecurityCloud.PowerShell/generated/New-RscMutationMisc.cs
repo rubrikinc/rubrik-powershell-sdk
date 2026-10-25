@@ -3512,6 +3512,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 											}
     /// 										)
     /// 									}
+    /// 									# OPTIONAL
+    /// 									azureLocal = @{
+    /// 										# REQUIRED
+    /// 										resourceGroup = $someString
+    /// 										# REQUIRED
+    /// 										hypervClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												nicInstanceId = $someString
+    /// 												# OPTIONAL
+    /// 												sourceNicIndex = $someInt
+    /// 												# REQUIRED
+    /// 												logicalNetworkId = $someString
+    /// 												# REQUIRED
+    /// 												ipConfig = @{
+    /// 													# OPTIONAL
+    /// 													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+    /// 													# OPTIONAL
+    /// 													ipv4Address = $someString
+    /// 													# OPTIONAL
+    /// 													subnetMask = $someString
+    /// 													# OPTIONAL
+    /// 													gateway = $someString
+    /// 													# OPTIONAL
+    /// 													dnsServers = @(
+    /// 														$someString
+    /// 													)
+    /// 												}
+    /// 											}
+    /// 										)
+    /// 									}
     /// 								}
     /// 							}
     /// 						}
@@ -4078,6 +4111,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 												virtualSwitchId = $someString
     /// 												# OPTIONAL
     /// 												virtualSwitchName = $someString
+    /// 											}
+    /// 										)
+    /// 									}
+    /// 									# OPTIONAL
+    /// 									azureLocal = @{
+    /// 										# REQUIRED
+    /// 										resourceGroup = $someString
+    /// 										# REQUIRED
+    /// 										hypervClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												nicInstanceId = $someString
+    /// 												# OPTIONAL
+    /// 												sourceNicIndex = $someInt
+    /// 												# REQUIRED
+    /// 												logicalNetworkId = $someString
+    /// 												# REQUIRED
+    /// 												ipConfig = @{
+    /// 													# OPTIONAL
+    /// 													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+    /// 													# OPTIONAL
+    /// 													ipv4Address = $someString
+    /// 													# OPTIONAL
+    /// 													subnetMask = $someString
+    /// 													# OPTIONAL
+    /// 													gateway = $someString
+    /// 													# OPTIONAL
+    /// 													dnsServers = @(
+    /// 														$someString
+    /// 													)
+    /// 												}
     /// 											}
     /// 										)
     /// 									}
@@ -9961,6 +10027,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 											}
     /// 										)
     /// 									}
+    /// 									# OPTIONAL
+    /// 									azureLocal = @{
+    /// 										# REQUIRED
+    /// 										resourceGroup = $someString
+    /// 										# REQUIRED
+    /// 										hypervClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												nicInstanceId = $someString
+    /// 												# OPTIONAL
+    /// 												sourceNicIndex = $someInt
+    /// 												# REQUIRED
+    /// 												logicalNetworkId = $someString
+    /// 												# REQUIRED
+    /// 												ipConfig = @{
+    /// 													# OPTIONAL
+    /// 													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+    /// 													# OPTIONAL
+    /// 													ipv4Address = $someString
+    /// 													# OPTIONAL
+    /// 													subnetMask = $someString
+    /// 													# OPTIONAL
+    /// 													gateway = $someString
+    /// 													# OPTIONAL
+    /// 													dnsServers = @(
+    /// 														$someString
+    /// 													)
+    /// 												}
+    /// 											}
+    /// 										)
+    /// 									}
     /// 								}
     /// 							}
     /// 						}
@@ -13133,6 +13232,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 												virtualSwitchId = $someString
     /// 												# OPTIONAL
     /// 												virtualSwitchName = $someString
+    /// 											}
+    /// 										)
+    /// 									}
+    /// 									# OPTIONAL
+    /// 									azureLocal = @{
+    /// 										# REQUIRED
+    /// 										resourceGroup = $someString
+    /// 										# REQUIRED
+    /// 										hypervClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												nicInstanceId = $someString
+    /// 												# OPTIONAL
+    /// 												sourceNicIndex = $someInt
+    /// 												# REQUIRED
+    /// 												logicalNetworkId = $someString
+    /// 												# REQUIRED
+    /// 												ipConfig = @{
+    /// 													# OPTIONAL
+    /// 													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+    /// 													# OPTIONAL
+    /// 													ipv4Address = $someString
+    /// 													# OPTIONAL
+    /// 													subnetMask = $someString
+    /// 													# OPTIONAL
+    /// 													gateway = $someString
+    /// 													# OPTIONAL
+    /// 													dnsServers = @(
+    /// 														$someString
+    /// 													)
+    /// 												}
     /// 											}
     /// 										)
     /// 									}
@@ -20307,6 +20439,39 @@ $query.Var.input = @{
 											}
 										)
 									}
+									# OPTIONAL
+									azureLocal = @{
+										# REQUIRED
+										resourceGroup = $someString
+										# REQUIRED
+										hypervClusterId = $someString
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												nicInstanceId = $someString
+												# OPTIONAL
+												sourceNicIndex = $someInt
+												# REQUIRED
+												logicalNetworkId = $someString
+												# REQUIRED
+												ipConfig = @{
+													# OPTIONAL
+													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+													# OPTIONAL
+													ipv4Address = $someString
+													# OPTIONAL
+													subnetMask = $someString
+													# OPTIONAL
+													gateway = $someString
+													# OPTIONAL
+													dnsServers = @(
+														$someString
+													)
+												}
+											}
+										)
+									}
 								}
 							}
 						}
@@ -20857,6 +21022,39 @@ $query.Var.input = @{
 												virtualSwitchId = $someString
 												# OPTIONAL
 												virtualSwitchName = $someString
+											}
+										)
+									}
+									# OPTIONAL
+									azureLocal = @{
+										# REQUIRED
+										resourceGroup = $someString
+										# REQUIRED
+										hypervClusterId = $someString
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												nicInstanceId = $someString
+												# OPTIONAL
+												sourceNicIndex = $someInt
+												# REQUIRED
+												logicalNetworkId = $someString
+												# REQUIRED
+												ipConfig = @{
+													# OPTIONAL
+													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+													# OPTIONAL
+													ipv4Address = $someString
+													# OPTIONAL
+													subnetMask = $someString
+													# OPTIONAL
+													gateway = $someString
+													# OPTIONAL
+													dnsServers = @(
+														$someString
+													)
+												}
 											}
 										)
 									}
@@ -25734,6 +25932,39 @@ $query.Var.input = @{
 											}
 										)
 									}
+									# OPTIONAL
+									azureLocal = @{
+										# REQUIRED
+										resourceGroup = $someString
+										# REQUIRED
+										hypervClusterId = $someString
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												nicInstanceId = $someString
+												# OPTIONAL
+												sourceNicIndex = $someInt
+												# REQUIRED
+												logicalNetworkId = $someString
+												# REQUIRED
+												ipConfig = @{
+													# OPTIONAL
+													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+													# OPTIONAL
+													ipv4Address = $someString
+													# OPTIONAL
+													subnetMask = $someString
+													# OPTIONAL
+													gateway = $someString
+													# OPTIONAL
+													dnsServers = @(
+														$someString
+													)
+												}
+											}
+										)
+									}
 								}
 							}
 						}
@@ -28439,6 +28670,39 @@ $query.Var.input = @{
 												virtualSwitchId = $someString
 												# OPTIONAL
 												virtualSwitchName = $someString
+											}
+										)
+									}
+									# OPTIONAL
+									azureLocal = @{
+										# REQUIRED
+										resourceGroup = $someString
+										# REQUIRED
+										hypervClusterId = $someString
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												nicInstanceId = $someString
+												# OPTIONAL
+												sourceNicIndex = $someInt
+												# REQUIRED
+												logicalNetworkId = $someString
+												# REQUIRED
+												ipConfig = @{
+													# OPTIONAL
+													method = $someIpAllocationMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IpAllocationMethod]) for enum values.
+													# OPTIONAL
+													ipv4Address = $someString
+													# OPTIONAL
+													subnetMask = $someString
+													# OPTIONAL
+													gateway = $someString
+													# OPTIONAL
+													dnsServers = @(
+														$someString
+													)
+												}
 											}
 										)
 									}

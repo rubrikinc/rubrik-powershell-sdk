@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CHINANORTH2")]
         CHINANORT_H2,
 
+        [EnumMember(Value = "DENMARKEAST")]
+        DENMARKEAST,
+
         [EnumMember(Value = "EASTASIA")]
         EASTASIA,
 
@@ -89,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GERMANYWESTCENTRAL")]
         GERMANYWESTCENTRAL,
+
+        [EnumMember(Value = "INDIASOUTHCENTRAL")]
+        INDIASOUTHCENTRAL,
 
         [EnumMember(Value = "INDONESIACENTRAL")]
         INDONESIACENTRAL,

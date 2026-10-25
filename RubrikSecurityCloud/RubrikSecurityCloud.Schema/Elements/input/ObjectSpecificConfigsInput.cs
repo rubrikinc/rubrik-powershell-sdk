@@ -134,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("githubSlaConfigInput")]
         public GithubSlaConfigInput? GithubSlaConfigInput { get; set; }
 
+        //      C# -> AzureCosmosNosqlConfigInput? AzureCosmosNosqlConfigInput
+        // GraphQL -> azureCosmosNosqlConfigInput: AzureCosmosNosqlConfigInput (input)
+        [JsonProperty("azureCosmosNosqlConfigInput")]
+        public AzureCosmosNosqlConfigInput? AzureCosmosNosqlConfigInput { get; set; }
+
 
         #endregion
 

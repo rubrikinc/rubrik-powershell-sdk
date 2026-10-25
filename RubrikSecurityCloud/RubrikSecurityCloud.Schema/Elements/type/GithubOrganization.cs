@@ -116,6 +116,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgUrl")]
         public System.String? OrgUrl { get; set; }
 
+        //      C# -> DateTime? PatExpiry
+        // GraphQL -> patExpiry: DateTime (scalar)
+        [JsonProperty("patExpiry")]
+        public DateTime? PatExpiry { get; set; }
+
+        //      C# -> System.String? PatOwnerLogin
+        // GraphQL -> patOwnerLogin: String! (scalar)
+        [JsonProperty("patOwnerLogin")]
+        public System.String? PatOwnerLogin { get; set; }
+
         //      C# -> System.Int32? RepoCount
         // GraphQL -> repoCount: Int! (scalar)
         [JsonProperty("repoCount")]
@@ -253,6 +263,8 @@ namespace RubrikSecurityCloud.Types
         System.String? NativeId = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? OrgUrl = null,
+        DateTime? PatExpiry = null,
+        System.String? PatOwnerLogin = null,
         System.Int32? RepoCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
@@ -328,6 +340,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrgUrl != null ) {
             this.OrgUrl = OrgUrl;
+        }
+        if ( PatExpiry != null ) {
+            this.PatExpiry = PatExpiry;
+        }
+        if ( PatOwnerLogin != null ) {
+            this.PatOwnerLogin = PatOwnerLogin;
         }
         if ( RepoCount != null ) {
             this.RepoCount = RepoCount;
@@ -575,6 +593,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "orgUrl\n" ;
             } else {
                 s += ind + "orgUrl\n" ;
+            }
+        }
+        //      C# -> DateTime? PatExpiry
+        // GraphQL -> patExpiry: DateTime (scalar)
+        if (this.PatExpiry != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "patExpiry\n" ;
+            } else {
+                s += ind + "patExpiry\n" ;
+            }
+        }
+        //      C# -> System.String? PatOwnerLogin
+        // GraphQL -> patOwnerLogin: String! (scalar)
+        if (this.PatOwnerLogin != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "patOwnerLogin\n" ;
+            } else {
+                s += ind + "patOwnerLogin\n" ;
             }
         }
         //      C# -> System.Int32? RepoCount
@@ -1125,6 +1161,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.OrgUrl != null && ec.Excludes("orgUrl",true))
         {
             this.OrgUrl = null;
+        }
+        //      C# -> DateTime? PatExpiry
+        // GraphQL -> patExpiry: DateTime (scalar)
+        if (ec.Includes("patExpiry",true))
+        {
+            if(this.PatExpiry == null) {
+
+                this.PatExpiry = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PatExpiry != null && ec.Excludes("patExpiry",true))
+        {
+            this.PatExpiry = null;
+        }
+        //      C# -> System.String? PatOwnerLogin
+        // GraphQL -> patOwnerLogin: String! (scalar)
+        if (ec.Includes("patOwnerLogin",true))
+        {
+            if(this.PatOwnerLogin == null) {
+
+                this.PatOwnerLogin = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PatOwnerLogin != null && ec.Excludes("patOwnerLogin",true))
+        {
+            this.PatOwnerLogin = null;
         }
         //      C# -> System.Int32? RepoCount
         // GraphQL -> repoCount: Int! (scalar)

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HypervAzureLocalTarget? AzureLocal
+        // GraphQL -> azureLocal: HypervAzureLocalTarget (type)
+        [JsonProperty("azureLocal")]
+        public HypervAzureLocalTarget? AzureLocal { get; set; }
+
         //      C# -> HypervStandaloneTarget? Standalone
         // GraphQL -> standalone: HypervStandaloneTarget (type)
         [JsonProperty("standalone")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervTargetConfig Set(
+        HypervAzureLocalTarget? AzureLocal = null,
         HypervStandaloneTarget? Standalone = null
     ) 
     {
+        if ( AzureLocal != null ) {
+            this.AzureLocal = AzureLocal;
+        }
         if ( Standalone != null ) {
             this.Standalone = Standalone;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HypervAzureLocalTarget? AzureLocal
+        // GraphQL -> azureLocal: HypervAzureLocalTarget (type)
+        if (this.AzureLocal != null) {
+            var fspec = this.AzureLocal.AsFieldSpec(conf.Child("azureLocal"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureLocal" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> HypervStandaloneTarget? Standalone
         // GraphQL -> standalone: HypervStandaloneTarget (type)
         if (this.Standalone != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> HypervAzureLocalTarget? AzureLocal
+        // GraphQL -> azureLocal: HypervAzureLocalTarget (type)
+        if (ec.Includes("azureLocal",false))
+        {
+            if(this.AzureLocal == null) {
+
+                this.AzureLocal = new HypervAzureLocalTarget();
+                this.AzureLocal.ApplyExploratoryFieldSpec(ec.NewChild("azureLocal"));
+
+            } else {
+
+                this.AzureLocal.ApplyExploratoryFieldSpec(ec.NewChild("azureLocal"));
+
+            }
+        }
+        else if (this.AzureLocal != null && ec.Excludes("azureLocal",false))
+        {
+            this.AzureLocal = null;
+        }
         //      C# -> HypervStandaloneTarget? Standalone
         // GraphQL -> standalone: HypervStandaloneTarget (type)
         if (ec.Includes("standalone",false))

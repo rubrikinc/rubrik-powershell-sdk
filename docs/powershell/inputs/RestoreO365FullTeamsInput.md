@@ -19,6 +19,10 @@ RestoreO365FullTeamsInput to achieve zero GraphQL schema diff.
 - o365AppId: System.String
   - UUID of the O365 App used for authorization.
 - leaseId: System.String
-  - ID of the just-in-time permission elevation lease covering this
-restore's write permissions, if elevation was required. Empty for
-full-access-mode apps.
+  - Deprecated: use leaseIds. ID of a just-in-time permission elevation
+lease covering this restore's write permissions. Applies in addition to
+the leases in leaseIds.
+- leaseIds: list of System.Strings
+  - IDs of the just-in-time permission elevation leases covering this
+restore's write permissions, one per Microsoft 365 app that needed
+elevation. Empty when no elevation was required.

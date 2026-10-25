@@ -1,15 +1,15 @@
 ### AzureExocomputeAddConfigInputType
-Azure Exocompute configuration to add.
+Represents an Azure Exocompute Configuration for a specific region. The Azure Exocompute Configuration includes the subnet native ID to be used for launching an Azure Kubernetes Service (AKS) Cluster in a specific region.
 
 - region: AzureCloudAccountRegion
-  - The region for which the configuration is specified.
+  - Azure region for the cloud account in which Exocompute is configured.
 - subnetNativeId: System.String
-  - Subnet native ID where Exocompute cluster should be launched.
+  - Native ID of the subnet, configured for usage in this region for the Exocompute cluster.
 - isRscManaged: System.Boolean
-  - Specifies if this configuration is managed by Rubrik.
+  - Specifies whether Exocompute is managed by Rubrik or not.
 - podSubnetNativeId: System.String
-  - Native ID of the subnet where the Exocompute pods should be launched.
+  - Native ID of the subnet, configured for usage in this region for the Exocompute pods.
 - podOverlayNetworkCidr: System.String
-  - The CIDR range for pods if Exocompute is launched with the CNI overlay network plugin.
+  - The CIDR range assigned for pods when launching Exocompute with the CNI overlay network plugin mode.
 - optionalConfig: AzureExocomputeOptionalConfigInRegionInput
-  - Optional configurations for aks cluster.
+  - Optional configurations for AKS cluster.

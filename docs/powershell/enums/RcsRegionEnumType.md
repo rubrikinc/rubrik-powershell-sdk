@@ -95,3 +95,5 @@ Regions for Rubrik Cloud Storage Archival Location.
 - US_WEST_LOS_ANGELES - US West (Los Angeles).
 - US_EAST_2_VIRGINIA - Virginia (East US 2).
 - ASIA_EAST_TAIWAN - Asia East (Taiwan).
+- DENMARK_EAST - Denmark East or Copenhagen.
+- INDIA_SOUTH_CENTRAL - India South Central or Hyderabad.

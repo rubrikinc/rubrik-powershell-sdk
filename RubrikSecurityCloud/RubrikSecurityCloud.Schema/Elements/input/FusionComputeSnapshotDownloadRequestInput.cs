@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudStorageRehydrationSpeed? CloudRehydrationSpeed
+        // GraphQL -> cloudRehydrationSpeed: CloudStorageRehydrationSpeed (enum)
+        [JsonProperty("cloudRehydrationSpeed")]
+        public CloudStorageRehydrationSpeed? CloudRehydrationSpeed { get; set; }
+
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: UUID (scalar)
         [JsonProperty("slaId")]

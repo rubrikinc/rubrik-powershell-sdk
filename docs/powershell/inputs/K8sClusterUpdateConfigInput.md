@@ -56,3 +56,5 @@ The client ID for the service account.
 - pvcGroupingStrategy: System.String
   - Supported in v9.6+
 PVC grouping strategy used for multi-agent backup. Determines how PVCs are partitioned across kupr backup agents. One of: node_affinity, count, none. Omit to leave unchanged.
+- loadBalancerAnnotations: ClusterUpdateLoadBalancerAnnotationInput
+  - Annotations to set on the load balancer Service for the Kubernetes cluster. Only used when transport is loadbalancer. When non-empty, this list replaces the current custom annotations entirely. Omitting the field or sending an empty list leaves the current annotations unchanged. Removing all custom annotations is not supported through this API.
