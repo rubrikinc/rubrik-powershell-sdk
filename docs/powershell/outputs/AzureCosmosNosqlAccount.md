@@ -53,6 +53,12 @@ for the derived networkAccessMode.
 accounts have no provisioned throughput.
 - isProtectable: System.Boolean
   - Specifies whether the Azure Cosmos NoSQL account is protectable.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Resource group of the Azure Cosmos NoSQL account, including its
+subscription.
+- azureCosmosNosqlDatabaseCount: System.Int32
+  - Number of databases in the Azure Cosmos NoSQL account as of the last
+inventory refresh.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

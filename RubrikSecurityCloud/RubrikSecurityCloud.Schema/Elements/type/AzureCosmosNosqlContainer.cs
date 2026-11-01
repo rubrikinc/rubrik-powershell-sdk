@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("indexingMode")]
         public System.String? IndexingMode { get; set; }
 
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        [JsonProperty("isExocomputeConfigured")]
+        public System.Boolean? IsExocomputeConfigured { get; set; }
+
         //      C# -> System.Boolean? IsIndexingAutomatic
         // GraphQL -> isIndexingAutomatic: Boolean! (scalar)
         [JsonProperty("isIndexingAutomatic")]
@@ -425,6 +430,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Int32? IndexedPathCount = null,
         System.String? IndexingMode = null,
+        System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsIndexingAutomatic = null,
         System.Boolean? IsRelic = null,
         System.Int32? LegallyHeldSnapshotCount = null,
@@ -528,6 +534,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IndexingMode != null ) {
             this.IndexingMode = IndexingMode;
+        }
+        if ( IsExocomputeConfigured != null ) {
+            this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
         if ( IsIndexingAutomatic != null ) {
             this.IsIndexingAutomatic = IsIndexingAutomatic;
@@ -859,6 +868,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "indexingMode\n" ;
             } else {
                 s += ind + "indexingMode\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (this.IsExocomputeConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
             }
         }
         //      C# -> System.Boolean? IsIndexingAutomatic
@@ -1623,6 +1641,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IndexingMode != null && ec.Excludes("indexingMode",true))
         {
             this.IndexingMode = null;
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (ec.Includes("isExocomputeConfigured",true))
+        {
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
         }
         //      C# -> System.Boolean? IsIndexingAutomatic
         // GraphQL -> isIndexingAutomatic: Boolean! (scalar)

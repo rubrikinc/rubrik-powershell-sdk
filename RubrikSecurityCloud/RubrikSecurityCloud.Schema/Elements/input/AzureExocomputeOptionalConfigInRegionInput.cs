@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("healthCheckVmNamePrefix")]
         public System.String? HealthCheckVmNamePrefix { get; set; }
 
+        //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
+        // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode (enum)
+        [JsonProperty("aksPrivateDnsZoneMode")]
+        public AksPrivateDnsZoneMode? AksPrivateDnsZoneMode { get; set; }
+
 
         #endregion
 

@@ -316,3 +316,6 @@ Enum representing all the possible object types which generate events.
 - AGENT_CLOUD_REWIND_OBJECT - Agent Cloud rewind object.
 - GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages per organization.
 - M365_CONFIGS_ORG - M365 Configurations Organization.
+- PROXMOX_TAG - Proxmox tag.
+- VCF_FLEET - VMware Cloud Foundation (VCF) fleet. An inventory hierarchy level above the VCF instances, not a protectable object.
+- VCF_INSTANCE - VMware Cloud Foundation (VCF) instance. An inventory hierarchy level between a fleet and its vCenters, not a protectable object.

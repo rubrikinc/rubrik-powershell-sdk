@@ -331,6 +331,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> List<MssqlRecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [MssqlRecoveryPlansInfo!]! (type)
+        [JsonProperty("recoveryPlansInfo")]
+        public List<MssqlRecoveryPlansInfo>? RecoveryPlansInfo { get; set; }
+
         //      C# -> List<CdmMssqlDbReplica>? Replicas
         // GraphQL -> replicas: [CdmMssqlDbReplica!]! (type)
         [JsonProperty("replicas")]
@@ -566,6 +571,7 @@ namespace RubrikSecurityCloud.Types
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        List<MssqlRecoveryPlansInfo>? RecoveryPlansInfo = null,
         List<CdmMssqlDbReplica>? Replicas = null,
         SecurityMetadata? SecurityMetadata = null,
         CdmSnapshotConnection? SnapshotConnection = null,
@@ -759,6 +765,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryPlansInfo != null ) {
+            this.RecoveryPlansInfo = RecoveryPlansInfo;
         }
         if ( Replicas != null ) {
             this.Replicas = Replicas;
@@ -1442,6 +1451,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<MssqlRecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [MssqlRecoveryPlansInfo!]! (type)
+        if (this.RecoveryPlansInfo != null) {
+            var fspec = this.RecoveryPlansInfo.AsFieldSpec(conf.Child("recoveryPlansInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryPlansInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2657,6 +2678,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> List<MssqlRecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [MssqlRecoveryPlansInfo!]! (type)
+        if (ec.Includes("recoveryPlansInfo",false))
+        {
+            if(this.RecoveryPlansInfo == null) {
+
+                this.RecoveryPlansInfo = new List<MssqlRecoveryPlansInfo>();
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            } else {
+
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            }
+        }
+        else if (this.RecoveryPlansInfo != null && ec.Excludes("recoveryPlansInfo",false))
+        {
+            this.RecoveryPlansInfo = null;
         }
         //      C# -> List<CdmMssqlDbReplica>? Replicas
         // GraphQL -> replicas: [CdmMssqlDbReplica!]! (type)

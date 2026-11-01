@@ -60,6 +60,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE")]
         M365_BACKUP_STORAGE,
 
+        [EnumMember(Value = "M365_CFGS_DEFENDER")]
+        M365_CFGS_DEFENDER,
+
+        [EnumMember(Value = "M365_CFGS_EXCHANGE")]
+        M365_CFGS_EXCHANGE,
+
+        [EnumMember(Value = "M365_CFGS_ONEDRIVE")]
+        M365_CFGS_ONEDRIVE,
+
+        [EnumMember(Value = "M365_CFGS_PURVIEW")]
+        M365_CFGS_PURVIEW,
+
+        [EnumMember(Value = "M365_CFGS_SHAREPOINT")]
+        M365_CFGS_SHAREPOINT,
+
+        [EnumMember(Value = "M365_CFGS_TEAMS")]
+        M365_CFGS_TEAMS,
+
         [EnumMember(Value = "O365_COMMON")]
         O365_COMMON,
 

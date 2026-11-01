@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nutanixClusterName")]
         public System.String? NutanixClusterName { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         [JsonProperty("agentStatus")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? NutanixClusterId = null,
         System.String? NutanixClusterName = null,
+        DateTime? ProtectionDate = null,
         CdmAgentStatus? AgentStatus = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
         CdmWorkload? Snappable = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NutanixClusterName != null ) {
             this.NutanixClusterName = NutanixClusterName;
+        }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
         }
         if ( AgentStatus != null ) {
             this.AgentStatus = AgentStatus;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nutanixClusterName\n" ;
             } else {
                 s += ind + "nutanixClusterName\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
             }
         }
         //      C# -> CdmAgentStatus? AgentStatus
@@ -395,6 +413,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NutanixClusterName != null && ec.Excludes("nutanixClusterName",true))
         {
             this.NutanixClusterName = null;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)

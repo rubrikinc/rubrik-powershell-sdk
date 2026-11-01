@@ -87,3 +87,6 @@ Describes any pending SLA Domain assignment on this object.
 The additional details specific to SLA Managed Volumes.
 - snappable: CdmWorkload
   - The base workload object.
+- protectionDate: DateTime
+  - Supported in v9.7
+UTC timestamp for when the Managed Volume became protected by its current SLA Domain. Omitted if no SLA Domain has been assigned. The value resets every time the SLA Domain changes, including a reassignment to Unprotected.

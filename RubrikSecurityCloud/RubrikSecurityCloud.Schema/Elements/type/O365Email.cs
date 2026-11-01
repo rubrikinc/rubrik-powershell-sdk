@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        [JsonProperty("isContentDeferred")]
+        public System.Boolean? IsContentDeferred { get; set; }
+
         //      C# -> DateTime? LastModifiedDateTime
         // GraphQL -> lastModifiedDateTime: DateTime (scalar)
         [JsonProperty("lastModifiedDateTime")]
@@ -89,6 +94,7 @@ namespace RubrikSecurityCloud.Types
         ExchangeItemHierarchyType? HierarchyType = null,
         System.String? From = null,
         System.String? Id = null,
+        System.Boolean? IsContentDeferred = null,
         DateTime? LastModifiedDateTime = null,
         System.String? ParentFolderId = null,
         DateTime? ReceivedDateTime = null,
@@ -107,6 +113,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsContentDeferred != null ) {
+            this.IsContentDeferred = IsContentDeferred;
         }
         if ( LastModifiedDateTime != null ) {
             this.LastModifiedDateTime = LastModifiedDateTime;
@@ -171,6 +180,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        if (this.IsContentDeferred != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isContentDeferred\n" ;
+            } else {
+                s += ind + "isContentDeferred\n" ;
             }
         }
         //      C# -> DateTime? LastModifiedDateTime
@@ -302,6 +320,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsContentDeferred
+        // GraphQL -> isContentDeferred: Boolean (scalar)
+        if (ec.Includes("isContentDeferred",true))
+        {
+            if(this.IsContentDeferred == null) {
+
+                this.IsContentDeferred = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsContentDeferred != null && ec.Excludes("isContentDeferred",true))
+        {
+            this.IsContentDeferred = null;
         }
         //      C# -> DateTime? LastModifiedDateTime
         // GraphQL -> lastModifiedDateTime: DateTime (scalar)

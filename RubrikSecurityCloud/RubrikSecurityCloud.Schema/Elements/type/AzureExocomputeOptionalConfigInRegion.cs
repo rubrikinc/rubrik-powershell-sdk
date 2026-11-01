@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksNodeCountBucket")]
         public AksNodeCountBucket? AksNodeCountBucket { get; set; }
 
+        //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
+        // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode! (enum)
+        [JsonProperty("aksPrivateDnsZoneMode")]
+        public AksPrivateDnsZoneMode? AksPrivateDnsZoneMode { get; set; }
+
         //      C# -> List<System.String>? AdditionalWhitelistIps
         // GraphQL -> additionalWhitelistIps: [String!]! (scalar)
         [JsonProperty("additionalWhitelistIps")]
@@ -108,6 +113,7 @@ namespace RubrikSecurityCloud.Types
         AksClusterAccessType? AksClusterAccessType = null,
         AksProvisionTier? AksClusterTier = null,
         AksNodeCountBucket? AksNodeCountBucket = null,
+        AksPrivateDnsZoneMode? AksPrivateDnsZoneMode = null,
         List<System.String>? AdditionalWhitelistIps = null,
         System.String? AksCustomPrivateDnsZoneId = null,
         System.String? AksNodeRgPrefix = null,
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AksNodeCountBucket != null ) {
             this.AksNodeCountBucket = AksNodeCountBucket;
+        }
+        if ( AksPrivateDnsZoneMode != null ) {
+            this.AksPrivateDnsZoneMode = AksPrivateDnsZoneMode;
         }
         if ( AdditionalWhitelistIps != null ) {
             this.AdditionalWhitelistIps = AdditionalWhitelistIps;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "aksNodeCountBucket\n" ;
             } else {
                 s += ind + "aksNodeCountBucket\n" ;
+            }
+        }
+        //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
+        // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode! (enum)
+        if (this.AksPrivateDnsZoneMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "aksPrivateDnsZoneMode\n" ;
+            } else {
+                s += ind + "aksPrivateDnsZoneMode\n" ;
             }
         }
         //      C# -> List<System.String>? AdditionalWhitelistIps
@@ -373,6 +391,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AksNodeCountBucket != null && ec.Excludes("aksNodeCountBucket",true))
         {
             this.AksNodeCountBucket = null;
+        }
+        //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
+        // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode! (enum)
+        if (ec.Includes("aksPrivateDnsZoneMode",true))
+        {
+            if(this.AksPrivateDnsZoneMode == null) {
+
+                this.AksPrivateDnsZoneMode = new AksPrivateDnsZoneMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksPrivateDnsZoneMode != null && ec.Excludes("aksPrivateDnsZoneMode",true))
+        {
+            this.AksPrivateDnsZoneMode = null;
         }
         //      C# -> List<System.String>? AdditionalWhitelistIps
         // GraphQL -> additionalWhitelistIps: [String!]! (scalar)

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> CloudVendor? CloudVendor
-        // GraphQL -> cloudVendor: CloudVendor! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudVendor")]
-        public CloudVendor? CloudVendor { get; set; }
-
         //      C# -> System.String? ExocomputeConfigId
         // GraphQL -> exocomputeConfigId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("exocomputeConfigId")]
         public System.String? ExocomputeConfigId { get; set; }
+
+        //      C# -> CloudVendor? CloudVendor
+        // GraphQL -> cloudVendor: CloudVendor! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("cloudVendor")]
+        public CloudVendor? CloudVendor { get; set; }
 
 
         #endregion

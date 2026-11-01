@@ -1178,9 +1178,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-    /// 	# REQUIRED
     /// 	exocomputeConfigId = $someString
+    /// 	# REQUIRED
+    /// 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1352,14 +1352,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	durationInDays = $someInt
     /// 	# OPTIONAL
-    /// 	azureSpecificClusterParams = @{
-    /// 		# OPTIONAL
-    /// 		nodeType = $someString
-    /// 	}
-    /// 	# OPTIONAL
     /// 	awsSpecificClusterParams = @{
     /// 		# OPTIONAL
     /// 		nodeKeypairName = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	azureSpecificClusterParams = @{
+    /// 		# OPTIONAL
+    /// 		nodeType = $someString
     /// 	}
     /// }
     /// 
@@ -3318,9 +3318,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
-	# REQUIRED
 	exocomputeConfigId = $someString
+	# REQUIRED
+	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
 }"
             );
         }
@@ -3468,14 +3468,14 @@ $query.Var.input = @{
 	# OPTIONAL
 	durationInDays = $someInt
 	# OPTIONAL
-	azureSpecificClusterParams = @{
-		# OPTIONAL
-		nodeType = $someString
-	}
-	# OPTIONAL
 	awsSpecificClusterParams = @{
 		# OPTIONAL
 		nodeKeypairName = $someString
+	}
+	# OPTIONAL
+	azureSpecificClusterParams = @{
+		# OPTIONAL
+		nodeType = $someString
 	}
 }"
             );

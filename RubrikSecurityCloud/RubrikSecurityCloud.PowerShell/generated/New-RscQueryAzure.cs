@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 76
+    /// Create a new RscQuery object for any of the 77
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsOrgsInTenant, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, LocalExportTargetClusters, LocalLogicalNetworks, LocalResourceGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, CompareAdObjectAttributes, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsOrgsInTenant, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, LocalExportTargetClusters, LocalLogicalNetworks, LocalResourceGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 76 operations
+    /// There are 77 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsOrgsInTenant, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, LocalExportTargetClusters, LocalLogicalNetworks, LocalResourceGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, CompareAdObjectAttributes, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsOrgsInTenant, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, LocalExportTargetClusters, LocalLogicalNetworks, LocalResourceGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -890,6 +890,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AzureClusterStorageAccountRedundancyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CompareAdObjectAttributes operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CompareAdObjectAttributes
+    /// 
+    /// $query = New-RscQueryAzure -Operation CompareAdObjectAttributes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// 	# OPTIONAL
+    /// 	objectIdString = $someString
+    /// 	# REQUIRED
+    /// 	workloadFid = $someString
+    /// 	# REQUIRED
+    /// 	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	alteredOnly = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CompareObjectAttributesResponse
     /// 
     /// 
     /// 
@@ -3346,6 +3387,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				azurePostgresFlexServerPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				healthCheckVmNamePrefix = $someString
+    /// 				# OPTIONAL
+    /// 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -3605,6 +3648,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountTenantWithExoConfigs",
                 "CloudAccountTenants",
                 "ClusterStorageAccountRedundancy",
+                "CompareAdObjectAttributes",
                 "DevOpsConnectionStatusSummary",
                 "DevOpsOrganization",
                 "DevOpsOrganizations",
@@ -3735,6 +3779,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ClusterStorageAccountRedundancy":
                         this.ProcessRecord_ClusterStorageAccountRedundancy();
+                        break;
+                    case "CompareAdObjectAttributes":
+                        this.ProcessRecord_CompareAdObjectAttributes();
                         break;
                     case "DevOpsConnectionStatusSummary":
                         this.ProcessRecord_DevOpsConnectionStatusSummary();
@@ -4092,6 +4139,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ClusterStorageAccountRedundancy";
             // Create new graphql operation azureClusterStorageAccountRedundancy
             InitQueryAzureClusterStorageAccountRedundancy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // compareAzureAdObjectAttributes.
+        internal void ProcessRecord_CompareAdObjectAttributes()
+        {
+            this._logger.name += " -CompareAdObjectAttributes";
+            // Create new graphql operation compareAzureAdObjectAttributes
+            InitQueryCompareAzureAdObjectAttributes();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -5340,6 +5396,39 @@ $query.Var.input = @{
 	cloudAccountId = $someString
 	# OPTIONAL
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // compareAzureAdObjectAttributes(input: CompareAzureAdObjectAttributesInput!): CompareObjectAttributesResponse!
+        internal void InitQueryCompareAzureAdObjectAttributes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompareAzureAdObjectAttributesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCompareAzureAdObjectAttributes",
+                "($input: CompareAzureAdObjectAttributesInput!)",
+                "CompareObjectAttributesResponse",
+                Query.CompareAzureAdObjectAttributes,
+                Query.CompareAzureAdObjectAttributesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	objectId = $someString
+	# OPTIONAL
+	objectIdString = $someString
+	# REQUIRED
+	workloadFid = $someString
+	# REQUIRED
+	azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	# REQUIRED
+	snapshotId = $someString
+	# REQUIRED
+	alteredOnly = $someBoolean
 }"
             );
         }
@@ -7663,6 +7752,8 @@ $query.Var.input = @{
 				azurePostgresFlexServerPrivateDnsZoneId = $someString
 				# OPTIONAL
 				healthCheckVmNamePrefix = $someString
+				# OPTIONAL
+				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
 			}
 		}
 	)

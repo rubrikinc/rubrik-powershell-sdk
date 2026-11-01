@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 34
+    /// Create a new RscQuery object for any of the 35
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfObjects, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RecoverS3TablesIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfObjects, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RecoverS3TablesIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverDynamoDbJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 34 operations
+    /// There are 35 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfObjects, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RecoverS3TablesIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfObjects, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RecoverS3TablesIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverDynamoDbJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1339,6 +1339,113 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartRecoverDynamoDbJob operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: StartRecoverDynamoDbJob
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation StartRecoverDynamoDbJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	workloadId = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryDate = $someDateTime
+    /// 	# OPTIONAL
+    /// 	targetAwsAccountRubrikId = $someString
+    /// 	# REQUIRED
+    /// 	destinationRegion = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	maxRecoveryWcus = $someInt
+    /// 	# REQUIRED
+    /// 	recoveredTableName = $someString
+    /// 	# OPTIONAL
+    /// 	exportTags = $someBoolean
+    /// 	# REQUIRED
+    /// 	includeSecondaryIndexes = $someBoolean
+    /// 	# OPTIONAL
+    /// 	kmsKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	preferRecoveryFromArchivedCopy = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	restoreDestination = $someDynamoDbRestoreDestination # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbRestoreDestination]) for enum values.
+    /// 	# OPTIONAL
+    /// 	search = @{
+    /// 		# REQUIRED
+    /// 		partitionKeyValues = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		filters = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				fieldName = $someString
+    /// 				# OPTIONAL
+    /// 				operator = $someCloudNativeSearchOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeSearchOperator]) for enum values.
+    /// 				# OPTIONAL
+    /// 				values = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	overwrite = @{
+    /// 		# REQUIRED
+    /// 		mode = $someDynamoDbOverwriteMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbOverwriteMode]) for enum values.
+    /// 		# OPTIONAL
+    /// 		conditionalTimestampField = $someString
+    /// 		# OPTIONAL
+    /// 		conditionalTimestampValue = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	ttl = @{
+    /// 		# REQUIRED
+    /// 		handling = $someDynamoDbTtlHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbTtlHandling]) for enum values.
+    /// 		# OPTIONAL
+    /// 		customExpiry = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	customAttribute = @{
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# REQUIRED
+    /// 		value = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	s3ExportTarget = @{
+    /// 		# REQUIRED
+    /// 		bucket = $someString
+    /// 		# OPTIONAL
+    /// 		prefix = $someString
+    /// 		# OPTIONAL
+    /// 		region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StartRecoverS3Job operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1666,6 +1773,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RestoreOpenstackVmFiles",
                 "RestoreVolumeGroupFiles",
                 "StartEc2InstanceExportJob",
+                "StartRecoverDynamoDbJob",
                 "StartRecoverS3Job",
                 "TakeCloudDirect",
                 "TakeOnDemand",
@@ -1768,6 +1876,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartEc2InstanceExportJob":
                         this.ProcessRecord_StartEc2InstanceExportJob();
+                        break;
+                    case "StartRecoverDynamoDbJob":
+                        this.ProcessRecord_StartRecoverDynamoDbJob();
                         break;
                     case "StartRecoverS3Job":
                         this.ProcessRecord_StartRecoverS3Job();
@@ -2041,6 +2152,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartEc2InstanceExportJob";
             // Create new graphql operation startEc2InstanceSnapshotExportJob
             InitMutationStartEc2InstanceSnapshotExportJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startRecoverDynamoDbSnapshotJob.
+        internal void ProcessRecord_StartRecoverDynamoDbJob()
+        {
+            this._logger.name += " -StartRecoverDynamoDbJob";
+            // Create new graphql operation startRecoverDynamoDbSnapshotJob
+            InitMutationStartRecoverDynamoDbSnapshotJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3148,6 +3268,105 @@ $query.Var.input = @{
 				$someString
 			)
 		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startRecoverDynamoDbSnapshotJob(input: StartRecoverDynamoDBSnapshotJobInput!): AsyncJobStatus!
+        internal void InitMutationStartRecoverDynamoDbSnapshotJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartRecoverDynamoDBSnapshotJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartRecoverDynamoDbSnapshotJob",
+                "($input: StartRecoverDynamoDBSnapshotJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartRecoverDynamoDbSnapshotJob,
+                Mutation.StartRecoverDynamoDbSnapshotJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	workloadId = $someString
+	# OPTIONAL
+	snapshotId = $someString
+	# OPTIONAL
+	recoveryDate = $someDateTime
+	# OPTIONAL
+	targetAwsAccountRubrikId = $someString
+	# REQUIRED
+	destinationRegion = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+	# OPTIONAL
+	maxRecoveryWcus = $someInt
+	# REQUIRED
+	recoveredTableName = $someString
+	# OPTIONAL
+	exportTags = $someBoolean
+	# REQUIRED
+	includeSecondaryIndexes = $someBoolean
+	# OPTIONAL
+	kmsKeyId = $someString
+	# OPTIONAL
+	preferRecoveryFromArchivedCopy = $someBoolean
+	# OPTIONAL
+	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	restoreDestination = $someDynamoDbRestoreDestination # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbRestoreDestination]) for enum values.
+	# OPTIONAL
+	search = @{
+		# REQUIRED
+		partitionKeyValues = @(
+			$someString
+		)
+		# OPTIONAL
+		filters = @(
+			@{
+				# OPTIONAL
+				fieldName = $someString
+				# OPTIONAL
+				operator = $someCloudNativeSearchOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeSearchOperator]) for enum values.
+				# OPTIONAL
+				values = @(
+					$someString
+				)
+			}
+		)
+	}
+	# OPTIONAL
+	overwrite = @{
+		# REQUIRED
+		mode = $someDynamoDbOverwriteMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbOverwriteMode]) for enum values.
+		# OPTIONAL
+		conditionalTimestampField = $someString
+		# OPTIONAL
+		conditionalTimestampValue = $someDateTime
+	}
+	# OPTIONAL
+	ttl = @{
+		# REQUIRED
+		handling = $someDynamoDbTtlHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DynamoDbTtlHandling]) for enum values.
+		# OPTIONAL
+		customExpiry = $someDateTime
+	}
+	# OPTIONAL
+	customAttribute = @{
+		# REQUIRED
+		name = $someString
+		# REQUIRED
+		value = $someString
+	}
+	# OPTIONAL
+	s3ExportTarget = @{
+		# REQUIRED
+		bucket = $someString
+		# OPTIONAL
+		prefix = $someString
+		# OPTIONAL
+		region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 	}
 }"
             );

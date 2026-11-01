@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pendingSnapshotCount")]
         public System.Int32? PendingSnapshotCount { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
         [JsonProperty("smbDomainName")]
@@ -150,6 +155,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsWritable = null,
         System.Int32? NumChannels = null,
         System.Int32? PendingSnapshotCount = null,
+        DateTime? ProtectionDate = null,
         System.String? SmbDomainName = null,
         List<System.String>? SmbValidIps = null,
         List<System.String>? SmbValidUsers = null,
@@ -193,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PendingSnapshotCount != null ) {
             this.PendingSnapshotCount = PendingSnapshotCount;
+        }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
         }
         if ( SmbDomainName != null ) {
             this.SmbDomainName = SmbDomainName;
@@ -332,6 +341,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "pendingSnapshotCount\n" ;
             } else {
                 s += ind + "pendingSnapshotCount\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
             }
         }
         //      C# -> System.String? SmbDomainName
@@ -633,6 +651,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingSnapshotCount != null && ec.Excludes("pendingSnapshotCount",true))
         {
             this.PendingSnapshotCount = null;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)

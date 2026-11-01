@@ -19,6 +19,10 @@ An email message.
   - The timestamp when the email was last modified.
 - snapshotId: System.String
   - The snapshot ID of this version of the email.
+- isContentDeferred: System.Boolean
+  - Whether the email's content backup was deferred. The email's metadata is
+present and browsable, but its content cannot be restored until backup
+completes for it.
 - id: System.String
   - The ID of the Microsoft 365 Exchange object.
 - parentFolderId: System.String

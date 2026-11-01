@@ -49,6 +49,10 @@ GitHub organization. Empty when no token is set or its owner is unknown.
 - patExpiry: DateTime
   - Expiry of the personal access token set for the GitHub organization.
 Null when no token is set or the token does not expire.
+- packagesFixedObjectId: System.String
+  - Managed object UUID of the GitHub organization's packages fixed object.
+Null when the organization packages fixed object has not been created
+yet.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - objectStats: DevOpsObjectStats

@@ -27,7 +27,6 @@ AzureVm.Region and AzureDisk.region.
 - AWS_TAG - Filter by aws_native_tags.
 - ON_OR_ABOVE_CLUSTER_VERSION - Filter by software version of the cluster.
 - AZURE_VM_SUBSCRIPTION_ID - Filter Azure virtual machines on subscription ID.
-+comment: todo (SPARK-88655): remove usage of VMRG and DiskRG.
 - AZURE_VNET_NAME - Filter Azure virtual machines on VNet name.
 - AZURE_VM_SIZE - Filter Azure virtual machines on virtual machine size.
 - AWS_NATIVE_EC2_INSTANCE_ID - ID of the AWS native EC2 instance (Rubrik ID), applicable for filtering
@@ -48,7 +47,6 @@ subtype knowledge there. To query for shared users, we can either:
 to them.
 - FILESET_TEMPLATE_OS_TYPE - Filter fileset templates by OS Type.
 - AZURE_DISK_SUBSCRIPTION_ID - Filter Azure disks by subscription ID.
-+comment: todo (SPARK-88655): remove usage of VMRG and DiskRG.
 - AZURE_DISK_SIZE - Filter Azure disks on Disk size.
 - AZURE_DISK_ATTACHED_VM - Filter Azure disks by ID of the attached virtual machine.
 - EC2_INSTANCE_INDEXING_STATUS - Filter EC2 Instances by status of indexing. Possible values for
@@ -1045,6 +1043,19 @@ the object name.
 +mo:filter:db:table=saasapps_salesforce_objects
 +mo:filter:db:column=name
 +mo:filter:db:index:key=NULL // no index on name column
+- SAASAPPS_RTP_ENABLED - Filter SaaS workloads by whether real-time protection (RTP) is enabled
+for them. Texts[0] is a boolean: "true" keeps only workloads with an
+enabled RTP policy, "false" applies no filtering. The filter is ignored
+unless the LIC_ENABLE_SALESFORCE_REAL_TIME_PROTECTION feature flag is
+enabled for the account.
+The policy is joined on workload ID through the leading column of the
+index; is_enabled is a residual predicate on the matched row.
++mo:filter:db:table=saasapps_rtp_policy
++mo:filter:db:column=snappable_id
++mo:filter:db:index:key=snappable_id_org_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - GCP_NATIVE_PROJECT_ENABLED_FEATURE - Filter GCP native projects based on the features enabled for them.
 +mo:filter:db:table=gcp_customer_features
 +mo:filter:db:column=gcp_native_protection_feature_names
@@ -1556,3 +1567,73 @@ account where the flag is off is rejected.
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
 +reason: LEFT JOIN both tables (1:1 on unique snappable_fid); missing row = "not muted". Cost bounded like CLUSTER_MANAGEMENT_TYPE.
+- AZURE_COSMOS_NOSQL_ACCOUNT_RG_NAME - Filter Azure Cosmos NoSQL accounts by the name of their resource group.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=native_resource_group_name
++mo:filter:db:index:key=native_resource_group_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_ACCOUNT_SUBSCRIPTION_ID - Filter Azure Cosmos NoSQL accounts by the Rubrik ID of their
+subscription.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=azure_native_resource_groups_fk1
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_DATABASE_ACCOUNT_NAME - Filter Azure Cosmos NoSQL databases by the name of their parent account,
+denormalized onto the database as a property.
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL -- row reached per object via PK (object_id, property_key)
+- AZURE_COSMOS_NOSQL_DATABASE_RG_NAME - Filter Azure Cosmos NoSQL databases by the name of the resource group
+of their parent account.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=native_resource_group_name
++mo:filter:db:index:key=native_resource_group_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_DATABASE_SUBSCRIPTION_ID - Filter Azure Cosmos NoSQL databases by the Rubrik ID of the subscription
+of their parent account.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=azure_native_resource_groups_fk1
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_CONTAINER_RG_NAME - Filter Azure Cosmos NoSQL containers by the name of the resource group
+of the account that owns their parent database.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=native_resource_group_name
++mo:filter:db:index:key=native_resource_group_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_CONTAINER_SUBSCRIPTION_ID - Filter Azure Cosmos NoSQL containers by the Rubrik ID of the
+subscription of the account that owns their parent database.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=azure_native_resource_groups_fk1
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- IRISDB_STORAGE_ARRAY_ID - Filter IRIS DB instances by the ID of the storage array backing the
+instance's volumes, resolved via the array id on the instance's
+storage spec.
++mo:filter:db:table=cdm_irisdb_instance
++mo:filter:db:column=storage_spec
++mo:filter:db:index:key=NULL
++mo:filter:db:table=cdm_storage_array
++mo:filter:db:column=cluster_uuid
++mo:filter:db:index:key=cluster_mds_index_v2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=id
++mo:filter:db:index:key=cluster_mds_index_v2
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++reason: cdm_storage_array.fid is unique (1 row) and cluster_mds_index_v2 narrows cdm_irisdb_instance to that single cluster's instances before evaluating json_extract

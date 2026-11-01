@@ -108,6 +108,8 @@ been tiered to cold storage.
   - The workload this snapshot belongs to.
 - hypervVirtualMachineAppMetadata: HypervAppMetadata
   - Hyper-V virtual machine-specific metadata. Null if the snapshot is not of a Hyper-V virtual machine.
+- hpeVmeResourceSpec: HpeVmeResourceSpec
+  - Sizing and placement of the HPE Virtual Machine Essentials virtual machine when the snapshot was taken. Null if the snapshot is not of an HPE Virtual Machine Essentials virtual machine or carries no resource spec.
 - mssqlAppMetadata: MssqlAppMetadata
   - Mssql specific metadata for the snapshot.
 - vappAppMetadata: list of VappAppMetadatas

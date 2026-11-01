@@ -17,7 +17,8 @@ instances get all filters, databases get time-only).
     - preferredLocationType - CloudNativeSnapshotLocationType: Preferred snapshot location.
 - Returns GetCloudNativeApplicationSnapshotsReply.
 ### checkarchivedsnapshotslocked
-Archived snapshot locking related details for a workload. If no snapshots IDs are passed, all the expired source snapshots and the source snapshots that have a unexpired archival copy will be checked.
+Archived snapshot locking related details for a workload. If no snapshot IDs are passed, all the globally unexpired source snapshots are checked.
+A source snapshot that has no archival copy is reported as invalid rather than as locked or unlocked.
 
 - There are 2 arguments.
     - workloadId - System.String: Workload ID.
@@ -87,7 +88,7 @@ Cloud native label rules.
 - There are 4 arguments.
     - objectType - CloudNativeLabelObjectType: Type of managed object on which label rule will be applied.
     - filters - list of CloudNativeFilters: Fields and values according to which rules will be filtered.
-    - sortBy - CloudNativeTagRuleSortByFields
+    - sortBy - CloudNativeTagRuleSortByFields: Field according to which rules will be sorted.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns GetCloudNativeLabelRulesReply.
 ### labelvalues
@@ -118,11 +119,13 @@ Details of snapshot types available for recovery.
 ### snapshots
 List of all files and directories in a given path with the given prefix in name.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
-    - path - System.String: The path under which you want your search to run.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snapshotFid - System.String: ID of the snapshot to be searched or browsed.
+    - path - System.String: The path under which you want your search to run.
     - searchPrefix - System.String: Name prefix to search for files within a snapshot.
 - Returns SnapshotFileConnection.
 ### snapshottypedetails
@@ -150,7 +153,7 @@ Cloud native tag rules.
 - There are 4 arguments.
     - objectType - CloudNativeTagObjectType: Type of managed object on which tag rule will be applied.
     - filters - list of CloudNativeFilters: Fields and values according to which rules will be filtered.
-    - sortBy - CloudNativeTagRuleSortByFields
+    - sortBy - CloudNativeTagRuleSortByFields: Field according to which rules will be sorted.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns GetCloudNativeTagRulesReply.
 ### tagrulesobjecttype
@@ -172,9 +175,11 @@ List of cloud native tag values matched by substring.
 ### workloadversionedfiles
 List all files and directories in a given snappable with the given prefix in name.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - snappableId - System.String: Snappable ID.
     - searchQuery - System.String: Specify either the name or path prefix argument to search for files within a workload.
 - Returns CloudNativeVersionedFileConnection.

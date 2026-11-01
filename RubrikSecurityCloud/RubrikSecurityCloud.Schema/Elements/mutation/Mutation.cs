@@ -5077,6 +5077,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AssignCloudDirectCopyScheduleReply? AssignCloudDirectCopySchedule
+        // GraphQL -> assignCloudDirectCopySchedule: AssignCloudDirectCopyScheduleReply! (type)
+        public static string AssignCloudDirectCopySchedule(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "assignCloudDirectCopySchedule" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AssignCloudDirectCopyScheduleFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AssignCloudDirectCopyScheduleReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ResponseSuccess? AssignMssqlSlaDomainProperties
         // GraphQL -> assignMssqlSlaDomainProperties: ResponseSuccess! (type)
         public static string AssignMssqlSlaDomainProperties(object fsObj)
@@ -6985,6 +7003,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateCloudDirectCopyScheduleReply? CreateCloudDirectCopySchedule
+        // GraphQL -> createCloudDirectCopySchedule: CreateCloudDirectCopyScheduleReply! (type)
+        public static string CreateCloudDirectCopySchedule(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createCloudDirectCopySchedule" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateCloudDirectCopyScheduleFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateCloudDirectCopyScheduleReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CreateCloudNativeAwsStorageSettingReply? CreateCloudNativeAwsStorageSetting
         // GraphQL -> createCloudNativeAwsStorageSetting: CreateCloudNativeAwsStorageSettingReply! (type)
         public static string CreateCloudNativeAwsStorageSetting(object fsObj)
@@ -8403,6 +8439,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new DeleteAzureCloudAccountWithoutOauthReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DeleteCloudDirectCopyScheduleReply? DeleteCloudDirectCopySchedule
+        // GraphQL -> deleteCloudDirectCopySchedule: DeleteCloudDirectCopyScheduleReply! (type)
+        public static string DeleteCloudDirectCopySchedule(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCloudDirectCopySchedule" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DeleteCloudDirectCopyScheduleFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DeleteCloudDirectCopyScheduleReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15031,6 +15085,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncJobStatus? StartRecoverDynamoDbSnapshotJob
+        // GraphQL -> startRecoverDynamoDbSnapshotJob: AsyncJobStatus! (type)
+        public static string StartRecoverDynamoDbSnapshotJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRecoverDynamoDbSnapshotJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRecoverDynamoDbSnapshotJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncJobStatus? StartRecoverS3SnapshotJob
         // GraphQL -> startRecoverS3SnapshotJob: AsyncJobStatus! (type)
         public static string StartRecoverS3SnapshotJob(object fsObj)
@@ -15661,6 +15733,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UnassignCloudDirectCopyScheduleReply? UnassignCloudDirectCopySchedule
+        // GraphQL -> unassignCloudDirectCopySchedule: UnassignCloudDirectCopyScheduleReply! (type)
+        public static string UnassignCloudDirectCopySchedule(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "unassignCloudDirectCopySchedule" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UnassignCloudDirectCopyScheduleFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UnassignCloudDirectCopyScheduleReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? UnconfigureSapHanaRestore
         // GraphQL -> unconfigureSapHanaRestore: AsyncRequestStatus! (type)
         public static string UnconfigureSapHanaRestore(object fsObj)
@@ -15981,6 +16071,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateCertificateHostReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateCloudDirectCopyScheduleReply? UpdateCloudDirectCopySchedule
+        // GraphQL -> updateCloudDirectCopySchedule: UpdateCloudDirectCopyScheduleReply! (type)
+        public static string UpdateCloudDirectCopySchedule(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCloudDirectCopySchedule" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateCloudDirectCopyScheduleFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateCloudDirectCopyScheduleReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

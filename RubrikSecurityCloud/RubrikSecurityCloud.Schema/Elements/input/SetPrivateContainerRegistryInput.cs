@@ -26,17 +26,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeAccountId")]
         public System.String? ExocomputeAccountId { get; set; }
 
+        //      C# -> CloudType? CloudType
+        // GraphQL -> cloudType: CloudType (enum)
+        [JsonProperty("cloudType")]
+        public CloudType? CloudType { get; set; }
+
         //      C# -> System.String? RegistryUrl
         // GraphQL -> registryUrl: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("registryUrl")]
         public System.String? RegistryUrl { get; set; }
-
-        //      C# -> CloudType? CloudType
-        // GraphQL -> cloudType: CloudType (enum)
-        [JsonProperty("cloudType")]
-        public CloudType? CloudType { get; set; }
 
         //      C# -> PcrAwsImagePullDetailsInput? PcrAwsImagePullDetails
         // GraphQL -> pcrAwsImagePullDetails: PcrAwsImagePullDetailsInput (input)

@@ -21,6 +21,7 @@ Create cloud native label rule
 - There is a single argument of type CreateCloudNativeLabelRuleInput.
 - Returns CreateCloudNativeLabelRuleReply.
 ### createtagrule
+Tag Rules CRUD
 Create cloud native tag rule
 
 - There is a single argument of type CreateCloudNativeTagRuleInput.

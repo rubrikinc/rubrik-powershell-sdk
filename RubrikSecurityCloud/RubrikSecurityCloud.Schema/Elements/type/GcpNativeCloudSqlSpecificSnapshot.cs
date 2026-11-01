@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storageSize")]
         public System.Int32? StorageSize { get; set; }
 
+        //      C# -> GcpKmsCryptoKey? EncryptionKey
+        // GraphQL -> encryptionKey: GcpKmsCryptoKey (type)
+        [JsonProperty("encryptionKey")]
+        public GcpKmsCryptoKey? EncryptionKey { get; set; }
+
 
         #endregion
 
@@ -66,7 +71,8 @@ namespace RubrikSecurityCloud.Types
         System.String? InstanceTier = null,
         System.String? KmsKey = null,
         System.String? SnapshotId = null,
-        System.Int32? StorageSize = null
+        System.Int32? StorageSize = null,
+        GcpKmsCryptoKey? EncryptionKey = null
     ) 
     {
         if ( Edition != null ) {
@@ -86,6 +92,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StorageSize != null ) {
             this.StorageSize = StorageSize;
+        }
+        if ( EncryptionKey != null ) {
+            this.EncryptionKey = EncryptionKey;
         }
         return this;
     }
@@ -153,6 +162,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "storageSize\n" ;
             } else {
                 s += ind + "storageSize\n" ;
+            }
+        }
+        //      C# -> GcpKmsCryptoKey? EncryptionKey
+        // GraphQL -> encryptionKey: GcpKmsCryptoKey (type)
+        if (this.EncryptionKey != null) {
+            var fspec = this.EncryptionKey.AsFieldSpec(conf.Child("encryptionKey"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "encryptionKey" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -263,6 +284,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.StorageSize != null && ec.Excludes("storageSize",true))
         {
             this.StorageSize = null;
+        }
+        //      C# -> GcpKmsCryptoKey? EncryptionKey
+        // GraphQL -> encryptionKey: GcpKmsCryptoKey (type)
+        if (ec.Includes("encryptionKey",false))
+        {
+            if(this.EncryptionKey == null) {
+
+                this.EncryptionKey = new GcpKmsCryptoKey();
+                this.EncryptionKey.ApplyExploratoryFieldSpec(ec.NewChild("encryptionKey"));
+
+            } else {
+
+                this.EncryptionKey.ApplyExploratoryFieldSpec(ec.NewChild("encryptionKey"));
+
+            }
+        }
+        else if (this.EncryptionKey != null && ec.Excludes("encryptionKey",false))
+        {
+            this.EncryptionKey = null;
         }
     }
 

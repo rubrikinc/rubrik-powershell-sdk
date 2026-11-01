@@ -407,6 +407,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -1661,6 +1665,8 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
         // nutanixMounts(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     filters: [NutanixLiveMountFilterInput!]
         //     sortBy: NutanixLiveMountSortByInput
         //   ): NutanixLiveMountConnection!
@@ -1669,6 +1675,8 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("filters", "[NutanixLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "NutanixLiveMountSortByInput"),
             };
@@ -1676,7 +1684,7 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
                 argDefs,
                 "query",
                 "QueryNutanixMounts",
-                "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
                 "NutanixLiveMountConnection",
                 Query.NutanixMounts,
                 Query.NutanixMountsFieldSpec,
@@ -1684,6 +1692,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filters = @(
 	@{

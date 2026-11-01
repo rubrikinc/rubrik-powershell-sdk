@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("message")]
         public System.String? Message { get; set; }
 
+        //      C# -> List<RecoveryValidationFinding>? Findings
+        // GraphQL -> findings: [RecoveryValidationFinding!]! (type)
+        [JsonProperty("findings")]
+        public List<RecoveryValidationFinding>? Findings { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public ValidationRecoveryReply Set(
         System.Boolean? CanBeRecovered = null,
-        System.String? Message = null
+        System.String? Message = null,
+        List<RecoveryValidationFinding>? Findings = null
     ) 
     {
         if ( CanBeRecovered != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Message != null ) {
             this.Message = Message;
+        }
+        if ( Findings != null ) {
+            this.Findings = Findings;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "message\n" ;
             } else {
                 s += ind + "message\n" ;
+            }
+        }
+        //      C# -> List<RecoveryValidationFinding>? Findings
+        // GraphQL -> findings: [RecoveryValidationFinding!]! (type)
+        if (this.Findings != null) {
+            var fspec = this.Findings.AsFieldSpec(conf.Child("findings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "findings" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Message != null && ec.Excludes("message",true))
         {
             this.Message = null;
+        }
+        //      C# -> List<RecoveryValidationFinding>? Findings
+        // GraphQL -> findings: [RecoveryValidationFinding!]! (type)
+        if (ec.Includes("findings",false))
+        {
+            if(this.Findings == null) {
+
+                this.Findings = new List<RecoveryValidationFinding>();
+                this.Findings.ApplyExploratoryFieldSpec(ec.NewChild("findings"));
+
+            } else {
+
+                this.Findings.ApplyExploratoryFieldSpec(ec.NewChild("findings"));
+
+            }
+        }
+        else if (this.Findings != null && ec.Excludes("findings",false))
+        {
+            this.Findings = null;
         }
     }
 

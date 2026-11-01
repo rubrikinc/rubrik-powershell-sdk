@@ -74,3 +74,4 @@ Inventory Card options that the user can select as a workload.
 - AZURE_COSMOS_NOSQL - Inventory card is Azure Cosmos NoSQL.
 - HPE_VME - Inventory card is HPE Virtual Machine Essentials.
 - M365_CONFIGS - Inventory card is Microsoft 365 tenant configurations.
+- M365_JOURNALING - Inventory card is Microsoft 365 Exchange Journal Vault.

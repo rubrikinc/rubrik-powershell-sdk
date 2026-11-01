@@ -486,3 +486,53 @@ run on.
 +mo:sort:db:table=cdm_host
 +mo:sort:db:column=name
 +mo:sort:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_ACCOUNT_DATABASE_COUNT - Sort Azure Cosmos NoSQL accounts by their number of databases as of the
+last inventory refresh. An account with no stored count sorts first
+ascending and last descending.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed -- row reached per object via PK (object_id, property_key)
+- AZURE_COSMOS_NOSQL_ACCOUNT_RESOURCE_GROUP_NAME - Sort Azure Cosmos NoSQL accounts by the name of their resource group.
++mo:sort:db:table=azure_native_resource_groups
++mo:sort:db:column=native_resource_group_name
++mo:sort:db:index:key=native_resource_group_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- AZURE_COSMOS_NOSQL_ACCOUNT_SUBSCRIPTION_NAME - Sort Azure Cosmos NoSQL accounts by the name of their subscription.
++mo:sort:db:table=azure_native_subscriptions
++mo:sort:db:column=native_subscription_name
++mo:sort:db:index:not_needed -- row reached via PK subscription_id; one row per onboarded subscription
+- AZURE_COSMOS_NOSQL_DATABASE_ACCOUNT_NAME - Sort Azure Cosmos NoSQL databases by the name of their parent account,
+denormalized onto the database as a property. A database with no stored
+name sorts first ascending and last descending.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed -- row reached per object via PK (object_id, property_key)
+- AZURE_COSMOS_NOSQL_DATABASE_CONTAINER_COUNT - Sort Azure Cosmos NoSQL databases by their number of containers as of the
+last inventory refresh. A database with no stored count sorts first
+ascending and last descending.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed -- row reached per object via PK (object_id, property_key)
+- AZURE_COSMOS_NOSQL_DATABASE_RESOURCE_GROUP_NAME - Sort Azure Cosmos NoSQL databases by the name of the resource group of
+their parent account.
++mo:sort:db:table=azure_native_resource_groups
++mo:sort:db:column=native_resource_group_name
++mo:sort:db:index:key=native_resource_group_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- AZURE_COSMOS_NOSQL_DATABASE_SUBSCRIPTION_NAME - Sort Azure Cosmos NoSQL databases by the name of the subscription of
+their parent account.
++mo:sort:db:table=azure_native_subscriptions
++mo:sort:db:column=native_subscription_name
++mo:sort:db:index:not_needed -- row reached via PK subscription_id; one row per onboarded subscription
+- AZURE_COSMOS_NOSQL_CONTAINER_RESOURCE_GROUP_NAME - Sort Azure Cosmos NoSQL containers by the name of the resource group of
+the account that owns their parent database.
++mo:sort:db:table=azure_native_resource_groups
++mo:sort:db:column=native_resource_group_name
++mo:sort:db:index:key=native_resource_group_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false

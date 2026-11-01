@@ -152,6 +152,11 @@ storage account associated with the specified cloud cluster.
 
 - There is a single argument of type AzureClusterStorageAccountRedundancyInput.
 - Returns AzureClusterStorageAccountRedundancyReply.
+### compareadobjectattributes
+Compares the live Entra ID and snapshot attributes of an Azure AD object.
+
+- There is a single argument of type CompareAzureAdObjectAttributesInput.
+- Returns CompareObjectAttributesResponse.
 ### devopsconnectionstatussummary
 AzureDevOpsOrgConnectionStatusSummary returns the connection status of
 all the Azure DevOps cloud accounts for a given organization.

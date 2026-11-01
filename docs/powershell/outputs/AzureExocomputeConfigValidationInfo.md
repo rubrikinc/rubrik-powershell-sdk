@@ -67,3 +67,7 @@ Contains validation information, such as blockers or errors encountered in valid
   - Specifies that only one of azurePostgresFlexServerSubnetNativeId and azurePostgresFlexServerPrivateDnsZoneId was supplied. Both must be set together for Azure Postgres Flexible Server networking to be usable.
 - errorMessage: System.String
   - Error received while validating Exocompute configuration.
+- isAksPrivateDnsZoneModeNoneWithCustomZone: System.Boolean
+  - Specifies that the Exocompute configuration sets the AKS private DNS zone mode to NONE together with an AKS custom private DNS zone ID. A custom private DNS zone cannot be used when no private DNS zone is selected.
+- isAksPrivateDnsZoneModeNoneRequiresPrivateCluster: System.Boolean
+  - Specifies that the Exocompute configuration sets the AKS private DNS zone mode to NONE for a cluster that is not private. NONE requires the private cluster access type.

@@ -633,6 +633,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
         PROXMOX_ENVIRONMENT,
 
+        [EnumMember(Value = "PROXMOX_TAG")]
+        PROXMOX_TAG,
+
         [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
         PROXMOX_VIRTUAL_MACHINE,
 
@@ -746,6 +749,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VCENTER")]
         VCENTER,
+
+        [EnumMember(Value = "VCF_FLEET")]
+        VCF_FLEET,
+
+        [EnumMember(Value = "VCF_INSTANCE")]
+        VCF_INSTANCE,
 
         [EnumMember(Value = "VMWARE_COMPUTE_CLUSTER")]
         VMWARE_COMPUTE_CLUSTER,

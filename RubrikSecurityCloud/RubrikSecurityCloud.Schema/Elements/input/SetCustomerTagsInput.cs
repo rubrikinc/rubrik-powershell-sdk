@@ -26,18 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudVendor")]
         public CloudVendor? CloudVendor { get; set; }
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID (scalar)
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
-        //      C# -> TagsInput? CustomerTags
-        // GraphQL -> customerTags: TagsInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("customerTags")]
-        public TagsInput? CustomerTags { get; set; }
-
         //      C# -> System.Boolean? ShouldOverrideResourceTags
         // GraphQL -> shouldOverrideResourceTags: Boolean! (scalar)
         [Required]
@@ -45,10 +33,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldOverrideResourceTags")]
         public System.Boolean? ShouldOverrideResourceTags { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: UUID (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
         //      C# -> List<System.String>? ExcludedTags
         // GraphQL -> excludedTags: [String!] (scalar)
         [JsonProperty("excludedTags")]
         public List<System.String>? ExcludedTags { get; set; }
+
+        //      C# -> TagsInput? CustomerTags
+        // GraphQL -> customerTags: TagsInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("customerTags")]
+        public TagsInput? CustomerTags { get; set; }
 
 
         #endregion

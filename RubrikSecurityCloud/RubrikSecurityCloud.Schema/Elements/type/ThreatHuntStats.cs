@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalObjectsScanned")]
         public System.Int64? TotalObjectsScanned { get; set; }
 
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        [JsonProperty("totalObjectsWithMatches")]
+        public System.Int64? TotalObjectsWithMatches { get; set; }
+
         //      C# -> System.Int64? TotalProcessedSnapshots
         // GraphQL -> totalProcessedSnapshots: Long! (scalar)
         [JsonProperty("totalProcessedSnapshots")]
@@ -94,6 +99,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalAffectedSnapshots = null,
         System.Int64? TotalIocs = null,
         System.Int64? TotalObjectsScanned = null,
+        System.Int64? TotalObjectsWithMatches = null,
         System.Int64? TotalProcessedSnapshots = null,
         System.Int64? TotalRegistryAffectedObjects = null,
         System.Int64? TotalRegistryKeyMatches = null,
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalObjectsScanned != null ) {
             this.TotalObjectsScanned = TotalObjectsScanned;
+        }
+        if ( TotalObjectsWithMatches != null ) {
+            this.TotalObjectsWithMatches = TotalObjectsWithMatches;
         }
         if ( TotalProcessedSnapshots != null ) {
             this.TotalProcessedSnapshots = TotalProcessedSnapshots;
@@ -188,6 +197,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalObjectsScanned\n" ;
             } else {
                 s += ind + "totalObjectsScanned\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        if (this.TotalObjectsWithMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjectsWithMatches\n" ;
+            } else {
+                s += ind + "totalObjectsWithMatches\n" ;
             }
         }
         //      C# -> System.Int64? TotalProcessedSnapshots
@@ -336,6 +354,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalObjectsScanned != null && ec.Excludes("totalObjectsScanned",true))
         {
             this.TotalObjectsScanned = null;
+        }
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        if (ec.Includes("totalObjectsWithMatches",true))
+        {
+            if(this.TotalObjectsWithMatches == null) {
+
+                this.TotalObjectsWithMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjectsWithMatches != null && ec.Excludes("totalObjectsWithMatches",true))
+        {
+            this.TotalObjectsWithMatches = null;
         }
         //      C# -> System.Int64? TotalProcessedSnapshots
         // GraphQL -> totalProcessedSnapshots: Long! (scalar)

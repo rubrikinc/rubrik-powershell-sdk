@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         [JsonProperty("agentStatus")]
@@ -91,6 +96,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
+        DateTime? ProtectionDate = null,
         CdmAgentStatus? AgentStatus = null,
         CloudInstantiationSpec? CloudInstantiationSpec = null,
         List<ManagedHierarchyObjectAncestor>? InfraPath = null,
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
         }
         if ( AgentStatus != null ) {
             this.AgentStatus = AgentStatus;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
             }
         }
         //      C# -> CdmAgentStatus? AgentStatus
@@ -367,6 +385,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)

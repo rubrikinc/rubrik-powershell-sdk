@@ -1,6 +1,8 @@
 ### FusionComputeVrmInput
 The hostname and account credentials of a FusionCompute Virtual Resource Management (VRM) instance.
 
+- userType: FusionComputeVrmUserType
+  - User type Rubrik logs in to the VRM with. Defaults to LocalUser.
 - caCerts: System.String
   - Supported in v9.6+
 Optional CA certificate content for SSL verification.

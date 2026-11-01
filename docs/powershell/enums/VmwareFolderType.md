@@ -5,3 +5,4 @@ VMware folder type.
 - VM - VM folder.
 - HOST - Host folder.
 - UNDEFINED - Undefined folder.
+- NAMESPACE - Namespace folder.

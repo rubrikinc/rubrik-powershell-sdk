@@ -5,6 +5,8 @@ Input for initiating authentication of the Azure Cloud Accounts.
   - Domain name of the Azure Tenant.
 - isEntraIdInitiatedOnboarding: System.Boolean
   - Indicates that this OAuth flow is an Entra ID initiated Event Hub onboarding, which is authorized in the Entra ID data-source domain rather than the cloud-native domain.
+- shouldEnsureDefaultApp: System.Boolean
+  - Creates the default Rubrik customer app for the account before the OAuth session starts, if it does not exist yet.
 - workloadId: System.String
   - Rubrik ID of the workload the sign-in is being performed for. Used to scope authorization of the sign-in to that workload.
 - azureCloudType: AzureCloudType

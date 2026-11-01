@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ProxmoxVirtualMachineV1
  
-    public class ProxmoxVirtualMachineV1: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, ProxmoxClusterDescendant, ProxmoxClusterPhysicalChildType, ProxmoxEnvironmentDescendant, ProxmoxEnvironmentPhysicalChildType, ProxmoxNodeDescendant, ProxmoxNodePhysicalChildType
+    public class ProxmoxVirtualMachineV1: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, ProxmoxClusterDescendant, ProxmoxClusterPhysicalChildType, ProxmoxEnvironmentDescendant, ProxmoxEnvironmentPhysicalChildType, ProxmoxNodeDescendant, ProxmoxNodePhysicalChildType, ProxmoxTagDescendant, ProxmoxTagLogicalChild
     {
         #region members
 

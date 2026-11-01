@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hypervVm")]
         public HypervVmRecoverySpecInput? HypervVm { get; set; }
 
+        //      C# -> MssqlDatabaseRecoverySpecInput? MssqlDatabase
+        // GraphQL -> mssqlDatabase: MssqlDatabaseRecoverySpecInput (input)
+        [JsonProperty("mssqlDatabase")]
+        public MssqlDatabaseRecoverySpecInput? MssqlDatabase { get; set; }
+
 
         #endregion
 

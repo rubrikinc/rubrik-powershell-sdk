@@ -80,6 +80,8 @@ with a comma and the unique keys are joined with a semicolon. Example:
 - backupSetupSourceObject: PathNode
   - The object from where the setup for performing backups of the Azure Cosmos
 NoSQL container is inherited.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the subscription and region of the Azure Cosmos NoSQL container.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

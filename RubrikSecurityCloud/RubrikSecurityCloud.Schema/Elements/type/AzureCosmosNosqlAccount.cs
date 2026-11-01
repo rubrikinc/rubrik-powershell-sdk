@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountName")]
         public System.String? AccountName { get; set; }
 
+        //      C# -> System.Int32? AzureCosmosNosqlDatabaseCount
+        // GraphQL -> azureCosmosNosqlDatabaseCount: Int! (scalar)
+        [JsonProperty("azureCosmosNosqlDatabaseCount")]
+        public System.Int32? AzureCosmosNosqlDatabaseCount { get; set; }
+
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         [JsonProperty("cloudNativeId")]
@@ -150,6 +155,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allTags: [AssignedRscTag!]! (type)
         [JsonProperty("allTags")]
         public List<AssignedRscTag>? AllTags { get; set; }
+
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails (type)
+        [JsonProperty("azureResourceGroupDetails")]
+        public AzureResourceGroupDetails? AzureResourceGroupDetails { get; set; }
 
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
@@ -244,6 +254,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? AccountName = null,
+        System.Int32? AzureCosmosNosqlDatabaseCount = null,
         System.String? CloudNativeId = null,
         System.String? DefaultConsistencyLevel = null,
         System.String? Id = null,
@@ -260,6 +271,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
+        AzureResourceGroupDetails? AzureResourceGroupDetails = null,
         PathNode? EffectiveSlaSourceObject = null,
         FutureLegalHoldInfo? FutureLegalHoldInfo = null,
         List<PathNode>? LogicalPath = null,
@@ -301,6 +313,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
+        }
+        if ( AzureCosmosNosqlDatabaseCount != null ) {
+            this.AzureCosmosNosqlDatabaseCount = AzureCosmosNosqlDatabaseCount;
         }
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
@@ -349,6 +364,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllTags != null ) {
             this.AllTags = AllTags;
+        }
+        if ( AzureResourceGroupDetails != null ) {
+            this.AzureResourceGroupDetails = AzureResourceGroupDetails;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -494,6 +512,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountName\n" ;
             } else {
                 s += ind + "accountName\n" ;
+            }
+        }
+        //      C# -> System.Int32? AzureCosmosNosqlDatabaseCount
+        // GraphQL -> azureCosmosNosqlDatabaseCount: Int! (scalar)
+        if (this.AzureCosmosNosqlDatabaseCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureCosmosNosqlDatabaseCount\n" ;
+            } else {
+                s += ind + "azureCosmosNosqlDatabaseCount\n" ;
             }
         }
         //      C# -> System.String? CloudNativeId
@@ -643,6 +670,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "allTags" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails (type)
+        if (this.AzureResourceGroupDetails != null) {
+            var fspec = this.AzureResourceGroupDetails.AsFieldSpec(conf.Child("azureResourceGroupDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureResourceGroupDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -964,6 +1003,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AccountName = null;
         }
+        //      C# -> System.Int32? AzureCosmosNosqlDatabaseCount
+        // GraphQL -> azureCosmosNosqlDatabaseCount: Int! (scalar)
+        if (ec.Includes("azureCosmosNosqlDatabaseCount",true))
+        {
+            if(this.AzureCosmosNosqlDatabaseCount == null) {
+
+                this.AzureCosmosNosqlDatabaseCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureCosmosNosqlDatabaseCount != null && ec.Excludes("azureCosmosNosqlDatabaseCount",true))
+        {
+            this.AzureCosmosNosqlDatabaseCount = null;
+        }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (ec.Includes("cloudNativeId",true))
@@ -1239,6 +1295,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllTags != null && ec.Excludes("allTags",false))
         {
             this.AllTags = null;
+        }
+        //      C# -> AzureResourceGroupDetails? AzureResourceGroupDetails
+        // GraphQL -> azureResourceGroupDetails: AzureResourceGroupDetails (type)
+        if (ec.Includes("azureResourceGroupDetails",false))
+        {
+            if(this.AzureResourceGroupDetails == null) {
+
+                this.AzureResourceGroupDetails = new AzureResourceGroupDetails();
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            } else {
+
+                this.AzureResourceGroupDetails.ApplyExploratoryFieldSpec(ec.NewChild("azureResourceGroupDetails"));
+
+            }
+        }
+        else if (this.AzureResourceGroupDetails != null && ec.Excludes("azureResourceGroupDetails",false))
+        {
+            this.AzureResourceGroupDetails = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

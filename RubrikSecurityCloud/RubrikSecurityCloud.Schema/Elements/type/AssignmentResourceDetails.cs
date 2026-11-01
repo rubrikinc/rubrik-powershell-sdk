@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceType")]
         public DataGovObjectType? ResourceType { get; set; }
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.Boolean? IsHigherLevelResource
         // GraphQL -> isHigherLevelResource: Boolean! (scalar)
         [JsonProperty("isHigherLevelResource")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceName")]
         public System.String? ResourceName { get; set; }
 
+        //      C# -> SddSchedule? SddSchedule
+        // GraphQL -> sddSchedule: SddSchedule (type)
+        [JsonProperty("sddSchedule")]
+        public SddSchedule? SddSchedule { get; set; }
+
 
         #endregion
 
@@ -51,13 +61,18 @@ namespace RubrikSecurityCloud.Types
 
     public AssignmentResourceDetails Set(
         DataGovObjectType? ResourceType = null,
+        System.String? ClusterUuid = null,
         System.Boolean? IsHigherLevelResource = null,
         System.String? ResourceId = null,
-        System.String? ResourceName = null
+        System.String? ResourceName = null,
+        SddSchedule? SddSchedule = null
     ) 
     {
         if ( ResourceType != null ) {
             this.ResourceType = ResourceType;
+        }
+        if ( ClusterUuid != null ) {
+            this.ClusterUuid = ClusterUuid;
         }
         if ( IsHigherLevelResource != null ) {
             this.IsHigherLevelResource = IsHigherLevelResource;
@@ -67,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ResourceName != null ) {
             this.ResourceName = ResourceName;
+        }
+        if ( SddSchedule != null ) {
+            this.SddSchedule = SddSchedule;
         }
         return this;
     }
@@ -89,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "resourceType\n" ;
             } else {
                 s += ind + "resourceType\n" ;
+            }
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (this.ClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
             }
         }
         //      C# -> System.Boolean? IsHigherLevelResource
@@ -118,6 +145,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "resourceName\n" ;
             }
         }
+        //      C# -> SddSchedule? SddSchedule
+        // GraphQL -> sddSchedule: SddSchedule (type)
+        if (this.SddSchedule != null) {
+            var fspec = this.SddSchedule.AsFieldSpec(conf.Child("sddSchedule"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sddSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -141,6 +180,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ResourceType != null && ec.Excludes("resourceType",true))
         {
             this.ResourceType = null;
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (ec.Includes("clusterUuid",true))
+        {
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.Boolean? IsHigherLevelResource
         // GraphQL -> isHigherLevelResource: Boolean! (scalar)
@@ -192,6 +248,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ResourceName != null && ec.Excludes("resourceName",true))
         {
             this.ResourceName = null;
+        }
+        //      C# -> SddSchedule? SddSchedule
+        // GraphQL -> sddSchedule: SddSchedule (type)
+        if (ec.Includes("sddSchedule",false))
+        {
+            if(this.SddSchedule == null) {
+
+                this.SddSchedule = new SddSchedule();
+                this.SddSchedule.ApplyExploratoryFieldSpec(ec.NewChild("sddSchedule"));
+
+            } else {
+
+                this.SddSchedule.ApplyExploratoryFieldSpec(ec.NewChild("sddSchedule"));
+
+            }
+        }
+        else if (this.SddSchedule != null && ec.Excludes("sddSchedule",false))
+        {
+            this.SddSchedule = null;
         }
     }
 

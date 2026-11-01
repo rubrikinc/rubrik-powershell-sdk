@@ -189,6 +189,7 @@ All supported Rubrik managed objects.
 - PROXMOX_CLUSTER - Proxmox cluster.
 - PROXMOX_NODE - Proxmox node.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
+- PROXMOX_TAG - Proxmox tag.
 - GITHUB_ORGANIZATION - GitHub organization.
 - GITHUB_REPOSITORY - GitHub repository.
 - AWS_NATIVE_CONFIG - Aws Native Config.
@@ -262,6 +263,14 @@ Stores group settings and membership data for all groups in the org.
 - M365_CONFIGS_ORG - M365 Configurations Organization.
 - ORACLE_FAILOVER_CLUSTER - Oracle failover cluster: a customer-asserted machine set for Oracle AIX PowerHA active-passive clusters.
 - ORACLE_FAILOVER_SERVICE - Oracle failover service: a logical HA resource group under an Oracle failover cluster.
+- VCF_FLEET - VCF fleet -- one VCF Operations appliance. An inventory hierarchy level
+under the vSphere root, not a protectable object.
+- VCF_INSTANCE - VCF instance -- one SDDC Manager under a fleet. An inventory hierarchy
+level under the vSphere root, not a protectable object.
+- VCFA_APPLIANCE - VMware Cloud Foundation Automation (VCFA) appliance.
+- VCFA_ORG - VCFA organization.
+- VCFA_REGION - VCFA region.
+- VCFA_PROJECT - VCFA project.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

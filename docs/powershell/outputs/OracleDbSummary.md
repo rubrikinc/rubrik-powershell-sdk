@@ -97,6 +97,9 @@ Boolean value specifying whether the database obtains the log backup configurati
 - blackoutWindows: BlackoutWindows
   - Supported in v9.3+
 An array that contains blackout windows for the Oracle database.
+- protectionDate: DateTime
+  - Supported in v9.7
+UTC timestamp for when the Oracle database became protected by its current SLA Domain. Omitted if no SLA Domain has been assigned. The value resets every time the SLA Domain changes, including a reassignment to Unprotected.
 - shouldUseSecureThriftForDataTransfer: System.Boolean
   - Supported in v9.4+
 Boolean value specifying whether to use secure thrift as the data transfer mechanism between the Rubrik cluster and the Oracle database instead of NFS. The default data transfer mechanism is NFS.

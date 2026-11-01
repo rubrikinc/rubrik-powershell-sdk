@@ -364,6 +364,8 @@ namespace RubrikSecurityCloud.Types
 
         public RscGqlVars SnapshotGroupBySummary { get; set; }
 
+        public RscGqlVars VsphereVirtualMachines { get; set; }
+
 
         public InlineVars() {
             Tuple<string, string>[] numWorkloadDescendantsArgs = {
@@ -441,6 +443,14 @@ namespace RubrikSecurityCloud.Types
                 };
             this.SnapshotGroupBySummary =
                 new RscGqlVars(null, snapshotGroupBySummaryArgs, null, true);
+            Tuple<string, string>[] vsphereVirtualMachinesArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.VsphereVirtualMachines =
+                new RscGqlVars(null, vsphereVirtualMachinesArgs, null, true);
         }
     }
 
@@ -1417,7 +1427,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "vsphereVirtualMachines" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "vsphereVirtualMachines" + "\n(" + this.Vars.VsphereVirtualMachines.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

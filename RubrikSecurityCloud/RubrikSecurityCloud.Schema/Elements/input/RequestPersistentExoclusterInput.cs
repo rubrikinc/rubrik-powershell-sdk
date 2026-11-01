@@ -38,15 +38,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("durationInDays")]
         public System.Int32? DurationInDays { get; set; }
 
-        //      C# -> AzureClusterRequestParams? AzureSpecificClusterParams
-        // GraphQL -> azureSpecificClusterParams: AzureClusterRequestParams (input)
-        [JsonProperty("azureSpecificClusterParams")]
-        public AzureClusterRequestParams? AzureSpecificClusterParams { get; set; }
-
         //      C# -> AwsClusterRequestParams? AwsSpecificClusterParams
         // GraphQL -> awsSpecificClusterParams: AwsClusterRequestParams (input)
         [JsonProperty("awsSpecificClusterParams")]
         public AwsClusterRequestParams? AwsSpecificClusterParams { get; set; }
+
+        //      C# -> AzureClusterRequestParams? AzureSpecificClusterParams
+        // GraphQL -> azureSpecificClusterParams: AzureClusterRequestParams (input)
+        [JsonProperty("azureSpecificClusterParams")]
+        public AzureClusterRequestParams? AzureSpecificClusterParams { get; set; }
 
 
         #endregion

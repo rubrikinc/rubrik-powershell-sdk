@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public ManagedObjectType? ObjectType { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
+        // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("rscPendingObjectPauseAssignment")]
+        public PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment { get; set; }
+
         //      C# -> System.Boolean? ApplyToAllCloudAccounts
         // GraphQL -> applyToAllCloudAccounts: Boolean! (scalar)
         [JsonProperty("applyToAllCloudAccounts")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSla")]
         public TagRuleEffectiveSla? EffectiveSla { get; set; }
 
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        [JsonProperty("objectPauseStatus")]
+        public ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
         [JsonProperty("rscNativeObjectPendingSla")]
@@ -81,12 +91,14 @@ namespace RubrikSecurityCloud.Types
 
     public CloudNativeTagRule Set(
         ManagedObjectType? ObjectType = null,
+        PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
         System.Boolean? ApplyToAllCloudAccounts = null,
         System.Boolean? HasPermissionToModify = null,
         System.String? Id = null,
         System.String? Name = null,
         List<CloudNativeAccountIdWithName>? CloudNativeAccounts = null,
         TagRuleEffectiveSla? EffectiveSla = null,
+        ObjectPauseStatus? ObjectPauseStatus = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         TagRuleTag? Tag = null,
         CloudNativeTagConditionOutput? TagConditions = null
@@ -94,6 +106,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( RscPendingObjectPauseAssignment != null ) {
+            this.RscPendingObjectPauseAssignment = RscPendingObjectPauseAssignment;
         }
         if ( ApplyToAllCloudAccounts != null ) {
             this.ApplyToAllCloudAccounts = ApplyToAllCloudAccounts;
@@ -112,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSla != null ) {
             this.EffectiveSla = EffectiveSla;
+        }
+        if ( ObjectPauseStatus != null ) {
+            this.ObjectPauseStatus = ObjectPauseStatus;
         }
         if ( RscNativeObjectPendingSla != null ) {
             this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
@@ -143,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
+        // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (this.RscPendingObjectPauseAssignment != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rscPendingObjectPauseAssignment\n" ;
+            } else {
+                s += ind + "rscPendingObjectPauseAssignment\n" ;
             }
         }
         //      C# -> System.Boolean? ApplyToAllCloudAccounts
@@ -205,6 +232,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (this.ObjectPauseStatus != null) {
+            var fspec = this.ObjectPauseStatus.AsFieldSpec(conf.Child("objectPauseStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
         if (this.RscNativeObjectPendingSla != null) {
@@ -264,6 +303,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment
+        // GraphQL -> rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (ec.Includes("rscPendingObjectPauseAssignment",true))
+        {
+            if(this.RscPendingObjectPauseAssignment == null) {
+
+                this.RscPendingObjectPauseAssignment = new PendingObjectPauseAssignmentStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscPendingObjectPauseAssignment != null && ec.Excludes("rscPendingObjectPauseAssignment",true))
+        {
+            this.RscPendingObjectPauseAssignment = null;
         }
         //      C# -> System.Boolean? ApplyToAllCloudAccounts
         // GraphQL -> applyToAllCloudAccounts: Boolean! (scalar)
@@ -370,6 +426,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSla != null && ec.Excludes("effectiveSla",false))
         {
             this.EffectiveSla = null;
+        }
+        //      C# -> ObjectPauseStatus? ObjectPauseStatus
+        // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
+        if (ec.Includes("objectPauseStatus",false))
+        {
+            if(this.ObjectPauseStatus == null) {
+
+                this.ObjectPauseStatus = new ObjectPauseStatus();
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            } else {
+
+                this.ObjectPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectPauseStatus"));
+
+            }
+        }
+        else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
+        {
+            this.ObjectPauseStatus = null;
         }
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)

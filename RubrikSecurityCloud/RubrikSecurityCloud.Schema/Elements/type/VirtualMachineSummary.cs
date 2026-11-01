@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplicationEnabled")]
         public System.Boolean? IsReplicationEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean (scalar)
+        [JsonProperty("isVmServiceVm")]
+        public System.Boolean? IsVmServiceVm { get; set; }
+
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
         [JsonProperty("moid")]
@@ -104,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmwareToolsInstalled: Boolean! (scalar)
         [JsonProperty("vmwareToolsInstalled")]
         public System.Boolean? VmwareToolsInstalled { get; set; }
+
+        //      C# -> System.String? VsphereNamespaceId
+        // GraphQL -> vsphereNamespaceId: String (scalar)
+        [JsonProperty("vsphereNamespaceId")]
+        public System.String? VsphereNamespaceId { get; set; }
 
         //      C# -> AdvancedVirtualMachineSummary? AdvancedSummary
         // GraphQL -> advancedSummary: AdvancedVirtualMachineSummary (type)
@@ -161,12 +171,14 @@ namespace RubrikSecurityCloud.Types
         System.String? IpAddress = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplicationEnabled = null,
+        System.Boolean? IsVmServiceVm = null,
         System.String? Moid = null,
         System.String? PowerStatus = null,
         DateTime? ProtectionDate = null,
         System.Boolean? ToolsInstalled = null,
         System.String? VcenterId = null,
         System.Boolean? VmwareToolsInstalled = null,
+        System.String? VsphereNamespaceId = null,
         AdvancedVirtualMachineSummary? AdvancedSummary = null,
         CdmAgentStatus? AgentStatus = null,
         CloudInstantiationSpec? CloudInstantiationSpec = null,
@@ -209,6 +221,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsReplicationEnabled != null ) {
             this.IsReplicationEnabled = IsReplicationEnabled;
         }
+        if ( IsVmServiceVm != null ) {
+            this.IsVmServiceVm = IsVmServiceVm;
+        }
         if ( Moid != null ) {
             this.Moid = Moid;
         }
@@ -226,6 +241,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( VmwareToolsInstalled != null ) {
             this.VmwareToolsInstalled = VmwareToolsInstalled;
+        }
+        if ( VsphereNamespaceId != null ) {
+            this.VsphereNamespaceId = VsphereNamespaceId;
         }
         if ( AdvancedSummary != null ) {
             this.AdvancedSummary = AdvancedSummary;
@@ -361,6 +379,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isReplicationEnabled\n" ;
             }
         }
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean (scalar)
+        if (this.IsVmServiceVm != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isVmServiceVm\n" ;
+            } else {
+                s += ind + "isVmServiceVm\n" ;
+            }
+        }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
         if (this.Moid != null) {
@@ -413,6 +440,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "vmwareToolsInstalled\n" ;
             } else {
                 s += ind + "vmwareToolsInstalled\n" ;
+            }
+        }
+        //      C# -> System.String? VsphereNamespaceId
+        // GraphQL -> vsphereNamespaceId: String (scalar)
+        if (this.VsphereNamespaceId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vsphereNamespaceId\n" ;
+            } else {
+                s += ind + "vsphereNamespaceId\n" ;
             }
         }
         //      C# -> AdvancedVirtualMachineSummary? AdvancedSummary
@@ -693,6 +729,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsReplicationEnabled = null;
         }
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean (scalar)
+        if (ec.Includes("isVmServiceVm",true))
+        {
+            if(this.IsVmServiceVm == null) {
+
+                this.IsVmServiceVm = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVmServiceVm != null && ec.Excludes("isVmServiceVm",true))
+        {
+            this.IsVmServiceVm = null;
+        }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
         if (ec.Includes("moid",true))
@@ -794,6 +847,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.VmwareToolsInstalled != null && ec.Excludes("vmwareToolsInstalled",true))
         {
             this.VmwareToolsInstalled = null;
+        }
+        //      C# -> System.String? VsphereNamespaceId
+        // GraphQL -> vsphereNamespaceId: String (scalar)
+        if (ec.Includes("vsphereNamespaceId",true))
+        {
+            if(this.VsphereNamespaceId == null) {
+
+                this.VsphereNamespaceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VsphereNamespaceId != null && ec.Excludes("vsphereNamespaceId",true))
+        {
+            this.VsphereNamespaceId = null;
         }
         //      C# -> AdvancedVirtualMachineSummary? AdvancedSummary
         // GraphQL -> advancedSummary: AdvancedVirtualMachineSummary (type)

@@ -132,6 +132,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_CONFIGS")]
         M365_CONFIGS,
 
+        [EnumMember(Value = "M365_JOURNALING")]
+        M365_JOURNALING,
+
         [EnumMember(Value = "MANAGED_VOLUMES")]
         MANAGED_VOLUMES,
 

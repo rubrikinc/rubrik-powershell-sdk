@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
 
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        [JsonProperty("shardId")]
+        public System.String? ShardId { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         MongoNodeType? NodeType = null,
         System.String? Host = null,
         System.String? HostFid = null,
-        System.Int32? Port = null
+        System.Int32? Port = null,
+        System.String? ShardId = null
     ) 
     {
         if ( NodeType != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Port != null ) {
             this.Port = Port;
+        }
+        if ( ShardId != null ) {
+            this.ShardId = ShardId;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "port\n" ;
             } else {
                 s += ind + "port\n" ;
+            }
+        }
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        if (this.ShardId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shardId\n" ;
+            } else {
+                s += ind + "shardId\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Port != null && ec.Excludes("port",true))
         {
             this.Port = null;
+        }
+        //      C# -> System.String? ShardId
+        // GraphQL -> shardId: String! (scalar)
+        if (ec.Includes("shardId",true))
+        {
+            if(this.ShardId == null) {
+
+                this.ShardId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShardId != null && ec.Excludes("shardId",true))
+        {
+            this.ShardId = null;
         }
     }
 

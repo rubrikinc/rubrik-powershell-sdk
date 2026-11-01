@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalObjectsUnscannable")]
         public System.Int64? TotalObjectsUnscannable { get; set; }
 
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        [JsonProperty("totalObjectsWithMatches")]
+        public System.Int64? TotalObjectsWithMatches { get; set; }
+
         //      C# -> System.Int64? TotalRegistryAffectedObjects
         // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)
         [JsonProperty("totalRegistryAffectedObjects")]
@@ -69,6 +74,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalAffectedObjects = null,
         System.Int64? TotalObjectsScanned = null,
         System.Int64? TotalObjectsUnscannable = null,
+        System.Int64? TotalObjectsWithMatches = null,
         System.Int64? TotalRegistryAffectedObjects = null,
         System.Int64? TotalUnaffectedObjects = null,
         System.Int64? UnaffectedObjectsFromDb = null
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalObjectsUnscannable != null ) {
             this.TotalObjectsUnscannable = TotalObjectsUnscannable;
+        }
+        if ( TotalObjectsWithMatches != null ) {
+            this.TotalObjectsWithMatches = TotalObjectsWithMatches;
         }
         if ( TotalRegistryAffectedObjects != null ) {
             this.TotalRegistryAffectedObjects = TotalRegistryAffectedObjects;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalObjectsUnscannable\n" ;
             } else {
                 s += ind + "totalObjectsUnscannable\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        if (this.TotalObjectsWithMatches != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjectsWithMatches\n" ;
+            } else {
+                s += ind + "totalObjectsWithMatches\n" ;
             }
         }
         //      C# -> System.Int64? TotalRegistryAffectedObjects
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalObjectsUnscannable != null && ec.Excludes("totalObjectsUnscannable",true))
         {
             this.TotalObjectsUnscannable = null;
+        }
+        //      C# -> System.Int64? TotalObjectsWithMatches
+        // GraphQL -> totalObjectsWithMatches: Long! (scalar)
+        if (ec.Includes("totalObjectsWithMatches",true))
+        {
+            if(this.TotalObjectsWithMatches == null) {
+
+                this.TotalObjectsWithMatches = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjectsWithMatches != null && ec.Excludes("totalObjectsWithMatches",true))
+        {
+            this.TotalObjectsWithMatches = null;
         }
         //      C# -> System.Int64? TotalRegistryAffectedObjects
         // GraphQL -> totalRegistryAffectedObjects: Long! (scalar)

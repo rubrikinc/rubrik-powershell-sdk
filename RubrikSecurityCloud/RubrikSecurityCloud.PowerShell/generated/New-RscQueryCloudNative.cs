@@ -654,10 +654,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
-    /// # REQUIRED
-    /// $query.Var.path = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.path = $someString
     /// # OPTIONAL
     /// $query.Var.searchPrefix = $someString
     /// 
@@ -862,6 +866,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableId = $someString
     /// # REQUIRED
@@ -1692,8 +1700,10 @@ $query.Var.snapshotId = $someString"
         // cloudNativeSnapshots(
         //     first: Int
         //     after: String
-        //     path: String!
+        //     last: Int
+        //     before: String
         //     snapshotFid: UUID!
+        //     path: String!
         //     searchPrefix: String
         //   ): SnapshotFileConnection!
         internal void InitQueryCloudNativeSnapshots()
@@ -1701,15 +1711,17 @@ $query.Var.snapshotId = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("path", "String!"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("path", "String!"),
                 Tuple.Create("searchPrefix", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryCloudNativeSnapshots",
-                "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snapshotFid: UUID!,$path: String!,$searchPrefix: String)",
                 "SnapshotFileConnection",
                 Query.CloudNativeSnapshots,
                 Query.CloudNativeSnapshotsFieldSpec,
@@ -1717,10 +1729,14 @@ $query.Var.snapshotId = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
-# REQUIRED
-$query.Var.path = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
+# REQUIRED
+$query.Var.path = $someString
 # OPTIONAL
 $query.Var.searchPrefix = $someString"
             );
@@ -1888,6 +1904,8 @@ $query.Var.maxCacheStalenessSeconds = $someInt"
         // cloudNativeWorkloadVersionedFiles(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableId: UUID!
         //     searchQuery: String!
         //   ): CloudNativeVersionedFileConnection!
@@ -1896,6 +1914,8 @@ $query.Var.maxCacheStalenessSeconds = $someInt"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableId", "UUID!"),
                 Tuple.Create("searchQuery", "String!"),
             };
@@ -1903,7 +1923,7 @@ $query.Var.maxCacheStalenessSeconds = $someInt"
                 argDefs,
                 "query",
                 "QueryCloudNativeWorkloadVersionedFiles",
-                "($first: Int,$after: String,$snappableId: UUID!,$searchQuery: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableId: UUID!,$searchQuery: String!)",
                 "CloudNativeVersionedFileConnection",
                 Query.CloudNativeWorkloadVersionedFiles,
                 Query.CloudNativeWorkloadVersionedFilesFieldSpec,
@@ -1911,6 +1931,10 @@ $query.Var.maxCacheStalenessSeconds = $someInt"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableId = $someString
 # REQUIRED

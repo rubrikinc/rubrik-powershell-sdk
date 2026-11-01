@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainId")]
         public System.String? DomainId { get; set; }
 
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean! (scalar)
+        [JsonProperty("enableKerberosForSmb")]
+        public System.Boolean? EnableKerberosForSmb { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AccountName = null,
         List<System.String>? DnsServers = null,
         System.String? DomainId = null,
+        System.Boolean? EnableKerberosForSmb = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
         System.String? Name = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DomainId != null ) {
             this.DomainId = DomainId;
+        }
+        if ( EnableKerberosForSmb != null ) {
+            this.EnableKerberosForSmb = EnableKerberosForSmb;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "domainId\n" ;
             } else {
                 s += ind + "domainId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean! (scalar)
+        if (this.EnableKerberosForSmb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "enableKerberosForSmb\n" ;
+            } else {
+                s += ind + "enableKerberosForSmb\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -267,6 +285,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DomainId != null && ec.Excludes("domainId",true))
         {
             this.DomainId = null;
+        }
+        //      C# -> System.Boolean? EnableKerberosForSmb
+        // GraphQL -> enableKerberosForSmb: Boolean! (scalar)
+        if (ec.Includes("enableKerberosForSmb",true))
+        {
+            if(this.EnableKerberosForSmb == null) {
+
+                this.EnableKerberosForSmb = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableKerberosForSmb != null && ec.Excludes("enableKerberosForSmb",true))
+        {
+            this.EnableKerberosForSmb = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

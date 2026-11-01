@@ -53,6 +53,11 @@ cluster. Null when the source cluster is unknown.
   - Parent workload type of this workload.
 - vsphereTagPath: list of PathNodes
   - The vSphere tag path for this virtual machine.
+- isVmServiceVm: System.Boolean
+  - Whether a vSphere Supervisor manages the virtual machine.
+- vmServiceInfo: VsphereVmServiceInfo
+  - Supervisor placement of the virtual machine. Null when no vSphere
+Supervisor manages the virtual machine.
 - snapshotConsistencySource: System.String
   - ID of the object from which the snapshot consistency mandate is inherited.
 - agentStatus: AgentStatus

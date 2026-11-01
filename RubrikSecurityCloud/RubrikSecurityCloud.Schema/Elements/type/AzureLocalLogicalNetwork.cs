@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("addressPrefix")]
         public System.String? AddressPrefix { get; set; }
 
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        [JsonProperty("dnsServers")]
+        public List<System.String>? DnsServers { get; set; }
+
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        [JsonProperty("gateway")]
+        public System.String? Gateway { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -57,6 +67,8 @@ namespace RubrikSecurityCloud.Types
     public AzureLocalLogicalNetwork Set(
         AzureLocalIpv4Type? Ipv4Type = null,
         System.String? AddressPrefix = null,
+        List<System.String>? DnsServers = null,
+        System.String? Gateway = null,
         System.String? Id = null,
         System.String? Name = null,
         List<AzureLocalIpPool>? IpPools = null
@@ -67,6 +79,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AddressPrefix != null ) {
             this.AddressPrefix = AddressPrefix;
+        }
+        if ( DnsServers != null ) {
+            this.DnsServers = DnsServers;
+        }
+        if ( Gateway != null ) {
+            this.Gateway = Gateway;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -107,6 +125,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "addressPrefix\n" ;
             } else {
                 s += ind + "addressPrefix\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (this.DnsServers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dnsServers\n" ;
+            } else {
+                s += ind + "dnsServers\n" ;
+            }
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        if (this.Gateway != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "gateway\n" ;
+            } else {
+                s += ind + "gateway\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -179,6 +215,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AddressPrefix != null && ec.Excludes("addressPrefix",true))
         {
             this.AddressPrefix = null;
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (ec.Includes("dnsServers",true))
+        {
+            if(this.DnsServers == null) {
+
+                this.DnsServers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
+        {
+            this.DnsServers = null;
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        if (ec.Includes("gateway",true))
+        {
+            if(this.Gateway == null) {
+
+                this.Gateway = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gateway != null && ec.Excludes("gateway",true))
+        {
+            this.Gateway = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

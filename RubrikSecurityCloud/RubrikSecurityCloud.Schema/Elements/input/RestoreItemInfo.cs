@@ -27,18 +27,19 @@ namespace RubrikSecurityCloud.Types
         public System.String? ItemId { get; set; }
 
         //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> snapshotId: UUID (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
         //      C# -> System.Int32? SequenceNumber
-        // GraphQL -> sequenceNumber: Int! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> sequenceNumber: Int (scalar)
         [JsonProperty("sequenceNumber")]
         public System.Int32? SequenceNumber { get; set; }
+
+        //      C# -> SaasRtpPointInTimeInfo? RtpPointInTimeInfo
+        // GraphQL -> rtpPointInTimeInfo: SaasRtpPointInTimeInfo (input)
+        [JsonProperty("rtpPointInTimeInfo")]
+        public SaasRtpPointInTimeInfo? RtpPointInTimeInfo { get; set; }
 
 
         #endregion

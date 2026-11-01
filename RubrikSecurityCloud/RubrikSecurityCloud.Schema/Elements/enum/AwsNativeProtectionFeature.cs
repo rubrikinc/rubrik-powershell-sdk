@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFIG")]
         CONFIG,
 
+        [EnumMember(Value = "CRITICAL_RESOURCE_PROTECTION")]
+        CRITICAL_RESOURCE_PROTECTION,
+
         [EnumMember(Value = "DYNAMODB")]
         DYNAMODB,
 

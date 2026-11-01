@@ -228,6 +228,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				azurePostgresFlexServerPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
     /// 				healthCheckVmNamePrefix = $someString
+    /// 				# OPTIONAL
+    /// 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -2338,6 +2340,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isEntraIdInitiatedOnboarding = $someBoolean
     /// 	# OPTIONAL
+    /// 	shouldEnsureDefaultApp = $someBoolean
+    /// 	# OPTIONAL
     /// 	workloadId = $someString
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
@@ -4374,6 +4378,8 @@ $query.Var.input = @{
 				azurePostgresFlexServerPrivateDnsZoneId = $someString
 				# OPTIONAL
 				healthCheckVmNamePrefix = $someString
+				# OPTIONAL
+				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
 			}
 		}
 	)
@@ -6224,6 +6230,8 @@ $query.Var.input = @{
 	tenantDomainName = $someString
 	# OPTIONAL
 	isEntraIdInitiatedOnboarding = $someBoolean
+	# OPTIONAL
+	shouldEnsureDefaultApp = $someBoolean
 	# OPTIONAL
 	workloadId = $someString
 	# OPTIONAL

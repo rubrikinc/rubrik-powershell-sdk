@@ -1,6 +1,8 @@
 ### AdVolumeExport
 Active Directory volume export.
 
+- id: System.String
+  - Fid of the volume export.
 - isActive: System.Boolean
   - Specifies whether the export is active or not.
 - internalTimestamp: System.Int64
@@ -19,8 +21,6 @@ Active Directory volume export.
   - The whitelisted IP addresses that can access Active Directory live mount.
 - mountNodeIp: System.String
   - Mount Node IP address of the volume export. This IP address is preferred over floating IP address.
-- id: System.String
-  - Fid of the volume export.
 - sourceSnapshot: CdmSnapshot
   - Source snapshot of the volume export.
 - cluster: Cluster

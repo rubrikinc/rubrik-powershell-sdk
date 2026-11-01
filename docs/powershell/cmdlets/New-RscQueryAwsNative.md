@@ -1,108 +1,117 @@
 # New-RscQueryAwsNative
 ## Subcommands
 ### account
-Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
+Returns a single AWS Native account by its Rubrik FID.
 
-- There are 2 arguments.
-    - awsNativeAccountRubrikId - System.String: The Rubrik ID for the AWS Native account.
-    - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
+- There are 3 arguments.
+    - awsNativeAccountRubrikId - System.String: Rubrik FID of the AWS Native account.
+    - awsNativeProtectionFeature - AwsNativeProtectionFeature: Protection feature whose workload scopes the account's SLA.
+    - includeSecurityMetadata - System.Boolean: Whether to include the object's security metadata in the response.
 - Returns AwsNativeAccount.
 ### accounts
-Paginated list of all AWS Native accounts.
+Lists the AWS Native accounts under the AWS-native hierarchy root.
 
-- There are 10 arguments.
+- There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - accountFilters - AwsNativeAccountFilters
-    - authorizedOperationFilter - Operation
-    - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
-    - awsNativeProtectionFeatures - list of AwsNativeProtectionFeatures: List of cloud native protection features.
+    - sortBy - AwsNativeAccountSortFields: Field of the account to order the results by. Defaults to the account name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
+    - accountFilters - AwsNativeAccountFilters: Narrows the results to the accounts matching every filter supplied. Unset returns all non-relic accounts.
+    - authorizedOperationFilter - Operation: RBAC operation the caller must be authorized for on each returned account. Defaults to VIEW_INVENTORY.
+    - awsNativeProtectionFeature - AwsNativeProtectionFeature: Protection feature the returned accounts must have enabled, and whose workload scopes their SLA. Ignored when awsNativeProtectionFeatures is set.
+    - awsNativeProtectionFeatures - list of AwsNativeProtectionFeatures: Protection features the returned accounts must have at least one of enabled. Defaults to awsNativeProtectionFeature alone when unset.
+    - includeSecurityMetadata - System.Boolean: Whether to include each object's security metadata in the response.
 - Returns AwsNativeAccountConnection.
 ### amitypeforarchivedsnapshotexport
-Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
+Returns the Amazon Machine Image (AMI) type to use when exporting an
+archived EC2 instance snapshot to a target account and region.
 
 - There is a single argument of type AmiTypeForAwsNativeArchivedSnapshotExportInput.
 - Returns AmiTypeForAwsNativeArchivedSnapshotExportReply.
 ### dynamodbtable
-Represents the Amazon DynamoDB Table with a specific ID. For more information, see https://aws.amazon.com/dynamodb/.
+GetAwsNativeDynamoDbTable returns the AWS native DynamoDB table
+identified by the request's Rubrik ID.
 
 - There are 2 arguments.
     - dynamoDbTableRubrikId - System.String: Rubrik ID for the AWS DynamoDB table object.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - includeSecurityMetadata - System.Boolean: Whether to include security metadata on the returned object.
 - Returns AwsNativeDynamoDbTable.
 ### dynamodbtablepointintimerestorewindow
-The Point-in-Time (PiT) restore window of a DynamoDB table in an AWS native account refers to the range of time available for restoration. This window defines the period during which you can restore the table to a specific point in time. For more information, see https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Point-in-time-recovery.html.
+GetAwsNativeDynamoDbTablePointInTimeRestoreWindow returns the
+recoverable range for the DynamoDB table identified by its Rubrik ID,
+authorizing the caller against the table via authz-service.
 
 - There is a single argument of type System.String.
 - Returns AwsNativeDynamoDbTablePointInTimeRestoreWindow.
 ### ebsvolume
-Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
+Returns a single AWS Native EBS volume by its Rubrik FID.
 
 - There are 2 arguments.
-    - ebsVolumeRubrikId - System.String: Rubrik ID for the AWS EBS Volume object.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - ebsVolumeRubrikId - System.String: Rubrik FID of the EBS volume.
+    - includeSecurityMetadata - System.Boolean: Whether to include the object's security metadata in the response.
 - Returns AwsNativeEbsVolume.
 ### ebsvolumes
-Paginated list of all AWS EBS Volumes.
+Lists the AWS Native EBS volumes under the AWS-native hierarchy root.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - sortBy - AwsNativeEbsVolumeSortFields: Field of the EBS volume to order the results by. Defaults to the volume name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
+    - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Narrows the results to the EBS volumes matching every filter supplied. Unset returns all non-relic volumes.
+    - includeSecurityMetadata - System.Boolean: Whether to include each object's security metadata in the response.
 - Returns AwsNativeEbsVolumeConnection.
 ### ebsvolumesbyname
-Paginated list of all AWS EBS Volumes by name or substring of name.
+Lists the AWS Native EBS volumes under the AWS-native hierarchy root
+whose name or volume ID matches the given substring.
 
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - ebsVolumeName - System.String: The native name for the AWS EBS Volume object.
+    - ebsVolumeName - System.String: Case-insensitive substring matched against each EBS volume's name and volume ID.
+    - sortBy - AwsNativeEbsVolumeSortFields: Field of the EBS volume to order the results by. Defaults to the volume name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
 - Returns AwsNativeEbsVolumeConnection.
 ### ec2instance
-Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
+Returns a single AWS Native EC2 instance by its Rubrik FID.
 
 - There are 2 arguments.
-    - ec2InstanceRubrikId - System.String: Rubrik ID for the AWS EC2 Instance.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - ec2InstanceRubrikId - System.String: Rubrik FID of the EC2 instance.
+    - includeSecurityMetadata - System.Boolean: Whether to include the object's security metadata in the response.
 - Returns AwsNativeEc2Instance.
 ### ec2instances
-Paginated list of all AWS EC2 Instances.
+Lists the AWS Native EC2 instances under the AWS-native hierarchy root.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
-    - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Filter for EC2 instances.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - sortBy - AwsNativeEc2InstanceSortFields: Field of the EC2 instance to order the results by. Defaults to the instance name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
+    - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type: returns only the EC2 instances whose CDM host has a workload of one of these types. No filtering when empty.
+    - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Narrows the results to the EC2 instances matching every filter supplied. Unset returns all non-relic instances.
+    - includeSecurityMetadata - System.Boolean: Whether to include each object's security metadata in the response.
 - Returns AwsNativeEc2InstanceConnection.
 ### ec2instancesbyname
-Paginated list of all AWS EC2 Instances by name or substring of name.
+Lists the AWS Native EC2 instances under the AWS-native hierarchy root
+whose name or instance ID matches the given substring.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - ec2InstanceName - System.String: Native name for the AWS EC2 Instance object.
+    - sortBy - AwsNativeEc2InstanceSortFields: Field of the EC2 instance to order the results by. Defaults to the instance name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
+    - ec2InstanceName - System.String: Case-insensitive substring matched against each EC2 instance's name and instance ID.
+    - includeSecurityMetadata - System.Boolean: Whether to include each object's security metadata in the response.
 - Returns AwsNativeEc2InstanceConnection.
 ### isebsvolumesnapshotrestorable
 Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
@@ -110,20 +119,20 @@ Specified whether an EBS volume is restorable. For an EBS Volume to be restorabl
 - There is a single argument of type System.String.
 - Returns IsVolumeSnapshotRestorableReply.
 ### isrdsinstancelaunchconfigurationvalid
-Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
+Validates whether the given RDS launch configuration is orderable in AWS.
 
 - There are 11 arguments.
-    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - awsAccountRubrikId - System.String: Rubrik ID for the AWS Native account.
     - region - AwsNativeRegion: Region in AWS.
-    - dbEngine - AwsNativeRdsDbEngine: DB Engine of RDS Instance.
-    - dbEngineVersion - System.String: Version of DB engine.
-    - dbClass - AwsNativeRdsDbInstanceClass: DB class of the exported RDS DB instance.
-    - databaseInstanceClass - System.String: DB class of the exported RDS DB instance. AWS supported instance classes can be found here https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#Concepts.DBInstanceClass.Types.
-    - primaryAz - System.String: AZ in which the exported RDS DB instance must be launched.
-    - storageType - AwsNativeRdsStorageType: Storage type of the exported RDS DB instance.
-    - isMultiAz - System.Boolean: Whether the exported RDS DB instance is multi-AZ or not.
-    - kmsKeyId - System.String: KMS Key ID of the exported RDS DB instance.
-    - iops - System.Int32: IOPs of the exported RDS DB instance.
+    - dbEngine - AwsNativeRdsDbEngine: DB Engine of the RDS Instance.
+    - dbEngineVersion - System.String: Version of the DB engine.
+    - dbClass - AwsNativeRdsDbInstanceClass: Deprecated DB class enum, used as a fallback when databaseInstanceClass is unset.
+    - databaseInstanceClass - System.String: Preferred DB instance class string.
+    - primaryAz - System.String: AZ in which the instance would be launched.
+    - storageType - AwsNativeRdsStorageType: Storage type of the instance.
+    - isMultiAz - System.Boolean: Whether the instance is multi-AZ.
+    - kmsKeyId - System.String: KMS Key ID; presence determines whether the instance is treated as encrypted.
+    - iops - System.Int32: IOPS of the instance.
 - Returns System.Boolean.
 ### rdsexportdefaults
 Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
@@ -134,25 +143,37 @@ Refers to the default values for the export operation of the RDS DB Instance in 
     - isPointInTime - System.Boolean: Specifies whether the export of the instance is manual or Point-in-Time.
     - isArchivalCopy - System.Boolean: Specifies whether the export of the instance is from an archival copy.
 - Returns RdsInstanceExportDefaults.
-### rdsinstance
-Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
+### rdsexports3buckets
+S3 buckets that can hold the output of an RDS recover-to-S3 export, each
+with the region it resides in. Only buckets reachable from the specified
+AWS account are returned, and that account must have RDS protection
+onboarded. A bucket is a valid destination only when its region matches
+the region the export writes to, which is why each bucket carries its
+region.
 
 - There are 2 arguments.
-    - rdsInstanceRubrikId - System.String: The Rubrik ID for the AWS RDS Instance.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - region - AwsNativeRegion: Restricts the result to buckets residing in this region.
+- Returns list of S3BucketDetailss.
+### rdsinstance
+Returns a single AWS Native RDS instance by its Rubrik FID.
+
+- There are 2 arguments.
+    - rdsInstanceRubrikId - System.String: Rubrik FID of the RDS instance.
+    - includeSecurityMetadata - System.Boolean: Whether to include the object's security metadata in the response.
 - Returns AwsNativeRdsInstance.
 ### rdsinstances
-Paginated list of AWS RDS Instances on AWS Native account.
+Lists the AWS Native RDS instances under the AWS-native hierarchy root.
 
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - sortBy - AwsNativeRdsInstanceSortFields: Field of the RDS instance to order the results by. Defaults to the instance name.
+    - sortOrder - SortOrder: Direction the results are ordered in. Defaults to ascending.
+    - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Narrows the results to the RDS instances matching every filter supplied. Unset returns all non-relic instances.
+    - includeSecurityMetadata - System.Boolean: Whether to include each object's security metadata in the response.
 - Returns AwsNativeRdsInstanceConnection.
 ### rdspointintimerestorewindow
 Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
@@ -164,27 +185,32 @@ Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account
     - rdsDatabaseRubrikId - System.String: The Rubrik ID for the AWS RDS database.
 - Returns AwsNativeRdsPointInTimeRestoreWindow.
 ### root
-Root of AWS native hierarchy.
+Returns the root of the AWS Native hierarchy.
 
 - The root subcommand takes no arguments.
 - Returns AwsNativeRoot.
 ### s3bucket
-Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
+GetAwsNativeS3Bucket returns the hierarchy details for a single AWS
+native S3 bucket.
 
 - There are 2 arguments.
-    - s3BucketRubrikId - System.String: Rubrik ID for the AWS S3 bucket object.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - s3BucketRubrikId - System.String: Rubrik ID of the S3 bucket.
+    - includeSecurityMetadata - System.Boolean: Whether to include security metadata on the returned object.
 - Returns AwsNativeS3Bucket.
 ### validatedynamodbtablenameforrecovery
-Validates the DynamoDB table name provided by the user for recovery.
+ValidateAwsNativeDynamoDbTableNameForRecovery validates the recovery
+table name entered by the customer, authorizing the caller against the
+AWS Native account and gating on the DynamoDB feature flag.
 
 - There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
-    - dynamoDBTableNameForRecovery - System.String: Name of the DynamoDB table for recovery.
+    - dynamoDBTableNameForRecovery - System.String: Table name to validate for recovery.
     - region - AwsNativeRegion: Region in AWS.
 - Returns ValidateAwsNativeDynamoDbTableNameForRecoveryReply.
 ### validaterdsclusternameforexport
-Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
+Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is
+valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without
+an error message for all other failures.
 
 - There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
@@ -192,10 +218,12 @@ Validates the name used for an RDS cluster during an export operation. Returns t
     - rdsClusterName - System.String: Name of the RDS DB Cluster.
 - Returns ValidateAwsNativeRdsClusterNameForExportReply.
 ### validaterdsinstancenameforexport
-Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
+Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name
+is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false,
+without an error message for all other failures.
 
 - There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
-    - rdsInstanceName - System.String: Name of the RDS DB Instance
+    - rdsInstanceName - System.String: Name of the RDS DB Instance.
 - Returns ValidateAwsNativeRdsInstanceNameForExportReply.

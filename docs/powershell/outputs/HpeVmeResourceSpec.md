@@ -1,0 +1,31 @@
+### HpeVmeResourceSpec
+Sizing and placement of an HPE Virtual Machine Essentials virtual machine as the manager reported it when the snapshot was taken. Every field is absent when the manager did not report it.
+
+- planId: System.Int64
+  - ID of the service plan the virtual machine was provisioned from.
+- planCode: System.String
+  - Code of the service plan the virtual machine was provisioned from.
+- maxCores: System.Int64
+  - Number of virtual CPU cores.
+- coresPerSocket: System.Int64
+  - Number of cores per CPU socket.
+- maxMemoryBytes: System.Int64
+  - Memory of the virtual machine, in bytes.
+- osId: System.Int64
+  - ID of the guest operating system.
+- sourceImageId: System.Int64
+  - ID of the image the virtual machine was created from.
+- platform: System.String
+  - Platform of the guest operating system, for example "linux".
+- osType: System.String
+  - Type of the guest operating system.
+- networkIds: list of System.Int64s
+  - The manager's IDs of the networks the virtual machine was attached to.
+- instanceTypeCode: System.String
+  - Code of the instance type.
+- layoutId: System.Int64
+  - ID of the instance layout.
+- layoutCode: System.String
+  - Code of the instance layout.
+- version: System.String
+  - Version of the instance type.

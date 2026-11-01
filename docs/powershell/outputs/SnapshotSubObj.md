@@ -13,5 +13,7 @@ DataType representing the sub objects captured in a snapshot.
   - A virtual disk captured in an OLVM virtual machine snapshot.
 - proxmoxVmSubObj: ProxmoxVmSubObject
   - A virtual disk captured in a Proxmox virtual machine snapshot.
+- hpeVmeVmSubObj: HpeVmeVmSubObject
+  - A virtual disk captured in an HPE Virtual Machine Essentials virtual machine snapshot.
 - pureStorageProtectionGroupSubObj: PureStorageProtectionGroupSubObject
   - A volume captured in a Pure Storage protection group snapshot.

@@ -10,7 +10,8 @@ Details for the threat hunt.
 - status: ThreatHuntStatus
   - Status of the threat hunt.
 - totalMatchedSnapshots: System.Int64
-  - Total number of snapshots for which malware was found and hunt succeeded, or partially succeeded, or is in progress.
+  - Total number of snapshots with at least one file or Windows registry key
+match where the hunt succeeded, partially succeeded, or is in progress.
 - totalScannedSnapshots: System.Int64
   - Total number of snapshots across all objects selected for scan.
 - totalUniqueFileMatches: System.Int64

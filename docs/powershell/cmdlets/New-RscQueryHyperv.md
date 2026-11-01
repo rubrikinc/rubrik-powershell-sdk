@@ -31,9 +31,11 @@ Retrieves the list of virtual switches configured on a Hyper-V host.
 ### mounts
 HyperV Live Mount Connection.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filters - list of HypervLiveMountFilterInputs: Filter for hyper-v live mounts.
     - sortBy - HypervLiveMountSortByInput: Sort by argument for hyper-v live mounts.
 - Returns HyperVLiveMountConnection.
@@ -53,9 +55,11 @@ Get details about a Hyper-V SCVMM related async request.
 ### scvmms
 Paginated list of HyperV SCVMMs.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -76,23 +80,28 @@ Get summary of all the Hyper-V hosts.
 ### serverspaginated
 Paginated list of Hyper-V Servers.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
 - Returns HypervServerConnection.
 ### topleveldescendants
-Paginated list of the highest-level HyperV Objects accessible by the current user.
+Paginated list of the highest-level HyperV objects accessible by the
+current user.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filters.
+    - sortBy - HierarchySortByField: Field to sort the returned descendants by.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns HypervTopLevelDescendantTypeConnection.
 ### uniqueserverscount
 Count of unique HyperV Servers.
@@ -123,12 +132,14 @@ Retrieves virtual-machine-level file details from the snapshot.
 ### virtualmachines
 Paginated list of HyperV Virtual Machines.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - list of Filters: Hierarchy object filter.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
 - Returns HyperVVirtualMachineConnection.
 ### vmdetail
 HyperV Virtual Machine detail from CDM.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RecoveryPlanType? RecoveryPlanType
+        // GraphQL -> recoveryPlanType: RecoveryPlanType! (enum)
+        [JsonProperty("recoveryPlanType")]
+        public RecoveryPlanType? RecoveryPlanType { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RecoveryPlansInfo Set(
+        RecoveryPlanType? RecoveryPlanType = null,
         System.String? Id = null,
         System.String? Name = null,
         System.String? RecoveryType = null
     ) 
     {
+        if ( RecoveryPlanType != null ) {
+            this.RecoveryPlanType = RecoveryPlanType;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RecoveryPlanType? RecoveryPlanType
+        // GraphQL -> recoveryPlanType: RecoveryPlanType! (enum)
+        if (this.RecoveryPlanType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryPlanType\n" ;
+            } else {
+                s += ind + "recoveryPlanType\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RecoveryPlanType? RecoveryPlanType
+        // GraphQL -> recoveryPlanType: RecoveryPlanType! (enum)
+        if (ec.Includes("recoveryPlanType",true))
+        {
+            if(this.RecoveryPlanType == null) {
+
+                this.RecoveryPlanType = new RecoveryPlanType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryPlanType != null && ec.Excludes("recoveryPlanType",true))
+        {
+            this.RecoveryPlanType = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))

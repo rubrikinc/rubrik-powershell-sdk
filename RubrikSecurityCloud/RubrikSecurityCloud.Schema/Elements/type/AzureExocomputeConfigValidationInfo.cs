@@ -60,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled")]
         public System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster
+        // GraphQL -> isAksPrivateDnsZoneModeNoneRequiresPrivateCluster: Boolean! (scalar)
+        [JsonProperty("isAksPrivateDnsZoneModeNoneRequiresPrivateCluster")]
+        public System.Boolean? IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster { get; set; }
+
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneWithCustomZone
+        // GraphQL -> isAksPrivateDnsZoneModeNoneWithCustomZone: Boolean! (scalar)
+        [JsonProperty("isAksPrivateDnsZoneModeNoneWithCustomZone")]
+        public System.Boolean? IsAksPrivateDnsZoneModeNoneWithCustomZone { get; set; }
+
         //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
         // GraphQL -> isAzurePostgresFlexServerNetworkingIncomplete: Boolean! (scalar)
         [JsonProperty("isAzurePostgresFlexServerNetworkingIncomplete")]
@@ -203,6 +213,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAksCustomPrivateDnsZoneInvalid = null,
         System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet = null,
         System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null,
+        System.Boolean? IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster = null,
+        System.Boolean? IsAksPrivateDnsZoneModeNoneWithCustomZone = null,
         System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete = null,
         System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist = null,
         System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription = null,
@@ -253,6 +265,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null ) {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled;
+        }
+        if ( IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster != null ) {
+            this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster = IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster;
+        }
+        if ( IsAksPrivateDnsZoneModeNoneWithCustomZone != null ) {
+            this.IsAksPrivateDnsZoneModeNoneWithCustomZone = IsAksPrivateDnsZoneModeNoneWithCustomZone;
         }
         if ( IsAzurePostgresFlexServerNetworkingIncomplete != null ) {
             this.IsAzurePostgresFlexServerNetworkingIncomplete = IsAzurePostgresFlexServerNetworkingIncomplete;
@@ -413,6 +431,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
             } else {
                 s += ind + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster
+        // GraphQL -> isAksPrivateDnsZoneModeNoneRequiresPrivateCluster: Boolean! (scalar)
+        if (this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksPrivateDnsZoneModeNoneRequiresPrivateCluster\n" ;
+            } else {
+                s += ind + "isAksPrivateDnsZoneModeNoneRequiresPrivateCluster\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneWithCustomZone
+        // GraphQL -> isAksPrivateDnsZoneModeNoneWithCustomZone: Boolean! (scalar)
+        if (this.IsAksPrivateDnsZoneModeNoneWithCustomZone != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksPrivateDnsZoneModeNoneWithCustomZone\n" ;
+            } else {
+                s += ind + "isAksPrivateDnsZoneModeNoneWithCustomZone\n" ;
             }
         }
         //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
@@ -785,6 +821,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null && ec.Excludes("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled",true))
         {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null;
+        }
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster
+        // GraphQL -> isAksPrivateDnsZoneModeNoneRequiresPrivateCluster: Boolean! (scalar)
+        if (ec.Includes("isAksPrivateDnsZoneModeNoneRequiresPrivateCluster",true))
+        {
+            if(this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster == null) {
+
+                this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster != null && ec.Excludes("isAksPrivateDnsZoneModeNoneRequiresPrivateCluster",true))
+        {
+            this.IsAksPrivateDnsZoneModeNoneRequiresPrivateCluster = null;
+        }
+        //      C# -> System.Boolean? IsAksPrivateDnsZoneModeNoneWithCustomZone
+        // GraphQL -> isAksPrivateDnsZoneModeNoneWithCustomZone: Boolean! (scalar)
+        if (ec.Includes("isAksPrivateDnsZoneModeNoneWithCustomZone",true))
+        {
+            if(this.IsAksPrivateDnsZoneModeNoneWithCustomZone == null) {
+
+                this.IsAksPrivateDnsZoneModeNoneWithCustomZone = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksPrivateDnsZoneModeNoneWithCustomZone != null && ec.Excludes("isAksPrivateDnsZoneModeNoneWithCustomZone",true))
+        {
+            this.IsAksPrivateDnsZoneModeNoneWithCustomZone = null;
         }
         //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
         // GraphQL -> isAzurePostgresFlexServerNetworkingIncomplete: Boolean! (scalar)

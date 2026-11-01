@@ -3,7 +3,7 @@ Supported in v9.5+
 Configuration for downloading the base full snapshot and log snapshots required for point-in-time recovery of a MongoDB database.
 
 - cloudRehydrationSpeed: CloudStorageRehydrationSpeed
-  - Supported in v9.7
+  - Supported in v9.6+
 Optional. Overrides the archival location's rehydration speed for this download only. Applies only when the base full snapshot is in a cold (offline) storage tier of an AWS S3 or Azure archival location. Log snapshots are not affected. Not supported for Rubrik Cloud Vault locations.
 - pointInTime: DateTime
   - Supported in v9.5+

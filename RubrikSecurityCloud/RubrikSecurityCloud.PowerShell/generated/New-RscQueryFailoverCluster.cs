@@ -122,6 +122,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -184,8 +190,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
-    /// # REQUIRED
-    /// $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -245,6 +249,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -307,8 +317,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
-    /// # REQUIRED
-    /// $query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -552,26 +560,30 @@ $query.Var.fid = $someString"
         // failoverClusterApps(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     hostFailoverClusterRoot: HostFailoverClusterRoot!
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
-        //     hostFailoverClusterRoot: HostFailoverClusterRoot!
         //   ): FailoverClusterAppConnection!
         internal void InitQueryFailoverClusterApps()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("hostFailoverClusterRoot", "HostFailoverClusterRoot!"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
-                Tuple.Create("hostFailoverClusterRoot", "HostFailoverClusterRoot!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryFailoverClusterApps",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostFailoverClusterRoot: HostFailoverClusterRoot!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$hostFailoverClusterRoot: HostFailoverClusterRoot!,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "FailoverClusterAppConnection",
                 Query.FailoverClusterApps,
                 Query.FailoverClusterAppsFieldSpec,
@@ -579,6 +591,12 @@ $query.Var.fid = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -641,9 +659,7 @@ $query.Var.filter = @(
 			}
 		)
 }
-)
-# REQUIRED
-$query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values."
+)"
             );
         }
 
@@ -671,26 +687,30 @@ $query.Var.fid = $someString"
         // hostFailoverClusters(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     hostFailoverClusterRoot: HostFailoverClusterRoot!
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
-        //     hostFailoverClusterRoot: HostFailoverClusterRoot!
         //   ): HostFailoverClusterConnection!
         internal void InitQueryHostFailoverClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("hostFailoverClusterRoot", "HostFailoverClusterRoot!"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
-                Tuple.Create("hostFailoverClusterRoot", "HostFailoverClusterRoot!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryHostFailoverClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$hostFailoverClusterRoot: HostFailoverClusterRoot!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$hostFailoverClusterRoot: HostFailoverClusterRoot!,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "HostFailoverClusterConnection",
                 Query.HostFailoverClusters,
                 Query.HostFailoverClustersFieldSpec,
@@ -698,6 +718,12 @@ $query.Var.fid = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values.
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -760,9 +786,7 @@ $query.Var.filter = @(
 			}
 		)
 }
-)
-# REQUIRED
-$query.Var.hostFailoverClusterRoot = $someHostFailoverClusterRoot # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostFailoverClusterRoot]) for enum values."
+)"
             );
         }
 

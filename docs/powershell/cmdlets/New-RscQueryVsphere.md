@@ -149,9 +149,11 @@ Returns a single vSphere resource pool that is to be used as a recovery compute 
 ### rootrecoveryhierarchy
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
@@ -207,5 +209,9 @@ All vSphere virtual machines, based on the FIDs passed.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns VsphereVmConnection.
 ### vmwarecdpliveinfo
+Returns the live CDP info for a set of CDP-enabled virtual machines
+
+Supported in v5.1+.
+
 - There is a single argument of type list of System.Strings.
 - Returns BatchVmwareCdpLiveInfo.

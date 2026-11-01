@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region MongoSource
  
-    public class MongoSource: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject
+    public class MongoSource: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable
     {
         #region members
 
@@ -306,6 +306,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> List<CdmMongoNode>? ReplicaSetMembers
+        // GraphQL -> replicaSetMembers: [CdmMongoNode!]! (type)
+        [JsonProperty("replicaSetMembers")]
+        public List<CdmMongoNode>? ReplicaSetMembers { get; set; }
+
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)
         [JsonProperty("securityMetadata")]
@@ -385,6 +390,10 @@ namespace RubrikSecurityCloud.Types
             this.NumWorkloadDescendants =
                 new RscGqlVars(null, numWorkloadDescendantsArgs, null, true);
             Tuple<string, string>[] dataHostsArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("filter", "[Filter!]"),
@@ -394,6 +403,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] descendantConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -431,6 +442,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] physicalChildConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "HierarchySortByField"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
@@ -544,6 +557,7 @@ namespace RubrikSecurityCloud.Types
         MongoSourcePhysicalChildTypeConnection? PhysicalChildConnection = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        List<CdmMongoNode>? ReplicaSetMembers = null,
         SecurityMetadata? SecurityMetadata = null,
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
@@ -724,6 +738,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( ReplicaSetMembers != null ) {
+            this.ReplicaSetMembers = ReplicaSetMembers;
         }
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
@@ -1368,6 +1385,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CdmMongoNode>? ReplicaSetMembers
+        // GraphQL -> replicaSetMembers: [CdmMongoNode!]! (type)
+        if (this.ReplicaSetMembers != null) {
+            var fspec = this.ReplicaSetMembers.AsFieldSpec(conf.Child("replicaSetMembers"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicaSetMembers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2522,6 +2551,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> List<CdmMongoNode>? ReplicaSetMembers
+        // GraphQL -> replicaSetMembers: [CdmMongoNode!]! (type)
+        if (ec.Includes("replicaSetMembers",false))
+        {
+            if(this.ReplicaSetMembers == null) {
+
+                this.ReplicaSetMembers = new List<CdmMongoNode>();
+                this.ReplicaSetMembers.ApplyExploratoryFieldSpec(ec.NewChild("replicaSetMembers"));
+
+            } else {
+
+                this.ReplicaSetMembers.ApplyExploratoryFieldSpec(ec.NewChild("replicaSetMembers"));
+
+            }
+        }
+        else if (this.ReplicaSetMembers != null && ec.Excludes("replicaSetMembers",false))
+        {
+            this.ReplicaSetMembers = null;
         }
         //      C# -> SecurityMetadata? SecurityMetadata
         // GraphQL -> securityMetadata: SecurityMetadata (type)

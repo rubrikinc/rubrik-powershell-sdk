@@ -389,6 +389,40 @@ CloudDirectCheckSharePath validates if a share path is accessible on the specifi
 
 - There is a single argument of type CloudDirectCheckSharePathReq.
 - Returns CloudDirectCheckSharePathResp.
+### clouddirectcopyschedule
+GetCloudDirectCopySchedule returns a single copy schedule by its ID. The
+caller must be authorized to view the schedule.
+
+- There are 2 arguments.
+    - clusterUuid - System.String: Cluster UUID that owns the schedule.
+    - scheduleId - System.String: Unique identifier of the schedule to return.
+- Returns CloudDirectCopyScheduleDetail.
+### clouddirectcopyscheduleassignments
+ListCloudDirectCopyScheduleAssignments returns the assignments matching
+scheduleId, shareId, or both -- at least one must be provided. The
+caller must be authorized to view each filter object provided (the
+schedule and/or the share); each assignment is additionally filtered by
+view access on its source share, so shares the caller cannot view are
+omitted from the reply.
+
+- There are 5 arguments.
+    - clusterUuid - System.String: Cluster UUID that owns the assignments.
+    - scheduleId - System.String: Filters assignments to those belonging to this schedule.
+    - shareId - System.String: Filters assignments to those for this NAS share.
+    - pageSize - System.Int32: Maximum assignments per page (clamped to the server default).
+    - pageCursor - System.String: Continuation token from a prior reply's nextPageCursor.
+- Returns CloudDirectCopyScheduleAssignmentList.
+### clouddirectcopyschedules
+Returns the NAS Cloud Direct copy schedules that the caller is authorized
+to view, across every registered NCD cluster on the account unless a
+cluster is named.
+
+- There are 3 arguments.
+    - clusterUuid - System.String: Cluster UUID to scope the list. Omit to list every
+registered NCD cluster's schedules.
+    - pageSize - System.Int32: Maximum schedules per page (clamped to the server default).
+    - pageCursor - System.String: Continuation token from a prior reply's nextPageCursor.
+- Returns CloudDirectCopyScheduleList.
 ### clouddirectglobalsearch
 CloudDirectGlobalSearch performs a global search across all NAS Cloud Direct objects on a cluster.
 
@@ -1022,6 +1056,12 @@ Retrieve the status of the Laminar feature enablement for various cloud types.
 
 - The getlaminarfeaturestatus subcommand takes no arguments.
 - Returns GetLaminarFeatureStatusReply.
+### getmountdetails
+GetMountDetails returns the details of mounted disk for a particular mount.
+Returns the details of mount disks.
+
+- There is a single argument of type GetMountDetailsInput.
+- Returns GetMountDetailsReply.
 ### getobjectprotectionandsensitivitysummary
 Get the object protection and sensitivity summary for the UCL Laminar dashboard.
 
@@ -1139,11 +1179,12 @@ counts are scoped to what the caller can see.
 - The glueiceberginventorystats subcommand takes no arguments.
 - Returns GlueIcebergInventoryStatsReply.
 ### glueicebergtable
-Represents an AWS Glue Iceberg Table with a specific Rubrik ID.
+GetGlueIcebergTable returns the hierarchy details for a single AWS
+Glue Iceberg table.
 
 - There are 2 arguments.
-    - glueIcebergTableRubrikId - System.String: Rubrik ID for the AWS Glue Iceberg table object.
-    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+    - glueIcebergTableRubrikId - System.String: Rubrik ID of the Glue Iceberg table.
+    - includeSecurityMetadata - System.Boolean: Whether to include security metadata on the returned object.
 - Returns GlueIcebergTable.
 ### groupsincurrentanddescendantorganization
 Retrieve groups from current and descendant organizations based on the specified filters.
@@ -2137,16 +2178,16 @@ A product documentation.
 List of all objects protected by the SLA Domains.
 
 - There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - rootOptionalFid - System.String: Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
     - slaIds - list of System.Strings: A list of SLA Domain IDs.
     - filter - list of Filters: Hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
 - Returns ProtectedObjectsConnection.
 ### protectedvolumescount
 Total number of protected volumes across all hosts.
@@ -2435,6 +2476,14 @@ Search file under given folder and with given prefix.
     - searchFolderPath - System.String: Root path to search file inside FMD.
     - filenamePrefix - System.String: Filename prefix that should match.
 - Returns DiffResult.
+### securityfeaturesstatuses
+Returns, for each given object, whether it is muted for Threat Monitoring
+and Anomaly Detection notifications and whether each feature is enabled
+for the entity that owns it. Objects the caller cannot view are omitted.
+The result is empty when object mute is off for the account.
+
+- There is a single argument of type list of System.Strings.
+- Returns list of SecurityFeaturesStatusEntrys.
 ### securityfeaturesupportedobjecttypes
 Returns the managed object types a Data Threat Analytics product
 supports, so a client can decide whether to render that product's

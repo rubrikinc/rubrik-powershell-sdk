@@ -188,12 +188,22 @@ Restore files to the original host.
 - There is a single argument of type RestoreVolumeGroupSnapshotFilesInput.
 - Returns AsyncRequestStatus.
 ### startec2instanceexportjob
-Starts a job to export an EC2 Instance snapshot. The job creates a new EC2 Instance with the same properties as that of the snapshot that is exported.
+StartEc2InstanceSnapshotExportJob starts an on-demand job that exports an
+EC2 instance snapshot into a new EC2 instance, optionally in a different
+AWS account and region.
 
 - There is a single argument of type StartEc2InstanceSnapshotExportJobInput.
 - Returns AsyncJobStatus.
+### startrecoverdynamodbjob
+Starts an on-demand snapshot recovery job for the specified AWS DynamoDB
+table. Returns the ID of the taskchain initiated for the recovery job.
+
+- There is a single argument of type StartRecoverDynamoDBSnapshotJobInput.
+- Returns AsyncJobStatus.
 ### startrecovers3job
-Starts an on-demand snapshot recovery job for the specified AWS S3 bucket. Returns the ID of the taskchain initiated for the recovery job.
+StartRecoverS3SnapshotJob schedules an on-demand job to recover an AWS S3
+bucket from a snapshot or a point in time, resolving which of the two the
+caller asked for from the snapshot id and restore date on the input.
 
 - There is a single argument of type StartRecoverS3SnapshotJobInput.
 - Returns AsyncJobStatus.
@@ -220,6 +230,10 @@ Takes on-demand snapshots for the provided workloads.
 - Returns BatchAsyncJobStatus.
 ### uploaddatabasetoblobstore
 Start a job to upload a database snapshot to a target blobstore.
+The taskchain creates the target blobstore location (Azure container or
+storage account, S3 bucket and so on) first if it does not already exist.
+Only Azure SQL persistent snapshots can be uploaded to a target storage
+account.
 
 - There is a single argument of type UploadDatabaseSnapshotToBlobstoreInput.
 - Returns AsyncJobStatus.

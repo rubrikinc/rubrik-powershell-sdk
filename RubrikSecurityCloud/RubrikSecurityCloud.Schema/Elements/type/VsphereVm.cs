@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplica")]
         public System.Boolean? IsReplica { get; set; }
 
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean! (scalar)
+        [JsonProperty("isVmServiceVm")]
+        public System.Boolean? IsVmServiceVm { get; set; }
+
         //      C# -> System.Int32? LegallyHeldSnapshotCount
         // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
         [JsonProperty("legallyHeldSnapshotCount")]
@@ -391,6 +396,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vSphereMounts")]
         public VsphereMountConnection? VsphereMounts { get; set; }
 
+        //      C# -> VsphereVmServiceInfo? VmServiceInfo
+        // GraphQL -> vmServiceInfo: VsphereVmServiceInfo (type)
+        [JsonProperty("vmServiceInfo")]
+        public VsphereVmServiceInfo? VmServiceInfo { get; set; }
+
         //      C# -> List<PathNode>? VsphereTagPath
         // GraphQL -> vsphereTagPath: [PathNode!]! (type)
         [JsonProperty("vsphereTagPath")]
@@ -573,6 +583,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsBlueprintChild = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplica = null,
+        System.Boolean? IsVmServiceVm = null,
         System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -620,6 +631,7 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null,
         VsphereLiveMountConnection? VsphereLiveMounts = null,
         VsphereMountConnection? VsphereMounts = null,
+        VsphereVmServiceInfo? VmServiceInfo = null,
         List<PathNode>? VsphereTagPath = null,
         VsphereVirtualDiskConnection? VsphereVirtualDisks = null
     ) 
@@ -704,6 +716,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsReplica != null ) {
             this.IsReplica = IsReplica;
+        }
+        if ( IsVmServiceVm != null ) {
+            this.IsVmServiceVm = IsVmServiceVm;
         }
         if ( LegallyHeldSnapshotCount != null ) {
             this.LegallyHeldSnapshotCount = LegallyHeldSnapshotCount;
@@ -845,6 +860,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( VsphereMounts != null ) {
             this.VsphereMounts = VsphereMounts;
+        }
+        if ( VmServiceInfo != null ) {
+            this.VmServiceInfo = VmServiceInfo;
         }
         if ( VsphereTagPath != null ) {
             this.VsphereTagPath = VsphereTagPath;
@@ -1127,6 +1145,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isReplica\n" ;
             } else {
                 s += ind + "isReplica\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean! (scalar)
+        if (this.IsVmServiceVm != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isVmServiceVm\n" ;
+            } else {
+                s += ind + "isVmServiceVm\n" ;
             }
         }
         //      C# -> System.Int32? LegallyHeldSnapshotCount
@@ -1657,6 +1684,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> VsphereVmServiceInfo? VmServiceInfo
+        // GraphQL -> vmServiceInfo: VsphereVmServiceInfo (type)
+        if (this.VmServiceInfo != null) {
+            var fspec = this.VmServiceInfo.AsFieldSpec(conf.Child("vmServiceInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vmServiceInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? VsphereTagPath
         // GraphQL -> vsphereTagPath: [PathNode!]! (type)
         if (this.VsphereTagPath != null) {
@@ -2176,6 +2215,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsReplica != null && ec.Excludes("isReplica",true))
         {
             this.IsReplica = null;
+        }
+        //      C# -> System.Boolean? IsVmServiceVm
+        // GraphQL -> isVmServiceVm: Boolean! (scalar)
+        if (ec.Includes("isVmServiceVm",true))
+        {
+            if(this.IsVmServiceVm == null) {
+
+                this.IsVmServiceVm = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVmServiceVm != null && ec.Excludes("isVmServiceVm",true))
+        {
+            this.IsVmServiceVm = null;
         }
         //      C# -> System.Int32? LegallyHeldSnapshotCount
         // GraphQL -> legallyHeldSnapshotCount: Int (scalar)
@@ -3045,6 +3101,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.VsphereMounts != null && ec.Excludes("vSphereMounts",false))
         {
             this.VsphereMounts = null;
+        }
+        //      C# -> VsphereVmServiceInfo? VmServiceInfo
+        // GraphQL -> vmServiceInfo: VsphereVmServiceInfo (type)
+        if (ec.Includes("vmServiceInfo",false))
+        {
+            if(this.VmServiceInfo == null) {
+
+                this.VmServiceInfo = new VsphereVmServiceInfo();
+                this.VmServiceInfo.ApplyExploratoryFieldSpec(ec.NewChild("vmServiceInfo"));
+
+            } else {
+
+                this.VmServiceInfo.ApplyExploratoryFieldSpec(ec.NewChild("vmServiceInfo"));
+
+            }
+        }
+        else if (this.VmServiceInfo != null && ec.Excludes("vmServiceInfo",false))
+        {
+            this.VmServiceInfo = null;
         }
         //      C# -> List<PathNode>? VsphereTagPath
         // GraphQL -> vsphereTagPath: [PathNode!]! (type)

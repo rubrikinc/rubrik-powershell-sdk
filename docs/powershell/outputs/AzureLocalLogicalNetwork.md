@@ -17,3 +17,10 @@ Absent for Dynamic networks (ARM does not require a CIDR for DHCP networks).
   - IP pools defined on this logical network's subnet. Each pool specifies a
 contiguous range of addresses available for static assignment. Empty for
 Dynamic networks. A network can have more than one pool.
+- gateway: System.String
+  - Default gateway of this logical network's subnet, e.g. "10.1.212.1": the next
+hop of its 0.0.0.0/0 route. Absent when the subnet defines no default route.
+Read-only: Azure Local derives a NIC's gateway from its logical network.
+- dnsServers: list of System.Strings
+  - DNS server addresses defined on this logical network, in priority order.
+Empty when the network defines none.

@@ -33,6 +33,8 @@ cluster. Null when the source cluster is unknown.
   - UUID of the primary cluster.
 - clusterUuid: System.String
   - UUID of the CDM cluster.
+- reportWorkload: Snappable
+  - Contains statistics for the protected objects, including physical bytes and archive storage for virtual machine archival.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

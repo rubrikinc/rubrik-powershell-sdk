@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> HypervVmAgentConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus! (enum)
+        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus (enum)
         [JsonProperty("connectionStatus")]
         public HypervVmAgentConnectionStatus? ConnectionStatus { get; set; }
 
@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> HypervVmAgentConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus! (enum)
+        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus (enum)
         if (this.ConnectionStatus != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "connectionStatus\n" ;
@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> HypervVmAgentConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus! (enum)
+        // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus (enum)
         if (ec.Includes("connectionStatus",true))
         {
             if(this.ConnectionStatus == null) {

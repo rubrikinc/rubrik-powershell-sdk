@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("deleteSnapshots")]
         public System.Boolean? DeleteSnapshots { get; set; }
 
+        //      C# -> System.Boolean? SkipResourceDeletion
+        // GraphQL -> skipResourceDeletion: Boolean (scalar)
+        [JsonProperty("skipResourceDeletion")]
+        public System.Boolean? SkipResourceDeletion { get; set; }
+
 
         #endregion
 

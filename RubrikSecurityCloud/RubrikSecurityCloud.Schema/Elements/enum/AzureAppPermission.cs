@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_APP_PERMISSION_UNSPECIFIED")]
         AZURE_APP_PERMISSION_UNSPECIFIED,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_IMPERSONATION")]
+        AZURE_COSMOS_NOSQL_IMPERSONATION,
+
         [EnumMember(Value = "AZURE_GRAPH_GROUP_RW")]
         AZURE_GRAPH_GROUP_RW,
 

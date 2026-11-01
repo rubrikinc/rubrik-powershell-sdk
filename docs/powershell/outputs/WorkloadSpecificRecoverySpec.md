@@ -17,3 +17,5 @@ Platform-specific recovery specification.
   - Active Directory Domain Controller recovery specification.
 - hypervVm: HypervVmRecoverySpec
   - HyperV virtual machine recovery specification.
+- mssqlDatabase: MssqlDatabaseRecoverySpec
+  - SQL Server database recovery specification.

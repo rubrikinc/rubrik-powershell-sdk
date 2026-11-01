@@ -8,13 +8,15 @@ Get details of the given failover cluster app.
 ### apps
 Get a summary of all failover cluster apps.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
 - Returns FailoverClusterAppConnection.
 ### host
 Get details of the given host failover cluster.
@@ -24,13 +26,15 @@ Get details of the given host failover cluster.
 ### hosts
 Get a summary of all host failover clusters.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - hostFailoverClusterRoot - HostFailoverClusterRoot: Host failover cluster root type.
 - Returns HostFailoverClusterConnection.
 ### topleveldescendants
 Get a summary of all failover cluster top level descendants.

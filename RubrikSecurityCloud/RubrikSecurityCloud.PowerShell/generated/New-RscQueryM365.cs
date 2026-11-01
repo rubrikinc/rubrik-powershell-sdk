@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Microsoft 365' API domain:
-    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, OrgOutboundIps, Regions, or SearchBackupStorageObjectRestorePoints.
+    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, OrgOutboundIps, Regions, SearchBackupStorageObjectRestorePoints, or SubscriptionDomains.
     /// </summary>
     /// <description>
     /// New-RscQueryM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 14 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, OrgOutboundIps, Regions, or SearchBackupStorageObjectRestorePoints.
+    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, OrgOutboundIps, Regions, SearchBackupStorageObjectRestorePoints, or SubscriptionDomains.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -523,6 +523,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the SubscriptionDomains operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: SubscriptionDomains
+    /// 
+    /// $query = New-RscQueryM365 -Operation SubscriptionDomains
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	domainNameSubstring = $someString
+    /// 	# OPTIONAL
+    /// 	shouldIncludeUnverified = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: M365DomainConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -552,6 +595,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OrgOutboundIps",
                 "Regions",
                 "SearchBackupStorageObjectRestorePoints",
+                "SubscriptionDomains",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -605,6 +649,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SearchBackupStorageObjectRestorePoints":
                         this.ProcessRecord_SearchBackupStorageObjectRestorePoints();
+                        break;
+                    case "SubscriptionDomains":
+                        this.ProcessRecord_SubscriptionDomains();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -731,6 +778,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SearchBackupStorageObjectRestorePoints";
             // Create new graphql operation searchM365BackupStorageObjectRestorePoints
             InitQuerySearchM365BackupStorageObjectRestorePoints();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // m365SubscriptionDomains.
+        internal void ProcessRecord_SubscriptionDomains()
+        {
+            this._logger.name += " -SubscriptionDomains";
+            // Create new graphql operation m365SubscriptionDomains
+            InitQueryM365SubscriptionDomains();
         }
 
 
@@ -1110,6 +1166,53 @@ $query.Var.searchM365BackupStorageObjectRestorePointsInput = @{
 	restorePointTagType = $someRestorePointTagType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointTagType]) for enum values.
 	# OPTIONAL
 	restorePointPreferenceType = $someRestorePointPreferenceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RestorePointPreferenceType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // m365SubscriptionDomains(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     subscriptionId: UUID!
+        //     filter: M365DomainFilter
+        //   ): M365DomainConnection!
+        internal void InitQueryM365SubscriptionDomains()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("filter", "M365DomainFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryM365SubscriptionDomains",
+                "($first: Int,$after: String,$last: Int,$before: String,$subscriptionId: UUID!,$filter: M365DomainFilter)",
+                "M365DomainConnection",
+                Query.M365SubscriptionDomains,
+                Query.M365SubscriptionDomainsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	domainNameSubstring = $someString
+	# OPTIONAL
+	shouldIncludeUnverified = $someBoolean
 }"
             );
         }

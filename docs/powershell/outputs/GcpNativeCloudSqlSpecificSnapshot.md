@@ -11,5 +11,7 @@ Snapshot information specific to the GCP Cloud SQL instance.
   - Database version of the Cloud SQL instance.
 - instanceTier: System.String
   - Instance tier of the Cloud SQL instance.
+- encryptionKey: GcpKmsCryptoKey
+  - KMS key used for encryption, if any.
 - snapshotId: System.String
   - ID of the snapshot.

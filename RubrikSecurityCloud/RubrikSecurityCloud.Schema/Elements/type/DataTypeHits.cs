@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataTypeId")]
         public System.String? DataTypeId { get; set; }
 
+        //      C# -> System.Int64? FileCount
+        // GraphQL -> fileCount: Long! (scalar)
+        [JsonProperty("fileCount")]
+        public System.Int64? FileCount { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public DataTypeHits Set(
         System.String? DataTypeId = null,
+        System.Int64? FileCount = null,
         System.String? Id = null,
         System.Int64? ObjectCount = null,
         System.Int64? TotalHits = null,
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( DataTypeId != null ) {
             this.DataTypeId = DataTypeId;
+        }
+        if ( FileCount != null ) {
+            this.FileCount = FileCount;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dataTypeId\n" ;
             } else {
                 s += ind + "dataTypeId\n" ;
+            }
+        }
+        //      C# -> System.Int64? FileCount
+        // GraphQL -> fileCount: Long! (scalar)
+        if (this.FileCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fileCount\n" ;
+            } else {
+                s += ind + "fileCount\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -159,6 +177,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataTypeId != null && ec.Excludes("dataTypeId",true))
         {
             this.DataTypeId = null;
+        }
+        //      C# -> System.Int64? FileCount
+        // GraphQL -> fileCount: Long! (scalar)
+        if (ec.Includes("fileCount",true))
+        {
+            if(this.FileCount == null) {
+
+                this.FileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileCount != null && ec.Excludes("fileCount",true))
+        {
+            this.FileCount = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

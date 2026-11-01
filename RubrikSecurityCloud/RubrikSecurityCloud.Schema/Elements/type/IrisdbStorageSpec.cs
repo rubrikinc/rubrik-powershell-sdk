@@ -31,7 +31,7 @@ namespace RubrikSecurityCloud.Types
         public List<System.String>? ProtectionGroupIds { get; set; }
 
         //      C# -> System.String? StorageId
-        // GraphQL -> storageId: String! (scalar)
+        // GraphQL -> storageId: String (scalar)
         [JsonProperty("storageId")]
         public System.String? StorageId { get; set; }
 
@@ -101,7 +101,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? StorageId
-        // GraphQL -> storageId: String! (scalar)
+        // GraphQL -> storageId: String (scalar)
         if (this.StorageId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "storageId\n" ;
@@ -163,7 +163,7 @@ namespace RubrikSecurityCloud.Types
             this.ProtectionGroupIds = null;
         }
         //      C# -> System.String? StorageId
-        // GraphQL -> storageId: String! (scalar)
+        // GraphQL -> storageId: String (scalar)
         if (ec.Includes("storageId",true))
         {
             if(this.StorageId == null) {

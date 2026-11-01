@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preferredLocationType")]
         public SnapshotLocationType? PreferredLocationType { get; set; }
 
+        //      C# -> System.Boolean? IgnoreNetworkReconfigureError
+        // GraphQL -> ignoreNetworkReconfigureError: Boolean (scalar)
+        [JsonProperty("ignoreNetworkReconfigureError")]
+        public System.Boolean? IgnoreNetworkReconfigureError { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public RecoveryConfigV2Output Set(
         DataTransferType? DataTransferType = null,
-        SnapshotLocationType? PreferredLocationType = null
+        SnapshotLocationType? PreferredLocationType = null,
+        System.Boolean? IgnoreNetworkReconfigureError = null
     ) 
     {
         if ( DataTransferType != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreferredLocationType != null ) {
             this.PreferredLocationType = PreferredLocationType;
+        }
+        if ( IgnoreNetworkReconfigureError != null ) {
+            this.IgnoreNetworkReconfigureError = IgnoreNetworkReconfigureError;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "preferredLocationType\n" ;
             } else {
                 s += ind + "preferredLocationType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IgnoreNetworkReconfigureError
+        // GraphQL -> ignoreNetworkReconfigureError: Boolean (scalar)
+        if (this.IgnoreNetworkReconfigureError != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ignoreNetworkReconfigureError\n" ;
+            } else {
+                s += ind + "ignoreNetworkReconfigureError\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreferredLocationType != null && ec.Excludes("preferredLocationType",true))
         {
             this.PreferredLocationType = null;
+        }
+        //      C# -> System.Boolean? IgnoreNetworkReconfigureError
+        // GraphQL -> ignoreNetworkReconfigureError: Boolean (scalar)
+        if (ec.Includes("ignoreNetworkReconfigureError",true))
+        {
+            if(this.IgnoreNetworkReconfigureError == null) {
+
+                this.IgnoreNetworkReconfigureError = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IgnoreNetworkReconfigureError != null && ec.Excludes("ignoreNetworkReconfigureError",true))
+        {
+            this.IgnoreNetworkReconfigureError = null;
         }
     }
 

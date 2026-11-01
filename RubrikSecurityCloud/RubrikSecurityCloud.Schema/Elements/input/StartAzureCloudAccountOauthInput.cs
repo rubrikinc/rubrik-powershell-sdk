@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEntraIdInitiatedOnboarding")]
         public System.Boolean? IsEntraIdInitiatedOnboarding { get; set; }
 
+        //      C# -> System.Boolean? ShouldEnsureDefaultApp
+        // GraphQL -> shouldEnsureDefaultApp: Boolean (scalar)
+        [JsonProperty("shouldEnsureDefaultApp")]
+        public System.Boolean? ShouldEnsureDefaultApp { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID (scalar)
         [JsonProperty("workloadId")]

@@ -41,10 +41,10 @@ Delete a failover cluster.
 - There is a single argument of type DeleteFailoverClusterInput.
 - Returns ResponseSuccess.
 ### deleteapp
-Delete a failover cluster
+Delete a failover cluster app
 
 Supported in v5.2+
-Delete a failover cluster.
+Delete a failover cluster app.
 
 - There is a single argument of type DeleteFailoverClusterAppInput.
 - Returns ResponseSuccess.

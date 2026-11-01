@@ -25,6 +25,10 @@ Query vSphere virtual machines.
     - filter - list of Filters: Hierarchy object filter.
 - Returns VsphereVmConnection.
 ### recoverablerangeinbatch
+Returns the recoverable ranges for a set of CDP-enabled virtual machines
+
+Supported in v5.3+.
+
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.
 ### recoveryrangestatuses

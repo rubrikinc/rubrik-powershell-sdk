@@ -29,3 +29,5 @@ The status of the Rubrik Backup Service agent for virtual machines.
 - agentConnectStatus: AgentConnectStatus
   - Supported in v9.2+
 The agent connection status.
+- protectionDate: DateTime
+  - UTC timestamp for when the Hyper-V virtual machine became protected by its current SLA Domain. Omitted if no SLA Domain has been assigned. The value resets every time the SLA Domain changes, including a reassignment to Unprotected.

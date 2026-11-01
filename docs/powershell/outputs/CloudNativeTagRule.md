@@ -21,3 +21,7 @@ Cloud-native tag rule.
   - Tag conditions for the tag rule.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the tag rule.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for the tag rule.

@@ -39,6 +39,14 @@ database.
 throughputMode is not autoscale.
 - isProtectable: System.Boolean
   - Specifies whether the Azure Cosmos NoSQL database is protectable.
+- accountName: System.String
+  - Name of the Azure Cosmos NoSQL account that owns the database.
+- azureCosmosNosqlContainerCount: System.Int32
+  - Number of containers in the Azure Cosmos NoSQL database as of the last
+inventory refresh.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Resource group of the Azure Cosmos NoSQL account that owns the database,
+including its subscription.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

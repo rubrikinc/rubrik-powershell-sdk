@@ -13,5 +13,7 @@ when the workload type has not entered prioritized onboarding.
 when prioritized onboarding has not finished.
 - prioritizedOnboardingDays: System.Int32
   - Number of days of history that prioritized onboarding ingests for the
-workload type, in the range 1 to 180. Zero when the workload type has no
-prioritized onboarding policy.
+workload type, in the range 1 to 180. Set only when operation_mode is
+PRIORITIZED_ONBOARDING or BACKFILL_ONBOARDING. Zero when the workload type
+has no prioritized onboarding policy or its policy uses an absolute cutoff
+date rather than a number of days.

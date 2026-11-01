@@ -71,6 +71,8 @@ cluster. Null when the source cluster is unknown.
   - List of live mounts for a SQL Server database.
 - version: System.String
   - The Microsoft SQL Server version.
+- recoveryPlansInfo: list of MssqlRecoveryPlansInfos
+  - Recovery Plans that include this SQL Server database.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

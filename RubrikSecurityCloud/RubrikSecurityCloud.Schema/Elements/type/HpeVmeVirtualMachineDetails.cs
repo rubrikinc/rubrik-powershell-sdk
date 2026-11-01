@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hpeVmeVmId")]
         public System.String? HpeVmeVmId { get; set; }
 
+        //      C# -> System.String? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: String (scalar)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public System.String? SnapshotConsistencyMandate { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public HpeVmeVirtualMachineDetails Set(
         System.String? HpeVmeHostId = null,
-        System.String? HpeVmeVmId = null
+        System.String? HpeVmeVmId = null,
+        System.String? SnapshotConsistencyMandate = null
     ) 
     {
         if ( HpeVmeHostId != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HpeVmeVmId != null ) {
             this.HpeVmeVmId = HpeVmeVmId;
+        }
+        if ( SnapshotConsistencyMandate != null ) {
+            this.SnapshotConsistencyMandate = SnapshotConsistencyMandate;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hpeVmeVmId\n" ;
             } else {
                 s += ind + "hpeVmeVmId\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: String (scalar)
+        if (this.SnapshotConsistencyMandate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotConsistencyMandate\n" ;
+            } else {
+                s += ind + "snapshotConsistencyMandate\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HpeVmeVmId != null && ec.Excludes("hpeVmeVmId",true))
         {
             this.HpeVmeVmId = null;
+        }
+        //      C# -> System.String? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: String (scalar)
+        if (ec.Includes("snapshotConsistencyMandate",true))
+        {
+            if(this.SnapshotConsistencyMandate == null) {
+
+                this.SnapshotConsistencyMandate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotConsistencyMandate != null && ec.Excludes("snapshotConsistencyMandate",true))
+        {
+            this.SnapshotConsistencyMandate = null;
         }
     }
 

@@ -37,7 +37,25 @@ namespace RubrikSecurityCloud.Types
         N2_STANDARD_16,
 
         [EnumMember(Value = "N2_STANDARD_8")]
-        N2_STANDARD_8
+        N2_STANDARD_8,
+
+        [EnumMember(Value = "N4D_HIGHMEM_16")]
+        N4D_HIGHMEM_16,
+
+        [EnumMember(Value = "N4D_STANDARD_16")]
+        N4D_STANDARD_16,
+
+        [EnumMember(Value = "N4D_STANDARD_8")]
+        N4D_STANDARD_8,
+
+        [EnumMember(Value = "N4_HIGHMEM_16")]
+        N4_HIGHMEM_16,
+
+        [EnumMember(Value = "N4_STANDARD_16")]
+        N4_STANDARD_16,
+
+        [EnumMember(Value = "N4_STANDARD_8")]
+        N4_STANDARD_8
 
 
     } // enum GcpInstanceType

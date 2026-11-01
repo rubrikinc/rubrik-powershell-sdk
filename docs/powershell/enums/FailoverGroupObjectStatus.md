@@ -10,3 +10,4 @@ Status of a host/object in a failover group.
 - FAILOVER_GROUP_OBJECT_STATUS_WARNING - Warning status.
 - FAILOVER_GROUP_OBJECT_STATUS_FAILBACK_IN_PROGRESS - Failback in progress.
 - FAILOVER_GROUP_OBJECT_STATUS_FAILBACK_COMPLETED - Failback completed.
+- FAILOVER_GROUP_OBJECT_STATUS_ARCHIVED - Workload is archived on its cluster.

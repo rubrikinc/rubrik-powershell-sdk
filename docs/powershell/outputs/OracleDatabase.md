@@ -81,6 +81,8 @@ An Oracle database.
   - Effective log retention for the Oracle database.
 - effectiveHostLogRetention: Duration
   - Effective host log retention for the Oracle database, or -1 if indefinite.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -127,8 +129,6 @@ An Oracle database.
   - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection

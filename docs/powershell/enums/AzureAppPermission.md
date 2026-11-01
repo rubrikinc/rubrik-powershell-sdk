@@ -14,3 +14,6 @@ EntraID authentication in Exocompute.
 authenticating and connecting to an Azure Database for PostgreSQL /
 MySQL Flexible Server (OSS RDBMS) using Entra (AAD) "Sign in with
 Azure" during recovery.
+- AZURE_COSMOS_NOSQL_IMPERSONATION - Represents the delegated user_impersonation permission needed for
+authenticating to the Azure Cosmos DB for NoSQL data plane using Entra
+"Sign in with Azure" during recovery.

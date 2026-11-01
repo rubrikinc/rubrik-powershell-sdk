@@ -1,74 +1,6 @@
 ### MongoSource
 Information about MongoDB Source.
 
-- clusterUuid: System.String
-  - UUID of the CDM cluster.
-- primaryClusterUuid: System.String
-  - IP of the MongoDB source.
-- cdmId: System.String
-  - CDM ID of the MongoDB source.
-- isRelic: System.Boolean
-  - Specifies whether the MongoDB source is a relic in CDM.
-- sourceType: MongoSourceType
-  - Type of the MongoDB source.
-- sourceNodes: list of CdmMongoNodes
-  - List of source nodes.
-- status: MongoSourceStatus
-  - Status of the MongoDB source.
-- username: System.String
-  - MongoDB username.
-- sslParams: CdmMongoSslParams
-  - SSL Options.
-- lastRefreshTime: DateTime
-  - Timestamp of the latest successful MongoDB source refresh.
-- ignoreSecondaryNodes: list of CdmMongoNodes
-  - List of ignored secondary MongoDB source nodes.
-- discoveryStatus: MongoDiscoveryStatus
-  - Discovery status of the MongoDB source.
-- hostDetails: list of MongoHostDetails
-  - List of data host details associated with this MongoDB source.
-- managementType: MongoManagementType
-  - Management type of the MongoDB source.
-- sourceMetadata: SourceMetadata
-  - Metadata of the MongoDB source.
-- isArchived: System.Boolean
-  - Specifies whether the MongoDB source is deleted.
-- caCertificateId: System.String
-  - Certificate ID referencing the certificate imported by using Rubrik's certificate management framework.
-- descendantConnection: MongoSourceDescendantTypeConnection
-  - List of descendants.
-- physicalChildConnection: MongoSourcePhysicalChildTypeConnection
-  - List of physical children.
-- cluster: Cluster
-  - Information about CDM cluster for this MongoDB cluster.
-- activeCollectionCount: System.Int32
-  - Count of active collections for this MongoDB source.
-- protectedCollectionCount: System.Int32
-  - Count of protected collections for this MongoDB source.
-- dataHosts: MongoDataHostsConnection
-  - The list of data hosts associated with this MongoDB source.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -77,40 +9,73 @@ cluster. Null when the source cluster is unknown.
   - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
   - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
   - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
   - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- objectPauseStatus: ObjectPauseStatus
-  - Pause status of the hierarchy object.
-- objectBackupWindow: ObjectBackupWindowStatus
-  - Object-level backup window status of the hierarchy object.
-- legallyHeldSnapshotCount: System.Int32
-  - Number of snapshots on legal hold for this object.
-- futureLegalHoldInfo: FutureLegalHoldInfo
-  - Future legal hold rule configured for this object, if any.
+- cdmId: System.String
+  - The ID of the workload on the Rubrik cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- clusterUuid: System.String
+  - UUID of the CDM cluster.
+- primaryClusterUuid: System.String
+  - UUID of the primary Rubrik cluster for this MongoDB source.
+- sourceType: MongoSourceType
+  - Type of the MongoDB source.
+- status: MongoSourceStatus
+  - Status of the MongoDB source.
+- discoveryStatus: MongoDiscoveryStatus
+  - Discovery status of the MongoDB source.
+- managementType: MongoManagementType
+  - Management type of the MongoDB source.
+- lastRefreshTime: DateTime
+  - Timestamp of the latest successful MongoDB source refresh.
+- username: System.String
+  - MongoDB username.
+- sslParams: CdmMongoSslParams
+  - SSL Options.
+- isRelic: System.Boolean
+  - Specifies whether the MongoDB source is a relic in CDM.
+- isArchived: System.Boolean
+  - Specifies whether the MongoDB source is deleted.
+- sourceNodes: list of CdmMongoNodes
+  - List of source nodes.
+- ignoreSecondaryNodes: list of CdmMongoNodes
+  - List of ignored secondary MongoDB source nodes.
+- hostDetails: list of MongoHostDetails
+  - List of data host details associated with this MongoDB source.
+- sourceMetadata: SourceMetadata
+  - Metadata of the MongoDB source.
+- caCertificateId: System.String
+  - Certificate ID referencing the certificate imported by using Rubrik's
+certificate management framework.
+- replicaSetMembers: list of CdmMongoNodes
+  - MongoDB processes of the source, one entry per mongod, including config
+server replica set members. Excludes arbiters, ignored and removed
+members, mongos routers, and members whose host has no live Rubrik agent.
+- descendantConnection: MongoSourceDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: MongoSourcePhysicalChildTypeConnection
+  - List of physical children.
+- activeCollectionCount: System.Int32
+  - Count of active collections for this MongoDB source.
+- protectedCollectionCount: System.Int32
+  - Count of protected collections for this MongoDB source.
+- dataHosts: MongoDataHostsConnection
+  - The list of data hosts associated with this MongoDB source.
+- cluster: Cluster
+  - The Rubrik cluster from which this workload originated.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
@@ -133,3 +98,43 @@ cluster. Null when the source cluster is unknown.
   - The newest snapshot archived to AWS.
 - newestReplicatedSnapshot: CdmSnapshot
   - The newest snapshot replicated to a Rubrik cluster.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

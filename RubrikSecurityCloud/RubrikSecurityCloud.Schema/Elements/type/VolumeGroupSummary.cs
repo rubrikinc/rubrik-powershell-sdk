@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("operatingSystem")]
         public System.String? OperatingSystem { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         [JsonProperty("snappable")]
@@ -100,6 +105,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Boolean? NeedsMigration = null,
         System.String? OperatingSystem = null,
+        DateTime? ProtectionDate = null,
         CdmWorkload? Snappable = null,
         List<HostVolumeSummary>? Volumes = null
     ) 
@@ -133,6 +139,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OperatingSystem != null ) {
             this.OperatingSystem = OperatingSystem;
+        }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
         }
         if ( Snappable != null ) {
             this.Snappable = Snappable;
@@ -242,6 +251,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "operatingSystem\n" ;
             } else {
                 s += ind + "operatingSystem\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
             }
         }
         //      C# -> CdmWorkload? Snappable
@@ -444,6 +462,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OperatingSystem != null && ec.Excludes("operatingSystem",true))
         {
             this.OperatingSystem = null;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)

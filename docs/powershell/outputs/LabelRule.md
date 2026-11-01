@@ -21,3 +21,7 @@ A single label Rule.
   - Label conditions for the label rule.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the label rule.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for the label rule.

@@ -125,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterId")]
         public System.String? PrimaryClusterId { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
         [JsonProperty("racId")]
@@ -221,6 +226,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumMissedSnapshot = null,
         System.Int32? NumTablespaces = null,
         System.String? PrimaryClusterId = null,
+        DateTime? ProtectionDate = null,
         System.String? RacId = null,
         System.String? RacName = null,
         System.Boolean? ShouldUseSecureThriftForDataTransfer = null,
@@ -298,6 +304,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterId != null ) {
             this.PrimaryClusterId = PrimaryClusterId;
+        }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
         }
         if ( RacId != null ) {
             this.RacId = RacId;
@@ -539,6 +548,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "primaryClusterId\n" ;
             } else {
                 s += ind + "primaryClusterId\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
             }
         }
         //      C# -> System.String? RacId
@@ -1042,6 +1060,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
         {
             this.PrimaryClusterId = null;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)

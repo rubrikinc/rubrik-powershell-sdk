@@ -1,11 +1,14 @@
 ### HypervHostStatusType
-The connection status of Hyper-V object.
+Connection status of a Hyper-V hierarchy object (SCVMM, Cluster, or Server).
++ Mirrors snappables_db_query_service.snappablesdbquery.HypervHostStatusType so
++ the V2 converter can populate connectionStatus without pulling in the
++ snappables-db-query-service proto dependency.
 
-- CONNECTING - Hyper-V object is connecting.
-- CONNECTED - Hyper-V object is connected.
-- REFRESHING - Hyper-V object is refreshing.
-- DISCONNECTED - Hyper-V object is disconnected.
-- DELETING - Hyper-V object is deleting.
-- DELETED - Hyper-V object is deleted.
-- PARTIALLYCONNECTED - Some servers in the Hyper-V cluster are connected.
-- UNKNOWN - Hyper-V object status could not be parsed.
+- CONNECTED - The hierarchy object is fully connected.
+- DISCONNECTED - The hierarchy object is disconnected.
+- CONNECTING - The hierarchy object is in the process of connecting.
+- PARTIALLYCONNECTED - The hierarchy object is partially connected.
+- UNKNOWN - The connection status of the hierarchy object is unknown.
+- REFRESHING - The hierarchy object is refreshing its connection.
+- DELETING - The hierarchy object is being deleted.
+- DELETED - The hierarchy object has been deleted.

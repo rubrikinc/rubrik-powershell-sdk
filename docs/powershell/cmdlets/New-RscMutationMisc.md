@@ -120,6 +120,12 @@ Archive a crawl.
 
 - There is a single argument of type System.String.
 - Returns System.String.
+### assignclouddirectcopyschedule
+AssignCloudDirectCopySchedule links a batch of source shares to an
+existing copy schedule. The result reports the outcome for each share.
+
+- There is a single argument of type AssignCloudDirectCopyScheduleInput.
+- Returns AssignCloudDirectCopyScheduleReply.
 ### assignvmname
 AssignVmName assigns a user-defined display name to an NCD virtual machine
 device. Names must be unique within a cluster. Duplicate names within the
@@ -301,6 +307,12 @@ Initiates a job to restore the MySQL instance on the given target MySQL instance
 
 - There is a single argument of type CreateAutomatedRestoreMysqldbInstanceInput.
 - Returns CreateAutomatedRestoreMysqldbInstanceReply.
+### createclouddirectcopyschedule
+CreateCloudDirectCopySchedule creates a copy schedule on the NCD cluster.
+The destination (a NAS share or a cloud target) must be set at creation.
+
+- There is a single argument of type CreateCloudDirectCopyScheduleInput.
+- Returns CreateCloudDirectCopyScheduleReply.
 ### createcustomanalyzer
 Create a new custom analyzer.
 
@@ -435,6 +447,12 @@ Delete a specific Ceph storage setting for an OpenStack Availability Zone.
 
 - There is a single argument of type DeleteCephSettingInput.
 - Returns System.String.
+### deleteclouddirectcopyschedule
+DeleteCloudDirectCopySchedule deletes a Cloud Direct copy schedule on the
+NCD cluster. The schedule and its share assignment records are removed.
+
+- There is a single argument of type DeleteCloudDirectCopyScheduleInput.
+- Returns DeleteCloudDirectCopyScheduleReply.
 ### deleteclouddirectgenerics3tenantcredential
 DeleteCloudDirectGenericS3TenantCredential removes a tenant credential from a generic S3 system.
 
@@ -1116,7 +1134,9 @@ Starts CDM job to download installer package in batch.
     - size - System.Int64: Specifies the size in bytes of the Rubrik CDM package.
 - Returns list of DownloadPackageReplyWithUuids.
 ### startexportrdsinstancejob
-Start a job to export RDS Instance. The job creates a new RDS Instance with the same properties as that of the instance that is exported.
+StartExportRdsInstanceJob starts an on-demand export of an RDS or Aurora
+database, either launching a new RDS instance from a snapshot or a point
+in time, or writing the snapshot data to a customer S3 bucket.
 
 - There is a single argument of type StartExportRdsInstanceJobInput.
 - Returns AsyncJobStatus.
@@ -1218,7 +1238,9 @@ Issue request to stop a job instance. If successful, stop process for job instan
 - There is a single argument of type StopJobInstanceInput.
 - Returns StopJobInstanceReply.
 ### stopjobinstancefromeventseries
-Send a request to stop a job instance with the event series ID. If successful, stop process for the job instance is initiated, and the job instance is terminated asynchronously in the background.
+Send a request to stop a job instance with the event series ID. If
+successful, stop process for the job instance is initiated, and the job
+instance is terminated asynchronously in the background.
 
 - There is a single argument of type StopJobInstanceFromEventSeriesInput.
 - Returns System.String.
@@ -1256,6 +1278,12 @@ Initiates on-demand Exocompute health check.
 
 - There is a single argument of type TriggerExocomputeHealthCheckInput.
 - Returns TriggerExocomputeHealthCheckReply.
+### unassignclouddirectcopyschedule
+UnassignCloudDirectCopySchedule removes share-to-schedule links by
+assignment identifier. The result reports the outcome for each assignment.
+
+- There is a single argument of type UnassignCloudDirectCopyScheduleInput.
+- Returns UnassignCloudDirectCopyScheduleReply.
 ### uninstallgithubapp
 Uninstalls a GitHub App for the specified organization and permission group.
 
@@ -1338,6 +1366,15 @@ To be used by Admin to update existing User.
 
 - There is a single argument of type UpdateCdmUserInput.
 - Returns UpdateCdmUserReply.
+### updateclouddirectcopyschedule
+UpdateCloudDirectCopySchedule updates an existing copy schedule. Only the
+fields set in the request are changed; fields left unset keep their
+current value. A schedule's target type and frequency unit cannot be
+changed after it is created. Editing a schedule requires quorum
+authorization approval.
+
+- There is a single argument of type UpdateCloudDirectCopyScheduleInput.
+- Returns UpdateCloudDirectCopyScheduleReply.
 ### updateclouddirectkerberoscredential
 UpdateCloudDirectKerberosCredential updates an existing Kerberos credential for NCD systems.
 

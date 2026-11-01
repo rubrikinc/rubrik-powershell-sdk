@@ -81,10 +81,12 @@ Initiates a job to download a snapshot from the specified location when the snap
 - There is a single argument of type DownloadHypervSnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
 ### downloadvirtualmachinelevelfiles
-Download virtual machine files from the snapshot
+Download VM-level files from a Hyper-V VM backup snapshot.
 
 Supported in v9.1+
-Download virtual machine configuration & disk files from the snapshot.
+Start an asynchronous job to download virtual machine configuration and disk files
+from a specified Hyper-V VM backup snapshot. The response returns an asynchronous
+request ID.
 
 - There is a single argument of type DownloadHypervVirtualMachineVmLevelFilesInput.
 - Returns AsyncRequestStatus.
@@ -100,7 +102,9 @@ Download a snapshot from archival.
 Download files from a Hyper-V VM backup
 
 Supported in v5.0+
-Start an asynchronous job to download multiple files and folders from a specified Hyper-V VM backup. The response returns an asynchrounous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'hyperv/vm/request/{id}'.
+Start an asynchronous job to download multiple files and folders from a specified Hyper-V VM backup.
+The response returns an asynchrounous request ID. Get the URL for downloading the ZIP file including the
+specific files/folders by sending a GET request to 'hyperv/vm/request/{id}'.
 
 - There is a single argument of type DownloadHypervVirtualMachineSnapshotFilesInput.
 - Returns AsyncRequestStatus.

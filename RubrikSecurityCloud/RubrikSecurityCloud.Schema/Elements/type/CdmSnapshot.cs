@@ -251,6 +251,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("db2AppMetadata")]
         public Db2AppMetadata? Db2AppMetadata { get; set; }
 
+        //      C# -> HpeVmeResourceSpec? HpeVmeResourceSpec
+        // GraphQL -> hpeVmeResourceSpec: HpeVmeResourceSpec (type)
+        [JsonProperty("hpeVmeResourceSpec")]
+        public HpeVmeResourceSpec? HpeVmeResourceSpec { get; set; }
+
         //      C# -> HypervAppMetadata? HypervVirtualMachineAppMetadata
         // GraphQL -> hypervVirtualMachineAppMetadata: HypervAppMetadata (type)
         [JsonProperty("hypervVirtualMachineAppMetadata")]
@@ -422,6 +427,7 @@ namespace RubrikSecurityCloud.Types
         Cluster? Cluster = null,
         List<TriggeringAlert>? CompromisingAlerts = null,
         Db2AppMetadata? Db2AppMetadata = null,
+        HpeVmeResourceSpec? HpeVmeResourceSpec = null,
         HypervAppMetadata? HypervVirtualMachineAppMetadata = null,
         IrisdbInstanceAppMetadata? IrisdbInstanceAppMetadata = null,
         K8sResourceSnapshotMetadata? K8sAppMetadata = null,
@@ -584,6 +590,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2AppMetadata != null ) {
             this.Db2AppMetadata = Db2AppMetadata;
+        }
+        if ( HpeVmeResourceSpec != null ) {
+            this.HpeVmeResourceSpec = HpeVmeResourceSpec;
         }
         if ( HypervVirtualMachineAppMetadata != null ) {
             this.HypervVirtualMachineAppMetadata = HypervVirtualMachineAppMetadata;
@@ -1121,6 +1130,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "db2AppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> HpeVmeResourceSpec? HpeVmeResourceSpec
+        // GraphQL -> hpeVmeResourceSpec: HpeVmeResourceSpec (type)
+        if (this.HpeVmeResourceSpec != null) {
+            var fspec = this.HpeVmeResourceSpec.AsFieldSpec(conf.Child("hpeVmeResourceSpec"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hpeVmeResourceSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2229,6 +2250,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Db2AppMetadata != null && ec.Excludes("db2AppMetadata",false))
         {
             this.Db2AppMetadata = null;
+        }
+        //      C# -> HpeVmeResourceSpec? HpeVmeResourceSpec
+        // GraphQL -> hpeVmeResourceSpec: HpeVmeResourceSpec (type)
+        if (ec.Includes("hpeVmeResourceSpec",false))
+        {
+            if(this.HpeVmeResourceSpec == null) {
+
+                this.HpeVmeResourceSpec = new HpeVmeResourceSpec();
+                this.HpeVmeResourceSpec.ApplyExploratoryFieldSpec(ec.NewChild("hpeVmeResourceSpec"));
+
+            } else {
+
+                this.HpeVmeResourceSpec.ApplyExploratoryFieldSpec(ec.NewChild("hpeVmeResourceSpec"));
+
+            }
+        }
+        else if (this.HpeVmeResourceSpec != null && ec.Excludes("hpeVmeResourceSpec",false))
+        {
+            this.HpeVmeResourceSpec = null;
         }
         //      C# -> HypervAppMetadata? HypervVirtualMachineAppMetadata
         // GraphQL -> hypervVirtualMachineAppMetadata: HypervAppMetadata (type)

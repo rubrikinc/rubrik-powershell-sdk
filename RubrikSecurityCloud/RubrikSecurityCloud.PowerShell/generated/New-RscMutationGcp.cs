@@ -349,6 +349,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			deleteSnapshots = $someBoolean
+    /// 			# OPTIONAL
+    /// 			skipResourceDeletion = $someBoolean
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1323,6 +1325,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			deleteSnapshots = $someBoolean
+			# OPTIONAL
+			skipResourceDeletion = $someBoolean
 		}
 	)
 	# OPTIONAL

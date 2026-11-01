@@ -7,3 +7,5 @@ Information about a Recovery Plan.
   - The name of the Recovery Plan.
 - recoveryType: System.String
   - The type of the Recovery Plan.
+- recoveryPlanType: RecoveryPlanType
+  - The type of the Recovery Plan.

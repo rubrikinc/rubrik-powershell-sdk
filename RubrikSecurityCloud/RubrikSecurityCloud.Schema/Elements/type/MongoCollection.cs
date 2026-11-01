@@ -272,9 +272,9 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("after", "String"),
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
-                    Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("filter", "CdmSnapshotFilterInput"),
                     Tuple.Create("groupBy", "MongoSnapshotGroupByTime!"),
+                    Tuple.Create("timezoneOffset", "Float"),
                     Tuple.Create("timezone", "Timezone"),
                 };
             this.MongoSnapshotGroupByConnection =

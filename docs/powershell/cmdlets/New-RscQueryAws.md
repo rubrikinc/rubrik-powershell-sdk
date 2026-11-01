@@ -7,20 +7,23 @@ deleted.
 - There is a single argument of type AwsArtifactsToDeleteInput.
 - Returns AwsArtifactsToDelete.
 ### availabilityzonesbyregion
-List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
+Lists the availability zones of a region, as seen by an AWS Native
+account. Different accounts can see different zones in the same region.
 
 - There are 3 arguments.
-    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
-    - region - AwsNativeRegion: Region in AWS.
-    - feature - CloudAccountFeature: Cloud-account feature for credential routing on MULTI_ROLE accounts.
+    - awsAccountRubrikId - System.String: Rubrik FID of the AWS Native account.
+    - region - AwsNativeRegion: Region to list the availability zones of.
+    - feature - CloudAccountFeature: Cloud account feature whose role is used to read AWS.
 - Returns list of System.Strings.
 ### batchsupportedrdsdatabaseinstanceclasses
-Batch query to list all the database instance classes supported by AWS RDS database for multiple DB engine and engine version combinations.
+BatchSupportedAwsRdsDatabaseInstanceClasses returns the list of
+supported DB instance classes for multiple engine/version combinations
+in a single batch request.
 
 - There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
-    - requests - list of RdsInstanceClassRequests: List of DB engine and version combinations to query for supported instance classes.
+    - requests - list of RdsInstanceClassRequests: Engine and version combinations to look up.
 - Returns list of RdsInstanceClassBatchResults.
 ### cdmversions
 Get all Rubrik CDM versions in the AWS marketplace.
@@ -72,29 +75,34 @@ List of AWS cloud accounts and the features for each account, classified by ID.
     - awsCloudAccountArg - AwsCloudAccountWithFeaturesInput: Arguments for getting the AWS cloud account with features.
 - Returns AwsCloudAccountWithFeatures.
 ### dbparametergroupsbyregion
-List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+ListDbParameterGroups returns the RDS DB parameter groups available in
+the given region of an AWS Native account.
 
 - There are 5 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
-    - dbEngine - AwsNativeRdsDbEngine: DB Engine of RDS Instance.
-    - dbEngineVersion - System.String: Version of DB engine.
-    - rdsType - AwsNativeRdsType: Type of RDS deployment.
+    - dbEngine - AwsNativeRdsDbEngine: Database engine of the RDS instance.
+    - dbEngineVersion - System.String: Database engine version of the RDS instance.
+    - rdsType - AwsNativeRdsType: Type of the RDS instance. Defaults to a regular RDS instance.
 - Returns list of DbParameterGroups.
 ### dbsubnetgroupsbyregion
-All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
+ListDbSubnetGroups returns the RDS DB subnet groups available in the
+given region of an AWS Native account.
 
 - There are 2 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of SubnetGroups.
 ### ec2instancetypesbyregion
-List of EC2 instance types available in a region, optionally scoped to a single AWS Outpost.
+Lists the EC2 instance types available to an AWS Native account in a
+region, optionally scoped to a single AWS Outpost. An account that has
+not granted the permission to read instance-type offerings from AWS gets
+the full static list of known instance-type names instead.
 
 - There are 3 arguments.
-    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
-    - region - AwsNativeRegion: Region in AWS.
-    - outpostArn - System.String: Optional ARN of an AWS Outpost. When set, scopes the result to instance types available on that Outpost.
+    - awsAccountRubrikId - System.String: Rubrik FID of the AWS Native account.
+    - region - AwsNativeRegion: Region to list the instance types of.
+    - outpostArn - System.String: ARN of the Outpost to scope the listing to.
 - Returns list of AwsNativeEc2InstanceTypeOfferings.
 ### ec2keypairsbyregion
 List of all key pairs for a given region. A key pair, consisting of a
@@ -172,15 +180,29 @@ Check AWS marketplace subscription status for a given CDM version.
 - There is a single argument of type CheckAwsMarketplaceSubscriptionReq.
 - Returns CheckAwsMarketplaceSubscriptionReply.
 ### optiongroupsbyregion
-List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+List of all RDS option groups in a given region. Refers to settings of how a particular option works for an
+RDS Instance. For more information, see
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 
 - There are 5 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
     - dbEngine - AwsNativeRdsDbEngine: DB Engine of RDS Instance.
-    - dbEngineVersion - System.String: Version of DB engine.
     - majorEngineVersion - System.String: Major version of the option group engine.
+    - dbEngineVersion - System.String: DB engine version of the option group engine. Unused by the resolver.
 - Returns list of OptionGroups.
+### permissiondiff
+Compares an AWS cloud account's deployed permissions against the latest
+permission model, per feature, permissions group and IAM role.
+
+- There are 4 arguments.
+    - cloudAccountId - System.String: AWS cloud account to compare.
+    - features - list of CloudAccountFeatures: Features to compare. Empty compares every feature a
+permissions update would apply.
+    - targetPermissionsGroups - list of AwsPermissionDiffTargets: Permissions group selection to compare
+against instead of the one the account holds.
+    - includeExisting - System.Boolean: Also return grants that are not changing.
+- Returns AwsPermissionDiff.
 ### permissionpolicies
 Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
 
@@ -211,11 +233,11 @@ List of all S3 bucket names across regions for the AWS Native account.
 - There is a single argument of type System.String.
 - Returns list of System.Strings.
 ### s3bucketsdetails
-List of all S3 bucket details across regions for the AWS Native account.
+ListS3BucketsDetails lists all the s3 bucket details across regions.
 
 - There are 2 arguments.
-    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
-    - region - AwsNativeRegion: The region in AWS. If no region is provided, the AWS function will return all buckets.
+    - awsAccountRubrikId - System.String: Rubrik FID of the AWS Native account.
+    - region - AwsNativeRegion: Region to restrict the listing to. All regions when omitted.
 - Returns list of S3BucketDetailss.
 ### s3bucketstateforrecovery
 Retrieves the versioning and object ACL state of the Amazon S3 bucket,
@@ -260,15 +282,18 @@ given AWS cloud accounts.
 - There is a single argument of type AwsValidatePermissionsReq.
 - Returns AwsValidatePermissionsReply.
 ### vpcs
-List of all Virtual Private Clouds (VPCs) in the AWS Native account.
+Lists the persisted Virtual Private Clouds (VPCs) of every AWS Native
+account the caller can view, optionally scoped to a single account.
+Subnets and security groups are not returned.
 
 - There is a single argument of type System.String.
 - Returns list of AwsVpcs.
 ### vpcsbyregion
-List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
+Lists the Virtual Private Clouds (VPCs) of an AWS Native account in a
+region, read directly from AWS.
 
 - There are 3 arguments.
-    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
-    - region - AwsNativeRegion: Region in AWS.
-    - feature - CloudAccountFeature: Cloud-account feature for credential routing on MULTI_ROLE accounts.
+    - awsAccountRubrikId - System.String: Rubrik FID of the AWS Native account.
+    - region - AwsNativeRegion: Region to list the VPCs of.
+    - feature - CloudAccountFeature: Cloud account feature whose role is used to read AWS.
 - Returns list of AwsVpcs.

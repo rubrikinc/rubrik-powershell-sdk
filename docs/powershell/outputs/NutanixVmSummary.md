@@ -37,3 +37,5 @@ Describes any pending SLA Domain assignment on this object.
 - agentConnectStatus: AgentConnectStatus
   - Supported in v9.2+
 The agent connection status.
+- protectionDate: DateTime
+  - UTC timestamp for when the Nutanix virtual machine became protected by its current SLA Domain. Omitted if no SLA Domain has been assigned. The value resets every time the SLA Domain changes, including a reassignment to Unprotected.

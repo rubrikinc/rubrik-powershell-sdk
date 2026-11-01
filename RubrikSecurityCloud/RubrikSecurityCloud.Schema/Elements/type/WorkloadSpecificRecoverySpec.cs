@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hypervVm")]
         public HypervVmRecoverySpec? HypervVm { get; set; }
 
+        //      C# -> MssqlDatabaseRecoverySpec? MssqlDatabase
+        // GraphQL -> mssqlDatabase: MssqlDatabaseRecoverySpec (type)
+        [JsonProperty("mssqlDatabase")]
+        public MssqlDatabaseRecoverySpec? MssqlDatabase { get; set; }
+
         //      C# -> NutanixVmRecoverySpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVmRecoverySpec (type)
         [JsonProperty("nutanixVm")]
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
         AwsRdsInstanceRecoverySpec? AwsRdsInstance = null,
         AzureNativeVmRecoverySpec? AzureVm = null,
         HypervVmRecoverySpec? HypervVm = null,
+        MssqlDatabaseRecoverySpec? MssqlDatabase = null,
         NutanixVmRecoverySpec? NutanixVm = null,
         VsphereVmRecoverySpec? VmwareVm = null
     ) 
@@ -97,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HypervVm != null ) {
             this.HypervVm = HypervVm;
+        }
+        if ( MssqlDatabase != null ) {
+            this.MssqlDatabase = MssqlDatabase;
         }
         if ( NutanixVm != null ) {
             this.NutanixVm = NutanixVm;
@@ -187,6 +196,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "hypervVm" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MssqlDatabaseRecoverySpec? MssqlDatabase
+        // GraphQL -> mssqlDatabase: MssqlDatabaseRecoverySpec (type)
+        if (this.MssqlDatabase != null) {
+            var fspec = this.MssqlDatabase.AsFieldSpec(conf.Child("mssqlDatabase"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlDatabase" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -334,6 +355,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HypervVm != null && ec.Excludes("hypervVm",false))
         {
             this.HypervVm = null;
+        }
+        //      C# -> MssqlDatabaseRecoverySpec? MssqlDatabase
+        // GraphQL -> mssqlDatabase: MssqlDatabaseRecoverySpec (type)
+        if (ec.Includes("mssqlDatabase",false))
+        {
+            if(this.MssqlDatabase == null) {
+
+                this.MssqlDatabase = new MssqlDatabaseRecoverySpec();
+                this.MssqlDatabase.ApplyExploratoryFieldSpec(ec.NewChild("mssqlDatabase"));
+
+            } else {
+
+                this.MssqlDatabase.ApplyExploratoryFieldSpec(ec.NewChild("mssqlDatabase"));
+
+            }
+        }
+        else if (this.MssqlDatabase != null && ec.Excludes("mssqlDatabase",false))
+        {
+            this.MssqlDatabase = null;
         }
         //      C# -> NutanixVmRecoverySpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVmRecoverySpec (type)

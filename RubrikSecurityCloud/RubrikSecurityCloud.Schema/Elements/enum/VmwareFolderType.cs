@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HOST")]
         HOST,
 
+        [EnumMember(Value = "NAMESPACE")]
+        NAMESPACE,
+
         [EnumMember(Value = "UNDEFINED")]
         UNDEFINED,
 

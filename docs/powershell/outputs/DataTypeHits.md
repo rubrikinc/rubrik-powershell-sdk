@@ -11,3 +11,6 @@ Hits stats of an individual data type within a data category.
   - Total violated hits of the data type.
 - objectCount: System.Int64
   - Number of objects with hits of the data type.
+- fileCount: System.Int64
+  - Sum of per-object files with hits for the data type. Populated only when
+the caller asks for file counts.

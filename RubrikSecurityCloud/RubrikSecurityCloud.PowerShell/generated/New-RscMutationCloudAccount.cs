@@ -294,13 +294,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
     /// 	# OPTIONAL
-    /// 	cloudNativeAccountId = $someString
-    /// 	# OPTIONAL
     /// 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
     /// 	# REQUIRED
     /// 	selectedCertificateIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudNativeAccountId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -669,13 +669,13 @@ $query.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = $someString
 	# OPTIONAL
-	cloudNativeAccountId = $someString
-	# OPTIONAL
 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
 	# REQUIRED
 	selectedCertificateIds = @(
 		$someString
 	)
+	# OPTIONAL
+	cloudNativeAccountId = $someString
 }"
             );
         }

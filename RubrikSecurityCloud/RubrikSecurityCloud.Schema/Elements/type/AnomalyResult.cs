@@ -90,6 +90,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEncrypted")]
         public System.Boolean? IsEncrypted { get; set; }
 
+        //      C# -> System.Boolean? IsSnapshotQuarantineProcessing
+        // GraphQL -> isSnapshotQuarantineProcessing: Boolean! (scalar)
+        [JsonProperty("isSnapshotQuarantineProcessing")]
+        public System.Boolean? IsSnapshotQuarantineProcessing { get; set; }
+
+        //      C# -> System.Boolean? IsSnapshotQuarantined
+        // GraphQL -> isSnapshotQuarantined: Boolean! (scalar)
+        [JsonProperty("isSnapshotQuarantined")]
+        public System.Boolean? IsSnapshotQuarantined { get; set; }
+
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         [JsonProperty("location")]
@@ -189,6 +199,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsAnomaly = null,
         System.Boolean? IsEncrypted = null,
+        System.Boolean? IsSnapshotQuarantineProcessing = null,
+        System.Boolean? IsSnapshotQuarantined = null,
         System.String? Location = null,
         System.String? ManagedId = null,
         DateTime? PreviousSnapshotDate = null,
@@ -247,6 +259,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsEncrypted != null ) {
             this.IsEncrypted = IsEncrypted;
+        }
+        if ( IsSnapshotQuarantineProcessing != null ) {
+            this.IsSnapshotQuarantineProcessing = IsSnapshotQuarantineProcessing;
+        }
+        if ( IsSnapshotQuarantined != null ) {
+            this.IsSnapshotQuarantined = IsSnapshotQuarantined;
         }
         if ( Location != null ) {
             this.Location = Location;
@@ -431,6 +449,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isEncrypted\n" ;
             } else {
                 s += ind + "isEncrypted\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotQuarantineProcessing
+        // GraphQL -> isSnapshotQuarantineProcessing: Boolean! (scalar)
+        if (this.IsSnapshotQuarantineProcessing != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotQuarantineProcessing\n" ;
+            } else {
+                s += ind + "isSnapshotQuarantineProcessing\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotQuarantined
+        // GraphQL -> isSnapshotQuarantined: Boolean! (scalar)
+        if (this.IsSnapshotQuarantined != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotQuarantined\n" ;
+            } else {
+                s += ind + "isSnapshotQuarantined\n" ;
             }
         }
         //      C# -> System.String? Location
@@ -821,6 +857,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsEncrypted != null && ec.Excludes("isEncrypted",true))
         {
             this.IsEncrypted = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotQuarantineProcessing
+        // GraphQL -> isSnapshotQuarantineProcessing: Boolean! (scalar)
+        if (ec.Includes("isSnapshotQuarantineProcessing",true))
+        {
+            if(this.IsSnapshotQuarantineProcessing == null) {
+
+                this.IsSnapshotQuarantineProcessing = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotQuarantineProcessing != null && ec.Excludes("isSnapshotQuarantineProcessing",true))
+        {
+            this.IsSnapshotQuarantineProcessing = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotQuarantined
+        // GraphQL -> isSnapshotQuarantined: Boolean! (scalar)
+        if (ec.Includes("isSnapshotQuarantined",true))
+        {
+            if(this.IsSnapshotQuarantined == null) {
+
+                this.IsSnapshotQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotQuarantined != null && ec.Excludes("isSnapshotQuarantined",true))
+        {
+            this.IsSnapshotQuarantined = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)

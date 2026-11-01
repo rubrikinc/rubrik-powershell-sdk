@@ -102,6 +102,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID")]
         AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_ACCOUNT_RG_NAME")]
+        AZURE_COSMOS_NOSQL_ACCOUNT_RG_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_ACCOUNT_SUBSCRIPTION_ID")]
+        AZURE_COSMOS_NOSQL_ACCOUNT_SUBSCRIPTION_ID,
+
         [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME")]
         AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME,
 
@@ -113,6 +119,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID")]
         AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_RG_NAME")]
+        AZURE_COSMOS_NOSQL_CONTAINER_RG_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_SUBSCRIPTION_ID")]
+        AZURE_COSMOS_NOSQL_CONTAINER_SUBSCRIPTION_ID,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_DATABASE_ACCOUNT_NAME")]
+        AZURE_COSMOS_NOSQL_DATABASE_ACCOUNT_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_DATABASE_RG_NAME")]
+        AZURE_COSMOS_NOSQL_DATABASE_RG_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_DATABASE_SUBSCRIPTION_ID")]
+        AZURE_COSMOS_NOSQL_DATABASE_SUBSCRIPTION_ID,
 
         [EnumMember(Value = "AZURE_DISK_ATTACHED_VM")]
         AZURE_DISK_ATTACHED_VM,
@@ -660,6 +681,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IRISDB_HOST_ID")]
         IRISDB_HOST_ID,
 
+        [EnumMember(Value = "IRISDB_STORAGE_ARRAY_ID")]
+        IRISDB_STORAGE_ARRAY_ID,
+
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
 
@@ -1166,6 +1190,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAASAPPS_ORGANIZATION_SCOPE")]
         SAASAPPS_ORGANIZATION_SCOPE,
+
+        [EnumMember(Value = "SAASAPPS_RTP_ENABLED")]
+        SAASAPPS_RTP_ENABLED,
 
         [EnumMember(Value = "SALESFORCE_NAME_OR_LABEL")]
         SALESFORCE_NAME_OR_LABEL,

@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgUrl")]
         public System.String? OrgUrl { get; set; }
 
+        //      C# -> System.String? PackagesFixedObjectId
+        // GraphQL -> packagesFixedObjectId: UUID (scalar)
+        [JsonProperty("packagesFixedObjectId")]
+        public System.String? PackagesFixedObjectId { get; set; }
+
         //      C# -> DateTime? PatExpiry
         // GraphQL -> patExpiry: DateTime (scalar)
         [JsonProperty("patExpiry")]
@@ -263,6 +268,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NativeId = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? OrgUrl = null,
+        System.String? PackagesFixedObjectId = null,
         DateTime? PatExpiry = null,
         System.String? PatOwnerLogin = null,
         System.Int32? RepoCount = null,
@@ -340,6 +346,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrgUrl != null ) {
             this.OrgUrl = OrgUrl;
+        }
+        if ( PackagesFixedObjectId != null ) {
+            this.PackagesFixedObjectId = PackagesFixedObjectId;
         }
         if ( PatExpiry != null ) {
             this.PatExpiry = PatExpiry;
@@ -593,6 +602,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "orgUrl\n" ;
             } else {
                 s += ind + "orgUrl\n" ;
+            }
+        }
+        //      C# -> System.String? PackagesFixedObjectId
+        // GraphQL -> packagesFixedObjectId: UUID (scalar)
+        if (this.PackagesFixedObjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "packagesFixedObjectId\n" ;
+            } else {
+                s += ind + "packagesFixedObjectId\n" ;
             }
         }
         //      C# -> DateTime? PatExpiry
@@ -1161,6 +1179,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OrgUrl != null && ec.Excludes("orgUrl",true))
         {
             this.OrgUrl = null;
+        }
+        //      C# -> System.String? PackagesFixedObjectId
+        // GraphQL -> packagesFixedObjectId: UUID (scalar)
+        if (ec.Includes("packagesFixedObjectId",true))
+        {
+            if(this.PackagesFixedObjectId == null) {
+
+                this.PackagesFixedObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PackagesFixedObjectId != null && ec.Excludes("packagesFixedObjectId",true))
+        {
+            this.PackagesFixedObjectId = null;
         }
         //      C# -> DateTime? PatExpiry
         // GraphQL -> patExpiry: DateTime (scalar)

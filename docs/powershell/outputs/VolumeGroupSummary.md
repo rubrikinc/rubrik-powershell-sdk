@@ -31,6 +31,8 @@ Specifies whether the Volume Group needs to be migrated in order to use the fast
 - operatingSystem: System.String
   - Supported in v9.2+
 Operating system of the host. One of Windows, Linux, AIX, HPUX, or SunOS.
+- protectionDate: DateTime
+  - UTC timestamp for when the Volume Group became protected by its current SLA Domain. Omitted if no SLA Domain has been assigned. The value resets every time the SLA Domain changes, including a reassignment to Unprotected.
 - rbsConnectionStatus: HostRbsConnectionStatus
   - Supported in v9.2+
 Specifies the connection status of the host. The value is Refreshing when discovery is running and Connected after the discovery succeeds and the host is available.

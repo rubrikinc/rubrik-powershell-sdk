@@ -3,32 +3,54 @@ Active Directory Domain Controller.
 
 - cdmId: System.String
   - ID of the Rubrik cluster.
-- domainControllerGuid: System.String
-  - GUID of the domain controller.
-- isRelic: System.Boolean
-  - Specifies whether the domain controller is a relic.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - agentUuid: System.String
   - UUID of the agent.
-- hostname: System.String
-  - Name of the host.
-- macAddress: System.String
-  - Deprecated. Use mac addresses field instead.
-- rbsStatus: HostConnectionStatus
-  - RBS status.
-- adServiceStatus: ActiveDirectoryServiceStatus
-  - Service status of the Active Directory.
+- domainControllerGuid: System.String
+  - GUID of the domain controller.
 - fsmoRoles: list of FsmoRoless
   - Different master roles played by the Domain Controller.
-- serverRoles: list of ServerRoless
-  - Mentions if services like DNS or DHCP are hosted.
+- hostname: System.String
+  - Name of the host.
 - isGlobalCatalog: System.Boolean
   - Indicates whether the domain controller is a global catalog.
 - isReadOnly: System.Boolean
   - Indicates whether the domain controller is read only.
+- isRelic: System.Boolean
+  - Specifies whether the domain controller is a relic.
+- macAddress: System.String
+  - Deprecated. Use mac addresses field instead.
 - macAddresses: list of System.Strings
   - List of MAC addresses of the domain controller.
-- reportWorkload: Snappable
-  - Includes statistics for the protected objects, for example, archive storage.
+- serverRoles: list of ServerRoless
+  - Mentions if services like DNS or DHCP are hosted.
+- adServiceStatus: ActiveDirectoryServiceStatus
+  - Service status of the Active Directory.
+- dcLocation: System.String
+  - Physical location of the Domain Controller.
+- rbsStatus: HostConnectionStatus
+  - RBS status.
+- cluster: Cluster
+  - Rubrik cluster UUID.
 - activeDirectoryDomain: ActiveDirectoryDomain
   - Active Directory Domain to which this domain controller belongs to.
 - hypervVirtualMachines: HyperVVirtualMachineConnection
@@ -37,22 +59,24 @@ Active Directory Domain Controller.
   - VMWare virtual machine associated with the domain controller.
 - host: PhysicalHost
   - Host information of this Active Directory Domain Controller.
-- forestRootDomainSid: System.String
-  - The SID of the root domain of the forest this domain controller belongs to. This is the Active Directory scope key, and is null when the forest cannot be resolved.
+- reportWorkload: Snappable
+  - Includes statistics for the protected objects, for example, archive storage.
 - newestCleanSnapshot: CdmSnapshot
   - The most recent snapshot that is not corrupted.
 - newestIndexedSnapshot: CdmSnapshot
   - The most recent indexed snapshot of this workload.
-- cluster: Cluster
-  - Rubrik cluster UUID.
-- dcLocation: System.String
-  - Physical location of the Domain Controller.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- forestRootDomainSid: System.String
+  - The SID of the root domain of the forest this domain controller belongs to. This is the Active Directory scope key, and is null when the forest cannot be resolved.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -65,42 +89,16 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -109,6 +107,8 @@ cluster. Null when the source cluster is unknown.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
   - A link to view the workload on the Rubrik cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

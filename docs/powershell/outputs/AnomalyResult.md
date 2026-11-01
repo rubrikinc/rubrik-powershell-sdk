@@ -59,3 +59,7 @@ Anomaly analysis report from lambda service.
   - The analyzed snapshot.
 - ransomwareResult: RansomwareResult
   - The ransomware analysis result, including encryption.
+- isSnapshotQuarantined: System.Boolean
+  - Specifies whether the analyzed snapshot is quarantined.
+- isSnapshotQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the analyzed snapshot to determine its quarantine state.

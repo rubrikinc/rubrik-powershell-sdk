@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> FusionComputeVrmUserType? UserType
+        // GraphQL -> userType: FusionComputeVrmUserType (enum)
+        [JsonProperty("userType")]
+        public FusionComputeVrmUserType? UserType { get; set; }
+
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String (scalar)
         [JsonProperty("caCerts")]

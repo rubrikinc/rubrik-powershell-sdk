@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preferredLocationType")]
         public SnapshotLocationType? PreferredLocationType { get; set; }
 
+        //      C# -> System.Boolean? IgnoreNetworkReconfigureError
+        // GraphQL -> ignoreNetworkReconfigureError: Boolean (scalar)
+        [JsonProperty("ignoreNetworkReconfigureError")]
+        public System.Boolean? IgnoreNetworkReconfigureError { get; set; }
+
 
         #endregion
 

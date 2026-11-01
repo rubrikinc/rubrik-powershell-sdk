@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HpeVmeVmSubObject? HpeVmeVmSubObj
+        // GraphQL -> hpeVmeVmSubObj: HpeVmeVmSubObject (type)
+        [JsonProperty("hpeVmeVmSubObj")]
+        public HpeVmeVmSubObject? HpeVmeVmSubObj { get; set; }
+
         //      C# -> NutanixVmSubObject? NutanixVmSubObj
         // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
         [JsonProperty("nutanixVmSubObj")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotSubObj Set(
+        HpeVmeVmSubObject? HpeVmeVmSubObj = null,
         NutanixVmSubObject? NutanixVmSubObj = null,
         OlvmVmSubObject? OlvmVmSubObj = null,
         OpenstackVmSubObject? OpenstackVmSubObj = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         VolumeGroupSubObject? VolumeGroupSubObj = null
     ) 
     {
+        if ( HpeVmeVmSubObj != null ) {
+            this.HpeVmeVmSubObj = HpeVmeVmSubObj;
+        }
         if ( NutanixVmSubObj != null ) {
             this.NutanixVmSubObj = NutanixVmSubObj;
         }
@@ -109,6 +118,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HpeVmeVmSubObject? HpeVmeVmSubObj
+        // GraphQL -> hpeVmeVmSubObj: HpeVmeVmSubObject (type)
+        if (this.HpeVmeVmSubObj != null) {
+            var fspec = this.HpeVmeVmSubObj.AsFieldSpec(conf.Child("hpeVmeVmSubObj"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hpeVmeVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> NutanixVmSubObject? NutanixVmSubObj
         // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
         if (this.NutanixVmSubObj != null) {
@@ -200,6 +221,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> HpeVmeVmSubObject? HpeVmeVmSubObj
+        // GraphQL -> hpeVmeVmSubObj: HpeVmeVmSubObject (type)
+        if (ec.Includes("hpeVmeVmSubObj",false))
+        {
+            if(this.HpeVmeVmSubObj == null) {
+
+                this.HpeVmeVmSubObj = new HpeVmeVmSubObject();
+                this.HpeVmeVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("hpeVmeVmSubObj"));
+
+            } else {
+
+                this.HpeVmeVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("hpeVmeVmSubObj"));
+
+            }
+        }
+        else if (this.HpeVmeVmSubObj != null && ec.Excludes("hpeVmeVmSubObj",false))
+        {
+            this.HpeVmeVmSubObj = null;
+        }
         //      C# -> NutanixVmSubObject? NutanixVmSubObj
         // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
         if (ec.Includes("nutanixVmSubObj",false))

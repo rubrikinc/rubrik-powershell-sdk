@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'AWS Native' API domain:
-    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsExportS3Buckets, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// </summary>
     /// <description>
     /// New-RscQueryAwsNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 23 operations
     /// in the 'AWS Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
+    /// one of: Account, Accounts, AmiTypeForArchivedSnapshotExport, DynamoDbTable, DynamoDbTablePointInTimeRestoreWindow, EbsVolume, EbsVolumes, EbsVolumesByName, Ec2Instance, Ec2Instances, Ec2InstancesByName, IsEbsVolumeSnapshotRestorable, IsRdsInstanceLaunchConfigurationValid, RdsExportDefaults, RdsExportS3Buckets, RdsInstance, RdsInstances, RdsPointInTimeRestoreWindow, Root, S3Bucket, ValidateDynamoDbTableNameForRecovery, ValidateRdsClusterNameForExport, or ValidateRdsInstanceNameForExport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -93,6 +93,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsNativeAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -168,6 +170,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsNativeProtectionFeatures = @(
     /// 	$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
     /// )
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -486,12 +490,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.last = $someInt
     /// # OPTIONAL
     /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.ebsVolumeName = $someString
     /// # OPTIONAL
     /// $query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # REQUIRED
-    /// $query.Var.ebsVolumeName = $someString
     /// 
     /// # Execute the query
     /// 
@@ -803,6 +807,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// # REQUIRED
     /// $query.Var.ec2InstanceName = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeSecurityMetadata = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -919,6 +925,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RdsInstanceExportDefaults
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RdsExportS3Buckets operation
+    /// of the 'AWS Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AwsNative
+    /// # API Operation: RdsExportS3Buckets
+    /// 
+    /// $query = New-RscQueryAwsNative -Operation RdsExportS3Buckets
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;S3BucketDetails&gt;
     /// 
     /// 
     /// 
@@ -1393,6 +1429,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "IsEbsVolumeSnapshotRestorable",
                 "IsRdsInstanceLaunchConfigurationValid",
                 "RdsExportDefaults",
+                "RdsExportS3Buckets",
                 "RdsInstance",
                 "RdsInstances",
                 "RdsPointInTimeRestoreWindow",
@@ -1457,6 +1494,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RdsExportDefaults":
                         this.ProcessRecord_RdsExportDefaults();
+                        break;
+                    case "RdsExportS3Buckets":
+                        this.ProcessRecord_RdsExportS3Buckets();
                         break;
                     case "RdsInstance":
                         this.ProcessRecord_RdsInstance();
@@ -1619,6 +1659,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAwsNativeRdsExportS3Buckets.
+        internal void ProcessRecord_RdsExportS3Buckets()
+        {
+            this._logger.name += " -RdsExportS3Buckets";
+            // Create new graphql operation allAwsNativeRdsExportS3Buckets
+            InitQueryAllAwsNativeRdsExportS3Buckets();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // awsNativeRdsInstance.
         internal void ProcessRecord_RdsInstance()
         {
@@ -1692,25 +1741,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
-        // awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!): AwsNativeAccount!
+        // awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!, includeSecurityMetadata: Boolean): AwsNativeAccount!
         internal void InitQueryAwsNativeAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeAccountRubrikId", "UUID!"),
                 Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeAccount",
-                "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
+                "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeAccount",
                 Query.AwsNativeAccount,
                 Query.AwsNativeAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.awsNativeAccountRubrikId = $someString
 # REQUIRED
-$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
+$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -1726,6 +1778,7 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
         //     authorizedOperationFilter: Operation
         //     awsNativeProtectionFeature: AwsNativeProtectionFeature!
         //     awsNativeProtectionFeatures: [AwsNativeProtectionFeature!]
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeAccountConnection!
         internal void InitQueryAwsNativeAccounts()
         {
@@ -1740,12 +1793,13 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
                 Tuple.Create("authorizedOperationFilter", "Operation"),
                 Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
                 Tuple.Create("awsNativeProtectionFeatures", "[AwsNativeProtectionFeature!]"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeAccounts",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!,$awsNativeProtectionFeatures: [AwsNativeProtectionFeature!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!,$awsNativeProtectionFeatures: [AwsNativeProtectionFeature!],$includeSecurityMetadata: Boolean)",
                 "AwsNativeAccountConnection",
                 Query.AwsNativeAccounts,
                 Query.AwsNativeAccountsFieldSpec,
@@ -1797,7 +1851,9 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
 # OPTIONAL
 $query.Var.awsNativeProtectionFeatures = @(
 	$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-)"
+)
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2069,9 +2125,9 @@ $query.Var.includeSecurityMetadata = $someBoolean"
         //     after: String
         //     last: Int
         //     before: String
+        //     ebsVolumeName: String!
         //     sortBy: AwsNativeEbsVolumeSortFields
         //     sortOrder: SortOrder
-        //     ebsVolumeName: String!
         //   ): AwsNativeEbsVolumeConnection!
         internal void InitQueryAwsNativeEbsVolumesByName()
         {
@@ -2080,15 +2136,15 @@ $query.Var.includeSecurityMetadata = $someBoolean"
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
+                Tuple.Create("ebsVolumeName", "String!"),
                 Tuple.Create("sortBy", "AwsNativeEbsVolumeSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("ebsVolumeName", "String!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEbsVolumesByName",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$ebsVolumeName: String!,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder)",
                 "AwsNativeEbsVolumeConnection",
                 Query.AwsNativeEbsVolumesByName,
                 Query.AwsNativeEbsVolumesByNameFieldSpec,
@@ -2100,12 +2156,12 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString
+# REQUIRED
+$query.Var.ebsVolumeName = $someString
 # OPTIONAL
 $query.Var.sortBy = $someAwsNativeEbsVolumeSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$query.Var.ebsVolumeName = $someString"
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -2392,6 +2448,7 @@ $query.Var.includeSecurityMetadata = $someBoolean"
         //     sortBy: AwsNativeEc2InstanceSortFields
         //     sortOrder: SortOrder
         //     ec2InstanceName: String!
+        //     includeSecurityMetadata: Boolean
         //   ): AwsNativeEc2InstanceConnection!
         internal void InitQueryAwsNativeEc2InstancesByName()
         {
@@ -2403,12 +2460,13 @@ $query.Var.includeSecurityMetadata = $someBoolean"
                 Tuple.Create("sortBy", "AwsNativeEc2InstanceSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("ec2InstanceName", "String!"),
+                Tuple.Create("includeSecurityMetadata", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeEc2InstancesByName",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!,$includeSecurityMetadata: Boolean)",
                 "AwsNativeEc2InstanceConnection",
                 Query.AwsNativeEc2InstancesByName,
                 Query.AwsNativeEc2InstancesByNameFieldSpec,
@@ -2425,7 +2483,9 @@ $query.Var.sortBy = $someAwsNativeEc2InstanceSortFields # Call [Enum]::GetValues
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # REQUIRED
-$query.Var.ec2InstanceName = $someString"
+$query.Var.ec2InstanceName = $someString
+# OPTIONAL
+$query.Var.includeSecurityMetadata = $someBoolean"
             );
         }
 
@@ -2542,6 +2602,29 @@ $query.Var.snapshotId = $someString
 $query.Var.isPointInTime = $someBoolean
 # OPTIONAL
 $query.Var.isArchivalCopy = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAwsNativeRdsExportS3Buckets(awsAccountRubrikId: UUID!, region: AwsNativeRegion = NOT_SPECIFIED): [S3BucketDetails!]!
+        internal void InitQueryAllAwsNativeRdsExportS3Buckets()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAwsNativeRdsExportS3Buckets",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion)",
+                "List<S3BucketDetails>",
+                Query.AllAwsNativeRdsExportS3Buckets,
+                Query.AllAwsNativeRdsExportS3BucketsFieldSpec,
+                @"# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# OPTIONAL
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
             );
         }
 

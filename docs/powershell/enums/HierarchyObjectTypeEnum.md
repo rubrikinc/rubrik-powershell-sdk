@@ -188,6 +188,7 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - PROXMOX_CLUSTER - Proxmox Cluster.
 - PROXMOX_NODE - Proxmox Node.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
+- PROXMOX_TAG - Proxmox Tag.
 - GITHUB_ORGANIZATION - GitHub Organization.
 - GITHUB_REPOSITORY - GitHub Repository.
 - AWS_NATIVE_CONFIG - AWS Native Config.
@@ -261,3 +262,11 @@ this hierarchy.
 - M365_CONFIGS_ORG - M365 Configurations Organization.
 - ORACLE_FAILOVER_CLUSTER - Oracle failover cluster: a customer-asserted machine set for Oracle AIX PowerHA active-passive clusters.
 - ORACLE_FAILOVER_SERVICE - Oracle failover service: a logical HA resource group under an Oracle failover cluster.
+- VSPHERE_SUPERVISOR - Supervisor of a vSphere vCenter.
+- VSPHERE_NAMESPACE - Namespace of a vSphere Supervisor.
+- VCF_FLEET - VCF fleet -- one VCF Operations appliance.
+- VCF_INSTANCE - VCF instance -- one SDDC Manager under a fleet.
+- VCFA_APPLIANCE - VMware Cloud Foundation Automation (VCFA) appliance.
+- VCFA_ORG - VCFA organization.
+- VCFA_REGION - VCFA region.
+- VCFA_PROJECT - VCFA project.

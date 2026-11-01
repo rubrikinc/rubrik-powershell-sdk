@@ -51,3 +51,9 @@ workloads. Not intended for direct customer use.
 artifacts).
 - SAAS_GITHUB_ORG - GitHub organization-level application type, such as organization
 packages.
+- M365_CFGS_EXCHANGE - M365 Configurations Exchange Online application type.
+- M365_CFGS_DEFENDER - M365 Configurations Defender for Office 365 application type.
+- M365_CFGS_PURVIEW - M365 Configurations Purview application type.
+- M365_CFGS_SHAREPOINT - M365 Configurations SharePoint application type.
+- M365_CFGS_ONEDRIVE - M365 Configurations OneDrive application type.
+- M365_CFGS_TEAMS - M365 Configurations Teams application type.

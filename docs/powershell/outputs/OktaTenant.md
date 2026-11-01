@@ -1,0 +1,122 @@
+### OktaTenant
+Okta tenant managed by Rubrik.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- orgId: System.String
+  - Okta organization ID.
+- domain: System.String
+  - Okta domain URL.
+- isRelic: System.Boolean
+  - Specifies whether the Okta tenant is a relic.
+- clientId: System.String
+  - Okta client ID for API access.
+- latestUserCount: System.Int64
+  - Latest count of users in the Okta tenant.
+- latestGroupCount: System.Int64
+  - Latest count of groups in the Okta tenant.
+- latestGroupRuleCount: System.Int64
+  - Latest count of group rules in the Okta tenant.
+- latestApplicationCount: System.Int64
+  - Latest count of applications in the Okta tenant.
+- latestPolicyCount: System.Int64
+  - Latest count of policies in the Okta tenant.
+- latestPolicyRuleCount: System.Int64
+  - Latest count of policy rules in the Okta tenant.
+- latestNetworkZoneCount: System.Int64
+  - Latest count of network zones in the Okta tenant.
+- latestAuthServerCount: System.Int64
+  - Latest count of authorization servers in the Okta tenant.
+- latestIdentityProviderCount: System.Int64
+  - Latest count of identity providers in the Okta tenant.
+- latestAuthenticatorCount: System.Int64
+  - Latest count of authenticators in the Okta tenant.
+- latestUniversalDirectorySchemaCount: System.Int64
+  - Latest count of universal directory schemas in the Okta tenant.
+- latestWorkflowCount: System.Int64
+  - Latest count of workflows in the Okta tenant.
+- latestEventHookCount: System.Int64
+  - Latest count of event hooks in the Okta tenant.
+- latestInlineHookCount: System.Int64
+  - Latest count of inline hooks in the Okta tenant.
+- latestAdminRoleCount: System.Int64
+  - Latest count of admin roles in the Okta tenant.
+- latestResourceSetCount: System.Int64
+  - Latest count of custom resource sets in the Okta tenant.
+- latestBehaviorDetectionRuleCount: System.Int64
+  - Latest count of behavior detection rules in the Okta tenant.
+- isWorkflowSetUp: System.Boolean
+  - Whether workflow protection has been set up for this tenant.
+- workflowProtectionStatus: WorkflowProtectionStatus
+  - Workflow protection status for this tenant.
+- workflowProtectionFailureReason: System.String
+  - Reason workflow protection failed, if applicable.
+- workflowConfig: WorkflowConfig
+  - Workflow protection configuration.
+- latestGeneralSecuritySettingTypes: list of OktaGeneralSecuritySettingTypes
+  - General security setting types captured in the latest snapshot of the Okta
+tenant, at most one of each. Empty when the snapshot holds none.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- backupRegion: System.String
+  - Backup storage region for this tenant.
+- status: ExoClusterStatus
+  - Current status of the Okta tenant.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - Group-by connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - Group-by connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.

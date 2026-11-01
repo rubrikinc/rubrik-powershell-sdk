@@ -56,3 +56,9 @@ Consistency level mandated for this VM or empty string for none.
 - snappable: CdmWorkload
 - templateType: VirtualMachineTemplateType
   - Virtual Machine Template summary.
+- isVmServiceVm: System.Boolean
+  - Supported in v9.7
+Specifies whether the virtual machine is managed by a vSphere Supervisor.
+- vsphereNamespaceId: System.String
+  - Supported in v9.7
+The ID of the vSphere Namespace that a Supervisor-managed virtual machine belongs to. Absent for other virtual machines.

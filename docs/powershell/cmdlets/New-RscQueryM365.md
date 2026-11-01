@@ -88,3 +88,15 @@ Searches the M365 Backup Storage object restore points.
 
 - There is a single argument of type M365BackupStorageObjectSearchRestorePointsInput.
 - Returns SearchM365BackupStorageObjectRestorePointsResp.
+### subscriptiondomains
+Paginated list of the domains available on an M365 subscription, for
+selection as a cross-tenant recovery target.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - subscriptionId - System.String: The target M365 subscription.
+    - filter - M365DomainFilter: Filter applied to the returned domains.
+- Returns M365DomainConnection.
