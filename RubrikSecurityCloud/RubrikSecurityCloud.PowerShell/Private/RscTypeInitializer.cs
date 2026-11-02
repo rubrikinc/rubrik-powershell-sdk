@@ -468,29 +468,48 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     // then advance.
                     if (prop.PropertyType.IsClass || prop.PropertyType.IsInterface)
                     {
-                        if (prop.PropertyType.IsInterface &&
-                            i + 1 < segments.Length &&
-                            segments[i + 1].StartsWith("on:",
-                                StringComparison.OrdinalIgnoreCase))
+                        if (prop.PropertyType.IsInterface)
                         {
-                            string selector = segments[i + 1].Substring(3);
-                            i++; // consume the on: segment
-                            if (selector == "*")
+                            // Interface-typed property: the server may
+                            // return any implementing type, so build ALL of
+                            // them (inline fragments) as a composite, like
+                            // an interface root does. Gather every requested
+                            // path sharing this prefix so bare, on:* and
+                            // on:Type paths are handled together; the
+                            // remaining segments are consumed here.
+                            string prefix = string.Join(".",
+                                segments.Take(i + 1)) + ".";
+                            string[] remaining = requestedProperties
+                                .Where(rp => rp.StartsWith(prefix,
+                                    StringComparison.OrdinalIgnoreCase))
+                                .Select(rp => rp.Substring(prefix.Length))
+                                .ToArray();
+
+                            if (i == segments.Length - 1 ||
+                                remaining.Length == 0)
                             {
+                                // Path ends at the interface property
+                                // itself: keep the original behavior.
                                 currentObject = GetOrCreatePropertyValue(
                                     currentObject, prop);
+                                continue;
                             }
-                            else
+
+                            if (prop.GetValue(currentObject) == null)
                             {
-                                currentObject = GetOrCreatePropertyValue(
-                                    currentObject, prop, selector);
+                                // Unselected types are omitted so an empty
+                                // sibling fragment ("{}") can't cause the
+                                // property's selection to be dropped.
+                                prop.SetValue(currentObject,
+                                    InitializeInterfaceRoot(
+                                        prop.PropertyType, remaining,
+                                        includeUnselectedTypes: false));
                             }
+                            break;
                         }
-                        else
-                        {
-                            currentObject = GetOrCreatePropertyValue(
-                                currentObject, prop);
-                        }
+
+                        currentObject = GetOrCreatePropertyValue(
+                            currentObject, prop);
                         continue;
                     }
 
@@ -516,7 +535,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// </summary>
         private static object InitializeInterfaceRoot(
             System.Type interfaceType,
-            string[] requestedProperties)
+            string[] requestedProperties,
+            bool includeUnselectedTypes = true)
         {
             var implNames = ReflectionUtils.GetTypesImplementingInterface(
                 interfaceType.Name);
@@ -588,7 +608,18 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     instances.Add(InitializeTypeWithSelectedProperties(
                         typeName, props.ToArray()));
                 }
-                else
+                else if (includeUnselectedTypes)
+                {
+                    instances.Add(Activator.CreateInstance(
+                        GetTypeByName(typeName)));
+                }
+            }
+
+            // Nothing selected (e.g. "on:Type" with no field): fall back to
+            // empty instances of every type rather than failing.
+            if (instances.Count == 0)
+            {
+                foreach (string typeName in implNames)
                 {
                     instances.Add(Activator.CreateInstance(
                         GetTypeByName(typeName)));
@@ -685,29 +716,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 child = Activator.CreateInstance(prop.PropertyType);
             }
 
-            prop.SetValue(parent, child);
-            return child;
-        }
-
-        /// <summary>
-        /// Overload: create a specific implementing type for an interface
-        /// property. Used when an on:TypeName selector is provided.
-        /// </summary>
-        private static object GetOrCreatePropertyValue(
-            object parent, PropertyInfo prop, string typeName)
-        {
-            object child = prop.GetValue(parent);
-            if (child != null) return child;
-
-            System.Type targetType = GetTypeByName(typeName);
-            if (targetType == null ||
-                !prop.PropertyType.IsAssignableFrom(targetType))
-            {
-                throw new Exception(
-                    $"Type '{typeName}' does not implement " +
-                    $"interface '{prop.PropertyType.Name}'.");
-            }
-            child = Activator.CreateInstance(targetType);
             prop.SetValue(parent, child);
             return child;
         }
