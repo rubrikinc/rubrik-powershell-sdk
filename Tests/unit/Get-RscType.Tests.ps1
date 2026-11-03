@@ -417,12 +417,45 @@ Describe 'Get-RscType' {
             $result.EffectiveSlaDomain.Id | Should -Be "FETCH"
         }
 
-        It '"EffectiveSlaDomain.Id" (bare) — first implementing type with Id=FETCH (backward compat)' {
+        It '"EffectiveSlaDomain.Id" (bare) — includes ALL implementing types' {
             $result = Get-RscType -Name MssqlDatabase `
                 -InitialProperties @("EffectiveSlaDomain.Id")
             $result.EffectiveSlaDomain | Should -Not -BeNull
-            $result.EffectiveSlaDomain | Should -BeOfType RubrikSecurityCloud.Types.ClusterSlaDomain
-            $result.EffectiveSlaDomain.Id | Should -Be "FETCH"
+            $spec = $result.AsFieldSpec()
+            $spec | Should -Match '\.\.\. on ClusterSlaDomain'
+            $spec | Should -Match '\.\.\. on GlobalSlaReply'
+        }
+
+        It '"EffectiveSlaDomain.Name" (bare) — GlobalSlaReply fragment selects name' {
+            $result = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.Name")
+            $spec = $result.AsFieldSpec()
+            $spec | Should -Match '(?s)on GlobalSlaReply \{\s*name\s*\}'
+        }
+
+        It 'bare and "on:*" produce the same field spec' {
+            $a = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.Id")
+            $b = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.on:*.Id")
+            $a.AsFieldSpec() | Should -Be $b.AsFieldSpec()
+        }
+
+        It 'bare and on: paths on the same property merge' {
+            $result = Get-RscType -Name MssqlDatabase -InitialProperties @(
+                "EffectiveSlaDomain.Id",
+                "EffectiveSlaDomain.on:GlobalSlaReply.Name")
+            $spec = $result.AsFieldSpec()
+            $spec | Should -Match '(?s)on ClusterSlaDomain \{\s*id\s*\}'
+            $spec | Should -Match '(?s)on GlobalSlaReply \{\s*id\s*name\s*\}'
+        }
+
+        It '"EffectiveSlaDomain.on:GlobalSlaReply.Name" — only GlobalSlaReply fragment' {
+            $result = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.on:GlobalSlaReply.Name")
+            $spec = $result.AsFieldSpec()
+            $spec | Should -Match 'on GlobalSlaReply'
+            $spec | Should -Not -Match 'on ClusterSlaDomain'
         }
 
         It '"EffectiveSlaDomain.on:NonExistent.Id" — throws' {

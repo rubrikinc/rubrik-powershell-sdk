@@ -6,6 +6,13 @@ New Features:
 
 Fixes:
 
+- `Get-RscType -InitialProperties` now includes every implementing type when a
+  path goes through an interface-typed property such as
+  `effectiveSlaDomain.name`. Previously only the first implementing type
+  (`ClusterSlaDomain`) was selected, so `GlobalSlaReply` fields were missing
+  from the query. Use `effectiveSlaDomain.on:<Type>.<field>` to select a
+  single type.
+
 Breaking Changes:
 
 ## Version 1.20.20261026
