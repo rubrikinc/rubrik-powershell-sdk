@@ -113,7 +113,7 @@
   </Target>
 
   <Target Name="GeneratePSD1File" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0'">
-    <Exec Command="pwsh -File $(ProjectDir)/UpdatePsd1.ps1" />
+    <Exec Command="pwsh -File &quot;$(ProjectDir)/UpdatePsd1.ps1&quot;" />
   </Target>
 
   <Target Name="CopySupportFiles" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0'">
@@ -145,6 +145,6 @@
     <PropertyGroup>
       <_DocsQuietFlag Condition="'$(VerboseDocs)' != 'true'">-Quiet</_DocsQuietFlag>
     </PropertyGroup>
-    <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)../RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir) $(_DocsQuietFlag)" />
+    <Exec Command="pwsh -File &quot;$(ProjectDir)docs/GenerateDocs.ps1&quot; -sourceXml &quot;$(TargetDir)RubrikSecurityCloud.PowerShell.xml&quot; -ModuleFilePath &quot;$(TargetDir)../RubrikSecurityCloud.psd1&quot; -ModuleName RubrikSecurityCloud -OutputPath &quot;$(TargetDir)&quot; $(_DocsQuietFlag)" />
   </Target>
 </Project>
