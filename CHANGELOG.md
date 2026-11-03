@@ -6,6 +6,9 @@ New Features:
 
 Fixes:
 
+- `New-RscQuery -GqlQuery allTargetMappings -FieldProfile DETAIL` no longer
+  fails server-side validation with conflicting `region` / `storageClass`
+  types across `targetTemplate` fragments.
 - `Get-RscType -InitialProperties` no longer fails with
   `Property type not handled: 'System.Nullable`1[System.Single]'` for
   floating-point fields such as `AsyncRequestStatus.progress`.

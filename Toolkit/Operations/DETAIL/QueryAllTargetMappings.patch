@@ -1,0 +1,6 @@
+-TargetTemplate.Region
+-TargetTemplate.StorageClass
+-TargetTemplate.ComputeSettings.Region
+-Targets.Region
+-Targets.StorageClass
+-Targets.ComputeSettings.Region
