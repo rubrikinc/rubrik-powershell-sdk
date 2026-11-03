@@ -6,6 +6,9 @@ New Features:
 
 Fixes:
 
+- `Get-RscType -InitialProperties` no longer fails with
+  `Property type not handled: 'System.Nullable`1[System.Single]'` for
+  floating-point fields such as `AsyncRequestStatus.progress`.
 - `Get-RscType -InitialProperties` now includes every implementing type when a
   path goes through an interface-typed property such as
   `effectiveSlaDomain.name`. Previously only the first implementing type
