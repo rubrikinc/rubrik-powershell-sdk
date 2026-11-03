@@ -679,6 +679,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 prop.SetValue(obj, 0.0);
                 return true;
             }
+            if (t == typeof(float) || t == typeof(float?))
+            {
+                prop.SetValue(obj, 0.0f);
+                return true;
+            }
             if (t == typeof(DateTime?) || t == typeof(DateTime))
             {
                 prop.SetValue(obj, new DateTime());
