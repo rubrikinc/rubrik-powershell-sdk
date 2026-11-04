@@ -347,7 +347,14 @@ namespace RubrikSecurityCloud
         {
             foreach (KeyValuePair<string, object?> varDef in _varDefs)
             {
-                if (varDef.Value is string type && !type.EndsWith("!") &&
+                if (varDef.Value is null)
+                {
+                    continue;
+                }
+                string varTypeExpr = (string)varDef.Value;
+                bool isRequired = varTypeExpr.EndsWith("!");
+
+                if (!isRequired &&
                     this.TryGetValue(varDef.Key, out var v) &&
                     v is VarDict vd && vd.Count == 0)
                 {
