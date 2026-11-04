@@ -6,14 +6,11 @@ New Features:
 
 Fixes:
 
-- Subfields that take a single scalar argument, such as
-  `newestSnapshot(beforeTime:)` on `New-RscQueryVsphereVm -Operation NewList`,
-  no longer send the argument as `{}` when it is left unset, which RSC
-  rejected with `Expected type 'DateTime', found '{}'`. The unset argument is
-  now sent as `null`. The same applies to top-level operations with a single
-  scalar, enum or list variable: an unset optional variable is omitted, and an
-  unset required one is reported as missing by the SDK instead of failing on
-  the server.
+- An optional argument that is the only one on its field or operation, such
+  as `newestSnapshot(beforeTime:)` on `New-RscQueryVsphereVm -Operation
+  NewList` or `searchText` on `New-RscQueryMisc -Operation Regions`, is no
+  longer sent as `{}` when left unset, which RSC rejected with `Expected type
+  'DateTime', found '{}'`. It is now sent as `null`.
 - `New-RscQuery -GqlQuery allTargetMappings -FieldProfile DETAIL` no longer
   fails server-side validation with conflicting `region` / `storageClass`
   types across `targetTemplate` fragments.

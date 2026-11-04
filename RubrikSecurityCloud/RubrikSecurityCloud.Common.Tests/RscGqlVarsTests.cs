@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Tests
         }
 
         [Test]
-        public void UnsetSingleScalarSubfieldArgRendersNull()
+        public void UnsetSubfieldArgRendersNull()
         {
             var vm = new VsphereVm { NewestSnapshot = new CdmSnapshot { Id = "x" } };
 
@@ -32,7 +32,7 @@ namespace RubrikSecurityCloud.Tests
         }
 
         [Test]
-        public void AssignedSingleScalarSubfieldArgIsSent()
+        public void AssignedSubfieldArgIsSent()
         {
             var vars = Make("beforeTime", "DateTime");
             vars["beforeTime"] = new DateTime(2026, 11, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -41,37 +41,30 @@ namespace RubrikSecurityCloud.Tests
                 Is.EqualTo("beforeTime:\"2026-11-01T00:00:00+00:00\""));
         }
 
-        [Test]
-        public void UnsetSingleOptionalScalarVarIsOmitted()
+        [TestCase("String")]
+        [TestCase("UUID")]
+        [TestCase("ClusterTypeEnum")]
+        [TestCase("[String!]")]
+        [TestCase("SomeFilterInput")]
+        public void UnsetOptionalVarIsOmitted(string gqlType)
         {
-            Assert.That(AsJson(Make("first", "Int")), Is.EqualTo("{}"));
-            Assert.That(AsJson(Make("ids", "[String!]")), Is.EqualTo("{}"));
+            Assert.That(AsJson(Make("arg", gqlType)), Is.EqualTo("{}"));
         }
 
         [Test]
-        public void UnsetSingleRequiredScalarVarIsReportedMissing()
+        public void RequiredInputObjectKeepsFillablePlaceholder()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                () => Make("clusterUuid", "UUID!").Finalize());
-            Assert.That(ex!.Message, Does.Contain("clusterUuid"));
-        }
-
-        [Test]
-        public void UnsetSingleEnumVarIsOmitted()
-        {
-            Assert.That(AsJson(Make("sortOrder", "SortOrder")), Is.EqualTo("{}"));
-        }
-
-        [TestCase("BeginManagedVolumeSnapshotInput!")]
-        [TestCase("TakeOnDemandPostgreSQLDbClusterSnapshotInput!")]
-        [TestCase("CreateK8sVMExportJobInput!")]
-        [TestCase("AppItemRestoreConfig!")]
-        public void SingleInputObjectVarKeepsFillablePlaceholder(string gqlType)
-        {
-            var vars = Make("input", gqlType);
+            var vars = Make("input", "SomeInput!");
             ((VarDict)vars["input"]!)["id"] = "abc";
 
             Assert.That(AsJson(vars), Is.EqualTo("{\"input\":{\"id\":\"abc\"}}"));
+        }
+
+        [Test]
+        public void UnsetRequiredInputObjectIsStillSentEmpty()
+        {
+            Assert.That(AsJson(Make("input", "SomeInput!")),
+                Is.EqualTo("{\"input\":{}}"));
         }
     }
 }

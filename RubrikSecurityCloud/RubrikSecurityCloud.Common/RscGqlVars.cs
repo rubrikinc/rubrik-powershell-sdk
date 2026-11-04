@@ -332,7 +332,7 @@ namespace RubrikSecurityCloud
         /// </summary>
         public VarDict? Finalize()
         {
-            clearUnfilledPlaceholders();
+            clearUnfilledOptionalArgs();
             // run again in case user has modified the hashtable
             // directly (with Add() for example) without calling Set()
             conformToVarDefs();
@@ -340,73 +340,25 @@ namespace RubrikSecurityCloud
         }
 
         // Set() pre-fills a lone variable with an empty VarDict so scripts
-        // can populate input objects field by field ($q.Var.input.id = ...).
-        // Left untouched on a scalar, enum or list variable, that placeholder
-        // would be sent as {}, which GraphQL rejects; send null instead.
-        // Types not known to be one of those keep the placeholder.
-        private void clearUnfilledPlaceholders()
+        // can fill input objects field by field. If an optional variable
+        // is still empty here, send null: {} is invalid for scalars, enums
+        // and lists, and omitting an optional input object is valid too.
+        private void clearUnfilledOptionalArgs()
         {
             foreach (KeyValuePair<string, object?> varDef in _varDefs)
             {
-                if (this.TryGetValue(varDef.Key, out var value) &&
-                    value is VarDict placeholder &&
-                    placeholder.Count == 0 &&
-                    cannotTakeObjectValue(varDef.Value as string))
+                if (varDef.Value is string type && !type.EndsWith("!") &&
+                    this.TryGetValue(varDef.Key, out var v) &&
+                    v is VarDict vd && vd.Count == 0)
                 {
                     this[varDef.Key] = null;
                 }
             }
         }
 
-        private static readonly HashSet<string> scalarTypeNames =
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) {
-                "Boolean", "DateTime", "Float", "ID", "Int", "LocalTime",
-                "Long", "String", "Timezone", "URL", "UUID", "Void",
-            };
-
-        // Generated C# names differ in case from GraphQL names
-        // (PostgreSQL -> PostgreSql, VM -> Vm), so match case-insensitively.
-        private static readonly Lazy<HashSet<string>> enumTypeNames =
-            new Lazy<HashSet<string>>(() =>
-            {
-                var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-                try
-                {
-                    foreach (var t in System.Reflection.Assembly
-                        .Load("RubrikSecurityCloud.Schema").GetTypes())
-                    {
-                        if (t.IsEnum && t.Namespace == "RubrikSecurityCloud.Types")
-                        {
-                            names.Add(t.Name);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    // Schema assembly unavailable: only scalars and lists
-                    // are cleared.
-                }
-                return names;
-            });
-
-        private static bool cannotTakeObjectValue(string? gqlType)
-        {
-            if (gqlType == null)
-            {
-                return false;
-            }
-            var t = gqlType.Trim();
-            if (t.StartsWith("["))
-            {
-                return true;
-            }
-            t = t.TrimEnd('!');
-            return scalarTypeNames.Contains(t) || enumTypeNames.Value.Contains(t);
-        }
-
         public string ToInlineArguments()
         {
-            clearUnfilledPlaceholders();
+            clearUnfilledOptionalArgs();
             OperationVariableSet gqlVars = new OperationVariableSet();
             gqlVars.Variables = this!;
             return gqlVars.AsInlineVariables();
