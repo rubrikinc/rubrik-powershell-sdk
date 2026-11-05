@@ -75,7 +75,7 @@ Describe 'Set-RscMssqlLogShippingSecondary — AutomaticReseed parameter set' {
             -AutomaticReseed
 
         $result | Should -BeOfType [RubrikSecurityCloud.Types.UpdateMssqlLogShippingConfigurationReply]
-        Assert-MockCalled Invoke-Rsc -Times 1
+        Should -Invoke Invoke-Rsc -Times 1
     }
 }
 
@@ -139,6 +139,6 @@ Describe 'Set-RscMssqlLogShippingSecondary — State parameter set' {
             -State RESTORING
 
         $result.Status | Should -Be 'QUEUED'
-        Assert-MockCalled Invoke-Rsc -Times 1
+        Should -Invoke Invoke-Rsc -Times 1
     }
 }

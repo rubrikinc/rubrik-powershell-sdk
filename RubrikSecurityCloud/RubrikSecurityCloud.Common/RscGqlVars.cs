@@ -332,14 +332,40 @@ namespace RubrikSecurityCloud
         /// </summary>
         public VarDict? Finalize()
         {
+            clearUnfilledOptionalArgs();
             // run again in case user has modified the hashtable
             // directly (with Add() for example) without calling Set()
             conformToVarDefs();
             return JsonUtils.JsonReady(this) as VarDict;
         }
 
+        // Set() pre-fills a lone variable with an empty VarDict so scripts
+        // can fill input objects field by field. If an optional variable
+        // is still empty here, send null: {} is invalid for scalars, enums
+        // and lists, and omitting an optional input object is valid too.
+        private void clearUnfilledOptionalArgs()
+        {
+            foreach (KeyValuePair<string, object?> varDef in _varDefs)
+            {
+                if (varDef.Value is null)
+                {
+                    continue;
+                }
+                string varTypeExpr = (string)varDef.Value;
+                bool isRequired = varTypeExpr.EndsWith("!");
+
+                if (!isRequired &&
+                    this.TryGetValue(varDef.Key, out var v) &&
+                    v is VarDict vd && vd.Count == 0)
+                {
+                    this[varDef.Key] = null;
+                }
+            }
+        }
+
         public string ToInlineArguments()
         {
+            clearUnfilledOptionalArgs();
             OperationVariableSet gqlVars = new OperationVariableSet();
             gqlVars.Variables = this!;
             return gqlVars.AsInlineVariables();
