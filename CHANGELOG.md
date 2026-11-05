@@ -10,19 +10,19 @@ Fixes:
   as `newestSnapshot(beforeTime:)` on `New-RscQueryVsphereVm -Operation
   NewList` or `searchText` on `New-RscQueryMisc -Operation Regions`, is no
   longer sent as `{}` when left unset, which RSC rejected with `Expected type
-  'DateTime', found '{}'`. It is now sent as `null`.
+  'DateTime', found '{}'`. It is now sent as `null`. (#274)
 - `New-RscQuery -GqlQuery allTargetMappings -FieldProfile DETAIL` no longer
   fails server-side validation with conflicting `region` / `storageClass`
-  types across `targetTemplate` fragments.
+  types across `targetTemplate` fragments. (#273)
 - `Get-RscType -InitialProperties` no longer fails with
   `Property type not handled: 'System.Nullable`1[System.Single]'` for
-  floating-point fields such as `AsyncRequestStatus.progress`.
+  floating-point fields such as `AsyncRequestStatus.progress`. (#272)
 - `Get-RscType -InitialProperties` now includes every implementing type when a
   path goes through an interface-typed property such as
   `effectiveSlaDomain.name`. Previously only the first implementing type
   (`ClusterSlaDomain`) was selected, so `GlobalSlaReply` fields were missing
   from the query. Use `effectiveSlaDomain.on:<Type>.<field>` to select a
-  single type.
+  single type. (#271)
 
 Breaking Changes:
 
