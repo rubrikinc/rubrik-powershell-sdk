@@ -61,6 +61,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- protectedObjectTypeToPauseStatus: list of ProtectedObjectTypeToPauseStatuss
+  - A list of mappings between protected object types and their pause status.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

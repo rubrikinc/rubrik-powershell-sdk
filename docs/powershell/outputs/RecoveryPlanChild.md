@@ -1,0 +1,21 @@
+### RecoveryPlanChild
+- fid: System.String
+- bootPriority: System.Int32
+- lastRecoveryPoint: System.Int64
+  - Last recovery point.
+- workload: RecoveryPlanChildWorkload
+  - The child workload.
+- localRpoLagInfo: RpoLagInfo
+  - Local RPO lag information.
+- remoteRpoLagInfo: RpoLagInfo
+  - Remote RPO lag information.
+- preSeedStatus: PreSeedStatus
+  - Pre-seed status of this workload on the Recovery Plan's target cluster: the snapshot of the most recent pre-seed, its state and progress, and the last successfully pre-seeded snapshot. Null when the plan is not a Disaster Recovery Plan with pre-seeding enabled, the workload type does not support pre-seeding, the workload is not on the target cluster, or no pre-seed has run.
+- resourceSpec: RecoveryPlanChildResourceSpec
+  - Resource specification of the child object.
+- recoverySpec: RecoverySpec
+  - Recovery specification of the child object.
+- recoveryInfo: ChildVmRecoveryInfo
+  - The recovery info of the child virtual machine.
+- workloadType: ObjectTypeEnum
+  - Workload type of the recovery plan child.

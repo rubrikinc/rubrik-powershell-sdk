@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupName")]
         public System.String? GroupName { get; set; }
 
+        //      C# -> System.Boolean? IsScimLinked
+        // GraphQL -> isScimLinked: Boolean (scalar)
+        [JsonProperty("isScimLinked")]
+        public System.Boolean? IsScimLinked { get; set; }
+
         //      C# -> List<User>? ActiveUsers
         // GraphQL -> activeUsers: [User!]! (type)
         [JsonProperty("activeUsers")]
@@ -68,6 +73,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DomainName = null,
         System.String? GroupId = null,
         System.String? GroupName = null,
+        System.Boolean? IsScimLinked = null,
         List<User>? ActiveUsers = null,
         List<Org>? AllOrgs = null,
         List<Role>? Roles = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GroupName != null ) {
             this.GroupName = GroupName;
+        }
+        if ( IsScimLinked != null ) {
+            this.IsScimLinked = IsScimLinked;
         }
         if ( ActiveUsers != null ) {
             this.ActiveUsers = ActiveUsers;
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "groupName\n" ;
             } else {
                 s += ind + "groupName\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsScimLinked
+        // GraphQL -> isScimLinked: Boolean (scalar)
+        if (this.IsScimLinked != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isScimLinked\n" ;
+            } else {
+                s += ind + "isScimLinked\n" ;
             }
         }
         //      C# -> List<User>? ActiveUsers
@@ -241,6 +259,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.GroupName != null && ec.Excludes("groupName",true))
         {
             this.GroupName = null;
+        }
+        //      C# -> System.Boolean? IsScimLinked
+        // GraphQL -> isScimLinked: Boolean (scalar)
+        if (ec.Includes("isScimLinked",true))
+        {
+            if(this.IsScimLinked == null) {
+
+                this.IsScimLinked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsScimLinked != null && ec.Excludes("isScimLinked",true))
+        {
+            this.IsScimLinked = null;
         }
         //      C# -> List<User>? ActiveUsers
         // GraphQL -> activeUsers: [User!]! (type)

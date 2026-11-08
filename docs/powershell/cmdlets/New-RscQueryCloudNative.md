@@ -1,5 +1,25 @@
 # New-RscQueryCloudNative
 ## Subcommands
+### application
+GetCloudNativeApplication gets a cloud native application by ID.
+
+- There are 2 arguments.
+    - id - System.String: Application ID.
+    - shouldIncludeTargetAccountAdditionalInfo - System.Boolean: When true, enriches the
+response with target cloud account name and status.
+- Returns CloudNativeApplication.
+### applications
+ListCloudNativeApplications lists cloud native applications based on
+filters and sorting.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - filter - ListApplicationsFilter: Filter cloud applications.
+    - sortBy - ListCloudNativeApplicationsSortParam: Sort cloud applications.
+- Returns CloudNativeApplicationConnection.
 ### applicationsnapshots
 GetCloudNativeApplicationSnapshots returns the config
 snapshot and all workload snapshots for a cloud native
@@ -16,6 +36,17 @@ instances get all filters, databases get time-only).
     - getFullDetails - System.Boolean: Whether to include full details.
     - preferredLocationType - CloudNativeSnapshotLocationType: Preferred snapshot location.
 - Returns GetCloudNativeApplicationSnapshotsReply.
+### applicationworkloadsbyconfigsnapshot
+GetCloudNativeApplicationWorkloadsByConfigSnapshot
+returns the list of workload IDs grouped by cloud
+native object type for a given application and config
+snapshot. Used during application recovery to identify
+the underlying cloud native workloads.
+
+- There are 2 arguments.
+    - applicationId - System.String: Application managed object ID.
+    - snapshotId - System.String: Snapshot ID to look up workloads.
+- Returns GetCloudNativeApplicationWorkloadsByConfigSnapshotReply.
 ### checkarchivedsnapshotslocked
 Archived snapshot locking related details for a workload. If no snapshot IDs are passed, all the globally unexpired source snapshots are checked.
 A source snapshot that has no archival copy is reported as invalid rather than as locked or unlocked.
@@ -74,6 +105,12 @@ List of snapshots with their file recovery feasibility status
 
 - There is a single argument of type list of System.Strings.
 - Returns ValidateCloudNativeFileRecoveryFeasibilityReply.
+### isvalidapplicationname
+IsValidCloudNativeApplicationName checks if a given application name is
+valid.
+
+- There is a single argument of type IsValidCloudNativeApplicationNameRequest.
+- Returns IsValidCloudNativeApplicationNameResponse.
 ### labelkeys
 List of cloud native label keys matched by substring.
 

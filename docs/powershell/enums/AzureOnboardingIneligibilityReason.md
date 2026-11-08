@@ -9,3 +9,6 @@ onboarding.
 method and cannot be onboarded again in this pass.
 - AZURE_ONBOARDING_INELIGIBILITY_REASON_DIFFERENT_MANAGEMENT_GROUP - The subscription already belongs to a different management group.
 - AZURE_ONBOARDING_INELIGIBILITY_REASON_ALREADY_ONBOARDED - The subscription is already onboarded for all of the requested features.
+- AZURE_ONBOARDING_INELIGIBILITY_REASON_NOT_IN_MANAGEMENT_GROUP - The subscription is already onboarded outside a management group and must
+be migrated into one before features can be added through a management
+group.

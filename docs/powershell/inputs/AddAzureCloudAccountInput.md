@@ -13,3 +13,5 @@ Input for adding an Azure Cloud Account.
   - Indicates whether the Azure cloud account can be onboarded asynchronously.
 - managementGroup: AzureManagementGroupInput
   - Management group for the Azure cloud account onboarding.
+- serviceType: AzureCloudAccountServiceType
+  - Whether the subscriptions are onboarded for BaaS or non-BaaS.

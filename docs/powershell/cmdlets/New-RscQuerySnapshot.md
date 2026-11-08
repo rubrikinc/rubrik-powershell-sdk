@@ -1,5 +1,11 @@
 # New-RscQuerySnapshot
 ## Subcommands
+### applicationconfigdownloadlink
+Get a download link for a config snapshot of a cloud native application.
+Returns a pre-signed URL for downloading the snapshot.
+
+- There is a single argument of type ApplicationConfigSnapshotDownloadLinkRequest.
+- Returns ApplicationConfigSnapshotDownloadLinkResponse.
 ### browsefilelist
 Returns a list files whose name is prefixed by the query in the given
 snapshot.

@@ -1,6 +1,8 @@
 ### RestoreItemCriteria
 Info specifying the item criteria for restore.
 
+- itemFilters: RecordFilter
+  - Criteria for which matching items will be restored.
 - snapshotId: System.String
   - ID of the snapshot these items need to be restored to.
 - sequenceNumber: System.Int32
@@ -11,9 +13,7 @@ Info specifying the item criteria for restore.
   - Optional, limits the number of records to be restored.
 - sortByParam: SaasSortByParam
   - Optional, field and order used to sort the records.
-- rtpPointInTimeInfo: SaasRtpPointInTimeInfo
-  - Optional, real-time protection (RTP) point in time to read the items from, in place of a backup snapshot.
-- itemFilters: RecordFilter
-  - Criteria for which matching items will be restored.
 - childRestoreItemCriteria: ChildRestoreItemCriteria
   - Optional, criteria used for restoring child items.
+- rtpPointInTimeInfo: SaasRtpPointInTimeInfo
+  - Optional, real-time protection (RTP) point in time to read the items from, in place of a backup snapshot.

@@ -1,6 +1,22 @@
 ### K8sCluster
 Kubernetes cluster.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
 - status: K8sClusterStatus
   - Connection status of the Kubernetes cluster.
 - lastRefreshTime: DateTime
@@ -19,42 +35,24 @@ Kubernetes cluster.
   - Deprecated. Use clusterPortRanges instead.
 - clusterPortRanges: list of K8sClusterPortsInfos
   - Ranges for ports used for backup and recovery.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Pending pause or unpause assignment for RSC-native objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
@@ -63,3 +61,5 @@ Kubernetes cluster.
   - Number of snapshots on legal hold for this object.
 - futureLegalHoldInfo: FutureLegalHoldInfo
   - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

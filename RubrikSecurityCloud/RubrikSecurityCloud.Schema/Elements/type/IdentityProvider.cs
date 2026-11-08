@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("idpClaimAttributes")]
         public List<IdpClaimAttributeType>? IdpClaimAttributes { get; set; }
 
+        //      C# -> ScimConfiguration? ScimConfiguration
+        // GraphQL -> scimConfiguration: ScimConfiguration (type)
+        [JsonProperty("scimConfiguration")]
+        public ScimConfiguration? ScimConfiguration { get; set; }
+
 
         #endregion
 
@@ -131,7 +136,8 @@ namespace RubrikSecurityCloud.Types
         System.String? SigningCertificate = null,
         System.String? SpInitiatedSignInUrl = null,
         System.String? SpInitiatedTestUrl = null,
-        List<IdpClaimAttributeType>? IdpClaimAttributes = null
+        List<IdpClaimAttributeType>? IdpClaimAttributes = null,
+        ScimConfiguration? ScimConfiguration = null
     ) 
     {
         if ( ActiveUserCount != null ) {
@@ -184,6 +190,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IdpClaimAttributes != null ) {
             this.IdpClaimAttributes = IdpClaimAttributes;
+        }
+        if ( ScimConfiguration != null ) {
+            this.ScimConfiguration = ScimConfiguration;
         }
         return this;
     }
@@ -352,6 +361,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "idpClaimAttributes" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ScimConfiguration? ScimConfiguration
+        // GraphQL -> scimConfiguration: ScimConfiguration (type)
+        if (this.ScimConfiguration != null) {
+            var fspec = this.ScimConfiguration.AsFieldSpec(conf.Child("scimConfiguration"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scimConfiguration" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -652,6 +673,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IdpClaimAttributes != null && ec.Excludes("idpClaimAttributes",false))
         {
             this.IdpClaimAttributes = null;
+        }
+        //      C# -> ScimConfiguration? ScimConfiguration
+        // GraphQL -> scimConfiguration: ScimConfiguration (type)
+        if (ec.Includes("scimConfiguration",false))
+        {
+            if(this.ScimConfiguration == null) {
+
+                this.ScimConfiguration = new ScimConfiguration();
+                this.ScimConfiguration.ApplyExploratoryFieldSpec(ec.NewChild("scimConfiguration"));
+
+            } else {
+
+                this.ScimConfiguration.ApplyExploratoryFieldSpec(ec.NewChild("scimConfiguration"));
+
+            }
+        }
+        else if (this.ScimConfiguration != null && ec.Excludes("scimConfiguration",false))
+        {
+            this.ScimConfiguration = null;
         }
     }
 

@@ -45,3 +45,5 @@ the default prefix is used. A Rubrik-owned marker and a UUID suffix are
 appended automatically and are not part of this value.
 - aksPrivateDnsZoneMode: AksPrivateDnsZoneMode
   - Private DNS zone mode for the API server of a private AKS cluster.
+- aksOutboundType: AksOutboundType
+  - Outbound (egress) type of the AKS cluster.

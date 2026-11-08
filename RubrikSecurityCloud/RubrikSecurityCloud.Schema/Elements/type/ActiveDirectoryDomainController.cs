@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region ActiveDirectoryDomainController
  
-    public class ActiveDirectoryDomainController: BaseType, ActiveDirectoryDomainDescendantType, ActiveDirectoryDomainPhysicalChildType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable
+    public class ActiveDirectoryDomainController: BaseType, ActiveDirectoryDomainDescendantType, ActiveDirectoryDomainPhysicalChildType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, RecoveryPlanChildWorkload
     {
         #region members
 
@@ -405,6 +405,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, newestCleanSnapshotArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);

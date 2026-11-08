@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CephUser
+        // GraphQL -> cephUser: String (scalar)
+        [JsonProperty("cephUser")]
+        public System.String? CephUser { get; set; }
+
         //      C# -> System.String? Fsid
         // GraphQL -> fsid: String (scalar)
         [JsonProperty("fsid")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public OpenstackCephSetting Set(
+        System.String? CephUser = null,
         System.String? Fsid = null,
         System.String? Id = null,
         System.String? Keyring = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         List<OpenstackMonHost>? MonHosts = null
     ) 
     {
+        if ( CephUser != null ) {
+            this.CephUser = CephUser;
+        }
         if ( Fsid != null ) {
             this.Fsid = Fsid;
         }
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CephUser
+        // GraphQL -> cephUser: String (scalar)
+        if (this.CephUser != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cephUser\n" ;
+            } else {
+                s += ind + "cephUser\n" ;
+            }
+        }
         //      C# -> System.String? Fsid
         // GraphQL -> fsid: String (scalar)
         if (this.Fsid != null) {
@@ -182,6 +200,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? CephUser
+        // GraphQL -> cephUser: String (scalar)
+        if (ec.Includes("cephUser",true))
+        {
+            if(this.CephUser == null) {
+
+                this.CephUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CephUser != null && ec.Excludes("cephUser",true))
+        {
+            this.CephUser = null;
+        }
         //      C# -> System.String? Fsid
         // GraphQL -> fsid: String (scalar)
         if (ec.Includes("fsid",true))

@@ -54,6 +54,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKE_BY_OBJECT_TABLE")]
         BACKUP_STRIKE_BY_OBJECT_TABLE,
 
+        [EnumMember(Value = "BLAST_RADIUS_DATA_TYPES_TABLE")]
+        BLAST_RADIUS_DATA_TYPES_TABLE,
+
+        [EnumMember(Value = "BLAST_RADIUS_OBJECT_DETAILS_TABLE")]
+        BLAST_RADIUS_OBJECT_DETAILS_TABLE,
+
         [EnumMember(Value = "CDM_USER_ALL_TABLE")]
         CDM_USER_ALL_TABLE,
 

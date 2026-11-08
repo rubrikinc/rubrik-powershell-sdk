@@ -80,6 +80,8 @@ Supervisor manages the virtual machine.
   - Post-snap script.
 - duplicatedVms: list of DuplicatedVms
   - List of duplicated virtual machines.
+- recoveryPlansInfo: list of RecoveryPlansInfos
+  - List of Recovery Plans associated with the virtual machine.
 - linkedActiveVm: LinkedActiveVm
   - The active virtual machine in a linked group for this virtual machine.
 - reportWorkload: Snappable

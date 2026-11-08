@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public System.String? Region { get; set; }
 
+        //      C# -> K8sDiscoveryScopeInput? DiscoveryScope
+        // GraphQL -> discoveryScope: K8sDiscoveryScopeInput (input)
+        [JsonProperty("discoveryScope")]
+        public K8sDiscoveryScopeInput? DiscoveryScope { get; set; }
+
         //      C# -> System.String? OnboardingType
         // GraphQL -> onboardingType: String (scalar)
         [JsonProperty("onboardingType")]

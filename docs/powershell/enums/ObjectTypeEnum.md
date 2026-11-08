@@ -121,3 +121,10 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - AZURE_DEVOPS_PROJECT_ARTIFACTS_FIXED_OBJECT - Azure DevOps project artifacts (feeds and packages).
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.
 - GITHUB_ORG_PACKAGES_FIXED_OBJECT - GitHub organization packages.
+- ANTHROPIC_ORG_LOCAL_SESSIONS - Claude local sessions of an Anthropic organization.
+- M365_CONFIGS_EXCHANGE - M365 Configurations Exchange Online settings.
+- M365_CONFIGS_DEFENDER - M365 Configurations Defender for Office 365 settings.
+- M365_CONFIGS_PURVIEW - M365 Configurations Purview settings.
+- M365_CONFIGS_SHAREPOINT - M365 Configurations SharePoint settings.
+- M365_CONFIGS_ONEDRIVE - M365 Configurations OneDrive settings.
+- M365_CONFIGS_TEAMS - M365 Configurations Teams settings.

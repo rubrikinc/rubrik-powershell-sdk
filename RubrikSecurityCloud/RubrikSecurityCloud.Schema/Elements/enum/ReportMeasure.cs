@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_TRANSFERRED_OVER_WIRE")]
         DATA_TRANSFERRED_OVER_WIRE,
 
+        [EnumMember(Value = "DATA_TYPES_FOUND_LIST")]
+        DATA_TYPES_FOUND_LIST,
+
         [EnumMember(Value = "DISK_CAPACITY")]
         DISK_CAPACITY,
 
@@ -272,6 +275,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SENSITIVE_HITS")]
         SENSITIVE_HITS,
+
+        [EnumMember(Value = "SENSITIVE_OBJECT_COUNT")]
+        SENSITIVE_OBJECT_COUNT,
 
         [EnumMember(Value = "SOURCE_SIZE")]
         SOURCE_SIZE,

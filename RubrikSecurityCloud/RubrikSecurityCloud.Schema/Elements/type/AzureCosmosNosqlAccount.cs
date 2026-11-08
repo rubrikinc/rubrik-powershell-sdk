@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isContinuousBackupEnabled")]
         public System.Boolean? IsContinuousBackupEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        [JsonProperty("isExocomputeConfigured")]
+        public System.Boolean? IsExocomputeConfigured { get; set; }
+
         //      C# -> System.Boolean? IsLocalAuthDisabled
         // GraphQL -> isLocalAuthDisabled: Boolean! (scalar)
         [JsonProperty("isLocalAuthDisabled")]
@@ -259,6 +264,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DefaultConsistencyLevel = null,
         System.String? Id = null,
         System.Boolean? IsContinuousBackupEnabled = null,
+        System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsLocalAuthDisabled = null,
         System.Boolean? IsPartitionMergeEnabled = null,
         System.Boolean? IsProtectable = null,
@@ -328,6 +334,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsContinuousBackupEnabled != null ) {
             this.IsContinuousBackupEnabled = IsContinuousBackupEnabled;
+        }
+        if ( IsExocomputeConfigured != null ) {
+            this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
         if ( IsLocalAuthDisabled != null ) {
             this.IsLocalAuthDisabled = IsLocalAuthDisabled;
@@ -557,6 +566,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isContinuousBackupEnabled\n" ;
             } else {
                 s += ind + "isContinuousBackupEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (this.IsExocomputeConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
             }
         }
         //      C# -> System.Boolean? IsLocalAuthDisabled
@@ -1087,6 +1105,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsContinuousBackupEnabled != null && ec.Excludes("isContinuousBackupEnabled",true))
         {
             this.IsContinuousBackupEnabled = null;
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (ec.Includes("isExocomputeConfigured",true))
+        {
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
         }
         //      C# -> System.Boolean? IsLocalAuthDisabled
         // GraphQL -> isLocalAuthDisabled: Boolean! (scalar)

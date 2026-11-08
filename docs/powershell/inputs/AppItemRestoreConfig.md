@@ -15,6 +15,8 @@ Represents the configuration for the items to be restored.
   - List of information about the app items to be restored.
 - excludePaths: list of System.Strings
   - List of paths that are excluded when restoring items that are cascaded from the selected items. A path is a list of appItemTypeToken as returned in the saasAppCascadingImpact query.
+- restoreOperationType: RestoreOperationType
+  - The restore operation type for items to be restored.
 - destinationOrgId: System.String
   - The ID of the destination organization for the restore, if different from the source organization.
 - hierarchyDepth: System.Int32
@@ -29,9 +31,7 @@ Represents the configuration for the items to be restored.
   - Optional, restore data type for the SaaS apps cascading impact job.
 - operationId: System.String
   - Optional. Specifies the operation ID returned by the cascading job, used to retrieve cached cascading results from the metadata store.
-- fieldsToRestore: list of System.Strings
-  - Optional. The fields to restore. If specified, only these fields are restored.
-- restoreOperationType: RestoreOperationType
-  - The restore operation type for items to be restored.
 - dataMaskingConfig: DataMaskingConfigInput
   - Optional. Configuration for data masking operations during restore. Includes data type mappings, field overrides, and exclusions.
+- fieldsToRestore: list of System.Strings
+  - Optional. The fields to restore. If specified, only these fields are restored.

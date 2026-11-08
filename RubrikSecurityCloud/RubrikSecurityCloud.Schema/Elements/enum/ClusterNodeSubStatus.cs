@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DYNAMIC")]
         DYNAMIC,
 
+        [EnumMember(Value = "MAINTENANCE_MODE")]
+        MAINTENANCE_MODE,
+
         [EnumMember(Value = "NONE")]
         NONE,
 

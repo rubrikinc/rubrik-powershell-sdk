@@ -107,6 +107,7 @@ right to a non-default principal.
 - SECURITY_GPO_CLEAR_TEXT_PASSWORD - Filter for GPOs that configure the "Store passwords using reversible encryption"
 (ClearTextPassword) security option. Selects GPOs where the setting is configured
 to store passwords using reversible encryption (ClearTextPassword = 1).
+- SECURITY_IDENTITY_METADATA_NUMERIC_COMPARISON - Identity metadata numeric comparison filter, used for comparing numeric metadata.
 - SECURITY_IDP_METADATA_LABEL - Identity Provider domain level metadata label filter.
 - SECURITY_IDP_HAS_GROUP_WITH_LABEL - Identity Provider domain has a group-with-label filter.
 - SECURITY_IDP_HAS_USER_WITH_LABEL - Identity Provider domain has a user-with-label filter.
@@ -161,3 +162,8 @@ not a closed enumeration, and are absent on some activities.
 - SECURITY_IDENTITY_EVENT_TARGET_OU - Filters identity events by the Active Directory Organizational Unit the
 event's resource belongs to, including nested sub-OUs. Values are OU
 names. Applies to on-prem AD events only.
+- SECURITY_GPO_NETLOGON_VULNERABLE_CHANNEL - GPO "vulnerable Netlogon secure channel allowed" filter. Selects GPOs that
+configure the VulnerableChannelAllowList security option to a non-empty
+allow-list, which lets the listed principals use the vulnerable Netlogon
+secure channel (CVE-2020-1472, Zerologon). The predicate is fixed at
+IS_NOT [""].

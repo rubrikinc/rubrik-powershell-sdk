@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInfrastructureAlertsEnabled")]
         public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        [JsonProperty("isInfrastructureAlertsRegionConnected")]
+        public System.Boolean? IsInfrastructureAlertsRegionConnected { get; set; }
+
         //      C# -> System.Boolean? IsProtectable
         // GraphQL -> isProtectable: Boolean! (scalar)
         [JsonProperty("isProtectable")]
@@ -376,6 +381,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAwsContinuousBackupEnabled = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsInfrastructureAlertsEnabled = null,
+        System.Boolean? IsInfrastructureAlertsRegionConnected = null,
         System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.Int32? LegallyHeldSnapshotCount = null,
@@ -453,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsInfrastructureAlertsEnabled != null ) {
             this.IsInfrastructureAlertsEnabled = IsInfrastructureAlertsEnabled;
+        }
+        if ( IsInfrastructureAlertsRegionConnected != null ) {
+            this.IsInfrastructureAlertsRegionConnected = IsInfrastructureAlertsRegionConnected;
         }
         if ( IsProtectable != null ) {
             this.IsProtectable = IsProtectable;
@@ -706,6 +715,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isInfrastructureAlertsEnabled\n" ;
             } else {
                 s += ind + "isInfrastructureAlertsEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        if (this.IsInfrastructureAlertsRegionConnected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInfrastructureAlertsRegionConnected\n" ;
+            } else {
+                s += ind + "isInfrastructureAlertsRegionConnected\n" ;
             }
         }
         //      C# -> System.Boolean? IsProtectable
@@ -1332,6 +1350,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsInfrastructureAlertsEnabled != null && ec.Excludes("isInfrastructureAlertsEnabled",true))
         {
             this.IsInfrastructureAlertsEnabled = null;
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        if (ec.Includes("isInfrastructureAlertsRegionConnected",true))
+        {
+            if(this.IsInfrastructureAlertsRegionConnected == null) {
+
+                this.IsInfrastructureAlertsRegionConnected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInfrastructureAlertsRegionConnected != null && ec.Excludes("isInfrastructureAlertsRegionConnected",true))
+        {
+            this.IsInfrastructureAlertsRegionConnected = null;
         }
         //      C# -> System.Boolean? IsProtectable
         // GraphQL -> isProtectable: Boolean! (scalar)

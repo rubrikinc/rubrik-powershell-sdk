@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AzureNativeVirtualMachine
  
-    public class AzureNativeVirtualMachine: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AzureNativeVirtualMachine: BaseType, AzureNativeHierarchyObjectType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, RecoveryPlanChildWorkload
     {
         #region members
 

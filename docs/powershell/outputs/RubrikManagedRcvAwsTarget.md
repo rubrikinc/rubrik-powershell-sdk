@@ -29,6 +29,9 @@ Cloud Vault AWS location.
 - shouldBypassProxyForDatapaths: System.Boolean
   - When enabled, S3 object (data path) traffic bypasses the configured
 proxy, while STS assume-role and KMS traffic continues to use it.
+- rcvResourceCreationReadiness: RcvResourceCreationReadiness
+  - Indicates the provisioning state of the cloud resources for this Rubrik
+Cloud Vault (RCV) archival target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

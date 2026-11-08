@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksPrivateDnsZoneMode")]
         public AksPrivateDnsZoneMode? AksPrivateDnsZoneMode { get; set; }
 
+        //      C# -> AksOutboundType? AksOutboundType
+        // GraphQL -> aksOutboundType: AksOutboundType (enum)
+        [JsonProperty("aksOutboundType")]
+        public AksOutboundType? AksOutboundType { get; set; }
+
 
         #endregion
 

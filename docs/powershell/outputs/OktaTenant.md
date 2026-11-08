@@ -70,6 +70,8 @@ Okta tenant managed by Rubrik.
 - latestGeneralSecuritySettingTypes: list of OktaGeneralSecuritySettingTypes
   - General security setting types captured in the latest snapshot of the Okta
 tenant, at most one of each. Empty when the snapshot holds none.
+- latestDeviceAssurancePolicyCount: System.Int64
+  - Latest count of device assurance policies in the Okta tenant.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - backupRegion: System.String

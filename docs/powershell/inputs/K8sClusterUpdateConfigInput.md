@@ -47,6 +47,8 @@ The access token for the service account.
 - dataPathTransport: System.String
   - Supported in v9.6+
 The transport type used for the RBA data movers. Defaults to the control-plane transport when unset. Set to pernodeproxy to route data movers through the per-node backup proxy. An empty string clears the field.
+- discoveryScope: K8sDiscoveryScopeInput
+  - Limits discovery and protection for this CDM to a subset of namespaces and/or label selectors.
 - cloudAccountId: System.String
   - Supported in v9.1+
 The cloud account for the Rubrik cluster to establish a connection with the EKS Kubernetes cluster.

@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsGroupVersions")]
         public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
 
+        //      C# -> List<FeatureRegionStatus>? RegionStatuses
+        // GraphQL -> regionStatuses: [FeatureRegionStatus!] (type)
+        [JsonProperty("regionStatuses")]
+        public List<FeatureRegionStatus>? RegionStatuses { get; set; }
+
         //      C# -> AwsRoleChainingDetails? RoleChainingDetails
         // GraphQL -> roleChainingDetails: AwsRoleChainingDetails (type)
         [JsonProperty("roleChainingDetails")]
@@ -119,6 +124,7 @@ namespace RubrikSecurityCloud.Types
         AwsAuthServerDetail? AuthServerDetail = null,
         List<AwsMappedAccount>? MappedAccounts = null,
         List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null,
+        List<FeatureRegionStatus>? RegionStatuses = null,
         AwsRoleChainingDetails? RoleChainingDetails = null
     ) 
     {
@@ -163,6 +169,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PermissionsGroupVersions != null ) {
             this.PermissionsGroupVersions = PermissionsGroupVersions;
+        }
+        if ( RegionStatuses != null ) {
+            this.RegionStatuses = RegionStatuses;
         }
         if ( RoleChainingDetails != null ) {
             this.RoleChainingDetails = RoleChainingDetails;
@@ -313,6 +322,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "permissionsGroupVersions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<FeatureRegionStatus>? RegionStatuses
+        // GraphQL -> regionStatuses: [FeatureRegionStatus!] (type)
+        if (this.RegionStatuses != null) {
+            var fspec = this.RegionStatuses.AsFieldSpec(conf.Child("regionStatuses"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "regionStatuses" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -578,6 +599,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
         {
             this.PermissionsGroupVersions = null;
+        }
+        //      C# -> List<FeatureRegionStatus>? RegionStatuses
+        // GraphQL -> regionStatuses: [FeatureRegionStatus!] (type)
+        if (ec.Includes("regionStatuses",false))
+        {
+            if(this.RegionStatuses == null) {
+
+                this.RegionStatuses = new List<FeatureRegionStatus>();
+                this.RegionStatuses.ApplyExploratoryFieldSpec(ec.NewChild("regionStatuses"));
+
+            } else {
+
+                this.RegionStatuses.ApplyExploratoryFieldSpec(ec.NewChild("regionStatuses"));
+
+            }
+        }
+        else if (this.RegionStatuses != null && ec.Excludes("regionStatuses",false))
+        {
+            this.RegionStatuses = null;
         }
         //      C# -> AwsRoleChainingDetails? RoleChainingDetails
         // GraphQL -> roleChainingDetails: AwsRoleChainingDetails (type)

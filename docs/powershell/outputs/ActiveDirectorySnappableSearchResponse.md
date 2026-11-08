@@ -8,6 +8,7 @@ The Distinguished Name Tag (DNT) of the Active Directory object.
   - Required. Supported in v9.1+
 Display name of the Active Directory object.
 - objectType: ActiveDirectoryObjectType
+  - Type of the Active Directory object.
 - versions: list of ActiveDirectorySearchVersionss
   - Required. Supported in v9.1+
 Resultant versions of the objects with that name.

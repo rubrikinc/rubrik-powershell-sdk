@@ -82,3 +82,5 @@ conditional access policies).
 - PRIVILEGED_IDENTITY_REPORT - Privileged identity report.
 - CDM_USER_REPORT - CDM Users report -- one row per (user, cluster) for principals
 configured directly on connected CDM clusters.
+- BLAST_RADIUS_REPORT - Blast Radius report -- sensitive data exposure of selected objects
+as of a classification day.

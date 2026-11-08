@@ -197,6 +197,13 @@ Start a job to export Azure SQL Managed Instance database. The job creates a new
 
 - There is a single argument of type StartExportAzureSqlManagedInstanceDbJobInput.
 - Returns AsyncJobStatus.
+### startrefreshlocalsubscriptionjob
+Starts an on-demand refresh of one Azure Local subscription: runs
+cluster discovery and virtual machine discovery for it now instead of
+waiting for the next scheduled cycle.
+
+- There is a single argument of type StartRefreshAzureLocalSubscriptionJobInput.
+- Returns StartRefreshAzureLocalSubscriptionJobReply.
 ### unmapcloudaccountexocomputesubscription
 Unmap Azure cloud accounts from the mapped Exocompute subscription.
 

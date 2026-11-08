@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region MssqlDatabase
  
-    public class MssqlDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, MssqlAvailabilityGroupDescendantType, MssqlAvailabilityGroupLogicalChildType, MssqlHostDescendantType, MssqlInstanceDescendantType, MssqlInstanceLogicalChildType, MssqlTopLevelDescendantType, PhysicalHostDescendantType, WindowsClusterDescendantType
+    public class MssqlDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, MssqlAvailabilityGroupDescendantType, MssqlAvailabilityGroupLogicalChildType, MssqlHostDescendantType, MssqlInstanceDescendantType, MssqlInstanceLogicalChildType, MssqlTopLevelDescendantType, PhysicalHostDescendantType, RecoveryPlanChildWorkload, WindowsClusterDescendantType
     {
         #region members
 
@@ -458,6 +458,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);

@@ -69,6 +69,8 @@ The transport type used for the RBA data movers. Defaults to the control-plane t
 - region: System.String
   - Supported in v9.1+
 Region of the Kubernetes cluster to be added.
+- discoveryScope: K8sDiscoveryScopeInput
+  - Limits discovery and protection for this CDM to a subset of namespaces and/or label selectors.
 - onboardingType: System.String
   - Supported in v9.2+
 The type of onboarding. It can be kubeconfig or manifest.

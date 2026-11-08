@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestBehaviorDetectionRuleCount")]
         public System.Int64? LatestBehaviorDetectionRuleCount { get; set; }
 
+        //      C# -> System.Int64? LatestDeviceAssurancePolicyCount
+        // GraphQL -> latestDeviceAssurancePolicyCount: Long (scalar)
+        [JsonProperty("latestDeviceAssurancePolicyCount")]
+        public System.Int64? LatestDeviceAssurancePolicyCount { get; set; }
+
         //      C# -> System.Int64? LatestEventHookCount
         // GraphQL -> latestEventHookCount: Long (scalar)
         [JsonProperty("latestEventHookCount")]
@@ -447,6 +452,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? LatestAuthServerCount = null,
         System.Int64? LatestAuthenticatorCount = null,
         System.Int64? LatestBehaviorDetectionRuleCount = null,
+        System.Int64? LatestDeviceAssurancePolicyCount = null,
         System.Int64? LatestEventHookCount = null,
         System.Int64? LatestGroupCount = null,
         System.Int64? LatestGroupRuleCount = null,
@@ -549,6 +555,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestBehaviorDetectionRuleCount != null ) {
             this.LatestBehaviorDetectionRuleCount = LatestBehaviorDetectionRuleCount;
+        }
+        if ( LatestDeviceAssurancePolicyCount != null ) {
+            this.LatestDeviceAssurancePolicyCount = LatestDeviceAssurancePolicyCount;
         }
         if ( LatestEventHookCount != null ) {
             this.LatestEventHookCount = LatestEventHookCount;
@@ -877,6 +886,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestBehaviorDetectionRuleCount\n" ;
             } else {
                 s += ind + "latestBehaviorDetectionRuleCount\n" ;
+            }
+        }
+        //      C# -> System.Int64? LatestDeviceAssurancePolicyCount
+        // GraphQL -> latestDeviceAssurancePolicyCount: Long (scalar)
+        if (this.LatestDeviceAssurancePolicyCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestDeviceAssurancePolicyCount\n" ;
+            } else {
+                s += ind + "latestDeviceAssurancePolicyCount\n" ;
             }
         }
         //      C# -> System.Int64? LatestEventHookCount
@@ -1662,6 +1680,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestBehaviorDetectionRuleCount != null && ec.Excludes("latestBehaviorDetectionRuleCount",true))
         {
             this.LatestBehaviorDetectionRuleCount = null;
+        }
+        //      C# -> System.Int64? LatestDeviceAssurancePolicyCount
+        // GraphQL -> latestDeviceAssurancePolicyCount: Long (scalar)
+        if (ec.Includes("latestDeviceAssurancePolicyCount",true))
+        {
+            if(this.LatestDeviceAssurancePolicyCount == null) {
+
+                this.LatestDeviceAssurancePolicyCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestDeviceAssurancePolicyCount != null && ec.Excludes("latestDeviceAssurancePolicyCount",true))
+        {
+            this.LatestDeviceAssurancePolicyCount = null;
         }
         //      C# -> System.Int64? LatestEventHookCount
         // GraphQL -> latestEventHookCount: Long (scalar)

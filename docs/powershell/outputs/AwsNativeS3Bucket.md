@@ -53,6 +53,10 @@ AWS native S3 Bucket.
   - Whether infrastructure deletion alerts are enabled for the S3 bucket.
 - latestCleanSnapshotTime: DateTime
   - The date and time of the most recent snapshot that was not flagged as anomalous.
+- isInfrastructureAlertsRegionConnected: System.Boolean
+  - Whether Critical Resource Protection forwards deletion events from this
+resource's region. Unset when that could not be determined: CRP is not
+licensed, or the read failed.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

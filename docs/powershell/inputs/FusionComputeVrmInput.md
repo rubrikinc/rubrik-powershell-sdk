@@ -2,7 +2,7 @@
 The hostname and account credentials of a FusionCompute Virtual Resource Management (VRM) instance.
 
 - userType: FusionComputeVrmUserType
-  - User type Rubrik logs in to the VRM with. Defaults to LocalUser.
+  - Supported in Rubrik CDM v9.6.2+. Type of the VRM user account that Rubrik logs in with. When omitted, Rubrik logs in as a local user.
 - caCerts: System.String
   - Supported in v9.6+
 Optional CA certificate content for SSL verification.

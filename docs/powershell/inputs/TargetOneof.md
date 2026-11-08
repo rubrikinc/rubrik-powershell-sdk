@@ -5,3 +5,5 @@ Target Archival location details.
   - S3 compatible target details.
 - rcvAws: RcvAwsArchivalMigrationTargetInput
   - Rubrik Cloud Vault on AWS target details.
+- rcvAzure: RcvAzureArchivalMigrationTargetInput
+  - Rubrik Cloud Vault on Azure target details.

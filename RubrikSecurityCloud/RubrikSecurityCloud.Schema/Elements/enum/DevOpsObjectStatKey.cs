@@ -42,11 +42,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NUM_GITHUB_ACTIONS_WORKFLOW_RUNS")]
         NUM_GITHUB_ACTIONS_WORKFLOW_RUNS,
 
+        [EnumMember(Value = "NUM_GITHUB_CONTAINER_PACKAGES")]
+        NUM_GITHUB_CONTAINER_PACKAGES,
+
         [EnumMember(Value = "NUM_GITHUB_ISSUES")]
         NUM_GITHUB_ISSUES,
 
+        [EnumMember(Value = "NUM_GITHUB_MAVEN_PACKAGES")]
+        NUM_GITHUB_MAVEN_PACKAGES,
+
+        [EnumMember(Value = "NUM_GITHUB_NPM_PACKAGES")]
+        NUM_GITHUB_NPM_PACKAGES,
+
+        [EnumMember(Value = "NUM_GITHUB_NUGET_PACKAGES")]
+        NUM_GITHUB_NUGET_PACKAGES,
+
         [EnumMember(Value = "NUM_GITHUB_PULL_REQUESTS")]
         NUM_GITHUB_PULL_REQUESTS,
+
+        [EnumMember(Value = "NUM_GITHUB_RUBYGEMS_PACKAGES")]
+        NUM_GITHUB_RUBYGEMS_PACKAGES,
 
         [EnumMember(Value = "OLDEST_SNAPSHOT_AT")]
         OLDEST_SNAPSHOT_AT

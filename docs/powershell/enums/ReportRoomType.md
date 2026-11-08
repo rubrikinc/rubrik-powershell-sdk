@@ -8,3 +8,4 @@ ReportRoom is known as ReportRoomType in GQL.
 - REPORT_ROOM_DSPM - Data Security Posture Management reports.
 - REPORT_ROOM_IR - Identity Resiliency reports.
 - DATA_THREAT_ANALYTICS - Data Threat Analytics reports.
+- REPORT_ROOM_AI_RESILIENCE - AI Resilience (Agent Protect) reports.

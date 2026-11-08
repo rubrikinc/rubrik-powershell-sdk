@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_THREAT_ANALYTICS")]
         DATA_THREAT_ANALYTICS,
 
+        [EnumMember(Value = "REPORT_ROOM_AI_RESILIENCE")]
+        REPORT_ROOM_AI_RESILIENCE,
+
         [EnumMember(Value = "REPORT_ROOM_DSPM")]
         REPORT_ROOM_DSPM,
 

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
+        //      C# -> List<System.String>? ConnectedCustomerAccounts
+        // GraphQL -> connectedCustomerAccounts: [String!]! (scalar)
+        [JsonProperty("connectedCustomerAccounts")]
+        public List<System.String>? ConnectedCustomerAccounts { get; set; }
+
         //      C# -> System.Boolean? IsDynamicScalingEnabled
         // GraphQL -> isDynamicScalingEnabled: Boolean! (scalar)
         [JsonProperty("isDynamicScalingEnabled")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         CcpVendorType? Vendor = null,
         System.String? CloudAccount = null,
         System.String? CloudAccountId = null,
+        List<System.String>? ConnectedCustomerAccounts = null,
         System.Boolean? IsDynamicScalingEnabled = null,
         System.String? Name = null,
         System.String? NativeCloudAccountId = null,
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CloudAccountId != null ) {
             this.CloudAccountId = CloudAccountId;
+        }
+        if ( ConnectedCustomerAccounts != null ) {
+            this.ConnectedCustomerAccounts = ConnectedCustomerAccounts;
         }
         if ( IsDynamicScalingEnabled != null ) {
             this.IsDynamicScalingEnabled = IsDynamicScalingEnabled;
@@ -179,6 +188,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudAccountId\n" ;
             } else {
                 s += ind + "cloudAccountId\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ConnectedCustomerAccounts
+        // GraphQL -> connectedCustomerAccounts: [String!]! (scalar)
+        if (this.ConnectedCustomerAccounts != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "connectedCustomerAccounts\n" ;
+            } else {
+                s += ind + "connectedCustomerAccounts\n" ;
             }
         }
         //      C# -> System.Boolean? IsDynamicScalingEnabled
@@ -322,6 +340,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
         {
             this.CloudAccountId = null;
+        }
+        //      C# -> List<System.String>? ConnectedCustomerAccounts
+        // GraphQL -> connectedCustomerAccounts: [String!]! (scalar)
+        if (ec.Includes("connectedCustomerAccounts",true))
+        {
+            if(this.ConnectedCustomerAccounts == null) {
+
+                this.ConnectedCustomerAccounts = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectedCustomerAccounts != null && ec.Excludes("connectedCustomerAccounts",true))
+        {
+            this.ConnectedCustomerAccounts = null;
         }
         //      C# -> System.Boolean? IsDynamicScalingEnabled
         // GraphQL -> isDynamicScalingEnabled: Boolean! (scalar)

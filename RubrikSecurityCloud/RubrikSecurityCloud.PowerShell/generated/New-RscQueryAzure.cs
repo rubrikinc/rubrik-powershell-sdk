@@ -295,6 +295,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3389,6 +3391,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				healthCheckVmNamePrefix = $someString
     /// 				# OPTIONAL
     /// 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksOutboundType = $someAksOutboundType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksOutboundType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -4880,6 +4884,8 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
 }"
             );
         }
@@ -7754,6 +7760,8 @@ $query.Var.input = @{
 				healthCheckVmNamePrefix = $someString
 				# OPTIONAL
 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
+				# OPTIONAL
+				aksOutboundType = $someAksOutboundType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksOutboundType]) for enum values.
 			}
 		}
 	)

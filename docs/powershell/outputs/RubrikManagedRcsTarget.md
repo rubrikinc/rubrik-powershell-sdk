@@ -49,6 +49,9 @@ Cloud Vault Azure location.
 - shouldBypassProxyForDatapaths: System.Boolean
   - When enabled, blob storage (data path) traffic bypasses the configured
 proxy, while Azure AD authentication traffic continues to use it.
+- rcvResourceCreationReadiness: RcvResourceCreationReadiness
+  - Indicates the provisioning state of the cloud resources for this Rubrik
+Cloud Vault (RCV) archival target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

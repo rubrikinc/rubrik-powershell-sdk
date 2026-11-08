@@ -8481,6 +8481,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				keyring = $someString
     /// 				# REQUIRED
     /// 				volumePoolName = $someString
+    /// 				# OPTIONAL
+    /// 				cephUser = $someString
     /// 				# REQUIRED
     /// 				monHosts = @(
     /// 					@{
@@ -24925,6 +24927,8 @@ $query.Var.input = @{
 				keyring = $someString
 				# REQUIRED
 				volumePoolName = $someString
+				# OPTIONAL
+				cephUser = $someString
 				# REQUIRED
 				monHosts = @(
 					@{

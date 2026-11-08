@@ -196,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalPath")]
         public List<PathNode>? PhysicalPath { get; set; }
 
+        //      C# -> List<ProtectedObjectTypeToPauseStatus>? ProtectedObjectTypeToPauseStatus
+        // GraphQL -> protectedObjectTypeToPauseStatus: [ProtectedObjectTypeToPauseStatus!] (type)
+        [JsonProperty("protectedObjectTypeToPauseStatus")]
+        public List<ProtectedObjectTypeToPauseStatus>? ProtectedObjectTypeToPauseStatus { get; set; }
+
         //      C# -> List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla
         // GraphQL -> protectedObjectTypeToSla: [ProtectedObjectTypeToSla!]! (type)
         [JsonProperty("protectedObjectTypeToSla")]
@@ -324,6 +329,7 @@ namespace RubrikSecurityCloud.Types
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
+        List<ProtectedObjectTypeToPauseStatus>? ProtectedObjectTypeToPauseStatus = null,
         List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         SecurityMetadata? SecurityMetadata = null,
@@ -438,6 +444,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
+        }
+        if ( ProtectedObjectTypeToPauseStatus != null ) {
+            this.ProtectedObjectTypeToPauseStatus = ProtectedObjectTypeToPauseStatus;
         }
         if ( ProtectedObjectTypeToSla != null ) {
             this.ProtectedObjectTypeToSla = ProtectedObjectTypeToSla;
@@ -840,6 +849,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "physicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<ProtectedObjectTypeToPauseStatus>? ProtectedObjectTypeToPauseStatus
+        // GraphQL -> protectedObjectTypeToPauseStatus: [ProtectedObjectTypeToPauseStatus!] (type)
+        if (this.ProtectedObjectTypeToPauseStatus != null) {
+            var fspec = this.ProtectedObjectTypeToPauseStatus.AsFieldSpec(conf.Child("protectedObjectTypeToPauseStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "protectedObjectTypeToPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1587,6 +1608,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
         {
             this.PhysicalPath = null;
+        }
+        //      C# -> List<ProtectedObjectTypeToPauseStatus>? ProtectedObjectTypeToPauseStatus
+        // GraphQL -> protectedObjectTypeToPauseStatus: [ProtectedObjectTypeToPauseStatus!] (type)
+        if (ec.Includes("protectedObjectTypeToPauseStatus",false))
+        {
+            if(this.ProtectedObjectTypeToPauseStatus == null) {
+
+                this.ProtectedObjectTypeToPauseStatus = new List<ProtectedObjectTypeToPauseStatus>();
+                this.ProtectedObjectTypeToPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("protectedObjectTypeToPauseStatus"));
+
+            } else {
+
+                this.ProtectedObjectTypeToPauseStatus.ApplyExploratoryFieldSpec(ec.NewChild("protectedObjectTypeToPauseStatus"));
+
+            }
+        }
+        else if (this.ProtectedObjectTypeToPauseStatus != null && ec.Excludes("protectedObjectTypeToPauseStatus",false))
+        {
+            this.ProtectedObjectTypeToPauseStatus = null;
         }
         //      C# -> List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla
         // GraphQL -> protectedObjectTypeToSla: [ProtectedObjectTypeToSla!]! (type)

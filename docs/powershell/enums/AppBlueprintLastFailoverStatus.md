@@ -1,0 +1,4 @@
+### AppBlueprintLastFailoverStatus
+- NotExist
+- Failed
+- Succeeded

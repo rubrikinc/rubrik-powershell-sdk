@@ -49,6 +49,9 @@ cluster. Null when the source cluster is unknown.
   - The vSphere tag path of this vCenter.
 - aboutInfo: AboutInformation
   - Additional information about the vCenter object.
+- refreshResumeTime: DateTime
+  - Time until which scheduled refresh of this vCenter Server is paused.
+Refresh is not paused when this is absent or in the past.
 - descendantConnection: VsphereVcenterDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: VsphereVcenterLogicalChildTypeConnection

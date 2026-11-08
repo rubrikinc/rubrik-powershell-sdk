@@ -319,3 +319,14 @@ Enum representing all the possible object types which generate events.
 - PROXMOX_TAG - Proxmox tag.
 - VCF_FLEET - VMware Cloud Foundation (VCF) fleet. An inventory hierarchy level above the VCF instances, not a protectable object.
 - VCF_INSTANCE - VMware Cloud Foundation (VCF) instance. An inventory hierarchy level between a fleet and its vCenters, not a protectable object.
+- VCFA_APPLIANCE - VMware Cloud Foundation Automation (VCFA) appliance. The root of the VCFA inventory hierarchy under the vSphere root, not a protectable object.
+- VCFA_ORG - VMware Cloud Foundation Automation (VCFA) organization. An inventory hierarchy level under a VCFA appliance, not a protectable object.
+- VCFA_REGION - VMware Cloud Foundation Automation (VCFA) region. An inventory hierarchy level under a VCFA appliance, not a protectable object.
+- VCFA_PROJECT - VMware Cloud Foundation Automation (VCFA) project. An inventory hierarchy level under a VCFA organization, not a protectable object.
+- ANTHROPIC_ORG_LOCAL_SESSIONS - Claude local sessions of an Anthropic org.
+- M365_CONFIGS_EXCHANGE - M365 Configurations Exchange Online settings.
+- M365_CONFIGS_DEFENDER - M365 Configurations Defender for Office 365 settings.
+- M365_CONFIGS_PURVIEW - M365 Configurations Purview settings.
+- M365_CONFIGS_SHAREPOINT - M365 Configurations SharePoint settings.
+- M365_CONFIGS_ONEDRIVE - M365 Configurations OneDrive settings.
+- M365_CONFIGS_TEAMS - M365 Configurations Teams settings.

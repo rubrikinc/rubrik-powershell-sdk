@@ -10,3 +10,8 @@ Details of an HPE Virtual Machine Essentials virtual machine.
 Essentials virtual machine: Automatic, CrashConsistent or
 ApplicationConsistent. Null when no mandate is configured, which Rubrik
 treats as Automatic.
+- agentStatus: System.String
+  - Connection status of the Rubrik Backup Service (RBS) agent on the HPE
+Virtual Machine Essentials virtual machine: Connected, Disconnected,
+Unregistered, SecondaryCluster or Unknown. Null when CDM has not reported
+a status.

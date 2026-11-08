@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'Cloud Native' API domain:
-    /// ApplicationSnapshots, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerSettings, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// Application, ApplicationSnapshots, ApplicationWorkloadsByConfigSnapshot, Applications, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerSettings, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, IsValidApplicationName, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudNative creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 28 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ApplicationSnapshots, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerSettings, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// one of: Application, ApplicationSnapshots, ApplicationWorkloadsByConfigSnapshot, Applications, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerSettings, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, IsValidApplicationName, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudNative -ApplicationSnapshots).Info().
+    /// (New-RscQueryCloudNative -Application).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudNative -ApplicationSnapshots).Info().
+    /// (New-RscQueryCloudNative -Application).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the Application operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: Application
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation Application
+    /// 
+    /// # REQUIRED
+    /// $query.Var.id = $someString
+    /// # OPTIONAL
+    /// $query.Var.shouldIncludeTargetAccountAdditionalInfo = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudNativeApplication
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the ApplicationSnapshots operation
@@ -127,6 +157,112 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: GetCloudNativeApplicationSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ApplicationWorkloadsByConfigSnapshot operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: ApplicationWorkloadsByConfigSnapshot
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation ApplicationWorkloadsByConfigSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.applicationId = $someString
+    /// # REQUIRED
+    /// $query.Var.snapshotId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetCloudNativeApplicationWorkloadsByConfigSnapshotReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Applications operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: Applications
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation Applications
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	cloudNativeAccountIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	refreshStatus = @(
+    /// 		$someCloudNativeApplicationRefreshStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeApplicationRefreshStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	regionIds = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			region = @{
+    /// 				# OPTIONAL
+    /// 				awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	protectionStatus = @(
+    /// 		$someCloudNativeProtectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeProtectionStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudTypes = @(
+    /// 		$someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	applicationName = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someCloudNativeApplicationSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeApplicationSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudNativeApplicationConnection
     /// 
     /// 
     /// 
@@ -396,6 +532,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ValidateCloudNativeFileRecoveryFeasibilityReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the IsValidApplicationName operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: IsValidApplicationName
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation IsValidApplicationName
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: IsValidCloudNativeApplicationNameResponse
     /// 
     /// 
     /// 
@@ -903,7 +1070,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "Application",
                 "ApplicationSnapshots",
+                "ApplicationWorkloadsByConfigSnapshot",
+                "Applications",
                 "CheckArchivedSnapshotsLocked",
                 "CheckLabelRuleNameUniqueness",
                 "CheckRequiredPermissionsForFeature",
@@ -913,6 +1083,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FileRecoveryEligibleSnapshots",
                 "GatewayKmsKeys",
                 "IsFileRecoveryFeasible",
+                "IsValidApplicationName",
                 "LabelKeys",
                 "LabelRules",
                 "LabelValues",
@@ -942,8 +1113,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "Application":
+                        this.ProcessRecord_Application();
+                        break;
                     case "ApplicationSnapshots":
                         this.ProcessRecord_ApplicationSnapshots();
+                        break;
+                    case "ApplicationWorkloadsByConfigSnapshot":
+                        this.ProcessRecord_ApplicationWorkloadsByConfigSnapshot();
+                        break;
+                    case "Applications":
+                        this.ProcessRecord_Applications();
                         break;
                     case "CheckArchivedSnapshotsLocked":
                         this.ProcessRecord_CheckArchivedSnapshotsLocked();
@@ -971,6 +1151,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsFileRecoveryFeasible":
                         this.ProcessRecord_IsFileRecoveryFeasible();
+                        break;
+                    case "IsValidApplicationName":
+                        this.ProcessRecord_IsValidApplicationName();
                         break;
                     case "LabelKeys":
                         this.ProcessRecord_LabelKeys();
@@ -1025,12 +1208,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // cloudNativeApplication.
+        internal void ProcessRecord_Application()
+        {
+            this._logger.name += " -Application";
+            // Create new graphql operation cloudNativeApplication
+            InitQueryCloudNativeApplication();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // cloudNativeApplicationSnapshots.
         internal void ProcessRecord_ApplicationSnapshots()
         {
             this._logger.name += " -ApplicationSnapshots";
             // Create new graphql operation cloudNativeApplicationSnapshots
             InitQueryCloudNativeApplicationSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeApplicationWorkloadsByConfigSnapshot.
+        internal void ProcessRecord_ApplicationWorkloadsByConfigSnapshot()
+        {
+            this._logger.name += " -ApplicationWorkloadsByConfigSnapshot";
+            // Create new graphql operation cloudNativeApplicationWorkloadsByConfigSnapshot
+            InitQueryCloudNativeApplicationWorkloadsByConfigSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeApplications.
+        internal void ProcessRecord_Applications()
+        {
+            this._logger.name += " -Applications";
+            // Create new graphql operation cloudNativeApplications
+            InitQueryCloudNativeApplications();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1112,6 +1322,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsFileRecoveryFeasible";
             // Create new graphql operation isCloudNativeFileRecoveryFeasible
             InitQueryIsCloudNativeFileRecoveryFeasible();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // isValidCloudNativeApplicationName.
+        internal void ProcessRecord_IsValidApplicationName()
+        {
+            this._logger.name += " -IsValidApplicationName";
+            // Create new graphql operation isValidCloudNativeApplicationName
+            InitQueryIsValidCloudNativeApplicationName();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1242,6 +1461,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
+        // cloudNativeApplication(id: UUID!, shouldIncludeTargetAccountAdditionalInfo: Boolean): CloudNativeApplication
+        internal void InitQueryCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("id", "UUID!"),
+                Tuple.Create("shouldIncludeTargetAccountAdditionalInfo", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeApplication",
+                "($id: UUID!,$shouldIncludeTargetAccountAdditionalInfo: Boolean)",
+                "CloudNativeApplication",
+                Query.CloudNativeApplication,
+                Query.CloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.id = $someString
+# OPTIONAL
+$query.Var.shouldIncludeTargetAccountAdditionalInfo = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
         // cloudNativeApplicationSnapshots(
         //     applicationId: UUID!
         //     timeFilter: SnapshotTimeFilter!
@@ -1298,6 +1540,109 @@ $query.Var.qualityFilter = @{
 $query.Var.getFullDetails = $someBoolean
 # OPTIONAL
 $query.Var.preferredLocationType = $someCloudNativeSnapshotLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeSnapshotLocationType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudNativeApplicationWorkloadsByConfigSnapshot(applicationId: UUID!, snapshotId: UUID!): GetCloudNativeApplicationWorkloadsByConfigSnapshotReply!
+        internal void InitQueryCloudNativeApplicationWorkloadsByConfigSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("applicationId", "UUID!"),
+                Tuple.Create("snapshotId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeApplicationWorkloadsByConfigSnapshot",
+                "($applicationId: UUID!,$snapshotId: UUID!)",
+                "GetCloudNativeApplicationWorkloadsByConfigSnapshotReply",
+                Query.CloudNativeApplicationWorkloadsByConfigSnapshot,
+                Query.CloudNativeApplicationWorkloadsByConfigSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.applicationId = $someString
+# REQUIRED
+$query.Var.snapshotId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudNativeApplications(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: ListApplicationsFilter
+        //     sortBy: ListCloudNativeApplicationsSortParam
+        //   ): CloudNativeApplicationConnection!
+        internal void InitQueryCloudNativeApplications()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "ListApplicationsFilter"),
+                Tuple.Create("sortBy", "ListCloudNativeApplicationsSortParam"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeApplications",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: ListApplicationsFilter,$sortBy: ListCloudNativeApplicationsSortParam)",
+                "CloudNativeApplicationConnection",
+                Query.CloudNativeApplications,
+                Query.CloudNativeApplicationsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	cloudNativeAccountIds = @(
+		$someString
+	)
+	# OPTIONAL
+	refreshStatus = @(
+		$someCloudNativeApplicationRefreshStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeApplicationRefreshStatus]) for enum values.
+	)
+	# OPTIONAL
+	regionIds = @(
+		@{
+			# OPTIONAL
+			region = @{
+				# OPTIONAL
+				awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+				# OPTIONAL
+				azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+				# OPTIONAL
+				gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+			}
+		}
+	)
+	# OPTIONAL
+	protectionStatus = @(
+		$someCloudNativeProtectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeProtectionStatus]) for enum values.
+	)
+	# OPTIONAL
+	cloudTypes = @(
+		$someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+	)
+	# OPTIONAL
+	applicationName = $someString
+}
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someCloudNativeApplicationSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeApplicationSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 
@@ -1498,6 +1843,29 @@ $query.Var.workloadId = $someString"
 $query.Var.snapshotIds = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // isValidCloudNativeApplicationName(input: IsValidCloudNativeApplicationNameRequest!): IsValidCloudNativeApplicationNameResponse!
+        internal void InitQueryIsValidCloudNativeApplicationName()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "IsValidCloudNativeApplicationNameRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryIsValidCloudNativeApplicationName",
+                "($input: IsValidCloudNativeApplicationNameRequest!)",
+                "IsValidCloudNativeApplicationNameResponse",
+                Query.IsValidCloudNativeApplicationName,
+                Query.IsValidCloudNativeApplicationNameFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+}"
             );
         }
 

@@ -25,3 +25,5 @@ Detailed cloud information for a Cloud Cluster.
   - Elastic Storage configuration.
 - isDynamicScalingEnabled: System.Boolean
   - Specifies whether the Cloud Cluster has dynamic scaling enabled.
+- connectedCustomerAccounts: list of System.Strings
+  - Connected customer cloud accounts for BaaS clusters.

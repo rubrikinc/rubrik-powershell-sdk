@@ -57,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managementGroup")]
         public AzureManagementGroupInput? ManagementGroup { get; set; }
 
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType (enum)
+        [JsonProperty("serviceType")]
+        public AzureCloudAccountServiceType? ServiceType { get; set; }
+
 
         #endregion
 

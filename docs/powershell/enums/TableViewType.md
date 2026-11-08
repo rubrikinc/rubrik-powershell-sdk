@@ -142,3 +142,5 @@ policies).
 - PRIVILEGED_IDENTITY_TABLE - Main table for the privileged identity report.
 - CNP_OBJECT_CAPACITY_BY_CLOUD_ACCOUNT_NAME_TABLE - Table displaying CNP object capacity grouped by cloud account.
 - CDM_USER_ALL_TABLE - Main table for the CDM Users report.
+- BLAST_RADIUS_DATA_TYPES_TABLE - Data types table for the Blast Radius report.
+- BLAST_RADIUS_OBJECT_DETAILS_TABLE - Object details table for the Blast Radius report.

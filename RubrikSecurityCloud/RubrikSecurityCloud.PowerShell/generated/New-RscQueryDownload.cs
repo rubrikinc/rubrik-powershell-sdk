@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Report Download' API domain:
-    /// CdmUpgradesPdf, DownloadedVersionList, PackageStatus, or TurboThreatHuntCsv.
+    /// AnchorResources, ApplicationResources, CdmUpgradesPdf, ConfigRecoveryReport, DownloadedVersionList, PackageStatus, or TurboThreatHuntCsv.
     /// </summary>
     /// <description>
     /// New-RscQueryDownload creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CdmUpgradesPdf, DownloadedVersionList, PackageStatus, or TurboThreatHuntCsv.
+    /// one of: AnchorResources, ApplicationResources, CdmUpgradesPdf, ConfigRecoveryReport, DownloadedVersionList, PackageStatus, or TurboThreatHuntCsv.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryDownload -CdmUpgradesPdf).Info().
+    /// (New-RscQueryDownload -AnchorResources).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,127 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryDownload -CdmUpgradesPdf).Info().
+    /// (New-RscQueryDownload -AnchorResources).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AnchorResources operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: AnchorResources
+    /// 
+    /// $query = New-RscQueryDownload -Operation AnchorResources
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	serviceConfigured = @{
+    /// 		# OPTIONAL
+    /// 		configurationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		applicationCloudConfig = @{
+    /// 			# OPTIONAL
+    /// 			awsConfig = @{
+    /// 				# OPTIONAL
+    /// 				ec2Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				rdsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ebsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elbEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				s3Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				secretsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elasticacheEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				eksEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ecrEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				lambdaEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isEcsEnabled = $someBoolean
+    /// 			}
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	region = @{
+    /// 		# OPTIONAL
+    /// 		region = @{
+    /// 			# OPTIONAL
+    /// 			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	tags = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			tagKey = $someString
+    /// 			# OPTIONAL
+    /// 			tagValue = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadAnchorResourcesResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ApplicationResources operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: ApplicationResources
+    /// 
+    /// $query = New-RscQueryDownload -Operation ApplicationResources
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	applicationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadApplicationResourcesResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CdmUpgradesPdf operation
@@ -134,6 +250,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: DownloadCdmUpgradesPdfReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ConfigRecoveryReport operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: ConfigRecoveryReport
+    /// 
+    /// $query = New-RscQueryDownload -Operation ConfigRecoveryReport
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	failoverId = $someString
+    /// 	# REQUIRED
+    /// 	applicationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DownloadConfigRecoveryReportReply
     /// 
     /// 
     /// 
@@ -243,7 +392,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AnchorResources",
+                "ApplicationResources",
                 "CdmUpgradesPdf",
+                "ConfigRecoveryReport",
                 "DownloadedVersionList",
                 "PackageStatus",
                 "TurboThreatHuntCsv",
@@ -262,8 +414,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AnchorResources":
+                        this.ProcessRecord_AnchorResources();
+                        break;
+                    case "ApplicationResources":
+                        this.ProcessRecord_ApplicationResources();
+                        break;
                     case "CdmUpgradesPdf":
                         this.ProcessRecord_CdmUpgradesPdf();
+                        break;
+                    case "ConfigRecoveryReport":
+                        this.ProcessRecord_ConfigRecoveryReport();
                         break;
                     case "DownloadedVersionList":
                         this.ProcessRecord_DownloadedVersionList();
@@ -285,12 +446,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // downloadAnchorResources.
+        internal void ProcessRecord_AnchorResources()
+        {
+            this._logger.name += " -AnchorResources";
+            // Create new graphql operation downloadAnchorResources
+            InitQueryDownloadAnchorResources();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadApplicationResources.
+        internal void ProcessRecord_ApplicationResources()
+        {
+            this._logger.name += " -ApplicationResources";
+            // Create new graphql operation downloadApplicationResources
+            InitQueryDownloadApplicationResources();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // downloadCdmUpgradesPdf.
         internal void ProcessRecord_CdmUpgradesPdf()
         {
             this._logger.name += " -CdmUpgradesPdf";
             // Create new graphql operation downloadCdmUpgradesPdf
             InitQueryDownloadCdmUpgradesPdf();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadConfigRecoveryReport.
+        internal void ProcessRecord_ConfigRecoveryReport()
+        {
+            this._logger.name += " -ConfigRecoveryReport";
+            // Create new graphql operation downloadConfigRecoveryReport
+            InitQueryDownloadConfigRecoveryReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -320,6 +508,106 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryDownloadTurboThreatHuntCsv();
         }
 
+
+        // Create new GraphQL Query:
+        // downloadAnchorResources(input: DownloadAnchorResourcesRequest!): DownloadAnchorResourcesResponse!
+        internal void InitQueryDownloadAnchorResources()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadAnchorResourcesRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDownloadAnchorResources",
+                "($input: DownloadAnchorResourcesRequest!)",
+                "DownloadAnchorResourcesResponse",
+                Query.DownloadAnchorResources,
+                Query.DownloadAnchorResourcesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudNativeAccountId = $someString
+	# REQUIRED
+	serviceConfigured = @{
+		# OPTIONAL
+		configurationEnabled = $someBoolean
+		# OPTIONAL
+		applicationCloudConfig = @{
+			# OPTIONAL
+			awsConfig = @{
+				# OPTIONAL
+				ec2Enabled = $someBoolean
+				# OPTIONAL
+				rdsEnabled = $someBoolean
+				# OPTIONAL
+				ebsEnabled = $someBoolean
+				# OPTIONAL
+				elbEnabled = $someBoolean
+				# OPTIONAL
+				s3Enabled = $someBoolean
+				# OPTIONAL
+				secretsEnabled = $someBoolean
+				# OPTIONAL
+				elasticacheEnabled = $someBoolean
+				# OPTIONAL
+				eksEnabled = $someBoolean
+				# OPTIONAL
+				ecrEnabled = $someBoolean
+				# OPTIONAL
+				lambdaEnabled = $someBoolean
+				# OPTIONAL
+				isEcsEnabled = $someBoolean
+			}
+		}
+	}
+	# REQUIRED
+	region = @{
+		# OPTIONAL
+		region = @{
+			# OPTIONAL
+			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+			# OPTIONAL
+			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+			# OPTIONAL
+			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+		}
+	}
+	# REQUIRED
+	tags = @(
+		@{
+			# REQUIRED
+			tagKey = $someString
+			# OPTIONAL
+			tagValue = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // downloadApplicationResources(input: DownloadApplicationResourcesRequest!): DownloadApplicationResourcesResponse!
+        internal void InitQueryDownloadApplicationResources()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadApplicationResourcesRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDownloadApplicationResources",
+                "($input: DownloadApplicationResourcesRequest!)",
+                "DownloadApplicationResourcesResponse",
+                Query.DownloadApplicationResources,
+                Query.DownloadApplicationResourcesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	applicationId = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Query:
         // downloadCdmUpgradesPdf(downloadFilter: DownloadCdmUpgradesPdfFiltersInput): DownloadCdmUpgradesPdfReply!
@@ -374,6 +662,31 @@ $query.Var.downloadFilter = @{
 	versionStatus = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // downloadConfigRecoveryReport(input: DownloadConfigRecoveryReportRequest!): DownloadConfigRecoveryReportReply!
+        internal void InitQueryDownloadConfigRecoveryReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadConfigRecoveryReportRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDownloadConfigRecoveryReport",
+                "($input: DownloadConfigRecoveryReportRequest!)",
+                "DownloadConfigRecoveryReportReply",
+                Query.DownloadConfigRecoveryReport,
+                Query.DownloadConfigRecoveryReportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	failoverId = $someString
+	# REQUIRED
+	applicationId = $someString
 }"
             );
         }

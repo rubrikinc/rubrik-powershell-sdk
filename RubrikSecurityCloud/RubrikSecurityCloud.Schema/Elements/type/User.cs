@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("patId")]
         public System.String? PatId { get; set; }
 
+        //      C# -> DateTime? ScimDeactivatedAt
+        // GraphQL -> scimDeactivatedAt: DateTime (scalar)
+        [JsonProperty("scimDeactivatedAt")]
+        public DateTime? ScimDeactivatedAt { get; set; }
+
         //      C# -> System.Int64? UnreadCount
         // GraphQL -> unreadCount: Long! (scalar)
         [JsonProperty("unreadCount")]
@@ -161,6 +166,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsHidden = null,
         DateTime? LastLogin = null,
         System.String? PatId = null,
+        DateTime? ScimDeactivatedAt = null,
         System.Int64? UnreadCount = null,
         System.String? Username = null,
         List<Org>? AllOrgs = null,
@@ -208,6 +214,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PatId != null ) {
             this.PatId = PatId;
+        }
+        if ( ScimDeactivatedAt != null ) {
+            this.ScimDeactivatedAt = ScimDeactivatedAt;
         }
         if ( UnreadCount != null ) {
             this.UnreadCount = UnreadCount;
@@ -359,6 +368,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "patId\n" ;
             } else {
                 s += ind + "patId\n" ;
+            }
+        }
+        //      C# -> DateTime? ScimDeactivatedAt
+        // GraphQL -> scimDeactivatedAt: DateTime (scalar)
+        if (this.ScimDeactivatedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "scimDeactivatedAt\n" ;
+            } else {
+                s += ind + "scimDeactivatedAt\n" ;
             }
         }
         //      C# -> System.Int64? UnreadCount
@@ -704,6 +722,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PatId != null && ec.Excludes("patId",true))
         {
             this.PatId = null;
+        }
+        //      C# -> DateTime? ScimDeactivatedAt
+        // GraphQL -> scimDeactivatedAt: DateTime (scalar)
+        if (ec.Includes("scimDeactivatedAt",true))
+        {
+            if(this.ScimDeactivatedAt == null) {
+
+                this.ScimDeactivatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScimDeactivatedAt != null && ec.Excludes("scimDeactivatedAt",true))
+        {
+            this.ScimDeactivatedAt = null;
         }
         //      C# -> System.Int64? UnreadCount
         // GraphQL -> unreadCount: Long! (scalar)

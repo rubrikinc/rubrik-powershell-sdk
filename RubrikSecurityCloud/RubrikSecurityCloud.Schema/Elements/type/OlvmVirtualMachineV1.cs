@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> OlvmVirtualMachinePowerStatus? PowerStatus
+        // GraphQL -> powerStatus: OlvmVirtualMachinePowerStatus (enum)
+        [JsonProperty("powerStatus")]
+        public OlvmVirtualMachinePowerStatus? PowerStatus { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
@@ -381,6 +386,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);
@@ -435,6 +441,7 @@ namespace RubrikSecurityCloud.Types
         List<Operation>? AuthorizedOperations = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        OlvmVirtualMachinePowerStatus? PowerStatus = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         OlvmSnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -503,6 +510,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( PowerStatus != null ) {
+            this.PowerStatus = PowerStatus;
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
@@ -717,6 +727,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> OlvmVirtualMachinePowerStatus? PowerStatus
+        // GraphQL -> powerStatus: OlvmVirtualMachinePowerStatus (enum)
+        if (this.PowerStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "powerStatus\n" ;
+            } else {
+                s += ind + "powerStatus\n" ;
             }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
@@ -1405,6 +1424,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> OlvmVirtualMachinePowerStatus? PowerStatus
+        // GraphQL -> powerStatus: OlvmVirtualMachinePowerStatus (enum)
+        if (ec.Includes("powerStatus",true))
+        {
+            if(this.PowerStatus == null) {
+
+                this.PowerStatus = new OlvmVirtualMachinePowerStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PowerStatus != null && ec.Excludes("powerStatus",true))
+        {
+            this.PowerStatus = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)

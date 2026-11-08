@@ -1026,6 +1026,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_PROJECT_NATIVE_ID")]
         OPENSTACK_PROJECT_NATIVE_ID,
 
+        [EnumMember(Value = "ORACLE_DATA_GUARD_TYPE")]
+        ORACLE_DATA_GUARD_TYPE,
+
+        [EnumMember(Value = "ORACLE_DB_NAME_OR_UNIQUE_NAME")]
+        ORACLE_DB_NAME_OR_UNIQUE_NAME,
+
         [EnumMember(Value = "ORACLE_OS_TYPE")]
         ORACLE_OS_TYPE,
 
@@ -1118,6 +1124,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PROXMOX_NODE_RBS_CONFIGURED")]
         PROXMOX_NODE_RBS_CONFIGURED,
+
+        [EnumMember(Value = "PROXMOX_TAG_IS_REGISTERED")]
+        PROXMOX_TAG_IS_REGISTERED,
 
         [EnumMember(Value = "RDS_INSTANCE_VPC_ID")]
         RDS_INSTANCE_VPC_ID,

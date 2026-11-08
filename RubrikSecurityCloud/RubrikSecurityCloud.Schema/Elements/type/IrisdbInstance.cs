@@ -421,6 +421,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);

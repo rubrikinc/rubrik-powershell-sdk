@@ -64,6 +64,8 @@ The source size measure.
 - TARGET_SIZE - The target size measure.
 - SENSITIVE_FILES - The sensitive files measure.
 - SENSITIVE_HITS - The sensitive hits measure.
+- SENSITIVE_OBJECT_COUNT - The count of objects with sensitive data.
+- DATA_TYPES_FOUND_LIST - The data types found in a Blast Radius object, with their counts.
 - IN_COMPLIANCE_COUNT - Compliance Measures
 The in compliance count.
 - OUT_OF_COMPLIANCE_COUNT - The out of compliance count.

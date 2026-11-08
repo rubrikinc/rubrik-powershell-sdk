@@ -24,6 +24,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ec2RecoveryRolePath")]
         public System.String? Ec2RecoveryRolePath { get; set; }
 
+        //      C# -> System.String? ExocomputeMasterRoleArn
+        // GraphQL -> exocomputeMasterRoleArn: String (scalar)
+        [JsonProperty("exocomputeMasterRoleArn")]
+        public System.String? ExocomputeMasterRoleArn { get; set; }
+
+        //      C# -> System.String? ExocomputeWorkerRoleArn
+        // GraphQL -> exocomputeWorkerRoleArn: String (scalar)
+        [JsonProperty("exocomputeWorkerRoleArn")]
+        public System.String? ExocomputeWorkerRoleArn { get; set; }
+
+        //      C# -> System.String? ExocomputeLambdaRoleArn
+        // GraphQL -> exocomputeLambdaRoleArn: String (scalar)
+        [JsonProperty("exocomputeLambdaRoleArn")]
+        public System.String? ExocomputeLambdaRoleArn { get; set; }
+
 
         #endregion
 

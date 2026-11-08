@@ -581,6 +581,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.isSynced = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.tagPermissions = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
+    /// 		# REQUIRED
+    /// 		tagIds = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1397,6 +1408,7 @@ $query.Var.userId = $someString"
         //     permissions: [PermissionInput!]!
         //     protectableClusters: [String!]!
         //     isSynced: Boolean
+        //     tagPermissions: [TagPermissionInput!]
         //   ): UUID!
         internal void InitMutationMutateRole()
         {
@@ -1407,12 +1419,13 @@ $query.Var.userId = $someString"
                 Tuple.Create("permissions", "[PermissionInput!]!"),
                 Tuple.Create("protectableClusters", "[String!]!"),
                 Tuple.Create("isSynced", "Boolean"),
+                Tuple.Create("tagPermissions", "[TagPermissionInput!]"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationMutateRole",
-                "($roleId: String,$name: String!,$description: String!,$permissions: [PermissionInput!]!,$protectableClusters: [String!]!,$isSynced: Boolean)",
+                "($roleId: String,$name: String!,$description: String!,$permissions: [PermissionInput!]!,$protectableClusters: [String!]!,$isSynced: Boolean,$tagPermissions: [TagPermissionInput!])",
                 "System.String",
                 Mutation.MutateRole,
                 Mutation.MutateRoleFieldSpec,
@@ -1445,7 +1458,18 @@ $query.Var.protectableClusters = @(
 	$someString
 )
 # OPTIONAL
-$query.Var.isSynced = $someBoolean"
+$query.Var.isSynced = $someBoolean
+# OPTIONAL
+$query.Var.tagPermissions = @(
+	@{
+		# REQUIRED
+		operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
+		# REQUIRED
+		tagIds = @(
+			$someString
+		)
+}
+)"
             );
         }
 

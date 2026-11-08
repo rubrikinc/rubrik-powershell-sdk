@@ -270,3 +270,10 @@ this hierarchy.
 - VCFA_ORG - VCFA organization.
 - VCFA_REGION - VCFA region.
 - VCFA_PROJECT - VCFA project.
+- ANTHROPIC_ORG_LOCAL_SESSIONS - Claude local sessions of an Anthropic organization (workload, leaf).
+- M365_CONFIGS_EXCHANGE - M365 Configurations Exchange Online settings.
+- M365_CONFIGS_DEFENDER - M365 Configurations Defender for Office 365 settings.
+- M365_CONFIGS_PURVIEW - M365 Configurations Purview settings.
+- M365_CONFIGS_SHAREPOINT - M365 Configurations SharePoint settings.
+- M365_CONFIGS_ONEDRIVE - M365 Configurations OneDrive settings.
+- M365_CONFIGS_TEAMS - M365 Configurations Teams settings.

@@ -36,6 +36,13 @@ option, backed by the registry value LDAPServerIntegrity under
 MACHINE\System\CurrentControlSet\Services\NTDS\Parameters. The configured
 value is 0 (None), 1 (Negotiate signing), or 2 (Require signing). A value
 other than 2 means DCs accept unsigned LDAP and is a security risk.
+- GPO_SETTING_NAME_NETLOGON_VULNERABLE_CHANNEL_ALLOW_LIST - The "Domain controller: Allow vulnerable Netlogon secure channel
+connections" security option, backed by the registry value
+VulnerableChannelAllowList under
+MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters. The
+configured value is an SDDL string naming the principals that may connect
+with a vulnerable Netlogon secure channel (CVE-2020-1472, Zerologon). An
+empty value is secure; any principal in the list is a security risk.
 - GPO_SETTING_NAME_ENABLE_MULTICAST - Registry Settings (Admin Templates / Registry extension namespace).
 
 "Turn off multicast name resolution (LLMNR)" administrative template

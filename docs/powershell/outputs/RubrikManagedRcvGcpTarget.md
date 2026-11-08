@@ -22,6 +22,9 @@ Specific information for Rubrik Cloud Vault (RCV) GCP target created on Rubrik.
 - proxySettings: ProxySettings
   - Proxy configuration used by the Rubrik cluster to reach this Rubrik
 Cloud Vault GCP location.
+- rcvResourceCreationReadiness: RcvResourceCreationReadiness
+  - Indicates the provisioning state of the cloud resources for this Rubrik
+Cloud Vault (RCV) archival target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

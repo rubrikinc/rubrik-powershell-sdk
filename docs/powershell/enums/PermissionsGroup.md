@@ -77,9 +77,9 @@ protection feature.
 - EXPORT_POWER_OFF - Represents the set of permissions required for export operations specifically
 in the powered-off state for AWS EC2/EBS. These permissions are applicable to
 the cloud native protection feature.
-- RESTORE - Represents the set of permissions required for restore operations for
-AWS EC2/EBS. These permissions are applicable to the cloud native
-protection feature.
+- RESTORE - Represents the set of permissions required for restore operations. Used
+for AWS EC2/EBS by the cloud native protection feature, and for restoring
+objects into an existing bucket by the GCP GCS protection feature.
 - DOWNLOAD_FILE - Represents the set of permissions required for file level recovery for
 AWS EC2/EBS. These permissions are applicable to the cloud native
 protection feature.
@@ -137,9 +137,9 @@ feature.
 establish cross-account RDS recovery connectivity (VPC Lattice resource
 endpoint plus RAM share acceptance). Applicable only to the AWS
 Exocompute feature.
-- EXPORT - Represents the permissions required to export an S3 recovery to a newly
+- EXPORT - Represents the permissions required to export a recovery to a newly
 created target bucket. These permissions are applicable to the
-CLOUD_NATIVE_S3_PROTECTION feature.
+AWS S3 protection and GCP GCS protection features.
 - ARC_VM_EXPORT - Represents the set of permissions required to export a Hyper-V virtual
 machine into an Azure Local (Azure Stack HCI) cluster as an Arc virtual
 machine. These permissions are applicable to the Azure Local cloud

@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("volumePoolName")]
         public System.String? VolumePoolName { get; set; }
 
+        //      C# -> System.String? CephUser
+        // GraphQL -> cephUser: String (scalar)
+        [JsonProperty("cephUser")]
+        public System.String? CephUser { get; set; }
+
         //      C# -> List<OpenstackMonHostInput>? MonHosts
         // GraphQL -> monHosts: [OpenstackMonHostInput!]! (input)
         [Required]

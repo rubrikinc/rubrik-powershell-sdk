@@ -35,3 +35,7 @@ cloud account. Meaningful only for the EXOCOMPUTE feature, and false for
 every other feature. Also false for every feature of an organization
 without private Exocompute enabled. An Exocompute configuration can
 request an EKS cluster with a private API endpoint only while this is true.
+- regionStatuses: list of FeatureRegionStatuss
+  - Per-region state for features that report it, one entry per region in
+aws_regions. Empty for features that do not report per-region state, and
+when the state could not be read.

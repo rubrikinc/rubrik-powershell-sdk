@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region VsphereVm
  
-    public class VsphereVm: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, VcdDescendantType, VcdLogicalChildType, VcdOrgDescendantType, VcdOrgLogicalChildType, VcdOrgVdcDescendantType, VcdOrgVdcLogicalChildType, VcdTopLevelDescendantType, VcdVappDescendantType, VcdVappLogicalChildType, VsphereComputeClusterDescendantType, VsphereContentLibraryDescendantType, VsphereContentLibraryLibraryChildType, VsphereDatacenterDescendantType, VsphereDatacenterFolderDescendantType, VsphereFolderDescendantType, VsphereFolderLogicalChildType, VsphereHostDescendantType, VsphereHostPhysicalChildType, VsphereTagCategoryDescendantType, VsphereTagDescendantType, VsphereTagTagChildType, VsphereVcenterDescendantType
+    public class VsphereVm: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, RecoveryPlanChildWorkload, VcdDescendantType, VcdLogicalChildType, VcdOrgDescendantType, VcdOrgLogicalChildType, VcdOrgVdcDescendantType, VcdOrgVdcLogicalChildType, VcdTopLevelDescendantType, VcdVappDescendantType, VcdVappLogicalChildType, VsphereComputeClusterDescendantType, VsphereContentLibraryDescendantType, VsphereContentLibraryLibraryChildType, VsphereDatacenterDescendantType, VsphereDatacenterFolderDescendantType, VsphereFolderDescendantType, VsphereFolderLogicalChildType, VsphereHostDescendantType, VsphereHostPhysicalChildType, VsphereTagCategoryDescendantType, VsphereTagDescendantType, VsphereTagTagChildType, VsphereVcenterDescendantType
     {
         #region members
 
@@ -351,6 +351,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!] (type)
+        [JsonProperty("recoveryPlansInfo")]
+        public List<RecoveryPlansInfo>? RecoveryPlansInfo { get; set; }
+
         //      C# -> Snappable? ReportWorkload
         // GraphQL -> reportWorkload: Snappable (type)
         [JsonProperty("reportWorkload")]
@@ -472,6 +477,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);
@@ -622,6 +628,7 @@ namespace RubrikSecurityCloud.Types
         PrePostScript? PostSnapScript = null,
         PrePostScript? PreBackupScript = null,
         DataLocation? PrimaryClusterLocation = null,
+        List<RecoveryPlansInfo>? RecoveryPlansInfo = null,
         Snappable? ReportWorkload = null,
         VmwareVmResourceSpec? ResourceSpec = null,
         SecurityMetadata? SecurityMetadata = null,
@@ -833,6 +840,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryPlansInfo != null ) {
+            this.RecoveryPlansInfo = RecoveryPlansInfo;
         }
         if ( ReportWorkload != null ) {
             this.ReportWorkload = ReportWorkload;
@@ -1573,6 +1583,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!] (type)
+        if (this.RecoveryPlansInfo != null) {
+            var fspec = this.RecoveryPlansInfo.AsFieldSpec(conf.Child("recoveryPlansInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryPlansInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2930,6 +2952,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> List<RecoveryPlansInfo>? RecoveryPlansInfo
+        // GraphQL -> recoveryPlansInfo: [RecoveryPlansInfo!] (type)
+        if (ec.Includes("recoveryPlansInfo",false))
+        {
+            if(this.RecoveryPlansInfo == null) {
+
+                this.RecoveryPlansInfo = new List<RecoveryPlansInfo>();
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            } else {
+
+                this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
+
+            }
+        }
+        else if (this.RecoveryPlansInfo != null && ec.Excludes("recoveryPlansInfo",false))
+        {
+            this.RecoveryPlansInfo = null;
         }
         //      C# -> Snappable? ReportWorkload
         // GraphQL -> reportWorkload: Snappable (type)

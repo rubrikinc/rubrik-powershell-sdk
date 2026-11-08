@@ -86,6 +86,8 @@ Number of CDM protection sets defined for this cluster. Null on list responses.
 - region: System.String
   - Supported in v9.1+
 Region of the Kubernetes cluster.
+- discoveryScope: K8sDiscoveryScope
+  - Limits discovery and protection for this CDM to a subset of namespaces and/or label selectors.
 - effectiveSlaId: System.String
   - Supported in v9.6+
 Effective SLA domain ID inherited or directly assigned.

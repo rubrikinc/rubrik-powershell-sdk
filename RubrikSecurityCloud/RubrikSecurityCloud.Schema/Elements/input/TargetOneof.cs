@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rcvAws")]
         public RcvAwsArchivalMigrationTargetInput? RcvAws { get; set; }
 
+        //      C# -> RcvAzureArchivalMigrationTargetInput? RcvAzure
+        // GraphQL -> rcvAzure: RcvAzureArchivalMigrationTargetInput (input)
+        [JsonProperty("rcvAzure")]
+        public RcvAzureArchivalMigrationTargetInput? RcvAzure { get; set; }
+
 
         #endregion
 

@@ -45,6 +45,10 @@ AWS native DynamoDB Table.
   - Indicates whether this DynamoDB table is protectable or not.
 - isInfrastructureAlertsEnabled: System.Boolean
   - Whether infrastructure deletion alerts are enabled for the DynamoDB table.
+- isInfrastructureAlertsRegionConnected: System.Boolean
+  - Whether Critical Resource Protection forwards deletion events from this
+resource's region. Unset when that could not be determined: CRP is not
+licensed, or the read failed.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount

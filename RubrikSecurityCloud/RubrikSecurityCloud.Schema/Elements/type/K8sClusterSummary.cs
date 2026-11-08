@@ -175,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crdServiceAccountInfo")]
         public ServiceAccountInfo? CrdServiceAccountInfo { get; set; }
 
+        //      C# -> K8sDiscoveryScope? DiscoveryScope
+        // GraphQL -> discoveryScope: K8sDiscoveryScope (type)
+        [JsonProperty("discoveryScope")]
+        public K8sDiscoveryScope? DiscoveryScope { get; set; }
+
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)
         [JsonProperty("kuprServerProxyConfig")]
@@ -231,6 +236,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Status = null,
         System.String? Transport = null,
         ServiceAccountInfo? CrdServiceAccountInfo = null,
+        K8sDiscoveryScope? DiscoveryScope = null,
         KuprServerProxyConfig? KuprServerProxyConfig = null,
         ServiceAccountInfo? OnboardingServiceAccountInfo = null,
         List<K8sWorkloadComponentSummary>? Workloads = null
@@ -328,6 +334,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CrdServiceAccountInfo != null ) {
             this.CrdServiceAccountInfo = CrdServiceAccountInfo;
+        }
+        if ( DiscoveryScope != null ) {
+            this.DiscoveryScope = DiscoveryScope;
         }
         if ( KuprServerProxyConfig != null ) {
             this.KuprServerProxyConfig = KuprServerProxyConfig;
@@ -631,6 +640,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "crdServiceAccountInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> K8sDiscoveryScope? DiscoveryScope
+        // GraphQL -> discoveryScope: K8sDiscoveryScope (type)
+        if (this.DiscoveryScope != null) {
+            var fspec = this.DiscoveryScope.AsFieldSpec(conf.Child("discoveryScope"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "discoveryScope" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1205,6 +1226,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.CrdServiceAccountInfo != null && ec.Excludes("crdServiceAccountInfo",false))
         {
             this.CrdServiceAccountInfo = null;
+        }
+        //      C# -> K8sDiscoveryScope? DiscoveryScope
+        // GraphQL -> discoveryScope: K8sDiscoveryScope (type)
+        if (ec.Includes("discoveryScope",false))
+        {
+            if(this.DiscoveryScope == null) {
+
+                this.DiscoveryScope = new K8sDiscoveryScope();
+                this.DiscoveryScope.ApplyExploratoryFieldSpec(ec.NewChild("discoveryScope"));
+
+            } else {
+
+                this.DiscoveryScope.ApplyExploratoryFieldSpec(ec.NewChild("discoveryScope"));
+
+            }
+        }
+        else if (this.DiscoveryScope != null && ec.Excludes("discoveryScope",false))
+        {
+            this.DiscoveryScope = null;
         }
         //      C# -> KuprServerProxyConfig? KuprServerProxyConfig
         // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfig (type)

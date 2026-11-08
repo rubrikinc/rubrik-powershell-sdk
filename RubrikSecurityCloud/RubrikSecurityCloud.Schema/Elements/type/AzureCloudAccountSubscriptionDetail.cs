@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AzureCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> System.Int32? AzureLocalClusterCount
         // GraphQL -> azureLocalClusterCount: Int (scalar)
         [JsonProperty("azureLocalClusterCount")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureCloudAccountSubscriptionDetail Set(
+        AzureCloudAccountServiceType? ServiceType = null,
         System.Int32? AzureLocalClusterCount = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         AzureManagementGroup? ManagementGroup = null
     ) 
     {
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
+        }
         if ( AzureLocalClusterCount != null ) {
             this.AzureLocalClusterCount = AzureLocalClusterCount;
         }
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
+            }
+        }
         //      C# -> System.Int32? AzureLocalClusterCount
         // GraphQL -> azureLocalClusterCount: Int (scalar)
         if (this.AzureLocalClusterCount != null) {
@@ -188,6 +206,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AzureCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
+        }
         //      C# -> System.Int32? AzureLocalClusterCount
         // GraphQL -> azureLocalClusterCount: Int (scalar)
         if (ec.Includes("azureLocalClusterCount",true))

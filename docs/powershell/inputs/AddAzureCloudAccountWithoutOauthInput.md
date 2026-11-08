@@ -13,3 +13,5 @@ Input for adding an Azure Cloud Account without OAuth.
   - Indicates whether the Azure cloud account can be onboarded asynchronously.
 - entraIdGroupId: System.String
   - Group Object ID of the Entra ID group to be used for Entra ID authentication in Exocompute.
+- serviceType: AzureCloudAccountServiceType
+  - Whether the subscriptions are onboarded for BaaS or non-BaaS.

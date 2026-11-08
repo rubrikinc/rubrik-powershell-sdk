@@ -95,6 +95,8 @@ A cluster object.
 - There is a single argument of type System.String.
 - Returns Cluster.
 ### clusterlist
+List all clusters across all product types.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
@@ -122,7 +124,9 @@ Count Rubrik clusters grouped by status.
 
 - There are 2 arguments.
     - filter - ClusterFilterInput: Filter by cluster.
-    - separateSharedClusters - System.Boolean: When true and the MSP multi-account registration feature flag is enabled, clusters assigned by a parent account are counted in assignedByParentAccountClusters instead of the health-status buckets.
+    - separateSharedClusters - System.Boolean: When true and the MSP multi-account registration feature flag is
+enabled, clusters assigned by a parent account are counted in assignedByParentAccountClusters
+instead of the health-status buckets.
 - Returns CountClustersReply.
 ### defaultgateway
 Get current default gateway
@@ -371,6 +375,8 @@ Rubrik cluster proxy information.
 - There is a single argument of type System.String.
 - Returns ClusterProxyReply.
 ### radarclusterlist
+Returns a paginated list of Rubrik CDM clusters.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
@@ -449,12 +455,14 @@ A Windows Cluster.
 - There is a single argument of type System.String.
 - Returns WindowsCluster.
 ### withupgradesinfo
+Returns Rubrik clusters with upgrade information.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
-    - upgradeFilter - CdmUpgradeInfoFilterInput
+    - upgradeFilter - CdmUpgradeInfoFilterInput: Filter by cluster upgrade information.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - UpgradeInfoSortByEnum: sort upgradeInfo by field
 - Returns ClusterConnection.

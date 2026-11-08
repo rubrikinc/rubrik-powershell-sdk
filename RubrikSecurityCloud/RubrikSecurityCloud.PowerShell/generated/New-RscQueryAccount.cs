@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Account' API domain:
-    /// CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
+    /// CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, ResourceDependencyGraph, Settings, or Users.
     /// </summary>
     /// <description>
     /// New-RscQueryAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, Settings, or Users.
+    /// one of: CurrentUser, CurrentUserLoginContext, EnabledFeatures, Id, Lookup, Owners, Products, ResourceDependencyGraph, Settings, or Users.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -285,6 +285,60 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ResourceDependencyGraph operation
+    /// of the 'Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Account
+    /// # API Operation: ResourceDependencyGraph
+    /// 
+    /// $query = New-RscQueryAccount -Operation ResourceDependencyGraph
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	region = @{
+    /// 		# OPTIONAL
+    /// 		region = @{
+    /// 			# OPTIONAL
+    /// 			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	tags = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			tagKey = $someString
+    /// 			# OPTIONAL
+    /// 			tagValue = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudType = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetAccountResourceDependencyGraphResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Settings operation
     /// of the 'Account' API domain.
     /// <code>
@@ -368,6 +422,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Lookup",
                 "Owners",
                 "Products",
+                "ResourceDependencyGraph",
                 "Settings",
                 "Users",
                 IgnoreCase = true)]
@@ -405,6 +460,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Products":
                         this.ProcessRecord_Products();
+                        break;
+                    case "ResourceDependencyGraph":
+                        this.ProcessRecord_ResourceDependencyGraph();
                         break;
                     case "Settings":
                         this.ProcessRecord_Settings();
@@ -483,6 +541,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Products";
             // Create new graphql operation allAccountProducts
             InitQueryAllAccountProducts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // accountResourceDependencyGraph.
+        internal void ProcessRecord_ResourceDependencyGraph()
+        {
+            this._logger.name += " -ResourceDependencyGraph";
+            // Create new graphql operation accountResourceDependencyGraph
+            InitQueryAccountResourceDependencyGraph();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -658,6 +725,52 @@ $query.Var.stateFilter = @(
 $query.Var.startDateArg = $someDateTime
 # OPTIONAL
 $query.Var.endDateArg = $someDateTime"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // accountResourceDependencyGraph(input: GetAccountResourceDependencyGraphRequest!): GetAccountResourceDependencyGraphResponse!
+        internal void InitQueryAccountResourceDependencyGraph()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetAccountResourceDependencyGraphRequest!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAccountResourceDependencyGraph",
+                "($input: GetAccountResourceDependencyGraphRequest!)",
+                "GetAccountResourceDependencyGraphResponse",
+                Query.AccountResourceDependencyGraph,
+                Query.AccountResourceDependencyGraphFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudNativeAccountId = $someString
+	# REQUIRED
+	region = @{
+		# OPTIONAL
+		region = @{
+			# OPTIONAL
+			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+			# OPTIONAL
+			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+			# OPTIONAL
+			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+		}
+	}
+	# OPTIONAL
+	tags = @(
+		@{
+			# REQUIRED
+			tagKey = $someString
+			# OPTIONAL
+			tagValue = $someString
+		}
+	)
+	# OPTIONAL
+	cloudType = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+}"
             );
         }
 

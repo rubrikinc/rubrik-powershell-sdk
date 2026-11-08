@@ -1423,6 +1423,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? DeleteCloudNativeApplication
+        // GraphQL -> deleteCloudNativeApplication: Void (scalar)
+        public static string DeleteCloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCloudNativeApplication" + args + "\n";
+        }
+        public static object DeleteCloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? DeleteCloudNativeLabelRule
         // GraphQL -> deleteCloudNativeLabelRule: Void (scalar)
         public static string DeleteCloudNativeLabelRule(object fsObj)
@@ -2580,7 +2598,7 @@ namespace RubrikSecurityCloud.Types
         public static string MutateRole(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nroleId: $roleId\nname: $name\ndescription: $description\npermissions: $permissions\nprotectableClusters: $protectableClusters\nisSynced: $isSynced\n)";
+            string args = "\n(\nroleId: $roleId\nname: $name\ndescription: $description\npermissions: $permissions\nprotectableClusters: $protectableClusters\nisSynced: $isSynced\ntagPermissions: $tagPermissions\n)";
             return "mutateRole" + args + "\n";
         }
         public static object MutateRoleFieldSpec(AutofieldContext? ec=null)
@@ -7017,6 +7035,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CreateCloudDirectCopyScheduleReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CreateCloudNativeApplicationReply? CreateCloudNativeApplication
+        // GraphQL -> createCloudNativeApplication: CreateCloudNativeApplicationReply! (type)
+        public static string CreateCloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createCloudNativeApplication" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateCloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateCloudNativeApplicationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12655,6 +12691,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> RecoverCloudNativeApplicationReply? RecoverCloudNativeApplication
+        // GraphQL -> recoverCloudNativeApplication: RecoverCloudNativeApplicationReply! (type)
+        public static string RecoverCloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverCloudNativeApplication" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverCloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RecoverCloudNativeApplicationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RecoverDevOpsRepositoryReply? RecoverDevOpsRepository
         // GraphQL -> recoverDevOpsRepository: RecoverDevOpsRepositoryReply! (type)
         public static string RecoverDevOpsRepository(object fsObj)
@@ -12795,6 +12849,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RefreshCloudNativeApplicationReply? RefreshCloudNativeApplication
+        // GraphQL -> refreshCloudNativeApplication: RefreshCloudNativeApplicationReply! (type)
+        public static string RefreshCloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "refreshCloudNativeApplication" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RefreshCloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RefreshCloudNativeApplicationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15157,6 +15229,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> StartRefreshAzureLocalSubscriptionJobReply? StartRefreshAzureLocalSubscriptionJob
+        // GraphQL -> startRefreshAzureLocalSubscriptionJob: StartRefreshAzureLocalSubscriptionJobReply! (type)
+        public static string StartRefreshAzureLocalSubscriptionJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRefreshAzureLocalSubscriptionJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRefreshAzureLocalSubscriptionJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartRefreshAzureLocalSubscriptionJobReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> BatchAsyncJobStatus? StartRefreshAzureNativeSubscriptionsJob
         // GraphQL -> startRefreshAzureNativeSubscriptionsJob: BatchAsyncJobStatus! (type)
         public static string StartRefreshAzureNativeSubscriptionsJob(object fsObj)
@@ -16107,6 +16197,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateCloudDirectKerberosCredentialReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateCloudNativeApplicationReply? UpdateCloudNativeApplication
+        // GraphQL -> updateCloudNativeApplication: UpdateCloudNativeApplicationReply! (type)
+        public static string UpdateCloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCloudNativeApplication" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateCloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateCloudNativeApplicationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

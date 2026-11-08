@@ -2,7 +2,7 @@
 Configuration for updating a FusionCompute Virtual Resource Management (VRM) instance.
 
 - userType: FusionComputeVrmUserType
-  - User type Rubrik logs in to the VRM with. Omitting this field leaves the current user type unchanged.
+  - Supported in Rubrik CDM v9.6.2+. Type of the VRM user account that Rubrik logs in with. When omitted, the current user type is kept.
 - caCerts: System.String
   - Supported in v9.6+
 Optional CA certificate content for SSL verification.

@@ -1,5 +1,5 @@
 ### IsIpmiEnabledInput
-Request parameters for determining if IPMI is enabled on the cluster.
+Input for checking if IPMI is enabled on a cluster.
 
 - id: System.String
   - Required. Rubrik cluster UUID.

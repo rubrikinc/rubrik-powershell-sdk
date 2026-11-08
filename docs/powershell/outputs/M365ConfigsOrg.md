@@ -1,0 +1,75 @@
+### M365ConfigsOrg
+An M365 Configs organization managed by Rubrik.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- environmentType: SaasEnvironmentType
+  - Environment type of the organiztion.
+- status: SaasOrganizationStatus
+  - The state of the SaaS organization.
+- lastRefreshTime: DateTime
+  - The time at which the SaaS organization was last synced to Rubrik.
+- onboardedAppTypes: list of SaasAppTypes
+  - The list of SaaS application types that are onboarded for the organization.
+- storageRegion: System.String
+  - The storage region for the organization.
+- naturalId: System.String
+  - ID of the M365 tenant at the source.
+- exocomputeId: System.String
+  - Denotes the ID of the exocompute cluster associated with the org.
+- saasOrgType: SaasOrgType
+  - The organization type that categorizes the SaaS provider.
+- storageRegions: SaasAppsOrgStorageLocations
+  - The storage regions where RSC backs up organization's data.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- connectionStatus: ConnectionStatus
+  - Connection status for an org by ID.
+- apiUsage: ApiUsageInfo
+  - API usage data for an org by ID.
+- saasAppsOrgInfo: SaasAppsOrgInfo
+  - Org size info by org ID.
+- backupJobsStats: backupJobsStats
+  - Backup job stats by org ID.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Pending pause or unpause assignment for RSC-native objects.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

@@ -1,0 +1,10 @@
+### AppBlueprintFailoverStatus
+- Ready
+- InProgress
+- Paused
+- TestInProgress
+- TestPaused
+- Tested
+- TestPending
+- CleanupInProgress
+- TestCleanupInProgress

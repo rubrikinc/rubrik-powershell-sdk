@@ -1,0 +1,106 @@
+### VsphereBlueprintNew
+
+
+- platform: BlueprintPlatform
+- children: list of VSphereVmChilds
+- isArchived: System.Boolean
+- status: BlueprintStatus
+- version: System.Int32
+- lastTestFailoverId: System.String
+- lastFailoverId: System.String
+- lastTestFailoverTimeOpt: DateTime
+- lastTestFailoverStatus: BlueprintFailoverStatus
+- lastFailoverTimeOpt: DateTime
+- lastFailoverStatus: BlueprintFailoverStatus
+- lastFailoverSource: System.String
+  - Last failover source location.
+- lastLocalRecoveryTimeOpt: DateTime
+  - Last local recovery time.
+- lastIsolatedRecoveryTimeOpt: DateTime
+  - Last isolated recovery time.
+- enableHydrationOpt: System.Boolean
+  - Flag to enable hydration.
+- timeoutBetweenPriorityGroups: list of System.Int64s
+  - A list of numbers representing the length of time, in minutes, to pause between each priority group during recovery. The numbers are ordered to align with the order of the priority groups. For example, consider a Blueprint with 3 priority groups. For this Blueprint, a value of [5,10,0] implies that there is a 5-minute pause between the 1st and 2nd priority groups and a 10-minute pause between the 2nd and 3rd priority groups. The last value in the list is always 0.
+- blueprintRecoveryType: BlueprintRecoveryType
+  - Recovery type of the Recovery Plan.
+- blueprintRecoveryCount: BlueprintRecoveryCount
+  - Recovery count of the Recovery Plan.
+- blueprintWorkloadType: ObjectTypeEnum
+- latestFailover: BlueprintFailover
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- numChildren: System.Int32
+  - Number of child objects of the Blueprint.
+- lastFailoverTime: DateTime
+  - Last failover time.
+- lastTestFailoverTime: DateTime
+  - Last test failover time.
+- lastLocalRecoveryTime: DateTime
+  - Last local recovery time.
+- lastLocalRecoveryStatus: BlueprintFailoverStatus
+  - Status of the last local recovery.
+- lastIsolatedRecoveryTime: DateTime
+  - Last isolated recovery time.
+- lastIsolatedRecoveryStatus: BlueprintFailoverStatus
+  - Status of the last isolated recovery.
+- isHydrationEnabled: System.Boolean
+  - Status of hydration enablement.
+- isBlueprintVisible: System.Boolean
+  - Visibility of the Recovery Plan.
+- childConnection: BlueprintChildConnection
+  - The list of child objects in the Recovery Plan.
+- recoveryInfo: BlueprintRecoveryRanges
+  - The recovery ranges of the Recovery Plan.
+- sourceLocation: BlueprintLocation
+  - The source location from which this object originated.
+- targetLocation: BlueprintLocation
+  - The target location to which the object failed over.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- legallyHeldSnapshotCount: System.Int32
+  - Number of snapshots on legal hold for this object.
+- futureLegalHoldInfo: FutureLegalHoldInfo
+  - Future legal hold rule configured for this object, if any.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- localRpoLagInfo: RpoLagInfo
+  - Local RPO lag information.
+- remoteRpoLagInfo: RpoLagInfo
+  - Remote RPO lag information.
+- blueprintSchedule: Schedule
+  - Recovery schedule for this Recovery Plan.
+- isBlueprintTargetConsistent: System.Boolean
+  - Specifies whether the Recovery Plan is target-consistent.

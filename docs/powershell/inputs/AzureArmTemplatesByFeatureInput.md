@@ -11,3 +11,5 @@ Input for retrieving ARM templates for custom roles.
   - Azure cloud type.
 - featuresToInclude: list of AzureRoleArmTemplateFeatures
   - Features and permissions groups used to determine the permissions to include in the templates.
+- serviceType: AzureCloudAccountServiceType
+  - Whether to build the templates for the BaaS or non-BaaS permission set.

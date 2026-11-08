@@ -7,6 +7,8 @@ User group details.
   - The name of the user group.
 - domainName: System.String
   - Domain name of the user group.
+- isScimLinked: System.Boolean
+  - Whether the SSO group is linked over SCIM. Null for other group types, such as LDAP groups.
 - users: list of Users
   - Users from the user group who are logged-in to the account.
 - roles: list of Roles

@@ -1,0 +1,41 @@
+### CloudNativeApplication
+Encapsulates cloud native application object.
+
+- id: System.String
+  - Managed Object ID.
+- name: System.String
+  - Name of the application.
+- cloudNativeAccountId: System.String
+  - Cloud native account ID where the application resides.
+- cloudNativeAccountName: System.String
+  - Native cloud account name.
+- targetCloudNativeAccountId: System.String
+  - Target cloud native account ID for recovery.
+- cloudType: CloudServiceProvider
+  - Cloud provider type.
+- region: CloudRegion
+  - Region where the application is deployed.
+- serviceConfigured: ApplicationServiceConfiguration
+  - Cloud specific service configuration for the application.
+- state: System.String
+  - Latest state of the application.
+- protectionStatus: CloudNativeProtectionStatus
+  - Protection status of the application.
+- refreshStatus: CloudNativeApplicationRefreshStatus
+  - Refresh status of the application.
+- postRecoveryScriptConfigured: System.Boolean
+  - SSM script configured for post recovery operations.
+- lastRefreshAt: DateTime
+  - Timestamp of the last successful refresh.
+- autoId: System.Int64
+  - Auto-incremented integer ID of the application.
+- targetCloudAccountInfo: TargetCloudAccountInfo
+  - Additional details about the target cloud account for recovery.
+- resourceInclusionList: list of System.Strings
+  - Resource ARNs explicitly included in the application.
+- resourceExclusionList: list of System.Strings
+  - Resource ARNs explicitly excluded from the application.
+- authorizedOperations: AuthorizedOperations
+  - Operations the requesting user is authorized to perform on this application.
+- matchingTags: MatchingTags
+  - Tags used to match resources to this application.

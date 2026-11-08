@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("entraIdGroupId")]
         public System.String? EntraIdGroupId { get; set; }
 
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType (enum)
+        [JsonProperty("serviceType")]
+        public AzureCloudAccountServiceType? ServiceType { get; set; }
+
 
         #endregion
 

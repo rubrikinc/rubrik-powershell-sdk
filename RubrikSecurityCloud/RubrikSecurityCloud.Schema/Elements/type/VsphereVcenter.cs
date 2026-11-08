@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> DateTime? RefreshResumeTime
+        // GraphQL -> refreshResumeTime: DateTime (scalar)
+        [JsonProperty("refreshResumeTime")]
+        public DateTime? RefreshResumeTime { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
@@ -431,6 +436,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? LegallyHeldSnapshotCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
+        DateTime? RefreshResumeTime = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SnapshotConsistencySource = null,
@@ -529,6 +535,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( RefreshResumeTime != null ) {
+            this.RefreshResumeTime = RefreshResumeTime;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -853,6 +862,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> DateTime? RefreshResumeTime
+        // GraphQL -> refreshResumeTime: DateTime (scalar)
+        if (this.RefreshResumeTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "refreshResumeTime\n" ;
+            } else {
+                s += ind + "refreshResumeTime\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1619,6 +1637,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> DateTime? RefreshResumeTime
+        // GraphQL -> refreshResumeTime: DateTime (scalar)
+        if (ec.Includes("refreshResumeTime",true))
+        {
+            if(this.RefreshResumeTime == null) {
+
+                this.RefreshResumeTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RefreshResumeTime != null && ec.Excludes("refreshResumeTime",true))
+        {
+            this.RefreshResumeTime = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

@@ -1,0 +1,39 @@
+### SpecificResource
+Resource-specific details based on resource type.
+
+- awsVpc: ConfigResourceAwsVpc
+  - AWS VPC specific details.
+- awsLoadBalancer: ConfigResourceAwsLoadBalancer
+  - AWS Load Balancer specific details.
+- awsIamRole: ConfigResourceAwsIamRole
+  - AWS IAM Role specific details.
+- awsHostedZone: ConfigResourceAwsHostedZone
+  - AWS Hosted Zone specific details.
+- awsSubnet: ConfigResourceAwsSubnet
+  - AWS Subnet specific details.
+- awsSecurityGroup: ConfigResourceAwsSecurityGroup
+  - AWS Security Group specific details.
+- awsAutoScalingGroup: ConfigResourceAwsAutoScalingGroup
+  - AWS Auto Scaling Group specific details.
+- awsTargetGroup: ConfigResourceAwsTargetGroup
+  - AWS Target Group specific details.
+- awsLaunchTemplate: ConfigResourceAwsLaunchTemplate
+  - AWS Launch Template specific details.
+- awsOptionGroup: ConfigResourceAwsOptionGroup
+  - AWS RDS Option Group specific details.
+- awsParameterGroup: ConfigResourceAwsParameterGroup
+  - AWS RDS Parameter Group specific details.
+- awsLambda: ConfigResourceAwsLambda
+  - AWS Lambda specific details.
+- awsElasticache: ConfigResourceAwsElasticache
+  - AWS ElastiCache cluster specific details.
+- awsElasticacheParameterGroup: ConfigResourceAwsElasticacheParameterGroup
+  - AWS ElastiCache parameter group specific details.
+- awsElasticacheSubnetGroup: ConfigResourceAwsElasticacheSubnetGroup
+  - AWS ElastiCache subnet group specific details.
+- awsEks: ConfigResourceAwsEks
+  - AWS EKS cluster specific details.
+- awsEcr: ConfigResourceAwsEcr
+  - AWS ECR repository specific details.
+- awsEcs: ConfigResourceAwsEcs
+  - AWS ECS cluster specific details.

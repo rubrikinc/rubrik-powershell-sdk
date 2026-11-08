@@ -955,6 +955,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	featureSpecificDetails = @{
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		exocomputeMasterRoleArn = $someString
+    /// 		# OPTIONAL
+    /// 		exocomputeWorkerRoleArn = $someString
+    /// 		# OPTIONAL
+    /// 		exocomputeLambdaRoleArn = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
@@ -2932,6 +2938,12 @@ $query.Var.input = @{
 	featureSpecificDetails = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
+		# OPTIONAL
+		exocomputeMasterRoleArn = $someString
+		# OPTIONAL
+		exocomputeWorkerRoleArn = $someString
+		# OPTIONAL
+		exocomputeLambdaRoleArn = $someString
 	}
 	# OPTIONAL
 	featuresWithPermissionsGroups = @(

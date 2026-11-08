@@ -63,6 +63,8 @@ cluster. Null when the source cluster is unknown.
   - Nutanix snapshot consistency level.
 - osType: GuestOsType
   - Guest operating system type of the virtual machine. This field will be set to null if not provided by Nutanix.
+- recoveryPlansInfo: list of RecoveryPlansInfos
+  - List of Recovery Plans associated with the virtual machine.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

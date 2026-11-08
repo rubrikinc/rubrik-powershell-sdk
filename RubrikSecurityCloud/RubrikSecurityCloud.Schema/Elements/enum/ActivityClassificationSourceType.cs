@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IOC_FILE")]
         IOC_FILE,
 
+        [EnumMember(Value = "LEGITIMATE_IP_FILE")]
+        LEGITIMATE_IP_FILE,
+
         [EnumMember(Value = "MICROSOFT_DEFENDER")]
         MICROSOFT_DEFENDER,
 

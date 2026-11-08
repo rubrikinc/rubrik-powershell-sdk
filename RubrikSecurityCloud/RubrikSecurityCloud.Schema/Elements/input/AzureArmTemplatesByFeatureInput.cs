@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featuresToInclude")]
         public List<AzureRoleArmTemplateFeature>? FeaturesToInclude { get; set; }
 
+        //      C# -> AzureCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AzureCloudAccountServiceType (enum)
+        [JsonProperty("serviceType")]
+        public AzureCloudAccountServiceType? ServiceType { get; set; }
+
 
         #endregion
 

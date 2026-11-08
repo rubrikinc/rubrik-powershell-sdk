@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationScope")]
         public LocationScope? LocationScope { get; set; }
 
+        //      C# -> RcvResourceCreationReadiness? RcvResourceCreationReadiness
+        // GraphQL -> rcvResourceCreationReadiness: RcvResourceCreationReadiness! (enum)
+        [JsonProperty("rcvResourceCreationReadiness")]
+        public RcvResourceCreationReadiness? RcvResourceCreationReadiness { get; set; }
+
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
         [JsonProperty("readerRetrievalMethod")]
@@ -245,6 +250,7 @@ namespace RubrikSecurityCloud.Types
         BliMigrationStatus? BliMigrationStatusType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
+        RcvResourceCreationReadiness? RcvResourceCreationReadiness = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
         RcvRedundancy? Redundancy = null,
         RcvRedundancyState? RedundancyState = null,
@@ -296,6 +302,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LocationScope != null ) {
             this.LocationScope = LocationScope;
+        }
+        if ( RcvResourceCreationReadiness != null ) {
+            this.RcvResourceCreationReadiness = RcvResourceCreationReadiness;
         }
         if ( ReaderRetrievalMethod != null ) {
             this.ReaderRetrievalMethod = ReaderRetrievalMethod;
@@ -459,6 +468,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "locationScope\n" ;
             } else {
                 s += ind + "locationScope\n" ;
+            }
+        }
+        //      C# -> RcvResourceCreationReadiness? RcvResourceCreationReadiness
+        // GraphQL -> rcvResourceCreationReadiness: RcvResourceCreationReadiness! (enum)
+        if (this.RcvResourceCreationReadiness != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rcvResourceCreationReadiness\n" ;
+            } else {
+                s += ind + "rcvResourceCreationReadiness\n" ;
             }
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
@@ -904,6 +922,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LocationScope != null && ec.Excludes("locationScope",true))
         {
             this.LocationScope = null;
+        }
+        //      C# -> RcvResourceCreationReadiness? RcvResourceCreationReadiness
+        // GraphQL -> rcvResourceCreationReadiness: RcvResourceCreationReadiness! (enum)
+        if (ec.Includes("rcvResourceCreationReadiness",true))
+        {
+            if(this.RcvResourceCreationReadiness == null) {
+
+                this.RcvResourceCreationReadiness = new RcvResourceCreationReadiness();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RcvResourceCreationReadiness != null && ec.Excludes("rcvResourceCreationReadiness",true))
+        {
+            this.RcvResourceCreationReadiness = null;
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)

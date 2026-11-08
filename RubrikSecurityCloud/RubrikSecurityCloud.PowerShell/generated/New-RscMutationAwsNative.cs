@@ -404,6 +404,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	customTags = @{
+    /// 		# REQUIRED
+    /// 		tagList = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -837,6 +849,18 @@ $query.Var.input = @{
 				$someString
 			)
 		}
+	}
+	# OPTIONAL
+	customTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				value = $someString
+			}
+		)
 	}
 }"
             );

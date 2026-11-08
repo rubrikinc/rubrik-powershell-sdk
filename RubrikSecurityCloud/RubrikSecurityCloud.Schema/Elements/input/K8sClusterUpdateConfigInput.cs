@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataPathTransport")]
         public System.String? DataPathTransport { get; set; }
 
+        //      C# -> K8sDiscoveryScopeInput? DiscoveryScope
+        // GraphQL -> discoveryScope: K8sDiscoveryScopeInput (input)
+        [JsonProperty("discoveryScope")]
+        public K8sDiscoveryScopeInput? DiscoveryScope { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String (scalar)
         [JsonProperty("cloudAccountId")]

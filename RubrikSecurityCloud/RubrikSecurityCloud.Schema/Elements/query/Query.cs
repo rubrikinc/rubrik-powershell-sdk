@@ -1753,6 +1753,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetAccountResourceDependencyGraphResponse? AccountResourceDependencyGraph
+        // GraphQL -> accountResourceDependencyGraph: GetAccountResourceDependencyGraphResponse! (type)
+        public static string AccountResourceDependencyGraph(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "accountResourceDependencyGraph" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AccountResourceDependencyGraphFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetAccountResourceDependencyGraphResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AccountSetting? AccountSettings
         // GraphQL -> accountSettings: AccountSetting! (type)
         public static string AccountSettings(object fsObj)
@@ -1830,7 +1848,7 @@ namespace RubrikSecurityCloud.Types
         public static string ActiveDirectoryDomainControllers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "activeDirectoryDomainControllers" + args + "\n{\n" + fs + "}\n";
         }
         public static object ActiveDirectoryDomainControllersFieldSpec(AutofieldContext? ec=null)
@@ -1848,7 +1866,7 @@ namespace RubrikSecurityCloud.Types
         public static string ActiveDirectoryDomains(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "activeDirectoryDomains" + args + "\n{\n" + fs + "}\n";
         }
         public static object ActiveDirectoryDomainsFieldSpec(AutofieldContext? ec=null)
@@ -1866,7 +1884,7 @@ namespace RubrikSecurityCloud.Types
         public static string ActiveDirectorySearchSnapshots(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nid: $id\nsnapshotAfterDate: $snapshotAfterDate\nsnapshotBeforeDate: $snapshotBeforeDate\nname: $name\nactiveDirectoryObjectType: $activeDirectoryObjectType\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nid: $id\nsnapshotAfterDate: $snapshotAfterDate\nsnapshotBeforeDate: $snapshotBeforeDate\nname: $name\nactiveDirectoryObjectType: $activeDirectoryObjectType\n)";
             return "activeDirectorySearchSnapshots" + args + "\n{\n" + fs + "}\n";
         }
         public static object ActiveDirectorySearchSnapshotsFieldSpec(AutofieldContext? ec=null)
@@ -1956,7 +1974,7 @@ namespace RubrikSecurityCloud.Types
         public static string AdVolumeExports(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilters: $filters\nsortBy: $sortBy\n)";
             return "adVolumeExports" + args + "\n{\n" + fs + "}\n";
         }
         public static object AdVolumeExportsFieldSpec(AutofieldContext? ec=null)
@@ -4773,6 +4791,78 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AppAccessPrincipalConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ApplicationConfigSnapshotDownloadLinkResponse? ApplicationConfigSnapshotDownloadLink
+        // GraphQL -> applicationConfigSnapshotDownloadLink: ApplicationConfigSnapshotDownloadLinkResponse! (type)
+        public static string ApplicationConfigSnapshotDownloadLink(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "applicationConfigSnapshotDownloadLink" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ApplicationConfigSnapshotDownloadLinkFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ApplicationConfigSnapshotDownloadLinkResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ListApplicationRecoveriesReply? ApplicationRecoveries
+        // GraphQL -> applicationRecoveries: ListApplicationRecoveriesReply! (type)
+        public static string ApplicationRecoveries(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\napplicationId: $applicationId\n)";
+            return "applicationRecoveries" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ApplicationRecoveriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ListApplicationRecoveriesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetApplicationResourceCountResponse? ApplicationResourceCount
+        // GraphQL -> applicationResourceCount: GetApplicationResourceCountResponse! (type)
+        public static string ApplicationResourceCount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "applicationResourceCount" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ApplicationResourceCountFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetApplicationResourceCountResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ApplicationResourceConnection? ApplicationResources
+        // GraphQL -> applicationResources: ApplicationResourceConnection! (type)
+        public static string ApplicationResources(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\napplicationId: $applicationId\nresourceTypes: $resourceTypes\npropertyFilters: $propertyFilters\nsortBy: $sortBy\nloadMetadata: $loadMetadata\ndiscoveryMethod: $discoveryMethod\n)";
+            return "applicationResources" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ApplicationResourcesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ApplicationResourceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7729,6 +7819,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudNativeApplication? CloudNativeApplication
+        // GraphQL -> cloudNativeApplication: CloudNativeApplication (type)
+        public static string CloudNativeApplication(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nid: $id\nshouldIncludeTargetAccountAdditionalInfo: $shouldIncludeTargetAccountAdditionalInfo\n)";
+            return "cloudNativeApplication" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeApplicationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudNativeApplication() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetCloudNativeApplicationSnapshotsReply? CloudNativeApplicationSnapshots
         // GraphQL -> cloudNativeApplicationSnapshots: GetCloudNativeApplicationSnapshotsReply! (type)
         public static string CloudNativeApplicationSnapshots(object fsObj)
@@ -7743,6 +7851,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetCloudNativeApplicationSnapshotsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetCloudNativeApplicationWorkloadsByConfigSnapshotReply? CloudNativeApplicationWorkloadsByConfigSnapshot
+        // GraphQL -> cloudNativeApplicationWorkloadsByConfigSnapshot: GetCloudNativeApplicationWorkloadsByConfigSnapshotReply! (type)
+        public static string CloudNativeApplicationWorkloadsByConfigSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\napplicationId: $applicationId\nsnapshotId: $snapshotId\n)";
+            return "cloudNativeApplicationWorkloadsByConfigSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeApplicationWorkloadsByConfigSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetCloudNativeApplicationWorkloadsByConfigSnapshotReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudNativeApplicationConnection? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: CloudNativeApplicationConnection! (type)
+        public static string CloudNativeApplications(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\n)";
+            return "cloudNativeApplications" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeApplicationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudNativeApplicationConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8521,6 +8665,60 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetConfigResourceCountResponse? ConfigResourceCount
+        // GraphQL -> configResourceCount: GetConfigResourceCountResponse! (type)
+        public static string ConfigResourceCount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "configResourceCount" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ConfigResourceCountFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetConfigResourceCountResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ConfigResourcePropertyValueConnection? ConfigResourcePropertyValues
+        // GraphQL -> configResourcePropertyValues: ConfigResourcePropertyValueConnection! (type)
+        public static string ConfigResourcePropertyValues(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nresourceType: $resourceType\npropertyName: $propertyName\nsearchText: $searchText\n)";
+            return "configResourcePropertyValues" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ConfigResourcePropertyValuesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ConfigResourcePropertyValueConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ConfigResourceConnection? ConfigResources
+        // GraphQL -> configResources: ConfigResourceConnection! (type)
+        public static string ConfigResources(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ncloudNativeAccountId: $cloudNativeAccountId\nresourceTypes: $resourceTypes\nregion: $region\ntags: $tags\nsortBy: $sortBy\n)";
+            return "configResources" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ConfigResourcesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ConfigResourceConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> O365ConfiguredGroupMemberConnection? ConfiguredGroupMembers
         // GraphQL -> configuredGroupMembers: O365ConfiguredGroupMemberConnection! (type)
         public static string ConfiguredGroupMembers(object fsObj)
@@ -9205,6 +9403,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DevOpsObjectStats? DevOpsObjectStatsSummary
+        // GraphQL -> devOpsObjectStatsSummary: DevOpsObjectStats! (type)
+        public static string DevOpsObjectStatsSummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nancestorId: $ancestorId\nkeys: $keys\n)";
+            return "devOpsObjectStatsSummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DevOpsObjectStatsSummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DevOpsObjectStats() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> DevOpsProtectedObjectCountSummary? DevOpsProtectedObjectCountSummary
         // GraphQL -> devOpsProtectedObjectCountSummary: DevOpsProtectedObjectCountSummary! (type)
         public static string DevOpsProtectedObjectCountSummary(object fsObj)
@@ -9313,6 +9529,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadAnchorResourcesResponse? DownloadAnchorResources
+        // GraphQL -> downloadAnchorResources: DownloadAnchorResourcesResponse! (type)
+        public static string DownloadAnchorResources(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadAnchorResources" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadAnchorResourcesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadAnchorResourcesResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DownloadApplicationResourcesResponse? DownloadApplicationResources
+        // GraphQL -> downloadApplicationResources: DownloadApplicationResourcesResponse! (type)
+        public static string DownloadApplicationResources(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadApplicationResources" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadApplicationResourcesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadApplicationResourcesResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> DownloadCdmUpgradesPdfReply? DownloadCdmUpgradesPdf
         // GraphQL -> downloadCdmUpgradesPdf: DownloadCdmUpgradesPdfReply! (type)
         public static string DownloadCdmUpgradesPdf(object fsObj)
@@ -9327,6 +9579,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadCdmUpgradesPdfReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DownloadConfigRecoveryReportReply? DownloadConfigRecoveryReport
+        // GraphQL -> downloadConfigRecoveryReport: DownloadConfigRecoveryReportReply! (type)
+        public static string DownloadConfigRecoveryReport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadConfigRecoveryReport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadConfigRecoveryReportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadConfigRecoveryReportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9453,6 +9723,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new NotificationConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> EventSeriesOfWorkloadGroupConnection? EventSeriesOfWorkloadGroup
+        // GraphQL -> eventSeriesOfWorkloadGroup: EventSeriesOfWorkloadGroupConnection! (type)
+        public static string EventSeriesOfWorkloadGroup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupParentId: $groupParentId\nobjectTypes: $objectTypes\nfilters: $filters\nsortByField: $sortByField\nsortOrder: $sortOrder\n)";
+            return "eventSeriesOfWorkloadGroup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object EventSeriesOfWorkloadGroupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new EventSeriesOfWorkloadGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12171,6 +12459,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CdmUpgradeRecommendationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> IsValidCloudNativeApplicationNameResponse? IsValidCloudNativeApplicationName
+        // GraphQL -> isValidCloudNativeApplicationName: IsValidCloudNativeApplicationNameResponse! (type)
+        public static string IsValidCloudNativeApplicationName(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "isValidCloudNativeApplicationName" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object IsValidCloudNativeApplicationNameFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new IsValidCloudNativeApplicationNameResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

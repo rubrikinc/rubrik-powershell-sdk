@@ -1,7 +1,5 @@
 ### DevOpsObjectStatKey
-The canonical stat-key vocabulary for DevOps object statistics. The
-generated string form of a value (for example "BYTES_STORED") is the form
-persisted in the devops_object_stat_kv table's stat_key column.
+The statistics that can be reported for DevOps objects.
 
 - BYTES_STORED - Total bytes stored across the object's snapshots.
 - LATEST_SNAPSHOT_AT - Most recent snapshot time, in epoch seconds.
@@ -16,3 +14,8 @@ feed upstream. Versions cached from a public upstream are excluded.
 - NUM_ADO_PULL_REQUESTS - Count of active Azure DevOps pull requests under a repository.
 - NUM_GITHUB_ACTIONS_WORKFLOWS - Count of GitHub Actions workflows under a repository.
 - NUM_GITHUB_ACTIONS_WORKFLOW_RUNS - Count of GitHub Actions workflow runs under a repository.
+- NUM_GITHUB_NPM_PACKAGES - Count of GitHub Packages npm packages under an organization.
+- NUM_GITHUB_MAVEN_PACKAGES - Count of GitHub Packages Maven packages under an organization.
+- NUM_GITHUB_RUBYGEMS_PACKAGES - Count of GitHub Packages RubyGems packages under an organization.
+- NUM_GITHUB_NUGET_PACKAGES - Count of GitHub Packages NuGet packages under an organization.
+- NUM_GITHUB_CONTAINER_PACKAGES - Count of GitHub Packages container packages under an organization.

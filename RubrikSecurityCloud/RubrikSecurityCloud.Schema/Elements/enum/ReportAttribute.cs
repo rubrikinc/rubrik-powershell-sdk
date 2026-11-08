@@ -81,11 +81,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPLIANCE_STATUS")]
         COMPLIANCE_STATUS,
 
+        [EnumMember(Value = "COVERAGE")]
+        COVERAGE,
+
         [EnumMember(Value = "CURRENT_REPLICATION_TASK_STATUS")]
         CURRENT_REPLICATION_TASK_STATUS,
 
+        [EnumMember(Value = "DATA_CATEGORY")]
+        DATA_CATEGORY,
+
+        [EnumMember(Value = "DATA_DISCOVERY_SCAN_STATUS")]
+        DATA_DISCOVERY_SCAN_STATUS,
+
         [EnumMember(Value = "DATA_SOURCE")]
         DATA_SOURCE,
+
+        [EnumMember(Value = "DATA_TYPE")]
+        DATA_TYPE,
 
         [EnumMember(Value = "DIRECT_ARCHIVE")]
         DIRECT_ARCHIVE,
@@ -104,6 +116,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IOC_TYPE")]
         IOC_TYPE,
+
+        [EnumMember(Value = "LAST_SCANNED_TIME")]
+        LAST_SCANNED_TIME,
 
         [EnumMember(Value = "LAST_SUCCESSFUL_BACKUP")]
         LAST_SUCCESSFUL_BACKUP,
@@ -179,6 +194,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RISK_SEVERITY")]
         RISK_SEVERITY,
+
+        [EnumMember(Value = "SENSITIVITY_LEVEL")]
+        SENSITIVITY_LEVEL,
 
         [EnumMember(Value = "SEVERITY")]
         SEVERITY,

@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANTHROPIC_ORG")]
         ANTHROPIC_ORG,
 
+        [EnumMember(Value = "ANTHROPIC_ORG_LOCAL_SESSIONS")]
+        ANTHROPIC_ORG_LOCAL_SESSIONS,
+
         [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
         ANTHROPIC_ORG_SETTINGS,
 
@@ -453,8 +456,29 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_SITE")]
         M365_BACKUP_STORAGE_SITE,
 
+        [EnumMember(Value = "M365_CONFIGS_DEFENDER")]
+        M365_CONFIGS_DEFENDER,
+
+        [EnumMember(Value = "M365_CONFIGS_EXCHANGE")]
+        M365_CONFIGS_EXCHANGE,
+
+        [EnumMember(Value = "M365_CONFIGS_ONEDRIVE")]
+        M365_CONFIGS_ONEDRIVE,
+
         [EnumMember(Value = "M365_CONFIGS_ORG")]
         M365_CONFIGS_ORG,
+
+        [EnumMember(Value = "M365_CONFIGS_PURVIEW")]
+        M365_CONFIGS_PURVIEW,
+
+        [EnumMember(Value = "M365_CONFIGS_SHAREPOINT")]
+        M365_CONFIGS_SHAREPOINT,
+
+        [EnumMember(Value = "M365_CONFIGS_TEAMS")]
+        M365_CONFIGS_TEAMS,
+
+        [EnumMember(Value = "M365_JOURNAL_VAULT")]
+        M365_JOURNAL_VAULT,
 
         [EnumMember(Value = "MANAGED_VOLUME")]
         MANAGED_VOLUME,
@@ -749,6 +773,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VCENTER")]
         VCENTER,
+
+        [EnumMember(Value = "VCFA_APPLIANCE")]
+        VCFA_APPLIANCE,
+
+        [EnumMember(Value = "VCFA_ORG")]
+        VCFA_ORG,
+
+        [EnumMember(Value = "VCFA_PROJECT")]
+        VCFA_PROJECT,
+
+        [EnumMember(Value = "VCFA_REGION")]
+        VCFA_REGION,
 
         [EnumMember(Value = "VCF_FLEET")]
         VCF_FLEET,

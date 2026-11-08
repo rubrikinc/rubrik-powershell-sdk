@@ -59,6 +59,8 @@ subscription.
 - azureCosmosNosqlDatabaseCount: System.Int32
   - Number of databases in the Azure Cosmos NoSQL account as of the last
 inventory refresh.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the subscription and region of the Azure Cosmos NoSQL account.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

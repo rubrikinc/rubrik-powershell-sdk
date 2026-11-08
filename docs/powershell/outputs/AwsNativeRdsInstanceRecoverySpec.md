@@ -1,0 +1,45 @@
+### AwsNativeRdsInstanceRecoverySpec
+AWS native RDS instance recovery spec.
+
+- appId: System.String
+  - ID of the recovery plan.
+- snappableId: System.String
+  - ID of the workload.
+- version: System.Int64
+  - Version of the recovery specification.
+- userData: System.String
+  - Script to run on the recovered RDS instance after reboot.
+- recoveryPointOpt: System.Int64
+  - Recovery point of the workload.
+- kmsKeyId: System.String
+  - KMS key ID for the recovered RDS instance.
+- dbInstanceClass: System.String
+  - Instance class type for the recovered RDS instance.
+- dbEngineVersion: System.String
+  - Database engine version for the recovered RDS instance.
+- isMultiAz: System.Boolean
+  - Whether the recovered RDS instance should be configured for multi-AZ deployment.
+- primaryAz: System.String
+  - Primary availability zone for the recovered RDS instance.
+- port: System.Int64
+  - Port on which the recovered RDS instance will accept connections.
+- storageType: System.String
+  - Storage type for the recovered RDS instance.
+- iops: System.Int64
+  - Provisioned IOPS for the recovered RDS instance.
+- vpcNativeId: System.String
+  - VPC native ID where the recovered RDS instance will be created.
+- securityGroupNativeIds: list of System.Strings
+  - Security group native IDs to be associated with the recovered RDS instance.
+- subnetGroupName: System.String
+  - Subnet group name for the recovered RDS instance.
+- isPubliclyAccessible: System.Boolean
+  - Whether the recovered RDS instance should be publicly accessible.
+- optionGroupName: System.String
+  - Option group name to be associated with the recovered RDS instance.
+- parameterGroupName: System.String
+  - Parameter group name to be associated with the recovered RDS instance.
+- clusterParameterGroupName: System.String
+  - Cluster parameter group name to be associated with the recovered RDS instance.
+- snapshotType: SnapshotType
+  - Which type of snapshot used to recover the RDS instance from. This is only used in INSTANCE Spec for a recovery.

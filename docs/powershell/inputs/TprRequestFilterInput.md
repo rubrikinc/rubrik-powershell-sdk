@@ -13,3 +13,5 @@ Input for filtering TPR requests.
   - List of organizations for filtering TPR requests.
 - reqIdPartial: System.String
   - Partial match on request Id.
+- tprRules: list of TprRules
+  - Highest priority triggered TPR rules for filtering TPR requests.

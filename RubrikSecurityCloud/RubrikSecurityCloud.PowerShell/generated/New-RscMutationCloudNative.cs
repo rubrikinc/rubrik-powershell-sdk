@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Cloud Native' API domain:
-    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateApplication, CreateLabelRule, CreateTagRule, DeleteApplication, DeleteLabelRule, DeleteTagRule, DownloadFiles, RecoverApplication, RefreshApplication, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateApplication, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 21 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateApplication, CreateLabelRule, CreateTagRule, DeleteApplication, DeleteLabelRule, DeleteTagRule, DownloadFiles, RecoverApplication, RefreshApplication, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateApplication, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -185,6 +185,108 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClearCloudNativeSqlServerBackupCredentialsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateApplication operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: CreateApplication
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation CreateApplication
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	cloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	targetCloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	region = @{
+    /// 		# OPTIONAL
+    /// 		region = @{
+    /// 			# OPTIONAL
+    /// 			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	serviceConfigured = @{
+    /// 		# OPTIONAL
+    /// 		configurationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		applicationCloudConfig = @{
+    /// 			# OPTIONAL
+    /// 			awsConfig = @{
+    /// 				# OPTIONAL
+    /// 				ec2Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				rdsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ebsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elbEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				s3Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				secretsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elasticacheEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				eksEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ecrEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				lambdaEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isEcsEnabled = $someBoolean
+    /// 			}
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	cloudType = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+    /// 	# OPTIONAL
+    /// 	resourceInclusionList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	resourceExclusionList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	matchingTags = @{
+    /// 		# REQUIRED
+    /// 		matchingTagsList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				key = $someString
+    /// 				# OPTIONAL
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateCloudNativeApplicationReply
     /// 
     /// 
     /// 
@@ -351,6 +453,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteApplication operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: DeleteApplication
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation DeleteApplication
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteLabelRule operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -486,6 +619,206 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoverApplication operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: RecoverApplication
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation RecoverApplication
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	applicationId = $someString
+    /// 	# REQUIRED
+    /// 	targetCloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	recoveryName = $someString
+    /// 	# REQUIRED
+    /// 	errorHandling = $someRecoveryErrorHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryErrorHandling]) for enum values.
+    /// 	# OPTIONAL
+    /// 	workloadSnapshots = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			workloadId = $someString
+    /// 			# OPTIONAL
+    /// 			snapshotId = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	preRecoveryHook = @{
+    /// 		# REQUIRED
+    /// 		hookInfo = @{
+    /// 			# OPTIONAL
+    /// 			hook = @{
+    /// 				# OPTIONAL
+    /// 				awsLambda = @{
+    /// 					# REQUIRED
+    /// 					lambdaId = $someString
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 		# REQUIRED
+    /// 		failureHandling = $someHookFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HookFailureHandling]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	postRecoveryHook = @{
+    /// 		# REQUIRED
+    /// 		hookInfo = @{
+    /// 			# OPTIONAL
+    /// 			hook = @{
+    /// 				# OPTIONAL
+    /// 				awsLambda = @{
+    /// 					# REQUIRED
+    /// 					lambdaId = $someString
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 		# REQUIRED
+    /// 		failureHandling = $someHookFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HookFailureHandling]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vmPostRecoveryScriptEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cloudSettings = @{
+    /// 		# OPTIONAL
+    /// 		awsSettings = @{
+    /// 			# OPTIONAL
+    /// 			networking = @{
+    /// 				# OPTIONAL
+    /// 				vpcOption = @{
+    /// 					# OPTIONAL
+    /// 					cloneVpcSameCidr = @{
+    /// 						# OPTIONAL
+    /// 						preserveCidr = $someBoolean
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					cloneVpcAlternateCidr = @{
+    /// 						# REQUIRED
+    /// 						vpcCidrMappings = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								sourceVpcId = $someString
+    /// 								# REQUIRED
+    /// 								cidrMappings = @(
+    /// 									@{
+    /// 										# REQUIRED
+    /// 										sourceCidr = $someString
+    /// 										# REQUIRED
+    /// 										targetCidr = $someString
+    /// 									}
+    /// 								)
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					useExistingVpc = @{
+    /// 						# REQUIRED
+    /// 						vpcIdMappings = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								sourceVpcId = $someString
+    /// 								# REQUIRED
+    /// 								targetVpcId = $someString
+    /// 							}
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			kms = @{
+    /// 				# REQUIRED
+    /// 				kmsKeyId = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			dns = @{
+    /// 				# OPTIONAL
+    /// 				shouldUpdateDns = $someBoolean
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			s3 = @{
+    /// 				# OPTIONAL
+    /// 				buckets = @(
+    /// 					@{
+    /// 						# REQUIRED
+    /// 						workloadId = $someString
+    /// 						# OPTIONAL
+    /// 						shouldRecoverFullBucket = $someBoolean
+    /// 						# OPTIONAL
+    /// 						regexPatterns = @(
+    /// 							$someString
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						destination = @{
+    /// 							# OPTIONAL
+    /// 							existingBucket = @{
+    /// 								# REQUIRED
+    /// 								destinationBucketArn = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							newBucket = @{
+    /// 								# REQUIRED
+    /// 								destinationBucketName = $someString
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RecoverCloudNativeApplicationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RefreshApplication operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: RefreshApplication
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation RefreshApplication
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	cloud = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RefreshCloudNativeApplicationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SetGatewayKmsKeys operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -600,6 +933,102 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateApplication operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: UpdateApplication
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation UpdateApplication
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	targetCloudNativeAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	serviceConfigured = @{
+    /// 		# OPTIONAL
+    /// 		configurationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		applicationCloudConfig = @{
+    /// 			# OPTIONAL
+    /// 			awsConfig = @{
+    /// 				# OPTIONAL
+    /// 				ec2Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				rdsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ebsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elbEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				s3Enabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				secretsEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				elasticacheEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				eksEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				ecrEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				lambdaEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isEcsEnabled = $someBoolean
+    /// 			}
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	postRecoveryScriptConfigured = $someBoolean
+    /// 	# OPTIONAL
+    /// 	resourceInclusionList = @{
+    /// 		# OPTIONAL
+    /// 		uris = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	resourceExclusionList = @{
+    /// 		# OPTIONAL
+    /// 		uris = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	matchingTags = @{
+    /// 		# REQUIRED
+    /// 		matchingTagsList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				key = $someString
+    /// 				# OPTIONAL
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCloudNativeApplicationReply
     /// 
     /// 
     /// 
@@ -840,14 +1269,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddSqlServerBackupCredentials",
                 "CheckRbaConnectivity",
                 "ClearSqlServerBackupCredentials",
+                "CreateApplication",
                 "CreateLabelRule",
                 "CreateTagRule",
+                "DeleteApplication",
                 "DeleteLabelRule",
                 "DeleteTagRule",
                 "DownloadFiles",
+                "RecoverApplication",
+                "RefreshApplication",
                 "SetGatewayKmsKeys",
                 "SetupSqlServerBackup",
                 "StartSnapshotsIndexJob",
+                "UpdateApplication",
                 "UpdateCustomerSettings",
                 "UpdateIndexingStatus",
                 "UpdateLabelRule",
@@ -877,11 +1311,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ClearSqlServerBackupCredentials":
                         this.ProcessRecord_ClearSqlServerBackupCredentials();
                         break;
+                    case "CreateApplication":
+                        this.ProcessRecord_CreateApplication();
+                        break;
                     case "CreateLabelRule":
                         this.ProcessRecord_CreateLabelRule();
                         break;
                     case "CreateTagRule":
                         this.ProcessRecord_CreateTagRule();
+                        break;
+                    case "DeleteApplication":
+                        this.ProcessRecord_DeleteApplication();
                         break;
                     case "DeleteLabelRule":
                         this.ProcessRecord_DeleteLabelRule();
@@ -892,6 +1332,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DownloadFiles":
                         this.ProcessRecord_DownloadFiles();
                         break;
+                    case "RecoverApplication":
+                        this.ProcessRecord_RecoverApplication();
+                        break;
+                    case "RefreshApplication":
+                        this.ProcessRecord_RefreshApplication();
+                        break;
                     case "SetGatewayKmsKeys":
                         this.ProcessRecord_SetGatewayKmsKeys();
                         break;
@@ -900,6 +1346,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartSnapshotsIndexJob":
                         this.ProcessRecord_StartSnapshotsIndexJob();
+                        break;
+                    case "UpdateApplication":
+                        this.ProcessRecord_UpdateApplication();
                         break;
                     case "UpdateCustomerSettings":
                         this.ProcessRecord_UpdateCustomerSettings();
@@ -954,6 +1403,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createCloudNativeApplication.
+        internal void ProcessRecord_CreateApplication()
+        {
+            this._logger.name += " -CreateApplication";
+            // Create new graphql operation createCloudNativeApplication
+            InitMutationCreateCloudNativeApplication();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createCloudNativeLabelRule.
         internal void ProcessRecord_CreateLabelRule()
         {
@@ -969,6 +1427,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateTagRule";
             // Create new graphql operation createCloudNativeTagRule
             InitMutationCreateCloudNativeTagRule();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteCloudNativeApplication.
+        internal void ProcessRecord_DeleteApplication()
+        {
+            this._logger.name += " -DeleteApplication";
+            // Create new graphql operation deleteCloudNativeApplication
+            InitMutationDeleteCloudNativeApplication();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -999,6 +1466,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // recoverCloudNativeApplication.
+        internal void ProcessRecord_RecoverApplication()
+        {
+            this._logger.name += " -RecoverApplication";
+            // Create new graphql operation recoverCloudNativeApplication
+            InitMutationRecoverCloudNativeApplication();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // refreshCloudNativeApplication.
+        internal void ProcessRecord_RefreshApplication()
+        {
+            this._logger.name += " -RefreshApplication";
+            // Create new graphql operation refreshCloudNativeApplication
+            InitMutationRefreshCloudNativeApplication();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // setCloudNativeGatewayKmsKeys.
         internal void ProcessRecord_SetGatewayKmsKeys()
         {
@@ -1023,6 +1508,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartSnapshotsIndexJob";
             // Create new graphql operation startCloudNativeSnapshotsIndexJob
             InitMutationStartCloudNativeSnapshotsIndexJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCloudNativeApplication.
+        internal void ProcessRecord_UpdateApplication()
+        {
+            this._logger.name += " -UpdateApplication";
+            // Create new graphql operation updateCloudNativeApplication
+            InitMutationUpdateCloudNativeApplication();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1159,6 +1653,100 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	workloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createCloudNativeApplication(input: CreateCloudNativeApplicationInput!): CreateCloudNativeApplicationReply!
+        internal void InitMutationCreateCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateCloudNativeApplicationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateCloudNativeApplication",
+                "($input: CreateCloudNativeApplicationInput!)",
+                "CreateCloudNativeApplicationReply",
+                Mutation.CreateCloudNativeApplication,
+                Mutation.CreateCloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+	# REQUIRED
+	cloudNativeAccountId = $someString
+	# REQUIRED
+	targetCloudNativeAccountId = $someString
+	# REQUIRED
+	region = @{
+		# OPTIONAL
+		region = @{
+			# OPTIONAL
+			awsRegion = $someAwsCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCommonRegion]) for enum values.
+			# OPTIONAL
+			azureRegion = $someAzureCommonRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCommonRegion]) for enum values.
+			# OPTIONAL
+			gcpRegion = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+		}
+	}
+	# REQUIRED
+	serviceConfigured = @{
+		# OPTIONAL
+		configurationEnabled = $someBoolean
+		# OPTIONAL
+		applicationCloudConfig = @{
+			# OPTIONAL
+			awsConfig = @{
+				# OPTIONAL
+				ec2Enabled = $someBoolean
+				# OPTIONAL
+				rdsEnabled = $someBoolean
+				# OPTIONAL
+				ebsEnabled = $someBoolean
+				# OPTIONAL
+				elbEnabled = $someBoolean
+				# OPTIONAL
+				s3Enabled = $someBoolean
+				# OPTIONAL
+				secretsEnabled = $someBoolean
+				# OPTIONAL
+				elasticacheEnabled = $someBoolean
+				# OPTIONAL
+				eksEnabled = $someBoolean
+				# OPTIONAL
+				ecrEnabled = $someBoolean
+				# OPTIONAL
+				lambdaEnabled = $someBoolean
+				# OPTIONAL
+				isEcsEnabled = $someBoolean
+			}
+		}
+	}
+	# REQUIRED
+	cloudType = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+	# OPTIONAL
+	resourceInclusionList = @(
+		$someString
+	)
+	# OPTIONAL
+	resourceExclusionList = @(
+		$someString
+	)
+	# OPTIONAL
+	matchingTags = @{
+		# REQUIRED
+		matchingTagsList = @(
+			@{
+				# OPTIONAL
+				key = $someString
+				# OPTIONAL
+				value = $someString
+			}
+		)
+	}
 }"
             );
         }
@@ -1306,6 +1894,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // deleteCloudNativeApplication(input: DeleteCloudNativeApplicationInput!): Void
+        internal void InitMutationDeleteCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteCloudNativeApplicationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteCloudNativeApplication",
+                "($input: DeleteCloudNativeApplicationInput!)",
+                "System.String",
+                Mutation.DeleteCloudNativeApplication,
+                Mutation.DeleteCloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteCloudNativeLabelRule(input: DeleteCloudNativeLabelRuleInput!): Void
         internal void InitMutationDeleteCloudNativeLabelRule()
         {
@@ -1417,6 +2028,190 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // recoverCloudNativeApplication(input: RecoverCloudNativeApplicationInput!): RecoverCloudNativeApplicationReply!
+        internal void InitMutationRecoverCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverCloudNativeApplicationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverCloudNativeApplication",
+                "($input: RecoverCloudNativeApplicationInput!)",
+                "RecoverCloudNativeApplicationReply",
+                Mutation.RecoverCloudNativeApplication,
+                Mutation.RecoverCloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	applicationId = $someString
+	# REQUIRED
+	targetCloudNativeAccountId = $someString
+	# REQUIRED
+	recoveryName = $someString
+	# REQUIRED
+	errorHandling = $someRecoveryErrorHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryErrorHandling]) for enum values.
+	# OPTIONAL
+	workloadSnapshots = @(
+		@{
+			# REQUIRED
+			workloadId = $someString
+			# OPTIONAL
+			snapshotId = $someString
+		}
+	)
+	# OPTIONAL
+	preRecoveryHook = @{
+		# REQUIRED
+		hookInfo = @{
+			# OPTIONAL
+			hook = @{
+				# OPTIONAL
+				awsLambda = @{
+					# REQUIRED
+					lambdaId = $someString
+				}
+			}
+		}
+		# REQUIRED
+		failureHandling = $someHookFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HookFailureHandling]) for enum values.
+	}
+	# OPTIONAL
+	postRecoveryHook = @{
+		# REQUIRED
+		hookInfo = @{
+			# OPTIONAL
+			hook = @{
+				# OPTIONAL
+				awsLambda = @{
+					# REQUIRED
+					lambdaId = $someString
+				}
+			}
+		}
+		# REQUIRED
+		failureHandling = $someHookFailureHandling # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HookFailureHandling]) for enum values.
+	}
+	# OPTIONAL
+	vmPostRecoveryScriptEnabled = $someBoolean
+	# OPTIONAL
+	cloudSettings = @{
+		# OPTIONAL
+		awsSettings = @{
+			# OPTIONAL
+			networking = @{
+				# OPTIONAL
+				vpcOption = @{
+					# OPTIONAL
+					cloneVpcSameCidr = @{
+						# OPTIONAL
+						preserveCidr = $someBoolean
+					}
+					# OPTIONAL
+					cloneVpcAlternateCidr = @{
+						# REQUIRED
+						vpcCidrMappings = @(
+							@{
+								# REQUIRED
+								sourceVpcId = $someString
+								# REQUIRED
+								cidrMappings = @(
+									@{
+										# REQUIRED
+										sourceCidr = $someString
+										# REQUIRED
+										targetCidr = $someString
+									}
+								)
+							}
+						)
+					}
+					# OPTIONAL
+					useExistingVpc = @{
+						# REQUIRED
+						vpcIdMappings = @(
+							@{
+								# REQUIRED
+								sourceVpcId = $someString
+								# REQUIRED
+								targetVpcId = $someString
+							}
+						)
+					}
+				}
+			}
+			# OPTIONAL
+			kms = @{
+				# REQUIRED
+				kmsKeyId = $someString
+			}
+			# OPTIONAL
+			dns = @{
+				# OPTIONAL
+				shouldUpdateDns = $someBoolean
+			}
+			# OPTIONAL
+			s3 = @{
+				# OPTIONAL
+				buckets = @(
+					@{
+						# REQUIRED
+						workloadId = $someString
+						# OPTIONAL
+						shouldRecoverFullBucket = $someBoolean
+						# OPTIONAL
+						regexPatterns = @(
+							$someString
+						)
+						# OPTIONAL
+						destination = @{
+							# OPTIONAL
+							existingBucket = @{
+								# REQUIRED
+								destinationBucketArn = $someString
+							}
+							# OPTIONAL
+							newBucket = @{
+								# REQUIRED
+								destinationBucketName = $someString
+							}
+						}
+					}
+				)
+			}
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // refreshCloudNativeApplication(input: RefreshCloudNativeApplicationInput!): RefreshCloudNativeApplicationReply!
+        internal void InitMutationRefreshCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RefreshCloudNativeApplicationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRefreshCloudNativeApplication",
+                "($input: RefreshCloudNativeApplicationInput!)",
+                "RefreshCloudNativeApplicationReply",
+                Mutation.RefreshCloudNativeApplication,
+                Mutation.RefreshCloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	cloud = $someCloudServiceProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudServiceProvider]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // setCloudNativeGatewayKmsKeys(input: SetCloudNativeGatewayKmsKeysInput!): Void
         internal void InitMutationSetCloudNativeGatewayKmsKeys()
         {
@@ -1510,6 +2305,94 @@ $query.Var.input = @{
 	snapshotIds = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCloudNativeApplication(input: UpdateCloudNativeApplicationInput!): UpdateCloudNativeApplicationReply!
+        internal void InitMutationUpdateCloudNativeApplication()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCloudNativeApplicationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCloudNativeApplication",
+                "($input: UpdateCloudNativeApplicationInput!)",
+                "UpdateCloudNativeApplicationReply",
+                Mutation.UpdateCloudNativeApplication,
+                Mutation.UpdateCloudNativeApplicationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	targetCloudNativeAccountId = $someString
+	# OPTIONAL
+	serviceConfigured = @{
+		# OPTIONAL
+		configurationEnabled = $someBoolean
+		# OPTIONAL
+		applicationCloudConfig = @{
+			# OPTIONAL
+			awsConfig = @{
+				# OPTIONAL
+				ec2Enabled = $someBoolean
+				# OPTIONAL
+				rdsEnabled = $someBoolean
+				# OPTIONAL
+				ebsEnabled = $someBoolean
+				# OPTIONAL
+				elbEnabled = $someBoolean
+				# OPTIONAL
+				s3Enabled = $someBoolean
+				# OPTIONAL
+				secretsEnabled = $someBoolean
+				# OPTIONAL
+				elasticacheEnabled = $someBoolean
+				# OPTIONAL
+				eksEnabled = $someBoolean
+				# OPTIONAL
+				ecrEnabled = $someBoolean
+				# OPTIONAL
+				lambdaEnabled = $someBoolean
+				# OPTIONAL
+				isEcsEnabled = $someBoolean
+			}
+		}
+	}
+	# OPTIONAL
+	postRecoveryScriptConfigured = $someBoolean
+	# OPTIONAL
+	resourceInclusionList = @{
+		# OPTIONAL
+		uris = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	resourceExclusionList = @{
+		# OPTIONAL
+		uris = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	matchingTags = @{
+		# REQUIRED
+		matchingTagsList = @(
+			@{
+				# OPTIONAL
+				key = $someString
+				# OPTIONAL
+				value = $someString
+			}
+		)
+	}
 }"
             );
         }

@@ -1287,6 +1287,12 @@ and the filter is always combined with the unique-keyed JOIN on
 already bounded by the JOIN's index lookup.
 +mo:filter:db:table=cdm_pve_node
 +mo:filter:db:column=rbs_configured
+- PROXMOX_TAG_IS_REGISTERED - Filter Proxmox tags by whether they are registered on Rubrik CDM.
+Passing both "true" and "false" applies no filter.
++mo:filter:db:table=cdm_pve_tag
++mo:filter:db:column=is_registered
++mo:filter:db:index:key=NULL
++reason: is_registered is a NOT NULL boolean, too low-cardinality for an index to be selected; cdm_pve_tag holds one row per Proxmox tag (typically ~100, at most ~1,000 per account), so the optimizer scans it once and reaches managed_object and the hierarchy through primary-key lookups
 - POWER_PLATFORM_APP_PUBLISHER - Filter Power Platform apps by publisher (GUID).
 +mo:filter:db:table=saasapps_power_platform_apps
 +mo:filter:db:column=publisher_id
@@ -1619,9 +1625,9 @@ subscription of the account that owns their parent database.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
-- IRISDB_STORAGE_ARRAY_ID - Filter IRIS DB instances by the ID of the storage array backing the
-instance's volumes, resolved via the array id on the instance's
-storage spec.
+- IRISDB_STORAGE_ARRAY_ID - Filter IRIS DB instances by the IDs of the storage arrays backing the
+instance's volumes (up to 100 IDs), resolved via the array id on the
+instance's storage spec.
 +mo:filter:db:table=cdm_irisdb_instance
 +mo:filter:db:column=storage_spec
 +mo:filter:db:index:key=NULL
@@ -1636,4 +1642,34 @@ storage spec.
 +mo:filter:db:index:seq=2
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
-+reason: cdm_storage_array.fid is unique (1 row) and cluster_mds_index_v2 narrows cdm_irisdb_instance to that single cluster's instances before evaluating json_extract
++reason: cdm_storage_array.fid is unique (at most 100 rows matched via UNIQUE KEY fid) and cluster_mds_index_v2 narrows cdm_irisdb_instance to each matched array's cluster before evaluating json_extract
+- ORACLE_DATA_GUARD_TYPE - Filter Oracle databases by Data Guard type. Texts takes one or both of
+the CdmOracleDatabase.DataGuardType names NON_DATA_GUARD and
+DATA_GUARD_MEMBER; any other value is rejected. A database with no Data
+Guard type counts as NON_DATA_GUARD. Objects with no Oracle database
+record are dropped from the result. Data Guard groups have one, so
+restrict the object type to ORACLE_DATABASE to exclude them.
++mo:filter:db:table=cdm_oracle_db
++mo:filter:db:column=fid
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=data_guard_type
++mo:filter:db:index:key=NULL // low-cardinality column
+- ORACLE_DB_NAME_OR_UNIQUE_NAME - Filter Oracle databases by a case-insensitive substring match on the
+database name or the database unique name. Takes exactly one text of at
+most 255 bytes. Objects with no Oracle database record are dropped from
+the result. Data Guard groups have one, so restrict the object type to
+ORACLE_DATABASE to exclude them.
++mo:filter:db:table=cdm_oracle_db
++mo:filter:db:column=fid
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=db_unique_name
++mo:filter:db:index:key=NULL // substring match cannot use an index
++mo:filter:db:table=managed_object
++mo:filter:db:column=name
++mo:filter:db:index:key=NULL // substring match cannot use sort_by_name_index

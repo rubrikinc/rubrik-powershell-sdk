@@ -150,6 +150,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -243,6 +247,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -335,6 +343,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.id = $someString
     /// # OPTIONAL
@@ -509,6 +521,8 @@ $query.Var.fid = $someString"
         // activeDirectoryDomainControllers(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -518,6 +532,8 @@ $query.Var.fid = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -526,7 +542,7 @@ $query.Var.fid = $someString"
                 argDefs,
                 "query",
                 "QueryActiveDirectoryDomainControllers",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ActiveDirectoryDomainControllerConnection",
                 Query.ActiveDirectoryDomainControllers,
                 Query.ActiveDirectoryDomainControllersFieldSpec,
@@ -534,6 +550,10 @@ $query.Var.fid = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -604,6 +624,8 @@ $query.Var.filter = @(
         // activeDirectoryDomains(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -613,6 +635,8 @@ $query.Var.filter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -621,7 +645,7 @@ $query.Var.filter = @(
                 argDefs,
                 "query",
                 "QueryActiveDirectoryDomains",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "ActiveDirectoryDomainConnection",
                 Query.ActiveDirectoryDomains,
                 Query.ActiveDirectoryDomainsFieldSpec,
@@ -629,6 +653,10 @@ $query.Var.filter = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -699,6 +727,8 @@ $query.Var.filter = @(
         // activeDirectorySearchSnapshots(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     id: String!
         //     snapshotAfterDate: DateTime
         //     snapshotBeforeDate: DateTime
@@ -710,6 +740,8 @@ $query.Var.filter = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("id", "String!"),
                 Tuple.Create("snapshotAfterDate", "DateTime"),
                 Tuple.Create("snapshotBeforeDate", "DateTime"),
@@ -720,7 +752,7 @@ $query.Var.filter = @(
                 argDefs,
                 "query",
                 "QueryActiveDirectorySearchSnapshots",
-                "($first: Int,$after: String,$id: String!,$snapshotAfterDate: DateTime,$snapshotBeforeDate: DateTime,$name: String!,$activeDirectoryObjectType: ActiveDirectoryObjectType)",
+                "($first: Int,$after: String,$last: Int,$before: String,$id: String!,$snapshotAfterDate: DateTime,$snapshotBeforeDate: DateTime,$name: String!,$activeDirectoryObjectType: ActiveDirectoryObjectType)",
                 "ActiveDirectorySnappableSearchResponseConnection",
                 Query.ActiveDirectorySearchSnapshots,
                 Query.ActiveDirectorySearchSnapshotsFieldSpec,
@@ -728,6 +760,10 @@ $query.Var.filter = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.id = $someString
 # OPTIONAL

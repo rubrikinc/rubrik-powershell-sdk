@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rcvAws")]
         public RcvAwsArchivalMigrationTarget? RcvAws { get; set; }
 
+        //      C# -> RcvAzureArchivalMigrationTarget? RcvAzure
+        // GraphQL -> rcvAzure: RcvAzureArchivalMigrationTarget (type)
+        [JsonProperty("rcvAzure")]
+        public RcvAzureArchivalMigrationTarget? RcvAzure { get; set; }
+
         //      C# -> S3CompatibleArchivalMigrationTarget? S3Compatible
         // GraphQL -> s3Compatible: S3CompatibleArchivalMigrationTarget (type)
         [JsonProperty("s3Compatible")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public ArchivalMigrationTargetLocation Set(
         RcvAwsArchivalMigrationTarget? RcvAws = null,
+        RcvAzureArchivalMigrationTarget? RcvAzure = null,
         S3CompatibleArchivalMigrationTarget? S3Compatible = null
     ) 
     {
         if ( RcvAws != null ) {
             this.RcvAws = RcvAws;
+        }
+        if ( RcvAzure != null ) {
+            this.RcvAzure = RcvAzure;
         }
         if ( S3Compatible != null ) {
             this.S3Compatible = S3Compatible;
@@ -73,6 +82,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "rcvAws" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> RcvAzureArchivalMigrationTarget? RcvAzure
+        // GraphQL -> rcvAzure: RcvAzureArchivalMigrationTarget (type)
+        if (this.RcvAzure != null) {
+            var fspec = this.RcvAzure.AsFieldSpec(conf.Child("rcvAzure"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rcvAzure" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -113,6 +134,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RcvAws != null && ec.Excludes("rcvAws",false))
         {
             this.RcvAws = null;
+        }
+        //      C# -> RcvAzureArchivalMigrationTarget? RcvAzure
+        // GraphQL -> rcvAzure: RcvAzureArchivalMigrationTarget (type)
+        if (ec.Includes("rcvAzure",false))
+        {
+            if(this.RcvAzure == null) {
+
+                this.RcvAzure = new RcvAzureArchivalMigrationTarget();
+                this.RcvAzure.ApplyExploratoryFieldSpec(ec.NewChild("rcvAzure"));
+
+            } else {
+
+                this.RcvAzure.ApplyExploratoryFieldSpec(ec.NewChild("rcvAzure"));
+
+            }
+        }
+        else if (this.RcvAzure != null && ec.Excludes("rcvAzure",false))
+        {
+            this.RcvAzure = null;
         }
         //      C# -> S3CompatibleArchivalMigrationTarget? S3Compatible
         // GraphQL -> s3Compatible: S3CompatibleArchivalMigrationTarget (type)

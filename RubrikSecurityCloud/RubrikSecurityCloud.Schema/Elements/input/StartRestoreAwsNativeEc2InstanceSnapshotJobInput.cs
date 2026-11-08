@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("surgicalRecoveryConfig")]
         public SurgicalRecoveryConfigInput? SurgicalRecoveryConfig { get; set; }
 
+        //      C# -> TagsInput? CustomTags
+        // GraphQL -> customTags: TagsInput (input)
+        [JsonProperty("customTags")]
+        public TagsInput? CustomTags { get; set; }
+
 
         #endregion
 

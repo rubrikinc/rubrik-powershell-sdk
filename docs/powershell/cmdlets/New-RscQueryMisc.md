@@ -38,9 +38,11 @@ Returns members matching an AD group spec, in a given org.
 ### advolumeexports
 Active Directory volume export connection.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filters - list of AdVolumeExportFilters: Filter for Active Directory volume exports.
     - sortBy - AdVolumeExportSortByInput: Sort by argument for Active Directory volume exports.
 - Returns AdVolumeExportConnection.
@@ -145,6 +147,36 @@ participate in app access paths for a given user.
     - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
     - filter - AppAccessPrincipalsFilterInput: Filter to be applied when retrieving app access principals.
 - Returns AppAccessPrincipalConnection.
+### applicationrecoveries
+List application recoveries for a given application.
+
+- There is a single argument of type System.String.
+- Returns ListApplicationRecoveriesReply.
+### applicationresourcecount
+Get count of application resources matching filters.
+Returns total count and breakdown by resource type.
+
+- There is a single argument of type GetApplicationResourceCountRequest.
+- Returns GetApplicationResourceCountResponse.
+### applicationresources
+List application resources for a specific application.
+Returns resources that have been identified by the application builder.
+Supports filtering by resource type, properties, and tags.
+Used for application inventory and dependency visualization.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - applicationId - System.String: Application managed object ID.
+    - resourceTypes - list of ApplicationResourceTypeFilterInputs: Resource types to filter by.
+    - propertyFilters - list of PropertyFilterInputs: Property key-value filters to apply.
+    - sortBy - ConfigSortByParam: Sort field and order for results.
+    - loadMetadata - System.Boolean: When true, includes resource-type-specific metadata
+(e.g., VPC CIDR blocks, load balancer details) in each ConfigResource.
+    - discoveryMethod - DiscoveryMethodFilterInput: Discovery method filter.
+- Returns ApplicationResourceConnection.
 ### aremultigeobackupsenabled
 Retrieves the status of multi-geo backups for the specified organization.
 
@@ -493,6 +525,40 @@ Retrieve systems managed by the Cloud Direct site.
 
 - There is a single argument of type CloudDirectSystemsInput.
 - Returns CloudDirectSystems.
+### configresourcecount
+Get count of config resources matching filters.
+Returns total count and optional breakdown by resource type.
+
+- There is a single argument of type GetConfigResourceCountRequest.
+- Returns GetConfigResourceCountResponse.
+### configresourcepropertyvalues
+List unique property values for a specific property key.
+Used to populate filter dropdowns and discover available values.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - resourceType - ConfigResourceType: Resource type to query property values for.
+    - propertyName - ConfigResourcePropertyName: Property name to get unique values for.
+    - searchText - System.String: Optional search text to filter property values.
+- Returns ConfigResourcePropertyValueConnection.
+### configresources
+List config resources with filtering, sorting, and pagination.
+Returns paginated list of resources matching the specified criteria.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - cloudNativeAccountId - System.String: Cloud native account ID to filter resources by.
+    - resourceTypes - list of ConfigResourceTypes: Resource types to filter by.
+    - region - CloudRegionInput: Region to filter by.
+    - tags - list of TagFilterInputs: Tag key-value pairs to filter by.
+    - sortBy - ConfigSortByParam: Sort field and order for results.
+- Returns ConfigResourceConnection.
 ### configuredgroupmembers
 Returns objects that match the specifications of a configured group.
 
@@ -655,6 +721,16 @@ Retrieves account specific backup information.
     - eventObjectTypes - list of EventObjectTypes: Specifies the event object types to scope the
 lookup to. Defaults to the repository types for the org when empty.
 - Returns DevOpsBackupJobInformation.
+### devopsobjectstatssummary
+Retrieves aggregated statistics, such as pull request and issue counts, for the DevOps
+objects under an organization or project that you have access to. A statistic is null when
+no value is available for it. The response lists one entry per requested statistic, in the
+requested order.
+
+- There are 2 arguments.
+    - ancestorId - System.String: The ID of the organization or project to retrieve statistics for.
+    - keys - list of DevOpsObjectStatKeys: The statistics to return. If empty, all statistics are returned.
+- Returns DevOpsObjectStats.
 ### devopsprotectedobjectcountsummary
 DevOps Protected object count summary.
 
@@ -756,6 +832,23 @@ Retrieve event digests for specific recipients.
 
 - There is a single argument of type AllEventDigestsInput.
 - Returns list of EventDigests.
+### eventseriesofworkloadgroup
+Returns the event series of every member of a workload group (for example a
+cloud-native application) as a single paginated list. Results are narrowed
+to the members the caller is authorized to view.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: An opaque cursor returned from a previous query's endCursor field. Pass this value verbatim to retrieve the next page of results.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: An opaque cursor returned from a previous query's startCursor field. Pass this value verbatim to retrieve the previous page of results.
+    - groupParentId - System.String: Identifies the group to restrict the query to.
+    - objectTypes - list of ObjectTypeEnums: Optionally restricts the query to specific member
+object types.
+    - filters - ActivitySeriesFilter: Filters applied on top of the group membership.
+    - sortByField - ActivitySeriesSortField: Sort field for the event series.
+    - sortOrder - SortOrder: Sort order of the event series.
+- Returns EventSeriesOfWorkloadGroupConnection.
 ### exocomputegetsupportedhealthchecks
 ExocomputeGetSupportedHealthChecks returns the supported health check
 details for the given cloud type for Exocompute.

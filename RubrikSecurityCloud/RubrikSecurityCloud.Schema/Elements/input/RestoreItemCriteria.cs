@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RecordFilter? ItemFilters
+        // GraphQL -> itemFilters: RecordFilter! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("itemFilters")]
+        public RecordFilter? ItemFilters { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         [JsonProperty("snapshotId")]
@@ -44,22 +51,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sortByParam")]
         public SaasSortByParam? SortByParam { get; set; }
 
-        //      C# -> SaasRtpPointInTimeInfo? RtpPointInTimeInfo
-        // GraphQL -> rtpPointInTimeInfo: SaasRtpPointInTimeInfo (input)
-        [JsonProperty("rtpPointInTimeInfo")]
-        public SaasRtpPointInTimeInfo? RtpPointInTimeInfo { get; set; }
-
-        //      C# -> RecordFilter? ItemFilters
-        // GraphQL -> itemFilters: RecordFilter! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("itemFilters")]
-        public RecordFilter? ItemFilters { get; set; }
-
         //      C# -> ChildRestoreItemCriteria? ChildRestoreItemCriteria
         // GraphQL -> childRestoreItemCriteria: ChildRestoreItemCriteria (input)
         [JsonProperty("childRestoreItemCriteria")]
         public ChildRestoreItemCriteria? ChildRestoreItemCriteria { get; set; }
+
+        //      C# -> SaasRtpPointInTimeInfo? RtpPointInTimeInfo
+        // GraphQL -> rtpPointInTimeInfo: SaasRtpPointInTimeInfo (input)
+        [JsonProperty("rtpPointInTimeInfo")]
+        public SaasRtpPointInTimeInfo? RtpPointInTimeInfo { get; set; }
 
 
         #endregion

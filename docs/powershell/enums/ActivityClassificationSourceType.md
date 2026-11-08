@@ -6,3 +6,4 @@ A source that can contribute evidence to an activity's classification.
 - WORKDAY - Workday HR system.
 - SAILPOINT - SailPoint identity governance.
 - IOC_FILE - An indicators-of-compromise file uploaded by the user.
+- LEGITIMATE_IP_FILE - A legitimate IP list uploaded by the user.

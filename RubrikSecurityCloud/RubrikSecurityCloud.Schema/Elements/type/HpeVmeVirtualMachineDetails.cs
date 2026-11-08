@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AgentStatus
+        // GraphQL -> agentStatus: String (scalar)
+        [JsonProperty("agentStatus")]
+        public System.String? AgentStatus { get; set; }
+
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String! (scalar)
         [JsonProperty("hpeVmeHostId")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HpeVmeVirtualMachineDetails Set(
+        System.String? AgentStatus = null,
         System.String? HpeVmeHostId = null,
         System.String? HpeVmeVmId = null,
         System.String? SnapshotConsistencyMandate = null
     ) 
     {
+        if ( AgentStatus != null ) {
+            this.AgentStatus = AgentStatus;
+        }
         if ( HpeVmeHostId != null ) {
             this.HpeVmeHostId = HpeVmeHostId;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? AgentStatus
+        // GraphQL -> agentStatus: String (scalar)
+        if (this.AgentStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentStatus\n" ;
+            } else {
+                s += ind + "agentStatus\n" ;
+            }
+        }
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String! (scalar)
         if (this.HpeVmeHostId != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? AgentStatus
+        // GraphQL -> agentStatus: String (scalar)
+        if (ec.Includes("agentStatus",true))
+        {
+            if(this.AgentStatus == null) {
+
+                this.AgentStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentStatus != null && ec.Excludes("agentStatus",true))
+        {
+            this.AgentStatus = null;
+        }
         //      C# -> System.String? HpeVmeHostId
         // GraphQL -> hpeVmeHostId: String! (scalar)
         if (ec.Includes("hpeVmeHostId",true))

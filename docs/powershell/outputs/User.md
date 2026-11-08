@@ -37,6 +37,8 @@ User account details.
   - The number of unread notifications for the current user.
 - patId: System.String
   - The user's active Personal Access Token ID.
+- scimDeactivatedAt: DateTime
+  - The time SCIM deactivated the user, if it did.
 - inheritedRoles: list of Roles
   - Roles inherited by the user.
 - directlyAssignedRoles: list of Roles

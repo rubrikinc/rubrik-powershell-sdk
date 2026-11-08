@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 53
+    /// Create a new RscQuery object for any of the 54
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, StartRefreshLocalSubscriptionJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 53 operations
+    /// There are 54 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportLocalVirtualMachineJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, StartRefreshLocalSubscriptionJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -150,6 +150,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		name = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -230,6 +232,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				healthCheckVmNamePrefix = $someString
     /// 				# OPTIONAL
     /// 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksOutboundType = $someAksOutboundType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksOutboundType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -363,6 +367,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isAsynchronous = $someBoolean
     /// 	# OPTIONAL
     /// 	entraIdGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2615,6 +2621,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartRefreshLocalSubscriptionJob operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: StartRefreshLocalSubscriptionJob
+    /// 
+    /// $query = New-RscMutationAzure -Operation StartRefreshLocalSubscriptionJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	subscriptionNativeId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: StartRefreshAzureLocalSubscriptionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UnmapCloudAccountExocomputeSubscription operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -3555,6 +3592,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartExportLocalVirtualMachineJob",
                 "StartExportSqlDatabaseDbJob",
                 "StartExportSqlManagedInstanceDbJob",
+                "StartRefreshLocalSubscriptionJob",
                 "UnmapCloudAccountExocomputeSubscription",
                 "UnmapPersistentStorageSubscription",
                 "UpdateAccount",
@@ -3698,6 +3736,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartExportSqlManagedInstanceDbJob":
                         this.ProcessRecord_StartExportSqlManagedInstanceDbJob();
+                        break;
+                    case "StartRefreshLocalSubscriptionJob":
+                        this.ProcessRecord_StartRefreshLocalSubscriptionJob();
                         break;
                     case "UnmapCloudAccountExocomputeSubscription":
                         this.ProcessRecord_UnmapCloudAccountExocomputeSubscription();
@@ -4097,6 +4138,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // startRefreshAzureLocalSubscriptionJob.
+        internal void ProcessRecord_StartRefreshLocalSubscriptionJob()
+        {
+            this._logger.name += " -StartRefreshLocalSubscriptionJob";
+            // Create new graphql operation startRefreshAzureLocalSubscriptionJob
+            InitMutationStartRefreshAzureLocalSubscriptionJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // unmapAzureCloudAccountExocomputeSubscription.
         internal void ProcessRecord_UnmapCloudAccountExocomputeSubscription()
         {
@@ -4308,6 +4358,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		name = $someString
 	}
+	# OPTIONAL
+	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
 }"
             );
         }
@@ -4380,6 +4432,8 @@ $query.Var.input = @{
 				healthCheckVmNamePrefix = $someString
 				# OPTIONAL
 				aksPrivateDnsZoneMode = $someAksPrivateDnsZoneMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksPrivateDnsZoneMode]) for enum values.
+				# OPTIONAL
+				aksOutboundType = $someAksOutboundType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AksOutboundType]) for enum values.
 			}
 		}
 	)
@@ -4505,6 +4559,8 @@ $query.Var.input = @{
 	isAsynchronous = $someBoolean
 	# OPTIONAL
 	entraIdGroupId = $someString
+	# OPTIONAL
+	serviceType = $someAzureCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountServiceType]) for enum values.
 }"
             );
         }
@@ -6459,6 +6515,29 @@ $query.Var.input = @{
 	serviceTier = $someString
 	# OPTIONAL
 	serviceObjectiveName = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startRefreshAzureLocalSubscriptionJob(input: StartRefreshAzureLocalSubscriptionJobInput!): StartRefreshAzureLocalSubscriptionJobReply!
+        internal void InitMutationStartRefreshAzureLocalSubscriptionJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartRefreshAzureLocalSubscriptionJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartRefreshAzureLocalSubscriptionJob",
+                "($input: StartRefreshAzureLocalSubscriptionJobInput!)",
+                "StartRefreshAzureLocalSubscriptionJobReply",
+                Mutation.StartRefreshAzureLocalSubscriptionJob,
+                Mutation.StartRefreshAzureLocalSubscriptionJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	subscriptionNativeId = $someString
 }"
             );
         }

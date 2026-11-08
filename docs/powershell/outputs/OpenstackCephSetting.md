@@ -19,6 +19,9 @@ The Ceph keyring for authentication (optional).
 - volumePoolName: System.String
   - Required. Supported in v9.5+
 The name of the Ceph volume pool.
+- cephUser: System.String
+  - Supported in v9.6+
+The Ceph user to authenticate as, for example `cinder`. A leading `client.` prefix is removed. When absent, the `client.admin` user is used.
 - monHosts: list of OpenstackMonHosts
   - Required. Supported in v9.5+
 The list of Ceph monitor hosts.

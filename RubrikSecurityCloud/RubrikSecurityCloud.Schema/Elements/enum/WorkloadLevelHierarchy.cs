@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANTHROPIC_DEVICE")]
         ANTHROPIC_DEVICE,
 
+        [EnumMember(Value = "ANTHROPIC_ORG_LOCAL_SESSIONS")]
+        ANTHROPIC_ORG_LOCAL_SESSIONS,
+
         [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
         ANTHROPIC_ORG_SETTINGS,
 
@@ -83,6 +86,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
+
+        [EnumMember(Value = "GCP_GCS_BUCKET")]
+        GCP_GCS_BUCKET,
 
         [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
         GLUE_ICEBERG_TABLE,

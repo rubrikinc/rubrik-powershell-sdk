@@ -15,6 +15,12 @@ Clear credentials for the user with authorization to perform database backups. C
 
 - There is a single argument of type ClearCloudNativeSqlServerBackupCredentialsInput.
 - Returns ClearCloudNativeSqlServerBackupCredentialsReply.
+### createapplication
+CreateCloudNativeApplication creates a new cloud native application
+definition.
+
+- There is a single argument of type CreateCloudNativeApplicationInput.
+- Returns CreateCloudNativeApplicationReply.
 ### createlabelrule
 Create cloud native label rule
 
@@ -26,6 +32,11 @@ Create cloud native tag rule
 
 - There is a single argument of type CreateCloudNativeTagRuleInput.
 - Returns CreateCloudNativeTagRuleReply.
+### deleteapplication
+DeleteCloudNativeApplication deletes a cloud native application by ID.
+
+- There is a single argument of type DeleteCloudNativeApplicationInput.
+- Returns System.String.
 ### deletelabelrule
 Delete cloud native label rule.
 
@@ -41,6 +52,17 @@ Download files from a cloud-native snapshot to a cloud download location or a vi
 
 - There is a single argument of type CloudNativeDownloadFilesInput.
 - Returns DownloadFilesReply.
+### recoverapplication
+RecoverCloudNativeApplication triggers a full workload
+recovery for a cloud native application.
+
+- There is a single argument of type RecoverCloudNativeApplicationInput.
+- Returns RecoverCloudNativeApplicationReply.
+### refreshapplication
+RefreshCloudNativeApplication refreshes a cloud native application.
+
+- There is a single argument of type RefreshCloudNativeApplicationInput.
+- Returns RefreshCloudNativeApplicationReply.
 ### setgatewaykmskeys
 SetCloudNativeGatewayKmsKeys sets the map of the region to the KMS key
 ARN for gateway encryption.
@@ -57,6 +79,11 @@ Create index of cloudnative snapshots
 
 - There is a single argument of type StartCloudNativeSnapshotsIndexJobInput.
 - Returns BatchAsyncJobStatus.
+### updateapplication
+UpdateCloudNativeApplication updates an existing cloud native application.
+
+- There is a single argument of type UpdateCloudNativeApplicationInput.
+- Returns UpdateCloudNativeApplicationReply.
 ### updatecustomersettings
 Updates the cloud-native customer settings for the calling account and
 returns the updated values. Only the fields provided in the input are

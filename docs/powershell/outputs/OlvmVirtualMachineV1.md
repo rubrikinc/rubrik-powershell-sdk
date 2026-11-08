@@ -55,6 +55,9 @@ cluster. Null when the source cluster is unknown.
   - Post backup script configuration.
 - postSnapScript: OlvmBackupScript
   - Post snapshot script configuration.
+- powerStatus: OlvmVirtualMachinePowerStatus
+  - Power status of the virtual machine. Unset until the cluster has synced a
+status OLVM reports as powered on, powered off or suspended.
 - reportWorkload: Snappable
   - Contains statistics for the protected objects, including physical bytes and archive storage for virtual machine archival.
 - slaPauseStatus: System.Boolean

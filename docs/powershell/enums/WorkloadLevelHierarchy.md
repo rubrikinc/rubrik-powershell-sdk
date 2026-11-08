@@ -42,10 +42,12 @@
 - M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.
 - ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - POWER_PLATFORM_DESKTOP_FLOW - Power Platform desktop flow.
+- ANTHROPIC_ORG_LOCAL_SESSIONS - Claude local sessions of an Anthropic org.
 - AzureNativeVirtualMachine
 - POWER_PLATFORM_AI_FLOW - Power Platform AI flow.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform classic workflow.
+- GCP_GCS_BUCKET - GCP Cloud Storage bucket.
 - ANTHROPIC_ORG_SETTINGS - Anthropic org settings.
 - AUTH0_TENANT - Auth0 tenant.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.

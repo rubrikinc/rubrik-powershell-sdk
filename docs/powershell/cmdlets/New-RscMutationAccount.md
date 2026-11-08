@@ -65,13 +65,14 @@ Generate TOTP secret for a user.
 ### mutaterole
 Creates a role if `roleId` is not provided; otherwise updates the existing role.
 
-- There are 6 arguments.
+- There are 7 arguments.
     - roleId - System.String: ID of the role.
     - name - System.String: Name of the role.
     - description - System.String: Description of the role.
-    - permissions - list of PermissionInputs: Permissions in the role.
+    - permissions - list of PermissionInputs: Object-scoped permissions in the role. A role is either object-scoped (permissions) or tag-scoped (tagPermissions), never both.
     - protectableClusters - list of System.Strings: List of protectable clusters.
     - isSynced - System.Boolean: Determines whether the role is marked to be synced to Rubrik CDM; false if null.
+    - tagPermissions - list of TagPermissionInputs: Tag-scoped permissions in the role. A role is either object-scoped (permissions) or tag-scoped (tagPermissions), never both.
 - Returns System.String.
 ### updateorg
 Update an organization.

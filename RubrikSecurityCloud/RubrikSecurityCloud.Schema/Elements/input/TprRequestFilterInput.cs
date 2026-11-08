@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reqIdPartial")]
         public System.String? ReqIdPartial { get; set; }
 
+        //      C# -> List<TprRule>? TprRules
+        // GraphQL -> tprRules: [TprRule!] (enum)
+        [JsonProperty("tprRules")]
+        public List<TprRule>? TprRules { get; set; }
+
 
         #endregion
 

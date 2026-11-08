@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksNodeCountBucket")]
         public AksNodeCountBucket? AksNodeCountBucket { get; set; }
 
+        //      C# -> AksOutboundType? AksOutboundType
+        // GraphQL -> aksOutboundType: AksOutboundType! (enum)
+        [JsonProperty("aksOutboundType")]
+        public AksOutboundType? AksOutboundType { get; set; }
+
         //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
         // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode! (enum)
         [JsonProperty("aksPrivateDnsZoneMode")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         AksClusterAccessType? AksClusterAccessType = null,
         AksProvisionTier? AksClusterTier = null,
         AksNodeCountBucket? AksNodeCountBucket = null,
+        AksOutboundType? AksOutboundType = null,
         AksPrivateDnsZoneMode? AksPrivateDnsZoneMode = null,
         List<System.String>? AdditionalWhitelistIps = null,
         System.String? AksCustomPrivateDnsZoneId = null,
@@ -136,6 +142,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AksNodeCountBucket != null ) {
             this.AksNodeCountBucket = AksNodeCountBucket;
+        }
+        if ( AksOutboundType != null ) {
+            this.AksOutboundType = AksOutboundType;
         }
         if ( AksPrivateDnsZoneMode != null ) {
             this.AksPrivateDnsZoneMode = AksPrivateDnsZoneMode;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "aksNodeCountBucket\n" ;
             } else {
                 s += ind + "aksNodeCountBucket\n" ;
+            }
+        }
+        //      C# -> AksOutboundType? AksOutboundType
+        // GraphQL -> aksOutboundType: AksOutboundType! (enum)
+        if (this.AksOutboundType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "aksOutboundType\n" ;
+            } else {
+                s += ind + "aksOutboundType\n" ;
             }
         }
         //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
@@ -391,6 +409,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AksNodeCountBucket != null && ec.Excludes("aksNodeCountBucket",true))
         {
             this.AksNodeCountBucket = null;
+        }
+        //      C# -> AksOutboundType? AksOutboundType
+        // GraphQL -> aksOutboundType: AksOutboundType! (enum)
+        if (ec.Includes("aksOutboundType",true))
+        {
+            if(this.AksOutboundType == null) {
+
+                this.AksOutboundType = new AksOutboundType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksOutboundType != null && ec.Excludes("aksOutboundType",true))
+        {
+            this.AksOutboundType = null;
         }
         //      C# -> AksPrivateDnsZoneMode? AksPrivateDnsZoneMode
         // GraphQL -> aksPrivateDnsZoneMode: AksPrivateDnsZoneMode! (enum)

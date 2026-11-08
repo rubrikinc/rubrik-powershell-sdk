@@ -73,3 +73,10 @@ All reporting attributes.
 (Snapshot, Archival, Compute, Transient, Replication).
 - CLOUD_COST_ACCOUNT_ID - The raw native cloud account id attribute in the cloud cost report
 (e.g. the 12-digit AWS account number), unresolved to a name.
+- DATA_CATEGORY - The data category of a data type in the Blast Radius report.
+- COVERAGE - Splits the objects in scope of the Blast Radius report into those with
+and without sensitive data. Used by the report's Coverage chart.
+- DATA_TYPE - The data type of a Blast Radius Data Types row.
+- SENSITIVITY_LEVEL - The sensitivity level of a Blast Radius data type or object.
+- DATA_DISCOVERY_SCAN_STATUS - Whether a Blast Radius object has been scanned for sensitive data.
+- LAST_SCANNED_TIME - When a Blast Radius object was last scanned for sensitive data.

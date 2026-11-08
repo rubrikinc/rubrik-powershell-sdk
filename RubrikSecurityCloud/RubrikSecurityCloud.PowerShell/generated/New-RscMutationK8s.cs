@@ -152,6 +152,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		region = $someString
     /// 		# OPTIONAL
+    /// 		discoveryScope = @{
+    /// 			# OPTIONAL
+    /// 			labelSelectors = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					key = $someString
+    /// 					# REQUIRED
+    /// 					value = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			namespaces = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
     /// 		onboardingType = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
@@ -1491,6 +1507,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		dataPathTransport = $someString
     /// 		# OPTIONAL
+    /// 		discoveryScope = @{
+    /// 			# OPTIONAL
+    /// 			labelSelectors = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					key = $someString
+    /// 					# REQUIRED
+    /// 					value = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			namespaces = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
@@ -2044,6 +2076,22 @@ $query.Var.input = @{
 		dataPathTransport = $someString
 		# OPTIONAL
 		region = $someString
+		# OPTIONAL
+		discoveryScope = @{
+			# OPTIONAL
+			labelSelectors = @(
+				@{
+					# REQUIRED
+					key = $someString
+					# REQUIRED
+					value = $someString
+				}
+			)
+			# OPTIONAL
+			namespaces = @(
+				$someString
+			)
+		}
 		# OPTIONAL
 		onboardingType = $someString
 		# OPTIONAL
@@ -3199,6 +3247,22 @@ $query.Var.input = @{
 		accessToken = $someString
 		# OPTIONAL
 		dataPathTransport = $someString
+		# OPTIONAL
+		discoveryScope = @{
+			# OPTIONAL
+			labelSelectors = @(
+				@{
+					# REQUIRED
+					key = $someString
+					# REQUIRED
+					value = $someString
+				}
+			)
+			# OPTIONAL
+			namespaces = @(
+				$someString
+			)
+		}
 		# OPTIONAL
 		cloudAccountId = $someString
 		# OPTIONAL

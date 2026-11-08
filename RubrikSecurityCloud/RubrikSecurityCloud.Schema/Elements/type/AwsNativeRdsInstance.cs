@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AwsNativeRdsInstance
  
-    public class AwsNativeRdsInstance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class AwsNativeRdsInstance: BaseType, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, RecoveryPlanChildWorkload
     {
         #region members
 
@@ -120,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
         [JsonProperty("isInfrastructureAlertsEnabled")]
         public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        [JsonProperty("isInfrastructureAlertsRegionConnected")]
+        public System.Boolean? IsInfrastructureAlertsRegionConnected { get; set; }
 
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)
@@ -436,6 +441,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsInfrastructureAlertsEnabled = null,
+        System.Boolean? IsInfrastructureAlertsRegionConnected = null,
         System.Boolean? IsMultiAz = null,
         System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
@@ -534,6 +540,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsInfrastructureAlertsEnabled != null ) {
             this.IsInfrastructureAlertsEnabled = IsInfrastructureAlertsEnabled;
+        }
+        if ( IsInfrastructureAlertsRegionConnected != null ) {
+            this.IsInfrastructureAlertsRegionConnected = IsInfrastructureAlertsRegionConnected;
         }
         if ( IsMultiAz != null ) {
             this.IsMultiAz = IsMultiAz;
@@ -850,6 +859,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isInfrastructureAlertsEnabled\n" ;
             } else {
                 s += ind + "isInfrastructureAlertsEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        if (this.IsInfrastructureAlertsRegionConnected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInfrastructureAlertsRegionConnected\n" ;
+            } else {
+                s += ind + "isInfrastructureAlertsRegionConnected\n" ;
             }
         }
         //      C# -> System.Boolean? IsMultiAz
@@ -1621,6 +1639,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsInfrastructureAlertsEnabled != null && ec.Excludes("isInfrastructureAlertsEnabled",true))
         {
             this.IsInfrastructureAlertsEnabled = null;
+        }
+        //      C# -> System.Boolean? IsInfrastructureAlertsRegionConnected
+        // GraphQL -> isInfrastructureAlertsRegionConnected: Boolean (scalar)
+        if (ec.Includes("isInfrastructureAlertsRegionConnected",true))
+        {
+            if(this.IsInfrastructureAlertsRegionConnected == null) {
+
+                this.IsInfrastructureAlertsRegionConnected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInfrastructureAlertsRegionConnected != null && ec.Excludes("isInfrastructureAlertsRegionConnected",true))
+        {
+            this.IsInfrastructureAlertsRegionConnected = null;
         }
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)

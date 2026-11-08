@@ -267,6 +267,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,
 
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 

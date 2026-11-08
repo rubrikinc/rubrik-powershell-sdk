@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region HyperVvirtualMachine
  
-    public class HyperVvirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, HyperVclusterDescendantType, HyperVscvmmDescendantType, HypervServerDescendantType, HypervServerLogicalChildType, HypervTopLevelDescendantType
+    public class HyperVvirtualMachine: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, HyperVclusterDescendantType, HyperVscvmmDescendantType, HypervServerDescendantType, HypervServerLogicalChildType, HypervTopLevelDescendantType, RecoveryPlanChildWorkload
     {
         #region members
 
@@ -346,6 +346,7 @@ namespace RubrikSecurityCloud.Types
                 new RscGqlVars(null, missedSnapshotGroupByConnectionArgs, null, true);
             Tuple<string, string>[] newestSnapshotArgs = {
                     Tuple.Create("beforeTime", "DateTime"),
+                    Tuple.Create("excludeLatestSnapshot", "Boolean"),
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);

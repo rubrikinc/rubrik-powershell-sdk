@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANTHROPIC_ORG")]
         ANTHROPIC_ORG,
 
+        [EnumMember(Value = "ANTHROPIC_ORG_LOCAL_SESSIONS")]
+        ANTHROPIC_ORG_LOCAL_SESSIONS,
+
         [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
         ANTHROPIC_ORG_SETTINGS,
 
@@ -408,8 +411,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE_USER")]
         M365_BACKUP_STORAGE_USER,
 
+        [EnumMember(Value = "M365_CONFIGS_DEFENDER")]
+        M365_CONFIGS_DEFENDER,
+
+        [EnumMember(Value = "M365_CONFIGS_EXCHANGE")]
+        M365_CONFIGS_EXCHANGE,
+
+        [EnumMember(Value = "M365_CONFIGS_ONEDRIVE")]
+        M365_CONFIGS_ONEDRIVE,
+
         [EnumMember(Value = "M365_CONFIGS_ORG")]
         M365_CONFIGS_ORG,
+
+        [EnumMember(Value = "M365_CONFIGS_PURVIEW")]
+        M365_CONFIGS_PURVIEW,
+
+        [EnumMember(Value = "M365_CONFIGS_SHAREPOINT")]
+        M365_CONFIGS_SHAREPOINT,
+
+        [EnumMember(Value = "M365_CONFIGS_TEAMS")]
+        M365_CONFIGS_TEAMS,
 
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT")]
         MANAGED_VOLUME_EXPORT,

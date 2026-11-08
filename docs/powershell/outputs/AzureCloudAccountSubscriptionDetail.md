@@ -13,5 +13,7 @@ Azure Cloud Account Subscription details for a given feature.
   - The Azure application backing this subscription, together with the authentication method it is bound to. Unset when the app cannot be resolved.
 - featureDetail: AzureCloudAccountFeatureDetail
   - One of the enabled features on this subscription.
+- serviceType: AzureCloudAccountServiceType
+  - Whether the subscription is onboarded for BaaS or non-BaaS.
 - azureLocalClusterCount: System.Int32
   - Number of Azure Local clusters in this subscription. Populated only for Azure Local subscriptions; null otherwise.

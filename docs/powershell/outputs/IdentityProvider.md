@@ -37,3 +37,5 @@ ForceAuthn="true", asking the IdP to re-authenticate the user on
 every login instead of reusing a cached IdP session.
 - allowIdpInitiatedSso: System.Boolean
   - Specifies whether IdP-initiated SSO is allowed for this identity provider.
+- scimConfiguration: ScimConfiguration
+  - SCIM provisioning configuration of the identity provider.

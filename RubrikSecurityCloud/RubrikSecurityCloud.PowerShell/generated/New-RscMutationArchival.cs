@@ -801,6 +801,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				encryptionKeyInDer = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			rcvAzure = @{
+    /// 				# REQUIRED
+    /// 				region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+    /// 				# REQUIRED
+    /// 				rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+    /// 				# REQUIRED
+    /// 				redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 				# OPTIONAL
+    /// 				encryptionKeyInDer = $someString
+    /// 			}
     /// 		}
     /// 	}
     /// }
@@ -2111,6 +2122,17 @@ $query.Var.input = @{
 				# REQUIRED
 				redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 				# REQUIRED
+				encryptionKeyInDer = $someString
+			}
+			# OPTIONAL
+			rcvAzure = @{
+				# REQUIRED
+				region = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+				# REQUIRED
+				rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+				# REQUIRED
+				redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+				# OPTIONAL
 				encryptionKeyInDer = $someString
 			}
 		}

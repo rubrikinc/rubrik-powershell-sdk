@@ -40,6 +40,12 @@ Retrieves account products that match the specified filters.
     - startDateArg - DateTime: Start date of product (yyyy-mm-dd).
     - endDateArg - DateTime: End date of product (yyyy-mm-dd).
 - Returns list of AccountProducts.
+### resourcedependencygraph
+Get the dependency graph of every entitled config and workload resource
+in an AWS account and region, grouped by resource type.
+
+- There is a single argument of type GetAccountResourceDependencyGraphRequest.
+- Returns GetAccountResourceDependencyGraphResponse.
 ### settings
 This endpoint is deprecated.
 

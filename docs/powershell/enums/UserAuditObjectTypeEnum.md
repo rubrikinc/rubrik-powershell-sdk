@@ -173,3 +173,4 @@ User audit object type.
 - GOOGLE_WORKSPACE_GROUPS_METADATA - Google Workspace Groups Metadata.
 - AGENT_CLOUD_REWIND_OBJECT - Agent Cloud rewind object type.
 - IRISDB_INSTANCE - IRIS DB instance type.
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes-hosted PostgreSQL database cluster type.

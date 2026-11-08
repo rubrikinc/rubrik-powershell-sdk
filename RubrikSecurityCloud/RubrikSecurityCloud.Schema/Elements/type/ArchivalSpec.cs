@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("threshold")]
         public System.Int32? Threshold { get; set; }
 
+        //      C# -> TargetMapping? ArchivalGroup
+        // GraphQL -> archivalGroup: TargetMapping (type)
+        [JsonProperty("archivalGroup")]
+        public TargetMapping? ArchivalGroup { get; set; }
+
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
         [JsonProperty("archivalLocationToClusterMapping")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         RetentionUnit? ThresholdUnit = null,
         System.Boolean? IsComplianceImmutabilityEnabled = null,
         System.Int32? Threshold = null,
+        TargetMapping? ArchivalGroup = null,
         List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null,
         DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Threshold != null ) {
             this.Threshold = Threshold;
+        }
+        if ( ArchivalGroup != null ) {
+            this.ArchivalGroup = ArchivalGroup;
         }
         if ( ArchivalLocationToClusterMapping != null ) {
             this.ArchivalLocationToClusterMapping = ArchivalLocationToClusterMapping;
@@ -152,6 +161,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "threshold\n" ;
             } else {
                 s += ind + "threshold\n" ;
+            }
+        }
+        //      C# -> TargetMapping? ArchivalGroup
+        // GraphQL -> archivalGroup: TargetMapping (type)
+        if (this.ArchivalGroup != null) {
+            var fspec = this.ArchivalGroup.AsFieldSpec(conf.Child("archivalGroup"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
@@ -276,6 +297,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Threshold != null && ec.Excludes("threshold",true))
         {
             this.Threshold = null;
+        }
+        //      C# -> TargetMapping? ArchivalGroup
+        // GraphQL -> archivalGroup: TargetMapping (type)
+        if (ec.Includes("archivalGroup",false))
+        {
+            if(this.ArchivalGroup == null) {
+
+                this.ArchivalGroup = new TargetMapping();
+                this.ArchivalGroup.ApplyExploratoryFieldSpec(ec.NewChild("archivalGroup"));
+
+            } else {
+
+                this.ArchivalGroup.ApplyExploratoryFieldSpec(ec.NewChild("archivalGroup"));
+
+            }
+        }
+        else if (this.ArchivalGroup != null && ec.Excludes("archivalGroup",false))
+        {
+            this.ArchivalGroup = null;
         }
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)

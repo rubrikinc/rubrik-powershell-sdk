@@ -1,0 +1,49 @@
+### AwsNativeRdsInstanceResourceSpec
+AWS RDS instance resource spec.
+
+- snappableId: System.String
+  - ID of AWS RDS instance.
+- snapshotId: System.String
+  - ID of snapshot.
+- snappableName: System.String
+  - Name of AWS RDS instance.
+- isArchived: System.Boolean
+  - Specifies whether resource spec is archived.
+- dbEngine: System.String
+  - Database engine type of the RDS instance.
+- region: System.String
+  - AWS region where the RDS instance is located.
+- kmsKeyId: System.String
+  - KMS key ID of the RDS instance.
+- dbInstanceClass: System.String
+  - Instance class type of the RDS instance.
+- dbEngineVersion: System.String
+  - Database engine version of the RDS instance.
+- isMultiAz: System.Boolean
+  - Whether the RDS instance is configured for multi-AZ deployment.
+- primaryAz: System.String
+  - Primary availability zone of the RDS instance.
+- port: System.Int64
+  - Port on which the RDS instance accepts connections.
+- storageType: System.String
+  - Storage type of the RDS instance.
+- iops: System.Int64
+  - Provisioned IOPS of the RDS instance.
+- vpcNativeId: System.String
+  - VPC native ID where the RDS instance is located.
+- securityGroupNativeIds: list of System.Strings
+  - Native security group IDs associated with the RDS instance.
+- subnetGroupName: System.String
+  - Subnet group name of the RDS instance.
+- isPubliclyAccessible: System.Boolean
+  - Whether the RDS instance is publicly accessible.
+- optionGroupName: System.String
+  - Option group name of the RDS instance.
+- parameterGroupName: System.String
+  - Parameter group name of the RDS instance.
+- clusterParameterGroupName: System.String
+  - Cluster parameter group name of the RDS instance.
+- recoveryPointOpt: System.Int64
+  - Recovery point of the AWS RDS instance.
+- rdsType: AwsNativeRdsType
+  - RDS type (Aurora vs Regular RDS).
