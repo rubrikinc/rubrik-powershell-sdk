@@ -58,4 +58,22 @@ namespace RubrikSecurityCloud
             }
         }
     }
+
+    /// <summary>
+    /// Writes enum values as JRaw tokens when an input object is converted
+    /// for inline arguments, so they stay distinguishable from strings.
+    /// </summary>
+    internal class GraphqlInlineEnumConverter : Newtonsoft.Json.Converters.StringEnumConverter
+    {
+        public override void WriteJson(
+            JsonWriter writer,
+            object? value,
+            JsonSerializer serializer
+        )
+        {
+            var name = new System.IO.StringWriter();
+            base.WriteJson(new JsonTextWriter(name), value, serializer);
+            writer.WriteRawValue(name.ToString().Trim('"'));
+        }
+    }
 }

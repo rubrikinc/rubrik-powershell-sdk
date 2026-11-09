@@ -6,6 +6,12 @@ New Features:
 
 Fixes:
 
+- Enum values inside an input object passed to a field's arguments, such
+  as `sort` and `filter` on `fileResultConnection`, are no longer quoted in
+  the query (`sortOrder:"DESC"`), which RSC rejected. They are now written
+  bare (`sortOrder:DESC`). Dates inside such input objects, which were sent
+  as the literal text `yyyy-MM-ddTHH:mm:sszzz`, are now sent as timestamps.
+
 Breaking Changes:
 
 ## Version 1.21.20261102
