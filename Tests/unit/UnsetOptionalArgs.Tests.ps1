@@ -20,17 +20,22 @@ BeforeAll {
 Describe -Name "Unset optional arguments" -Fixture {
 
     Context "Arguments on a field inside the query (ToInlineArguments)" {
+        It -Name "unset single argument is sent as null: newestSnapshot(backupLocationId)" -Test {
+            $vars = (New-Object RubrikSecurityCloud.Types.AwsNativeEbsVolume).Vars.NewestSnapshot
+            $vars.ToInlineArguments() | Should -Be 'backupLocationId:null'
+        }
+
         It -Name "unset newestSnapshot(beforeTime) is sent as null" -Test {
             $q = New-RscQueryVsphereVm -Op NewList -AddField Nodes.NewestSnapshot.Id
-            NewestSnapshotArgs $q | Should -Be 'beforeTime:null'
-            $q.GqlRequest().Query | Should -Not -Match 'beforeTime:\{\}'
+            NewestSnapshotArgs $q | Should -Match '(^|,)beforeTime:null(,|$)'
+            $q.GqlRequest().Query | Should -Not -Match ':\{\}'
         }
 
         It -Name "a beforeTime that is set is still sent" -Test {
             $q = New-RscQueryVsphereVm -Op NewList -AddField Nodes.NewestSnapshot.Id
             # Kind=Utc, so the rendered offset is +00:00 on any machine
             $q.Field.Nodes[0].Vars.NewestSnapshot.beforeTime = [datetime]::SpecifyKind([datetime]'2026-11-01T00:00:00', 'Utc')
-            NewestSnapshotArgs $q | Should -Be 'beforeTime:"2026-11-01T00:00:00+00:00"'
+            NewestSnapshotArgs $q | Should -Match '(^|,)beforeTime:"2026-11-01T00:00:00\+00:00"(,|$)'
         }
     }
 
