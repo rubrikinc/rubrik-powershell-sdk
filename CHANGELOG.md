@@ -10,7 +10,7 @@ Fixes:
   as `sort` and `filter` on `fileResultConnection`, are no longer quoted in
   the query (`sortOrder:"DESC"`), which RSC rejected. They are now written
   bare (`sortOrder:DESC`). Dates inside such input objects, which were sent
-  as the literal text `yyyy-MM-ddTHH:mm:sszzz`, are now sent as timestamps.
+  as the literal text `yyyy-MM-ddTHH:mm:sszzz`, are now sent as timestamps. (#276)
 
 Breaking Changes:
 
