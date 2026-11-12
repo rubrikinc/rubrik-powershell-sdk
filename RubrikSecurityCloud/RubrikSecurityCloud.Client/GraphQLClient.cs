@@ -168,11 +168,20 @@ namespace RubrikSecurityCloud.NetSDK.Client
             _logger = logger;
         }
 
-        public async Task RenewAuthAsyncIfNeeded()
+        internal static DateTime TokenExpirationTime(string accessToken)
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            JwtSecurityToken jwtToken = tokenHandler.ReadJwtToken(_clientToken.AccessToken);
-            var expirationTime = jwtToken.ValidTo; // we assume UTC
+            return tokenHandler.ReadJwtToken(accessToken).ValidTo; // we assume UTC
+        }
+
+        internal static bool IsTokenExpired(string accessToken, DateTime currentTime)
+        {
+            return TokenExpirationTime(accessToken) <= currentTime;
+        }
+
+        public async Task RenewAuthAsyncIfNeeded()
+        {
+            var expirationTime = TokenExpirationTime(_clientToken.AccessToken);
             DateTime currentTime = DateTime.UtcNow;
 
             if (
@@ -235,6 +244,15 @@ namespace RubrikSecurityCloud.NetSDK.Client
             if (this._authenticationState != AuthenticationState.AUTHORIZED)
             {
                 //Session isn't valid, do nothing
+                return;
+            }
+
+            // RSC rejects DELETE api/session with an expired token, and the
+            // session is already gone server-side.
+            if (IsTokenExpired(_clientToken.AccessToken, DateTime.UtcNow))
+            {
+                this._logger?.Verbose("Client token already expired, skipping DELETE api/session.");
+                this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
                 return;
             }
 

@@ -6,6 +6,10 @@ New Features:
 
 Fixes:
 
+- `Disconnect-Rsc` with an expired token now just clears the session. It no
+  longer renews the session first, and no longer fails with
+  `Call DELETE to "api/session" failed with : Unauthorized`.
+
 Breaking Changes:
 
 ## Version 1.21.20261102
