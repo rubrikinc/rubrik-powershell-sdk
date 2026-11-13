@@ -40,8 +40,17 @@ namespace RubrikSecurityCloud
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 Converters = new List<JsonConverter> {
-                    new Newtonsoft.Json.Converters.StringEnumConverter(),
-                    new GraphqlInlineArgsConverter()
+                    new Newtonsoft.Json.Converters.StringEnumConverter()
+                    },
+                ContractResolver = new SortedCamelCasePropertyNamesContractResolver()
+            };
+
+        private readonly JsonSerializerSettings _inlineObjectSettings =
+            new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Converters = new List<JsonConverter> {
+                    new GraphqlInlineEnumConverter()
                     },
                 ContractResolver = new SortedCamelCasePropertyNamesContractResolver()
             };
@@ -55,7 +64,8 @@ namespace RubrikSecurityCloud
 
         public string AsInlineVariables(IRscLogger? logger = null)
         {
-            JObject variables = processVariables(logger);
+            JObject variables = processVariables(logger, inline: true);
+            quoteInlineValues(variables);
             string jsonStr = JsonConvert.SerializeObject(variables, _inlineVarsSettings);
             string placeholder = "strPlaceholder";
             jsonStr = jsonStr.Replace("\\\"\"", placeholder);
@@ -66,7 +76,27 @@ namespace RubrikSecurityCloud
             return jsonStr;
         }
 
-        private JObject processVariables(IRscLogger? logger = null)
+        // Adds the quotes GraphQL needs around strings and dates in inline
+        // arguments; the quote handling in AsInlineVariables relies on them.
+        // Enums are Raw tokens (GraphqlInlineEnumConverter), so they stay bare.
+        private static void quoteInlineValues(JContainer root)
+        {
+            foreach (var value in root.DescendantsAndSelf().OfType<JValue>().ToList())
+            {
+                if (value.Type == JTokenType.String)
+                {
+                    value.Value = "\"" + (string)value.Value! + "\"";
+                }
+                else if (value.Value is DateTime datetime)
+                {
+                    value.Value = "\"" + datetime.ToString(
+                        "yyyy-MM-ddTHH:mm:sszzz",
+                        System.Globalization.CultureInfo.InvariantCulture) + "\"";
+                }
+            }
+        }
+
+        private JObject processVariables(IRscLogger? logger = null, bool inline = false)
         {
             _logger = logger;
             JObject variables = new JObject();
@@ -84,15 +114,16 @@ namespace RubrikSecurityCloud
             {
                 logger?.Debug($"Var {key} = " +
                     StringUtils.FormatObjectForLogging(Variables[key]));
-                var processedValue = processVariable(Variables[key]);
+                var processedValue = processVariable(Variables[key], inline);
                 variables.Add(key, processedValue);
             }
 
             return variables;
         }
 
-        private JToken processVariable(object? obj)
+        private JToken processVariable(object? obj, bool inline = false)
         {
+            var objectSettings = inline ? _inlineObjectSettings : _serializerSettings;
             if (obj is null)
             {
                 return JValue.CreateNull();
@@ -122,7 +153,7 @@ namespace RubrikSecurityCloud
                 var arr = new JArray();
                 foreach (var arrItem in objArrVal)
                 {
-                    arr.Add(processVariable(arrItem));
+                    arr.Add(processVariable(arrItem, inline));
                 }
                 return arr;
             }
@@ -131,7 +162,7 @@ namespace RubrikSecurityCloud
                 JObject vdJObject = new JObject();
                 foreach (var vdItem in vdObj)
                 {
-                    vdJObject[vdItem.Key] = processVariable(vdItem.Value);
+                    vdJObject[vdItem.Key] = processVariable(vdItem.Value, inline);
                 }
                 return vdJObject;
             }
@@ -141,7 +172,7 @@ namespace RubrikSecurityCloud
                 var arr = new JArray();
                 foreach (var listItem in objListVal)
                 {
-                    arr.Add(processVariable(listItem));
+                    arr.Add(processVariable(listItem, inline));
                 }
                 return arr;
             }
@@ -150,14 +181,14 @@ namespace RubrikSecurityCloud
             {
                 return JObject.FromObject(
                     psObject.BaseObject,
-                    JsonSerializer.Create(_serializerSettings)
+                    JsonSerializer.Create(objectSettings)
                 );
             }
 
             // default:
             return JObject.FromObject(
                     obj,
-                    JsonSerializer.Create(_serializerSettings)
+                    JsonSerializer.Create(objectSettings)
             );
         }
     }
