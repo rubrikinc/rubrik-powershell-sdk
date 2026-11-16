@@ -162,6 +162,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RANSOMWARE_INVESTIGATION_ANALYSIS")]
         RANSOMWARE_INVESTIGATION_ANALYSIS,
 
+        [EnumMember(Value = "REAL_TIME_PROTECTION")]
+        REAL_TIME_PROTECTION,
+
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
 

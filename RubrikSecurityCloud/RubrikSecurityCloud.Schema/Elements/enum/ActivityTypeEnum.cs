@@ -159,6 +159,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "QUARANTINE")]
         QUARANTINE,
 
+        [EnumMember(Value = "REAL_TIME_PROTECTION")]
+        REAL_TIME_PROTECTION,
+
         [EnumMember(Value = "REENCRYPTION")]
         REENCRYPTION,
 

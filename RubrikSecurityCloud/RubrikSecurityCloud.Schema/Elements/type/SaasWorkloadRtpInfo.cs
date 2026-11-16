@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("captureRetentionDays")]
         public System.Int32? CaptureRetentionDays { get; set; }
 
+        //      C# -> System.Boolean? IsRtpEligible
+        // GraphQL -> isRtpEligible: Boolean! (scalar)
+        [JsonProperty("isRtpEligible")]
+        public System.Boolean? IsRtpEligible { get; set; }
+
         //      C# -> System.Boolean? IsRtpEnabled
         // GraphQL -> isRtpEnabled: Boolean! (scalar)
         [JsonProperty("isRtpEnabled")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRtpRestoreEnabled: Boolean! (scalar)
         [JsonProperty("isRtpRestoreEnabled")]
         public System.Boolean? IsRtpRestoreEnabled { get; set; }
+
+        //      C# -> System.String? RtpIneligibleReason
+        // GraphQL -> rtpIneligibleReason: String! (scalar)
+        [JsonProperty("rtpIneligibleReason")]
+        public System.String? RtpIneligibleReason { get; set; }
 
 
         #endregion
@@ -52,8 +62,10 @@ namespace RubrikSecurityCloud.Types
     public SaasWorkloadRtpInfo Set(
         System.Int32? CaptureIntervalMins = null,
         System.Int32? CaptureRetentionDays = null,
+        System.Boolean? IsRtpEligible = null,
         System.Boolean? IsRtpEnabled = null,
-        System.Boolean? IsRtpRestoreEnabled = null
+        System.Boolean? IsRtpRestoreEnabled = null,
+        System.String? RtpIneligibleReason = null
     ) 
     {
         if ( CaptureIntervalMins != null ) {
@@ -62,11 +74,17 @@ namespace RubrikSecurityCloud.Types
         if ( CaptureRetentionDays != null ) {
             this.CaptureRetentionDays = CaptureRetentionDays;
         }
+        if ( IsRtpEligible != null ) {
+            this.IsRtpEligible = IsRtpEligible;
+        }
         if ( IsRtpEnabled != null ) {
             this.IsRtpEnabled = IsRtpEnabled;
         }
         if ( IsRtpRestoreEnabled != null ) {
             this.IsRtpRestoreEnabled = IsRtpRestoreEnabled;
+        }
+        if ( RtpIneligibleReason != null ) {
+            this.RtpIneligibleReason = RtpIneligibleReason;
         }
         return this;
     }
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "captureRetentionDays\n" ;
             }
         }
+        //      C# -> System.Boolean? IsRtpEligible
+        // GraphQL -> isRtpEligible: Boolean! (scalar)
+        if (this.IsRtpEligible != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRtpEligible\n" ;
+            } else {
+                s += ind + "isRtpEligible\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsRtpEnabled
         // GraphQL -> isRtpEnabled: Boolean! (scalar)
         if (this.IsRtpEnabled != null) {
@@ -116,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRtpRestoreEnabled\n" ;
             } else {
                 s += ind + "isRtpRestoreEnabled\n" ;
+            }
+        }
+        //      C# -> System.String? RtpIneligibleReason
+        // GraphQL -> rtpIneligibleReason: String! (scalar)
+        if (this.RtpIneligibleReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rtpIneligibleReason\n" ;
+            } else {
+                s += ind + "rtpIneligibleReason\n" ;
             }
         }
         return s;
@@ -159,6 +195,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CaptureRetentionDays = null;
         }
+        //      C# -> System.Boolean? IsRtpEligible
+        // GraphQL -> isRtpEligible: Boolean! (scalar)
+        if (ec.Includes("isRtpEligible",true))
+        {
+            if(this.IsRtpEligible == null) {
+
+                this.IsRtpEligible = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRtpEligible != null && ec.Excludes("isRtpEligible",true))
+        {
+            this.IsRtpEligible = null;
+        }
         //      C# -> System.Boolean? IsRtpEnabled
         // GraphQL -> isRtpEnabled: Boolean! (scalar)
         if (ec.Includes("isRtpEnabled",true))
@@ -192,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRtpRestoreEnabled != null && ec.Excludes("isRtpRestoreEnabled",true))
         {
             this.IsRtpRestoreEnabled = null;
+        }
+        //      C# -> System.String? RtpIneligibleReason
+        // GraphQL -> rtpIneligibleReason: String! (scalar)
+        if (ec.Includes("rtpIneligibleReason",true))
+        {
+            if(this.RtpIneligibleReason == null) {
+
+                this.RtpIneligibleReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RtpIneligibleReason != null && ec.Excludes("rtpIneligibleReason",true))
+        {
+            this.RtpIneligibleReason = null;
         }
     }
 

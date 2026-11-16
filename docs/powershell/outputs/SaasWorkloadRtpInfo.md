@@ -13,3 +13,8 @@ salesforcesvc.proto and saasappsservice.proto.
   - Whether RTP restore is available for this workload. True when RTP is
 enabled and the most recent RTP capture falls within capture_retention_days
 of the current time.
+- isRtpEligible: System.Boolean
+  - Whether this workload is eligible to have real-time protection enabled.
+- rtpIneligibleReason: System.String
+  - Reason why real-time protection cannot be enabled for this workload.
+Empty when is_rtp_eligible is true.
