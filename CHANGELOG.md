@@ -1,5 +1,13 @@
 # Changelog
 
+## Version TBD
+
+New Features:
+
+Fixes:
+
+Breaking Changes:
+
 ## Version 1.22.20261102
 
 Schema Update:
@@ -1056,3 +1064,4 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
+
