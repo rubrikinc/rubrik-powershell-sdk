@@ -332,8 +332,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             else
             {
-                string host = server.TrimEnd('/');
-                baseUrl = (host.Contains("localhost") ? "http://" : "https://") + host;
+                baseUrl = "https://" + server.TrimEnd('/');
             }
             return baseUrl + "/api/pat_login";
         }
