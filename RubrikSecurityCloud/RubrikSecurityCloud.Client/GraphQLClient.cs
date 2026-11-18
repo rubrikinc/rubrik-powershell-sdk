@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -48,6 +49,20 @@ namespace RubrikSecurityCloud.NetSDK.Client
         private readonly string _clientSecret;
         private readonly string _polarisBaseUrl;
         private readonly string _polarisUrlScheme;
+
+        // Token endpoint, relative to the server base address.
+        // Service accounts use api/client_token; personal access tokens
+        // (PATs) use api/pat_login. Both credential files share the same
+        // shape and differ only in access_token_uri.
+        private const string ServiceAccountTokenPath = "api/client_token";
+        private const string PersonalAccessTokenPath = "api/pat_login";
+        private readonly string _tokenPath = ServiceAccountTokenPath;
+
+        /// <summary>
+        /// True when the client authenticates with a personal access token
+        /// (token endpoint api/pat_login) instead of a service account.
+        /// </summary>
+        public bool IsPersonalAccessToken => _tokenPath == PersonalAccessTokenPath;
 
         private ulong _apiCallCount = 0;
 
@@ -143,6 +158,14 @@ namespace RubrikSecurityCloud.NetSDK.Client
             {
                 Uri suppliedUri = new Uri(PolarisBaseUrl);
                 _polarisBaseUrl = suppliedUri.Host;
+                // Keep the token endpoint from access_token_uri: a PAT
+                // credential file points at /api/pat_login, not
+                // /api/client_token.
+                if (suppliedUri.AbsolutePath.TrimEnd('/').EndsWith(
+                        "/" + PersonalAccessTokenPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    _tokenPath = PersonalAccessTokenPath;
+                }
                 if (_polarisBaseUrl == "localhost")
                 {
                     _polarisBaseUrl += $":{suppliedUri.Port.ToString()}";
@@ -193,7 +216,8 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
         public string Info()
         {
-            return $"Server: {this.ServerBaseAddress()} ClientId: {ClientId} Auth Status: {AuthenticationState}";
+            string credType = IsPersonalAccessToken ? "Personal Access Token" : "Service Account";
+            return $"Server: {this.ServerBaseAddress()} ClientId: {ClientId} Credential: {credType} Auth Status: {AuthenticationState}";
         }
 
         public async Task AuthAsync()
@@ -211,7 +235,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             HttpContent requestcontent = new StringContent(JsonConvert.SerializeObject(clientCredential), Encoding.UTF8, "application/json");
             this._logger?.Verbose($"Authenticating ClientID {ClientId} with RSC at {apiClient.BaseAddress} .");
 
-            HttpResponseMessage response = await apiClient.PostAsync("api/client_token", requestcontent).ConfigureAwait(false);
+            HttpResponseMessage response = await apiClient.PostAsync(_tokenPath, requestcontent).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
@@ -224,9 +248,18 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 _clientToken = JsonConvert.DeserializeObject<ClientToken>(JsonConvert.SerializeObject(data));
                 _authenticationState = AuthenticationState.AUTHORIZED;
             }
+            else if (IsPersonalAccessToken && response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                // RSC returns 403 (not 401) when the tenant has not enabled
+                // personal access tokens.
+                string body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                throw new Exception(
+                    $"{Info()}. Personal access token login was rejected (HTTP 403). " +
+                    $"The Personal Access Token feature may not be enabled on this RSC account: {body}");
+            }
             else
             {
-                throw new Exception($"{Info()}. Call to \"api/client_token\" failed with : {response.ReasonPhrase}");
+                throw new Exception($"{Info()}. Call to \"{_tokenPath}\" failed with : {response.ReasonPhrase}");
             }
         }
 

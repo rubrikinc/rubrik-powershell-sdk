@@ -28,10 +28,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///  Service Account credentials may be provided as parameters, or stored
     ///  in an encrypted credential file, using Set-RscServiceAccountFile.
     ///  Service Account .json files (unencryped) are not supported.
+    ///  A personal access token (PAT) can be used in place of a Service Account.
+    ///  The PAT .json file downloaded from the RSC Web UI has the same format
+    ///  as a Service Account file, so it is stored with Set-RscServiceAccountFile
+    ///  and used with every parameter set below. Connect-Rsc reads the token
+    ///  endpoint from the file and uses the PAT login automatically.
     ///  </description>
     ///  <example>
     ///  Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret
     ///  <code>Connect-Rsc -Server mycompany.my.rubrik.com -ClientId xxxxxxxxx -ClientSecret xxxxxxxxx</code>
+    ///  </example>
+    ///  <example>
+    ///  Connect to Rubrik Security Cloud with a personal access token (PAT),
+    ///  stored in the default RSC credential store in the user profile.
+    ///  The PAT file can be downloaded from the Rsc Web UI.
+    ///  <code>
+    ///  Set-RscServiceAccountFile -InputFilePath rubrik_personal_access_token.json
+    ///  Connect-Rsc
+    ///  </code>
+    ///  </example>
+    ///  <example>
+    ///  Connect to Rubrik Security Cloud with a personal access token (PAT),
+    ///  using the URL, Client Id and Client Secret from the PAT file.
+    ///  <code>
+    ///  $secret = Read-Host -AsSecureString -Prompt "PAT client_secret"
+    ///  Connect-Rsc -Server mycompany.my.rubrik.com -ClientId xxxxxxxxx -ClientSecret $secret -PersonalAccessToken
+    ///  </code>
     ///  </example>
     ///  <example>
     ///  Connect to Rubrik Security Cloud, using a service account file,
@@ -135,6 +157,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 2,
             ValueFromPipeline = false)]
         public SecureString ClientSecret { get; set; }
+
+        /// <summary>
+        /// The ClientId and ClientSecret are from a personal access token (PAT),
+        /// not a Service Account. Connect-Rsc authenticates with the PAT login
+        /// endpoint (/api/pat_login) instead of /api/client_token.
+        /// Not needed when -Server is the full "access_token_uri" from the PAT file.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "ServiceAccountDetails",
+            Mandatory = false,
+            ValueFromPipeline = false)]
+        public SwitchParameter PersonalAccessToken { get; set; }
 
         // ----------------------------------------------------------
         private string _server;
@@ -247,7 +281,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                     ErrorCategory.InvalidData,
                                     ServiceAccountFile);
                                 Console.WriteLine("Connect-Rsc does not support unencrypted JSON files " +
-                                    "for service accounts. " +
+                                    "for service accounts or personal access tokens. " +
                                     "Please use the \'Set-RscServiceAccountFile\' cmdlet " +
                                     "to create a valid credential file.");
                                 ThrowTerminatingError(error);
@@ -268,7 +302,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     {
                         Console.WriteLine("ServiceAccountDetails");
                         PSCredential clientSecret = new(ClientId, ClientSecret);
-                        this._server = Server;
+                        this._server = PersonalAccessToken.IsPresent
+                            ? PatLoginUri(Server)
+                            : Server;
                         this._clientId = ClientId;
                         this._clientSecret =
                             clientSecret.GetNetworkCredential().Password;
@@ -281,6 +317,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 this._clientSecret,
                 this._server,
                 this._logger);
+        }
+
+        /// <summary>
+        /// Build the PAT token URI from a server FQDN or URL.
+        /// </summary>
+        private static string PatLoginUri(string server)
+        {
+            string baseUrl;
+            if (Uri.TryCreate(server, UriKind.Absolute, out Uri uri) &&
+                (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp))
+            {
+                baseUrl = uri.GetLeftPart(UriPartial.Authority);
+            }
+            else
+            {
+                baseUrl = "https://" + server.TrimEnd('/');
+            }
+            return baseUrl + "/api/pat_login";
         }
 
         protected override void ProcessRecord()

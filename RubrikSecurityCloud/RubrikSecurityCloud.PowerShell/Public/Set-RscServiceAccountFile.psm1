@@ -33,6 +33,11 @@ function Set-RscServiceAccountFile {
     the XML file in a different path, by specifying the -OutputFilePath
     parameter when using Set-RscServiceAccountFile.
 
+    A personal access token (PAT) .json file downloaded from the
+    RSC Web UI has the same format as a service account file.
+    Set-RscServiceAccountFile stores it the same way, and Connect-Rsc
+    uses the PAT login endpoint from the file's access_token_uri.
+
     .EXAMPLE
     Read the RSC-provided service account json file and store the credential
     in the user profile (PROFILE-PATH//rubrik-powershell-sdk/rsc_service_account_default.xml)
@@ -47,6 +52,13 @@ function Set-RscServiceAccountFile {
     in a custom location
 
     Set-RscServiceAccountFile -InputFilePath myServiceAccountName.json -OutputFilePath myServiceAccountName.xml
+
+    .EXAMPLE
+    Read the RSC-provided personal access token (PAT) json file and store
+    the credential in a custom location, then connect with it
+
+    Set-RscServiceAccountFile -InputFilePath myPersonalAccessToken.json -OutputFilePath myPat.xml
+    Connect-Rsc -ServiceAccountFile myPat.xml
 
     .LINK    
     #>

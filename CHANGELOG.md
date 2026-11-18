@@ -4,6 +4,13 @@
 
 New Features:
 
+- `Connect-Rsc` supports personal access tokens (PATs). Store the PAT
+  `.json` file from the RSC Web UI with `Set-RscServiceAccountFile`, the
+  same as a service account file, and `Connect-Rsc` uses the PAT login
+  automatically. To pass the credentials as parameters, add
+  `-PersonalAccessToken` to `Connect-Rsc -Server -ClientId -ClientSecret`.
+  If the PAT feature is not enabled on the RSC account, the error says so. (#279)
+
 Fixes:
 
 Breaking Changes:
