@@ -3,6 +3,9 @@
 ## Version TBD
 
 New Features:
+- `Get-RscGcpGceInstance`: new cmdlet to list and retrieve GCP Compute Engine
+  (GCE) VM instances managed by Rubrik Security Cloud. Supports filtering by
+  name substring, SLA Domain, and relic status.
 
 - `Connect-Rsc` supports personal access tokens (PATs). Store the PAT
   `.json` file from the RSC Web UI with `Set-RscServiceAccountFile`, the
