@@ -105,7 +105,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return null; // never reached
         }
 
-        protected bool RetrieveConnection(bool throwIfNotRetrieved = true)
+        protected bool RetrieveConnection(
+            bool throwIfNotRetrieved = true,
+            bool renewIfNeeded = true)
         {
             try
             {
@@ -124,35 +126,41 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 this._rbkClient.Logger = this._logger;
                 this._logger?.Debug($"Retrieved connection from session variable {Config.SessionVariableName}: {this._rbkClient.Info()}");
 
-                //Check if the token has expired. If it has, attempt a new session and return.
-                if (_rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
+                // Cmdlets that tear down the session (e.g. Disconnect-Rsc) pass
+                // renewIfNeeded:false so we never reconnect or renew an expired
+                // token just to delete it. They only need the existing client.
+                if (renewIfNeeded)
                 {
-                    this._logger?.Verbose("Client session expired, attempting to renew...");
-                    if (this.Connect())
+                    //Check if the token has expired. If it has, attempt a new session and return.
+                    if (_rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
                     {
-                        this._logger?.Verbose("Client session renewed.");
-                        return true;
+                        this._logger?.Verbose("Client session expired, attempting to renew...");
+                        if (this.Connect())
+                        {
+                            this._logger?.Verbose("Client session renewed.");
+                            return true;
+                        }
+                        else
+                        {
+                            if (throwIfNotRetrieved)
+                            {
+                                throw new Exception("Could not renew expired session. Use 'Connect-Rsc'. ");
+                            }
+                            return false;
+                        }
                     }
-                    else
+
+                    Task RenewAuthTask = this._rbkClient.RenewAuthAsyncIfNeeded();
+                    RenewAuthTask.Wait();
+
+                    if (_rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
                     {
                         if (throwIfNotRetrieved)
                         {
-                            throw new Exception("Could not renew expired session. Use 'Connect-Rsc'. ");
+                            throw new Exception("No valid session found. Use 'Connect-Rsc'. ");
                         }
                         return false;
                     }
-                }
-
-                Task RenewAuthTask = this._rbkClient.RenewAuthAsyncIfNeeded();
-                RenewAuthTask.Wait();
-
-                if (_rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
-                {
-                    if (throwIfNotRetrieved)
-                    {
-                        throw new Exception("No valid session found. Use 'Connect-Rsc'. ");
-                    }
-                    return false;
                 }
 
             }
