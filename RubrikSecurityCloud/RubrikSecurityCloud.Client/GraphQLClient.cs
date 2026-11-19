@@ -263,11 +263,32 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
         }
 
+        private bool IsAccessTokenExpired()
+        {
+            try
+            {
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                JwtSecurityToken jwtToken = tokenHandler.ReadJwtToken(_clientToken.AccessToken);
+                return jwtToken.ValidTo <= DateTime.UtcNow; // ValidTo is UTC
+            }
+            catch
+            {
+                // If the token can't be parsed, fall back to attempting the
+                // server-side delete rather than silently skipping it.
+                return false;
+            }
+        }
+
         public async Task Disconnect()
         {
-            if (this._authenticationState != AuthenticationState.AUTHORIZED)
+            if (this._authenticationState != AuthenticationState.AUTHORIZED
+                || this.IsAccessTokenExpired())
             {
-                //Session isn't valid, do nothing
+                // Session isn't valid, or the token has already expired: there
+                // is nothing to delete server-side, and calling DELETE
+                // "api/session" with an expired token only returns Unauthorized.
+                // Just clear the local authentication state.
+                this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
                 return;
             }
 
