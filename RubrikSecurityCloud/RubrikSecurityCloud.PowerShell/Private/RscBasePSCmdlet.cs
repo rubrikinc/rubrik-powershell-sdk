@@ -105,7 +105,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return null; // never reached
         }
 
-        protected bool RetrieveConnection(bool throwIfNotRetrieved = true)
+        protected bool RetrieveConnection(
+            bool throwIfNotRetrieved = true,
+            bool renewIfNeeded = true)
         {
             try
             {
@@ -123,6 +125,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 // reset the logger to the current session
                 this._rbkClient.Logger = this._logger;
                 this._logger?.Debug($"Retrieved connection from session variable {Config.SessionVariableName}: {this._rbkClient.Info()}");
+
+                if (!renewIfNeeded)
+                {
+                    return true;
+                }
 
                 //Check if the token has expired. If it has, attempt a new session and return.
                 if (_rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
