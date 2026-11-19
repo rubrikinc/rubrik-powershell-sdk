@@ -17,7 +17,7 @@ Fixes:
   no longer carry a spurious off-by-one underscore from a code-generation
   bug (e.g. `USEAS_T1`, `EU_R4`). See Breaking Changes for the full list of
   renames. The underlying GraphQL values (e.g. `USEAST1`, `EUR4`) are
-  unchanged. (#281)
+  unchanged.
 
 Breaking Changes:
 
@@ -30,7 +30,6 @@ Breaking Changes:
   - `USCENTRA_L1` → `USCENTRAL1`
   - `USEAS_T1` → `USEAST1`, `USEAS_T4` → `USEAST4`
   - `USWES_T1` → `USWEST1`, `USWES_T2` → `USWEST2`
-  (#281)
 
 ## Version 1.22.20261102
 
