@@ -273,11 +273,16 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         .Join(
                             ",", validValues.Take(maxValuesLen).Select(x => $"\"{x}\"")
                         ) + (validValues.Count > maxValuesLen ? "..." : "");
+                string rootType = (this.GetPatchRootTypeName() ?? "")
+                    .Replace("'", "''");
+                // The enumerated set is depth-limited, so paths not in it
+                // are also accepted if they resolve through the type tree.
                 var script = ScriptBlock.Create($@"
                                 $givenValues = $_
                                 $validValues = @({validValuesString})
                                 $givenValues | ForEach-Object {{
-                                    if ($validValues -notcontains $_) {{
+                                    if ($validValues -notcontains $_ -and
+                                        -not [RubrikSecurityCloud.ReflectionUtils]::IsValidFieldPath('{rootType}', $_)) {{
                                         throw 'Cannot validate argument on parameter ''AddField''. The argument ' + $_ + ' does not belong to the set: {truncatedValidValuesString}'
                                     }}
                                 }}
@@ -285,9 +290,15 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             ");
                 var validationAttr = new ValidateScriptAttribute(
                     script);
-                var autocompleteAttr = new ValidateSetAttribute(validValues.ToArray());
+                // Completion only (no strict validation, unlike ValidateSet).
+                var completer = ScriptBlock.Create($@"
+                                param($commandName, $parameterName, $wordToComplete)
+                                $validValues = @({validValuesString})
+                                $validValues | Where-Object {{ $_ -like ($wordToComplete + '*') }} |
+                                    ForEach-Object {{ [System.Management.Automation.CompletionResult]::new($_) }}
+                            ");
                 attrs.Add(validationAttr);
-                attrs.Add(autocompleteAttr);
+                attrs.Add(new ArgumentCompleterAttribute(completer));
             }
             return new RuntimeDefinedParameter(
                 "AddField", typeof(string[]), attrs);
@@ -319,6 +330,14 @@ namespace RubrikSecurityCloud.PowerShell.Private
         // Return a list of valid values for -AddField and -RemoveField.
         // Derived classes should override this method
         virtual protected List<string>? GetValidPatchSet()
+        {
+            return null;
+        }
+
+        // Return the name of the type that -AddField paths are relative to.
+        // Used to accept valid paths that are deeper than the enumerated
+        // GetValidPatchSet() list.
+        virtual protected string? GetPatchRootTypeName()
         {
             return null;
         }
