@@ -13,6 +13,15 @@ New Features:
 
 Fixes:
 
+- `-AddField` on `New-RscQuery*` / `New-RscMutation*` now accepts valid field
+  paths of any depth. Previously, deep paths such as
+  `Nodes.ReplicationSpecsV2.CascadingArchivalSpecs.ArchivalLocation` were
+  rejected, which made it impossible to fetch the full `CascadingArchivalSpecs`
+  of an SLA domain (needed to update an SLA). Field paths are case-insensitive. (#282)
+- `Get-RscSla` now fetches the cascading archival location Id for every archival
+  target type, not only `RubrikManagedAwsTarget`. Previously `Set-RscSla` could
+  lose the archival location of non-AWS cascading archival specs when updating
+  an SLA fetched with `Get-RscSla`. (#282)
 - `GcpRegion` enum members whose name is an all-caps run ending in a digit
   no longer carry a spurious off-by-one underscore from a code-generation
   bug (e.g. `USEAS_T1`, `EU_R4`). See Breaking Changes for the full list of

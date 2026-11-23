@@ -186,7 +186,6 @@ function Get-RscSla {
                 "cascadingArchivalSpecs.archivalTieringSpec.coldStorageClass",
                 "cascadingArchivalSpecs.archivalTieringSpec.shouldTierExistingSnapshots",
                 "cascadingArchivalSpecs.frequency",
-                "cascadingArchivalSpecs.archivalLocation.on:RubrikManagedAwsTarget.id",
                 "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.id",
                 "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.name",
                 "cluster.id",
@@ -307,6 +306,12 @@ function Get-RscSla {
             $_tRcvGcp.SetNext($_tRcs)
 
             $_mapping.Location = $_tAws
+
+            # cascadingArchivalSpecs.archivalLocation (deprecated, but still what
+            # Set-RscSla reads the archival location Id from) is also a Target.
+            # Select it for every implementation, not only RubrikManagedAwsTarget,
+            # so that updating an SLA keeps non-AWS cascading archival locations.
+            $_caSpec.ArchivalLocation = $_tAws
 
             # baseFrequency: Duration
             # Base frequency for the SLA Domain.

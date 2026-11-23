@@ -242,6 +242,66 @@ namespace RubrikSecurityCloud
 
         }
         
+        /// <summary>
+        /// Check whether a dotted field path (e.g.
+        /// "Nodes.ReplicationSpecsV2.CascadingArchivalSpecs.ArchivalLocation.Id")
+        /// resolves to real properties starting from the given root type.
+        /// Unlike <see cref="FlattenFieldPatch"/>, this has no depth limit,
+        /// so it accepts valid paths that are too deep to be enumerated.
+        /// Interface-typed properties resolve against the interface and
+        /// all of its implementing types. Matching is case-insensitive.
+        /// </summary>
+        public static bool IsValidFieldPath(string rootTypeName, string path)
+        {
+            if (string.IsNullOrWhiteSpace(rootTypeName) ||
+                string.IsNullOrWhiteSpace(path))
+            {
+                return false;
+            }
+            Type? root = GetStrippedType(rootTypeName);
+            if (root == null)
+            {
+                return false;
+            }
+            var current = new List<Type> { root };
+            foreach (string segment in path.Trim().Split('.'))
+            {
+                var next = new List<Type>();
+                foreach (Type t in current)
+                {
+                    var candidates = new List<Type> { t };
+                    if (t.IsInterface)
+                    {
+                        foreach (string impl in GetTypesImplementingInterface(t.Name))
+                        {
+                            Type? implType = GetStrippedType(impl);
+                            if (implType != null)
+                            {
+                                candidates.Add(implType);
+                            }
+                        }
+                    }
+                    foreach (Type c in candidates)
+                    {
+                        PropertyInfo? p = c.GetProperty(
+                            segment,
+                            BindingFlags.Instance | BindingFlags.Public |
+                            BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+                        if (p != null)
+                        {
+                            next.Add(StripNullableAndListContainers(p.PropertyType));
+                        }
+                    }
+                }
+                if (next.Count == 0)
+                {
+                    return false;
+                }
+                current = next.Distinct().ToList();
+            }
+            return true;
+        }
+
         // keep a cache of FlattenFieldPatch results
         public static Dictionary<string, string> FlattenFieldPatchCache = new Dictionary<string, string>();
 

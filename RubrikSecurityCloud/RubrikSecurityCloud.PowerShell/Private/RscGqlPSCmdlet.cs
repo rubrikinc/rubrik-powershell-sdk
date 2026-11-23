@@ -195,24 +195,29 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         // Return a list of valid values for -AddField and -RemoveField.
         // Needed by RscDynParamPSCmdlet parent class
-        override protected List<string>? GetValidPatchSet()
+        override protected string? GetPatchRootTypeName()
         {
             RscOp rscOp = GetOp(unknownOk: true);
-            string gqlReturnType = "";
             if (!rscOp.IsDetermined())
             {
                 _logger.Debug("Could not determine operation");
                 if (this.gqlRootField != null)
                 {
-                    gqlReturnType = SchemaMeta.ReturnTypeLookupByGqlRootField(this.gqlRootField);
-                } else
-                {
-                    return null;
+                    return SchemaMeta.ReturnTypeLookupByGqlRootField(this.gqlRootField);
                 }
-            } else
-            {
-                gqlReturnType = rscOp.GqlReturnTypeName;
+                return null;
             }
+            return rscOp.GqlReturnTypeName;
+        }
+
+        override protected List<string>? GetValidPatchSet()
+        {
+            string? gqlReturnType = GetPatchRootTypeName();
+            if (gqlReturnType == null)
+            {
+                return null;
+            }
+            RscOp rscOp = GetOp(unknownOk: true);
             List<string>? validValues = null;
             try
             {

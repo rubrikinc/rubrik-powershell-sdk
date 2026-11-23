@@ -47,6 +47,25 @@ namespace RubrikSecurityCloud.Tests
     public class ReflectionUtilsTests
     {
         [Test]
+        public void TestIsValidFieldPathBeyondFlattenDepth()
+        {
+            const string root = "RubrikSecurityCloud.Types.SlaDomainConnection";
+            const string deep =
+                "Nodes.ReplicationSpecsV2.CascadingArchivalSpecs.ArchivalLocation";
+
+            // Too deep for the depth-limited enumerated patch set...
+            Assert.IsFalse(ReflectionUtils.FlattenFieldPatch(root).Contains(deep));
+
+            // ...but a valid path (through the Target interface).
+            Assert.IsTrue(ReflectionUtils.IsValidFieldPath(root, deep));
+            Assert.IsTrue(ReflectionUtils.IsValidFieldPath(root, deep + ".Id"));
+            Assert.IsTrue(ReflectionUtils.IsValidFieldPath(root, deep.ToLower()));
+            Assert.IsFalse(ReflectionUtils.IsValidFieldPath(root, deep + ".Bogus"));
+            Assert.IsFalse(ReflectionUtils.IsValidFieldPath(root, "Nodes.Bogus"));
+            Assert.IsFalse(ReflectionUtils.IsValidFieldPath("", deep));
+        }
+
+        [Test]
         public void TestFlattenField()
         {
             var testCases = new Dictionary<Type, string>() {
