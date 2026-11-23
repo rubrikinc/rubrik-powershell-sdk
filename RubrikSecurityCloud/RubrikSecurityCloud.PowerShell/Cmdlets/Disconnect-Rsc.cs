@@ -19,7 +19,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if(!this.RetrieveConnection(throwIfNotRetrieved:false))
+            if(!this.RetrieveConnection(throwIfNotRetrieved:false, renewIfNeeded:false))
             {
                 this._doDisconnect=false;
                 WriteObject("No connection to disconnect from.");
