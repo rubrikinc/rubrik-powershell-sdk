@@ -53,12 +53,13 @@ namespace RubrikSecurityCloud.Tests
         public void TestInsertTypeNamesInGqlQuery()
         {
             var testCases = new Dictionary<string, string>() {
-                { "query {id}", "query {id __typename }"},
-                { "query {id  \n}\n   \t", "query {id  \n __typename }\n   \t"},
-                { "query __typename{id}", "query {id __typename }"},
-                { "query {id}__typename", "query {id __typename }"},
-                { "query {id __typename}", "query {id  __typename }"},
-                { "{a{b{c}}}", "{a{b{c __typename } __typename } __typename }"},
+                { "query {id}", "query {id}"},
+                { "query {id  \n}\n   \t", "query {id  \n}\n   \t"},
+                { "query __typename{id}", "query {id}"},
+                { "query {id}__typename", "query {id}"},
+                { "query {id __typename}", "query {id }"},
+                { "query {a{id}}", "query {a{id __typename }}"},
+                { "{a{b{c}}}", "{a{b{c __typename } __typename }}"},
                 {
                     "op(filter: [{field: NAME, texts: $instance}])",
                     "op(filter: [{field: NAME, texts: $instance}])"
@@ -81,11 +82,11 @@ namespace RubrikSecurityCloud.Tests
                         }) {
                             name address { zipCode  __typename }
                          __typename }
-                     __typename }"
+                    }"
                 },
                 {
                     @"op(a: "") { x }"") { y }",
-                    @"op(a: "") { x }"") { y  __typename }"
+                    @"op(a: "") { x }"") { y }"
                 },
                 {
                     @"mutation { createPerson(person: {
@@ -95,13 +96,27 @@ namespace RubrikSecurityCloud.Tests
                     @"mutation { createPerson(person: {
                         name: ""John (Doe)"",
                         hobbies: ""Reading, programming, and sleeping.""
-                    }) { id name  __typename }  __typename }"
+                    }) { id name  __typename } }"
                 },
                 {
                     @"query { persons(filter: {
                         name: ""John \""The Duke\"" Doe""}) { id name } }",
                     @"query { persons(filter: {
-                        name: ""John \""The Duke\"" Doe""}) { id name  __typename }  __typename }"
+                        name: ""John \""The Duke\"" Doe""}) { id name  __typename } }"
+                },
+                // A mutation has exactly one top-level field (Quorum Authorization)
+                {
+                    "mutation M($input: AssignSlaInput!)\n{\n  assignSla\n  (\n  input: $input\n  )\n  {\n  success\n  }\n}\n",
+                    "mutation M($input: AssignSlaInput!)\n{\n  assignSla\n  (\n  input: $input\n  )\n  {\n  success\n   __typename }\n}\n"
+                },
+                {
+                    "mutation M($input: SubmitTprRequestInput!) { submitTprRequest(input: $input) }",
+                    "mutation M($input: SubmitTprRequestInput!) { submitTprRequest(input: $input) }"
+                },
+                // Top-level fragment definitions keep __typename
+                {
+                    "query { a { ...F } } fragment F on A { id }",
+                    "query { a { ...F  __typename } } fragment F on A { id  __typename }"
                 },
             };
 
