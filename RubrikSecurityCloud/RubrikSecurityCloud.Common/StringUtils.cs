@@ -145,7 +145,12 @@ namespace RubrikSecurityCloud
             return ls.ToString();
         }
 
-        // Insert __typename field into all response objects
+        // Insert __typename field into all response objects.
+        // The operation's own selection set (the root of a query or
+        // mutation) does not get __typename: the response converter does
+        // not need it there, and some server checks (for example Quorum
+        // Authorization) require a mutation to have exactly one top-level
+        // field. Top-level fragment definitions still get __typename.
         public static string InsertTypeNamesInGqlQuery(string query)
         {
             const string typename = "__typename";
@@ -155,6 +160,9 @@ namespace RubrikSecurityCloud
             // iterate through the query string and insert __typename
             var result = new StringBuilder();
             int parenthesesDepth = 0;
+            int braceDepth = 0;
+            int definitionStart = 0;
+            bool rootIsFragment = false;
             bool insideString = false;
 
             foreach (char c in query)
@@ -181,8 +189,32 @@ namespace RubrikSecurityCloud
                         }
                     }
 
-                    if (c == '}' && parenthesesDepth == 0)
+                    if (c == '{' && parenthesesDepth == 0)
                     {
+                        if (braceDepth == 0)
+                        {
+                            // Start of a top-level definition: is it a
+                            // fragment definition or an operation?
+                            var header = result.ToString(
+                                definitionStart,
+                                result.Length - definitionStart).TrimStart();
+                            rootIsFragment = header.StartsWith("fragment ");
+                        }
+                        braceDepth++;
+                    }
+                    else if (c == '}' && parenthesesDepth == 0)
+                    {
+                        braceDepth--;
+                        if (braceDepth == 0)
+                        {
+                            definitionStart = result.Length + 1;
+                            if (!rootIsFragment)
+                            {
+                                // end of an operation: no __typename
+                                result.Append(c);
+                                continue;
+                            }
+                        }
                         result.Append(" " + typename + " }");
                         continue;
                     }
