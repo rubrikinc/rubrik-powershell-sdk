@@ -16,7 +16,7 @@ Fixes:
 - Mutations no longer fail under Quorum Authorization with "http request
   contains more than one mutation or field node". The SDK added
   `__typename` to the root of every request, which gave a mutation two
-  top-level fields. `__typename` is now added only inside fields.
+  top-level fields. `__typename` is now added only inside fields. (#283)
 
 - `GcpRegion` enum members whose name is an all-caps run ending in a digit
   no longer carry a spurious off-by-one underscore from a code-generation
