@@ -287,19 +287,56 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         internal void FetchAndCollatePages(RscQuery query)
         {
             var first = GetQueryVarFirst(query);
-            var collated = _FetchAndCollatePages(query);
-            // _FetchAndCollatePages() may have altered
-            // the variables 'first' and 'after'
-            if (first > 0)
+            var undoPageInfo = SelectPageInfoForPaging(query.Field);
+            object collated;
+            try
             {
-                query.Var["first"] = first;
+                collated = _FetchAndCollatePages(query);
             }
-            else
+            finally
             {
-                query.Var["first"] = null;
+                // Put the caller's query back as it was:
+                // _FetchAndCollatePages() alters 'first' and 'after'.
+                undoPageInfo();
+                if (first > 0)
+                {
+                    query.Var["first"] = first;
+                }
+                else
+                {
+                    query.Var["first"] = null;
+                }
+                query.Var["after"] = null;
             }
-            query.Var["after"] = null;
             WriteObject(collated);
+        }
+
+        // Paging needs pageInfo.hasNextPage and pageInfo.endCursor.
+        // Selects whichever of them the caller didn't, and returns
+        // an action that unselects them again.
+        internal static System.Action SelectPageInfoForPaging(object field)
+        {
+            PropertyInfo prop = field?.GetType().GetProperty("PageInfo");
+            if (prop == null || prop.PropertyType != typeof(PageInfo) || !prop.CanWrite)
+            {
+                return () => { };
+            }
+            var selected = (PageInfo)prop.GetValue(field);
+            if (selected == null)
+            {
+                // Any non-null value selects the field.
+                prop.SetValue(field, new PageInfo { HasNextPage = true, EndCursor = "" });
+                return () => prop.SetValue(field, null);
+            }
+            bool addHasNextPage = selected.HasNextPage == null;
+            bool addEndCursor = selected.EndCursor == null;
+            if (addHasNextPage) selected.HasNextPage = true;
+            if (addEndCursor) selected.EndCursor = "";
+            return () =>
+            {
+                if (addHasNextPage) selected.HasNextPage = null;
+                if (addEndCursor) selected.EndCursor = null;
+            };
         }
 
         internal object _FetchAndCollatePages(RscQuery query)
@@ -354,7 +391,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     }
                 }
 
-                if ((int)query.Var["first"] <= 0)
+                // null 'first' means the server's default page size.
+                if (query.Var["first"] is int pageSize && pageSize <= 0)
                 {
                     break; // no more pages to fetch
                 }
@@ -364,7 +402,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 var page = this.SendGqlRequest(query.GqlRequest(), false);
                 pageCount++;
                 pageInfo = ObjectPageInfo(page);
-                _logger.Verbose($"Fetched page {pageCount}. HasNextPage: {pageInfo.HasNextPage} EndCursor: {pageInfo.EndCursor}");
+                _logger.Verbose($"Fetched page {pageCount}. HasNextPage: {pageInfo?.HasNextPage} EndCursor: {pageInfo?.EndCursor}");
 
                 // If this is the first page, initialize the collated object
                 if (collated == null)
@@ -411,6 +449,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 hasNextPage = pageInfo.HasNextPage ?? false;
                 if (hasNextPage)
                 {
+                    if (pageInfo.EndCursor == null)
+                    {
+                        // Without a cursor the next request would
+                        // fetch this same page again.
+                        _logger.Warning("Stopped paging: the response has no pageInfo.endCursor.");
+                        break;
+                    }
                     query.Var["after"] = pageInfo.EndCursor;
                 }
 
