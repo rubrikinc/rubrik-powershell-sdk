@@ -14,11 +14,13 @@ New Features:
 Fixes:
 
 - `Invoke-Rsc` no longer fails with "Object reference not set to an
-  instance of an object" when a paged query (one with `first` set) does
-  not select `pageInfo`, for example with `-FieldProfile EMPTY`. It now
-  selects `pageInfo.hasNextPage` and `pageInfo.endCursor` itself while
-  paging, so results are no longer cut short or repeated when the caller
-  selected only part of `pageInfo`.
+  instance of an object" when a paginated query does not select
+  `pageInfo`, for example with `-FieldProfile EMPTY -AddField Nodes.Id`.
+  It now selects `pageInfo.hasNextPage` and `pageInfo.endCursor` itself
+  while paging, so results are no longer cut short or repeated when only
+  part of `pageInfo` was selected. The returned object and the query keep
+  only the fields the caller selected, a caller's `after` cursor is kept,
+  and count-only queries don't request `pageInfo`.
 
 - `GcpRegion` enum members whose name is an all-caps run ending in a digit
   no longer carry a spurious off-by-one underscore from a code-generation

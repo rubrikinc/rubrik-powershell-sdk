@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -265,7 +266,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             return (IList)nodes;
         }
 
-        internal int GetQueryVarFirst(RscQuery query)
+        internal static int GetQueryVarFirst(RscQuery query)
         {
             if (
                 query.Var.ContainsKey("first") &&
@@ -286,60 +287,89 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         /// </summary>
         internal void FetchAndCollatePages(RscQuery query)
         {
-            var first = GetQueryVarFirst(query);
-            var undoPageInfo = SelectPageInfoForPaging(query.Field);
-            object collated;
+            WriteObject(CollatePages(
+                query,
+                request => this.SendGqlRequest(request, false),
+                _logger));
+        }
+
+        // Fetches every page of query with sendPage and returns them
+        // collated into one connection object. The caller's query is
+        // left as it was, and the result only has the fields it selected.
+        internal static object CollatePages(
+            RscQuery query,
+            System.Func<RscGqlRequest, object> sendPage,
+            IRscLogger logger)
+        {
+            // _FetchAndCollatePages() alters 'first' and 'after'.
+            object callerFirst = query.Var["first"];
+            bool hadAfter = query.Var.ContainsKey("after");
+            object callerAfter = hadAfter ? query.Var["after"] : null;
+            var unselectPageInfo = SelectPageInfoForPaging(query.Field);
             try
             {
-                collated = _FetchAndCollatePages(query);
+                object collated = _FetchAndCollatePages(query, sendPage, logger);
+                unselectPageInfo(collated);
+                return collated;
             }
             finally
             {
-                // Put the caller's query back as it was:
-                // _FetchAndCollatePages() alters 'first' and 'after'.
-                undoPageInfo();
-                if (first > 0)
+                unselectPageInfo(query.Field);
+                query.Var["first"] = callerFirst;
+                if (hadAfter || query.Var.ContainsKey("after"))
                 {
-                    query.Var["first"] = first;
+                    query.Var["after"] = callerAfter;
                 }
-                else
-                {
-                    query.Var["first"] = null;
-                }
-                query.Var["after"] = null;
             }
-            WriteObject(collated);
         }
 
         // Paging needs pageInfo.hasNextPage and pageInfo.endCursor.
-        // Selects whichever of them the caller didn't, and returns
-        // an action that unselects them again.
-        internal static System.Action SelectPageInfoForPaging(object field)
+        // Selects whichever of them the caller didn't, and returns an
+        // action that unselects them again on a field or result object.
+        // Does nothing when no nodes are selected (e.g. a count-only
+        // query): such a query isn't paged, and selecting pageInfo
+        // would make the server fetch a page for nothing.
+        internal static System.Action<object> SelectPageInfoForPaging(object field)
         {
+            System.Action<object> nothing = target => { };
             PropertyInfo prop = field?.GetType().GetProperty("PageInfo");
             if (prop == null || prop.PropertyType != typeof(PageInfo) || !prop.CanWrite)
             {
-                return () => { };
+                return nothing;
+            }
+            IList nodes = ObjectNodes(field);
+            if (nodes == null || nodes.Count == 0 || nodes.Cast<object>().All(
+                n => n is IFieldSpec spec && string.IsNullOrWhiteSpace(spec.AsFieldSpec())))
+            {
+                return nothing;
             }
             var selected = (PageInfo)prop.GetValue(field);
             if (selected == null)
             {
                 // Any non-null value selects the field.
                 prop.SetValue(field, new PageInfo { HasNextPage = true, EndCursor = "" });
-                return () => prop.SetValue(field, null);
+                return target =>
+                {
+                    target?.GetType().GetProperty("PageInfo")?.SetValue(target, null);
+                };
             }
             bool addHasNextPage = selected.HasNextPage == null;
             bool addEndCursor = selected.EndCursor == null;
             if (addHasNextPage) selected.HasNextPage = true;
             if (addEndCursor) selected.EndCursor = "";
-            return () =>
+            return target =>
             {
-                if (addHasNextPage) selected.HasNextPage = null;
-                if (addEndCursor) selected.EndCursor = null;
+                PageInfo pageInfo = ObjectPageInfo(target);
+                if (pageInfo == null) return;
+                if (addHasNextPage) pageInfo.HasNextPage = null;
+                if (addEndCursor) pageInfo.EndCursor = null;
             };
         }
 
-        internal object _FetchAndCollatePages(RscQuery query)
+        internal static object _FetchAndCollatePages(
+            RscQuery query,
+            System.Func<RscGqlRequest, object> sendPage,
+            IRscLogger logger)
         {
             PageInfo pageInfo;
             bool hasNextPage;
@@ -398,11 +428,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 }
 
                 // Fetch page
-                _logger.Verbose($"Fetching page {pageCount + 1} with Var['first']={query.Var["first"]} and Var['after']={query.Var["after"]}");
-                var page = this.SendGqlRequest(query.GqlRequest(), false);
+                logger?.Verbose($"Fetching page {pageCount + 1} with Var['first']={query.Var["first"]} and Var['after']={query.Var["after"]}");
+                var page = sendPage(query.GqlRequest());
                 pageCount++;
                 pageInfo = ObjectPageInfo(page);
-                _logger.Verbose($"Fetched page {pageCount}. HasNextPage: {pageInfo?.HasNextPage} EndCursor: {pageInfo?.EndCursor}");
+                logger?.Verbose($"Fetched page {pageCount}. HasNextPage: {pageInfo?.HasNextPage} EndCursor: {pageInfo?.EndCursor}");
 
                 // If this is the first page, initialize the collated object
                 if (collated == null)
@@ -453,7 +483,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     {
                         // Without a cursor the next request would
                         // fetch this same page again.
-                        _logger.Warning("Stopped paging: the response has no pageInfo.endCursor.");
+                        logger?.Warning("Stopped paging: the response has no pageInfo.endCursor.");
                         break;
                     }
                     query.Var["after"] = pageInfo.EndCursor;
